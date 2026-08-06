@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { isFirebaseConfigured } from '../firebase/config';
-import { User, Plus, UploadCloud, ShieldCheck, Database, Users, Download, FileSpreadsheet, FileJson2 } from 'lucide-react';
+import { User, Plus, UploadCloud, ShieldCheck, Database, Users, Download, FileSpreadsheet, FileJson2, Cloud } from 'lucide-react';
 
 export const Navbar = ({ onOpenNewClient, onOpenImporter, onExport }) => {
   const { currentUser, switchUser, availableUsers } = useAuth();
@@ -33,12 +33,12 @@ export const Navbar = ({ onOpenNewClient, onOpenImporter, onExport }) => {
             {isFirebaseConfigured ? (
               <>
                 <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span className="text-emerald-400 font-medium">Firebase Online</span>
+                <span className="text-emerald-400 font-medium">🔥 Firebase Online</span>
               </>
             ) : (
               <>
-                <Database className="w-3.5 h-3.5 text-blue-400" />
-                <span>Almacenamiento Local (Listo para Firebase)</span>
+                <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span className="text-emerald-400 font-medium">☁️ Nube Activa (Sincronizado Rodrigo & Compañero)</span>
               </>
             )}
           </div>

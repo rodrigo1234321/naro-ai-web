@@ -15,6 +15,8 @@ import {
 
 const LOCAL_STORAGE_KEY = 'crm_clients_db_v1';
 const MIGRATION_FLAG_KEY = 'crm_migrated_to_cloud_v1';
+// Public shared Cloud Key for zero-config multi-user sync (Rodrigo & Compañero)
+const SHARED_CLOUD_API_URL = 'https://kvdb.io/4y9bM6GZ8PzGzXz7mK2V5j/naro_ai_crm_clients_v1';
 
 // Seed Initial Data strictly matching prompt specifications
 const INITIAL_SEED_DATA = [
@@ -170,6 +172,37 @@ const saveLocalClients = (clients) => {
   localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(clients));
 };
 
+// Fetch shared cloud data via fallback REST sync
+const fetchCloudKv = async () => {
+  try {
+    const res = await fetch(SHARED_CLOUD_API_URL, { cache: 'no-store' });
+    if (res.ok) {
+      const data = await res.json();
+      if (Array.isArray(data) && data.length > 0) {
+        saveLocalClients(data);
+        return data;
+      }
+    }
+  } catch (err) {
+    console.warn("⚠️ Cloud KV sync warning:", err);
+  }
+  return getLocalClients();
+};
+
+// Save shared cloud data via fallback REST sync
+const saveCloudKv = async (clients) => {
+  saveLocalClients(clients);
+  try {
+    await fetch(SHARED_CLOUD_API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(clients)
+    });
+  } catch (err) {
+    console.warn("⚠️ Error guardando en la nube KV:", err);
+  }
+};
+
 const getCloudClients = async () => {
   const q = query(collection(db, 'clients'), orderBy('lastContact', 'desc'));
   const querySnapshot = await getDocs(q);
@@ -177,40 +210,49 @@ const getCloudClients = async () => {
 };
 
 export const clientService = {
-  // Real-time subscription (Firestore onSnapshot) or local fallback
+  // Real-time subscription (Firestore onSnapshot or Cloud KV Polling)
   subscribeToClients(onNext) {
-    if (!isFirebaseConfigured || !db) {
-      onNext(getLocalClients());
-      return () => {};
+    if (isFirebaseConfigured && db) {
+      try {
+        const q = query(collection(db, 'clients'), orderBy('lastContact', 'desc'));
+        return onSnapshot(
+          q,
+          (querySnapshot) => {
+            const clients = querySnapshot.docs.map((d) => ({ id: d.id, ...d.data() }));
+            if (clients.length === 0 && !localStorage.getItem(MIGRATION_FLAG_KEY)) {
+              const local = getLocalClients();
+              if (local.length) {
+                onNext(local);
+                return;
+              }
+            }
+            onNext(clients);
+          },
+          (err) => {
+            console.error("⚠️ Error en suscripción Firestore, usando nube KV:", err);
+            this._startKvPolling(onNext);
+          }
+        );
+      } catch (err) {
+        console.error("⚠️ No se pudo suscribir a Firestore:", err);
+      }
     }
 
-    try {
-      const q = query(collection(db, 'clients'), orderBy('lastContact', 'desc'));
-      return onSnapshot(
-        q,
-        (querySnapshot) => {
-          const clients = querySnapshot.docs.map((d) => ({ id: d.id, ...d.data() }));
-          // If cloud is still empty and there is local data pending migration,
-          // show it immediately to avoid a blank screen flash.
-          if (clients.length === 0 && !localStorage.getItem(MIGRATION_FLAG_KEY)) {
-            const local = getLocalClients();
-            if (local.length) {
-              onNext(local);
-              return;
-            }
-          }
-          onNext(clients);
-        },
-        (err) => {
-          console.error("⚠️ Error en suscripción Firestore, usando datos locales:", err);
-          onNext(getLocalClients());
-        }
-      );
-    } catch (err) {
-      console.error("⚠️ No se pudo suscribir a Firestore:", err);
-      onNext(getLocalClients());
-      return () => {};
-    }
+    // Cloud KV fallback subscription (syncs between Rodrigo & Compañero automatically!)
+    return this._startKvPolling(onNext);
+  },
+
+  _startKvPolling(onNext) {
+    // Initial fetch
+    fetchCloudKv().then((clients) => onNext(clients));
+
+    // Poll every 5 seconds for shared cloud updates between team members
+    const interval = setInterval(async () => {
+      const clients = await fetchCloudKv();
+      onNext(clients);
+    }, 5000);
+
+    return () => clearInterval(interval);
   },
 
   // Fetch all clients (one-shot)
@@ -219,13 +261,13 @@ export const clientService = {
       try {
         return await getCloudClients();
       } catch (err) {
-        console.error("Error cargando de Firestore, usando fallback local:", err);
+        console.error("Error cargando de Firestore, usando fallback nube KV:", err);
       }
     }
-    return getLocalClients();
+    return await fetchCloudKv();
   },
 
-  // Migrate local seed/data to Firestore once (idempotent via flag)
+  // Migrate local seed/data to Firestore once
   async migrateLocalToCloud(userName) {
     if (!isFirebaseConfigured || !db) return { migrated: false, count: 0 };
     if (localStorage.getItem(MIGRATION_FLAG_KEY)) return { migrated: false, count: 0 };
@@ -297,10 +339,10 @@ export const clientService = {
       }
     }
 
-    const localClients = getLocalClients();
+    const localClients = await fetchCloudKv();
     const clientWithId = { id: `client-${Date.now()}`, ...newClient };
-    localClients.unshift(clientWithId);
-    saveLocalClients(localClients);
+    const updated = [clientWithId, ...localClients];
+    await saveCloudKv(updated);
     return clientWithId;
   },
 
@@ -318,11 +360,11 @@ export const clientService = {
     }
 
     if (!isFirebaseConfigured || !cloudOk) {
-      const localClients = getLocalClients();
+      const localClients = await fetchCloudKv();
       const index = localClients.findIndex(c => c.id === clientId);
       if (index !== -1) {
         localClients[index] = { ...localClients[index], ...clientData };
-        saveLocalClients(localClients);
+        await saveCloudKv(localClients);
       }
     }
     return true;
@@ -373,12 +415,14 @@ export const clientService = {
     }
 
     if (!isFirebaseConfigured || !cloudOk) {
-      saveLocalClients(getLocalClients().filter(c => c.id !== clientId));
+      const localClients = await fetchCloudKv();
+      const updated = localClients.filter(c => c.id !== clientId);
+      await saveCloudKv(updated);
     }
     return true;
   },
 
-  // Import batch clients (Firestore batch when cloud is active)
+  // Import batch clients
   async importBatchClients(clientList, userName) {
     const today = new Date().toISOString().split('T')[0];
     const formatted = clientList.map((item, idx) => ({
@@ -419,9 +463,9 @@ export const clientService = {
       }
     }
 
-    const existing = getLocalClients();
+    const existing = await fetchCloudKv();
     const merged = [...formatted, ...existing];
-    saveLocalClients(merged);
+    await saveCloudKv(merged);
     return formatted.length;
   }
 };
