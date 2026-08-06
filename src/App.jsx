@@ -10,7 +10,7 @@ import { ClientModal } from './components/ClientModal';
 import { ClientDetailModal } from './components/ClientDetailModal';
 import { LayoutDashboard, Users, RefreshCw } from 'lucide-react';
 
-const ImporterModal = lazy(() => import('./components/ImporterModal'));
+import { ImporterModal } from './components/ImporterModal';
 
 function MainApp() {
   const { currentUser } = useAuth();
@@ -234,13 +234,11 @@ function MainApp() {
       />
 
       {isImporterOpen && (
-        <Suspense fallback={null}>
-          <ImporterModal
-            isOpen
-            onClose={() => setIsImporterOpen(false)}
-            onImport={handleImportClients}
-          />
-        </Suspense>
+        <ImporterModal
+          isOpen
+          onClose={() => setIsImporterOpen(false)}
+          onImport={handleImportClients}
+        />
       )}
 
     </div>

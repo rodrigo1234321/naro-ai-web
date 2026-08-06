@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { isFirebaseConfigured } from '../firebase/config';
-import { User, Plus, UploadCloud, ShieldCheck, Database, Users, Download, FileSpreadsheet, FileJson2, Cloud } from 'lucide-react';
+import { User, Plus, UploadCloud, ShieldCheck, Database, Users, Download, FileSpreadsheet, FileJson, Cloud } from 'lucide-react';
 
 export const Navbar = ({ onOpenNewClient, onOpenImporter, onExport }) => {
   const { currentUser, switchUser, availableUsers } = useAuth();
@@ -106,7 +106,7 @@ export const Navbar = ({ onOpenNewClient, onOpenImporter, onExport }) => {
                       onClick={() => { onExport('json'); setExportOpen(false); }}
                       className="w-full flex items-center space-x-2.5 px-4 py-3 text-xs font-semibold text-slate-200 hover:bg-slate-700 transition-all text-left border-t border-slate-700/60"
                     >
-                      <FileJson2 className="w-4 h-4 text-amber-400" />
+                      <FileJson className="w-4 h-4 text-amber-400" />
                       <span>JSON (backup)</span>
                     </button>
                   </div>

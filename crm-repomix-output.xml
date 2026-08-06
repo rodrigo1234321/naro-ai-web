@@ -1,0 +1,2747 @@
+This file is a merged representation of a subset of the codebase, containing specifically included files, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of a subset of the repository's contents that is considered the most important context.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Only files matching these patterns are included: src/**, package.json, vite.config.js, tailwind.config.js, index.html, firestore.rules, firebase.json
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+src/
+  components/
+    ClientDetailModal.jsx
+    ClientList.jsx
+    ClientModal.jsx
+    Dashboard.jsx
+    ImporterModal.jsx
+    Navbar.jsx
+  context/
+    AuthContext.jsx
+  firebase/
+    config.js
+  services/
+    clientService.js
+  utils/
+    exportUtils.js
+  App.jsx
+  index.css
+  main.jsx
+firebase.json
+firestore.rules
+index.html
+package.json
+tailwind.config.js
+vite.config.js
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="src/components/ClientDetailModal.jsx">
+import React, { useState } from 'react';
+import { 
+  X, 
+  History, 
+  Send, 
+  MessageCircle, 
+  Phone, 
+  Calendar, 
+  User, 
+  Building, 
+  Mail, 
+  MapPin, 
+  Tag, 
+  Clock, 
+  CheckCircle,
+  Sparkles
+} from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
+
+const STATUS_OPTIONS = [
+  'Nuevo',
+  'Contactado',
+  'Respondió',
+  'Interesado',
+  'Presupuesto enviado',
+  'Cliente',
+  'Perdido'
+];
+
+export const ClientDetailModal = ({ isOpen, onClose, client, onAddInteraction }) => {
+  const { currentUser } = useAuth();
+  
+  const [newNote, setNewNote] = useState('');
+  const [updateStatus, setUpdateStatus] = useState(client ? client.status : 'Contactado');
+  const [nextFollowUpDate, setNextFollowUpDate] = useState(
+    client ? client.nextFollowUp : new Date().toISOString().split('T')[0]
+  );
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  if (!isOpen || !client) return null;
+
+  const handleAddInteractionSubmit = async (e) => {
+    e.preventDefault();
+    if (!newNote.trim()) {
+      alert('Escribí una nota o descripción de la interacción.');
+      return;
+    }
+
+    setIsSubmitting(true);
+    await onAddInteraction(
+      client.id,
+      newNote,
+      currentUser.name,
+      updateStatus !== client.status ? updateStatus : null,
+      nextFollowUpDate
+    );
+    setIsSubmitting(false);
+    setNewNote('');
+  };
+
+  const cleanPhone = (client.whatsapp || client.phone || '').replace(/\D/g, '');
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md overflow-y-auto">
+      <div className="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-3xl shadow-2xl overflow-hidden my-6 max-h-[90vh] flex flex-col">
+        
+        {/* Header */}
+        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-slate-950/70">
+          <div className="flex items-center space-x-3">
+            <div className="h-10 w-10 rounded-xl bg-brand-500/20 text-brand-400 border border-brand-500/30 flex items-center justify-center font-bold text-lg">
+              {client.name.charAt(0)}
+            </div>
+            <div>
+              <div className="flex items-center space-x-2">
+                <h3 className="text-lg font-extrabold text-white">{client.name}</h3>
+                <span className="text-xs px-2.5 py-0.5 rounded-full bg-slate-800 text-brand-300 font-semibold border border-slate-700">
+                  {client.status}
+                </span>
+              </div>
+              <p className="text-xs text-slate-400">
+                {client.company && client.company !== client.name ? `${client.company} • ` : ''}
+                {client.rubro} • {client.city}
+              </p>
+            </div>
+          </div>
+
+          <button
+            onClick={onClose}
+            className="p-1.5 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-all"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+
+        {/* Content Body */}
+        <div className="flex-1 overflow-y-auto p-6 space-y-6">
+          
+          {/* Quick Details Bar */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 p-3 bg-slate-950/60 rounded-xl border border-slate-800 text-xs">
+            <div>
+              <span className="text-slate-500 block">Teléfono / WhatsApp:</span>
+              <span className="text-slate-200 font-medium">{client.phone || client.whatsapp || 'No registrado'}</span>
+            </div>
+            <div>
+              <span className="text-slate-500 block">Origen:</span>
+              <span className="text-slate-200 font-medium">{client.origin || 'Directo'}</span>
+            </div>
+            <div>
+              <span className="text-slate-500 block">Primer contacto:</span>
+              <span className="text-slate-200 font-medium">{client.firstContact}</span>
+            </div>
+            <div>
+              <span className="text-slate-500 block">Próximo seguimiento:</span>
+              <span className="text-amber-400 font-semibold">{client.nextFollowUp || 'No agendado'}</span>
+            </div>
+          </div>
+
+          {/* Quick Contact Actions */}
+          <div className="flex items-center gap-3">
+            {cleanPhone && (
+              <a
+                href={`https://wa.me/${cleanPhone}?text=${encodeURIComponent(`Hola ${client.name}, ¿cómo estás? Te escribo de Naro AI...`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-2 px-4 py-2 rounded-xl bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-400 border border-emerald-500/30 text-xs font-bold transition-all"
+              >
+                <MessageCircle className="w-4 h-4" />
+                <span>Abrir WhatsApp</span>
+              </a>
+            )}
+            {client.phone && (
+              <a
+                href={`tel:${client.phone}`}
+                className="flex items-center space-x-2 px-4 py-2 rounded-xl bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 border border-blue-500/30 text-xs font-bold transition-all"
+              >
+                <Phone className="w-4 h-4" />
+                <span>Llamar</span>
+              </a>
+            )}
+          </div>
+
+          {/* Add New Interaction Form */}
+          <div className="bg-slate-950/80 border border-slate-800/80 rounded-2xl p-4 sm:p-5 space-y-3">
+            <div className="flex items-center justify-between">
+              <h4 className="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
+                <Send className="w-3.5 h-3.5 text-brand-400" />
+                <span>Registrar Nueva Interacción</span>
+              </h4>
+              <span className="text-xs text-slate-400">
+                Registrando como: <strong className="text-brand-300">{currentUser.name}</strong>
+              </span>
+            </div>
+
+            <form onSubmit={handleAddInteractionSubmit} className="space-y-3">
+              <textarea
+                rows={2}
+                value={newNote}
+                onChange={(e) => setNewNote(e.target.value)}
+                placeholder="Ej. Le envié WhatsApp / Pidió presupuesto de $450.000 / Se acordó llamada..."
+                className="w-full bg-slate-900 border border-slate-700/80 rounded-xl p-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-500"
+              />
+
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-1">
+                <div className="flex items-center gap-3">
+                  <div>
+                    <label className="text-[11px] text-slate-400 block mb-0.5">Nuevo Estado:</label>
+                    <select
+                      value={updateStatus}
+                      onChange={(e) => setUpdateStatus(e.target.value)}
+                      className="bg-slate-900 border border-slate-700 text-xs text-slate-200 rounded-lg px-2.5 py-1.5 focus:outline-none"
+                    >
+                      {STATUS_OPTIONS.map(s => (
+                        <option key={s} value={s}>{s}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="text-[11px] text-slate-400 block mb-0.5">Agendar seguimiento:</label>
+                    <input
+                      type="date"
+                      value={nextFollowUpDate}
+                      onChange={(e) => setNextFollowUpDate(e.target.value)}
+                      className="bg-slate-900 border border-slate-700 text-xs text-slate-200 rounded-lg px-2 py-1 focus:outline-none"
+                    />
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="px-4 py-2 bg-gradient-to-r from-brand-600 to-brand-500 hover:from-brand-500 hover:to-brand-400 text-white text-xs font-bold rounded-xl shadow-lg transition-all flex items-center justify-center space-x-1.5"
+                >
+                  <Send className="w-3.5 h-3.5" />
+                  <span>Guardar en Historial</span>
+                </button>
+              </div>
+            </form>
+          </div>
+
+          {/* Timeline / Immutable History */}
+          <div className="space-y-3">
+            <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center justify-between">
+              <span className="flex items-center gap-1.5">
+                <History className="w-4 h-4 text-brand-400" />
+                <span>Historial de Interacciones ({client.history ? client.history.length : 0})</span>
+              </span>
+              <span className="text-[11px] text-emerald-400 lowercase font-normal">
+                ✓ Registro inmutable
+              </span>
+            </h4>
+
+            {(!client.history || client.history.length === 0) ? (
+              <p className="text-xs text-slate-500 italic py-4">No hay interacciones registradas para este cliente aún.</p>
+            ) : (
+              <div className="relative border-l-2 border-slate-800 ml-3 space-y-4 pt-1">
+                {client.history.map((item, index) => (
+                  <div key={item.id || index} className="relative pl-6">
+                    {/* Dot on timeline */}
+                    <div className="absolute -left-[9px] top-1 h-4 w-4 rounded-full bg-slate-900 border-2 border-brand-500 flex items-center justify-center">
+                      <div className="h-1.5 w-1.5 rounded-full bg-brand-400" />
+                    </div>
+
+                    <div className="bg-slate-950/70 border border-slate-800/80 rounded-xl p-3 space-y-1">
+                      <div className="flex items-center justify-between text-xs">
+                        <span className="font-bold text-white flex items-center gap-1.5">
+                          <User className="w-3.5 h-3.5 text-brand-400" />
+                          <span>{item.user}</span>
+                        </span>
+                        <span className="text-[11px] text-slate-400 font-mono">
+                          {item.date}
+                        </span>
+                      </div>
+                      <p className="text-xs text-slate-300 leading-relaxed whitespace-pre-line pt-1">
+                        {item.note}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  );
+};
+</file>
+
+<file path="src/components/ClientList.jsx">
+import React, { useState, useMemo } from 'react';
+import { 
+  Search, 
+  Filter, 
+  MessageCircle, 
+  Phone, 
+  Calendar, 
+  Building2, 
+  MapPin, 
+  MoreVertical, 
+  Edit3, 
+  Trash2, 
+  History, 
+  ExternalLink,
+  Plus
+} from 'lucide-react';
+
+const STATUS_COLORS = {
+  'Nuevo': 'bg-purple-500/15 text-purple-300 border-purple-500/30',
+  'Contactado': 'bg-cyan-500/15 text-cyan-300 border-cyan-500/30',
+  'Respondió': 'bg-indigo-500/15 text-indigo-300 border-indigo-500/30',
+  'Interesado': 'bg-amber-500/15 text-amber-300 border-amber-500/30',
+  'Presupuesto enviado': 'bg-sky-500/15 text-sky-300 border-sky-500/30',
+  'Cliente': 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30',
+  'Perdido': 'bg-rose-500/15 text-rose-300 border-rose-500/30'
+};
+
+const ALL_STATUSES = [
+  'Todos',
+  'Nuevo',
+  'Contactado',
+  'Respondió',
+  'Interesado',
+  'Presupuesto enviado',
+  'Cliente',
+  'Perdido'
+];
+
+export const ClientList = ({ 
+  clients, 
+  onSelectClient, 
+  onEditClient, 
+  onDeleteClient, 
+  selectedStatus, 
+  onSelectStatusFilter,
+  onOpenNewClient
+}) => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedRubro, setSelectedRubro] = useState('Todos');
+
+  // Extract unique rubros for quick dropdown filter
+  const rubrosList = useMemo(() => {
+    const set = new Set(clients.map(c => c.rubro).filter(Boolean));
+    return ['Todos', ...Array.from(set)];
+  }, [clients]);
+
+  // Filter clients based on search query, status filter, and rubro filter
+  const filteredClients = useMemo(() => {
+    return clients.filter((c) => {
+      // Status filter
+      if (selectedStatus !== 'Todos' && c.status !== selectedStatus) {
+        return false;
+      }
+      // Rubro filter
+      if (selectedRubro !== 'Todos' && c.rubro !== selectedRubro) {
+        return false;
+      }
+      // Search term
+      if (searchTerm.trim() !== '') {
+        const q = searchTerm.toLowerCase();
+        const matchName = (c.name || '').toLowerCase().includes(q);
+        const matchCompany = (c.company || '').toLowerCase().includes(q);
+        const matchRubro = (c.rubro || '').toLowerCase().includes(q);
+        const matchCity = (c.city || '').toLowerCase().includes(q);
+        const matchPhone = (c.phone || '').includes(q);
+        const matchOrigin = (c.origin || '').toLowerCase().includes(q);
+
+        return matchName || matchCompany || matchRubro || matchCity || matchPhone || matchOrigin;
+      }
+
+      return true;
+    });
+  }, [clients, selectedStatus, selectedRubro, searchTerm]);
+
+  return (
+    <div className="space-y-5">
+      
+      {/* Controls Header: Search & Filters */}
+      <div className="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 sm:p-5 shadow-xl space-y-4">
+        
+        <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+          
+          {/* Search Input */}
+          <div className="relative flex-1">
+            <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+            <input
+              type="text"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              placeholder="Buscar por cliente, rubro (ej. Panadería, Pizzería), empresa, ciudad..."
+              className="w-full bg-slate-950/80 border border-slate-700/80 rounded-xl pl-10 pr-4 py-2.5 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all"
+            />
+            {searchTerm && (
+              <button
+                onClick={() => setSearchTerm('')}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-white"
+              >
+                ✕ Limpiar
+              </button>
+            )}
+          </div>
+
+          {/* Rubro Selector */}
+          <div className="flex items-center space-x-2">
+            <Filter className="w-4 h-4 text-slate-400 hidden sm:block" />
+            <select
+              value={selectedRubro}
+              onChange={(e) => setSelectedRubro(e.target.value)}
+              className="bg-slate-950 border border-slate-700/80 rounded-xl px-3 py-2.5 text-xs font-semibold text-slate-200 focus:outline-none focus:border-brand-500"
+            >
+              <option value="Todos">Todos los Rubros</option>
+              {rubrosList.filter(r => r !== 'Todos').map(rubro => (
+                <option key={rubro} value={rubro}>{rubro}</option>
+              ))}
+            </select>
+          </div>
+
+        </div>
+
+        {/* Status Filter Tabs */}
+        <div className="flex items-center space-x-1.5 overflow-x-auto pb-1 scrollbar-none">
+          {ALL_STATUSES.map((status) => {
+            const count = status === 'Todos' 
+              ? clients.length 
+              : clients.filter(c => c.status === status).length;
+            const isSelected = selectedStatus === status;
+
+            return (
+              <button
+                key={status}
+                onClick={() => onSelectStatusFilter(status)}
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all flex items-center space-x-1.5 ${
+                  isSelected
+                    ? 'bg-brand-600 text-white shadow-md shadow-brand-600/30'
+                    : 'bg-slate-800/80 text-slate-400 hover:bg-slate-700 hover:text-slate-200'
+                }`}
+              >
+                <span>{status}</span>
+                <span className={`px-1.5 py-0.2 rounded-full text-[10px] ${
+                  isSelected ? 'bg-white/20 text-white' : 'bg-slate-900 text-slate-400'
+                }`}>
+                  {count}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+
+      </div>
+
+      {/* Results Count & Header */}
+      <div className="flex items-center justify-between text-xs text-slate-400 px-1">
+        <span>Mostrando <strong className="text-white">{filteredClients.length}</strong> de {clients.length} clientes</span>
+        {searchTerm && (
+          <span>Filtro activo: "<span className="text-brand-400 font-semibold">{searchTerm}</span>"</span>
+        )}
+      </div>
+
+      {/* Client Cards Grid */}
+      {filteredClients.length === 0 ? (
+        <div className="bg-slate-900/50 border border-slate-800 rounded-2xl p-12 text-center">
+          <div className="max-w-xs mx-auto space-y-3">
+            <div className="p-3 bg-slate-800 rounded-full w-12 h-12 mx-auto flex items-center justify-center text-slate-400">
+              <Search className="w-6 h-6" />
+            </div>
+            <h4 className="text-base font-bold text-white">No se encontraron clientes</h4>
+            <p className="text-xs text-slate-400">Intenta cambiar el término de búsqueda o limpia los filtros activos.</p>
+            <button
+              onClick={onOpenNewClient}
+              className="mt-2 inline-flex items-center space-x-2 px-4 py-2 bg-brand-600 hover:bg-brand-500 text-white text-xs font-bold rounded-xl shadow-lg transition-all"
+            >
+              <Plus className="w-4 h-4" />
+              <span>Agregar Nuevo Cliente</span>
+            </button>
+          </div>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {filteredClients.map((client) => {
+            const statusStyle = STATUS_COLORS[client.status] || 'bg-slate-800 text-slate-300 border-slate-700';
+            const cleanPhone = (client.whatsapp || client.phone || '').replace(/\D/g, '');
+
+            return (
+              <div
+                key={client.id}
+                className="bg-slate-900/90 border border-slate-800 hover:border-slate-700 rounded-2xl p-5 shadow-lg transition-all hover:shadow-xl hover:translate-y-[-2px] flex flex-col justify-between group"
+              >
+                <div>
+                  {/* Top Bar */}
+                  <div className="flex items-start justify-between gap-2 mb-2">
+                    <div>
+                      <h3 
+                        onClick={() => onSelectClient(client)}
+                        className="text-base font-bold text-white group-hover:text-brand-400 transition-colors cursor-pointer"
+                      >
+                        {client.name}
+                      </h3>
+                      {client.company && client.company !== client.name && (
+                        <p className="text-xs text-slate-400 flex items-center gap-1 mt-0.5">
+                          <Building2 className="w-3 h-3" />
+                          <span>{client.company}</span>
+                        </p>
+                      )}
+                    </div>
+                    <span className={`text-xs px-2.5 py-1 rounded-lg border font-semibold flex-shrink-0 ${statusStyle}`}>
+                      {client.status}
+                    </span>
+                  </div>
+
+                  {/* Badges & Info */}
+                  <div className="flex flex-wrap gap-1.5 my-3">
+                    <span className="text-[11px] px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-medium">
+                      🏷️ {client.rubro}
+                    </span>
+                    <span className="text-[11px] px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-medium">
+                      📍 {client.city}
+                    </span>
+                    {client.origin && (
+                      <span className="text-[11px] px-2 py-0.5 rounded bg-slate-800/60 text-slate-400 font-normal">
+                        Via: {client.origin}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Dates & Last Note Preview */}
+                  <div className="space-y-1.5 text-xs text-slate-400 bg-slate-950/60 rounded-xl p-3 mb-4 border border-slate-800/80">
+                    <div className="flex justify-between">
+                      <span>Último contacto:</span>
+                      <span className="text-slate-200 font-medium">{client.lastContact || 'Sin fecha'}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Próximo seguimiento:</span>
+                      <span className="text-amber-400 font-semibold">{client.nextFollowUp || 'No programado'}</span>
+                    </div>
+                    {client.history && client.history.length > 0 && (
+                      <div className="pt-2 mt-1 border-t border-slate-800/60 text-[11px] text-slate-300 line-clamp-2">
+                        <strong className="text-brand-400">{client.history[0].user}:</strong> "{client.history[0].note}"
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Actions Footer */}
+                <div className="flex items-center justify-between pt-3 border-t border-slate-800/80">
+                  <div className="flex items-center space-x-2">
+                    {cleanPhone && (
+                      <a
+                        href={`https://wa.me/${cleanPhone}?text=${encodeURIComponent(`Hola ${client.name}, te escribo por parte de Naro AI...`)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 transition-all"
+                        title="Enviar WhatsApp"
+                      >
+                        <MessageCircle className="w-4 h-4" />
+                      </a>
+                    )}
+                    {client.phone && (
+                      <a
+                        href={`tel:${client.phone}`}
+                        className="p-2 rounded-lg bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 border border-blue-500/30 transition-all"
+                        title="Llamar"
+                      >
+                        <Phone className="w-4 h-4" />
+                      </a>
+                    )}
+                  </div>
+
+                  <div className="flex items-center space-x-1.5">
+                    <button
+                      onClick={() => onSelectClient(client)}
+                      className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold transition-all flex items-center space-x-1"
+                    >
+                      <History className="w-3.5 h-3.5 text-brand-400" />
+                      <span>Historial ({client.history ? client.history.length : 0})</span>
+                    </button>
+
+                    <button
+                      onClick={() => onEditClient(client)}
+                      className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-all"
+                      title="Editar Cliente"
+                    >
+                      <Edit3 className="w-4 h-4" />
+                    </button>
+
+                    <button
+                      onClick={() => {
+                        if (confirm(`¿Estás seguro de eliminar el cliente "${client.name}"?`)) {
+                          onDeleteClient(client.id);
+                        }
+                      }}
+                      className="p-1.5 rounded-lg text-slate-500 hover:text-rose-400 hover:bg-rose-500/10 transition-all"
+                      title="Eliminar Cliente"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+            );
+          })}
+        </div>
+      )}
+
+    </div>
+  );
+};
+</file>
+
+<file path="src/components/ClientModal.jsx">
+import React, { useState, useEffect } from 'react';
+import { X, Save, UserPlus, Building, Phone, Mail, MapPin, Tag, Calendar, Layers } from 'lucide-react';
+
+const STATUS_OPTIONS = [
+  'Nuevo',
+  'Contactado',
+  'Respondió',
+  'Interesado',
+  'Presupuesto enviado',
+  'Cliente',
+  'Perdido'
+];
+
+const ORIGIN_OPTIONS = [
+  'Google Maps',
+  'Instagram',
+  'Recomendación',
+  'Facebook',
+  'WhatsApp Directo',
+  'Prospección Fría',
+  'Web'
+];
+
+export const ClientModal = ({ isOpen, onClose, onSave, clientToEdit }) => {
+  const today = new Date().toISOString().split('T')[0];
+
+  const [formData, setFormData] = useState({
+    name: '',
+    company: '',
+    phone: '',
+    whatsapp: '',
+    email: '',
+    rubro: '',
+    city: 'Mar del Plata',
+    origin: 'Google Maps',
+    firstContact: today,
+    nextFollowUp: today,
+    status: 'Nuevo',
+    initialNote: ''
+  });
+
+  useEffect(() => {
+    if (clientToEdit) {
+      setFormData({
+        name: clientToEdit.name || '',
+        company: clientToEdit.company || '',
+        phone: clientToEdit.phone || '',
+        whatsapp: clientToEdit.whatsapp || '',
+        email: clientToEdit.email || '',
+        rubro: clientToEdit.rubro || '',
+        city: clientToEdit.city || 'Mar del Plata',
+        origin: clientToEdit.origin || 'Google Maps',
+        firstContact: clientToEdit.firstContact || today,
+        nextFollowUp: clientToEdit.nextFollowUp || today,
+        status: clientToEdit.status || 'Nuevo',
+        initialNote: ''
+      });
+    } else {
+      setFormData({
+        name: '',
+        company: '',
+        phone: '',
+        whatsapp: '',
+        email: '',
+        rubro: '',
+        city: 'Mar del Plata',
+        origin: 'Google Maps',
+        firstContact: today,
+        nextFollowUp: today,
+        status: 'Nuevo',
+        initialNote: 'Cliente agregado al CRM.'
+      });
+    }
+  }, [clientToEdit, isOpen]);
+
+  if (!isOpen) return null;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!formData.name.trim()) {
+      alert('Por favor, ingresá el nombre del cliente.');
+      return;
+    }
+
+    // Auto format whatsapp if phone is entered and whatsapp is empty
+    let finalWhatsApp = formData.whatsapp;
+    if (!finalWhatsApp && formData.phone) {
+      const nums = formData.phone.replace(/\D/g, '');
+      finalWhatsApp = nums.startsWith('54') ? nums : `549${nums}`;
+    }
+
+    onSave({
+      ...formData,
+      whatsapp: finalWhatsApp
+    });
+    onClose();
+  };
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm overflow-y-auto">
+      <div className="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-2xl shadow-2xl overflow-hidden my-8">
+        
+        {/* Header */}
+        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-slate-900/60">
+          <div className="flex items-center space-x-2.5">
+            <div className="p-2 bg-brand-500/20 text-brand-400 rounded-lg">
+              <UserPlus className="w-5 h-5" />
+            </div>
+            <h3 className="text-lg font-bold text-white">
+              {clientToEdit ? 'Editar Cliente' : 'Agregar Nuevo Cliente'}
+            </h3>
+          </div>
+          <button
+            onClick={onClose}
+            className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-all"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+
+        {/* Form Body */}
+        <form onSubmit={handleSubmit} className="p-6 space-y-4">
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
+            {/* Nombre */}
+            <div>
+              <label className="block text-xs font-semibold text-slate-300 mb-1">
+                Nombre de Fantasía / Contacto <span className="text-rose-400">*</span>
+              </label>
+              <input
+                type="text"
+                required
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                placeholder="Ej. Panadería Don José"
+                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500"
+              />
+            </div>
+
+            {/* Empresa */}
+            <div>
+              <label className="block text-xs font-semibold text-slate-300 mb-1">
+                Razón Social / Empresa
+              </label>
+              <input
+                type="text"
+                value={formData.company}
+                onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                placeholder="Ej. Don José S.A."
+                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500"
+              />
+            </div>
+
+            {/* Teléfono */}
+            <div>
+              <label className="block text-xs font-semibold text-slate-300 mb-1">
+                Teléfono de Contacto
+              </label>
+              <input
+                type="text"
+                value={formData.phone}
+                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                placeholder="Ej. 2235123456"
+                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500"
+              />
+            </div>
+
+            {/* WhatsApp */}
+            <div>
+              <label className="block text-xs font-semibold text-slate-300 mb-1">
+                WhatsApp (con código de país)
+              </label>
+              <input
+                type="text"
+                value={formData.whatsapp}
+                onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}
+                placeholder="Ej. 5492235123456"
+                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500"
+              />
+            </div>
+
+            {/* Email */}
+            <div>
+              <label className="block text-xs font-semibold text-slate-300 mb-1">
+                Correo Electrónico
+              </label>
+              <input
+                type="email"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                placeholder="contacto@comercio.com"
+                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500"
+              />
+            </div>
+
+            {/* Rubro */}
+            <div>
+              <label className="block text-xs font-semibold text-slate-300 mb-1">
+                Rubro / Sector
+              </label>
+              <input
+                type="text"
+                value={formData.rubro}
+                onChange={(e) => setFormData({ ...formData, rubro: e.target.value })}
+                placeholder="Ej. Panadería, Pizzería, Ferretería..."
+                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500"
+              />
+            </div>
+
+            {/* Ciudad */}
+            <div>
+              <label className="block text-xs font-semibold text-slate-300 mb-1">
+                Ciudad
+              </label>
+              <input
+                type="text"
+                value={formData.city}
+                onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+                placeholder="Ej. Mar del Plata"
+                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500"
+              />
+            </div>
+
+            {/* Origen */}
+            <div>
+              <label className="block text-xs font-semibold text-slate-300 mb-1">
+                Origen del Lead
+              </label>
+              <select
+                value={formData.origin}
+                onChange={(e) => setFormData({ ...formData, origin: e.target.value })}
+                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500"
+              >
+                {ORIGIN_OPTIONS.map(o => (
+                  <option key={o} value={o}>{o}</option>
+                ))}
+              </select>
+            </div>
+
+            {/* Estado */}
+            <div>
+              <label className="block text-xs font-semibold text-slate-300 mb-1">
+                Estado Actual
+              </label>
+              <select
+                value={formData.status}
+                onChange={(e) => setFormData({ ...formData, status: e.target.value })}
+                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500 font-semibold text-brand-300"
+              >
+                {STATUS_OPTIONS.map(s => (
+                  <option key={s} value={s}>{s}</option>
+                ))}
+              </select>
+            </div>
+
+            {/* Próximo seguimiento */}
+            <div>
+              <label className="block text-xs font-semibold text-slate-300 mb-1">
+                Próximo Seguimiento
+              </label>
+              <input
+                type="date"
+                value={formData.nextFollowUp}
+                onChange={(e) => setFormData({ ...formData, nextFollowUp: e.target.value })}
+                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500"
+              />
+            </div>
+
+          </div>
+
+          {!clientToEdit && (
+            <div>
+              <label className="block text-xs font-semibold text-slate-300 mb-1">
+                Nota inicial o detalle del contacto
+              </label>
+              <textarea
+                rows={2}
+                value={formData.initialNote}
+                onChange={(e) => setFormData({ ...formData, initialNote: e.target.value })}
+                placeholder="Ej. Le envié WhatsApp inicial presentando la solución de Bot de IA."
+                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2 text-sm text-white focus:outline-none focus:border-brand-500"
+              />
+            </div>
+          )}
+
+          {/* Footer Buttons */}
+          <div className="flex items-center justify-end space-x-3 pt-4 border-t border-slate-800">
+            <button
+              type="button"
+              onClick={onClose}
+              className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold transition-all"
+            >
+              Cancelar
+            </button>
+            <button
+              type="submit"
+              className="flex items-center space-x-1.5 px-5 py-2 rounded-xl bg-brand-600 hover:bg-brand-500 text-white text-xs font-bold shadow-lg shadow-brand-600/30 transition-all"
+            >
+              <Save className="w-4 h-4" />
+              <span>{clientToEdit ? 'Guardar Cambios' : 'Crear Cliente'}</span>
+            </button>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  );
+};
+</file>
+
+<file path="src/components/Dashboard.jsx">
+import React from 'react';
+import { 
+  Users, 
+  Sparkles, 
+  PhoneCall, 
+  MessageSquareText, 
+  Flame, 
+  FileCheck2, 
+  CheckCircle2, 
+  XCircle, 
+  BellRing, 
+  Calendar, 
+  ArrowRight,
+  MessageCircle,
+  AlertTriangle,
+  TrendingUp,
+  BarChart3
+} from 'lucide-react';
+
+const CLOSED_STATUSES = ['Cliente', 'Perdido'];
+
+const PIPELINE = [
+  { label: 'Nuevo', color: 'bg-purple-500', text: 'text-purple-300' },
+  { label: 'Contactado', color: 'bg-cyan-500', text: 'text-cyan-300' },
+  { label: 'Respondió', color: 'bg-indigo-500', text: 'text-indigo-300' },
+  { label: 'Interesado', color: 'bg-amber-500', text: 'text-amber-300' },
+  { label: 'Presupuesto enviado', color: 'bg-sky-500', text: 'text-sky-300' },
+  { label: 'Cliente', color: 'bg-emerald-500', text: 'text-emerald-300' },
+  { label: 'Perdido', color: 'bg-rose-500', text: 'text-rose-300' }
+];
+
+const FollowUpCard = ({ client, onSelectClient }) => {
+  const cleanPhone = (client.whatsapp || client.phone || '').replace(/\D/g, '');
+  return (
+    <div className="bg-slate-800/70 border border-slate-700/80 hover:border-brand-500/50 rounded-xl p-4 transition-all flex flex-col justify-between">
+      <div>
+        <div className="flex items-start justify-between gap-2 mb-1.5">
+          <h4
+            onClick={() => onSelectClient(client)}
+            className="font-bold text-white hover:text-brand-400 cursor-pointer transition-colors text-base line-clamp-1"
+          >
+            {client.name}
+          </h4>
+          <span className="text-xs px-2 py-0.5 rounded-md bg-slate-900 text-slate-300 font-semibold border border-slate-700 flex-shrink-0">
+            {client.status}
+          </span>
+        </div>
+        {client.company && client.company !== client.name && (
+          <p className="text-xs text-slate-400 mb-2 truncate">{client.company}</p>
+        )}
+        <div className="flex items-center gap-3 text-xs text-slate-400 mb-3">
+          <span className="bg-slate-900/60 px-2 py-1 rounded text-slate-300 font-medium">
+            📍 {client.rubro}
+          </span>
+          <span>{client.city}</span>
+        </div>
+      </div>
+      <div className="flex items-center justify-between pt-3 border-t border-slate-700/50 gap-2">
+        {cleanPhone ? (
+          <a
+            href={`https://wa.me/${cleanPhone}?text=${encodeURIComponent(`Hola ${client.name}, te hablo de Naro AI...`)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center space-x-1.5 px-3 py-1.5 bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-400 border border-emerald-500/30 rounded-lg text-xs font-semibold transition-all"
+          >
+            <MessageCircle className="w-3.5 h-3.5" />
+            <span>WhatsApp</span>
+          </a>
+        ) : (
+          <span className="text-xs text-slate-500">Sin WhatsApp</span>
+        )}
+        <button
+          onClick={() => onSelectClient(client)}
+          className="flex items-center space-x-1 px-3 py-1.5 bg-brand-600/20 hover:bg-brand-600/30 text-brand-300 border border-brand-500/30 rounded-lg text-xs font-semibold transition-all"
+        >
+          <span>Ver Historial</span>
+          <ArrowRight className="w-3.5 h-3.5" />
+        </button>
+      </div>
+    </div>
+  );
+};
+
+const FollowUpGroup = ({ title, subtitle, badge, badgeColor, clients, onSelectClient }) => {
+  if (!clients.length) return null;
+  return (
+    <div className="mb-5 last:mb-0">
+      <div className="flex items-center gap-2 mb-3">
+        <h4 className="text-xs font-bold text-white uppercase tracking-wider">{title}</h4>
+        <span className={`text-[11px] px-2 py-0.5 rounded-full font-bold ${badgeColor}`}>{clients.length}</span>
+        {subtitle && <span className="text-[11px] text-slate-500">{subtitle}</span>}
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+        {clients.map((client) => (
+          <FollowUpCard key={client.id} client={client} onSelectClient={onSelectClient} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export const Dashboard = ({ clients, onSelectClient, onFilterByStatus }) => {
+  const today = new Date();
+  const todayStr = today.toISOString().split('T')[0];
+  const plus3 = new Date(today.getTime() + 3 * 86400000).toISOString().split('T')[0];
+
+  // Calculate metrics dynamically
+  const totalCount = clients.length;
+  const getCount = (status) => clients.filter(c => c.status === status).length;
+
+  const nuevosCount = getCount('Nuevo');
+  const contactadosCount = getCount('Contactado');
+  const respondioCount = getCount('Respondió');
+  const interesadosCount = getCount('Interesado');
+  const presupuestoCount = getCount('Presupuesto enviado');
+  const clienteCount = getCount('Cliente');
+  const perdidosCount = getCount('Perdido');
+
+  // Follow-up buckets (exclude won/lost clients from pending reminders)
+  const isPending = (c) => !CLOSED_STATUSES.includes(c.status);
+  const overdue = clients.filter(c => isPending(c) && c.nextFollowUp && c.nextFollowUp < todayStr);
+  const todayFollowUps = clients.filter(c => isPending(c) && c.nextFollowUp === todayStr);
+  const upcoming = clients.filter(c => isPending(c) && c.nextFollowUp && c.nextFollowUp > todayStr && c.nextFollowUp <= plus3);
+
+  const totalPending = overdue.length + todayFollowUps.length;
+
+  const kpis = [
+    { label: 'Total Clientes', count: totalCount, status: 'Todos', color: 'from-blue-500/20 to-slate-800', border: 'border-blue-500/30', text: 'text-blue-400', icon: Users },
+    { label: 'Nuevos', count: nuevosCount, status: 'Nuevo', color: 'from-purple-500/20 to-slate-800', border: 'border-purple-500/30', text: 'text-purple-400', icon: Sparkles },
+    { label: 'Contactados', count: contactadosCount, status: 'Contactado', color: 'from-cyan-500/20 to-slate-800', border: 'border-cyan-500/30', text: 'text-cyan-400', icon: PhoneCall },
+    { label: 'Respondió', count: respondioCount, status: 'Respondió', color: 'from-indigo-500/20 to-slate-800', border: 'border-indigo-500/30', text: 'text-indigo-400', icon: MessageSquareText },
+    { label: 'Interesados', count: interesadosCount, status: 'Interesado', color: 'from-amber-500/20 to-slate-800', border: 'border-amber-500/30', text: 'text-amber-400', icon: Flame },
+    { label: 'Presupuesto enviado', count: presupuestoCount, status: 'Presupuesto enviado', color: 'from-sky-500/20 to-slate-800', border: 'border-sky-500/30', text: 'text-sky-400', icon: FileCheck2 },
+    { label: 'Clientes (Ganados)', count: clienteCount, status: 'Cliente', color: 'from-emerald-500/20 to-slate-800', border: 'border-emerald-500/30', text: 'text-emerald-400', icon: CheckCircle2 },
+    { label: 'Perdidos', count: perdidosCount, status: 'Perdido', color: 'from-rose-500/20 to-slate-800', border: 'border-rose-500/30', text: 'text-rose-400', icon: XCircle },
+  ];
+
+  // Pipeline funnel
+  const maxPipeline = Math.max(...PIPELINE.map(p => getCount(p.label)), 1);
+
+  // Clients won per month (last 6 months)
+  const closedClients = clients.filter(c => c.status === 'Cliente');
+  const monthLabel = (ym) => {
+    const [y, m] = ym.split('-').map(Number);
+    return new Date(y, m - 1, 1).toLocaleDateString('es-AR', { month: 'short' });
+  };
+  const lastMonths = [];
+  for (let i = 5; i >= 0; i--) {
+    const d = new Date(today.getFullYear(), today.getMonth() - i, 1);
+    lastMonths.push(`${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`);
+  }
+  const monthCounts = lastMonths.map((ym) => ({
+    ym,
+    label: monthLabel(ym),
+    count: closedClients.filter((c) => (c.closedDate || c.lastContact || c.firstContact || '').slice(0, 7) === ym).length
+  }));
+  const maxMonth = Math.max(...monthCounts.map(m => m.count), 1);
+
+  return (
+    <div className="space-y-6">
+
+      {/* Notification Banner */}
+      {overdue.length > 0 ? (
+        <div className="bg-gradient-to-r from-rose-500/15 via-rose-500/10 to-amber-500/10 border border-rose-500/30 rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-lg">
+          <div className="flex items-center space-x-3.5">
+            <div className="p-3 bg-rose-500/20 rounded-xl text-rose-400 border border-rose-500/30 flex-shrink-0">
+              <AlertTriangle className="w-6 h-6" />
+            </div>
+            <div>
+              <h3 className="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+                ¡Hay seguimientos vencidos!
+                <span className="text-xs px-2.5 py-0.5 rounded-full bg-rose-500 text-white font-extrabold">
+                  {overdue.length}
+                </span>
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-300">
+                Tenés <strong className="text-rose-300 font-semibold">{overdue.length} clientes vencidos</strong>
+                {todayFollowUps.length > 0 && (
+                  <> y <strong className="text-amber-300 font-semibold">{todayFollowUps.length} para hoy</strong></>
+                )}. Priorizalos para avanzar en el pipeline.
+              </p>
+            </div>
+          </div>
+        </div>
+      ) : todayFollowUps.length > 0 ? (
+        <div className="bg-gradient-to-r from-amber-500/15 via-brand-500/15 to-purple-500/15 border border-amber-500/30 rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-lg">
+          <div className="flex items-center space-x-3.5">
+            <div className="p-3 bg-amber-500/20 rounded-xl text-amber-400 border border-amber-500/30 flex-shrink-0 animate-bounce">
+              <BellRing className="w-6 h-6" />
+            </div>
+            <div>
+              <h3 className="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+                ¡Seguimientos para hoy!
+                <span className="text-xs px-2.5 py-0.5 rounded-full bg-amber-500 text-slate-950 font-extrabold">
+                  {todayFollowUps.length}
+                </span>
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-300">
+                Tenés <strong className="text-amber-300 font-semibold">{todayFollowUps.length} clientes</strong> programados para contactar hoy.
+              </p>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-4 flex items-center justify-between">
+          <div className="flex items-center space-x-3">
+            <div className="p-2.5 bg-emerald-500/10 rounded-xl text-emerald-400 border border-emerald-500/20">
+              <CheckCircle2 className="w-5 h-5" />
+            </div>
+            <div>
+              <h4 className="text-sm font-semibold text-slate-200">Al día con los seguimientos</h4>
+              <p className="text-xs text-slate-400">No hay tareas pendientes para hoy ni atrasadas.</p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* KPI Cards Grid */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 sm:gap-4">
+        {kpis.map((kpi) => {
+          const Icon = kpi.icon;
+          return (
+            <button
+              key={kpi.label}
+              onClick={() => onFilterByStatus(kpi.status)}
+              className={`bg-gradient-to-b ${kpi.color} border ${kpi.border} rounded-xl p-3 sm:p-4 text-left transition-all hover:scale-[1.03] hover:shadow-lg group flex flex-col justify-between`}
+            >
+              <div className="flex items-center justify-between mb-2">
+                <span className={`text-xs font-semibold ${kpi.text} truncate`}>{kpi.label}</span>
+                <Icon className={`w-4 h-4 ${kpi.text} opacity-80 group-hover:opacity-100`} />
+              </div>
+              <div className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                {kpi.count}
+              </div>
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Follow-ups Section */}
+      <div className="bg-slate-900/80 border border-slate-800 rounded-2xl p-5 sm:p-6 shadow-xl">
+        <div className="flex items-center justify-between mb-4 pb-3 border-b border-slate-800">
+          <div className="flex items-center space-x-2.5">
+            <div className="p-2 bg-brand-500/10 rounded-lg text-brand-400">
+              <Calendar className="w-5 h-5" />
+            </div>
+            <div>
+              <h3 className="text-base font-bold text-white">Próximos Seguimientos</h3>
+              <p className="text-xs text-slate-400">Vencidos, hoy y próximos 3 días</p>
+            </div>
+          </div>
+          <span className="text-xs text-slate-400 bg-slate-800 px-3 py-1 rounded-full font-medium">
+            {todayStr}
+          </span>
+        </div>
+
+        {totalPending === 0 && upcoming.length === 0 ? (
+          <div className="text-center py-8 text-slate-400">
+            <p className="text-sm">🎉 ¡Excelente! No tenés seguimientos pendientes ni próximos.</p>
+          </div>
+        ) : (
+          <div>
+            <FollowUpGroup
+              title="Vencidos"
+              subtitle="contactar lo antes posible"
+              badgeColor="bg-rose-500/20 text-rose-300 border border-rose-500/30"
+              clients={overdue}
+              onSelectClient={onSelectClient}
+            />
+            <FollowUpGroup
+              title="Para Hoy"
+              badgeColor="bg-amber-500/20 text-amber-300 border border-amber-500/30"
+              clients={todayFollowUps}
+              onSelectClient={onSelectClient}
+            />
+            <FollowUpGroup
+              title="Próximos 3 Días"
+              badgeColor="bg-sky-500/20 text-sky-300 border border-sky-500/30"
+              clients={upcoming}
+              onSelectClient={onSelectClient}
+            />
+          </div>
+        )}
+      </div>
+
+      {/* Statistics Section */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Pipeline Funnel */}
+        <div className="bg-slate-900/80 border border-slate-800 rounded-2xl p-5 sm:p-6 shadow-xl">
+          <div className="flex items-center space-x-2.5 mb-5 pb-3 border-b border-slate-800">
+            <div className="p-2 bg-indigo-500/10 rounded-lg text-indigo-400">
+              <BarChart3 className="w-5 h-5" />
+            </div>
+            <div>
+              <h3 className="text-base font-bold text-white">Pipeline Comercial</h3>
+              <p className="text-xs text-slate-400">Distribución de clientes por etapa</p>
+            </div>
+          </div>
+          <div className="space-y-3.5">
+            {PIPELINE.map((stage) => {
+              const count = getCount(stage.label);
+              const width = count === 0 ? 0 : Math.max((count / maxPipeline) * 100, 6);
+              return (
+                <button
+                  key={stage.label}
+                  onClick={() => onFilterByStatus(stage.label)}
+                  className="w-full group"
+                >
+                  <div className="flex items-center justify-between text-xs mb-1">
+                    <span className={`font-semibold ${stage.text}`}>{stage.label}</span>
+                    <span className="text-slate-300 font-bold">{count}</span>
+                  </div>
+                  <div className="h-2.5 bg-slate-800 rounded-full overflow-hidden">
+                    <div
+                      className={`h-full rounded-full ${stage.color} transition-all duration-500 group-hover:brightness-125`}
+                      style={{ width: `${width}%` }}
+                    />
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Closed clients per month */}
+        <div className="bg-slate-900/80 border border-slate-800 rounded-2xl p-5 sm:p-6 shadow-xl">
+          <div className="flex items-center space-x-2.5 mb-5 pb-3 border-b border-slate-800">
+            <div className="p-2 bg-emerald-500/10 rounded-lg text-emerald-400">
+              <TrendingUp className="w-5 h-5" />
+            </div>
+            <div>
+              <h3 className="text-base font-bold text-white">Clientes Ganados</h3>
+              <p className="text-xs text-slate-400">Cierres por mes (últimos 6 meses)</p>
+            </div>
+          </div>
+          {closedClients.length === 0 ? (
+            <div className="text-center py-10 text-slate-400">
+              <p className="text-sm">Todavía no cerraste clientes. ¡A seguir prospeccionando!</p>
+            </div>
+          ) : (
+            <div className="flex items-end justify-between gap-2 h-40">
+              {monthCounts.map((m) => (
+                <div key={m.ym} className="flex-1 flex flex-col items-center justify-end gap-1.5 h-full">
+                  <span className="text-[11px] font-bold text-white">{m.count}</span>
+                  <div
+                    className={`w-full max-w-[46px] rounded-t-lg bg-gradient-to-t from-emerald-600 to-emerald-400 transition-all duration-500 hover:brightness-125 ${
+                      m.count === 0 ? 'opacity-30' : ''
+                    }`}
+                    style={{ height: m.count === 0 ? '6px' : `${(m.count / maxMonth) * 100}%` }}
+                  />
+                  <span className="text-[10px] text-slate-400 capitalize">{m.label}</span>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+
+    </div>
+  );
+};
+</file>
+
+<file path="src/components/ImporterModal.jsx">
+import React, { useState } from 'react';
+import * as XLSX from 'xlsx';
+import { X, UploadCloud, FileSpreadsheet, Check, AlertCircle, FileUp } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
+
+export const ImporterModal = ({ isOpen, onClose, onImport }) => {
+  const { currentUser } = useAuth();
+  const [jsonText, setJsonText] = useState('');
+  const [statusMsg, setStatusMsg] = useState(null);
+
+  if (!isOpen) return null;
+
+  const handleSampleImport = () => {
+    const sampleData = [
+      { Nombre: "Panadería El Sol", Empresa: "El Sol S.A.", Teléfono: "2235991122", Rubro: "Panadería", Ciudad: "Mar del Plata", Origen: "Google Maps" },
+      { Nombre: "Pizzería La Popular", Empresa: "La Popular", Teléfono: "2234882233", Rubro: "Pizzería", Ciudad: "Mar del Plata", Origen: "Instagram" },
+      { Nombre: "Ferretería El Martillo", Empresa: "El Martillo", Teléfono: "2235773344", Rubro: "Ferretería", Ciudad: "Mar del Plata", Origen: "Recomendación" }
+    ];
+    setJsonText(JSON.stringify(sampleData, null, 2));
+    setStatusMsg(null);
+  };
+
+  const handleFileChange = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    e.target.value = '';
+
+    try {
+      if (/\.json$/i.test(file.name)) {
+        const text = await file.text();
+        const parsed = JSON.parse(text);
+        if (!Array.isArray(parsed)) {
+          throw new Error("El JSON debe ser una lista de objetos [ { ... }, { ... } ]");
+        }
+        setJsonText(JSON.stringify(parsed, null, 2));
+        setStatusMsg({ type: 'success', text: `JSON "${file.name}" cargado: ${parsed.length} registros. Revisá y confirmá la importación.` });
+        return;
+      }
+
+      if (/\.(xlsx|xls|csv)$/i.test(file.name)) {
+        const data = await file.arrayBuffer();
+        const wb = XLSX.read(data, { type: 'array' });
+        const ws = wb.Sheets[wb.SheetNames[0]];
+        const rows = XLSX.utils.sheet_to_json(ws);
+        if (!rows.length) {
+          throw new Error("El archivo no tiene filas de datos.");
+        }
+        setJsonText(JSON.stringify(rows, null, 2));
+        setStatusMsg({ type: 'success', text: `Archivo "${file.name}" leído: ${rows.length} filas. Revisá y confirmá la importación.` });
+        return;
+      }
+
+      throw new Error("Formato no soportado. Usá .xlsx, .xls, .csv o .json");
+    } catch (err) {
+      setStatusMsg({ type: 'error', text: `No se pudo leer el archivo: ${err.message}` });
+    }
+  };
+
+  const handleProcessImport = async () => {
+    if (!jsonText.trim()) {
+      alert("Pegá o cargá los datos para importar.");
+      return;
+    }
+
+    try {
+      const parsed = JSON.parse(jsonText);
+      if (!Array.isArray(parsed)) {
+        throw new Error("El formato debe ser una lista de objetos JSON [ { ... }, { ... } ]");
+      }
+
+      const count = await onImport(parsed, currentUser.name);
+      setStatusMsg({ type: 'success', text: `¡Éxito! Se importaron ${count} clientes correctamente.` });
+      setTimeout(() => {
+        setStatusMsg(null);
+        setJsonText('');
+        onClose();
+      }, 1500);
+
+    } catch (err) {
+      setStatusMsg({ type: 'error', text: `Error al procesar: ${err.message}` });
+    }
+  };
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md">
+      <div className="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-xl shadow-2xl overflow-hidden">
+        
+        {/* Header */}
+        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800">
+          <div className="flex items-center space-x-2.5">
+            <div className="p-2 bg-brand-500/20 text-brand-400 rounded-lg">
+              <UploadCloud className="w-5 h-5" />
+            </div>
+            <h3 className="text-base font-bold text-white">Importador de Clientes</h3>
+          </div>
+          <button onClick={onClose} className="p-1 text-slate-400 hover:text-white">
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+
+        {/* Body */}
+        <div className="p-6 space-y-4">
+          <p className="text-xs text-slate-300">
+            Subí un archivo <strong className="text-white">Excel (.xlsx / .xls), CSV o JSON</strong>, o pegá los datos
+            directamente en formato JSON. Los registros se cargan al CRM para su revisión antes de importar.
+          </p>
+
+          {/* File Upload */}
+          <label className="flex items-center justify-center gap-3 border-2 border-dashed border-slate-700 hover:border-brand-500/60 rounded-xl p-5 cursor-pointer bg-slate-950/50 transition-all group">
+            <div className="p-2.5 rounded-lg bg-brand-500/15 text-brand-400 border border-brand-500/30 group-hover:scale-105 transition-transform">
+              <FileUp className="w-5 h-5" />
+            </div>
+            <div className="text-left">
+              <p className="text-xs font-bold text-white">Seleccionar archivo Excel / CSV / JSON</p>
+              <p className="text-[11px] text-slate-400">Soporta columnas: Nombre, Empresa, Teléfono, WhatsApp, Email, Rubro, Ciudad, Origen</p>
+            </div>
+            <input
+              type="file"
+              accept=".xlsx,.xls,.csv,.json"
+              onChange={handleFileChange}
+              className="hidden"
+            />
+          </label>
+
+          <div className="flex justify-end">
+            <button
+              onClick={handleSampleImport}
+              className="text-xs text-brand-400 hover:underline flex items-center gap-1 font-semibold"
+            >
+              <FileSpreadsheet className="w-3.5 h-3.5" />
+              <span>Cargar Ejemplo (Panadería, Pizzería...)</span>
+            </button>
+          </div>
+
+          <textarea
+            rows={8}
+            value={jsonText}
+            onChange={(e) => setJsonText(e.target.value)}
+            placeholder={`[\n  {\n    "Nombre": "Panadería Don José",\n    "Empresa": "Don José S.A.",\n    "Teléfono": "2234771122",\n    "Rubro": "Panadería",\n    "Ciudad": "Mar del Plata",\n    "Origen": "Google Maps"\n  }\n]`}
+            className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 font-mono text-xs text-slate-200 focus:outline-none focus:border-brand-500"
+          />
+
+          {statusMsg && (
+            <div className={`p-3 rounded-xl text-xs font-semibold flex items-center space-x-2 ${
+              statusMsg.type === 'success' ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' : 'bg-rose-500/20 text-rose-300 border border-rose-500/30'
+            }`}>
+              {statusMsg.type === 'success' ? <Check className="w-4 h-4" /> : <AlertCircle className="w-4 h-4" />}
+              <span>{statusMsg.text}</span>
+            </div>
+          )}
+
+          <div className="flex items-center justify-end space-x-3 pt-2">
+            <button
+              onClick={onClose}
+              className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold rounded-xl"
+            >
+              Cancelar
+            </button>
+            <button
+              onClick={handleProcessImport}
+              className="px-5 py-2 bg-brand-600 hover:bg-brand-500 text-white text-xs font-bold rounded-xl shadow-lg shadow-brand-600/30"
+            >
+              Importar Datos
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  );
+};
+</file>
+
+<file path="src/context/AuthContext.jsx">
+import React, { createContext, useContext, useState, useEffect } from 'react';
+
+const AuthContext = createContext();
+
+const DEFAULT_USERS = [
+  { id: 'rodrigo', name: 'Rodrigo', role: 'Admin', avatar: '👨‍💻', color: 'bg-blue-600' },
+  { id: 'companero', name: 'Compañero', role: 'Socio', avatar: '🤝', color: 'bg-emerald-600' }
+];
+
+export const AuthProvider = ({ children }) => {
+  const [currentUser, setCurrentUser] = useState(() => {
+    const saved = localStorage.getItem('crm_active_user');
+    if (saved) {
+      try { return JSON.parse(saved); } catch (e) {}
+    }
+    return DEFAULT_USERS[0]; // Rodrigo default
+  });
+
+  const [availableUsers, setAvailableUsers] = useState(DEFAULT_USERS);
+
+  useEffect(() => {
+    localStorage.setItem('crm_active_user', JSON.stringify(currentUser));
+  }, [currentUser]);
+
+  const switchUser = (userId) => {
+    const found = availableUsers.find(u => u.id === userId);
+    if (found) {
+      setCurrentUser(found);
+    }
+  };
+
+  const addUser = (name, role = 'Socio') => {
+    const newId = name.toLowerCase().replace(/\s+/g, '_');
+    const newUser = {
+      id: newId,
+      name,
+      role,
+      avatar: '👤',
+      color: 'bg-purple-600'
+    };
+    setAvailableUsers(prev => [...prev, newUser]);
+    setCurrentUser(newUser);
+  };
+
+  return (
+    <AuthContext.Provider value={{ currentUser, switchUser, availableUsers, addUser }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
+
+export const useAuth = () => useContext(AuthContext);
+</file>
+
+<file path="src/firebase/config.js">
+import { initializeApp, getApps } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
+
+const firebaseConfig = {
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "",
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || "",
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || "",
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || "",
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "",
+  appId: import.meta.env.VITE_FIREBASE_APP_ID || ""
+};
+
+const isFirebaseConfigured = Boolean(
+  firebaseConfig.apiKey && 
+  firebaseConfig.projectId && 
+  firebaseConfig.apiKey !== "your_api_key_here"
+);
+
+let app = null;
+let auth = null;
+let db = null;
+
+if (isFirebaseConfigured) {
+  try {
+    app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
+    auth = getAuth(app);
+    db = getFirestore(app);
+    console.log("🔥 Firebase inicializado correctamente.");
+  } catch (error) {
+    console.warn("⚠️ Error al inicializar Firebase. Usando almacenamiento local fallback.", error);
+  }
+} else {
+  console.log("💡 Firebase no está configurado en .env. Se usará el almacenamiento local sincrónico (LocalStorage).");
+}
+
+export { app, auth, db, isFirebaseConfigured };
+</file>
+
+<file path="src/utils/exportUtils.js">
+const buildRows = (clients) => clients.map((c) => ({
+  Nombre: c.name || '',
+  Empresa: c.company || '',
+  Teléfono: c.phone || '',
+  WhatsApp: c.whatsapp || '',
+  Email: c.email || '',
+  Rubro: c.rubro || '',
+  Ciudad: c.city || '',
+  Origen: c.origin || '',
+  'Primer Contacto': c.firstContact || '',
+  'Último Contacto': c.lastContact || '',
+  'Próximo Seguimiento': c.nextFollowUp || '',
+  Estado: c.status || '',
+  Historial: (c.history || []).map((h) => `[${h.date}] ${h.user}: ${h.note}`).join('\n')
+}));
+
+const dateStamp = () => new Date().toISOString().split('T')[0];
+
+const doExport = (clients, XLSX) => {
+  const ws = XLSX.utils.json_to_sheet(buildRows(clients));
+  ws['!cols'] = [
+    { wch: 22 }, { wch: 26 }, { wch: 14 }, { wch: 16 }, { wch: 26 },
+    { wch: 16 }, { wch: 14 }, { wch: 18 }, { wch: 14 }, { wch: 14 },
+    { wch: 18 }, { wch: 18 }, { wch: 60 }
+  ];
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, 'Clientes CRM');
+  XLSX.writeFile(wb, `clientes-crm-${dateStamp()}.xlsx`);
+};
+
+export const exportClientsToExcel = (clients) => {
+  const XLSX = window.__XLSX;
+  if (XLSX) {
+    doExport(clients, XLSX);
+    return;
+  }
+  import('xlsx').then((mod) => {
+    window.__XLSX = mod;
+    doExport(clients, mod);
+  });
+};
+
+export const exportClientsToJSON = (clients) => {
+  const blob = new Blob([JSON.stringify(clients, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `clientes-crm-backup-${dateStamp()}.json`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+};
+</file>
+
+<file path="src/App.jsx">
+import React, { useState, useEffect, useCallback, lazy, Suspense } from 'react';
+import { AuthProvider, useAuth } from './context/AuthContext';
+import { clientService } from './services/clientService';
+import { isFirebaseConfigured } from './firebase/config';
+import { exportClientsToExcel, exportClientsToJSON } from './utils/exportUtils';
+import { Navbar } from './components/Navbar';
+import { Dashboard } from './components/Dashboard';
+import { ClientList } from './components/ClientList';
+import { ClientModal } from './components/ClientModal';
+import { ClientDetailModal } from './components/ClientDetailModal';
+import { LayoutDashboard, Users, RefreshCw } from 'lucide-react';
+
+const ImporterModal = lazy(() => import('./components/ImporterModal'));
+
+function MainApp() {
+  const { currentUser } = useAuth();
+
+  const [clients, setClients] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState('dashboard'); // 'dashboard' | 'clients'
+  const [selectedStatusFilter, setSelectedStatusFilter] = useState('Todos');
+
+  // Modals state
+  const [isClientModalOpen, setIsClientModalOpen] = useState(false);
+  const [clientToEdit, setClientToEdit] = useState(null);
+  
+  const [selectedDetailClient, setSelectedDetailClient] = useState(null);
+  const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
+
+  const [isImporterOpen, setIsImporterOpen] = useState(false);
+
+  // Load clients
+  const loadClients = useCallback(async () => {
+    setLoading(true);
+    const data = await clientService.getAllClients();
+    setClients(data);
+    setLoading(false);
+  }, []);
+
+  // Real-time sync: Firestore onSnapshot when configured, local otherwise
+  useEffect(() => {
+    const unsubscribe = clientService.subscribeToClients((data) => {
+      setClients(data);
+      setLoading(false);
+    });
+    return unsubscribe;
+  }, []);
+
+  // Auto-migrate local data to the cloud on first launch with Firebase active
+  useEffect(() => {
+    if (isFirebaseConfigured) {
+      clientService.migrateLocalToCloud(currentUser?.name)
+        .then((res) => {
+          if (res.migrated) {
+            console.log(`☁️ Migración completada: ${res.count} clientes subidos a Firestore.`);
+          }
+        });
+    }
+  }, []);
+
+  // Handlers
+  const handleCreateOrUpdateClient = async (formData) => {
+    if (clientToEdit) {
+      await clientService.updateClient(clientToEdit.id, formData);
+    } else {
+      await clientService.createClient(formData, currentUser.name);
+    }
+    await loadClients();
+    setClientToEdit(null);
+  };
+
+  const handleAddInteraction = async (clientId, note, userName, newStatus, nextFollowUpDate) => {
+    await clientService.addInteraction(clientId, note, userName, newStatus, nextFollowUpDate);
+    await loadClients();
+    
+    // Refresh open detail modal client state
+    const updatedList = await clientService.getAllClients();
+    const current = updatedList.find(c => c.id === clientId);
+    if (current) {
+      setSelectedDetailClient(current);
+    }
+  };
+
+  const handleDeleteClient = async (clientId) => {
+    await clientService.deleteClient(clientId);
+    await loadClients();
+  };
+
+  const handleFilterByStatus = (status) => {
+    setSelectedStatusFilter(status);
+    setActiveTab('clients');
+  };
+
+  const handleOpenEditModal = (client) => {
+    setClientToEdit(client);
+    setIsClientModalOpen(true);
+  };
+
+  const handleOpenDetailModal = (client) => {
+    setSelectedDetailClient(client);
+    setIsDetailModalOpen(true);
+  };
+
+  const handleImportClients = async (importList, userName) => {
+    const count = await clientService.importBatchClients(importList, userName);
+    await loadClients();
+    return count;
+  };
+
+  const handleExport = (format) => {
+    if (!clients.length) {
+      alert('No hay clientes para exportar.');
+      return;
+    }
+    if (format === 'json') {
+      exportClientsToJSON(clients);
+    } else {
+      exportClientsToExcel(clients);
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-['Plus_Jakarta_Sans',sans-serif]">
+      
+      {/* Top Navbar */}
+      <Navbar
+        onOpenNewClient={() => {
+          setClientToEdit(null);
+          setIsClientModalOpen(true);
+        }}
+        onOpenImporter={() => setIsImporterOpen(true)}
+        onExport={handleExport}
+      />
+
+      {/* Main Container */}
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+        
+        {/* Navigation View Tabs */}
+        <div className="flex items-center justify-between border-b border-slate-800/80 pb-3">
+          <div className="flex items-center space-x-2 bg-slate-900/90 p-1 rounded-xl border border-slate-800">
+            <button
+              onClick={() => setActiveTab('dashboard')}
+              className={`px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center space-x-2 ${
+                activeTab === 'dashboard'
+                  ? 'bg-brand-600 text-white shadow-md shadow-brand-600/30'
+                  : 'text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              <LayoutDashboard className="w-4 h-4" />
+              <span>Dashboard & Notificaciones</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab('clients')}
+              className={`px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center space-x-2 ${
+                activeTab === 'clients'
+                  ? 'bg-brand-600 text-white shadow-md shadow-brand-600/30'
+                  : 'text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              <Users className="w-4 h-4" />
+              <span>Gestión de Clientes ({clients.length})</span>
+            </button>
+          </div>
+
+          <button
+            onClick={loadClients}
+            className="p-2 bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-400 hover:text-white rounded-xl transition-all"
+            title="Recargar datos"
+          >
+            <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin text-brand-400' : ''}`} />
+          </button>
+        </div>
+
+        {/* Content Render */}
+        {loading && clients.length === 0 ? (
+          <div className="flex flex-col items-center justify-center py-20 space-y-3">
+            <div className="w-8 h-8 border-4 border-brand-500 border-t-transparent rounded-full animate-spin"></div>
+            <p className="text-xs text-slate-400">Cargando datos del CRM...</p>
+          </div>
+        ) : (
+          <>
+            {activeTab === 'dashboard' && (
+              <Dashboard
+                clients={clients}
+                onSelectClient={handleOpenDetailModal}
+                onFilterByStatus={handleFilterByStatus}
+              />
+            )}
+
+            {activeTab === 'clients' && (
+              <ClientList
+                clients={clients}
+                onSelectClient={handleOpenDetailModal}
+                onEditClient={handleOpenEditModal}
+                onDeleteClient={handleDeleteClient}
+                selectedStatus={selectedStatusFilter}
+                onSelectStatusFilter={setSelectedStatusFilter}
+                onOpenNewClient={() => {
+                  setClientToEdit(null);
+                  setIsClientModalOpen(true);
+                }}
+              />
+            )}
+          </>
+        )}
+
+      </main>
+
+      {/* Footer */}
+      <footer className="border-t border-slate-900 py-6 text-center text-xs text-slate-500">
+        <p>CRM Pymes — Sistema Gratuito de Gestión Comercial y Prospección • Naro AI</p>
+      </footer>
+
+      {/* Modals */}
+      <ClientModal
+        isOpen={isClientModalOpen}
+        onClose={() => {
+          setIsClientModalOpen(false);
+          setClientToEdit(null);
+        }}
+        onSave={handleCreateOrUpdateClient}
+        clientToEdit={clientToEdit}
+      />
+
+      <ClientDetailModal
+        isOpen={isDetailModalOpen}
+        onClose={() => {
+          setIsDetailModalOpen(false);
+          setSelectedDetailClient(null);
+        }}
+        client={selectedDetailClient}
+        onAddInteraction={handleAddInteraction}
+      />
+
+      {isImporterOpen && (
+        <Suspense fallback={null}>
+          <ImporterModal
+            isOpen
+            onClose={() => setIsImporterOpen(false)}
+            onImport={handleImportClients}
+          />
+        </Suspense>
+      )}
+
+    </div>
+  );
+}
+
+export default function App() {
+  return (
+    <AuthProvider>
+      <MainApp />
+    </AuthProvider>
+  );
+}
+</file>
+
+<file path="src/index.css">
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-slate-950 text-slate-100 min-h-screen font-sans;
+  }
+}
+
+/* Glassmorphism utility classes */
+.glass-panel {
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card {
+  background: rgba(30, 41, 59, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.glass-card:hover {
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+</file>
+
+<file path="src/main.jsx">
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App.jsx'
+import './index.css'
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+)
+</file>
+
+<file path="firebase.json">
+{
+  "hosting": {
+    "public": "dist",
+    "ignore": [
+      "firebase.json",
+      ".firebaserc",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ],
+    "headers": [
+      {
+        "source": "/index.html",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache"
+          }
+        ]
+      },
+      {
+        "source": "**/*.js",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=31536000, immutable"
+          }
+        ]
+      },
+      {
+        "source": "**/*.css",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=31536000, immutable"
+          }
+        ]
+      }
+    ]
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  }
+}
+</file>
+
+<file path="firestore.rules">
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // MVP: accesos abiertos para que los 2 usuarios compartan el CRM.
+    // Para producción con cuentas individuales, sumar Firebase Auth y usar request.auth != null.
+    match /clients/{clientId} {
+      allow read, write: if true;
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
+</file>
+
+<file path="tailwind.config.js">
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        brand: {
+          50: '#f0f7ff',
+          100: '#e0effe',
+          200: '#bae0fd',
+          300: '#7cc8fc',
+          400: '#36abf8',
+          500: '#0c8ee9',
+          600: '#0070c7',
+          700: '#0159a2',
+          800: '#064c86',
+          900: '#0b3f6f',
+          950: '#072849',
+        }
+      }
+    },
+  },
+  plugins: [],
+}
+</file>
+
+<file path="src/components/Navbar.jsx">
+import React, { useState } from 'react';
+import { useAuth } from '../context/AuthContext';
+import { isFirebaseConfigured } from '../firebase/config';
+import { User, Plus, UploadCloud, ShieldCheck, Database, Users, Download, FileSpreadsheet, FileJson2, Cloud } from 'lucide-react';
+
+export const Navbar = ({ onOpenNewClient, onOpenImporter, onExport }) => {
+  const { currentUser, switchUser, availableUsers } = useAuth();
+  const [exportOpen, setExportOpen] = useState(false);
+
+  return (
+    <header className="sticky top-0 z-40 bg-slate-900/80 backdrop-blur-md border-b border-slate-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          
+          {/* Logo & Status */}
+          <div className="flex items-center space-x-3">
+            <div className="h-10 w-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center text-white shadow-lg shadow-brand-500/20 font-bold text-xl">
+              C
+            </div>
+            <div>
+              <div className="flex items-center space-x-2">
+                <span className="font-extrabold text-lg text-white tracking-tight">CRM Pymes</span>
+                <span className="text-xs px-2 py-0.5 rounded-full bg-brand-500/20 text-brand-400 border border-brand-500/30 font-semibold">
+                  MVP v1.0
+                </span>
+              </div>
+              <p className="text-xs text-slate-400 hidden sm:block">Gestión Comercial & Prospección</p>
+            </div>
+          </div>
+
+          {/* Sync indicator */}
+          <div className="hidden md:flex items-center space-x-2 px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700 text-xs text-slate-300">
+            {isFirebaseConfigured ? (
+              <>
+                <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span className="text-emerald-400 font-medium">🔥 Firebase Online</span>
+              </>
+            ) : (
+              <>
+                <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span className="text-emerald-400 font-medium">☁️ Nube Activa (Sincronizado Rodrigo & Compañero)</span>
+              </>
+            )}
+          </div>
+
+          {/* User selector & Actions */}
+          <div className="flex items-center space-x-3">
+            
+            {/* Active User Switcher */}
+            <div className="flex items-center bg-slate-800/90 rounded-lg p-1 border border-slate-700">
+              <span className="text-xs text-slate-400 font-medium px-2 hidden sm:inline flex items-center gap-1">
+                <Users className="w-3.5 h-3.5 text-slate-400" /> Usuario:
+              </span>
+              {availableUsers.map((user) => {
+                const isActive = currentUser.id === user.id;
+                return (
+                  <button
+                    key={user.id}
+                    onClick={() => switchUser(user.id)}
+                    className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-all flex items-center gap-1.5 ${
+                      isActive
+                        ? `${user.color} text-white shadow-md`
+                        : 'text-slate-400 hover:text-slate-200 hover:bg-slate-700/50'
+                    }`}
+                  >
+                    <span>{user.avatar}</span>
+                    <span>{user.name}</span>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Quick Actions */}
+            <button
+              onClick={onOpenImporter}
+              className="hidden lg:flex items-center space-x-1.5 px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs font-medium transition-all"
+              title="Importar prospectos desde Excel/CSV"
+            >
+              <UploadCloud className="w-4 h-4 text-brand-400" />
+              <span>Importar</span>
+            </button>
+
+            {/* Export dropdown */}
+            <div className="relative hidden lg:block">
+              <button
+                onClick={() => setExportOpen((o) => !o)}
+                className="flex items-center space-x-1.5 px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs font-medium transition-all"
+                title="Exportar clientes como backup"
+              >
+                <Download className="w-4 h-4 text-brand-400" />
+                <span>Exportar</span>
+              </button>
+
+              {exportOpen && (
+                <>
+                  <div className="fixed inset-0 z-40" onClick={() => setExportOpen(false)} />
+                  <div className="absolute right-0 mt-2 z-50 bg-slate-800 border border-slate-700 rounded-xl shadow-2xl w-48 overflow-hidden">
+                    <button
+                      onClick={() => { onExport('excel'); setExportOpen(false); }}
+                      className="w-full flex items-center space-x-2.5 px-4 py-3 text-xs font-semibold text-slate-200 hover:bg-slate-700 transition-all text-left"
+                    >
+                      <FileSpreadsheet className="w-4 h-4 text-emerald-400" />
+                      <span>Excel (.xlsx)</span>
+                    </button>
+                    <button
+                      onClick={() => { onExport('json'); setExportOpen(false); }}
+                      className="w-full flex items-center space-x-2.5 px-4 py-3 text-xs font-semibold text-slate-200 hover:bg-slate-700 transition-all text-left border-t border-slate-700/60"
+                    >
+                      <FileJson2 className="w-4 h-4 text-amber-400" />
+                      <span>JSON (backup)</span>
+                    </button>
+                  </div>
+                </>
+              )}
+            </div>
+
+            <button
+              onClick={onOpenNewClient}
+              className="flex items-center space-x-1.5 px-3.5 py-2 rounded-lg bg-gradient-to-r from-brand-600 to-brand-500 hover:from-brand-500 hover:to-brand-400 text-white text-xs font-bold shadow-lg shadow-brand-600/30 transition-all hover:scale-[1.02] active:scale-[0.98]"
+            >
+              <Plus className="w-4 h-4 stroke-[3]" />
+              <span className="hidden sm:inline">Nuevo Cliente</span>
+              <span className="sm:hidden">Nuevo</span>
+            </button>
+
+          </div>
+
+        </div>
+      </div>
+    </header>
+  );
+};
+</file>
+
+<file path="src/services/clientService.js">
+import { db, isFirebaseConfigured } from '../firebase/config';
+import { 
+  collection, 
+  getDocs, 
+  addDoc, 
+  updateDoc, 
+  doc, 
+  deleteDoc, 
+  query, 
+  orderBy,
+  serverTimestamp,
+  writeBatch,
+  onSnapshot 
+} from 'firebase/firestore';
+
+const LOCAL_STORAGE_KEY = 'crm_clients_db_v1';
+const MIGRATION_FLAG_KEY = 'crm_migrated_to_cloud_v1';
+// Public shared Cloud Key for zero-config multi-user sync (Rodrigo & Compañero)
+const SHARED_CLOUD_API_URL = 'https://kvdb.io/4y9bM6GZ8PzGzXz7mK2V5j/naro_ai_crm_clients_v1';
+
+// Seed Initial Data strictly matching prompt specifications
+const INITIAL_SEED_DATA = [
+  {
+    id: 'seed-1',
+    name: 'Ferretería López',
+    company: 'Ferretería López S.R.L.',
+    phone: '2235123456',
+    whatsapp: '5492235123456',
+    email: 'contacto@ferreterialopez.com',
+    rubro: 'Ferretería',
+    city: 'Mar del Plata',
+    origin: 'Google Maps',
+    firstContact: '2026-08-01',
+    lastContact: '2026-08-05',
+    nextFollowUp: new Date().toISOString().split('T')[0], // Today!
+    status: 'Contactado',
+    history: [
+      { id: 'h1', date: '2026-08-01', user: 'Rodrigo', note: 'Primer contacto vía llamada de prospección.' },
+      { id: 'h2', date: '2026-08-05', user: 'Compañero', note: 'Le envié propuesta de Bot de WhatsApp.' }
+    ]
+  },
+  {
+    id: 'seed-2',
+    name: 'Kiosco Sol',
+    company: 'Kiosco Sol',
+    phone: '2234987654',
+    whatsapp: '5492234987654',
+    email: 'kioscosolmdp@gmail.com',
+    rubro: 'Kiosco / Comercio',
+    city: 'Mar del Plata',
+    origin: 'Recomendación',
+    firstContact: '2026-08-02',
+    lastContact: '2026-08-05',
+    nextFollowUp: new Date().toISOString().split('T')[0], // Today!
+    status: 'Interesado',
+    history: [
+      { id: 'h3', date: '2026-08-02', user: 'Rodrigo', note: 'Le envié mensaje por WhatsApp recomendados por Juan.' },
+      { id: 'h4', date: '2026-08-05', user: 'Rodrigo', note: 'Pidió detalles sobre página web con catálogo.' }
+    ]
+  },
+  {
+    id: 'seed-3',
+    name: 'Farmacia Central',
+    company: 'Farmacia Central Guemes',
+    phone: '2236112233',
+    whatsapp: '5492236112233',
+    email: 'info@farmaciacentralmdp.com',
+    rubro: 'Farmacia',
+    city: 'Mar del Plata',
+    origin: 'Instagram',
+    firstContact: '2026-08-03',
+    lastContact: '2026-08-06',
+    nextFollowUp: new Date().toISOString().split('T')[0], // Today!
+    status: 'Presupuesto enviado',
+    history: [
+      { id: 'h5', date: '2026-08-03', user: 'Compañero', note: 'Consultó por Instagram sobre automatización.' },
+      { id: 'h6', date: '2026-08-06', user: 'Rodrigo', note: 'Se envió presupuesto formal de $450.000.' }
+    ]
+  },
+  {
+    id: 'seed-4',
+    name: 'Panadería La Argentina',
+    company: 'Panadería La Argentina',
+    phone: '2235443322',
+    whatsapp: '5492235443322',
+    email: 'ventas@laargentinapan.com',
+    rubro: 'Panadería',
+    city: 'Mar del Plata',
+    origin: 'Google Maps',
+    firstContact: '2026-07-28',
+    lastContact: '2026-08-04',
+    nextFollowUp: '2026-08-10',
+    status: 'Respondió',
+    history: [
+      { id: 'h7', date: '2026-07-28', user: 'Rodrigo', note: 'Mensaje inicial de presentación enviado.' },
+      { id: 'h8', date: '2026-08-04', user: 'Compañero', note: 'Respondió interesados en menú digital.' }
+    ]
+  },
+  {
+    id: 'seed-5',
+    name: 'Pizzería Nápoli',
+    company: 'Pizzería Nápoli & Pasta',
+    phone: '2235998877',
+    whatsapp: '5492235998877',
+    email: 'napoli.mdp@hotmail.com',
+    rubro: 'Pizzería',
+    city: 'Mar del Plata',
+    origin: 'Instagram',
+    firstContact: '2026-07-20',
+    lastContact: '2026-08-01',
+    nextFollowUp: '2026-08-08',
+    status: 'Cliente',
+    history: [
+      { id: 'h9', date: '2026-07-20', user: 'Rodrigo', note: 'Primer contacto vía Instagram DM.' },
+      { id: 'h10', date: '2026-08-01', user: 'Rodrigo', note: 'Aceptó presupuesto. ¡Cliente cerrado!' }
+    ]
+  },
+  {
+    id: 'seed-6',
+    name: 'Panadería Don José',
+    company: 'Don José S.A.',
+    phone: '2234771122',
+    whatsapp: '5492234771122',
+    email: 'contacto@donjosepanaderia.com',
+    rubro: 'Panadería',
+    city: 'Mar del Plata',
+    origin: 'Google Maps',
+    firstContact: '2026-08-04',
+    lastContact: '2026-08-05',
+    nextFollowUp: '2026-08-12',
+    status: 'Nuevo',
+    history: [
+      { id: 'h11', date: '2026-08-04', user: 'Rodrigo', note: 'Cliente ingresado desde prospección Google Maps.' }
+    ]
+  },
+  {
+    id: 'seed-7',
+    name: 'Pizzería Trattoria',
+    company: 'Trattoria MDP',
+    phone: '2235889900',
+    whatsapp: '5492235889900',
+    email: 'trattoria@gmail.com',
+    rubro: 'Pizzería',
+    city: 'Mar del Plata',
+    origin: 'Recomendación',
+    firstContact: '2026-07-15',
+    lastContact: '2026-07-22',
+    nextFollowUp: '2026-08-15',
+    status: 'Perdido',
+    history: [
+      { id: 'h12', date: '2026-07-15', user: 'Compañero', note: 'Presentación de servicios.' },
+      { id: 'h13', date: '2026-07-22', user: 'Compañero', note: 'Indicó que por el momento no van a invertir.' }
+    ]
+  }
+];
+
+// Helper to initialize local storage if empty
+const getLocalClients = () => {
+  const data = localStorage.getItem(LOCAL_STORAGE_KEY);
+  if (!data) {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(INITIAL_SEED_DATA));
+    return INITIAL_SEED_DATA;
+  }
+  try {
+    return JSON.parse(data);
+  } catch (e) {
+    return INITIAL_SEED_DATA;
+  }
+};
+
+const saveLocalClients = (clients) => {
+  localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(clients));
+};
+
+// Fetch shared cloud data via fallback REST sync
+const fetchCloudKv = async () => {
+  try {
+    const res = await fetch(SHARED_CLOUD_API_URL, { cache: 'no-store' });
+    if (res.ok) {
+      const data = await res.json();
+      if (Array.isArray(data) && data.length > 0) {
+        saveLocalClients(data);
+        return data;
+      }
+    }
+  } catch (err) {
+    console.warn("⚠️ Cloud KV sync warning:", err);
+  }
+  return getLocalClients();
+};
+
+// Save shared cloud data via fallback REST sync
+const saveCloudKv = async (clients) => {
+  saveLocalClients(clients);
+  try {
+    await fetch(SHARED_CLOUD_API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(clients)
+    });
+  } catch (err) {
+    console.warn("⚠️ Error guardando en la nube KV:", err);
+  }
+};
+
+const getCloudClients = async () => {
+  const q = query(collection(db, 'clients'), orderBy('lastContact', 'desc'));
+  const querySnapshot = await getDocs(q);
+  return querySnapshot.docs.map((d) => ({ id: d.id, ...d.data() }));
+};
+
+export const clientService = {
+  // Real-time subscription (Firestore onSnapshot or Cloud KV Polling)
+  subscribeToClients(onNext) {
+    if (isFirebaseConfigured && db) {
+      try {
+        const q = query(collection(db, 'clients'), orderBy('lastContact', 'desc'));
+        return onSnapshot(
+          q,
+          (querySnapshot) => {
+            const clients = querySnapshot.docs.map((d) => ({ id: d.id, ...d.data() }));
+            if (clients.length === 0 && !localStorage.getItem(MIGRATION_FLAG_KEY)) {
+              const local = getLocalClients();
+              if (local.length) {
+                onNext(local);
+                return;
+              }
+            }
+            onNext(clients);
+          },
+          (err) => {
+            console.error("⚠️ Error en suscripción Firestore, usando nube KV:", err);
+            this._startKvPolling(onNext);
+          }
+        );
+      } catch (err) {
+        console.error("⚠️ No se pudo suscribir a Firestore:", err);
+      }
+    }
+
+    // Cloud KV fallback subscription (syncs between Rodrigo & Compañero automatically!)
+    return this._startKvPolling(onNext);
+  },
+
+  _startKvPolling(onNext) {
+    // Initial fetch
+    fetchCloudKv().then((clients) => onNext(clients));
+
+    // Poll every 5 seconds for shared cloud updates between team members
+    const interval = setInterval(async () => {
+      const clients = await fetchCloudKv();
+      onNext(clients);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  },
+
+  // Fetch all clients (one-shot)
+  async getAllClients() {
+    if (isFirebaseConfigured && db) {
+      try {
+        return await getCloudClients();
+      } catch (err) {
+        console.error("Error cargando de Firestore, usando fallback nube KV:", err);
+      }
+    }
+    return await fetchCloudKv();
+  },
+
+  // Migrate local seed/data to Firestore once
+  async migrateLocalToCloud(userName) {
+    if (!isFirebaseConfigured || !db) return { migrated: false, count: 0 };
+    if (localStorage.getItem(MIGRATION_FLAG_KEY)) return { migrated: false, count: 0 };
+
+    try {
+      const cloud = await getCloudClients();
+      if (cloud.length > 0) {
+        localStorage.setItem(MIGRATION_FLAG_KEY, '1');
+        return { migrated: false, count: 0 };
+      }
+
+      const local = getLocalClients();
+      if (!local.length) {
+        localStorage.setItem(MIGRATION_FLAG_KEY, '1');
+        return { migrated: false, count: 0 };
+      }
+
+      const batch = writeBatch(db);
+      local.forEach((c) => {
+        const ref = doc(collection(db, 'clients'));
+        const { id, ...rest } = c;
+        batch.set(ref, { ...rest, createdAt: serverTimestamp() });
+      });
+      await batch.commit();
+      localStorage.setItem(MIGRATION_FLAG_KEY, '1');
+      if (userName) localStorage.setItem('crm_migrated_user_v1', userName);
+      return { migrated: true, count: local.length };
+    } catch (err) {
+      console.error("⚠️ No se pudo migrar los datos a la nube:", err);
+      return { migrated: false, count: 0, error: err };
+    }
+  },
+
+  // Create new client
+  async createClient(clientData, userName) {
+    const today = new Date().toISOString().split('T')[0];
+    const newClient = {
+      name: clientData.name || '',
+      company: clientData.company || '',
+      phone: clientData.phone || '',
+      whatsapp: clientData.whatsapp || (clientData.phone ? `549${clientData.phone.replace(/\D/g, '')}` : ''),
+      email: clientData.email || '',
+      rubro: clientData.rubro || 'General',
+      city: clientData.city || 'Mar del Plata',
+      origin: clientData.origin || 'Google Maps',
+      firstContact: clientData.firstContact || today,
+      lastContact: today,
+      nextFollowUp: clientData.nextFollowUp || today,
+      status: clientData.status || 'Nuevo',
+      history: [
+        {
+          id: `h-${Date.now()}`,
+          date: today,
+          user: userName || 'Rodrigo',
+          note: clientData.initialNote || 'Cliente agregado al sistema.'
+        }
+      ]
+    };
+
+    if (isFirebaseConfigured && db) {
+      try {
+        const docRef = await addDoc(collection(db, 'clients'), {
+          ...newClient,
+          createdAt: serverTimestamp()
+        });
+        return { id: docRef.id, ...newClient };
+      } catch (err) {
+        console.error("Error al guardar en Firestore:", err);
+      }
+    }
+
+    const localClients = await fetchCloudKv();
+    const clientWithId = { id: `client-${Date.now()}`, ...newClient };
+    const updated = [clientWithId, ...localClients];
+    await saveCloudKv(updated);
+    return clientWithId;
+  },
+
+  // Update client
+  async updateClient(clientId, clientData) {
+    let cloudOk = false;
+    if (isFirebaseConfigured && db) {
+      try {
+        const docRef = doc(db, 'clients', clientId);
+        await updateDoc(docRef, clientData);
+        cloudOk = true;
+      } catch (err) {
+        console.error("Error actualizando en Firestore:", err);
+      }
+    }
+
+    if (!isFirebaseConfigured || !cloudOk) {
+      const localClients = await fetchCloudKv();
+      const index = localClients.findIndex(c => c.id === clientId);
+      if (index !== -1) {
+        localClients[index] = { ...localClients[index], ...clientData };
+        await saveCloudKv(localClients);
+      }
+    }
+    return true;
+  },
+
+  // Add interaction / note to client history
+  async addInteraction(clientId, note, userName, newStatus = null, nextFollowUpDate = null) {
+    const today = new Date().toISOString().split('T')[0];
+    const newHistoryItem = {
+      id: `h-${Date.now()}`,
+      date: today,
+      user: userName || 'Rodrigo',
+      note: note
+    };
+
+    const clients = await this.getAllClients();
+    const target = clients.find(c => c.id === clientId);
+    if (!target) return false;
+
+    const updatedHistory = [newHistoryItem, ...(target.history || [])];
+    const updatePayload = {
+      history: updatedHistory,
+      lastContact: today
+    };
+
+    if (newStatus) {
+      updatePayload.status = newStatus;
+      if (newStatus === 'Cliente') {
+        updatePayload.closedDate = today;
+      }
+    }
+    if (nextFollowUpDate) updatePayload.nextFollowUp = nextFollowUpDate;
+
+    await this.updateClient(clientId, updatePayload);
+    return true;
+  },
+
+  // Delete client
+  async deleteClient(clientId) {
+    let cloudOk = false;
+    if (isFirebaseConfigured && db) {
+      try {
+        await deleteDoc(doc(db, 'clients', clientId));
+        cloudOk = true;
+      } catch (err) {
+        console.error("Error eliminando en Firestore:", err);
+      }
+    }
+
+    if (!isFirebaseConfigured || !cloudOk) {
+      const localClients = await fetchCloudKv();
+      const updated = localClients.filter(c => c.id !== clientId);
+      await saveCloudKv(updated);
+    }
+    return true;
+  },
+
+  // Import batch clients
+  async importBatchClients(clientList, userName) {
+    const today = new Date().toISOString().split('T')[0];
+    const formatted = clientList.map((item, idx) => ({
+      id: `imp-${Date.now()}-${idx}`,
+      name: item.Nombre || item.name || 'Comercio',
+      company: item.Empresa || item.company || item.Nombre || '',
+      phone: String(item.Teléfono || item.phone || item.Telefono || ''),
+      whatsapp: String(item.WhatsApp || item.whatsapp || (item.Teléfono ? `549${String(item.Teléfono).replace(/\D/g, '')}` : '')),
+      email: item.Email || item.email || '',
+      rubro: item.Rubro || item.rubro || 'General',
+      city: item.Ciudad || item.city || 'Mar del Plata',
+      origin: item.Origen || item.origin || 'Importación Excel',
+      firstContact: today,
+      lastContact: today,
+      nextFollowUp: today,
+      status: item.Estado || item.status || 'Nuevo',
+      history: [
+        {
+          id: `h-${Date.now()}-${idx}`,
+          date: today,
+          user: userName || 'Rodrigo',
+          note: 'Cliente importado masivamente.'
+        }
+      ]
+    }));
+
+    if (isFirebaseConfigured && db) {
+      try {
+        const batch = writeBatch(db);
+        formatted.forEach((c) => {
+          const { id, ...rest } = c;
+          batch.set(doc(collection(db, 'clients')), { ...rest, createdAt: serverTimestamp() });
+        });
+        await batch.commit();
+        return formatted.length;
+      } catch (err) {
+        console.error("Error importando en Firestore:", err);
+      }
+    }
+
+    const existing = await fetchCloudKv();
+    const merged = [...formatted, ...existing];
+    await saveCloudKv(merged);
+    return formatted.length;
+  }
+};
+</file>
+
+<file path="index.html">
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CRM Pymes — Gestión de Clientes y Prospección</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-slate-900 text-slate-100 antialiased font-['Plus_Jakarta_Sans',sans-serif] selection:bg-brand-500 selection:text-white">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+</file>
+
+<file path="package.json">
+{
+  "name": "crm-pymes-web",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
+  "dependencies": {
+    "firebase": "^10.13.0",
+    "lucide-react": "^0.427.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.20",
+    "firebase-tools": "^15.26.0",
+    "gh-pages": "^6.3.0",
+    "postcss": "^8.4.41",
+    "tailwindcss": "^3.4.10",
+    "vite": "^5.4.1"
+  }
+}
+</file>
+
+<file path="vite.config.js">
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  base: './',
+  server: {
+    port: 3000,
+    open: true
+  }
+});
+</file>
+
+</files>

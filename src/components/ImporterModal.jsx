@@ -170,3 +170,5 @@ export const ImporterModal = ({ isOpen, onClose, onImport }) => {
     </div>
   );
 };
+
+export default ImporterModal;
