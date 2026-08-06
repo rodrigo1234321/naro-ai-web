@@ -334,5 +334,25 @@ export const clientService = {
     const merged = [...formatted, ...existing];
     await saveCloudKv(merged);
     return formatted.length;
+  },
+
+  // Clear all data (local & cloud) for clean fresh start
+  async clearAllClients() {
+    localStorage.removeItem(LOCAL_STORAGE_KEY);
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify([]));
+    await saveCloudKv([]);
+    if (isFirebaseConfigured && db) {
+      try {
+        const querySnapshot = await getDocs(collection(db, 'clients'));
+        const batch = writeBatch(db);
+        querySnapshot.forEach((docRef) => {
+          batch.delete(docRef.ref);
+        });
+        await batch.commit();
+      } catch (err) {
+        console.error("Error limpiando Firestore:", err);
+      }
+    }
+    return true;
   }
 };

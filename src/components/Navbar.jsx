@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { isFirebaseConfigured } from '../firebase/config';
-import { User, Plus, UploadCloud, ShieldCheck, Database, Users, Download, FileSpreadsheet, FileJson, Cloud } from 'lucide-react';
+import { User, Plus, UploadCloud, ShieldCheck, Database, Users, Download, FileSpreadsheet, FileJson, Cloud, Trash2 } from 'lucide-react';
 
-export const Navbar = ({ onOpenNewClient, onOpenImporter, onExport }) => {
+export const Navbar = ({ onOpenNewClient, onOpenImporter, onExport, onClearAll }) => {
   const { currentUser, switchUser, availableUsers } = useAuth();
   const [exportOpen, setExportOpen] = useState(false);
 
@@ -109,6 +109,20 @@ export const Navbar = ({ onOpenNewClient, onOpenImporter, onExport }) => {
                       <FileJson className="w-4 h-4 text-amber-400" />
                       <span>JSON (backup)</span>
                     </button>
+                    {onClearAll && (
+                      <button
+                        onClick={() => {
+                          setExportOpen(false);
+                          if (confirm('⚠️ ¿Estás seguro de VACIAR toda la base de datos? Se eliminarán todos los clientes de prueba y registros tanto locales como en la nube.')) {
+                            onClearAll();
+                          }
+                        }}
+                        className="w-full flex items-center space-x-2.5 px-4 py-3 text-xs font-semibold text-rose-400 hover:bg-rose-500/20 transition-all text-left border-t border-slate-700/60"
+                      >
+                        <Trash2 className="w-4 h-4 text-rose-400" />
+                        <span>Vaciar CRM (Limpiar)</span>
+                      </button>
+                    )}
                   </div>
                 </>
               )}

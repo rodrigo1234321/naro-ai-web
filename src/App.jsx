@@ -119,6 +119,11 @@ function MainApp() {
     }
   };
 
+  const handleClearAll = async () => {
+    await clientService.clearAllClients();
+    await loadClients();
+  };
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-['Plus_Jakarta_Sans',sans-serif]">
       
@@ -130,6 +135,7 @@ function MainApp() {
         }}
         onOpenImporter={() => setIsImporterOpen(true)}
         onExport={handleExport}
+        onClearAll={handleClearAll}
       />
 
       {/* Main Container */}
