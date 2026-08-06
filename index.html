@@ -1,16 +1,651 @@
 <!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CRM Pymes — Gestión de Clientes y Prospección</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  </head>
-  <body class="bg-slate-900 text-slate-100 antialiased font-['Plus_Jakarta_Sans',sans-serif] selection:bg-brand-500 selection:text-white">
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Naro AI — Agencia de Inteligencia Artificial & Crecimiento Digital | Mar del Plata</title>
+  <meta name="description" content="Agencia de IA y Desarrollo 100% dedicada a potenciar el comercio de Mar del Plata. Páginas Web de Alta Conversión (Sin Abono), Bots de WhatsApp 24/7 y Sistemas de Gestión POS.">
+  <meta name="keywords" content="Inteligencia Artificial Mar del Plata, Páginas Web Mar del Plata, Bot de WhatsApp IA Mar del Plata, Software de Gestión POS Mar del Plata, Agencia Digital Mar del Plata, Comercio Web Marplatense">
+  <meta name="author" content="Naro AI">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://naro-ai.mdp.ar/">
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌊</text></svg>">
+
+  <!-- Geo Tags Mar del Plata -->
+  <meta name="geo.region" content="AR-B">
+  <meta name="geo.placename" content="Mar del Plata">
+  <meta name="geo.position" content="-38.0055;-57.5426">
+  <meta name="ICBM" content="-38.0055, -57.5426">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://naro-ai.mdp.ar/">
+  <meta property="og:title" content="Naro AI — Impulsando el Comercio Web Marplatense">
+  <meta property="og:description" content="Transformamos comercios locales de Mar del Plata con Sitios Web Premium, Bots de WhatsApp IA 24/7 y Control Comercial.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80">
+
+  <!-- Google Fonts Preconnect & CSS Links -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons (Pinned Version) -->
+  <script src="https://unpkg.com/lucide@0.344.0/dist/umd/lucide.min.js"></script>
+
+  <!-- GSAP & ScrollTrigger Engine -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  
+  <!-- CSS Base -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Schema.org JSON-LD LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Naro AI",
+    "image": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80",
+    "@id": "https://naro-ai.mdp.ar",
+    "url": "https://naro-ai.mdp.ar",
+    "telephone": "+5492235000000",
+    "priceRange": "$$",
+    "areaServed": {
+      "@type": "AdministrativeArea",
+      "name": "Mar del Plata"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Mar del Plata",
+      "addressRegion": "Buenos Aires",
+      "postalCode": "B7600",
+      "addressCountry": "AR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -38.0055,
+      "longitude": -57.5426
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
+      ],
+      "opens": "00:00",
+      "closes": "23:59"
+    },
+    "sameAs": [
+      "https://instagram.com/naro.ai.mdp"
+    ],
+    "description": "Agencia de Inteligencia Artificial y Desarrollo Web enfocada 100% en potenciar comercios de Mar del Plata con bots de WhatsApp 24/7, sitios web responsivos y sistemas de gestión comercial."
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Header Flotante / Navigation -->
+  <header class="glass-nav-container fixed-top" id="main-header">
+    <div class="container flex-between">
+      <a href="#" class="logo-brand">
+        <span class="logo-icon">🌊</span>
+        <span class="logo-text">Naro <span class="text-gradient-blue">AI</span></span>
+      </a>
+      
+      <nav class="nav-links desktop-only">
+        <a href="#servicios">Servicios</a>
+        <a href="#portfolio">Casos reales</a>
+        <a href="#calculadora">Calculadora</a>
+        <a href="#demo-bot">Demo</a>
+        <a href="#faqs">Preguntas</a>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="badge badge-status badge-sm desktop-only">
+          <span class="pulse-dot"></span>
+          100% Mar del Plata
+        </div>
+        <a href="#cotizador" class="btn btn-primary btn-sm nav-cta">Auditoría Gratuita</a>
+        <button class="mobile-menu-btn" id="mobile-toggle" aria-label="Abrir Menú de Navegación">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Overlay Backdrop (Direct Child of Body) -->
+  <div class="mobile-drawer-overlay" id="drawer-overlay" onclick="toggleMobileMenu()"></div>
+
+  <!-- Mobile Drawer Side Menu (Direct Child of Body) -->
+  <div class="mobile-drawer-menu" id="mobile-menu">
+    <div class="drawer-header flex-between">
+      <span class="logo-brand">
+        <span class="logo-icon">🌊</span>
+        <span class="logo-text">Naro <span class="text-gradient-blue">AI</span></span>
+      </span>
+      <button class="drawer-close-btn" onclick="toggleMobileMenu()" aria-label="Cerrar Menú">
+        <i data-lucide="x"></i>
+      </button>
+    </div>
+
+    <nav class="drawer-links">
+      <a href="#hero" onclick="toggleMobileMenu()"><i data-lucide="home"></i> Inicio</a>
+      <a href="#servicios" onclick="toggleMobileMenu()"><i data-lucide="layers"></i> Servicios</a>
+      <a href="#portfolio" onclick="toggleMobileMenu()"><i data-lucide="briefcase"></i> Casos Reales</a>
+      <a href="#calculadora" onclick="toggleMobileMenu()"><i data-lucide="calculator"></i> Calculadora</a>
+      <a href="#demo-bot" onclick="toggleMobileMenu()"><i data-lucide="bot"></i> Demo</a>
+      <a href="#faqs" onclick="toggleMobileMenu()"><i data-lucide="help-circle"></i> Preguntas</a>
+      <a href="#cotizador" onclick="toggleMobileMenu()"><i data-lucide="send"></i> Contacto</a>
+    </nav>
+
+    <div class="drawer-footer">
+      <div class="badge badge-status margin-bottom-md">
+        <span class="pulse-dot"></span>
+        100% Mar del Plata
+      </div>
+      <a href="https://wa.me/5492235000000?text=Hola%20Naro%20AI,%20quiero%20consultar%20por%20mi%20local%20en%20Mar%20del%20Plata" target="_blank" class="btn btn-whatsapp btn-full margin-bottom-xs">
+        <i data-lucide="message-square"></i> Hablar por WhatsApp
+      </a>
+      <a href="#cotizador" onclick="toggleMobileMenu()" class="btn btn-primary btn-full">
+        Auditoría Gratuita
+      </a>
+    </div>
+  </div>
+
+  <!-- Main Container -->
+  <main id="app-content">
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero-section section-padding">
+      <div class="container grid-hero">
+        <div class="hero-content">
+          <div class="badge badge-location badge-subtle margin-bottom-xs">
+            <i data-lucide="map-pin"></i> IA para comercios de Mar del Plata
+          </div>
+          <h1 class="hero-title">
+            Automatizamos comercios de Mar del Plata <span class="text-gradient-blue">con IA</span>
+          </h1>
+          <p class="hero-lead">
+            Webs que venden, bots de WhatsApp y software para automatizar tu negocio.
+          </p>
+          <p class="hero-sublead">
+            Hecho para comercios de Mar del Plata.
+          </p>
+          <div class="hero-cta-group">
+            <a href="https://wa.me/5492235000000?text=Hola%20Naro%20AI,%20quisiera%20consultar%20por%20servicios%20para%20mi%20comercio%20en%20Mar%20del%20Plata" target="_blank" class="btn btn-whatsapp btn-hero-primary">
+              <i data-lucide="message-square"></i> Hablar por WhatsApp
+            </a>
+            <a href="#portfolio" class="btn btn-secondary btn-hero-secondary">
+              <i data-lucide="sparkles"></i> Ver casos reales
+            </a>
+          </div>
+          <div class="hero-stats-row grid-3-cols">
+            <div class="stat-item glass-card gsap-stat-card">
+              <span class="stat-number text-gradient-blue">+300%</span>
+              <span class="stat-label">Crecimiento Digital</span>
+            </div>
+            <div class="stat-item glass-card gsap-stat-card">
+              <span class="stat-number text-gradient-green">24/7</span>
+              <span class="stat-label">Atención Automática</span>
+            </div>
+            <div class="stat-item glass-card gsap-stat-card">
+              <span class="stat-number text-gradient-amber">&lt; 5s</span>
+              <span class="stat-label">Respuesta de IA</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual gsap-hero-visual">
+          <div class="hero-card-preview glass-card">
+            <div class="visual-badge"><i data-lucide="bot"></i> Agente Activo MDP</div>
+            <div class="chat-preview-box">
+              <div class="chat-msg msg-user">
+                <span>Hola! ¿Tienen stock de la campera en talle M y entregan en Güemes?</span>
+                <span class="time">22:45 hs</span>
+              </div>
+              <div class="chat-msg msg-bot">
+                <span>¡Hola! 👋 Sí, tenemos stock inmediato en talle M. Podés pagar con MercadoPago en 1 clic y enviamos mañana a Güemes. ¿Te genero el link de reserva?</span>
+                <span class="time">22:45 hs • Naro AI Bot</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MANIFIESTO MAR DEL PLATA -->
+    <section id="manifiesto" class="section-padding bg-secondary-glow">
+      <div class="container">
+        <div class="section-header gsap-reveal">
+          <div class="badge badge-amber">Manifiesto Digital</div>
+          <h2>De la Vereda al Teléfono: Por qué el Comercio de Mar del Plata Necesita IA</h2>
+          <p>
+            Depender 100% del tráfico peatonal expone a tu local a días de lluvia, frío y franjas muertas. Hoy más del 75% de las compras en Mar del Plata se inician desde un smartphone.
+          </p>
+        </div>
+        <div class="grid-3-cols gap-lg">
+          <div class="glass-card manifesto-card gsap-reveal-card">
+            <div class="card-icon text-gradient-blue"><i data-lucide="umbrella"></i></div>
+            <h3>Clima & Horario No Te Frenan</h3>
+            <p>Tu local puede cerrar a las 20 hs, pero tu tienda web y tu Bot de WhatsApp siguen vendiendo y tomando turnos mientras dormís.</p>
+          </div>
+          <div class="glass-card manifesto-card gsap-reveal-card">
+            <div class="card-icon text-gradient-green"><i data-lucide="zap"></i></div>
+            <h3>Inmediatez Absoluta</h3>
+            <p>Si un vecino consulta a las 23 hs y le respondés a las 9 am del día siguiente, ya le compró a la competencia. Respondemos en 5 segundos.</p>
+          </div>
+          <div class="glass-card manifesto-card gsap-reveal-card">
+            <div class="card-icon text-gradient-amber"><i data-lucide="shield-check"></i></div>
+            <h3>Dominio Comercial Local</h3>
+            <p>Optimizamos tu presencia para que cuando busquen en Google desde Mar del Plata, tu negocio aparezca en la primera posición.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICIOS 360 -->
+    <section id="servicios" class="section-padding">
+      <div class="container">
+        <div class="section-header gsap-reveal">
+          <div class="badge badge-location">Soluciones para Locales</div>
+          <h2>Ecosistema Digital 360° para tu Comercio</h2>
+          <p>Herramientas diseñadas a medida de los presupuestos y necesidades reales de los negocios de Mar del Plata.</p>
+        </div>
+        <div class="grid-2-cols gap-xl">
+
+          <!-- Servicio 1 -->
+          <div class="glass-card service-card gsap-reveal-card" tabindex="0" role="button" onclick="abrirModalServicio('web')" onkeydown="if(event.key==='Enter'||event.key===' ')abrirModalServicio('web')">
+            <div class="service-tag badge badge-status">¡SIN ABONO MENSUAL!</div>
+            <div class="service-icon"><i data-lucide="globe"></i></div>
+            <h3>Página Web Profesional + SEO Mar del Plata</h3>
+            <p class="service-desc">Tu vidriera digital en Google. Un solo pago y la web es 100% tuya. Sin ataduras ni mensualidades obligatorias.</p>
+            <ul class="service-features">
+              <li><i data-lucide="check-circle-2"></i> Pago Único ($140k - $190k ARS)</li>
+              <li><i data-lucide="check-circle-2"></i> SEO Optimizado para Google Mar del Plata</li>
+              <li><i data-lucide="check-circle-2"></i> Catálogo HD + Botonera directa WhatsApp</li>
+            </ul>
+            <div class="service-action-btn margin-top-md">
+              <span class="btn btn-secondary btn-sm flex-between">Ver detalles de la solución <i data-lucide="chevron-right"></i></span>
+            </div>
+          </div>
+
+          <!-- Servicio 2 -->
+          <div class="glass-card service-card gsap-reveal-card" tabindex="0" role="button" onclick="abrirModalServicio('bot')" onkeydown="if(event.key==='Enter'||event.key===' ')abrirModalServicio('bot')">
+            <div class="service-tag badge badge-location">Solución IA</div>
+            <div class="service-icon"><i data-lucide="bot"></i></div>
+            <h3>Bot de WhatsApp con IA 24/7</h3>
+            <p class="service-desc">Tu empleado estrella que nunca duerme. Responde en 5 segundos, muestra catálogo, toma señas automáticas por MercadoPago y agendamiento de turnos.</p>
+            <ul class="service-features">
+              <li><i data-lucide="check-circle-2"></i> Setup $110k - $160k + Abono $18k - $25k/mes</li>
+              <li><i data-lucide="check-circle-2"></i> Cobro de señas directas por MercadoPago / CBU</li>
+              <li><i data-lucide="check-circle-2"></i> Recordatorios automáticos anti-ausentismo</li>
+            </ul>
+            <div class="service-action-btn margin-top-md">
+              <span class="btn btn-secondary btn-sm flex-between">Ver detalles de la solución <i data-lucide="chevron-right"></i></span>
+            </div>
+          </div>
+
+          <!-- Servicio 3 -->
+          <div class="glass-card service-card gsap-reveal-card" tabindex="0" role="button" onclick="abrirModalServicio('pos')" onkeydown="if(event.key==='Enter'||event.key===' ')abrirModalServicio('pos')">
+            <div class="service-tag badge badge-status">⚡ ¡SIN COSTO DE SETUP!</div>
+            <div class="service-icon"><i data-lucide="store"></i></div>
+            <h3>Software POS & Gestión Comercial Estándar</h3>
+            <p class="service-desc">Comenzá HOY mismo a controlar tu stock, fiados y caja diaria solo pagando el abono mensual ultra accesible.</p>
+            <ul class="service-features">
+              <li><i data-lucide="check-circle-2"></i> <strong>$ 22.000 ARS / mes</strong> (Versión Estándar Lista)</li>
+              <li><i data-lucide="check-circle-2"></i> Control de Stock por lector de código de barras</li>
+              <li><i data-lucide="check-circle-2"></i> Opción a Medida disponible si requerís personalización</li>
+            </ul>
+            <div class="service-action-btn margin-top-md">
+              <span class="btn btn-secondary btn-sm flex-between">Ver detalles de la solución <i data-lucide="chevron-right"></i></span>
+            </div>
+          </div>
+
+          <!-- Servicio 4 -->
+          <div class="glass-card service-card featured-service gsap-reveal-card" tabindex="0" role="button" onclick="abrirModalServicio('combo')" onkeydown="if(event.key==='Enter'||event.key===' ')abrirModalServicio('combo')">
+            <div class="service-tag badge badge-amber">🔥 Combo Preferido MDP</div>
+            <div class="service-icon"><i data-lucide="sparkles"></i></div>
+            <h3>Combo Transformación 360°</h3>
+            <p class="service-desc">La solución definitiva. Integramos tu Web + Bot de WhatsApp IA + Sistema POS en un solo paquete en cuotas en 7 días.</p>
+            <ul class="service-features">
+              <li><i data-lucide="check-circle-2"></i> <strong>$340.000 ARS</strong> (o 2 cuotas de $170.000 ARS)</li>
+              <li><i data-lucide="check-circle-2"></i> Abono unificado todo incluido $35.000 ARS/mes</li>
+              <li><i data-lucide="check-circle-2"></i> Sincronización automática de stock físico y digital</li>
+            </ul>
+            <div class="service-action-btn margin-top-md">
+              <span class="btn btn-primary btn-sm flex-between">Solicitar Combo 360° <i data-lucide="arrow-right"></i></span>
+            </div>
+          </div>
+
+          <!-- Servicio Extra 5 -->
+          <div class="glass-card service-card gsap-reveal-card" tabindex="0" role="button" onclick="abrirModalServicio('menu')" onkeydown="if(event.key==='Enter'||event.key===' ')abrirModalServicio('menu')">
+            <div class="service-tag badge badge-location">Gastronomía & Delivery</div>
+            <div class="service-icon"><i data-lucide="utensils"></i></div>
+            <h3>Menú Digital QR & Comandera a WhatsApp</h3>
+            <p class="service-desc">Especial para rotiserías, bares y restaurantes. El cliente escanea el QR, arma el pedido y llega directo a tu WhatsApp.</p>
+            <ul class="service-features">
+              <li><i data-lucide="check-circle-2"></i> <strong>$95.000 ARS</strong> (Pago Único - Sin Abono)</li>
+              <li><i data-lucide="check-circle-2"></i> Pedidos directos a comandera en horas pico</li>
+              <li><i data-lucide="check-circle-2"></i> Fotos HD de platos y bebidas</li>
+            </ul>
+            <div class="service-action-btn margin-top-md">
+              <span class="btn btn-secondary btn-sm flex-between">Ver detalles de la solución <i data-lucide="chevron-right"></i></span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO SHOWCASE -->
+    <section id="portfolio" class="section-padding bg-secondary-glow">
+      <div class="container">
+        <div class="section-header gsap-reveal">
+          <div class="badge badge-amber">Experiencia Comprobada</div>
+          <h2>Proyectos Desarrollados en Mar del Plata</h2>
+          <p>Conocé algunos de los negocios locales que ya han elevado su calidad web e imagen comercial.</p>
+          
+          <!-- Filtros de Portafolio -->
+          <div class="portfolio-filters flex-gap margin-top-md text-center" style="justify-content: center;">
+            <button class="filter-btn active" onclick="filtrarPortfolio('todos')">Todos</button>
+            <button class="filter-btn" onclick="filtrarPortfolio('gastronomia')">Gastronomía</button>
+            <button class="filter-btn" onclick="filtrarPortfolio('salud')">Salud & Estética</button>
+            <button class="filter-btn" onclick="filtrarPortfolio('industrial')">Industrial & Servicios</button>
+            <button class="filter-btn" onclick="filtrarPortfolio('turismo')">Turismo & Entretenimiento</button>
+          </div>
+        </div>
+        <div class="portfolio-grid grid-3-cols gap-lg" id="portfolio-container">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </section>
+
+    <!-- CALCULADORA ROI -->
+    <section id="calculadora" class="section-padding">
+      <div class="container">
+        <div class="section-header gsap-reveal">
+          <div class="badge badge-status">Simulador Interactivo</div>
+          <h2>Calculadora de Ventas Recuperadas</h2>
+          <p>Descubrí cuánto dinero estás perdiendo por no responder consultas a tiempo en Mar del Plata y en cuánto tiempo se paga tu sistema.</p>
+        </div>
+        <div class="glass-panel calculator-box padding-lg gsap-reveal">
+          <div class="grid-2-cols gap-xl align-center">
+            <div class="calc-controls">
+              <label for="rubro-select" class="calc-label">Seleccioná tu Rubro Comercial:</label>
+              <select id="rubro-select" class="custom-select">
+                <option value="indumentaria">Showroom / Indumentaria / Calzado</option>
+                <option value="gastronomia">Gastronomía / Rotisería / Delivery</option>
+                <option value="estetica">Salud / Estética / Peluquería</option>
+                <option value="comercio">Ferretería / Minimarket / Comercio</option>
+              </select>
+
+              <label for="consultas-range" class="calc-label margin-top-md">
+                Consultas diarias por WhatsApp/Instagram: <strong id="consultas-val" class="text-gradient-blue">25</strong>
+              </label>
+              <input type="range" id="consultas-range" min="5" max="150" value="25" class="custom-range">
+
+              <label for="ticket-range" class="calc-label margin-top-md">
+                Ticket Promedio de Venta ($ ARS): <strong id="ticket-val" class="text-gradient-green">$ 25.000</strong>
+              </label>
+              <input type="range" id="ticket-range" min="5000" max="150000" step="5000" value="25000" class="custom-range">
+            </div>
+
+            <div class="calc-results glass-card text-center">
+              <h3>Estimación Mensual de Recupero</h3>
+              <div class="result-number text-gradient-green" id="recupero-monto">$ 700.000 ARS</div>
+              <p class="result-desc">Dinero adicional rescatado por atención automatizada 24/7 y tienda web autónoma.</p>
+              <div class="roi-badge margin-top-md">
+                ⚡ ¡El sistema se paga solo en <strong id="roi-dias">9 días</strong>!
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEMO BOT WHATSAPP -->
+    <section id="demo-bot" class="section-padding bg-secondary-glow">
+      <div class="container">
+        <div class="section-header gsap-reveal">
+          <div class="badge badge-location">Prueba en Vivo</div>
+          <h2>Interactuá con el Bot de IA de Naro AI</h2>
+          <p>Simulá una conversación real con nuestro bot para ver cómo atiende a tus clientes en Mar del Plata.</p>
+        </div>
+        <div class="bot-simulator-wrapper glass-panel gsap-reveal">
+          <div class="bot-header flex-between">
+            <div class="bot-info flex-align">
+              <span class="bot-avatar">🤖</span>
+              <div>
+                <strong>Naro AI — Asistente Marplatense</strong>
+                <small class="block text-muted">🟢 En línea • Respuesta instantánea</small>
+              </div>
+            </div>
+            <div class="bot-badge">Demo Mode</div>
+          </div>
+          <div class="bot-chat-body" id="chat-window">
+            <div class="bot-msg msg-received">
+              Hola! 👋 Soy la IA de Naro AI. ¿En qué puedo ayudarte hoy con tu negocio en Mar del Plata? Proba las opciones de abajo:
+            </div>
+          </div>
+          <div class="bot-quick-options flex-gap" id="bot-options">
+            <button class="opt-btn" onclick="simularChat('turnos')">📅 ¿Cómo agendás turnos?</button>
+            <button class="opt-btn" onclick="simularChat('precios')">💰 ¿Cuáles son los precios?</button>
+            <button class="opt-btn" onclick="simularChat('stock')">📦 ¿Cómo controlás stock?</button>
+            <button class="opt-btn" onclick="simularChat('demo')">🚀 Quiero una demo para mi local</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQS & COMPARATIVA -->
+    <section id="faqs" class="section-padding">
+      <div class="container">
+        <div class="section-header gsap-reveal">
+          <div class="badge badge-amber">Transparencia Total</div>
+          <h2>Preguntas Frecuentes & Manejo de Objeciones</h2>
+          <p>Todo lo que necesitás saber antes de dar el paso a la transformación digital de tu negocio en Mar del Plata.</p>
+        </div>
+
+        <div class="faqs-accordion-wrapper">
+          <div class="faq-item glass-card gsap-reveal-card">
+            <div class="faq-question flex-between" tabindex="0" role="button" onclick="toggleFaq(this)" onkeydown="if(event.key==='Enter'||event.key===' ')toggleFaq(this)">
+              <h4>¿La página web requiere pagar abono mensual obligatoriamente?</h4>
+              <i data-lucide="chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p><strong>No.</strong> A diferencia de otras agencias, la Página Web Profesional de Naro AI se abonará en 1 solo pago de desarrollo ($140k - $190k ARS) y la página queda <strong>100% a tu nombre sin abonos mensuales de mantenimiento obligatorios</strong>. Tu negocio es el único dueño de su presencia digital.</p>
+            </div>
+          </div>
+
+          <div class="faq-item glass-card gsap-reveal-card">
+            <div class="faq-question flex-between" tabindex="0" role="button" onclick="toggleFaq(this)" onkeydown="if(event.key==='Enter'||event.key===' ')toggleFaq(this)">
+              <h4>¿Puedo empezar a usar el Software POS sin costo de setup de entrada?</h4>
+              <i data-lucide="chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p><strong>Sí, totalmente.</strong> Diseñamos una oferta súper accesible: el Software POS de Gestión Comercial Estándar cuesta solo <strong>$22.000 ARS al mes sin ningún costo de inicio ni setup</strong>. Si más adelante querés modificaciones o módulos a medida para tu local, ahí sí te presupuestamos una versión personalizada.</p>
+            </div>
+          </div>
+
+          <div class="faq-item glass-card gsap-reveal-card">
+            <div class="faq-question flex-between" tabindex="0" role="button" onclick="toggleFaq(this)" onkeydown="if(event.key==='Enter'||event.key===' ')toggleFaq(this)">
+              <h4>¿En cuánto tiempo queda listo mi sitio web o bot de WhatsApp?</h4>
+              <i data-lucide="chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p>Trabajamos con plazos récord para comercios de Mar del Plata: la <strong>Página Web y el Bot de WhatsApp quedan 100% listos en 4 a 7 días hábiles</strong>. El menú QR gastronómico en solo 48 a 72 horas.</p>
+            </div>
+          </div>
+
+          <div class="faq-item glass-card gsap-reveal-card">
+            <div class="faq-question flex-between" tabindex="0" role="button" onclick="toggleFaq(this)" onkeydown="if(event.key==='Enter'||event.key===' ')toggleFaq(this)">
+              <h4>¿Es difícil de usar si no entiendo de computadoras?</h4>
+              <i data-lucide="chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p>Está pensado para que cualquier persona lo maneje sin conocimientos técnicos. El Bot opera solo en segundo plano y el sistema de gestión se opera con botones grandes e icónicos o lector de código de barras. Además te dejamos videos instructivos y capacitamos a tu equipo en 20 minutos.</p>
+            </div>
+          </div>
+
+          <div class="faq-item glass-card gsap-reveal-card">
+            <div class="faq-question flex-between" tabindex="0" role="button" onclick="toggleFaq(this)" onkeydown="if(event.key==='Enter'||event.key===' ')toggleFaq(this)">
+              <h4>¿Cómo se vincula el bot a mi número actual y a MercadoPago?</h4>
+              <i data-lucide="chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p>Conectamos la IA directamente a tu número de WhatsApp actual mediante escaneo QR oficial (sin cambiar de chip ni perder tus chats existentes) e integramos tu cuenta de MercadoPago para que las señas o cobros ingresen directamente a tu cuenta bancaria.</p>
+            </div>
+          </div>
+
+          <div class="faq-item glass-card gsap-reveal-card">
+            <div class="faq-question flex-between" tabindex="0" role="button" onclick="toggleFaq(this)" onkeydown="if(event.key==='Enter'||event.key===' ')toggleFaq(this)">
+              <h4>¿Tienen soporte técnico local en Mar del Plata?</h4>
+              <i data-lucide="chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p><strong>Sí.</strong> Somos una agencia 100% marplatense dedicada exclusivamente a comercios de la ciudad. Si tenés alguna duda o necesitás asistencia, te respondemos en minutos e incluso coordinamos visitas si tu negocio lo requiere.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabla Comparativa Visual -->
+        <div class="comparison-table-wrapper margin-top-xl gsap-reveal">
+          <h3 class="text-center margin-bottom-md">Tu Comercio Hoy vs. Tu Comercio con Naro AI</h3>
+          <div class="glass-panel overflow-auto">
+            <table class="custom-table">
+              <thead>
+                <tr>
+                  <th>Dimensión Comercial</th>
+                  <th>Comercio Tradicional (Sin Digitalizar)</th>
+                  <th>Comercio Digitalizado con Naro AI</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Horario de Atención</strong></td>
+                  <td>Solo cuando el local está abierto (8 hs/día)</td>
+                  <td><span class="badge badge-status">24/7 los 365 días</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Posicionamiento Local</strong></td>
+                  <td>Depende únicamente de la gente que pasa caminando</td>
+                  <td><span class="badge badge-location">Primeros en Google Mar del Plata (SEO)</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Atención por WhatsApp</strong></td>
+                  <td>Lenta, manual, mensajes acumulados fuera de hora</td>
+                  <td><span class="badge badge-status">Respuesta en 5 segundos con IA</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Cobro de Señas / Reservas</strong></td>
+                  <td>Esperar a que el cliente viaje al local a abonar</td>
+                  <td><span class="badge badge-amber">Cobro automático MercadoPago 1-Click</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Control de Stock & Caja</strong></td>
+                  <td>Cuadernos de papel propensos a faltantes y errores</td>
+                  <td><span class="badge badge-status">Sistema POS por Código de Barras</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Mantenimiento Web</strong></td>
+                  <td>Abonos mensuales obligatorios eternos</td>
+                  <td><span class="badge badge-status">Web 100% Tuya (Sin Abono)</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- COTIZADOR & CONTACTO -->
+    <section id="cotizador" class="section-padding bg-secondary-glow">
+      <div class="container">
+        <div class="section-header gsap-reveal">
+          <div class="badge badge-status">Auditoría Gratuita Mar del Plata</div>
+          <h2>Impulsá tu Comercio en Mar del Plata Hoy</h2>
+          <p>Recibí un análisis digital gratuito de tu negocio. Te mostramos exactamente dónde estás perdiendo ventas y cómo automatizar tu local en 7 días.</p>
+        </div>
+
+        <div class="glass-card form-container gsap-reveal">
+          <form id="audit-form" onsubmit="event.preventDefault(); enviarAuditoria();">
+            <div class="grid-2-cols gap-md">
+              <div class="form-group">
+                <label for="nombre">Nombre de tu Comercio / Marca</label>
+                <input type="text" id="nombre" required placeholder="Ej: Tienda Güemes / Pizzería Mogotes" class="custom-input">
+              </div>
+              <div class="form-group">
+                <label for="rubro">Rubro Comercial</label>
+                <input type="text" id="rubro" required placeholder="Ej: Indumentaria / Gastronomía / Estética" class="custom-input">
+              </div>
+            </div>
+            <div class="form-group margin-top-md">
+              <label for="whatsapp">Teléfono / WhatsApp de Contacto</label>
+              <input type="tel" id="whatsapp" required placeholder="Ej: 223 512 3456" class="custom-input">
+            </div>
+            <div class="form-group margin-top-md">
+              <label for="mensaje">¿Qué te gustaría mejorar o automatizar hoy?</label>
+              <textarea id="mensaje" rows="3" placeholder="Ej: Quiero vender por WhatsApp de noche o controlar stock de mi local..." class="custom-input"></textarea>
+            </div>
+            <button type="submit" class="btn btn-whatsapp btn-full margin-top-lg">
+              <i data-lucide="send"></i> Solicitar Auditoría Gratuita por WhatsApp
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FLOATING WHATSAPP TRIGGER -->
+  <a href="https://wa.me/5492235000000?text=Hola%20Naro%20AI,%20quisiera%20solicitar%20una%20auditor%C3%ADa%20gratuita%20para%20mi%20local%20en%20Mar%20del%20Plata" 
+     target="_blank" 
+     class="floating-whatsapp-btn" 
+     aria-label="Hablar por WhatsApp">
+    <div class="floating-badge">Respuesta &lt; 5s</div>
+    <i data-lucide="message-square"></i>
+  </a>
+
+  <!-- MODAL INTERACTIVO DE SERVICIO -->
+  <div class="modal-overlay" id="service-modal" onclick="cerrarModalServicio(event)">
+    <div class="modal-content glass-card" onclick="event.stopPropagation()">
+      <button class="modal-close" aria-label="Cerrar modal" onclick="cerrarModalServicio()">&times;</button>
+      <div id="modal-body-content"></div>
+    </div>
+  </div>
+
+  <!-- FOOTER PREMIUM INSTITUCIONAL -->
+  <footer class="main-footer">
+    <div class="container text-center">
+      <p class="footer-brand">Naro <span class="text-gradient-blue">AI</span> — Agencia de Inteligencia Artificial & Desarrollo</p>
+      <p class="footer-tagline">🌊 Orgullosamente dedicado al crecimiento del comercio web de Mar del Plata, Argentina.</p>
+      
+      <div class="footer-badges flex-gap margin-top-sm" style="justify-content: center;">
+        <span class="badge badge-location">📍 100% Mar del Plata</span>
+        <span class="badge badge-status">⚡ Respuesta Inmediata</span>
+        <span class="badge badge-amber">🔒 Garantía de Calidad</span>
+      </div>
+
+      <div class="footer-links margin-top-md">
+        <a href="#hero">Inicio</a> • 
+        <a href="#servicios">Servicios</a> • 
+        <a href="#portfolio">Casos reales</a> • 
+        <a href="#calculadora">Calculadora</a> • 
+        <a href="https://wa.me/5492235000000" target="_blank">WhatsApp Directo</a>
+      </div>
+      <p class="footer-copy margin-top-md">© 2026 Naro AI. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts: App Logic -->
+  <script src="app.js"></script>
+  <script>
+    if (window.lucide) {
+      lucide.createIcons();
+    }
+  </script>
+</body>
 </html>
