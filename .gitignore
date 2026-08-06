@@ -12,6 +12,14 @@ data/
 node_modules/
 package-lock.json
 
+# Build
+dist/
+
+# Credenciales / entorno
+.env
+.env.*
+!.env.example
+
 # Sistema
 .DS_Store
 Thumbs.db
