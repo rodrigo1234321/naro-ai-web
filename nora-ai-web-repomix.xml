@@ -1,0 +1,2044 @@
+This file is a merged representation of a subset of the codebase, containing specifically included files, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of a subset of the repository's contents that is considered the most important context.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Only files matching these patterns are included: index.html, styles.css, app.js, robots.txt, sitemap.xml
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+app.js
+index.html
+robots.txt
+sitemap.xml
+styles.css
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="app.js">
+/* ==========================================================================
+   NORA AI — CORE JAVASCRIPT APPLICATION
+   GSAP 60FPS Motion Engine, ScrollTrigger Reveals, Calculators & Bot Simulator
+   ========================================================================== */
+
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('⚡ Nora AI — Impulsando el Comercio Web Marplatense');
+
+  // Initialize Mobile Menu Listener
+  const mobileBtn = document.getElementById('mobile-toggle');
+  if (mobileBtn) {
+    mobileBtn.addEventListener('click', toggleMobileMenu);
+  }
+
+  // Initialize Portfolio Showcase (Punto 5)
+  renderPortfolio('todos');
+
+  // Initialize ROI Calculator Listener (Punto 6)
+  initCalculator();
+
+  // Initialize GSAP Motion Engine (Punto 10)
+  initGsapAnimations();
+
+  // Highlight Nav link on scroll
+  window.addEventListener('scroll', handleNavHighlight);
+});
+
+/* Mobile Menu Toggle */
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobile-menu');
+  if (menu) {
+    menu.classList.toggle('active');
+  }
+}
+
+/* Nav Link Scroll Highlight */
+function handleNavHighlight() {
+  const sections = document.querySelectorAll('section[id]');
+  const scrollY = window.pageYOffset;
+
+  sections.forEach(current => {
+    const sectionHeight = current.offsetHeight;
+    const sectionTop = current.offsetTop - 120;
+    const sectionId = current.getAttribute('id');
+    const navLink = document.querySelector(`.nav-links a[href*=${sectionId}]`);
+
+    if (navLink) {
+      if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+        navLink.classList.add('active');
+      } else {
+        navLink.classList.remove('active');
+      }
+    }
+  });
+}
+
+/* ==========================================================================
+   GSAP 60FPS Motion Engine & ScrollTrigger (Punto 10)
+   ========================================================================== */
+function initGsapAnimations() {
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // 1. Hero Entrance Timeline (60FPS silky smooth)
+  const heroTl = gsap.timeline({ defaults: { ease: "power3.out", duration: 0.8 } });
+  
+  heroTl.from(".gsap-hero-reveal", {
+    y: 40,
+    opacity: 0,
+    stagger: 0.15
+  })
+  .from(".gsap-stat-card", {
+    y: 20,
+    opacity: 0,
+    scale: 0.95,
+    stagger: 0.1
+  }, "-=0.4")
+  .from(".gsap-hero-visual", {
+    x: 40,
+    opacity: 0,
+    duration: 1
+  }, "-=0.6");
+
+  // 2. Section Headers Reveal on Scroll
+  gsap.utils.toArray(".gsap-reveal").forEach(elem => {
+    gsap.from(elem, {
+      scrollTrigger: {
+        trigger: elem,
+        start: "top 85%",
+        toggleActions: "play none none reverse"
+      },
+      y: 35,
+      opacity: 0,
+      duration: 0.8,
+      ease: "power2.out"
+    });
+  });
+
+  // 3. Stagger Cards Reveal on Scroll
+  gsap.utils.toArray(".gsap-reveal-card").forEach((card, index) => {
+    gsap.from(card, {
+      scrollTrigger: {
+        trigger: card,
+        start: "top 88%",
+        toggleActions: "play none none reverse"
+      },
+      y: 30,
+      opacity: 0,
+      duration: 0.6,
+      delay: (index % 3) * 0.1,
+      ease: "power2.out"
+    });
+  });
+}
+
+/* ==========================================================================
+   Service Detail Modals
+   ========================================================================== */
+const detallesServicios = {
+  web: {
+    titulo: "🌐 Página Web Profesional + SEO Mar del Plata",
+    tagline: "Tu vidriera digital en Google. Sin ataduras mensuales.",
+    precio: "$ 140.000 – $ 190.000 ARS (Pago Único)",
+    abono: "¡SIN ABONO MENSUAL! (La página es 100% tuya)",
+    tiempo: "4 a 7 días hábiles",
+    detalles: [
+      "Diseño responsivo optimizado 100% para celulares y carga ultra rápida.",
+      "SEO Local configurado para figurar primeros en búsquedas de Mar del Plata.",
+      "Catálogo interactivo de productos o listado de servicios con fotos HD y precios.",
+      "Botonera directa de conexión a WhatsApp y redes sociales.",
+      "Entrega llave en mano: la web queda a tu nombre sin costos ocultos."
+    ]
+  },
+  bot: {
+    titulo: "🤖 Bot de WhatsApp con Inteligencia Artificial 24/7",
+    tagline: "Tu empleado estrella que responde en 5 segundos y vende mientras dormís.",
+    precio: "$ 110.000 – $ 160.000 ARS (Pago Único Setup)",
+    abono: "$ 18.000 – $ 25.000 ARS / mes (Servidor IA + Conexión Oficial)",
+    tiempo: "4 a 7 días hábiles",
+    detalles: [
+      "Respuestas inteligentes en menos de 5 segundos las 24 horas del día.",
+      "Muestra catálogo de productos con precios y talles en tiempo real.",
+      "Cobro automático de señas por MercadoPago o CBU bancario directo.",
+      "Agendamiento de turnos para centros de estética, peluquerías o consultorios.",
+      "Envío de recordatorios automáticos por WhatsApp anti-ausentismo."
+    ]
+  },
+  pos: {
+    titulo: "🏬 Software POS & Gestión Comercial (Estándar o a Medida)",
+    tagline: "El control total de tu caja, stock y ventas sin barreras de entrada.",
+    precio: "VERSIÓN ESTÁNDAR: $ 0 Setup (Solo Abono Mensual) | A MEDIDA: $180.000 - $260.000 ARS",
+    abono: "$ 22.000 ARS / mes (Versión Estándar Lista para Usar)",
+    tiempo: "Activación Inmediata (Estándar) / 5 días (A Medida)",
+    detalles: [
+      "Versión Estándar: Comenzá hoy mismo solo pagando el abono mensual de $22.000 ARS.",
+      "Control de Stock por talle, color o lector de código de barras.",
+      "Cuentas corrientes, fiados y caja diaria sin libretas de papel.",
+      "Actualización masiva de precios por porcentaje en 1 clic.",
+      "Desarrollo a Medida disponible si requerís módulos custom o integraciones específicas."
+    ]
+  },
+  combo: {
+    titulo: "🔥 Combo Transformación 360° (Web + Bot + POS)",
+    tagline: "La solución integral de máximo valor para comercios de Mar del Plata.",
+    precio: "$ 340.000 ARS (o 2 cuotas promocionales de $ 170.000 ARS)",
+    abono: "$ 35.000 ARS / mes (Todo Incluido: IA, Servidores, POS y Soporte)",
+    tiempo: "7 días hábiles para entrega 100% probada",
+    detalles: [
+      "Integración total: tu Web, tu Bot de WhatsApp y tu Sistema de Gestión interconectados.",
+      "Si vendés en el local físico, el stock se descuenta automáticamente en la web.",
+      "Cobros automatizados por MercadoPago directo a tu cuenta bancaria.",
+      "Capacitación a tu personal en 20 minutos y soporte técnico continuo en Mar del Plata.",
+      "Recupero de inversión estimado en el primer mes de uso."
+    ]
+  },
+  menu: {
+    titulo: "🍔 Menú Digital QR & Pedidos Directos WhatsApp",
+    tagline: "Especial para Gastronomía, Delivery, Rotiserías y Cervecerías.",
+    precio: "$ 95.000 ARS (Pago Único - Sin Abono)",
+    abono: "Opcional $ 8.000 ARS / mes (Actualización de Menú)",
+    tiempo: "48 a 72 horas",
+    detalles: [
+      "Menú digital interactivo accesible mediante código QR en mesa o link en Instagram.",
+      "El cliente arma el pedido, aclara gustos/envío y envía el pedido directo a la comandera de WhatsApp.",
+      "Fotos HD de cada plato, bebidas y postres con actualización fácil."
+    ]
+  }
+};
+
+function abrirModalServicio(tipo) {
+  const modal = document.getElementById('service-modal');
+  const body = document.getElementById('modal-body-content');
+  const info = detallesServicios[tipo];
+
+  if (!modal || !body || !info) return;
+
+  body.innerHTML = `
+    <h2 class="margin-bottom-xs">${info.titulo}</h2>
+    <p class="text-gradient-blue font-weight-bold margin-bottom-md">${info.tagline}</p>
+
+    <div class="glass-panel padding-md margin-bottom-md">
+      <div class="flex-between margin-bottom-xs flex-wrap">
+        <span>Desarrollo / Setup:</span>
+        <strong class="text-gradient-green">${info.precio}</strong>
+      </div>
+      <div class="flex-between margin-bottom-xs flex-wrap">
+        <span>Abono Mensual:</span>
+        <strong class="text-gradient-amber">${info.abono}</strong>
+      </div>
+      <div class="flex-between flex-wrap">
+        <span>Tiempo de Entrega:</span>
+        <strong class="badge badge-status">${info.tiempo}</strong>
+      </div>
+    </div>
+
+    <h4>¿Qué incluye esta solución?</h4>
+    <ul class="service-features margin-top-xs margin-bottom-lg">
+      ${info.detalles.map(d => `<li><i data-lucide="check-circle-2"></i> ${d}</li>`).join('')}
+    </ul>
+
+    <a href="https://wa.me/5492230000000?text=Hola%20Nora%20AI,%20me%20interesa%20contratar%20el%20servicio:%20${encodeURIComponent(info.titulo)}" target="_blank" class="btn btn-whatsapp btn-full">
+      <i data-lucide="message-square"></i> Solicitar este Servicio por WhatsApp
+    </a>
+  `;
+
+  modal.classList.add('active');
+  if (window.lucide) {
+    window.lucide.createIcons();
+  }
+}
+
+function cerrarModalServicio(e) {
+  const modal = document.getElementById('service-modal');
+  if (modal) {
+    modal.classList.remove('active');
+  }
+}
+
+/* ==========================================================================
+   1. Portfolio Showcase Data & Renderer with Category Filtering (Punto 5)
+   ========================================================================== */
+const proyectosMDP = [
+  {
+    id: "ms-refrigeracion",
+    nombre: "MS Refrigeración",
+    categoria: "industrial",
+    rubro: "Refrigeración Industrial & Naval",
+    ubicación: "Puerto de Mar del Plata",
+    desc: "Plataforma institucional corporativa con catálogo de servicios navales, auditoría de clientes y formularios de cotización inmediata.",
+    link: "../ms-refrigeracion-web/index.html",
+    badge: "Industrial / Naval",
+    metrica: "Líder en Sector Puerto"
+  },
+  {
+    id: "stella-maris",
+    nombre: "Stella Maris Pastas",
+    categoria: "gastronomia",
+    rubro: "Gastronomía Casera & Fábrica de Pastas",
+    ubicación: "Güemes, Mar del Plata",
+    desc: "Menú digital interactivo de pastas frescas, pedidos directos a cocina y gestión de clientes en el centro gastronómico.",
+    link: "../stella-maris-pastas/index.html",
+    badge: "Gastronomía Güemes",
+    metrica: "+150 pedidos semanales"
+  },
+  {
+    id: "estar-peralta",
+    nombre: "Estar Peralta Ramos",
+    categoria: "turismo",
+    rubro: "Complejo de Entretenimiento & Gastro",
+    ubicación: "Av. Peralta Ramos, Mar del Plata",
+    desc: "Sitio web de alta conversión para reserva de líneas de bowling, mesas de pool y área gastronómica frente al mar.",
+    link: "../estar-peralta-ramos/index.html",
+    badge: "Turismo / Gastro",
+    metrica: "Reservas 24/7"
+  },
+  {
+    id: "bruder-pizzeria",
+    nombre: "Brüder Pizzería Napolitana",
+    categoria: "gastronomia",
+    rubro: "Pizzería a la Leña & Taproom",
+    ubicación: "San Lorenzo & Güemes",
+    desc: "Landing page estética con menú QR interactivo, bot de reservas y catálogo de cervezas artesanales de Mar del Plata.",
+    link: "webs/bruder-pizzeria/index.html",
+    badge: "Cervecería / Pizzería",
+    metrica: "Ventas autónomas"
+  },
+  {
+    id: "cde-estetica",
+    nombre: "CDE Dermatología & Estética",
+    categoria: "salud",
+    rubro: "Salud & Estética Avanzada",
+    ubicación: "Plaza Mitre, Mar del Plata",
+    desc: "Web médica de alta gama con agendador de turnos automatizado por WhatsApp y cobro de señas por MercadoPago.",
+    link: "webs/cde-centro-de-dermatologia-y-estetica/index.html",
+    badge: "Salud & Estética",
+    metrica: "-90% ausentismo"
+  },
+  {
+    id: "la-marina",
+    nombre: "Restaurante La Marina",
+    categoria: "gastronomia",
+    rubro: "Cocina de Mar & Tradición",
+    ubicación: "Centro Comercial Puerto MDP",
+    desc: "Menú digital multilenguaje con fotos HD de platos de mar, reservas de mesas y geolocalización de turistas.",
+    link: "sites/restaurante-la-marina/index.html",
+    badge: "Gastronomía Puerto",
+    metrica: "Visibilidad Google #1"
+  },
+  {
+    id: "kytos-salud",
+    nombre: "KYTOS Salud Integral",
+    categoria: "salud",
+    rubro: "Clínica Médica & Especialidades",
+    ubicación: "Centro, Mar del Plata",
+    desc: "Portal médico con cartelera de profesionales, turnero digital y recordatorios automáticos por WhatsApp.",
+    link: "webs/kytos-salud-integral/index.html",
+    badge: "Clínica Médica",
+    metrica: "Gestión de Pacientes"
+  },
+  {
+    id: "alfa-gym",
+    nombre: "ALFA GYM",
+    categoria: "salud",
+    rubro: "Centro de Entrenamiento & High Performance",
+    ubicación: "Constitución, Mar del Plata",
+    desc: "Sitio fitness energizante con membresías online, rutinas digitales y reservas de clases de musculación.",
+    link: "webs/alfa-gym/index.html",
+    badge: "Fitness & Gym",
+    metrica: "+300 Socios Activos"
+  }
+];
+
+function renderPortfolio(categoriaFiltro = 'todos') {
+  const container = document.getElementById('portfolio-container');
+  if (!container) return;
+
+  const filtrados = categoriaFiltro === 'todos' 
+    ? proyectosMDP 
+    : proyectosMDP.filter(p => p.categoria === categoriaFiltro);
+
+  container.innerHTML = filtrados.map(proj => `
+    <div class="glass-card portfolio-card gsap-reveal-card">
+      <div class="portfolio-badge badge badge-amber">${proj.badge}</div>
+      <h3 class="margin-top-sm">${proj.nombre}</h3>
+      <p class="portfolio-location"><i data-lucide="map-pin"></i> ${proj.ubicación}</p>
+      <p class="portfolio-desc margin-top-xs">${proj.desc}</p>
+      <div class="portfolio-metric margin-top-sm">
+        <span class="text-gradient-green">✦ ${proj.metrica}</span>
+      </div>
+      <div class="portfolio-actions margin-top-md">
+        <a href="${proj.link}" target="_blank" class="btn btn-secondary btn-sm flex-between">
+          <span>Explorar Proyecto</span>
+          <i data-lucide="external-link"></i>
+        </a>
+      </div>
+    </div>
+  `).join('');
+
+  if (window.lucide) {
+    window.lucide.createIcons();
+  }
+}
+
+function filtrarPortfolio(cat) {
+  const btns = document.querySelectorAll('.filter-btn');
+  btns.forEach(b => b.classList.remove('active'));
+  
+  const targetBtn = Array.from(btns).find(b => b.getAttribute('onclick')?.includes(cat));
+  if (targetBtn) targetBtn.classList.add('active');
+
+  renderPortfolio(cat);
+}
+
+/* ==========================================================================
+   2. Calibración de Calculadora Interactiva de ROI (Punto 6)
+   ========================================================================== */
+function initCalculator() {
+  const rubroSelect = document.getElementById('rubro-select');
+  const consultasRange = document.getElementById('consultas-range');
+  const ticketRange = document.getElementById('ticket-range');
+
+  if (!consultasRange || !ticketRange) return;
+
+  const updateCalculos = () => {
+    const consultas = parseInt(consultasRange.value);
+    const ticket = parseInt(ticketRange.value);
+    const rubro = rubroSelect ? rubroSelect.value : 'indumentaria';
+
+    document.getElementById('consultas-val').innerText = consultas;
+    document.getElementById('ticket-val').innerText = `$ ${ticket.toLocaleString('es-AR')}`;
+
+    // Coeficiente de pérdida según rubro (Horario nocturno / demoras)
+    let tasaPerdida = 0.25; // 25% por defecto
+    let conversionMora = 0.15; // 15% conversion
+
+    if (rubro === 'gastronomia') { tasaPerdida = 0.35; conversionMora = 0.20; }
+    if (rubro === 'estetica') { tasaPerdida = 0.30; conversionMora = 0.25; }
+    if (rubro === 'comercio') { tasaPerdida = 0.20; conversionMora = 0.12; }
+
+    const consultasPerdidasMes = consultas * 30 * tasaPerdida;
+    const ventasRecuperadasMes = Math.round(consultasPerdidasMes * conversionMora);
+    const montoRecuperado = ventasRecuperadasMes * ticket;
+
+    // ROI días (Costo del Bot o Combo promedio $200.000 / diario recuperado)
+    const recuperoDiario = montoRecuperado / 30;
+    const diasROI = recuperoDiario > 0 ? Math.max(3, Math.round(200000 / recuperoDiario)) : 30;
+
+    document.getElementById('recupero-monto').innerText = `$ ${montoRecuperado.toLocaleString('es-AR')} ARS`;
+    document.getElementById('roi-dias').innerText = `${diasROI} días`;
+  };
+
+  consultasRange.addEventListener('input', updateCalculos);
+  ticketRange.addEventListener('input', updateCalculos);
+  rubroSelect?.addEventListener('change', updateCalculos);
+
+  updateCalculos();
+}
+
+/* ==========================================================================
+   3. WhatsApp Bot Simulator con Animación de Escritura (Punto 7)
+   ========================================================================== */
+function simularChat(opcion) {
+  const windowBody = document.getElementById('chat-window');
+  if (!windowBody) return;
+
+  let userText = '';
+  let botReply = '';
+
+  switch (opcion) {
+    case 'turnos':
+      userText = '📅 ¿Cómo agendás turnos?';
+      botReply = '¡Es facilísimo! El bot le muestra a tu clienta los días y horarios libres de tu agenda, cobra la seña por MercadoPago y le envía un recordatorio automático por WhatsApp 2 horas antes para que no falte. ⚡';
+      break;
+    case 'precios':
+      userText = '💰 ¿Cuáles son los precios?';
+      botReply = 'La Web o Menú QR se cobra 1 solo pago sin abono. El Bot de WhatsApp arranca en $110.000 ARS setup + $18.000/mes. Y el Software POS Estándar solo cuesta $22.000 ARS/mes sin costo de inicio. ¡O el Combo 360° por $340.000 ARS en 2 cuotas! 📈';
+      break;
+    case 'stock':
+      userText = '📦 ¿Cómo controlás stock?';
+      botReply = 'El sistema se conecta a tu stock real por código de barras, talle o color. Si un producto se agota en el local, el bot avisa en el acto que no hay disponibilidad para evitar ventas sin mercadería. 📦';
+      break;
+    case 'demo':
+      userText = '🚀 Quiero una demo para mi local';
+      botReply = '¡Excelente decisión! Hacé clic en el botón de abajo y te enviamos un video de 1 minuto adaptado exactamente a tu rubro en Mar del Plata. 👇';
+      break;
+  }
+
+  // Insert user bubble
+  windowBody.innerHTML += `
+    <div class="bot-msg msg-sent margin-top-xs">
+      ${userText}
+    </div>
+  `;
+
+  // Scroll down
+  windowBody.scrollTop = windowBody.scrollHeight;
+
+  // Insert typing indicator
+  const typingId = 'typing-' + Date.now();
+  windowBody.innerHTML += `
+    <div class="bot-msg msg-received margin-top-xs typing-indicator" id="${typingId}">
+      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+    </div>
+  `;
+  windowBody.scrollTop = windowBody.scrollHeight;
+
+  // Replace typing indicator with bot response after short delay
+  setTimeout(() => {
+    const typingElem = document.getElementById(typingId);
+    if (typingElem) {
+      typingElem.outerHTML = `
+        <div class="bot-msg msg-received margin-top-xs">
+          ${botReply}
+        </div>
+      `;
+    }
+    windowBody.scrollTop = windowBody.scrollHeight;
+  }, 900);
+}
+
+/* ==========================================================================
+   4. FAQ Accordion Toggle
+   ========================================================================== */
+function toggleFaq(element) {
+  const item = element.parentElement;
+  item.classList.toggle('active');
+}
+
+/* ==========================================================================
+   5. Auditoria Form Lead Trigger
+   ========================================================================== */
+function enviarAuditoria() {
+  const nombre = document.getElementById('nombre').value;
+  const rubro = document.getElementById('rubro').value;
+  const whatsapp = document.getElementById('whatsapp').value;
+  const mensaje = document.getElementById('mensaje').value;
+
+  const textoWA = `Hola Nora AI! Quisiera solicitar la Auditoría Gratuita para mi comercio en Mar del Plata.%0A%0A*Comercio:* ${encodeURIComponent(nombre)}%0A*Rubro:* ${encodeURIComponent(rubro)}%0A*Teléfono:* ${encodeURIComponent(whatsapp)}%0A*Mensaje:* ${encodeURIComponent(mensaje)}`;
+  
+  window.open(`https://wa.me/5492230000000?text=${textoWA}`, '_blank');
+}
+</file>
+
+<file path="index.html">
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nora AI — Agencia de Inteligencia Artificial & Crecimiento Digital | Mar del Plata</title>
+  <meta name="description" content="Agencia de IA y Desarrollo 100% dedicada a potenciar el comercio de Mar del Plata. Páginas Web de Alta Conversión (Sin Abono), Bots de WhatsApp 24/7 y Sistemas de Gestión POS.">
+  <meta name="keywords" content="Inteligencia Artificial Mar del Plata, Páginas Web Mar del Plata, Bot de WhatsApp IA Mar del Plata, Software de Gestión POS Mar del Plata, Agencia Digital Mar del Plata, Comercio Web Marplatense">
+  <meta name="author" content="Nora AI">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://nora-ai.mdp.ar/">
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+  
+  <!-- Geo Tags Mar del Plata -->
+  <meta name="geo.region" content="AR-B">
+  <meta name="geo.placename" content="Mar del Plata">
+  <meta name="geo.position" content="-38.0055;-57.5426">
+  <meta name="ICBM" content="-38.0055, -57.5426">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nora-ai.mdp.ar/">
+  <meta property="og:title" content="Nora AI — Impulsando el Comercio Web Marplatense">
+  <meta property="og:description" content="Transformamos comercios locales de Mar del Plata con Sitios Web Premium, Bots de WhatsApp IA 24/7 y Control Comercial.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80">
+
+  <!-- Google Fonts & Lucide Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- GSAP & ScrollTrigger Engine -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  
+  <!-- CSS Base -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Schema.org JSON-LD LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Nora AI",
+    "image": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80",
+    "@id": "https://nora-ai.mdp.ar",
+    "url": "https://nora-ai.mdp.ar",
+    "telephone": "+5492230000000",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Peatonal San Martín / Güemes / Zona Comercial",
+      "addressLocality": "Mar del Plata",
+      "postalCode": "B7600",
+      "addressCountry": "AR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -38.0055,
+      "longitude": -57.5426
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
+      ],
+      "opens": "00:00",
+      "closes": "23:59"
+    },
+    "sameAs": [
+      "https://instagram.com/nora.ai.mdp"
+    ],
+    "description": "Agencia de Inteligencia Artificial y Desarrollo Web enfocada 100% en potenciar comercios de Mar del Plata con bots de WhatsApp 24/7, sitios web responsivos y sistemas de gestión comercial."
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Header Flotante / Navigation -->
+  <header class="glass-nav-container fixed-top" id="main-header">
+    <div class="container flex-between">
+      <a href="#" class="logo-brand">
+        <span class="logo-icon">🌊</span>
+        <span class="logo-text">Nora <span class="text-gradient-blue">AI</span></span>
+      </a>
+      
+      <nav class="nav-links desktop-only">
+        <a href="#manifiesto">Manifiesto MDP</a>
+        <a href="#servicios">Servicios 360°</a>
+        <a href="#portfolio">Casos Reales MDP</a>
+        <a href="#calculadora">Calculadora ROI</a>
+        <a href="#demo-bot">Demo Bot 24/7</a>
+        <a href="#faqs">Preguntas</a>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="badge badge-status desktop-only">
+          <span class="pulse-dot"></span>
+          100% Mar del Plata
+        </div>
+        <a href="#cotizador" class="btn btn-primary btn-sm">Auditoría Gratuita</a>
+        <button class="mobile-menu-btn" id="mobile-toggle" aria-label="Menú de Navegación">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div class="mobile-menu-dropdown" id="mobile-menu">
+      <a href="#manifiesto" onclick="toggleMobileMenu()">Manifiesto MDP</a>
+      <a href="#servicios" onclick="toggleMobileMenu()">Servicios 360°</a>
+      <a href="#portfolio" onclick="toggleMobileMenu()">Casos Reales MDP</a>
+      <a href="#calculadora" onclick="toggleMobileMenu()">Calculadora ROI</a>
+      <a href="#demo-bot" onclick="toggleMobileMenu()">Demo Bot 24/7</a>
+      <a href="#faqs" onclick="toggleMobileMenu()">Preguntas</a>
+      <a href="#cotizador" onclick="toggleMobileMenu()" class="btn btn-whatsapp btn-sm margin-top-xs">Pedir Auditoría</a>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main id="app-content">
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero-section section-padding">
+      <div class="container grid-hero">
+        <div class="hero-content gsap-hero-reveal">
+          <div class="badge badge-location margin-bottom-sm">
+            <i data-lucide="map-pin"></i> Exclusivo para Comercios de Mar del Plata
+          </div>
+          <h1 class="hero-title">
+            La Inteligencia Artificial que Transforma el <span class="text-gradient-blue">Comercio Marplatense</span>
+          </h1>
+          <p class="hero-lead">
+            Convertimos tu negocio de vereda en una potencia digital. Sitios Web de alta conversión (100% tuyos sin abono), Bots de WhatsApp IA atendiendo 24/7 y Software POS desde solo $22.000/mes.
+          </p>
+          <div class="hero-cta-group">
+            <a href="https://wa.me/5492230000000?text=Hola%20Nora%20AI,%20quiero%20potenciar%20mi%20comercio%20en%20Mar%20del%20Plata" target="_blank" class="btn btn-whatsapp">
+              <i data-lucide="message-square"></i> Hablar por WhatsApp
+            </a>
+            <a href="#portfolio" class="btn btn-secondary">
+              <i data-lucide="sparkles"></i> Ver Proyectos Reales MDP
+            </a>
+          </div>
+          <div class="hero-stats-row grid-3-cols">
+            <div class="stat-item glass-card gsap-stat-card">
+              <span class="stat-number text-gradient-blue">+300%</span>
+              <span class="stat-label">Crecimiento Digital</span>
+            </div>
+            <div class="stat-item glass-card gsap-stat-card">
+              <span class="stat-number text-gradient-green">24 / 7</span>
+              <span class="stat-label">Atención Automática</span>
+            </div>
+            <div class="stat-item glass-card gsap-stat-card">
+              <span class="stat-number text-gradient-amber">&lt; 5s</span>
+              <span class="stat-label">Respuesta de IA</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual gsap-hero-visual">
+          <div class="hero-card-preview glass-card">
+            <div class="visual-badge"><i data-lucide="bot"></i> Agente Activo MDP</div>
+            <div class="chat-preview-box">
+              <div class="chat-msg msg-user">
+                <span>Hola! ¿Tienen stock de la campera en talle M y entregan en Güemes?</span>
+                <span class="time">22:45 hs</span>
+              </div>
+              <div class="chat-msg msg-bot">
+                <span>¡Hola! 👋 Sí, tenemos stock inmediato en talle M. Podés pagar con MercadoPago en 1 clic y enviamos mañana a Güemes. ¿Te genero el link de reserva?</span>
+                <span class="time">22:45 hs • Nora AI Bot</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MANIFIESTO MAR DEL PLATA -->
+    <section id="manifiesto" class="section-padding bg-secondary-glow">
+      <div class="container">
+        <div class="section-header gsap-reveal">
+          <div class="badge badge-amber">Manifiesto Digital</div>
+          <h2>De la Vereda al Teléfono: Por qué el Comercio de Mar del Plata Necesita IA</h2>
+          <p>
+            Depender 100% del tráfico peatonal expone a tu local a días de lluvia, frío y franjas muertas. Hoy más del 75% de las compras en Mar del Plata se inician desde un smartphone.
+          </p>
+        </div>
+        <div class="grid-3-cols gap-lg">
+          <div class="glass-card manifesto-card gsap-reveal-card">
+            <div class="card-icon text-gradient-blue"><i data-lucide="umbrella"></i></div>
+            <h3>Clima & Horario No Te Frenan</h3>
+            <p>Tu local puede cerrar a las 20 hs, pero tu tienda web y tu Bot de WhatsApp siguen vendiendo y tomando turnos mientras dormís.</p>
+          </div>
+          <div class="glass-card manifesto-card gsap-reveal-card">
+            <div class="card-icon text-gradient-green"><i data-lucide="zap"></i></div>
+            <h3>Inmediatez Absoluta</h3>
+            <p>Si un vecino consulta a las 23 hs y le respondés a las 9 am del día siguiente, ya le compró a la competencia. Respondemos en 5 segundos.</p>
+          </div>
+          <div class="glass-card manifesto-card gsap-reveal-card">
+            <div class="card-icon text-gradient-amber"><i data-lucide="shield-check"></i></div>
+            <h3>Dominio Comercial Local</h3>
+            <p>Optimizamos tu presencia para que cuando busquen en Google desde Mar del Plata, tu negocio aparezca en la primera posición.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICIOS 360 -->
+    <section id="servicios" class="section-padding">
+      <div class="container">
+        <div class="section-header gsap-reveal">
+          <div class="badge badge-location">Soluciones para Locales</div>
+          <h2>Ecosistema Digital 360° para tu Comercio</h2>
+          <p>Herramientas diseñadas a medida de los presupuestos y necesidades reales de los negocios de Mar del Plata.</p>
+        </div>
+        <div class="grid-2-cols gap-xl">
+
+          <!-- Servicio 1 -->
+          <div class="glass-card service-card gsap-reveal-card" onclick="abrirModalServicio('web')">
+            <div class="service-tag badge-status">¡SIN ABONO MENSUAL!</div>
+            <div class="service-icon"><i data-lucide="globe"></i></div>
+            <h3>Página Web Profesional + SEO Mar del Plata</h3>
+            <p class="service-desc">Tu vidriera digital en Google. Un solo pago y la web es 100% tuya. Sin ataduras ni mensualidades obligatorias.</p>
+            <ul class="service-features">
+              <li><i data-lucide="check-circle-2"></i> Pago Único ($140k - $190k ARS)</li>
+              <li><i data-lucide="check-circle-2"></i> SEO Optimizado para Google Mar del Plata</li>
+              <li><i data-lucide="check-circle-2"></i> Catálogo HD + Botonera directa WhatsApp</li>
+            </ul>
+            <div class="service-action-btn margin-top-md">
+              <span class="btn btn-secondary btn-sm flex-between">Ver detalles de la solución <i data-lucide="chevron-right"></i></span>
+            </div>
+          </div>
+
+          <!-- Servicio 2 -->
+          <div class="glass-card service-card gsap-reveal-card" onclick="abrirModalServicio('bot')">
+            <div class="service-tag">Solución IA</div>
+            <div class="service-icon"><i data-lucide="bot"></i></div>
+            <h3>Bot de WhatsApp con IA 24/7</h3>
+            <p class="service-desc">Tu empleado estrella que nunca duerme. Responde en 5 segundos, muestra catálogo, toma señas automáticas por MercadoPago y agendamiento de turnos.</p>
+            <ul class="service-features">
+              <li><i data-lucide="check-circle-2"></i> Setup $110k - $160k + Abono $18k - $25k/mes</li>
+              <li><i data-lucide="check-circle-2"></i> Cobro de señas directas por MercadoPago / CBU</li>
+              <li><i data-lucide="check-circle-2"></i> Recordatorios automáticos anti-ausentismo</li>
+            </ul>
+            <div class="service-action-btn margin-top-md">
+              <span class="btn btn-secondary btn-sm flex-between">Ver detalles de la solución <i data-lucide="chevron-right"></i></span>
+            </div>
+          </div>
+
+          <!-- Servicio 3 (POS Ultra Atractivo) -->
+          <div class="glass-card service-card gsap-reveal-card" onclick="abrirModalServicio('pos')">
+            <div class="service-tag badge-status">⚡ ¡SIN COSTO DE SETUP!</div>
+            <div class="service-icon"><i data-lucide="store"></i></div>
+            <h3>Software POS & Gestión Comercial Estándar</h3>
+            <p class="service-desc">Comenzá HOY mismo a controlar tu stock, fiados y caja diaria solo pagando el abono mensual ultra accesible.</p>
+            <ul class="service-features">
+              <li><i data-lucide="check-circle-2"></i> <strong>$ 22.000 ARS / mes</strong> (Versión Estándar Lista)</li>
+              <li><i data-lucide="check-circle-2"></i> Control de Stock por lector de código de barras</li>
+              <li><i data-lucide="check-circle-2"></i> Opción a Medida disponible si requerís personalización</li>
+            </ul>
+            <div class="service-action-btn margin-top-md">
+              <span class="btn btn-secondary btn-sm flex-between">Ver detalles de la solución <i data-lucide="chevron-right"></i></span>
+            </div>
+          </div>
+
+          <!-- Servicio 4 (Combo) -->
+          <div class="glass-card service-card featured-service gsap-reveal-card" onclick="abrirModalServicio('combo')">
+            <div class="service-tag badge-amber">🔥 Combo Preferido MDP</div>
+            <div class="service-icon"><i data-lucide="sparkles"></i></div>
+            <h3>Combo Transformación 360°</h3>
+            <p class="service-desc">La solución definitiva. Integramos tu Web + Bot de WhatsApp IA + Sistema POS en un solo paquete en cuotas en 7 días.</p>
+            <ul class="service-features">
+              <li><i data-lucide="check-circle-2"></i> <strong>$340.000 ARS</strong> (o 2 cuotas de $170.000 ARS)</li>
+              <li><i data-lucide="check-circle-2"></i> Abono unificado todo incluido $35.000 ARS/mes</li>
+              <li><i data-lucide="check-circle-2"></i> Sincronización automática de stock físico y digital</li>
+            </ul>
+            <div class="service-action-btn margin-top-md">
+              <span class="btn btn-primary btn-sm flex-between">Solicitar Combo 360° <i data-lucide="arrow-right"></i></span>
+            </div>
+          </div>
+
+          <!-- Servicio Extra 5 (Menú QR Gastronomía) -->
+          <div class="glass-card service-card gsap-reveal-card" onclick="abrirModalServicio('menu')">
+            <div class="service-tag">Gastronomía & Delivery</div>
+            <div class="service-icon"><i data-lucide="utensils"></i></div>
+            <h3>Menú Digital QR & Comandera a WhatsApp</h3>
+            <p class="service-desc">Especial para rotiserías, bares y restaurantes. El cliente escanea el QR, arma el pedido y llega directo a tu WhatsApp.</p>
+            <ul class="service-features">
+              <li><i data-lucide="check-circle-2"></i> <strong>$95.000 ARS</strong> (Pago Único - Sin Abono)</li>
+              <li><i data-lucide="check-circle-2"></i> Pedidos directos a comandera en horas pico</li>
+              <li><i data-lucide="check-circle-2"></i> Fotos HD de platos y bebidas</li>
+            </ul>
+            <div class="service-action-btn margin-top-md">
+              <span class="btn btn-secondary btn-sm flex-between">Ver detalles de la solución <i data-lucide="chevron-right"></i></span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO SHOWCASE -->
+    <section id="portfolio" class="section-padding bg-secondary-glow">
+      <div class="container">
+        <div class="section-header gsap-reveal">
+          <div class="badge badge-amber">Experiencia Comprobada</div>
+          <h2>Proyectos Desarrollados en Mar del Plata</h2>
+          <p>Conocé algunos de los negocios locales que ya han elevado su calidad web e imagen comercial.</p>
+          
+          <!-- Filtros de Portafolio -->
+          <div class="portfolio-filters flex-gap margin-top-md text-center" style="justify-content: center;">
+            <button class="filter-btn active" onclick="filtrarPortfolio('todos')">Todos</button>
+            <button class="filter-btn" onclick="filtrarPortfolio('gastronomia')">Gastronomía</button>
+            <button class="filter-btn" onclick="filtrarPortfolio('salud')">Salud & Estética</button>
+            <button class="filter-btn" onclick="filtrarPortfolio('industrial')">Industrial & Servicios</button>
+            <button class="filter-btn" onclick="filtrarPortfolio('turismo')">Turismo & Entretenimiento</button>
+          </div>
+        </div>
+        <div class="portfolio-grid grid-3-cols gap-lg" id="portfolio-container">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </section>
+
+    <!-- CALCULADORA ROI -->
+    <section id="calculadora" class="section-padding">
+      <div class="container">
+        <div class="section-header gsap-reveal">
+          <div class="badge badge-status">Simulador Interactivo</div>
+          <h2>Calculadora de Ventas Recuperadas</h2>
+          <p>Descubrí cuánto dinero estás perdiendo por no responder consultas a tiempo en Mar del Plata y en cuánto tiempo se paga tu sistema.</p>
+        </div>
+        <div class="glass-panel calculator-box padding-lg gsap-reveal">
+          <div class="grid-2-cols gap-xl align-center">
+            <div class="calc-controls">
+              <label for="rubro-select" class="calc-label">Seleccioná tu Rubro Comercial:</label>
+              <select id="rubro-select" class="custom-select">
+                <option value="indumentaria">Showroom / Indumentaria / Calzado</option>
+                <option value="gastronomia">Gastronomía / Rotisería / Delivery</option>
+                <option value="estetica">Salud / Estética / Peluquería</option>
+                <option value="comercio">Ferretería / Minimarket / Comercio</option>
+              </select>
+
+              <label for="consultas-range" class="calc-label margin-top-md">
+                Consultas diarias por WhatsApp/Instagram: <strong id="consultas-val" class="text-gradient-blue">25</strong>
+              </label>
+              <input type="range" id="consultas-range" min="5" max="150" value="25" class="custom-range">
+
+              <label for="ticket-range" class="calc-label margin-top-md">
+                Ticket Promedio de Venta ($ ARS): <strong id="ticket-val" class="text-gradient-green">$ 25.000</strong>
+              </label>
+              <input type="range" id="ticket-range" min="5000" max="150000" step="5000" value="25000" class="custom-range">
+            </div>
+
+            <div class="calc-results glass-card text-center">
+              <h3>Estimación Mensual de Recupero</h3>
+              <div class="result-number text-gradient-green" id="recupero-monto">$ 187.500 ARS</div>
+              <p class="result-desc">Dinero adicional rescatado por atención automatizada 24/7 y tienda web autónoma.</p>
+              <div class="roi-badge margin-top-md">
+                ⚡ ¡El sistema se paga solo en <strong id="roi-dias">18 días</strong>!
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEMO BOT WHATSAPP -->
+    <section id="demo-bot" class="section-padding bg-secondary-glow">
+      <div class="container">
+        <div class="section-header gsap-reveal">
+          <div class="badge badge-location">Prueba en Vivo</div>
+          <h2>Interactuá con el Bot de IA de Nora AI</h2>
+          <p>Simulá una conversación real con nuestro bot para ver cómo atiende a tus clientes en Mar del Plata.</p>
+        </div>
+        <div class="bot-simulator-wrapper glass-panel gsap-reveal">
+          <div class="bot-header flex-between">
+            <div class="bot-info flex-align">
+              <span class="bot-avatar">🤖</span>
+              <div>
+                <strong>Nora AI — Asistente Marplatense</strong>
+                <small class="block text-muted">🟢 En línea • Respuesta instantánea</small>
+              </div>
+            </div>
+            <div class="bot-badge">Demo Mode</div>
+          </div>
+          <div class="bot-chat-body" id="chat-window">
+            <div class="bot-msg msg-received">
+              Hola! 👋 Soy la IA de Nora AI. ¿En qué puedo ayudarte hoy con tu negocio en Mar del Plata? Proba las opciones de abajo:
+            </div>
+          </div>
+          <div class="bot-quick-options flex-gap" id="bot-options">
+            <button class="opt-btn" onclick="simularChat('turnos')">📅 ¿Cómo agendás turnos?</button>
+            <button class="opt-btn" onclick="simularChat('precios')">💰 ¿Cuáles son los precios?</button>
+            <button class="opt-btn" onclick="simularChat('stock')">📦 ¿Cómo controlás stock?</button>
+            <button class="opt-btn" onclick="simularChat('demo')">🚀 Quiero una demo para mi local</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQS & COMPARATIVA -->
+    <section id="faqs" class="section-padding">
+      <div class="container">
+        <div class="section-header gsap-reveal">
+          <div class="badge badge-amber">Transparencia Total</div>
+          <h2>Preguntas Frecuentes & Manejo de Objeciones</h2>
+          <p>Todo lo que necesitás saber antes de dar el paso a la transformación digital de tu negocio en Mar del Plata.</p>
+        </div>
+
+        <div class="faqs-accordion-wrapper">
+          <div class="faq-item glass-card gsap-reveal-card">
+            <div class="faq-question flex-between" onclick="toggleFaq(this)">
+              <h4>¿La página web requiere pagar abono mensual obligatoriamente?</h4>
+              <i data-lucide="chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p><strong>No.</strong> A diferencia de otras agencias, la Página Web Profesional de Nora AI se abonará en 1 solo pago de desarrollo ($140k - $190k ARS) y la página queda <strong>100% a tu nombre sin abonos mensuales de mantenimiento obligatorios</strong>. Tu negocio es el único dueño de su presencia digital.</p>
+            </div>
+          </div>
+
+          <div class="faq-item glass-card gsap-reveal-card">
+            <div class="faq-question flex-between" onclick="toggleFaq(this)">
+              <h4>¿Puedo empezar a usar el Software POS sin costo de setup de entrada?</h4>
+              <i data-lucide="chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p><strong>Sí, totalmente.</strong> Diseñamos una oferta súper accesible: el Software POS de Gestión Comercial Estándar cuesta solo <strong>$22.000 ARS al mes sin ningún costo de inicio ni setup</strong>. Si más adelante querés modificaciones o módulos a medida para tu local, ahí sí te presupuestamos una versión personalizada.</p>
+            </div>
+          </div>
+
+          <div class="faq-item glass-card gsap-reveal-card">
+            <div class="faq-question flex-between" onclick="toggleFaq(this)">
+              <h4>¿En cuánto tiempo queda listo mi sitio web o bot de WhatsApp?</h4>
+              <i data-lucide="chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p>Trabajamos con plazos récord para comercios de Mar del Plata: la <strong>Página Web y el Bot de WhatsApp quedan 100% listos en 4 a 7 días hábiles</strong>. El menú QR gastronómico en solo 48 a 72 horas.</p>
+            </div>
+          </div>
+
+          <div class="faq-item glass-card gsap-reveal-card">
+            <div class="faq-question flex-between" onclick="toggleFaq(this)">
+              <h4>¿Es difícil de usar si no entiendo de computadoras?</h4>
+              <i data-lucide="chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p>Está pensado para que cualquier persona lo maneje sin conocimientos técnicos. El Bot opera solo en segundo plano y el sistema de gestión se opera con botones grandes e icónicos o lector de código de barras. Además te dejamos videos instructivos y capacitamos a tu equipo en 20 minutos.</p>
+            </div>
+          </div>
+
+          <div class="faq-item glass-card gsap-reveal-card">
+            <div class="faq-question flex-between" onclick="toggleFaq(this)">
+              <h4>¿Cómo se vincula el bot a mi número actual y a MercadoPago?</h4>
+              <i data-lucide="chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p>Conectamos la IA directamente a tu número de WhatsApp actual mediante escaneo QR oficial (sin cambiar de chip ni perder tus chats existentes) e integramos tu cuenta de MercadoPago para que las señas o cobros ingresen directamente a tu cuenta bancaria.</p>
+            </div>
+          </div>
+
+          <div class="faq-item glass-card gsap-reveal-card">
+            <div class="faq-question flex-between" onclick="toggleFaq(this)">
+              <h4>¿Tienen soporte técnico local en Mar del Plata?</h4>
+              <i data-lucide="chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p><strong>Sí.</strong> Somos una agencia 100% marplatense dedicada exclusivamente a comercios de la ciudad. Si tenés alguna duda o necesitás asistencia, te respondemos en minutos e incluso coordinamos visitas si tu negocio lo requiere.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabla Comparativa Visual -->
+        <div class="comparison-table-wrapper margin-top-xl gsap-reveal">
+          <h3 class="text-center margin-bottom-md">Tu Comercio Hoy vs. Tu Comercio con Nora AI</h3>
+          <div class="glass-panel overflow-auto">
+            <table class="custom-table">
+              <thead>
+                <tr>
+                  <th>Dimensión Comercial</th>
+                  <th>Comercio Tradicional (Sin Digitalizar)</th>
+                  <th>Comercio Digitalizado con Nora AI</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Horario de Atención</strong></td>
+                  <td>Solo cuando el local está abierto (8 hs/día)</td>
+                  <td><span class="badge badge-status">24 hs / 365 días al año</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Posicionamiento Local</strong></td>
+                  <td>Depende únicamente de la gente que pasa caminando</td>
+                  <td><span class="badge badge-location">Primeros en Google Mar del Plata (SEO)</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Atención por WhatsApp</strong></td>
+                  <td>Lenta, manual, mensajes acumulados fuera de hora</td>
+                  <td><span class="badge badge-status">Respuesta en 5 segundos con IA</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Cobro de Señas / Reservas</strong></td>
+                  <td>Esperar a que el cliente viaje al local a abonar</td>
+                  <td><span class="badge badge-amber">Cobro automático MercadoPago 1-Click</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Control de Stock & Caja</strong></td>
+                  <td>Cuadernos de papel propensos a faltantes y errores</td>
+                  <td><span class="badge badge-status">Sistema POS por Código de Barras</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Mantenimiento Web</strong></td>
+                  <td>Abonos mensuales obligatorios eternos</td>
+                  <td><span class="badge badge-status">Web 100% Tuya (Sin Abono)</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- COTIZADOR & CONTACTO -->
+    <section id="cotizador" class="section-padding bg-secondary-glow">
+      <div class="container">
+        <div class="section-header gsap-reveal">
+          <div class="badge badge-status">Auditoría Gratuita Mar del Plata</div>
+          <h2>Impulsá tu Comercio en Mar del Plata Hoy</h2>
+          <p>Recibí un análisis digital gratuito de tu negocio. Te mostramos exactamente dónde estás perdiendo ventas y cómo automatizar tu local en 7 días.</p>
+        </div>
+
+        <div class="glass-card form-container gsap-reveal">
+          <form id="audit-form" onsubmit="event.preventDefault(); enviarAuditoria();">
+            <div class="grid-2-cols gap-md">
+              <div class="form-group">
+                <label for="nombre">Nombre de tu Comercio / Marca</label>
+                <input type="text" id="nombre" required placeholder="Ej: Tienda Güemes / Pizzería Mogotes" class="custom-input">
+              </div>
+              <div class="form-group">
+                <label for="rubro">Rubro Comercial</label>
+                <input type="text" id="rubro" required placeholder="Ej: Indumentaria / Gastronomía / Estética" class="custom-input">
+              </div>
+            </div>
+            <div class="form-group margin-top-md">
+              <label for="whatsapp">Teléfono / WhatsApp de Contacto</label>
+              <input type="tel" id="whatsapp" required placeholder="Ej: 223 512 3456" class="custom-input">
+            </div>
+            <div class="form-group margin-top-md">
+              <label for="mensaje">¿Qué te gustaría mejorar o automatizar hoy?</label>
+              <textarea id="mensaje" rows="3" placeholder="Ej: Quiero vender por WhatsApp de noche o controlar stock de mi local..." class="custom-input"></textarea>
+            </div>
+            <button type="submit" class="btn btn-whatsapp btn-full margin-top-lg">
+              <i data-lucide="send"></i> Solicitar Auditoría Gratuita por WhatsApp
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FLOATING WHATSAPP TRIGGER -->
+  <a href="https://wa.me/5492230000000?text=Hola%20Nora%20AI,%20quisiera%20solicitar%20una%20auditor%C3%ADa%20gratuita%20para%20mi%20local%20en%20Mar%20del%20Plata" 
+     target="_blank" 
+     class="floating-whatsapp-btn" 
+     aria-label="Hablar por WhatsApp">
+    <div class="floating-badge">Respuesta &lt; 5s</div>
+    <i data-lucide="message-square"></i>
+  </a>
+
+  <!-- MODAL INTERACTIVO DE SERVICIO -->
+  <div class="modal-overlay" id="service-modal" onclick="cerrarModalServicio(event)">
+    <div class="modal-content glass-card" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="cerrarModalServicio()">&times;</button>
+      <div id="modal-body-content"></div>
+    </div>
+  </div>
+
+  <!-- FOOTER PREMIUM INSTITUCIONAL -->
+  <footer class="main-footer">
+    <div class="container text-center">
+      <p class="footer-brand">Nora <span class="text-gradient-blue">AI</span> — Agencia de Inteligencia Artificial & Desarrollo</p>
+      <p class="footer-tagline">🌊 Orgullosamente dedicado al crecimiento del comercio web de Mar del Plata, Argentina.</p>
+      
+      <div class="footer-badges flex-gap margin-top-sm" style="justify-content: center;">
+        <span class="badge badge-location">📍 100% Mar del Plata</span>
+        <span class="badge badge-status">⚡ Respuesta Inmediata</span>
+        <span class="badge badge-amber">🔒 Garantía de Calidad</span>
+      </div>
+
+      <div class="footer-links margin-top-md">
+        <a href="#hero">Inicio</a> • 
+        <a href="#manifiesto">Manifiesto MDP</a> • 
+        <a href="#servicios">Servicios 360°</a> • 
+        <a href="#portfolio">Proyectos MDP</a> • 
+        <a href="#calculadora">Calculadora ROI</a> • 
+        <a href="https://wa.me/5492230000000" target="_blank">WhatsApp Directo</a>
+      </div>
+      <p class="footer-copy margin-top-md">© 2026 Nora AI. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts: App Logic & Lucide Icons -->
+  <script src="app.js"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
+</file>
+
+<file path="robots.txt">
+# robots.txt para Nora AI — Agencia de IA en Mar del Plata
+User-agent: *
+Allow: /
+
+Sitemap: https://nora-ai.mdp.ar/sitemap.xml
+</file>
+
+<file path="sitemap.xml">
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:geo="http://www.google.com/geo/schemas/sitemap/1.0">
+  <url>
+    <loc>https://nora-ai.mdp.ar/</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://nora-ai.mdp.ar/#manifiesto</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nora-ai.mdp.ar/#servicios</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://nora-ai.mdp.ar/#portfolio</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://nora-ai.mdp.ar/#calculadora</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://nora-ai.mdp.ar/#demo-bot</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>
+</file>
+
+<file path="styles.css">
+/* ==========================================================================
+   NORA AI — AGENCIA DE INTELIGENCIA ARTIFICIAL & DESARROLLO (MAR DEL PLATA)
+   Full Component Styles & Layout Engine
+   ========================================================================== */
+
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap');
+
+:root {
+  /* Colors - Mar del Plata Coastal Tech Palette */
+  --bg-dark: #070a12;
+  --bg-dark-secondary: #0d1322;
+  --bg-card: rgba(15, 23, 42, 0.65);
+  --bg-card-hover: rgba(26, 38, 66, 0.75);
+  
+  --primary-blue: #3b82f6;
+  --primary-cyan: #06b6d4;
+  --primary-glow: rgba(59, 130, 246, 0.4);
+  
+  --whatsapp-green: #10b981;
+  --whatsapp-green-hover: #059669;
+  --whatsapp-glow: rgba(16, 185, 129, 0.4);
+  
+  --accent-amber: #f59e0b;
+  --accent-purple: #8b5cf6;
+  
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  
+  --border-glass: rgba(255, 255, 255, 0.1);
+  --border-glass-hover: rgba(96, 165, 250, 0.35);
+  --border-neon: rgba(59, 130, 246, 0.5);
+
+  /* Fonts */
+  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'Space Grotesk', monospace;
+
+  /* Layout & Spacing */
+  --container-max: 1280px;
+  --nav-height: 80px;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Base Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.6;
+  background: 
+    radial-gradient(circle at 15% 15%, rgba(59, 130, 246, 0.12) 0%, transparent 40%),
+    radial-gradient(circle at 85% 45%, rgba(16, 185, 129, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 50% 85%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+    var(--bg-dark);
+  background-attachment: fixed;
+  color: var(--text-main);
+}
+
+/* Typography Standards */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+}
+
+h1 { font-size: clamp(2.2rem, 3.8vw, 3.5rem); }
+h2 { font-size: clamp(1.8rem, 2.8vw, 2.6rem); }
+h3 { font-size: clamp(1.3rem, 1.8vw, 1.7rem); }
+p { color: var(--text-muted); font-size: 1.05rem; }
+a { color: inherit; text-decoration: none; }
+
+/* Layout Helpers */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.flex-between { display: flex; align-items: center; justify-content: space-between; }
+.flex-align { display: flex; align-items: center; gap: 0.75rem; }
+.flex-gap { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.flex-wrap { flex-wrap: wrap; }
+.grid-2-cols { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+.grid-3-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.grid-hero { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 3rem; align-items: center; }
+
+.text-center { text-align: center; }
+.font-weight-bold { font-weight: 700; }
+.margin-top-xs { margin-top: 0.5rem; }
+.margin-top-sm { margin-top: 1rem; }
+.margin-top-md { margin-top: 1.5rem; }
+.margin-top-lg { margin-top: 2rem; }
+.margin-top-xl { margin-top: 3rem; }
+.margin-bottom-xs { margin-bottom: 0.5rem; }
+.margin-bottom-sm { margin-bottom: 1rem; }
+.margin-bottom-md { margin-bottom: 1.5rem; }
+.margin-bottom-lg { margin-bottom: 2rem; }
+.gap-md { gap: 1.5rem; }
+.gap-lg { gap: 2rem; }
+.gap-xl { gap: 3rem; }
+.padding-md { padding: 1.5rem; }
+.padding-lg { padding: 2.5rem; }
+.block { display: block; }
+.overflow-auto { overflow-x: auto; }
+
+/* Gradient Text */
+.text-gradient-blue {
+  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.text-gradient-green {
+  background: linear-gradient(135deg, #34d399 0%, #10b981 50%, #059669 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.text-gradient-amber {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Header & Glass Nav */
+.glass-nav-container {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 3rem);
+  max-width: var(--container-max);
+  height: 64px;
+  background: rgba(13, 19, 34, 0.75);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-full);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.logo-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.4rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.nav-links a.active, .nav-links a:hover {
+  color: var(--primary-blue);
+  transition: color var(--transition-fast);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--text-main);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.mobile-menu-dropdown {
+  display: none;
+  position: absolute;
+  top: 72px;
+  left: 0;
+  right: 0;
+  background: rgba(13, 19, 34, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mobile-menu-dropdown.active {
+  display: flex;
+}
+
+/* Floating WhatsApp Button (Punto 9) */
+.floating-whatsapp-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  box-shadow: 0 8px 30px rgba(16, 185, 129, 0.5);
+  z-index: 1500;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.floating-whatsapp-btn:hover {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 12px 40px rgba(16, 185, 129, 0.8);
+}
+
+.floating-badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: #34d399;
+  color: #042f2e;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Glassmorphism Cards */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid var(--border-glass);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-md);
+}
+
+.glass-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid var(--border-glass);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal), background var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-glass-hover);
+  background: var(--bg-card-hover);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 25px rgba(59, 130, 246, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge-location { background: rgba(59, 130, 246, 0.12); border: 1px solid rgba(59, 130, 246, 0.3); color: #60a5fa; }
+.badge-status { background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.3); color: #34d399; }
+.badge-amber { background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.3); color: #fbbf24; }
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #34d399;
+  box-shadow: 0 0 10px #34d399;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(52, 211, 153, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1.75rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  border: none;
+}
+
+.btn-sm { padding: 0.5rem 1.25rem; font-size: 0.9rem; }
+.btn-full { width: 100%; }
+
+.btn-primary {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 20px var(--primary-glow);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(59, 130, 246, 0.6); }
+
+.btn-whatsapp {
+  background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 20px var(--whatsapp-glow);
+}
+.btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(16, 185, 129, 0.6); }
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-main);
+  border: 1px solid var(--border-glass);
+  backdrop-filter: blur(10px);
+}
+.btn-secondary:hover { background: rgba(255, 255, 255, 0.12); border-color: rgba(255, 255, 255, 0.25); transform: translateY(-2px); }
+
+/* Typing Indicator Animation */
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  width: fit-content;
+  padding: 0.75rem 1.25rem;
+}
+
+.typing-indicator .dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--text-muted);
+  border-radius: 50%;
+  animation: typingBounce 1.4s infinite ease-in-out both;
+}
+
+.typing-indicator .dot:nth-child(1) { animation-delay: -0.32s; }
+.typing-indicator .dot:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes typingBounce {
+  0%, 80%, 100% { transform: scale(0); opacity: 0.4; }
+  40% { transform: scale(1); opacity: 1; }
+}
+
+/* Portfolio Filters */
+.filter-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-glass);
+  color: var(--text-muted);
+  padding: 0.5rem 1.25rem;
+  border-radius: var(--radius-full);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.filter-btn:hover, .filter-btn.active {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: var(--primary-blue);
+  color: var(--text-main);
+}
+
+/* Hero Section */
+.hero-section {
+  padding-top: 10rem;
+  padding-bottom: 6rem;
+  position: relative;
+}
+
+.hero-lead {
+  margin: 1.5rem 0 2rem 0;
+  font-size: 1.2rem;
+  max-width: 640px;
+}
+
+.hero-cta-group {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+.hero-stats-row {
+  margin-top: 2rem;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 1.25rem 1rem;
+}
+
+.stat-number {
+  font-size: 2.2rem;
+  font-weight: 800;
+  font-family: var(--font-heading);
+  display: block;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Manifesto Cards */
+.manifesto-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.card-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-glass);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+/* Chat Visual Preview */
+.chat-preview-box {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.chat-msg {
+  padding: 1rem 1.25rem;
+  border-radius: 18px;
+  font-size: 0.95rem;
+  max-width: 88%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.msg-user {
+  background: rgba(59, 130, 246, 0.2);
+  border: 1px solid rgba(59, 130, 246, 0.4);
+  align-self: flex-start;
+  color: #e2e8f0;
+}
+
+.msg-bot {
+  background: rgba(16, 185, 129, 0.2);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  align-self: flex-end;
+  color: #f1f5f9;
+}
+
+.chat-msg .time {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  align-self: flex-end;
+}
+
+/* Sections */
+.section-padding { padding: 6rem 0; }
+.bg-secondary-glow { background: rgba(13, 19, 34, 0.4); }
+
+.section-header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 4rem auto;
+}
+.section-header p { margin-top: 1rem; font-size: 1.15rem; }
+
+/* Service Cards & Modals */
+.service-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  cursor: pointer;
+}
+
+.service-tag {
+  align-self: flex-start;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--primary-cyan);
+}
+
+.service-icon {
+  font-size: 2.2rem;
+  color: var(--primary-blue);
+}
+
+.service-features {
+  list-style: none;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.service-features li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+  color: var(--text-main);
+}
+
+.service-features i { color: var(--whatsapp-green); width: 18px; }
+
+.featured-service {
+  border-color: rgba(245, 158, 11, 0.4);
+  background: rgba(245, 158, 11, 0.05);
+}
+
+/* Modal Overlay & Card */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(7, 10, 18, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-content {
+  max-width: 640px;
+  width: 100%;
+  position: relative;
+  padding: 2.5rem;
+  border-color: var(--primary-blue);
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1.25rem;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.modal-close:hover { color: var(--text-main); }
+
+/* Portfolio Showcase */
+.portfolio-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.portfolio-location {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.35rem;
+}
+
+.portfolio-desc { font-size: 0.95rem; margin-top: 0.75rem; }
+.portfolio-metric { font-weight: 700; font-size: 0.9rem; }
+
+/* Calculator */
+.calc-label {
+  display: block;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.custom-select, .custom-input {
+  width: 100%;
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--radius-sm);
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid var(--border-glass);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  outline: none;
+}
+
+.custom-select:focus, .custom-input:focus {
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+}
+
+.custom-range {
+  width: 100%;
+  accent-color: var(--primary-blue);
+  cursor: pointer;
+}
+
+.result-number {
+  font-size: 2.8rem;
+  font-weight: 900;
+  font-family: var(--font-heading);
+  margin: 1rem 0;
+}
+
+.roi-badge {
+  display: inline-block;
+  padding: 0.5rem 1.25rem;
+  border-radius: var(--radius-full);
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #34d399;
+  font-weight: 700;
+}
+
+/* Bot Simulator */
+.bot-simulator-wrapper {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.bot-header {
+  border-bottom: 1px solid var(--border-glass);
+  padding-bottom: 1rem;
+}
+
+.bot-avatar { font-size: 2rem; }
+
+.bot-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+  background: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.bot-chat-body {
+  height: 320px;
+  overflow-y: auto;
+  padding: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.bot-msg {
+  max-width: 80%;
+  padding: 0.85rem 1.25rem;
+  border-radius: 16px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.msg-received {
+  background: rgba(30, 41, 59, 0.9);
+  border: 1px solid var(--border-glass);
+  align-self: flex-start;
+}
+
+.msg-sent {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  color: #ffffff;
+  align-self: flex-end;
+}
+
+.opt-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-glass);
+  color: var(--text-main);
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.opt-btn:hover {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: var(--primary-blue);
+}
+
+/* FAQs & Comparison Table */
+.faqs-accordion-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.faq-question {
+  cursor: pointer;
+  user-select: none;
+}
+
+.faq-answer {
+  display: none;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-glass);
+}
+
+.faq-item.active .faq-answer { display: block; }
+.faq-item.active .faq-question i { transform: rotate(180deg); }
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.custom-table th, .custom-table td {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.custom-table th {
+  background: rgba(15, 23, 42, 0.9);
+  color: var(--text-main);
+  font-family: var(--font-heading);
+}
+
+/* Form Container */
+.form-container {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* Footer */
+.main-footer {
+  padding: 4rem 0 2rem 0;
+  border-top: 1px solid var(--border-glass);
+  background: #04070d;
+}
+
+.footer-brand { font-size: 1.25rem; font-weight: 800; }
+.footer-tagline { font-size: 0.95rem; color: var(--text-muted); margin-top: 0.35rem; }
+.footer-links a { color: var(--text-muted); margin: 0 0.5rem; font-size: 0.9rem; }
+.footer-links a:hover { color: var(--primary-blue); }
+.footer-copy { font-size: 0.8rem; color: var(--text-dim); }
+
+/* Responsive Breakpoints */
+@media (max-width: 992px) {
+  .grid-hero { grid-template-columns: 1fr; }
+  .grid-3-cols { grid-template-columns: repeat(2, 1fr); }
+  .desktop-only { display: none !important; }
+  .mobile-menu-btn { display: block; }
+}
+
+@media (max-width: 640px) {
+  .grid-2-cols, .grid-3-cols { grid-template-columns: 1fr; }
+  .hero-section { padding-top: 7rem; }
+  .hero-cta-group { flex-direction: column; }
+  .btn { width: 100%; }
+}
+</file>
+
+</files>

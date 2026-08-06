@@ -1,0 +1,5 @@
+# robots.txt para Naro AI — Agencia de IA en Mar del Plata
+User-agent: *
+Allow: /
+
+Sitemap: https://naro-ai.mdp.ar/sitemap.xml

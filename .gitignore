@@ -1,0 +1,17 @@
+# Python
+scripts/__pycache__/
+__pycache__/
+
+# Datos pesados / internos de prospección
+data/
+*.zip
+*.xlsx
+*.csv
+
+# Node
+node_modules/
+package-lock.json
+
+# Sistema
+.DS_Store
+Thumbs.db
