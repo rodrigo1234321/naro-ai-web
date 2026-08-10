@@ -187,11 +187,14 @@ const detallesServicios = {
     precio: "VERSIÓN ESTÁNDAR: $ 0 Setup (Solo Abono Mensual) | A MEDIDA: $180.000 - $260.000 ARS",
     abono: "$ 22.000 ARS / mes (Versión Estándar Lista para Usar)",
     tiempo: "Activación Inmediata (Estándar) / 5 días (A Medida)",
+    demoLiveUrl: "https://control-comercio-kappa.vercel.app/",
     detalles: [
       "Versión Estándar: Comenzá hoy mismo solo pagando el abono mensual de $22.000 ARS.",
-      "Control de Stock por talle, color o lector de código de barras.",
+      "Control de Stock en tiempo real (entradas, salidas y alertas automáticas de reposición).",
+      "Punto de Venta (POS) ultra rápido para efectivo, tarjetas y transferencias.",
       "Cuentas corrientes, fiados y caja diaria sin libretas de papel.",
-      "Actualización masiva de precios por porcentaje en 1 clic.",
+      "Reportes automáticos de ventas y ganancias reales según precio de costo.",
+      "Asistente con Inteligencia Artificial integrado para consultas de stock y ventas.",
       "Desarrollo a Medida disponible si requerís módulos custom o integraciones específicas."
     ]
   },
@@ -254,6 +257,12 @@ function abrirModalServicio(tipo) {
       ${info.detalles.map(d => `<li><i data-lucide="check-circle-2"></i> ${d}</li>`).join('')}
     </ul>
 
+    ${info.demoLiveUrl ? `
+      <a href="${info.demoLiveUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-full margin-bottom-sm">
+        <i data-lucide="external-link"></i> ⚡ Probar Demo Gratis en Vivo (Sin Registro)
+      </a>
+    ` : ''}
+
     <a href="https://wa.me/${WHATSAPP_NUM}?text=Hola%20Naro%20AI,%20me%20interesa%20contratar%20el%20servicio:%20${encodeURIComponent(info.titulo)}" target="_blank" class="btn btn-whatsapp btn-full">
       <i data-lucide="message-square"></i> Solicitar este Servicio por WhatsApp
     </a>
@@ -282,12 +291,12 @@ const proyectosMDP = [
     categoria: "industrial",
     rubro: "Sistema POS & Gestión de Comercio",
     ubicación: "Mar del Plata",
-    urlDisplay: "control-comercio-weld.vercel.app",
-    desc: "Plataforma completa de gestión para comercios: control de stock por código de barras, fiados, caja diaria y actualización masiva de precios.",
-    linkLive: "https://control-comercio-weld.vercel.app",
+    urlDisplay: "control-comercio-kappa.vercel.app",
+    desc: "Plataforma completa de gestión para comercios de Argentina: control de stock en tiempo real, punto de venta (POS), fiados/cuentas corrientes, reportes de ganancias y asistente con IA.",
+    linkLive: "https://control-comercio-kappa.vercel.app/",
     badge: "SaaS Live",
-    metrica: "Control de Caja & Stock 24/7",
-    features: ["Lector Código de Barras", "Gestión de Fiados", "Actualización Masiva %"]
+    metrica: "Control de Caja, Stock & IA 24/7",
+    features: ["Punto de Venta POS", "Cuentas Corrientes / Fiado", "Asistente Comercial con IA"]
   },
   {
     id: "lucky-detail",
