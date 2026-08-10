@@ -68,8 +68,20 @@ function main() {
     process.exit(1);
   }
 
+  const demosDir = path.join(PUBLIC_DIR, "demos");
+  const demosBackup = path.join(ROOT, "temp_demos_backup");
+
+  if (fs.existsSync(demosDir)) {
+    copyDir(demosDir, demosBackup);
+  }
+
   fs.rmSync(PUBLIC_DIR, { recursive: true, force: true });
   fs.mkdirSync(PUBLIC_DIR, { recursive: true });
+
+  if (fs.existsSync(demosBackup)) {
+    copyDir(demosBackup, demosDir);
+    fs.rmSync(demosBackup, { recursive: true, force: true });
+  }
 
   const pages = [];
   for (const file of listHtml(RAW_DIR)) {

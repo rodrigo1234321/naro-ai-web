@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { getRubro, FONT_STACKS } from './config/rubros.js'
 import { Icon, Reveal, CountUp } from './ui.jsx'
