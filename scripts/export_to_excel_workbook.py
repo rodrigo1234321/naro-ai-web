@@ -305,7 +305,23 @@ def create_excel_workbook():
                     max_len = len(val)
             ws.column_dimensions[col_letter].width = min(max(max_len + 3, 12), 50)
 
-    # 2. Hoja: 🔥 Leads Calientes
+    # 2. Hoja Prioridad #1: 🚀 PRIMEROS 100 LEADS (Con Test A/B/C y Scripts Personalizados)
+    abc_csv = os.path.join(data_dir, "primeros_100_locales_fisicos_outreach.csv")
+    if os.path.exists(abc_csv):
+        df_top100 = pd.read_csv(abc_csv, encoding="utf-8-sig", dtype=str)
+        for col in ["telefono", "whatsapp"]:
+            if col in df_top100.columns:
+                df_top100[col] = df_top100[col].apply(clean_phone_str)
+    else:
+        excl_kw = ["cabaña", "cabana", "alquiler", "hotel", "hospedaje", "turismo", "temporada", "complejo", "apart"]
+        mask_excl = df_prospects["nombre"].str.lower().str.contains("|".join(excl_kw), na=False) | (df_prospects["sector"] == "Turismo y Alojamiento")
+        df_physical_only = df_prospects[~mask_excl & df_prospects["whatsapp"].notna() & (df_prospects["whatsapp"] != "")].copy()
+        df_top100 = df_physical_only.sort_values(by="puntaje_oportunidad", ascending=False).head(100).copy()
+
+    print(f"Generando hoja prioridad #1: 🚀 PRIMEROS 100 LEADS [Con Test A/B/C] ({len(df_top100)} registros)...")
+    add_df_to_sheet(wb, "🚀 PRIMEROS 100 LEADS", df_top100, is_hot=True)
+
+    # 3. Hoja: 🔥 Leads Calientes
     df_hot = df_prospects[df_prospects["prioridad"].str.contains("ALTA", na=False)].copy()
     print(f"Generando hoja: 🔥 Leads Calientes ({len(df_hot)} registros)...")
     add_df_to_sheet(wb, "🔥 Leads Calientes", df_hot, is_hot=True)

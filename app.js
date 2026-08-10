@@ -334,9 +334,9 @@ const proyectosMDP = [
     categoria: "industrial",
     rubro: "Refrigeración Industrial & Naval",
     ubicación: "Puerto de Mar del Plata",
-    urlDisplay: "rodrigo1234321.github.io/ms-refrigeracion",
+    urlDisplay: "rodrigo1234321.github.io/ms-refrigeracion-web",
     desc: "Plataforma institucional corporativa con catálogo de servicios navales, auditoría de clientes y formularios de cotización inmediata.",
-    linkLive: "https://rodrigo1234321.github.io/ms-refrigeracion/",
+    linkLive: "https://rodrigo1234321.github.io/ms-refrigeracion-web/",
     badge: "Industrial / Naval",
     metrica: "Líder Sector Puerto",
     features: ["Cotizador Industrial", "Ficha Técnica Naval", "Soporte 24/7 Puerto"]
@@ -347,9 +347,9 @@ const proyectosMDP = [
     categoria: "industrial",
     rubro: "Automatización & Afiliación e-Commerce",
     ubicación: "Mar del Plata",
-    urlDisplay: "rodrigo1234321.github.io/ml-afiliados",
+    urlDisplay: "rodrigo1234321.github.io/meliafiliados",
     desc: "Motor de automatización y métricas en tiempo real para campañas de afiliación y ventas e-commerce multicanal.",
-    linkLive: "https://rodrigo1234321.github.io/ml-afiliados/",
+    linkLive: "https://rodrigo1234321.github.io/meliafiliados/",
     badge: "IA & Automatización",
     metrica: "Motor High Conversion",
     features: ["Tracking de Afiliados", "Métricas en Tiempo Real", "Carga Ultra Rápida"]

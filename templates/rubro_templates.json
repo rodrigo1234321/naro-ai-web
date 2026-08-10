@@ -1,0 +1,183 @@
+{
+  "Salud y Estética": {
+    "icon": "🏥",
+    "color_palette": {
+      "primary": "#0e7490",
+      "secondary": "#06b6d4",
+      "accent": "#10b981",
+      "dark_bg": "#0f172a",
+      "surface": "rgba(15, 23, 42, 0.8)",
+      "text": "#f8fafc"
+    },
+    "hero_style": "Trust & Clinical Excellence with Glassmorphic Floating Appointment Card",
+    "key_sections": [
+      "NAVBAR: Logo + Especialidades + Ubicación + CTA Turnos Directos",
+      "HERO: Titular de Confianza + Agendador de Turnos 24/7 por WhatsApp + Insignias de Acreditación",
+      "ESPECIALIDADES: Grid 3x2 con tarjetas hover elevadas e iconos SVG limpios",
+      "POR QUÉ ELEGIRNOS: 4 beneficios clave (Sin espera, Atención 24/7, Recordatorio automático, Excelencia médica)",
+      "PROCESO DE ATENCIÓN: 3 pasos simples (1. Elegí especialidad -> 2. Agendá por WhatsApp -> 3. Confirmá seña)",
+      "UBICACIÓN & HORARIOS: Mapa interactivo / Card de dirección + Horarios de atención",
+      "CTA FINAL: Banner traslúcido con WhatsApp flotante y botón directo"
+    ],
+    "components": [
+      "Botón WhatsApp Flotante con pulso verde",
+      "Formulario de Agendamiento que compone el mensaje de WhatsApp automáticamente",
+      "Contadores animados de experiencia / pacientes atendidos"
+    ]
+  },
+  "Gastronomía": {
+    "icon": "🍕",
+    "color_palette": {
+      "primary": "#e11d48",
+      "secondary": "#f97316",
+      "accent": "#eab308",
+      "dark_bg": "#121216",
+      "surface": "rgba(24, 24, 28, 0.85)",
+      "text": "#fafafa"
+    },
+    "hero_style": "Gastronomic Appetite-Appeal with Kinetic Mesh Gradient & Instant Order Badge",
+    "key_sections": [
+      "NAVBAR: Marca + Carta/Menú + Promos + Botón 'Pedir por WhatsApp'",
+      "HERO: Fotos tentadoras + Titular de Sabor & Tradición + CTA de Pedido Inmediato",
+      "CARTA / PRODUCTOS DESTACADOS: Pestañas interactivas (Pizzas, Empanadas, Picadas, Cervezas, Pastas)",
+      "PROMOS Y COMBOS: Tarjetas destacadas con badges de descuento",
+      "EXPERIENCIA & CULTURA LOCAL: Reseña de ingredientes frescos de Mar del Plata",
+      "ZONA DE DELIVERY / LOCAL: Mapa + Cobertura de envíos + Horarios",
+      "FOOTER & WHATSAPP: Botón flotante para pedidos instantáneos"
+    ],
+    "components": [
+      "Selector de Categorías de Menú con filtro instantáneo",
+      "Calculador/Cotizador rápido de pedido hacia WhatsApp",
+      "Badge de 'Abierto Ahora / Envíos a Domicilio'"
+    ]
+  },
+  "Inmobiliarias": {
+    "icon": "🏠",
+    "color_palette": {
+      "primary": "#2563eb",
+      "secondary": "#3b82f6",
+      "accent": "#f59e0b",
+      "dark_bg": "#090d16",
+      "surface": "rgba(15, 23, 42, 0.85)",
+      "text": "#f1f5f9"
+    },
+    "hero_style": "Premium Real Estate Search Hero with Dynamic Filter Bar",
+    "key_sections": [
+      "NAVBAR: Marca + Alquileres + Ventas + Valoración + Contacto WhatsApp",
+      "HERO: Buscador interactivo de propiedades + Frase de confianza patrimonial",
+      "CATÁLOGO DESTACADO: Cards de propiedades con fotos, ambientes, metros2 y precio",
+      "SERVICIOS: Tasaciones, Administración de Alquileres, Asesoramiento Legal",
+      "POR QUÉ ELEGIRNOS: Trayectoria en Mar del Plata + Calificación 24/7 por WhatsApp",
+      "UBICACIÓN DE OFICINA: Dirección, horarios de atención y teléfono directo",
+      "CONTACTO RÁPIDO: Botón directo para enviar solicitud de búsqueda por WhatsApp"
+    ],
+    "components": [
+      "Filtro interactivo de propiedades (Alquiler / Venta / Temporada)",
+      "Ficha modal / expandible de propiedad con specs",
+      "Formulario inteligente de tasación rápida a WhatsApp"
+    ]
+  },
+  "Turismo y Hoteles": {
+    "icon": "🏨",
+    "color_palette": {
+      "primary": "#0d9488",
+      "secondary": "#14b8a6",
+      "accent": "#f59e0b",
+      "dark_bg": "#0b1319",
+      "surface": "rgba(18, 30, 39, 0.85)",
+      "text": "#f0fdf4"
+    },
+    "hero_style": "Resort & Travel Escape Hero with Parallax Background and Availability Check",
+    "key_sections": [
+      "NAVBAR: Marca + Cabañas/Habitaciones + Servicios + Tarifas + WhatsApp Reservas",
+      "HERO: Banner de descanso y playa + Consultador de Disponibilidad 24/7 por WhatsApp",
+      "CABAÑAS / HABITACIONES: Galería deslizable con comodidades (WiFi, Parrilla, Estacionamiento, Pileta)",
+      "SERVICIOS INCLUIDOS: Grid de amenities con SVGs informativos",
+      "ENTORNO & UBICACIÓN: Cercanía a la playa y atracciones de Mar del Plata / Sierra de los Padres",
+      "RESEÑAS DE HUÉSPEDES: Slider o grid de testimonios reales de Google/Booking",
+      "CONTACTO DIRECTO: Botón de reserva inmediata sin comisiones por WhatsApp"
+    ],
+    "components": [
+      "Selector de fechas / huéspedes que arma el mensaje de reserva para WhatsApp",
+      "Galería interactiva con lightbox de imágenes",
+      "Badge de 'Reserva Directa = Mejor Precio Garantizado'"
+    ]
+  },
+  "Automotriz y Servicios": {
+    "icon": "🚗",
+    "color_palette": {
+      "primary": "#dc2626",
+      "secondary": "#ea580c",
+      "accent": "#fbbf24",
+      "dark_bg": "#121214",
+      "surface": "rgba(24, 24, 27, 0.9)",
+      "text": "#fafafa"
+    },
+    "hero_style": "High-Performance Automotive Hero with Service Selector & Instant Quote",
+    "key_sections": [
+      "NAVBAR: Marca + Servicios + Cotizar + Ubicación + WhatsApp Directo",
+      "HERO: Fondo oscuro técnico + Selector de Servicio (Lavado, Detailing, Mecánica) + Cotizador",
+      "SERVICIOS DESTACADOS: Cards elevadas con tiempo estimado y qué incluye",
+      "POR QUÉ ELEGIRNOS: Rapidez, Insumos Premium, Garantía de Trabajo",
+      "GALERÍA ANTES Y DESPUÉS: Slider interactivo de resultados en vehículos",
+      "UBICACIÓN & TURNOS: Dirección con acceso a Google Maps + Horarios",
+      "CTA FINAL: Solicitá tu turno por WhatsApp en 1 clic"
+    ],
+    "components": [
+      "Cotizador express de servicio automotriz hacia WhatsApp",
+      "Comparador de planes (Lavado Simple vs Detailing Premium)",
+      "Botón WhatsApp con mensaje pre-cargado de consulta de turno"
+    ]
+  },
+  "Showrooms e Indumentaria": {
+    "icon": "🛒",
+    "color_palette": {
+      "primary": "#ec4899",
+      "secondary": "#a855f7",
+      "accent": "#f43f5e",
+      "dark_bg": "#180f1a",
+      "surface": "rgba(30, 18, 33, 0.85)",
+      "text": "#fdf4ff"
+    },
+    "hero_style": "Trendy Fashion Grid Hero with Instagram Vibe & VIP Order Button",
+    "key_sections": [
+      "NAVBAR: Marca + Colección + Tendencias + Showroom Físico + WhatsApp VIP",
+      "HERO: Banner de Moda y Tendencias + Acceso directo al Catálogo por WhatsApp",
+      "COLECCIÓN DESTACADA: Grid estilo Instagram con prendas de temporada, talles y colores",
+      "CÓMO COMPRAR: 3 pasos (1. Mirá el catálogo -> 2. Consultá stock por WhatsApp -> 3. Coordiná retiro o envío)",
+      "ENVÍOS & SHOWROOM: Dirección del showroom en MDP + Envíos a todo el país",
+      "INSTAGRAM FEED & TESTIMONIOS: Fotos de clientas reales luciendo los outfits",
+      "CTA WHATSAPP: Botón flotante para atención personalizada de stock"
+    ],
+    "components": [
+      "Grid interactivo de prendas con badges de 'Stock Disponible'",
+      "Filtro por Talle / Categoría",
+      "Link directo a WhatsApp consultando por la prenda seleccionada"
+    ]
+  },
+  "Comercio General & Minorista": {
+    "icon": "🏬",
+    "color_palette": {
+      "primary": "#4f46e5",
+      "secondary": "#6366f1",
+      "accent": "#10b981",
+      "dark_bg": "#0f172a",
+      "surface": "rgba(15, 23, 42, 0.85)",
+      "text": "#f8fafc"
+    },
+    "hero_style": "Local Business Ecosystem Hero with Direct WhatsApp Contact & Catalog",
+    "key_sections": [
+      "NAVBAR: Marca + Productos/Servicios + Por Qué Elegirnos + Contacto Directo",
+      "HERO: Titular de Comercio Local + Valor Agregado + CTA de Consulta Inmediata",
+      "PRODUCTOS / SERVICIOS PRINCIPALES: Cards con íconos vectoriales y descripción clara",
+      "ATENCIÓN Y VELOCIDAD: Respuesta inmediata por WhatsApp 24/7",
+      "UBICACIÓN & MAPA: Dirección exacta en Mar del Plata con link a Google Maps",
+      "FOOTER CON DATOS ÚTILES: CUIT, dirección, horarios, redes y WhatsApp"
+    ],
+    "components": [
+      "Botón WhatsApp Flotante animado",
+      "Formulario de consulta directa",
+      "Integración de mapa interactivo"
+    ]
+  }
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hub de Demos — Naro AI | Mar del Plata</title>
+<meta name="description" content="Hub central de las 8 plantillas de demo de Naro AI para prospección comercial en Mar del Plata. Cada demo se personaliza con nombre, teléfono, dirección y mensaje de WhatsApp por URL.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#05060b;--bg-2:#0a0c16;--surface:rgba(255,255,255,.05);--border:rgba(255,255,255,.1);
+  --text:#f2f4fb;--sub:#97a0bd;--primary:#4f46e5;--primary-2:#7c3aed;--accent:#22d3ee;--wa:#25d366;
+  --radius:18px;--font-h:'Space Grotesk',sans-serif;--font-b:'Inter',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:var(--font-b);min-height:100vh}
+::selection{background:var(--primary);color:#fff}
+header{padding:70px clamp(20px,5vw,80px) 30px;text-align:center}
+header .badge{display:inline-block;background:rgba(34,211,238,.12);border:1px solid rgba(34,211,238,.3);color:var(--accent);font-size:12px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;padding:7px 14px;border-radius:999px;margin-bottom:20px}
+h1{font-family:var(--font-h);font-size:clamp(1.9rem,4vw,2.8rem);letter-spacing:-.6px;margin-bottom:12px}
+h1 span{background:linear-gradient(92deg,var(--primary),var(--primary-2),var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+header p{color:var(--sub);font-size:15.5px;max-width:640px;margin:0 auto;line-height:1.65}
+main{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px;padding:40px clamp(20px,5vw,80px);max-width:1200px;margin:0 auto}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:26px;text-decoration:none;color:var(--text);display:flex;flex-direction:column;gap:12px;transition:transform .3s ease,border-color .3s ease;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.card:hover{transform:translateY(-6px);border-color:var(--accent)}
+.card .icon{width:54px;height:54px;border-radius:14px;display:grid;place-items:center;font-size:26px;background:linear-gradient(135deg,var(--primary),var(--primary-2))}
+.card h3{font-family:var(--font-h);font-size:1.15rem}
+.card p{font-size:13.5px;color:var(--sub);line-height:1.6;flex:1}
+.card .meta{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--sub);border-top:1px solid var(--border);padding-top:14px}
+.card .meta b{color:var(--accent);font-weight:700}
+.card .go{color:var(--accent);font-weight:700;font-size:13px}
+.card .cat{font-size:11px;color:var(--sub)}
+footer{padding:30px clamp(20px,5vw,80px);text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);margin-top:20px}
+.tpl-param{display:block;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:10px;padding:10px 12px;font-size:11.5px;color:var(--sub);font-family:monospace;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@media (max-width:640px){header{padding:50px 20px 20px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="badge">Naro AI · Prospección comercial</div>
+  <h1>Hub de demos <span>Mar del Plata</span></h1>
+  <p>8 plantillas interactivas para mostrar a los primeros 100 leads. Cada demo se personaliza con URL params: nombre, teléfono, dirección y mensaje de WhatsApp.</p>
+</header>
+
+<main id="grid"></main>
+
+<footer>
+  Plantillas generadas con el estándar world-class-landings · Más info en <b>demos/README.md</b>
+</footer>
+
+<script>
+const templates = [
+  { id: "regaleria-souvenirs",   icon: "🎁", name: "Regalerías y Souvenirs",    desc: "Regalerías, souvenirs, cotillón, peluches, bijou y decoración. Catálogo + pedidos por WhatsApp.",          cat: "Comercio General", kb: "22.1" },
+  { id: "showroom-indumentaria", icon: "👗", name: "Showrooms de Indumentaria", desc: "Showrooms, moda y ropa por Instagram. Catálogo de prendas + consultas y ventas por WhatsApp.",            cat: "Showrooms",          kb: "23.1" },
+  { id: "salud-estetica",        icon: "🩺", name: "Salud y Estética",          desc: "Consultorios, clínicas y centros de estética. Agendador de turnos 24/7 + seña por MercadoPago + recordatorios.", cat: "Salud",              kb: "22.8" },
+  { id: "delivery-gastronomia",  icon: "🍕", name: "Delivery y Gastronomía",    desc: "Restaurantes, rotiserías y delivery. Menú digital con fotos + pedidos que caen directo a la comandera.",     cat: "Comida",             kb: "24.9" },
+  { id: "imprenta-sublimados",   icon: "🖨️", name: "Imprentas y Sublimados",    desc: "Imprentas, sublimados y serigrafías. Cotizador automático por WhatsApp + catálogo + seguimiento.",          cat: "Servicios",          kb: "24.7" },
+  { id: "automotriz-servicios",  icon: "🔧", name: "Automotriz y Servicios",    desc: "Talleres, lavaderos y gomerías. Turnos + presupuestos automáticos + recordatorios por WhatsApp.",          cat: "Automotriz",         kb: "22.7" },
+  { id: "vinoteca-bebidas",      icon: "🍷", name: "Vinotecas y Bebidas",       desc: "Vinotecas y distribuidoras. Catálogo de etiquetas + maridaje automático + pedidos por WhatsApp.",          cat: "Bebidas",            kb: "24.0" },
+  { id: "generica-premium",      icon: "✨", name: "Genérica Premium",          desc: "Plantilla multirubro de reserva para cualquier negocio. Web + bot WhatsApp 24/7 + catálogo.",                cat: "Multirubro",         kb: "19.2" }
+];
+
+const grid = document.getElementById("grid");
+templates.forEach(t => {
+  const base = "demo-param-base";
+  const el = document.createElement("a");
+  el.className = "card";
+  el.href = t.id + "/index.html";
+  el.target = "_blank";
+  el.innerHTML =
+    '<div class="icon">' + t.icon + '</div>' +
+    '<h3>' + t.name + '</h3>' +
+    '<p>' + t.desc + '</p>' +
+    '<div class="tpl-param">' + t.id + '/index.html?n=&t=&d=&w=</div>' +
+    '<div class="meta"><span class="cat">' + t.cat + '</span><b>' + t.kb + ' kb</b><span class="go">Abrir demo →</span></div>';
+  grid.appendChild(el);
+});
+</script>
+</body>
+</html>

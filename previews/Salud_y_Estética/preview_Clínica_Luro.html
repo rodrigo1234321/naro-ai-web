@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica Luro | Consultorios y Salud Integral en Mar del Plata</title>
+    <meta name="description" content="Clínica Luro - Página Web + Agendador Automatizado de Turnos por WhatsApp. Reservas y consultas por WhatsApp.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #0e7490;
+            --secondary: #06b6d4;
+            --accent: #10b981;
+            --bg-dark: #0f172a;
+            --surface: rgba(15, 23, 42, 0.8);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Glassmorphism Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            background: var(--surface);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #fff;
+        }
+
+        .btn-cta {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fff;
+            padding: 0.75rem 1.6rem;
+            border-radius: 99px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 10px 25px -5px rgba(14, 116, 144, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px -5px rgba(14, 116, 144, 0.6);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 180px 5% 100px;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            background: radial-gradient(circle at 80% 20%, rgba(14, 116, 144, 0.15), transparent 40%);
+        }
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .badge-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            padding: 0.4rem 1rem;
+            border-radius: 99px;
+            font-size: 0.85rem;
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 4vw, 3.4rem);
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, #fff, var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-card {
+            background: var(--surface);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 440px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hero-card p {
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+            font-size: 0.95rem;
+        }
+
+        .info-row i {
+            color: var(--secondary);
+            width: 20px;
+        }
+
+        /* Section Layouts */
+        .section {
+            padding: 100px 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--secondary);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: #fff;
+            margin-bottom: 1.5rem;
+        }
+
+        .card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* WhatsApp Floating Button */
+        .wa-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 64px;
+            height: 64px;
+            background: #25d366;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.5);
+            text-decoration: none;
+            z-index: 999;
+            transition: transform 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .wa-float:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 3rem 5%;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                flex-direction: column;
+                padding-top: 140px;
+                gap: 3rem;
+            }
+            .hero-card {
+                max-width: 100%;
+            }
+            nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo">
+            <i class="fa-solid fa-gem"></i> Clínica Luro
+        </a>
+        <nav>
+            <a href="#servicios">Servicios</a>
+            <a href="#por-que">Por qué elegirnos</a>
+            <a href="#ubicacion">Ubicación</a>
+        </nav>
+        <a href="https://wa.me/5492234755656?text=Hola%20Cl%C3%ADnica%20Luro%2C%20vi%20su%20p%C3%A1gina%20web%20y%20quisiera%20hacer%20una%20consulta." target="_blank" class="btn-cta">
+            <i class="fa-brands fa-whatsapp"></i> Contactar por WhatsApp
+        </a>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge-tag">
+                <i class="fa-solid fa-location-dot"></i> Mar del Plata • Consultorios y Salud Integral
+            </div>
+            <h1>Atención y Servicios de Excelencia en <span>Clínica Luro</span></h1>
+            <p>Página Web + Agendador Automatizado de Turnos por WhatsApp</p>
+            <a href="https://wa.me/5492234755656?text=Hola%20Cl%C3%ADnica%20Luro%2C%20vi%20su%20p%C3%A1gina%20web%20y%20quisiera%20hacer%20una%20consulta." target="_blank" class="btn-cta" style="font-size: 1rem; padding: 1rem 2rem;">
+                <i class="fa-brands fa-whatsapp"></i> Consultar Ahora por WhatsApp
+            </a>
+        </div>
+
+        <div class="hero-card">
+            <h3><i class="fa-solid fa-store" style="color: var(--secondary);"></i> Datos del Comercio</h3>
+            <p>Atención personalizada directa por WhatsApp las 24 horas.</p>
+            
+            <div class="info-row">
+                <i class="fa-solid fa-map-marker-alt"></i>
+                <span>Av. Pedro Luro 4636</span>
+            </div>
+            <div class="info-row">
+                <i class="fa-solid fa-phone"></i>
+                <span>0223 4755656</span>
+            </div>
+            <div class="info-row">
+                <i class="fa-solid fa-clock"></i>
+                <span>Lunes a Sábado: 09:00 a 20:00 hs</span>
+            </div>
+            <div class="info-row">
+                <i class="fa-solid fa-check-circle" style="color: #10b981;"></i>
+                <span>Atención y Agendamiento 24/7</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios" class="section">
+        <div class="section-title">
+            <h2>Nuestros Servicios Destacados</h2>
+            <p>Diseñados para brindarte la mejor experiencia y agilidad de atención en Mar del Plata.</p>
+        </div>
+
+        <div class="grid-3">
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-bolt"></i></div>
+                <h4>Atención Inmediata</h4>
+                <p>Respondemos tus consultas de forma automática y prioritaria por WhatsApp sin demoras.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-calendar-check"></i></div>
+                <h4>Turnos y Reservas Online</h4>
+                <p>Agendá tu cita o pedido desde la comodidad de tu teléfono en cualquier momento del día.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-star"></i></div>
+                <h4>Garantía de Calidad</h4>
+                <p>Compromiso y atención profesional respaldada por clientes satisfechos en Mar del Plata.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ubicación y Mapa -->
+    <section id="ubicacion" class="section" style="background: rgba(255,255,255,0.01);">
+        <div class="section-title">
+            <h2>Visitanos en Mar del Plata</h2>
+            <p>Av. Pedro Luro 4636</p>
+        </div>
+        <div style="text-align: center;">
+            <a href="https://www.google.com/maps/place/Cl%C3%ADnica+Luro/data=!4m7!3m6!1s0x9584d94fbb13e7a7:0x232b3f386703e6b3!8m2!3d-37.9884251!4d-57.5668361!16s%2Fg%2F1vj60cp9!19sChIJp-cTu0_ZhJURs-YDZzg_KyM?authuser=0&hl=es&rclk=1" target="_blank" class="btn-cta" style="background: rgba(255,255,255,0.05); border: 1px solid var(--border);">
+                <i class="fa-solid fa-map-location-dot"></i> Abrir en Google Maps
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; <script>document.write(new Date().getFullYear())</script> Clínica Luro. Todos los derechos reservados. Desarrollado con tecnología Naro AI.</p>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/5492234755656?text=Hola%20Cl%C3%ADnica%20Luro%2C%20vi%20su%20p%C3%A1gina%20web%20y%20quisiera%20hacer%20una%20consulta." class="wa-float" target="_blank" title="Contactar por WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+</body>
+</html>

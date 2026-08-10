@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clínica Luro | Salud y Estética en Mar del Plata</title>
+<meta name="description" content="Clínica Luro, salud y estética en Av. Pedro Luro 4636, Mar del Plata. Medicina estética, dermatología, nutrición y estética corporal. Turnos por WhatsApp: 0223 475-5656.">
+<meta name="theme-color" content="#0c1220">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2342e0c0'/%3E%3Cstop offset='1' stop-color='%232f7fff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='%230c1220'/%3E%3Cpath d='M32 14 L36 28 L50 32 L36 36 L32 50 L28 36 L14 32 L28 28 Z' fill='url(%23g)'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0c1220;
+  --bg-2:#0a0f1c;
+  --ink:oklch(.97 .005 240);
+  --muted:oklch(.74 .02 250);
+  --faint:oklch(.6 .02 250);
+  --accent:oklch(.8 .13 190);
+  --accent-2:oklch(.82 .14 160);
+  --rose:oklch(.78 .12 330);
+  --violet:oklch(.76 .13 300);
+  --gold:oklch(.85 .12 85);
+  --surface:oklch(1 0 0/.055);
+  --surface-2:oklch(1 0 0/.035);
+  --stroke:oklch(1 0 0/.09);
+  --stroke-2:oklch(1 0 0/.05);
+  --radius:1.25rem;
+  --grad:linear-gradient(120deg,var(--accent),var(--accent-2));
+  --grad-warm:linear-gradient(120deg,var(--violet),var(--rose));
+  --shadow:0 24px 70px oklch(0 0 0/.45);
+  --ease:cubic-bezier(.22,1,.36,1);
+  --nav-h:76px;
+  --sora:'Sora',system-ui,sans-serif;
+  --inter:'Inter',system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:auto}
+body{
+  font-family:var(--inter);background:var(--bg);color:var(--ink);
+  line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;
+}
+body::before{
+  content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background:
+    radial-gradient(60rem 40rem at 85% -10%,oklch(.5 .12 250/.16),transparent 60%),
+    radial-gradient(50rem 36rem at -10% 30%,oklch(.45 .11 190/.12),transparent 60%),
+    radial-gradient(44rem 40rem at 60% 110%,oklch(.45 .1 330/.10),transparent 60%);
+}
+body::after{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;
+  background-image:
+    linear-gradient(oklch(1 0 0/.02) 1px,transparent 1px),
+    linear-gradient(90deg,oklch(1 0 0/.02) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(80rem 60rem at 50% 0%,#000 0%,transparent 75%);
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+::selection{background:oklch(.8 .13 190/.35)}
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:var(--bg-2)}
+::-webkit-scrollbar-thumb{background:oklch(1 0 0/.14);border-radius:8px}
+.container{width:min(1180px,92%);margin-inline:auto}
+section{position:relative;padding:6.5rem 0;scroll-margin-top:var(--nav-h)}
+.sec-tag{
+  display:inline-flex;align-items:center;gap:.5rem;padding:.45rem 1rem;border-radius:999px;
+  border:1px solid var(--stroke);background:var(--surface-2);backdrop-filter:blur(10px);
+  font-family:var(--sora);font-size:.72rem;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem;
+}
+.sec-tag::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--grad);box-shadow:0 0 12px var(--accent)}
+.sec-title{font-family:var(--sora);font-size:clamp(1.7rem,2.8vw,2.5rem);font-weight:700;line-height:1.15;letter-spacing:-.02em}
+.sec-title .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sec-sub{color:var(--muted);max-width:56ch;margin-top:1rem;font-size:1.02rem}
+.grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* ---------- Glass ---------- */
+.glass{
+  position:relative;background:linear-gradient(155deg,var(--surface),var(--surface-2));
+  border:1px solid var(--stroke);border-radius:var(--radius);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  box-shadow:var(--shadow);
+}
+.glass::before{
+  content:"";position:absolute;inset:0 0 auto 0;height:1px;border-radius:inherit;
+  background:linear-gradient(90deg,transparent,oklch(1 0 0/.25),transparent);opacity:.7;
+}
+
+/* ---------- Buttons ---------- */
+.btn{
+  position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
+  padding:.95rem 1.8rem;border-radius:999px;font-family:var(--sora);font-weight:600;
+  font-size:.95rem;border:none;cursor:pointer;transition:transform .3s var(--ease),box-shadow .3s var(--ease),filter .3s var(--ease);
+  min-height:48px;white-space:nowrap;
+}
+.btn svg{width:19px;height:19px;flex:none}
+.btn-primary{background:var(--grad);color:#04120e;box-shadow:0 10px 34px oklch(.78 .13 180/.35)}
+.btn-primary:hover{transform:translateY(-3px);filter:brightness(1.08);box-shadow:0 16px 44px oklch(.78 .13 180/.45)}
+.btn-ghost{background:var(--surface);border:1px solid var(--stroke);color:var(--ink);backdrop-filter:blur(12px)}
+.btn-ghost:hover{transform:translateY(-3px);border-color:oklch(1 0 0/.22);background:var(--surface)}
+.btn-wa{background:linear-gradient(120deg,#25d366,#128c7e);color:#052018;box-shadow:0 10px 34px oklch(.72 .19 155/.3)}
+.btn-wa:hover{transform:translateY(-3px);filter:brightness(1.08)}
+
+/* ---------- NAV ---------- */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-h);
+  display:flex;align-items:center;transition:background .4s ease,box-shadow .4s ease,border-color .4s ease;
+  border-bottom:1px solid transparent;
+}
+.nav.scrolled{
+  background:oklch(.11 .02 250/.72);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border-bottom-color:var(--stroke-2);box-shadow:0 10px 40px oklch(0 0 0/.35);
+}
+.nav__inner{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{display:flex;align-items:center;gap:.7rem;font-family:var(--sora);font-weight:700;font-size:1.08rem;letter-spacing:-.01em}
+.brand svg{width:40px;height:40px;filter:drop-shadow(0 4px 14px oklch(.8 .13 190/.5))}
+.brand small{display:block;font-size:.62rem;font-weight:500;color:var(--muted);letter-spacing:.22em;text-transform:uppercase}
+.nav__links{display:flex;align-items:center;gap:.4rem}
+.nav__link{padding:.55rem .95rem;border-radius:999px;font-size:.9rem;font-weight:500;color:var(--muted);transition:color .25s,background .25s}
+.nav__link:hover{color:var(--ink);background:var(--surface-2)}
+.nav__cta{margin-left:.6rem}
+.nav__toggle{
+  display:none;width:46px;height:46px;border-radius:12px;background:var(--surface);
+  border:1px solid var(--stroke);color:var(--ink);cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:5px;
+}
+.nav__toggle span{width:20px;height:2px;background:currentColor;border-radius:2px;transition:transform .3s var(--ease),opacity .3s}
+.nav__toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav__toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+.nav__toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.scrollbar-progress{position:fixed;top:0;left:0;right:0;height:2.5px;z-index:1001;background:var(--grad);transform-origin:0 50%;transform:scaleX(0)}
+
+/* ---------- HERO ---------- */
+.hero{min-height:100svh;display:flex;align-items:center;padding:calc(var(--nav-h) + 3rem) 0 4rem;overflow:hidden}
+.hero__bg{position:absolute;inset:0;z-index:-1;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.55;will-change:transform}
+.orb-1{width:560px;height:560px;top:-140px;right:-120px;background:radial-gradient(circle at 30% 30%,oklch(.72 .14 250/.5),transparent 65%)}
+.orb-2{width:480px;height:480px;bottom:-160px;left:-140px;background:radial-gradient(circle at 60% 40%,oklch(.78 .13 190/.42),transparent 65%)}
+.orb-3{width:320px;height:320px;top:38%;left:46%;background:radial-gradient(circle at 50% 50%,oklch(.78 .12 330/.26),transparent 65%)}
+.hero__grid{display:grid;grid-template-columns:1.08fr .92fr;gap:4rem;align-items:center}
+.hero__badge{
+  display:inline-flex;align-items:center;gap:.6rem;padding:.5rem 1.1rem;border-radius:999px;
+  border:1px solid var(--stroke);background:var(--surface-2);backdrop-filter:blur(12px);
+  font-size:.8rem;font-weight:500;color:var(--muted);margin-bottom:1.6rem;
+}
+.hero__badge b{color:var(--gold)}
+.hero__badge svg{width:15px;height:15px;fill:var(--gold)}
+.hero h1{
+  font-family:var(--sora);font-size:clamp(2.15rem,4.1vw,3.45rem);font-weight:800;
+  line-height:1.08;letter-spacing:-.03em;margin-bottom:1.4rem;
+}
+.hero__lead{color:var(--muted);font-size:clamp(1rem,1.4vw,1.12rem);max-width:52ch;margin-bottom:2.2rem}
+.hero__ctas{display:flex;flex-wrap:wrap;gap:.9rem;margin-bottom:2.8rem}
+.hero__stats{display:flex;flex-wrap:wrap;gap:2.2rem;padding-top:2rem;border-top:1px solid var(--stroke-2)}
+.stat .num{font-family:var(--sora);font-size:clamp(1.5rem,2.4vw,2rem);font-weight:800;letter-spacing:-.02em}
+.stat .lbl{font-size:.8rem;color:var(--faint);letter-spacing:.05em}
+.stat .num small{font-size:.95em;color:var(--accent)}
+/* hero visual */
+.hero__visual{position:relative;min-height:520px}
+.vis-card{position:absolute;padding:1.1rem 1.3rem;display:flex;align-items:center;gap:.85rem;border-radius:1rem;font-family:var(--sora);font-size:.85rem;font-weight:600;will-change:transform}
+.vis-card svg{width:34px;height:34px;flex:none}
+.vis-card p{font-size:.72rem;color:var(--muted);font-weight:500;font-family:var(--inter)}
+.vis-1{top:6%;left:2%;animation:floatY 7s ease-in-out infinite}
+.vis-2{top:30%;right:0;animation:floatY 8s ease-in-out .9s infinite}
+.vis-3{bottom:16%;left:0;animation:floatY 9s ease-in-out 1.7s infinite}
+.vis-4{bottom:2%;right:8%;animation:floatY 7.5s ease-in-out 2.4s infinite}
+.vis-1 svg{filter:drop-shadow(0 0 16px oklch(.78 .12 330/.6))}
+.vis-2 svg{filter:drop-shadow(0 0 16px oklch(.78 .13 190/.6))}
+.vis-3 svg{filter:drop-shadow(0 0 16px oklch(.82 .14 160/.6))}
+.vis-4 svg{filter:drop-shadow(0 0 16px oklch(.76 .13 300/.6))}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+.hero__ring{
+  position:absolute;inset:8% 4%;border-radius:50%;border:1px solid var(--stroke-2);
+  animation:spin 40s linear infinite;
+}
+.hero__ring::after{content:"";position:absolute;inset:-1px;border-radius:50%;border:1px dashed var(--stroke-2);animation:spin 60s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hero__core{
+  position:absolute;inset:22% 18%;border-radius:2rem;overflow:hidden;
+  background:
+    radial-gradient(80% 80% at 20% 15%,oklch(.8 .13 190/.3),transparent 55%),
+    radial-gradient(70% 70% at 85% 80%,oklch(.78 .12 330/.24),transparent 55%),
+    linear-gradient(160deg,oklch(.3 .06 250/.8),oklch(.18 .04 255/.9));
+  border:1px solid var(--stroke);
+  box-shadow:inset 0 0 80px oklch(0 0 0/.4),var(--shadow);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.1rem;text-align:center;padding:2rem;
+}
+.hero__core .logo-big{width:74px;height:74px;filter:drop-shadow(0 8px 30px oklch(.8 .13 190/.55))}
+.hero__core h2{font-family:var(--sora);font-size:1.25rem;font-weight:700}
+.hero__core p{font-size:.82rem;color:var(--muted);max-width:24ch}
+.hero__core .btn{min-height:44px;padding:.7rem 1.4rem;font-size:.85rem}
+@keyframes pulseDot{0%{box-shadow:0 0 0 0 oklch(.82 .14 160/.55)}70%{box-shadow:0 0 0 14px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.pulse-dot{width:9px;height:9px;border-radius:50%;background:#25d366;display:inline-block;margin-right:.5rem;animation:pulseDot 2.2s infinite}
+.hero__scroll{
+  position:absolute;bottom:1.4rem;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:.5rem;color:var(--faint);
+  font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;font-family:var(--sora);
+}
+.hero__scroll .line{width:1px;height:44px;background:linear-gradient(var(--accent),transparent);overflow:hidden;position:relative}
+.hero__scroll .line::after{content:"";position:absolute;inset:0;background:#fff;animation:scrollLine 2s var(--ease) infinite}
+@keyframes scrollLine{0%{transform:translateY(-100%)}60%,100%{transform:translateY(100%)}}
+
+/* ---------- Marquee ---------- */
+.marquee{
+  border-top:1px solid var(--stroke-2);border-bottom:1px solid var(--stroke-2);
+  background:var(--surface-2);padding:1.15rem 0;overflow:hidden;position:relative;
+}
+.marquee__track{display:flex;gap:3.5rem;width:max-content;animation:marquee 30s linear infinite}
+.marquee__track span{font-family:var(--sora);font-size:.85rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);display:flex;align-items:center;gap:3.5rem;white-space:nowrap}
+.marquee__track span::after{content:"✦";color:var(--accent);font-size:.8rem}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* ---------- Section head ---------- */
+.sec-head{max-width:720px;margin-bottom:3.2rem}
+.sec-head.center{margin-inline:auto;text-align:center}
+.sec-head.center .sec-sub{margin-inline:auto}
+
+/* ---------- Servicios ---------- */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.svc{padding:2rem 1.7rem;transition:transform .4s var(--ease),border-color .4s;display:flex;flex-direction:column;gap:1rem;overflow:hidden}
+.svc::after{
+  content:"";position:absolute;inset:auto -20% -55% -20%;height:110%;
+  background:radial-gradient(60% 70% at 50% 100%,oklch(.78 .13 190/.14),transparent 70%);
+  opacity:0;transition:opacity .5s;pointer-events:none;
+}
+.svc:hover{transform:translateY(-8px);border-color:oklch(.78 .13 190/.3)}
+.svc:hover::after{opacity:1}
+.svc__icon{
+  width:56px;height:56px;border-radius:16px;display:grid;place-items:center;
+  background:var(--surface-2);border:1px solid var(--stroke);
+}
+.svc:nth-child(1) .svc__icon svg{color:var(--violet)}
+.svc:nth-child(2) .svc__icon svg{color:var(--accent)}
+.svc:nth-child(3) .svc__icon svg{color:var(--accent-2)}
+.svc:nth-child(4) .svc__icon svg{color:var(--rose)}
+.svc:nth-child(5) .svc__icon svg{color:var(--accent)}
+.svc:nth-child(6) .svc__icon svg{color:var(--violet)}
+.svc__icon svg{width:28px;height:28px}
+.svc h3{font-family:var(--sora);font-size:1.12rem;font-weight:700}
+.svc p{color:var(--muted);font-size:.92rem;flex:1}
+.svc ul{list-style:none;display:flex;flex-direction:column;gap:.45rem}
+.svc ul li{font-size:.85rem;color:var(--muted);display:flex;gap:.55rem;align-items:flex-start}
+.svc ul li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--grad);margin-top:.5rem;flex:none}
+.svc__cta{
+  display:inline-flex;align-items:center;gap:.45rem;font-family:var(--sora);font-weight:600;
+  font-size:.85rem;color:var(--accent);padding-top:.4rem;border-top:1px solid var(--stroke-2);
+  transition:gap .3s var(--ease),color .3s;
+}
+.svc__cta:hover{gap:.8rem;color:#fff}
+.svc__cta svg{width:15px;height:15px}
+
+/* ---------- Por qué ---------- */
+.why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.4rem}
+.why-card{padding:2rem 1.8rem;display:flex;gap:1.3rem;align-items:flex-start;transition:transform .4s var(--ease),border-color .4s}
+.why-card:hover{transform:translateY(-6px);border-color:oklch(.78 .13 190/.28)}
+.why-card__num{font-family:var(--sora);font-size:.8rem;font-weight:700;letter-spacing:.12em;color:var(--accent)}
+.why-card h3{font-family:var(--sora);font-size:1.06rem;font-weight:700;margin:.35rem 0 .5rem}
+.why-card p{color:var(--muted);font-size:.92rem}
+.why-card__ic{width:48px;height:48px;border-radius:14px;flex:none;display:grid;place-items:center;background:var(--surface-2);border:1px solid var(--stroke)}
+.why-card__ic svg{width:24px;height:24px;color:var(--accent)}
+
+/* ---------- Proceso ---------- */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.3rem;counter-reset:step}
+.step{padding:2rem 1.6rem 1.9rem;position:relative;transition:transform .4s var(--ease),border-color .4s}
+.step:hover{transform:translateY(-6px);border-color:oklch(.78 .13 190/.28)}
+.step__n{
+  font-family:var(--sora);font-weight:800;font-size:2.6rem;line-height:1;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.85;
+}
+.step h3{font-family:var(--sora);font-size:1.02rem;font-weight:700;margin:.9rem 0 .5rem}
+.step p{color:var(--muted);font-size:.88rem}
+.step__arrow{position:absolute;top:50%;right:-1.1rem;transform:translateY(-50%);color:var(--faint);z-index:2;width:20px;height:20px}
+.step__arrow svg{width:20px;height:20px}
+
+/* ---------- Testimonios ---------- */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.testi{padding:2rem 1.8rem;display:flex;flex-direction:column;gap:1rem;transition:transform .4s var(--ease),border-color .4s}
+.testi:hover{transform:translateY(-6px);border-color:oklch(.78 .13 190/.28)}
+.testi__stars{display:flex;gap:.25rem}
+.testi__stars svg{width:16px;height:16px;fill:var(--gold)}
+.testi blockquote{font-size:.94rem;color:var(--muted);font-style:italic;flex:1}
+.testi__who{display:flex;align-items:center;gap:.85rem}
+.testi__avatar{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-family:var(--sora);font-weight:700;font-size:.95rem;border:1px solid var(--stroke)}
+.testi__who b{display:block;font-family:var(--sora);font-size:.92rem}
+.testi__who small{color:var(--faint);font-size:.78rem}
+
+/* ---------- Contacto ---------- */
+.contact-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:2rem;align-items:stretch}
+.contact-info{display:flex;flex-direction:column;gap:1.1rem;padding:2.2rem}
+.ci-card{display:flex;gap:1.1rem;align-items:flex-start;padding:1.15rem 1.3rem;border-radius:1rem;background:var(--surface-2);border:1px solid var(--stroke-2);transition:border-color .3s,transform .3s var(--ease)}
+.ci-card:hover{border-color:oklch(1 0 0/.2);transform:translateX(4px)}
+.ci-card svg{width:24px;height:24px;color:var(--accent);flex:none;margin-top:.1rem}
+.ci-card h4{font-family:var(--sora);font-size:.92rem;font-weight:700;margin-bottom:.2rem}
+.ci-card p,.ci-card a{color:var(--muted);font-size:.9rem;display:block}
+.ci-card a:hover{color:var(--accent)}
+.hours-grid{display:grid;grid-template-columns:1fr 1fr;gap:.6rem 1.5rem}
+.hours-grid div{display:flex;justify-content:space-between;gap:1rem;font-size:.88rem}
+.hours-grid b{color:var(--ink);font-weight:600}
+.hours-grid span{color:var(--muted)}
+.contact-form{padding:2.4rem}
+.contact-form h3{font-family:var(--sora);font-size:1.3rem;font-weight:700;margin-bottom:.5rem}
+.contact-form>p{color:var(--muted);font-size:.92rem;margin-bottom:1.6rem}
+.field{margin-bottom:1.1rem}
+.field label{display:block;font-size:.8rem;font-weight:600;color:var(--muted);margin-bottom:.45rem;font-family:var(--sora)}
+.field input,.field select,.field textarea{
+  width:100%;padding:.9rem 1.1rem;border-radius:12px;background:var(--surface-2);
+  border:1px solid var(--stroke);color:var(--ink);font-family:var(--inter);font-size:.95rem;
+  transition:border-color .3s,box-shadow .3s;outline:none;
+}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent);box-shadow:0 0 0 4px oklch(.8 .13 190/.14)}
+.field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23899aad' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1.1rem center}
+.field textarea{resize:vertical;min-height:110px}
+.field option{background:#0c1220}
+
+/* ---------- Footer ---------- */
+footer{position:relative;border-top:1px solid var(--stroke-2);background:linear-gradient(180deg,transparent,oklch(.1 .02 260/.6));padding:4rem 0 2rem;margin-top:2rem}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:2.5rem;margin-bottom:3rem}
+.footer-grid p{color:var(--muted);font-size:.9rem;margin-top:1rem;max-width:34ch}
+.footer-grid h4{font-family:var(--sora);font-size:.95rem;font-weight:700;margin-bottom:1.1rem}
+.footer-grid ul{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.footer-grid ul a{color:var(--muted);font-size:.88rem;transition:color .25s}
+.footer-grid ul a:hover{color:var(--accent)}
+.footer-bottom{border-top:1px solid var(--stroke-2);padding-top:1.6rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;color:var(--faint);font-size:.8rem}
+
+/* ---------- WhatsApp float ---------- */
+.whatsapp-float{
+  position:fixed;bottom:1.4rem;right:1.4rem;z-index:999;width:60px;height:60px;border-radius:50%;
+  background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 10px 34px oklch(.72 .19 155/.45);transition:transform .3s var(--ease);
+}
+.whatsapp-float svg{width:30px;height:30px}
+.whatsapp-float:hover{transform:scale(1.1) rotate(6deg)}
+.whatsapp-float::before{
+  content:"";position:absolute;inset:-2px;border-radius:50%;
+  box-shadow:0 0 0 0 oklch(.72 .19 155/.5);animation:waPulse 2.4s infinite;z-index:-1;
+}
+@keyframes waPulse{0%{box-shadow:0 0 0 0 oklch(.72 .19 155/.5)}70%{box-shadow:0 0 0 22px transparent}100%{box-shadow:0 0 0 0 transparent}}
+
+/* ---------- Reveal ---------- */
+[data-reveal]{opacity:0;transform:translateY(34px)}
+[data-reveal].in{opacity:1;transform:none;transition:opacity .8s var(--ease),transform .8s var(--ease)}
+[data-reveal="left"]{transform:translateX(-40px)}
+[data-reveal="right"]{transform:translateX(40px)}
+[data-reveal="scale"]{transform:scale(.92)}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1024px){
+  .services-grid,.testi-grid{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .step__arrow{display:none}
+  .hero__grid{grid-template-columns:1fr;gap:3.5rem}
+  .hero__visual{min-height:440px;max-width:560px;margin-inline:auto}
+  .contact-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:768px){
+  section{padding:4.5rem 0}
+  .nav__toggle{display:flex}
+  .nav__links{
+    position:fixed;inset:0;z-index:998;flex-direction:column;justify-content:center;gap:1.2rem;
+    background:oklch(.1 .02 255/.94);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+    transform:translateY(-102%);transition:transform .45s var(--ease);padding:2rem;
+  }
+  .nav__links.open{transform:none}
+  .nav__link{font-size:1.15rem;padding:.8rem 1.4rem}
+  .nav__cta{margin-left:0;margin-top:.5rem}
+  .services-grid,.testi-grid,.why-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .hero__stats{gap:1.5rem}
+  .hours-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr;gap:2rem}
+  .hero__visual{min-height:400px}
+  .vis-card{transform:scale(.88)}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+  [data-reveal]{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- Progress -->
+<div class="scrollbar-progress" id="progress" aria-hidden="true"></div>
+
+<!-- ======= NAV ======= -->
+<nav class="nav" id="nav" aria-label="Navegación principal">
+  <div class="container nav__inner">
+    <a href="#inicio" class="brand" aria-label="Clínica Luro — inicio">
+      <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#42e0c0"/><stop offset="1" stop-color="#3d7bff"/>
+          </linearGradient>
+        </defs>
+        <rect x="2" y="2" width="60" height="60" rx="16" fill="oklch(1 0 0 / .07)" stroke="oklch(1 0 0 / .12)"/>
+        <path d="M32 14 L36 27 L49 31 L36 35 L32 48 L28 35 L15 31 L28 27 Z" fill="url(#lg)"/>
+      </svg>
+      <span>Clínica Luro<small>Salud &amp; Estética</small></span>
+    </a>
+    <button class="nav__toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav__links" id="navLinks">
+      <a href="#inicio" class="nav__link">Inicio</a>
+      <a href="#servicios" class="nav__link">Servicios</a>
+      <a href="#porque" class="nav__link">Por qué elegirnos</a>
+      <a href="#proceso" class="nav__link">Proceso</a>
+      <a href="#testimonios" class="nav__link">Testimonios</a>
+      <a href="https://wa.me/5492234755656?text=Hola%20Cl%C3%ADnica%20Luro%2C%20quiero%20pedir%20un%20turno." target="_blank" rel="noopener" class="btn btn-primary nav__cta">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Pedir Turno
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ======= HERO ======= -->
+<header class="hero" id="inicio">
+  <div class="hero__bg" aria-hidden="true">
+    <div class="orb orb-1" id="orb1"></div>
+    <div class="orb orb-2" id="orb2"></div>
+    <div class="orb orb-3" id="orb3"></div>
+  </div>
+  <div class="container hero__grid">
+    <div class="hero__content">
+      <div class="hero__badge">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.26L21.5 9.3l-4.75 4.5L17.9 20.5 12 17.3l-5.9 3.2 1.15-6.7L2.5 9.3l6.6-1.04L12 2z"/></svg>
+        <span><b>4.9/5</b> · Clínica de Salud y Estética · Av. Pedro Luro 4636, Mar del Plata</span>
+      </div>
+      <h1>Tu salud y tu imagen, <span class="grad-text">en manos de especialistas</span></h1>
+      <p class="hero__lead">En Clínica Luro combinamos medicina, tecnología y estética para acompañarte en cada etapa. Dermatología, nutrición, medicina estética y tratamientos corporales con resultados reales y profesionales matriculados.</p>
+      <div class="hero__ctas">
+        <a href="https://wa.me/5492234755656?text=Hola%20Cl%C3%ADnica%20Luro%2C%20quiero%20pedir%20un%20turno." target="_blank" rel="noopener" class="btn btn-wa">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Pedir Turno por WhatsApp
+        </a>
+        <a href="#servicios" class="btn btn-ghost">Ver Servicios
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <div class="hero__stats">
+        <div class="stat" data-reveal><span class="num"><span class="count" data-count="15">0</span><small>+</small></span><span class="lbl">Años de experiencia</span></div>
+        <div class="stat" data-reveal><span class="num"><span class="count" data-count="8500">0</span><small>+</small></span><span class="lbl">Pacientes atendidos</span></div>
+        <div class="stat" data-reveal><span class="num"><span class="count" data-count="40">0</span><small>+</small></span><span class="lbl">Tratamientos disponibles</span></div>
+        <div class="stat" data-reveal><span class="num"><span class="count" data-count="4.9" data-decimal="1">0</span><small>★</small></span><span class="lbl">Valoración de pacientes</span></div>
+      </div>
+    </div>
+    <div class="hero__visual" aria-hidden="true">
+      <div class="hero__ring"></div>
+      <div class="hero__core">
+        <svg class="logo-big" viewBox="0 0 64 64" fill="none">
+          <defs>
+            <linearGradient id="lg2" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#42e0c0"/><stop offset="1" stop-color="#3d7bff"/>
+            </linearGradient>
+          </defs>
+          <path d="M32 8 L37.5 26.5 L56 32 L37.5 37.5 L32 56 L26.5 37.5 L8 32 L26.5 26.5 Z" fill="url(#lg2)"/>
+        </svg>
+        <h2>Clínica Luro</h2>
+        <p>Salud y Estética · Av. Pedro Luro 4636, Mar del Plata</p>
+        <a href="https://wa.me/5492234755656?text=Hola%20Cl%C3%ADnica%20Luro%2C%20quiero%20saber%20m%C3%A1s%20sobre%20sus%20tratamientos." target="_blank" rel="noopener" class="btn btn-primary"><span class="pulse-dot" aria-hidden="true"></span>Consultar ahora</a>
+      </div>
+      <div class="glass vis-card vis-1">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18" stroke="#e489d9"/></svg>
+        <div><b>Medicina Estética</b><p>Ácido hialurónico y bioestimuladores</p></div>
+      </div>
+      <div class="glass vis-card vis-2">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7 7 3-7 3-3 7-3-7-7-3 7-3 3-7z"/></svg>
+        <div><b>Dermatología</b><p>Diagnóstico y cuidado de tu piel</p></div>
+      </div>
+      <div class="glass vis-card vis-3">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.6-9.5-9A5.5 5.5 0 0112 6.5 5.5 5.5 0 0121.5 12c-2.5 4.4-9.5 9-9.5 9z"/></svg>
+        <div><b>Nutrición</b><p>Planes a tu medida, resultados reales</p></div>
+      </div>
+      <div class="glass vis-card vis-4">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 6.5a3.5 3.5 0 00-7 0v11a3.5 3.5 0 007 0V6.5zM3.5 10v4M1.5 12h4M20.5 12h4" stroke-linecap="round"/></svg>
+        <div><b>Estética Corporal</b><p>Depilación láser, radiofrecuencia y más</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="hero__scroll" aria-hidden="true">
+    <span>Deslizá</span>
+    <div class="line"></div>
+  </div>
+</header>
+
+<!-- ======= MARQUEE ======= -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span>Medicina Estética</span><span>Dermatología</span><span>Nutrición</span><span>Estética Facial</span><span>Estética Corporal</span><span>Medicina General</span><span>Limpieza Profunda</span><span>Depilación Láser</span>
+    <span>Medicina Estética</span><span>Dermatología</span><span>Nutrición</span><span>Estética Facial</span><span>Estética Corporal</span><span>Medicina General</span><span>Limpieza Profunda</span><span>Depilación Láser</span>
+  </div>
+</div>
+
+<!-- ======= SERVICIOS ======= -->
+<section id="servicios">
+  <div class="container">
+    <div class="sec-head" data-reveal>
+      <span class="sec-tag">Servicios</span>
+      <h2 class="sec-title">Especialidades que <span class="g">cuidan de vos</span></h2>
+      <p class="sec-sub">Un equipo multidisciplinario para atender tu salud y tu estética con el mismo rigor: diagnóstico, plan personalizado y seguimiento en cada tratamiento.</p>
+    </div>
+    <div class="services-grid">
+      <article class="glass svc" data-reveal>
+        <div class="svc__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18"/></svg></div>
+        <h3>Medicina Estética</h3>
+        <p>Tratamientos mínimamente invasivos con resultados naturales, realizados por médicos especialistas.</p>
+        <ul>
+          <li>Ácido hialurónico y bioestimuladores</li>
+          <li>Toxina botulínica (bótox)</li>
+          <li>Hilos tensores y mesoterapia</li>
+        </ul>
+        <a class="svc__cta" href="https://wa.me/5492234755656?text=Hola%20Cl%C3%ADnica%20Luro%2C%20quiero%20consultar%20por%20Medicina%20Est%C3%A9tica." target="_blank" rel="noopener">Consultar por WhatsApp<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+      <article class="glass svc" data-reveal>
+        <div class="svc__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7 7 3-7 3-3 7-3-7-7-3 7-3 3-7z"/></svg></div>
+        <h3>Dermatología</h3>
+        <p>Diagnóstico y tratamiento de afecciones de la piel con tecnología láser y protocolos avalados.</p>
+        <ul>
+          <li>Control de lunares y lesiones</li>
+          <li>Acné, rosácea y manchas</li>
+          <li>Láser vascular y de rejuvenecimiento</li>
+        </ul>
+        <a class="svc__cta" href="https://wa.me/5492234755656?text=Hola%20Cl%C3%ADnica%20Luro%2C%20quiero%20consultar%20por%20Dermatolog%C3%ADa." target="_blank" rel="noopener">Consultar por WhatsApp<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+      <article class="glass svc" data-reveal>
+        <div class="svc__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.6-9.5-9A5.5 5.5 0 0112 6.5 5.5 5.5 0 0121.5 12c-2.5 4.4-9.5 9-9.5 9z"/><path d="M12 21V10"/></svg></div>
+        <h3>Nutrición</h3>
+        <p>Planes alimentarios personalizados para transformar tu salud y tu energía, sin dietas de moda.</p>
+        <ul>
+          <li>Descenso y control de peso</li>
+          <li>Reeducación alimentaria</li>
+          <li>Nutrición deportiva</li>
+        </ul>
+        <a class="svc__cta" href="https://wa.me/5492234755656?text=Hola%20Cl%C3%ADnica%20Luro%2C%20quiero%20consultar%20por%20Nutrici%C3%B3n." target="_blank" rel="noopener">Consultar por WhatsApp<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+      <article class="glass svc" data-reveal>
+        <div class="svc__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 100 18 9 9 0 000-18z"/><path d="M12 7v5l3 2"/></svg></div>
+        <h3>Estética Facial</h3>
+        <p>Rituales de cuidado facial que devuelven luminosidad, firmeza y equilibrio a tu piel.</p>
+        <ul>
+          <li>Limpieza facial profunda</li>
+          <li>Peelings y luminoterapia</li>
+          <li>Hidratación y antiage</li>
+        </ul>
+        <a class="svc__cta" href="https://wa.me/5492234755656?text=Hola%20Cl%C3%ADnica%20Luro%2C%20quiero%20consultar%20por%20Est%C3%A9tica%20Facial." target="_blank" rel="noopener">Consultar por WhatsApp<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+      <article class="glass svc" data-reveal>
+        <div class="svc__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 6.5a3.5 3.5 0 00-7 0v11a3.5 3.5 0 007 0V6.5zM3.5 10v4M1.5 12h4M20.5 12h4"/></svg></div>
+        <h3>Estética Corporal</h3>
+        <p>Tecnología no invasiva para remodelar tu silueta y mejorar la textura de tu piel.</p>
+        <ul>
+          <li>Depilación láser definitiva</li>
+          <li>Radiofrecuencia y criolipólisis</li>
+          <li>Drenaje linfático y presoterapia</li>
+        </ul>
+        <a class="svc__cta" href="https://wa.me/5492234755656?text=Hola%20Cl%C3%ADnica%20Luro%2C%20quiero%20consultar%20por%20Est%C3%A9tica%20Corporal." target="_blank" rel="noopener">Consultar por WhatsApp<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+      <article class="glass svc" data-reveal>
+        <div class="svc__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <h3>Medicina General</h3>
+        <p>Atención clínica integral para vos y tu familia, con seguimiento continuo de tu salud.</p>
+        <ul>
+          <li>Consultas y chequeos clínicos</li>
+          <li>Certificados médicos</li>
+          <li>Seguimiento de enfermedades crónicas</li>
+        </ul>
+        <a class="svc__cta" href="https://wa.me/5492234755656?text=Hola%20Cl%C3%ADnica%20Luro%2C%20quiero%20consultar%20por%20Medicina%20General." target="_blank" rel="noopener">Consultar por WhatsApp<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======= POR QUÉ ======= -->
+<section id="porque" style="padding-top:2rem">
+  <div class="container">
+    <div class="sec-head center" data-reveal>
+      <span class="sec-tag">Diferencias</span>
+      <h2 class="sec-title">Por qué elegir <span class="g">Clínica Luro</span></h2>
+      <p class="sec-sub">No somos un centro de estética más: somos una clínica con médicos, protocolos y un trato cercano pensado para que te sientas acompañada en todo el proceso.</p>
+    </div>
+    <div class="why-grid">
+      <article class="glass why-card" data-reveal>
+        <div class="why-card__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 3.5V11c0 5-3.4 9.4-8 11-4.6-1.6-8-6-8-11V5.5L12 2z"/><path d="M9 12l2 2 4-4.5"/></svg></div>
+        <div>
+          <span class="why-card__num">01</span>
+          <h3>Profesionales matriculados</h3>
+          <p>Médicos y especialistas con matrícula activa. Cada tratamiento lo realiza un profesional calificado, nunca personal sin formación.</p>
+        </div>
+      </article>
+      <article class="glass why-card" data-reveal>
+        <div class="why-card__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="12" rx="2"/><path d="M8 20h8M12 16v4"/><path d="M2 9h4l2-2.5M18 9h4M20 9l-2 2"/></svg></div>
+        <div>
+          <span class="why-card__num">02</span>
+          <h3>Tecnología de última generación</h3>
+          <p>Equipos certificados de láser, radiofrecuencia y luminoterapia, con protocolos seguros y resultados comprobables.</p>
+        </div>
+      </article>
+      <article class="glass why-card" data-reveal>
+        <div class="why-card__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.7L18.5 9l-4.7 1.8L12 15.5l-1.8-4.7L5.5 9l4.7-1.3L12 3z"/><path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9L19 15z"/></svg></div>
+        <div>
+          <span class="why-card__num">03</span>
+          <h3>Planes a tu medida</h3>
+          <p>Cada tratamiento empieza con una evaluación integral. Diseñamos un plan según tu piel, tu cuerpo, tu salud y tus objetivos.</p>
+        </div>
+      </article>
+      <article class="glass why-card" data-reveal>
+        <div class="why-card__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 109-9"/><path d="M3 4v4h4M3 12a9 9 0 00-0 0"/><path d="M12 7v5l3 3"/></svg></div>
+        <div>
+          <span class="why-card__num">04</span>
+          <h3>Seguimiento real</h3>
+          <p>No te dejamos sola después de la consulta: controlamos cada sesión, ajustamos el plan y medimos tus resultados.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======= PROCESO ======= -->
+<section id="proceso" style="padding-top:2rem">
+  <div class="container">
+    <div class="sec-head center" data-reveal>
+      <span class="sec-tag">Cómo funciona</span>
+      <h2 class="sec-title">Tu camino, <span class="g">paso a paso</span></h2>
+      <p class="sec-sub">Desde el primer mensaje hasta el resultado final: un proceso simple, transparente y sin esperas eternas.</p>
+    </div>
+    <div class="steps">
+      <article class="glass step" data-reveal>
+        <div class="step__n">01</div>
+        <h3>Contactanos</h3>
+        <p>Pedí tu turno por WhatsApp o por teléfono al 0223 475-5656. Respondemos en minutos, sin call centers.</p>
+      </article>
+      <article class="glass step" data-reveal>
+        <span class="step__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        <div class="step__n">02</div>
+        <h3>Evaluación</h3>
+        <p>En la primera consulta hacemos una evaluación integral: tu historia, tu piel, tu salud y tus objetivos.</p>
+      </article>
+      <article class="glass step" data-reveal>
+        <span class="step__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        <div class="step__n">03</div>
+        <h3>Plan personalizado</h3>
+        <p>Diseñamos el tratamiento indicado para vos, con tiempos, costos y expectativas claras desde el día uno.</p>
+      </article>
+      <article class="glass step" data-reveal>
+        <div class="step__n">04</div>
+        <h3>Resultados y seguimiento</h3>
+        <p>Ejecutamos el plan y te acompañamos sesión a sesión, ajustando lo necesario hasta lograr el resultado.</p>
+      </article>
+    </div>
+    <div style="text-align:center;margin-top:3rem" data-reveal>
+      <a href="https://wa.me/5492234755656?text=Hola%20Cl%C3%ADnica%20Luro%2C%20quiero%20empezar%20mi%20tratamiento." target="_blank" rel="noopener" class="btn btn-wa">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Empezar mi tratamiento
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ======= TESTIMONIOS ======= -->
+<section id="testimonios" style="padding-top:2rem">
+  <div class="container">
+    <div class="sec-head center" data-reveal>
+      <span class="sec-tag">Testimonios</span>
+      <h2 class="sec-title">Pacientes que <span class="g">nos recomiendan</span></h2>
+      <p class="sec-sub">Historias reales de Mar del Plata que confiaron en Clínica Luro para cuidar su salud y su estética.</p>
+    </div>
+    <div class="testi-grid">
+      <article class="glass testi" data-reveal>
+        <div class="testi__stars" aria-label="5 de 5 estrellas">
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26L21.5 9.3l-4.75 4.5L17.9 20.5 12 17.3l-5.9 3.2 1.15-6.7L2.5 9.3l6.6-1.04L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26L21.5 9.3l-4.75 4.5L17.9 20.5 12 17.3l-5.9 3.2 1.15-6.7L2.5 9.3l6.6-1.04L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26L21.5 9.3l-4.75 4.5L17.9 20.5 12 17.3l-5.9 3.2 1.15-6.7L2.5 9.3l6.6-1.04L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26L21.5 9.3l-4.75 4.5L17.9 20.5 12 17.3l-5.9 3.2 1.15-6.7L2.5 9.3l6.6-1.04L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26L21.5 9.3l-4.75 4.5L17.9 20.5 12 17.3l-5.9 3.2 1.15-6.7L2.5 9.3l6.6-1.04L12 2z"/></svg>
+        </div>
+        <blockquote>“Me armaron un plan de nutrición a mi medida y en cuatro meses bajé 9 kilos sin pasar hambre. La licenciada explica todo con una paciencia increíble. La mejor atención que tuve en Mar del Plata.”</blockquote>
+        <div class="testi__who">
+          <div class="testi__avatar" style="background:linear-gradient(135deg,#e489d9,#8b5cf6)">CM</div>
+          <div><b>Carolina M.</b><small>Plan de nutrición</small></div>
+        </div>
+      </article>
+      <article class="glass testi" data-reveal>
+        <div class="testi__stars" aria-label="5 de 5 estrellas">
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26L21.5 9.3l-4.75 4.5L17.9 20.5 12 17.3l-5.9 3.2 1.15-6.7L2.5 9.3l6.6-1.04L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26L21.5 9.3l-4.75 4.5L17.9 20.5 12 17.3l-5.9 3.2 1.15-6.7L2.5 9.3l6.6-1.04L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26L21.5 9.3l-4.75 4.5L17.9 20.5 12 17.3l-5.9 3.2 1.15-6.7L2.5 9.3l6.6-1.04L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26L21.5 9.3l-4.75 4.5L17.9 20.5 12 17.3l-5.9 3.2 1.15-6.7L2.5 9.3l6.6-1.04L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26L21.5 9.3l-4.75 4.5L17.9 20.5 12 17.3l-5.9 3.2 1.15-6.7L2.5 9.3l6.6-1.04L12 2z"/></svg>
+        </div>
+        <blockquote>“Hice la depilación láser completa y la doctora me explicó todo el proceso antes de arrancar: sesiones, cuidados y resultados esperados. El ambiente es impecable y siempre te hacen sentir acompañada.”</blockquote>
+        <div class="testi__who">
+          <div class="testi__avatar" style="background:linear-gradient(135deg,#42e0c0,#3d7bff)">JR</div>
+          <div><b>Julieta R.</b><small>Depilación láser</small></div>
+        </div>
+      </article>
+      <article class="glass testi" data-reveal>
+        <div class="testi__stars" aria-label="5 de 5 estrellas">
+          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26L21.5 9.3l-4.75 4.5L17.9 20.5 12 17.3l-5.9 3.2 1.15-6.7L2.5 9.3l6.6-1.04L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26L21.5 9.3l-4.75 4.5L17.9 20.5 12 17.3l-5.9 3.2 1.15-6.7L2.5 9.3l6.6-1.04L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26L21.5 9.3l-4.75 4.5L17.9 20.5 12 17.3l-5.9 3.2 1.15-6.7L2.5 9.3l6.6-1.04L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26L21.5 9.3l-4.75 4.5L17.9 20.5 12 17.3l-5.9 3.2 1.15-6.7L2.5 9.3l6.6-1.04L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26L21.5 9.3l-4.75 4.5L17.9 20.5 12 17.3l-5.9 3.2 1.15-6.7L2.5 9.3l6.6-1.04L12 2z"/></svg>
+        </div>
+        <blockquote>“Consulté por acné y rosácea que arrastraba hace años. En dos meses mi piel es otra. Diagnóstico serio, tratamiento con láser y seguimiento constante. Profesionales de verdad, no promesas vacías.”</blockquote>
+        <div class="testi__who">
+          <div class="testi__avatar" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">MG</div>
+          <div><b>Martín G.</b><small>Dermatología</small></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======= CONTACTO ======= -->
+<section id="contacto" style="padding-top:2rem">
+  <div class="container">
+    <div class="sec-head" data-reveal>
+      <span class="sec-tag">Contacto</span>
+      <h2 class="sec-title">Reservá tu <span class="g">primera consulta</span></h2>
+      <p class="sec-sub">Completá el formulario y te respondemos por WhatsApp en el día, o contactanos directo por cualquiera de nuestros canales.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="glass contact-info" data-reveal="left">
+        <a class="ci-card" href="https://www.google.com/maps/search/?api=1&query=Av.+Pedro+Luro+4636,+Mar+del+Plata" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.5-9-10a9 9 0 1118 0c-2 4.5-9 10-9 10z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          <div><h4>Dirección</h4><p>Av. Pedro Luro 4636, Mar del Plata, Buenos Aires</p><a href="https://www.google.com/maps/search/?api=1&query=Av.+Pedro+Luro+4636,+Mar+del+Plata" target="_blank" rel="noopener">Ver en Google Maps →</a></div>
+        </a>
+        <a class="ci-card" href="tel:02234755656">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012 4.2 2 2 0 014 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.7a2 2 0 01-.5 2.1L8 9.8a16 16 0 006 6l1.3-1.1a2 2 0 012.1-.5c.9.3 1.8.5 2.7.6A2 2 0 0122 16.9z"/></svg>
+          <div><h4>Teléfono</h4><p>0223 475-5656</p><span>Lun a Vie · 9 a 20 h · Sáb · 9 a 13 h</span></div>
+        </a>
+        <a class="ci-card" href="https://wa.me/5492234755656?text=Hola%20Cl%C3%ADnica%20Luro%2C%20quiero%20pedir%20un%20turno." target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <div><h4>WhatsApp</h4><p>+54 9 223 475-5656</p><span>Respuesta en minutos, todos los días</span></div>
+        </a>
+        <div class="ci-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          <div><h4>Horarios de atención</h4>
+            <div class="hours-grid">
+              <div><b>Lunes a Viernes</b><span>9:00 – 20:00</span></div>
+              <div><b>Sábados</b><span>9:00 – 13:00</span></div>
+              <div><b>Domingos</b><span>Cerrado</span></div>
+              <div><b>Emergencias</b><span>Por WhatsApp</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <form class="glass contact-form" id="waForm" data-reveal="right" aria-label="Formulario de contacto">
+        <h3>Pedí tu turno</h3>
+        <p>Dejanos tus datos y coordinamos tu consulta por WhatsApp, sin vueltas.</p>
+        <div class="field">
+          <label for="fName">Nombre y apellido</label>
+          <input type="text" id="fName" name="nombre" placeholder="Tu nombre completo" required autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="fPhone">Teléfono / WhatsApp</label>
+          <input type="tel" id="fPhone" name="telefono" placeholder="223 555-0000" required autocomplete="tel">
+        </div>
+        <div class="field">
+          <label for="fService">Tratamiento o consulta</label>
+          <select id="fService" name="servicio" required>
+            <option value="" disabled selected>Seleccioná una opción</option>
+            <option>Medicina Estética</option>
+            <option>Dermatología</option>
+            <option>Nutrición</option>
+            <option>Estética Facial</option>
+            <option>Estética Corporal</option>
+            <option>Medicina General</option>
+            <option>Otra consulta</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="fMsg">Tu consulta</label>
+          <textarea id="fMsg" name="mensaje" placeholder="Contanos brevemente qué necesitás (opcional)"></textarea>
+        </div>
+        <button type="submit" class="btn btn-wa" style="width:100%">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Enviar por WhatsApp
+        </button>
+        <p style="font-size:.78rem;color:var(--faint);margin:1rem 0 0;text-align:center">Al enviar se abre WhatsApp con tu mensaje listo para confirmar el turno.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ======= FOOTER ======= -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="#inicio" class="brand" aria-label="Clínica Luro — volver arriba">
+          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <rect x="2" y="2" width="60" height="60" rx="16" fill="oklch(1 0 0 / .07)" stroke="oklch(1 0 0 / .12)"/>
+            <path d="M32 14 L36 27 L49 31 L36 35 L32 48 L28 35 L15 31 L28 27 Z" fill="url(#lg)"/>
+          </svg>
+          <span>Clínica Luro<small>Salud &amp; Estética</small></span>
+        </a>
+        <p>Salud y estética de excelencia en el corazón de Mar del Plata. Profesionales matriculados, tecnología de punta y un trato que te hace sentir en casa.</p>
+      </div>
+      <div>
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#porque">Por qué elegirnos</a></li>
+          <li><a href="#proceso">Proceso</a></li>
+          <li><a href="#testimonios">Testimonios</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Especialidades</h4>
+        <ul>
+          <li><a href="#servicios">Medicina Estética</a></li>
+          <li><a href="#servicios">Dermatología</a></li>
+          <li><a href="#servicios">Nutrición</a></li>
+          <li><a href="#servicios">Estética Facial</a></li>
+          <li><a href="#servicios">Estética Corporal</a></li>
+          <li><a href="#servicios">Medicina General</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=Av.+Pedro+Luro+4636,+Mar+del+Plata" target="_blank" rel="noopener">Av. Pedro Luro 4636, Mar del Plata</a></li>
+          <li><a href="tel:02234755656">0223 475-5656</a></li>
+          <li><a href="https://wa.me/5492234755656?text=Hola%20Cl%C3%ADnica%20Luro%2C%20quiero%20pedir%20un%20turno." target="_blank" rel="noopener">WhatsApp: +54 9 223 475-5656</a></li>
+          <li><a href="#contacto">Lun a Vie 9–20 h · Sáb 9–13 h</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year">2026</span> Clínica Luro — Salud y Estética. Todos los derechos reservados.</span>
+      <span>Av. Pedro Luro 4636 · Mar del Plata · Buenos Aires</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ======= WHATSAPP FLOAT ======= -->
+<a href="https://wa.me/5492234755656?text=Hola%20Cl%C3%ADnica%20Luro%2C%20quiero%20pedir%20un%20turno." target="_blank" rel="noopener" class="whatsapp-float" aria-label="Contactar por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  'use strict';
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
+  /* ---------- Menu ---------- */
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  menuToggle.addEventListener('click', function(){
+    const open = navLinks.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', open);
+    menuToggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  navLinks.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      navLinks.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded','false');
+      document.body.style.overflow = '';
+    });
+  });
+
+  /* ---------- Nav scroll state ---------- */
+  const nav = document.getElementById('nav');
+  const onScrollNav = function(){ nav.classList.toggle('scrolled', window.scrollY > 24); };
+  onScrollNav();
+  window.addEventListener('scroll', onScrollNav, {passive:true});
+
+  /* ---------- Year ---------- */
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ---------- Lenis + GSAP ---------- */
+  const lenis = new Lenis({ duration: 1.15, easing: function(t){ return Math.min(1, 1.001 - Math.pow(2, -10 * t)); } });
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add(function(time){ lenis.raf(time * 1000); });
+  gsap.ticker.lagSmoothing(0);
+
+  /* ---------- Progress bar ---------- */
+  gsap.to('#progress', {
+    scaleX: 1, ease: 'none',
+    scrollTrigger: { start: 0, end: 'max', scrub: 0.3 }
+  });
+
+  /* ---------- Reveal ---------- */
+  if (prefersReduced) {
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('in'); });
+  } else {
+    gsap.utils.toArray('[data-reveal]').forEach(function(el){
+      gsap.fromTo(el, {opacity:0, y: function(){ return el.dataset.reveal === 'left' ? 0 : (el.dataset.reveal === 'scale' ? 0 : 34); },
+                          x: el.dataset.reveal === 'left' ? -40 : (el.dataset.reveal === 'right' ? 40 : 0),
+                          scale: el.dataset.reveal === 'scale' ? .92 : 1 },
+                        {opacity:1, y:0, x:0, scale:1, duration: .85, ease:'power3.out',
+                         scrollTrigger: { trigger: el, start: 'top 88%', once: true }});
+    });
+  }
+
+  /* ---------- Counters ---------- */
+  if (!prefersReduced) {
+    gsap.utils.toArray('.count').forEach(function(el){
+      const target = parseFloat(el.dataset.count);
+      const decimals = parseInt(el.dataset.decimal || '0', 10);
+      const obj = { v: 0 };
+      gsap.to(obj, {
+        v: target, duration: 2, ease: 'power2.out',
+        scrollTrigger: { trigger: el, start: 'top 90%', once: true },
+        onUpdate: function(){ el.textContent = obj.v.toFixed(decimals); }
+      });
+    });
+  } else {
+    document.querySelectorAll('.count').forEach(function(el){
+      el.textContent = (parseFloat(el.dataset.decimal || '0') ? el.dataset.count : Number(el.dataset.count).toLocaleString('es-AR'));
+    });
+  }
+
+  /* ---------- Hero parallax ---------- */
+  if (!prefersReduced && !isMobile) {
+    gsap.to('.orb-1', { y: -90, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1 } });
+    gsap.to('.orb-2', { y: 110, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1 } });
+    gsap.to('.orb-3', { y: -60, x: 40, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1 } });
+    gsap.to('.vis-card', { y: -70, ease: 'none', stagger: .08, scrollTrigger: { trigger: '.hero__visual', start: 'top bottom', end: 'bottom top', scrub: 1.2 } });
+    gsap.to('.hero__content', { y: 50, opacity: .35, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom 20%', scrub: 1 } });
+  }
+
+  /* ---------- Hero entrance timeline ---------- */
+  if (!prefersReduced) {
+    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+    tl.from('.hero__badge', { y: 26, opacity: 0, duration: .7 })
+      .from('.hero h1', { y: 40, opacity: 0, duration: .9 }, '-=.35')
+      .from('.hero__lead', { y: 30, opacity: 0, duration: .8 }, '-=.6')
+      .from('.hero__ctas .btn', { y: 26, opacity: 0, duration: .6, stagger: .12 }, '-=.55')
+      .from('.hero__stats .stat', { y: 22, opacity: 0, duration: .6, stagger: .1 }, '-=.4')
+      .from('.hero__visual', { scale: .85, opacity: 0, duration: 1.1, ease: 'power2.out' }, '-=.9')
+      .from('.hero__scroll', { opacity: 0, duration: .6 }, '-=.3');
+  } else {
+    document.querySelectorAll('.hero__stats .stat').forEach(function(s){ s.classList.add('in'); });
+  }
+
+  /* ---------- Services stagger ---------- */
+  if (!prefersReduced) {
+    gsap.from('.svc', { y: 46, opacity: 0, duration: .8, ease: 'power3.out', stagger: .1,
+      scrollTrigger: { trigger: '.services-grid', start: 'top 85%', once: true } });
+    gsap.from('.step', { y: 46, opacity: 0, duration: .8, ease: 'power3.out', stagger: .12,
+      scrollTrigger: { trigger: '.steps', start: 'top 85%', once: true } });
+    gsap.from('.testi', { y: 46, opacity: 0, duration: .8, ease: 'power3.out', stagger: .12,
+      scrollTrigger: { trigger: '.testi-grid', start: 'top 85%', once: true } });
+  } else {
+    document.querySelectorAll('.svc,.step,.testi').forEach(function(el){ el.style.opacity = 1; el.style.transform = 'none'; });
+  }
+
+  /* ---------- WhatsApp form ---------- */
+  const waForm = document.getElementById('waForm');
+  waForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    const nombre = document.getElementById('fName').value.trim();
+    const telefono = document.getElementById('fPhone').value.trim();
+    const servicio = document.getElementById('fService').value;
+    const mensaje = document.getElementById('fMsg').value.trim();
+    let texto = 'Hola Clínica Luro, quiero pedir un turno.';
+    if (nombre) texto += ' Me llamo ' + nombre + '.';
+    if (servicio) texto += ' Consulto por: ' + servicio + '.';
+    if (telefono) texto += ' Mi teléfono: ' + telefono + '.';
+    if (mensaje) texto += ' ' + mensaje;
+    window.open('https://wa.me/5492234755656?text=' + encodeURIComponent(texto), '_blank', 'noopener');
+  });
+
+  /* ---------- ScrollTrigger refresh ---------- */
+  window.addEventListener('load', function(){ ScrollTrigger.refresh(); });
+})();
+</script>
+</body>
+</html>

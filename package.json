@@ -8,7 +8,10 @@
     "build": "vite build",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "process": "node scripts/process-html.js",
+    "seed": "node scripts/seed-raw-html.js",
+    "deploy:pages": "npm run process && npx wrangler pages deploy public --project-name=mis-clientes-html"
   },
   "dependencies": {
     "firebase": "^10.13.0",

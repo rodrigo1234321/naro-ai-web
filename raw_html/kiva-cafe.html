@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kiva Café — Café de Especialidad & Brunch en Güemes | Mar del Plata</title>
+  <meta name="description" content="Café de especialidad de origen seleccionado, panadería artesanal de masa madre y brunch gourmet en Güemes, Mar del Plata. Viví la experiencia Kiva en Avellaneda 2325.">
+  <meta name="keywords" content="Kiva Cafe Mar del Plata, Cafe de especialidad Guemes, Brunch Mar del Plata, Cafeteria Guemes, Panaderia masa madre Mar del Plata, Coffee shop MDP">
+  <meta name="robots" content="index, follow">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☕</text></svg>">
+
+  <!-- Geo Tags Mar del Plata -->
+  <meta name="geo.region" content="AR-B">
+  <meta name="geo.placename" content="Mar del Plata">
+  <meta name="geo.position" content="-38.0142;-57.5435">
+  <meta name="ICBM" content="-38.0142, -57.5435">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Kiva Café — Café de Especialidad & Brunch en Güemes | Mar del Plata">
+  <meta property="og:description" content="El punto de encuentro para amantes del buen café, la pastelería de autor y los atardeceres en la zona Güemes de Mar del Plata.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1200&q=80">
+
+  <!-- Google Fonts Preconnect & Stylesheet -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@0.344.0/dist/umd/lucide.min.js"></script>
+
+  <!-- GSAP 3.12 & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Schema.org JSON-LD Café -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CafeOrCoffeeShop",
+    "name": "Kiva Café",
+    "image": "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1200&q=80",
+    "url": "https://kivacafe.mdp.ar",
+    "telephone": "+5492236157605",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Avellaneda 2325",
+      "addressLocality": "Mar del Plata",
+      "addressRegion": "Buenos Aires",
+      "postalCode": "B7600",
+      "addressCountry": "AR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -38.0142,
+      "longitude": -57.5435
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "08:00",
+      "closes": "21:00"
+    },
+    "servesCuisine": ["Café de Especialidad", "Brunch", "Pastelería Artesanal"]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Floating Glass Navigation Header -->
+  <header class="glass-nav-container fixed-top" id="main-header">
+    <div class="container flex-between">
+      <a href="#" class="logo-brand">
+        <span class="logo-icon">☕</span>
+        <span class="logo-text">KIVA <span class="text-gradient-amber">CAFÉ</span></span>
+      </a>
+      
+      <nav class="nav-links desktop-only">
+        <a href="#experiencia">Experiencia</a>
+        <a href="#menu">Menú & Granos</a>
+        <a href="#reservas">Reservas</a>
+        <a href="#opiniones">Comunidad</a>
+        <a href="#ubicacion">Güemes</a>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="badge badge-amber badge-sm desktop-only">
+          <span class="pulse-dot"></span>
+          Avellaneda 2325 • Güemes
+        </div>
+        <a href="#reservas" class="btn btn-primary btn-sm nav-cta">Reservar Mesa</a>
+        <button class="mobile-menu-btn" id="mobile-toggle" aria-label="Abrir Menú">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Backdrop -->
+    <div class="mobile-drawer-overlay" id="drawer-overlay" onclick="toggleMobileMenu()"></div>
+
+    <!-- Mobile Drawer Side Menu -->
+    <div class="mobile-drawer-menu" id="mobile-menu">
+      <div class="drawer-header flex-between">
+        <span class="logo-brand">
+          <span class="logo-icon">☕</span>
+          <span class="logo-text">KIVA <span class="text-gradient-amber">CAFÉ</span></span>
+        </span>
+        <button class="drawer-close-btn" onclick="toggleMobileMenu()" aria-label="Cerrar Menú">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+
+      <nav class="drawer-links">
+        <a href="#hero" onclick="toggleMobileMenu()"><i data-lucide="home"></i> Inicio</a>
+        <a href="#experiencia" onclick="toggleMobileMenu()"><i data-lucide="sparkles"></i> Experiencia</a>
+        <a href="#menu" onclick="toggleMobileMenu()"><i data-lucide="coffee"></i> Menú & Granos</a>
+        <a href="#reservas" onclick="toggleMobileMenu()"><i data-lucide="calendar"></i> Reservas</a>
+        <a href="#opiniones" onclick="toggleMobileMenu()"><i data-lucide="star"></i> Comunidad</a>
+        <a href="#ubicacion" onclick="toggleMobileMenu()"><i data-lucide="map-pin"></i> Cómo Llegar</a>
+      </nav>
+
+      <div class="drawer-footer">
+        <div class="badge badge-amber margin-bottom-md">
+          <span class="pulse-dot"></span>
+          Abierto Hoy 8:00 a 21:00 hs
+        </div>
+        <a href="https://wa.me/5492236157605?text=Hola%20Kiva%20Caf%C3%A9!%20Quiero%20hacer%20un%20pedido%20Take%20Away%20o%20consultar%20por%20reserva" target="_blank" class="btn btn-whatsapp btn-full margin-bottom-xs">
+          <i data-lucide="message-square"></i> Pedir por WhatsApp
+        </a>
+        <a href="#reservas" onclick="toggleMobileMenu()" class="btn btn-primary btn-full">
+          Reservar Mesa
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="app-content">
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero-section section-padding">
+      <div class="container grid-hero">
+        <div class="hero-content">
+          <div class="badge badge-amber badge-subtle margin-bottom-xs">
+            <i data-lucide="coffee"></i> Café de Especialidad en Güemes, Mar del Plata
+          </div>
+          <h1 class="hero-title">
+            El Ritual del Buen Café <span class="text-gradient-amber">frente a la Brisa Marina</span>
+          </h1>
+          <p class="hero-lead">
+            Granos micro-lote seleccionados de Etiopía y Colombia, tostados artesanalmente y servidos con pastelería de autor horneada cada mañana.
+          </p>
+          <p class="hero-sublead">
+            📍 Avellaneda 2325 (entre Olavarría y Güemes) • Pet Friendly & WiFi de Alta Velocidad.
+          </p>
+          <div class="hero-cta-group">
+            <a href="#reservas" class="btn btn-primary btn-hero-primary">
+              <i data-lucide="calendar"></i> Reservar Mesa
+            </a>
+            <a href="#menu" class="btn btn-secondary btn-hero-secondary">
+              <i data-lucide="coffee"></i> Ver Menú Completo
+            </a>
+          </div>
+          <div class="hero-stats-row grid-3-cols">
+            <div class="stat-item glass-card gsap-stat-card">
+              <span class="stat-number text-gradient-amber">+86 pts</span>
+              <span class="stat-label">Calidad SCA Granos</span>
+            </div>
+            <div class="stat-item glass-card gsap-stat-card">
+              <span class="stat-number text-gradient-green">4.9 ★</span>
+              <span class="stat-label">+500 Reseñas Google</span>
+            </div>
+            <div class="stat-item glass-card gsap-stat-card">
+              <span class="stat-number text-gradient-amber">100%</span>
+              <span class="stat-label">Masa Madre & Orgánico</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Coffee Visual Card Card -->
+        <div class="hero-visual gsap-hero-visual">
+          <div class="hero-card-preview glass-card">
+            <div class="visual-badge"><i data-lucide="flame"></i> Tueste Fresco de la Semana</div>
+            <div class="coffee-preview-card">
+              <div class="coffee-header flex-between">
+                <div>
+                  <h3 class="text-gradient-amber">Flat White Etiopía Yirgacheffe</h3>
+                  <small class="text-muted">Notas florales, bergamota y chocolate de leche</small>
+                </div>
+                <span class="price-tag">$ 3.800</span>
+              </div>
+              <div class="coffee-details margin-top-md">
+                <div class="detail-row flex-between">
+                  <span>Proceso:</span>
+                  <strong>Lavado de Altura (1900m)</strong>
+                </div>
+                <div class="detail-row flex-between">
+                  <span>Extracción:</span>
+                  <strong>Doble Ristretto Espresso</strong>
+                </div>
+                <div class="detail-row flex-between">
+                  <span>Leche:</span>
+                  <strong>Texturizada Sedosa / Opción Almendras</strong>
+                </div>
+              </div>
+              <div class="coffee-badge-row flex-gap margin-top-md">
+                <span class="badge badge-sm badge-status">🌿 100% Arábica</span>
+                <span class="badge badge-sm badge-location">☕ Baristas Certificados</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCIA KIVA -->
+    <section id="experiencia" class="section-padding bg-secondary-glow">
+      <div class="container">
+        <div class="section-header gsap-reveal">
+          <div class="badge badge-amber">Nuestra Filosofía</div>
+          <h2>Más que una Cafetería, una Experiencia para Sentir</h2>
+          <p>En el corazón comercial de Güemes, diseñamos un espacio para pausar la rutina, disfrutar del silencio o trabajar con café de nivel mundial.</p>
+        </div>
+        <div class="grid-3-cols gap-lg">
+          <div class="glass-card manifesto-card gsap-reveal-card">
+            <div class="card-icon text-gradient-amber"><i data-lucide="bean"></i></div>
+            <h3>Granos de Especialidad</h3>
+            <p>Trabajamos directo con pequeños caficultores de Colombia, Brasil y Etiopía. Granos evaluados sobre los 85 puntos SCA.</p>
+          </div>
+          <div class="glass-card manifesto-card gsap-reveal-card">
+            <div class="card-icon text-gradient-green"><i data-lucide="croissant"></i></div>
+            <h3>Pastelería de Masa Madre</h3>
+            <p>Medialunas de manteca hojaldradas, croissants rellenos y tostones salados preparados en el momento con ingredientes frescos.</p>
+          </div>
+          <div class="glass-card manifesto-card gsap-reveal-card">
+            <div class="card-icon text-gradient-blue"><i data-lucide="wifi"></i></div>
+            <h3>Ambiente Güemes</h3>
+            <p>Espacio climatizado, música lounge seleccionada, enchufes en cada mesa y WiFi de fibra óptica de 500 megas.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE MENU SHOWCASE -->
+    <section id="menu" class="section-padding">
+      <div class="container">
+        <div class="section-header gsap-reveal">
+          <div class="badge badge-location">Nuestra Carta</div>
+          <h2>Menú & Selección de Estación</h2>
+          <p>Descubrí nuestras opciones de espresso bar, filtrados, brunch artesanal y refrescos naturales de estación en Mar del Plata.</p>
+          
+          <div class="portfolio-filters flex-gap margin-top-md text-center" style="justify-content: center;">
+            <button class="filter-btn active" onclick="filtrarMenu('cafe')">Espresso & Filtrados</button>
+            <button class="filter-btn" onclick="filtrarMenu('brunch')">Brunch & Dulce</button>
+            <button class="filter-btn" onclick="filtrarMenu('salado')">Tostones & Salado</button>
+            <button class="filter-btn" onclick="filtrarMenu('frio')">Bebidas Frías & Iced</button>
+          </div>
+        </div>
+
+        <div class="menu-grid grid-2-cols gap-lg" id="menu-container">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </section>
+
+    <!-- RESERVAS Y PEDIDOS -->
+    <section id="reservas" class="section-padding bg-secondary-glow">
+      <div class="container">
+        <div class="section-header gsap-reveal">
+          <div class="badge badge-status">Agendá tu Visita</div>
+          <h2>Reservá tu Mesa o Hacé tu Pedido Take Away</h2>
+          <p>Garantizá tu lugar en nuestra terraza o salón interior en Güemes. Confirmación automática por WhatsApp.</p>
+        </div>
+
+        <div class="glass-card form-container gsap-reveal">
+          <form id="reserva-form" onsubmit="event.preventDefault(); enviarReserva();">
+            <div class="grid-2-cols gap-md">
+              <div class="form-group">
+                <label for="res-nombre">Tu Nombre y Apellido</label>
+                <input type="text" id="res-nombre" required placeholder="Ej: Sofía Martínez" class="custom-input">
+              </div>
+              <div class="form-group">
+                <label for="res-personas">Cantidad de Personas</label>
+                <select id="res-personas" class="custom-select">
+                  <option value="1 a 2 personas">1 a 2 personas</option>
+                  <option value="3 a 4 personas">3 a 4 personas</option>
+                  <option value="5 o más personas">5 o más personas (Mesa Familiar)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid-2-cols gap-md margin-top-md">
+              <div class="form-group">
+                <label for="res-fecha">Día de Visita</label>
+                <input type="date" id="res-fecha" required class="custom-input">
+              </div>
+              <div class="form-group">
+                <label for="res-hora">Horario Estimado</label>
+                <select id="res-hora" class="custom-select">
+                  <option value="09:00 hs">09:00 hs (Desayuno)</option>
+                  <option value="11:30 hs">11:30 hs (Brunch)</option>
+                  <option value="14:00 hs">14:00 hs (Almuerzo / Café)</option>
+                  <option value="17:00 hs">17:00 hs (Merienda)</option>
+                  <option value="19:30 hs">19:30 hs (After Coffee)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group margin-top-md">
+              <label for="res-notas">Preferencia de Ubicación o Aclaración</label>
+              <textarea id="res-notas" rows="2" placeholder="Ej: Mesa cerca de la ventana / Terraza Pet Friendly / Celebración..." class="custom-input"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-whatsapp btn-full margin-top-lg">
+              <i data-lucide="send"></i> Confirmar Reserva por WhatsApp
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALES DE LA COMUNIDAD -->
+    <section id="opiniones" class="section-padding">
+      <div class="container">
+        <div class="section-header gsap-reveal">
+          <div class="badge badge-amber">Reseñas de Google</div>
+          <h2>Lo que Dice Nuestra Comunidad en Güemes</h2>
+          <p>Vecinos, profesionales y visitantes que eligen Kiva Café cada día en Mar del Plata.</p>
+        </div>
+
+        <div class="grid-3-cols gap-lg">
+          <div class="glass-card gsap-reveal-card">
+            <div class="review-stars text-gradient-amber">★★★★★</div>
+            <p class="margin-top-xs">"El mejor Flat White de Mar del Plata sin dudas. El grano de Etiopía con notas florales es increíble y el avocado toast sale impecable."</p>
+            <div class="review-author margin-top-md">
+              <strong>Valentina Rossi</strong>
+              <small class="block text-muted">Google Reviewer • Güemes</small>
+            </div>
+          </div>
+
+          <div class="glass-card gsap-reveal-card">
+            <div class="review-stars text-gradient-amber">★★★★★</div>
+            <p class="margin-top-xs">"Un lugar ideal para trabajar tranquilo por la mañana. WiFi super rápido, atención excelente de los baristas y croissants de almendras espectaculares."</p>
+            <div class="review-author margin-top-md">
+              <strong>Matías Carrizo</strong>
+              <small class="block text-muted">Google Reviewer • Mar del Plata</small>
+            </div>
+          </div>
+
+          <div class="glass-card gsap-reveal-card">
+            <div class="review-stars text-gradient-amber">★★★★★</div>
+            <p class="margin-top-xs">"Increíble la pastelería sin TACC y la opción de leche vegetal. Súper pet friendly, pudimos estar en la terraza con nuestra perrita tranquilos."</p>
+            <div class="review-author margin-top-md">
+              <strong>Lucía & Tomás</strong>
+              <small class="block text-muted">Google Reviewer • Turistas CABA</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- UBICACION & MAPA -->
+    <section id="ubicacion" class="section-padding bg-secondary-glow">
+      <div class="container">
+        <div class="section-header gsap-reveal">
+          <div class="badge badge-location">Visitanos en Güemes</div>
+          <h2>Avellaneda 2325, Mar del Plata</h2>
+          <p>Estamos ubicados en el corazón gastronómico de Güemes, a pocas cuadras del mar y del paseo comercial.</p>
+        </div>
+
+        <div class="glass-panel padding-lg gsap-reveal flex-between flex-wrap gap-xl align-center">
+          <div class="info-box">
+            <h3>Horarios de Atención</h3>
+            <ul class="service-features margin-top-xs">
+              <li><i data-lucide="clock"></i> <strong>Lunes a Domingos:</strong> 08:00 a 21:00 hs</li>
+              <li><i data-lucide="map-pin"></i> <strong>Dirección:</strong> Avellaneda 2325 (entre Olavarría y Güemes)</li>
+              <li><i data-lucide="phone"></i> <strong>WhatsApp Directo:</strong> +54 9 223 615-7605</li>
+              <li><i data-lucide="wifi"></i> <strong>Servicios:</strong> Salón Climatizado, Terraza, WiFi 500M, Pet Friendly</li>
+            </ul>
+          </div>
+
+          <div class="map-action-box glass-card text-center">
+            <span class="big-icon text-gradient-amber">📍</span>
+            <h4>¿Cómo Llegar?</h4>
+            <p class="margin-top-xs">Hacé clic abajo para abrir la ubicación en Google Maps y llegar directamente en 1 clic.</p>
+            <a href="https://maps.google.com/?q=Avellaneda+2325+Mar+del+Plata" target="_blank" class="btn btn-primary btn-full margin-top-md">
+              <i data-lucide="map-pin"></i> Abrir en Google Maps
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FLOATING WHATSAPP BUTTON -->
+  <a href="https://wa.me/5492236157605?text=Hola%20Kiva%20Caf%C3%A9,%20quisiera%20consultar%20por%20mesas%20o%20hacer%20un%20pedido" 
+     target="_blank" 
+     class="floating-whatsapp-btn" 
+     aria-label="Contactar por WhatsApp">
+    <div class="floating-badge">Atención Inmediata</div>
+    <i data-lucide="message-square"></i>
+  </a>
+
+  <!-- FOOTER -->
+  <footer class="main-footer">
+    <div class="container text-center">
+      <p class="footer-brand">KIVA <span class="text-gradient-amber">CAFÉ</span> — Café de Especialidad</p>
+      <p class="footer-tagline">☕ Avellaneda 2325 • Barrio Güemes, Mar del Plata, Argentina.</p>
+      
+      <div class="footer-badges flex-gap margin-top-sm" style="justify-content: center;">
+        <span class="badge badge-location">📍 Güemes, MDP</span>
+        <span class="badge badge-amber">☕ SCA Specialty Grade</span>
+        <span class="badge badge-status">🐾 Pet Friendly</span>
+      </div>
+
+      <div class="footer-links margin-top-md">
+        <a href="#hero">Inicio</a> • 
+        <a href="#experiencia">Experiencia</a> • 
+        <a href="#menu">Carta</a> • 
+        <a href="#reservas">Reservas</a> • 
+        <a href="https://wa.me/5492236157605" target="_blank">WhatsApp Directo</a>
+      </div>
+      <p class="footer-copy margin-top-md">© 2026 Kiva Café. Desarrollado por Naro AI Mar del Plata.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    if (window.lucide) {
+      lucide.createIcons();
+    }
+  </script>
+</body>
+</html>

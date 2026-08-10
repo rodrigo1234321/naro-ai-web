@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEMO COMERCIO MINORISTA & SOFTWARE DE GESTIÓN (POS/STOCK) - Naro AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0d1117;
+            --card: #161b22;
+            --primary: #38bdf8;
+            --accent: #f59e0b;
+            --text: #f0f6fc;
+            --sub: #8b949e;
+            --border: rgba(240, 246, 252, 0.1);
+        }
+
+        * { margin:0; padding:0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: var(--bg); color: var(--text); padding-bottom: 50px; }
+
+        .demo-bar { background: linear-gradient(90deg, #38bdf8, #f59e0b); color: #0d1117; text-align: center; padding: 10px; font-weight: 800; font-size: 14px; }
+
+        header { text-align: center; padding: 30px 20px 10px; }
+        header h1 { font-size: 32px; font-weight: 800; color: var(--primary); }
+        header p { color: var(--sub); font-size: 14px; }
+
+        .container { max-width: 1100px; margin: 20px auto; padding: 0 20px; }
+
+        /* Panel de Control POS / Software de Gestión */
+        .pos-panel {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+        }
+
+        .panel-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 15px; margin-bottom: 20px; }
+        .panel-title { font-size: 20px; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+
+        .pos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-bottom: 25px; }
+        
+        .kpi-card {
+            background: #0d1117;
+            border: 1px solid var(--border);
+            padding: 18px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .kpi-title { font-size: 12px; color: var(--sub); text-transform: uppercase; font-weight: 600; margin-bottom: 6px; }
+        .kpi-val { font-size: 24px; font-weight: 800; color: var(--primary); }
+
+        /* Tabla de Productos / Stock */
+        .table-box { overflow-x: auto; margin-bottom: 25px; }
+        table { width: 100%; border-collapse: collapse; text-align: left; font-size: 13px; }
+        th { background: #0d1117; padding: 12px; color: var(--sub); font-weight: 600; border-bottom: 1px solid var(--border); }
+        td { padding: 12px; border-bottom: 1px solid var(--border); }
+
+        .badge-ok { background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 4px 8px; border-radius: 6px; font-weight: 600; }
+        .badge-warn { background: rgba(245, 158, 11, 0.2); color: #f59e0b; padding: 4px 8px; border-radius: 6px; font-weight: 600; }
+
+        .btn-action {
+            padding: 12px 20px;
+            background: linear-gradient(90deg, #38bdf8, #0284c7);
+            color: white; border: none; border-radius: 10px; font-weight: 700; cursor: pointer; transition: 0.2s;
+        }
+        .btn-action:hover { transform: scale(1.02); opacity: 0.9; }
+
+        /* Modal Cierre de Caja */
+        .modal {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); z-index: 1000;
+            align-items: center; justify-content: center;
+        }
+
+        .modal-card {
+            background: #161b22; border: 1px solid var(--border); padding: 30px;
+            border-radius: 20px; max-width: 460px; width: 90%; text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="demo-bar">
+        🖥️ DEMO INTERACTIVA NARO AI: WEB CATÁLOGO + SOFTWARE DE GESTIÓN COMERCIAL (POS, STOCK & CAJA)
+    </div>
+
+    <header>
+        <h1>FERRETERÍA & PET SHOP SAN JUAN</h1>
+        <p>Demo para Comercios Minoristas, Ferreterías, Minimarkets, Pet Shops y Regalerías de Mar del Plata</p>
+    </header>
+
+    <div class="container">
+        
+        <!-- Panel de Control de Gestión -->
+        <div class="pos-panel">
+            <div class="panel-header">
+                <div class="panel-title">🖥️ Panel de Control de Gestión Comercial (Punto de Venta POS)</div>
+                <div style="font-size: 13px; color: #10b981;">● Sistema Conectado en Vivo</div>
+            </div>
+
+            <!-- KPIs -->
+            <div class="pos-grid">
+                <div class="kpi-card">
+                    <div class="kpi-title">Ventas del Día</div>
+                    <div class="kpi-val">$184.500 ARS</div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-title">Operaciones POS</div>
+                    <div class="kpi-val">34 Cobros</div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-title">Cuentas Corrientes (Fiados)</div>
+                    <div class="kpi-val" style="color:#f59e0b;">$42.000 ARS</div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-title">Productos en Stock</div>
+                    <div class="kpi-val">1.240 Ítems</div>
+                </div>
+            </div>
+
+            <!-- Tabla Stock -->
+            <div style="font-weight: 700; margin-bottom: 12px;">📦 Control de Stock & Precios por Código de Barras:</div>
+            <div class="table-box">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Código Barras</th>
+                            <th>Producto</th>
+                            <th>Precio Venta</th>
+                            <th>Stock Depósito</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>779123456789</code></td>
+                            <td>Alimento Perro Adulto 15kg (Sabuesos)</td>
+                            <td>$34.500 ARS</td>
+                            <td>14 Bolsas</td>
+                            <td><span class="badge-ok">Stock OK</span></td>
+                        </tr>
+                        <tr>
+                            <td><code>779987654321</code></td>
+                            <td>Taladro Inalámbrico 18V Pro</td>
+                            <td>$89.000 ARS</td>
+                            <td>2 Unidades</td>
+                            <td><span class="badge-warn">Reponer Stock</span></td>
+                        </tr>
+                        <tr>
+                            <td><code>779555444333</code></td>
+                            <td>Juego de Llaves Allen x9</td>
+                            <td>$12.800 ARS</td>
+                            <td>8 Sets</td>
+                            <td><span class="badge-ok">Stock OK</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                <button class="btn-action" onclick="simularCobro()">⚡ Cobrar en Mostrador (Lector Código Barras)</button>
+                <button class="btn-action" style="background: linear-gradient(90deg, #f59e0b, #d97706);" onclick="simularCaja()">📊 Cierre de Caja Diario en 1 Clic</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Cobro -->
+    <div class="modal" id="posModal">
+        <div class="modal-card">
+            <div style="font-size: 50px; margin-bottom: 10px;">🏷️💳</div>
+            <h3 style="font-size: 20px; margin-bottom: 10px;">Cobro Registrado en POS</h3>
+            <p style="color: var(--sub); font-size: 13px; margin-bottom: 15px;">Producto escaneado: <strong>Alimento Perro Adulto 15kg</strong></p>
+
+            <div style="background:#0d1117; padding:15px; border-radius:10px; text-align:left; font-size:13px; margin-bottom:20px; line-height:1.6;">
+                ✓ Stock descontado automáticamente: 14 -> 13 bolsas<br>
+                ✓ Cobro ingresado: $34.500 ARS (MercadoPago QR)<br>
+                ✓ Ticket impreso y registrado en el arqueo diario
+            </div>
+
+            <button class="btn-action" onclick="document.getElementById('posModal').style.display='none'">Cerrar Demo</button>
+        </div>
+    </div>
+
+    <!-- Modal Caja -->
+    <div class="modal" id="cajaModal">
+        <div class="modal-card">
+            <div style="font-size: 50px; margin-bottom: 10px;">📊🧾</div>
+            <h3 style="font-size: 20px; margin-bottom: 10px;">Arqueo de Caja Diario Finalizado</h3>
+            
+            <div style="background:#0d1117; padding:15px; border-radius:10px; text-align:left; font-size:13px; margin-bottom:20px; line-height:1.6;">
+                💵 Efectivo en Caja: $68.500 ARS<br>
+                💳 Tarjetas / QR MercadoPago: $116.000 ARS<br>
+                📒 Fiados Registrados: $42.000 ARS<br>
+                <strong>TOTAL FACTURADO HOY: $226.500 ARS</strong>
+            </div>
+
+            <button class="btn-action" onclick="document.getElementById('cajaModal').style.display='none'">Cerrar Demo</button>
+        </div>
+    </div>
+
+    <script>
+        function simularCobro() {
+            document.getElementById('posModal').style.display = 'flex';
+        }
+        function simularCaja() {
+            document.getElementById('cajaModal').style.display = 'flex';
+        }
+    </script>
+</body>
+</html>

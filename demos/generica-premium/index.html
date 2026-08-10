@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo Web + Bot WhatsApp 24/7 para tu negocio | Naro AI</title>
+<meta name="description" content="Demo interactiva Naro AI: tu negocio con web moderna, catálogo, bot de WhatsApp 24/7 que atiende, cotiza y agenda mientras vos trabajás. Mar del Plata.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============ DESIGN TOKENS ============ */
+:root{
+  --bg:#05060b;
+  --bg-2:#0a0c16;
+  --surface:rgba(255,255,255,0.045);
+  --surface-2:rgba(255,255,255,0.08);
+  --border:rgba(255,255,255,0.10);
+  --text:#f2f4fb;
+  --sub:#97a0bd;
+  --primary:#4f46e5;      /* índigo premium */
+  --primary-2:#7c3aed;    /* violeta */
+  --accent:#22d3ee;       /* cyan */
+  --wa:#25d366;
+  --radius:20px;
+  --shadow:0 24px 70px -20px rgba(0,0,0,0.65);
+  --font-h:'Space Grotesk',sans-serif;
+  --font-b:'Inter',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font-b);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::selection{background:var(--primary);color:#0c0a24}
+
+.demo-bar{
+  background:linear-gradient(90deg,var(--primary),var(--primary-2));
+  color:#fff;text-align:center;padding:11px 14px;
+  font-weight:700;font-size:13.5px;letter-spacing:.4px;
+  display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;
+}
+
+nav{position:sticky;top:0;z-index:90;display:flex;justify-content:space-between;align-items:center;padding:16px clamp(18px,4vw,56px);background:rgba(5,6,11,0.72);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--border)}
+.logo{font-family:var(--font-h);font-size:clamp(1.15rem,2.4vw,1.5rem);font-weight:700;letter-spacing:-.3px}
+.logo b{color:var(--accent)}
+.nav-cta{display:inline-flex;align-items:center;gap:8px;background:var(--wa);color:#062b15;text-decoration:none;padding:10px 18px;border-radius:999px;font-weight:700;font-size:13.5px;transition:transform .25s ease,box-shadow .25s ease}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 12px 30px -8px rgba(37,211,102,.5)}
+
+/* ============ HERO ============ */
+.hero{position:relative;min-height:88vh;display:grid;place-items:center;padding:60px clamp(20px,5vw,80px);text-align:center;overflow:hidden}
+#canvas{position:absolute;inset:0;z-index:0}
+.hero-inner{position:relative;z-index:2;max-width:820px}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border);padding:8px 16px;border-radius:999px;font-size:12.5px;color:var(--sub);margin-bottom:26px;backdrop-filter:blur(8px)}
+.hero-tag b{color:var(--accent);font-weight:700}
+.hero h1{font-family:var(--font-h);font-weight:700;font-size:clamp(2.2rem,3.8vw,3.2rem);letter-spacing:-.8px;line-height:1.08;margin-bottom:18px}
+.hero h1 span{background:linear-gradient(92deg,var(--primary),var(--primary-2),var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:var(--sub);font-size:clamp(.98rem,1.6vw,1.15rem);line-height:1.65;max-width:640px;margin:0 auto 32px}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 28px;border-radius:14px;font-weight:700;font-size:15px;text-decoration:none;transition:transform .25s ease,box-shadow .25s ease;cursor:pointer}
+.btn-wa{background:linear-gradient(92deg,#25d366,#1fbf5f);color:#05250f;box-shadow:0 16px 40px -12px rgba(37,211,102,.55)}
+.btn-wa:hover{transform:translateY(-3px)}
+.btn-ghost{background:var(--surface);border:1px solid var(--border);color:var(--text);backdrop-filter:blur(10px)}
+.btn-ghost:hover{transform:translateY(-3px);border-color:var(--primary);color:var(--primary)}
+.hero-stats{display:flex;gap:34px;justify-content:center;margin-top:52px;flex-wrap:wrap}
+.stat{text-align:center}
+.stat b{display:block;font-family:var(--font-h);font-size:clamp(1.5rem,3vw,2rem);color:var(--accent)}
+.stat span{font-size:12px;color:var(--sub);text-transform:uppercase;letter-spacing:1.2px}
+
+/* ============ SECCIONES ============ */
+section{padding:88px clamp(20px,5vw,80px);position:relative}
+.section-head{text-align:center;max-width:640px;margin:0 auto 52px}
+.section-head .kicker{color:var(--accent);font-weight:700;font-size:12.5px;text-transform:uppercase;letter-spacing:2.4px;margin-bottom:12px}
+.section-head h2{font-family:var(--font-h);font-weight:700;font-size:clamp(1.7rem,3vw,2.5rem);letter-spacing:-.5px;margin-bottom:14px}
+.section-head p{color:var(--sub);font-size:15.5px;line-height:1.65}
+
+/* ==== SERVICIOS ==== */
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.feature{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px;backdrop-filter:blur(12px);transition:transform .3s ease,border-color .3s ease}
+.feature:hover{transform:translateY(-6px);border-color:rgba(34,211,238,.4)}
+.feature .icon{width:52px;height:52px;border-radius:14px;background:rgba(79,70,229,.15);border:1px solid rgba(79,70,229,.35);display:grid;place-items:center;font-size:24px;margin-bottom:18px}
+.feature h3{font-family:var(--font-h);font-size:1.08rem;margin-bottom:8px}
+.feature p{color:var(--sub);font-size:13.5px;line-height:1.65}
+
+/* ==== CHAT SIM ==== */
+.chat-wrap{max-width:720px;margin:0 auto;background:var(--surface);border:1px solid var(--border);border-radius:24px;overflow:hidden;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:var(--shadow)}
+.chat-head{display:flex;align-items:center;gap:12px;padding:16px 20px;background:linear-gradient(92deg,var(--primary),var(--primary-2));color:#fff}
+.chat-head .avatar{width:40px;height:40px;border-radius:50%;background:#fff;color:#4f46e5;display:grid;place-items:center;font-weight:800;font-size:16px}
+.chat-head b{font-family:var(--font-h)}
+.chat-head small{display:block;color:rgba(255,255,255,.8);font-size:12px}
+.chat-body{padding:24px 20px;display:flex;flex-direction:column;gap:14px;min-height:280px;background:#090b14}
+.msg{max-width:80%;padding:12px 16px;border-radius:16px;font-size:14px;line-height:1.55;animation:pop .4s ease both}
+.msg.cliente{background:#12152a;border:1px solid var(--border);align-self:flex-start;border-bottom-left-radius:4px}
+.msg.bot{background:linear-gradient(92deg,rgba(79,70,229,.18),rgba(34,211,238,.08));border:1px solid rgba(79,70,229,.4);align-self:flex-end;border-bottom-right-radius:4px;color:#e2e5ff}
+.msg.bot b{color:#7dd3fc}
+.chat-input{display:flex;gap:10px;padding:14px;border-top:1px solid var(--border);background:#05060b}
+.chat-input input{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 14px;color:var(--text);font-size:13.5px;outline:none;font-family:var(--font-b)}
+.chat-input button{background:var(--primary);color:#fff;border:none;border-radius:10px;padding:0 20px;font-weight:800;cursor:pointer;transition:transform .2s ease}
+.chat-input button:hover{transform:scale(1.05)}
+@keyframes pop{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* ==== TESTIMONIOS ==== */
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.tcard{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:26px;backdrop-filter:blur(12px);transition:transform .3s ease}
+.tcard:hover{transform:translateY(-6px)}
+.tcard .stars{color:var(--accent);letter-spacing:2px;margin-bottom:14px}
+.tcard p{font-size:14.5px;line-height:1.65;color:#e4e7ff;margin-bottom:18px}
+.tcard .who{display:flex;align-items:center;gap:12px}
+.tcard .who .av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-2));display:grid;place-items:center;font-weight:800;font-size:14px;color:#fff}
+.tcard .who b{display:block;font-size:13.5px}
+.tcard .who span{font-size:12px;color:var(--sub)}
+
+/* ==== CTA / FOOTER ==== */
+.cta-final{text-align:center;background:linear-gradient(135deg,rgba(79,70,229,.14),rgba(34,211,238,.08));border:1px solid rgba(79,70,229,.35);border-radius:28px;max-width:820px;margin:0 auto;padding:60px clamp(24px,5vw,60px)}
+.cta-final h2{font-family:var(--font-h);font-size:clamp(1.6rem,3vw,2.4rem);margin-bottom:14px;letter-spacing:-.5px}
+.cta-final p{color:var(--sub);font-size:15.5px;max-width:540px;margin:0 auto 30px;line-height:1.6}
+footer{border-top:1px solid var(--border);padding:36px clamp(20px,5vw,80px);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;background:var(--bg-2)}
+footer small{color:var(--sub);font-size:13px;line-height:1.6}
+footer .wa-f{color:var(--wa);font-weight:700;text-decoration:none}
+
+.wa-float{position:fixed;right:22px;bottom:22px;z-index:95;width:60px;height:60px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;font-size:28px;box-shadow:0 16px 40px -8px rgba(37,211,102,.6);text-decoration:none;animation:pulse 2.4s infinite;transition:transform .25s ease}
+.wa-float:hover{transform:scale(1.1)}
+@keyframes pulse{0%,100%{box-shadow:0 16px 40px -8px rgba(37,211,102,.6),0 0 0 0 rgba(37,211,102,.4)}50%{box-shadow:0 16px 40px -8px rgba(37,211,102,.6),0 0 0 16px rgba(37,211,102,0)}}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal.d1{transition-delay:.08s}
+.reveal.d2{transition-delay:.16s}
+.reveal.d3{transition-delay:.24s}
+
+@media (prefers-reduced-motion: reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}html{scroll-behavior:auto}.reveal{opacity:1;transform:none}}
+@media (max-width:640px){.hero{min-height:82vh}.hero-btns{flex-direction:column;width:100%}.btn{justify-content:center}}
+</style>
+</head>
+<body>
+
+<div class="demo-bar">
+  ✨ DEMO INTERACTIVA NARO AI — Tu web + Bot de WhatsApp 24/7 que atiende por vos
+</div>
+
+<nav>
+  <div class="logo" data-biz-nombre>TU NEGOCIO <b>DEMO</b></div>
+  <a class="nav-cta" data-wa-href>💬 WhatsApp</a>
+</nav>
+
+<header class="hero">
+  <canvas id="canvas"></canvas>
+  <div class="hero-inner">
+    <div class="hero-tag">📍 <b data-biz-dir>Mar del Plata, Buenos Aires</b> · Tu rubro, tu marca</div>
+    <h1>Tu negocio atiende <span>mientras vos trabajás</span></h1>
+    <p>Web moderna, catálogo y bot de WhatsApp 24/7 que responde, cotiza y agenda. Esta demo se arma con tu nombre, tus productos y tu número.</p>
+    <div class="hero-btns">
+      <a class="btn btn-wa" data-wa-href>💬 Hablar por WhatsApp</a>
+      <a class="btn btn-ghost" href="#demo-bot">🤖 Probar el bot</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><b>24/7</b><span>Tu negocio sin cerrar</span></div>
+      <div class="stat"><b>-60%</b><span>Consultas repetidas</span></div>
+      <div class="stat"><b>1</b><span>Semana para tu demo</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="servicios">
+  <div class="section-head reveal">
+    <div class="kicker">Lo que incluye</div>
+    <h2>Todo lo que tu negocio necesita, en un solo lugar</h2>
+    <p>Un paquete completo pensado para negocios de Mar del Plata que quieren vender más sin trabajar más.</p>
+  </div>
+  <div class="svc-grid">
+    <div class="feature reveal">
+      <div class="icon">🌐</div>
+      <h3>Web moderna</h3>
+      <p>Diseño profesional, rápida y perfecta para el celular. Con tu marca, tus servicios y tus fotos.</p>
+    </div>
+    <div class="feature reveal d1">
+      <div class="icon">🤖</div>
+      <h3>Bot de WhatsApp 24/7</h3>
+      <p>Responde, cotiza, agenda y confirma pedidos mientras vos trabajás. Sin perder ninguna consulta.</p>
+    </div>
+    <div class="feature reveal d2">
+      <div class="icon">🛍️</div>
+      <h3>Catálogo digital</h3>
+      <p>Tus productos con foto y precio actualizado. El cliente mira, elige y pide directo.</p>
+    </div>
+    <div class="feature reveal d3">
+      <div class="icon">💳</div>
+      <h3>Cobro por MercadoPago</h3>
+      <p>Señas y pedidos pagados al instante. Sin idas y vueltas, sin comisiones de apps de delivery.</p>
+    </div>
+    <div class="feature reveal">
+      <div class="icon">📈</div>
+      <h3>Señales de Google</h3>
+      <p>Tu negocio aparezca en búsquedas y Google Maps. Más clientes te encuentran.</p>
+    </div>
+    <div class="feature reveal d1">
+      <div class="icon">🔔</div>
+      <h3>Recordatorios automáticos</h3>
+      <p>Turnos y pedidos confirmados con avisos. Los no-shows y los olvidos se terminan.</p>
+    </div>
+  </div>
+</section>
+
+<section id="demo-bot" style="padding-top:0">
+  <div class="section-head reveal">
+    <div class="kicker">Prueba en vivo</div>
+    <h2>Así responde tu bot 24/7</h2>
+    <p>Escribí lo que le preguntaría un cliente: por ejemplo, "¿hacen delivery?" o "¿me pasan precios?".</p>
+  </div>
+  <div class="chat-wrap reveal">
+    <div class="chat-head">
+      <div class="avatar">🤖</div>
+      <div><b data-biz-nombre>Tu negocio</b><small>Bot Naro AI · en línea</small></div>
+    </div>
+    <div class="chat-body" id="chatBody">
+      <div class="msg bot">¡Hola! 👋 Bienvenido a <b data-biz-nombre>nuestro negocio</b>. ¿En qué te puedo ayudar? Consultas, precios, turnos o pedidos, te respondo al toque. 🚀</div>
+    </div>
+    <div class="chat-input">
+      <input id="chatField" type="text" placeholder="Escribí tu consulta…">
+      <button onclick="simulateChat()">Enviar</button>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="section-head reveal">
+    <div class="kicker">Cómo lo hacemos</div>
+    <h2>En una semana tu negocio queda digital</h2>
+  </div>
+  <div class="svc-grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+    <div class="feature reveal">
+      <div class="icon">1️⃣</div>
+      <h3>Te mostramos la demo</h3>
+      <p>Con tu rubro, tus productos y tu número de WhatsApp, para que la veas funcionando antes de decidir.</p>
+    </div>
+    <div class="feature reveal d1">
+      <div class="icon">2️⃣</div>
+      <h3>Personalizamos</h3>
+      <p>Tu marca, tus fotos, tus precios y el bot entrenado con la info de tu negocio.</p>
+    </div>
+    <div class="feature reveal d2">
+      <div class="icon">3️⃣</div>
+      <h3>Lo publicamos</h3>
+      <p>Queda online y lo arrancamos a promocionar. Vos te dedicás a tu negocio.</p>
+    </div>
+  </div>
+</section>
+
+<section id="opiniones" style="padding-top:0">
+  <div class="section-head reveal">
+    <div class="kicker">Resultados</div>
+    <h2>Negocios de Mar del Plata que ya lo usan</h2>
+  </div>
+  <div class="testi-grid">
+    <div class="tcard reveal">
+      <div class="stars">★★★★★</div>
+      <p>"Ahora las consultas me llegan ordenadas y el bot contesta de noche. Recuperé horas de trabajo."</p>
+      <div class="who"><div class="av">GA</div><div><b>G. Aranda</b><span>Comercio local</span></div></div>
+    </div>
+    <div class="tcard reveal d1">
+      <div class="stars">★★★★★</div>
+      <p>"En la primera semana ya aparecía en Google. Los clientes llegan solos, con consultas claras."</p>
+      <div class="who"><div class="av">NB</div><div><b>N. Benítez</b><span>Showroom</span></div></div>
+    </div>
+    <div class="tcard reveal d2">
+      <div class="stars">★★★★★</div>
+      <p>"El catálogo con precios mató las fotos por mensaje. El cliente ya llega decidido a comprar."</p>
+      <div class="who"><div class="av">CK</div><div><b>C. Krause</b><span>Servicios</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="cta-final reveal">
+    <h2>Esta demo puede ser la tuya</h2>
+    <p>Te la armamos con tu nombre, tus productos y tu número. Sin compromiso, primero la ves funcionando.</p>
+    <a class="btn btn-wa" data-wa-href style="font-size:16px;padding:16px 32px">💬 Quiero mi demo</a>
+  </div>
+</section>
+
+<footer>
+  <small data-biz-nombre>© 2026 Tu negocio · Mar del Plata, Buenos Aires</small>
+  <small>Demo realizada por <a class="wa-f" data-wa-href>Naro AI</a> — Web + Bot WhatsApp 24/7 + Catálogo</small>
+</footer>
+
+<a class="wa-float" data-wa-href aria-label="WhatsApp">💬</a>
+
+<script>
+const params = new URLSearchParams(location.search);
+const DATA = {
+  nombre: params.get('n') || 'TU NEGOCIO',
+  tel:    params.get('t') || '5492230000000',
+  dir:    params.get('d') || 'Mar del Plata, Buenos Aires',
+  wa:     params.get('w') || 'Hola! Vi su demo de web + bot de WhatsApp. Quería más información.'
+};
+const waURL = () => 'https://wa.me/' + DATA.tel + '?text=' + encodeURIComponent(DATA.wa);
+document.querySelectorAll('[data-biz-nombre]').forEach(el => {
+  el.textContent = el.textContent.includes('TU NEGOCIO') || el.textContent.includes('nuestro negocio') ? el.textContent.replace(/TU NEGOCIO|nuestro negocio/g, DATA.nombre) : DATA.nombre;
+});
+document.querySelectorAll('[data-biz-dir]').forEach(el => el.textContent = DATA.dir);
+document.querySelectorAll('[data-wa-href]').forEach(el => el.setAttribute('href', waURL()));
+
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+let W, H, parts = [];
+const COLORS = ['#4f46e5','#7c3aed','#22d3ee','#ffffff'];
+function resize(){ W = canvas.width = canvas.offsetWidth; H = canvas.height = canvas.offsetHeight; }
+function spawn(){ parts = []; for (let i = 0; i < 55; i++) parts.push({ x: Math.random()*W, y: Math.random()*H, r: 1.5 + Math.random()*3.5, vx: (Math.random()-.5)*.5, vy: -.3 - Math.random()*.7, c: COLORS[(Math.random()*COLORS.length)|0], a: .2 + Math.random()*.4 }); }
+function frame(){ ctx.clearRect(0,0,W,H); parts.forEach(p => { p.x += p.vx; p.y += p.vy; if (p.y < -10){ p.y = H+10; p.x = Math.random()*W; } ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.globalAlpha = p.a; ctx.fillStyle = p.c; ctx.fill(); }); requestAnimationFrame(frame); }
+resize(); spawn(); frame();
+window.addEventListener('resize', () => { resize(); spawn(); });
+
+const io = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } }); }, { threshold: .12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+let botFirst = false;
+function simulateChat(){
+  const field = document.getElementById('chatField');
+  const body = document.getElementById('chatBody');
+  const txt = field.value.trim();
+  if (!txt) return;
+  const client = document.createElement('div');
+  client.className = 'msg cliente'; client.textContent = txt;
+  body.appendChild(client);
+  field.value = '';
+  setTimeout(() => {
+    const bot = document.createElement('div');
+    bot.className = 'msg bot';
+    if (!botFirst){
+      bot.innerHTML = '¡Claro! 🙂 Te respondo: <b>sí, hacemos envíos y tenés retiro gratis en el local</b>. ¿Querés que te pase el catálogo con precios actualizados?';
+      botFirst = true;
+    } else {
+      bot.innerHTML = '¡Listo! ✅ Te dejé el pedido cargado y confirmado. Te aviso apenas salga. ¡Gracias por elegirnos! 🚀';
+    }
+    body.appendChild(bot);
+    body.scrollTop = body.scrollHeight;
+  }, 700);
+}
+document.getElementById('chatField').addEventListener('keydown', e => { if (e.key === 'Enter') simulateChat(); });
+</script>
+</body>
+</html>
