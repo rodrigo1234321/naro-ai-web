@@ -27,6 +27,12 @@ jobs:
       - name: Procesar HTMLs (raw_html -> public)
         run: node scripts/process-html.js
 
+      - name: Construir Demo Factory (React -> public/demos)
+        run: |
+          cd demofactory
+          npm ci --no-audit --no-fund
+          npm run build
+
       - name: Desplegar en Cloudflare Pages
         uses: cloudflare/pages-action@v1
         with:
