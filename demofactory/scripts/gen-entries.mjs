@@ -60,4 +60,37 @@ renderDemo(${JSON.stringify(slug)})
   )
   n++
 }
+
+const pageDir = resolve(root, 'pages')
+mkdirSync(pageDir, { recursive: true })
+writeFileSync(
+  resolve(pageDir, 'index.html'),
+  `<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Demo Factory — 28 demos para negocios de Mar del Plata</title>
+<meta name="description" content="Demo Factory de Naro AI: 28 demos en vivo de webs premium por rubro para negocios de Mar del Plata.">
+<meta property="og:title" content="Demo Factory — Naro AI Mar del Plata">
+<meta property="og:description" content="28 demos en vivo de webs premium por rubro.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id="root"></div>
+<script type="module" src="/src/entries/index.jsx"></script>
+</body>
+</html>
+`
+)
+writeFileSync(
+  resolve(root, 'src/entries/index.jsx'),
+  `import { renderGallery } from '../Gallery.jsx'
+renderGallery()
+`
+)
+n++
 console.log(`Generadas ${n} entradas (pages + entries)`)
