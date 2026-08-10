@@ -14,6 +14,8 @@ node_modules/
 # Build
 dist/
 public/
+!demofactory/public/
+!demofactory/public/**
 .wrangler/
 
 # Credenciales / entorno
