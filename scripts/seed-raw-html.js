@@ -61,7 +61,8 @@ const SOURCES = [
   {
     html: path.join(ROOT, "sites", "restaurante-la-marina", "index.html"),
     name: "restaurante-la-marina",
-    assetsDir: null,
+    assetsDir: path.join(ROOT, "sites", "restaurante-la-marina"),
+    assetsExclude: ["index.html"],
   },
 ];
 
