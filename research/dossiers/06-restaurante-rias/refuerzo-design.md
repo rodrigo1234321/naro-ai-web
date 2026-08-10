@@ -1,27 +1,33 @@
-# Refuerzo de Diseño & Sistema Visual: Restaurante Rías
+# Refuerzo de Diseño, Tokens & Estructura: Restaurante Rías
 
-## 🎨 Paleta de Colores Sugerida (OKLCH / CSS Tokens)
-- **Modo / Atmósfera**: Azul Océano Profundo (#0B192C), Dorado Brasas (oklch(0.72 0.16 60)), Madera Oscura (#1E1611)
-- **Regla Anti-Slop**: Máximo 2 familias tipográficas en todo el proyecto. Cero gradientes pastel flotantes generados por inercia.
-
----
-
-## 🔤 Tipografía Recomendada
-- **Familia Elegida**: Playfair Display (Títulos) + Plus Jakarta Sans (Cuerpo)
-- **Escala H1 Contenida (Anti-Gigantismo)**: `clamp(2.2rem, 3.8vw, 3.2rem)`
+## 🎨 Sistema de Colores OKLCH & Tokens Visuales
+- **Atmósfera Temática**: Marítima & Brasas Gourmet (Sabor artesanal, mariscos frescos del Puerto de MDP)
+- **Fondo Principal**: `oklch(0.13 0.04 250) - Azul Puerto Profundo (#0F172A)`
+- **Color Acento**: `oklch(0.72 0.16 60) - Ámbar Fuego (#F59E0B)`
+- **Superficies**: `oklch(0.20 0.04 240) con madera oscura y cristal humeante`
+- **Texto Principal**: `oklch(0.98 0.01 60) - Blanco Crema (#FFFBEB)`
 
 ---
 
-## 🗺️ Sitemap Sugerido (Estructura de Secciones)
-- 1. Hero Galería de Platos Inmersiva
-- 2. Carta / Menú Gourmet por Pasos
-- 3. Galería del Salón & Bodega
-- 4. Reserva de Mesa Online / WhatsApp
-- 5. Ubicación & Horarios
+## 🔤 Reglas Tipográficas Anti-AI Slop
+- **Familias Permitidas**: Playfair Display (Títulos Gastronómicos) + Plus Jakarta Sans (Cuerpo) (Máximo 2 familias tipográficas en todo el proyecto).
+- **Tipografía H1 Contenida (Anti-Gigantismo)**: `clamp(2.2rem, 3.8vw, 3.2rem)`
 
 ---
 
-## 🛠️ Directivas para Open Design
-1. **Responsive First**: Optimizado para pantallas táctiles y celulares.
-2. **Conversión Inmediata**: Botón flotante de WhatsApp visible en todo el scroll.
-3. **Carga Rápida**: Componentes limpios y animaciones livianas en CSS / GSAP.
+## 🗺️ Sitemap Sugerido (6 Secciones Canónicas)
+- **1. HERO MARISQUERÍA: Platos de autor full-bleed + Reserva de Mesa por WhatsApp.**
+- **2. CARTA Y MENÚ GOURMET: Cazuelas, Paellas, Tablas de Mariscos y Parrillada.**
+- **3. FRES CURA DEL PUERTO: Origen del pescado del día y selección de carnes.**
+- **4. CAVA Y VINOS: Selección de etiquetas para maridaje perfecto.**
+- **5. GALERÍA DEL SALÓN: Espacios y ambiente exclusivo.**
+- **6. RESERVAS & UBICACIÓN: Formulario directo a WhatsApp y mapa del local.**
+
+---
+
+## 🛠️ Prompt Directo para Open Design MCP (`start_run`)
+```markdown
+Usá la skill landing-web-opendesign para construir la landing page de Restaurante Rías.
+Respetá los datos verificados del dossier research/dossiers/06-restaurante-rias/dossier.md.
+Aplica la atmósfera Marítima & Brasas Gourmet (Sabor artesanal, mariscos frescos del Puerto de MDP), paleta OKLCH oklch(0.72 0.16 60) - Ámbar Fuego (#F59E0B), tipografía Playfair Display (Títulos Gastronómicos) + Plus Jakarta Sans (Cuerpo) y botón flotante de WhatsApp.
+```

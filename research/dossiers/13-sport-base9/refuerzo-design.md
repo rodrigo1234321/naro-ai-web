@@ -1,27 +1,33 @@
-# Refuerzo de Diseño & Sistema Visual: Sport Base9
+# Refuerzo de Diseño, Tokens & Estructura: Sport Base9
 
-## 🎨 Paleta de Colores Sugerida (OKLCH / CSS Tokens)
-- **Modo / Atmósfera**: Negro Antracita (#111827), Neón Volt (oklch(0.85 0.22 130)), Gris Deportivo (#374151)
-- **Regla Anti-Slop**: Máximo 2 familias tipográficas en todo el proyecto. Cero gradientes pastel flotantes generados por inercia.
-
----
-
-## 🔤 Tipografía Recomendada
-- **Familia Elegida**: Dela Gothic One / Impact (Títulos) + Inter (Cuerpo)
-- **Escala H1 Contenida (Anti-Gigantismo)**: `clamp(2.2rem, 3.8vw, 3.2rem)`
+## 🎨 Sistema de Colores OKLCH & Tokens Visuales
+- **Atmósfera Temática**: Cyber Metallic & Volt High Performance (Rendimiento atlético, energía de entrenamiento)
+- **Fondo Principal**: `oklch(0.13 0.02 240) - Antracita Deportivo (#111827)`
+- **Color Acento**: `oklch(0.85 0.22 130) - Neón Volt (#22C55E)`
+- **Superficies**: `oklch(0.18 0.03 245) con texturas de fibra de carbono`
+- **Texto Principal**: `oklch(0.98 0.01 240) - Blanco Atleta (#F9FAFB)`
 
 ---
 
-## 🗺️ Sitemap Sugerido (Estructura de Secciones)
-- 1. Hero High Performance Wear
-- 2. Catálogo por Disciplina (Running, Gym, Fútbol)
-- 3. Tabla de Talles & Telas
-- 4. Promos 3 y 6 Cuotas
-- 5. Comprar WhatsApp
+## 🔤 Reglas Tipográficas Anti-AI Slop
+- **Familias Permitidas**: Dela Gothic One (Títulos de Impacto) + Inter (Cuerpo) (Máximo 2 familias tipográficas en todo el proyecto).
+- **Tipografía H1 Contenida (Anti-Gigantismo)**: `clamp(2.2rem, 3.8vw, 3.2rem)`
 
 ---
 
-## 🛠️ Directivas para Open Design
-1. **Responsive First**: Optimizado para pantallas táctiles y celulares.
-2. **Conversión Inmediata**: Botón flotante de WhatsApp visible en todo el scroll.
-3. **Carga Rápida**: Componentes limpios y animaciones livianas en CSS / GSAP.
+## 🗺️ Sitemap Sugerido (6 Secciones Canónicas)
+- **1. HERO RUNNING & GYM: Atleta en movimiento + Comprar Indumentaria por WhatsApp.**
+- **2. CATEGORÍAS DEPORTIVAS: Camisetas Oficiales, Calzas Compresión, Tops y Zapatillas.**
+- **3. TECNOLOGÍA DE TELAS: Mallas Dry-Fit respirables y costuras reforzadas.**
+- **4. PROMOS 3 Y 6 CUOTAS: Tarjetas bancarias sin interés.**
+- **5. TESTIMONIOS ATHLETES: Atletas locales que usan Sport Base9.**
+- **6. PEDIDO EXPRÉS: Derivación limpia a WhatsApp.**
+
+---
+
+## 🛠️ Prompt Directo para Open Design MCP (`start_run`)
+```markdown
+Usá la skill landing-web-opendesign para construir la landing page de Sport Base9.
+Respetá los datos verificados del dossier research/dossiers/13-sport-base9/dossier.md.
+Aplica la atmósfera Cyber Metallic & Volt High Performance (Rendimiento atlético, energía de entrenamiento), paleta OKLCH oklch(0.85 0.22 130) - Neón Volt (#22C55E), tipografía Dela Gothic One (Títulos de Impacto) + Inter (Cuerpo) y botón flotante de WhatsApp.
+```

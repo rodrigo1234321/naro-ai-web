@@ -1,27 +1,33 @@
-# Refuerzo de Diseño & Sistema Visual: Inmobiliaria Costa Real
+# Refuerzo de Diseño, Tokens & Estructura: Inmobiliaria Costa Real
 
-## 🎨 Paleta de Colores Sugerida (OKLCH / CSS Tokens)
-- **Modo / Atmósfera**: Azul Marino Patrimonial (#0F172A), Dorado Champán (oklch(0.78 0.12 85)), Blanco Puro (#FFFFFF)
-- **Regla Anti-Slop**: Máximo 2 familias tipográficas en todo el proyecto. Cero gradientes pastel flotantes generados por inercia.
-
----
-
-## 🔤 Tipografía Recomendada
-- **Familia Elegida**: Cinzel / Montserrat (Títulos) + Inter (Cuerpo)
-- **Escala H1 Contenida (Anti-Gigantismo)**: `clamp(2.2rem, 3.8vw, 3.2rem)`
+## 🎨 Sistema de Colores OKLCH & Tokens Visuales
+- **Atmósfera Temática**: Obsidian Architecture & Dorado Champán (Prestigio patrimonial, tasaciones reales)
+- **Fondo Principal**: `oklch(0.14 0.03 240) - Obsidiana Patrimonial (#0F172A)`
+- **Color Acento**: `oklch(0.78 0.12 85) - Dorado Champán (#D97706)`
+- **Superficies**: `oklch(0.20 0.04 245) con cristal arquitectónico traslúcido`
+- **Texto Principal**: `oklch(0.98 0.01 240) - Blanco Edificio (#F8FAFC)`
 
 ---
 
-## 🗺️ Sitemap Sugerido (Estructura de Secciones)
-- 1. Hero Buscador de Inmuebles Destacados
-- 2. Catálogo Venta & Alquiler por Zonas
-- 3. Solicitud de Tasación Exprés
-- 4. Equipo de Corredores
-- 5. Consultar Inmueble WhatsApp
+## 🔤 Reglas Tipográficas Anti-AI Slop
+- **Familias Permitidas**: Cinzel / Montserrat (Títulos) + Inter (Cuerpo) (Máximo 2 familias tipográficas en todo el proyecto).
+- **Tipografía H1 Contenida (Anti-Gigantismo)**: `clamp(2.2rem, 3.8vw, 3.2rem)`
 
 ---
 
-## 🛠️ Directivas para Open Design
-1. **Responsive First**: Optimizado para pantallas táctiles y celulares.
-2. **Conversión Inmediata**: Botón flotante de WhatsApp visible en todo el scroll.
-3. **Carga Rápida**: Componentes limpios y animaciones livianas en CSS / GSAP.
+## 🗺️ Sitemap Sugerido (6 Secciones Canónicas)
+- **1. HERO INMUEBLES PREMIUM: Buscador de Propiedades en Güemes y Playa Grande + WhatsApp.**
+- **2. OPORTUNIDADES DE VENTA & ALQUILER: Fichas de 2, 3 y 4 ambientes con fotos HD.**
+- **3. TASACIÓN PROFESIONAL DE INMUEBLES: Formulario exprés para tasar tu casa/depto.**
+- **4. ZONAS EXCLUSIVAS DE MDP: Los Troncos, Playa Varese, La Perla y Macrocentro.**
+- **5. NUESTRO EQUIPO DE CORREDORES: Martilleros colegiados matriculados.**
+- **6. CONSULTAR POR PROPIEDAD: Botón WhatsApp con ficha pre-cargada.**
+
+---
+
+## 🛠️ Prompt Directo para Open Design MCP (`start_run`)
+```markdown
+Usá la skill landing-web-opendesign para construir la landing page de Inmobiliaria Costa Real.
+Respetá los datos verificados del dossier research/dossiers/15-inmobiliaria-costa-real/dossier.md.
+Aplica la atmósfera Obsidian Architecture & Dorado Champán (Prestigio patrimonial, tasaciones reales), paleta OKLCH oklch(0.78 0.12 85) - Dorado Champán (#D97706), tipografía Cinzel / Montserrat (Títulos) + Inter (Cuerpo) y botón flotante de WhatsApp.
+```

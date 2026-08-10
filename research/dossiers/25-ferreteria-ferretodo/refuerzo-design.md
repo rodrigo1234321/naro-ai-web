@@ -1,27 +1,33 @@
-# Refuerzo de Diseño & Sistema Visual: Ferretería Ferretodo
+# Refuerzo de Diseño, Tokens & Estructura: Ferretería Ferretodo
 
-## 🎨 Paleta de Colores Sugerida (OKLCH / CSS Tokens)
-- **Modo / Atmósfera**: Naranja Industrial (#EA580C), Gris Carbón (#1E293B), Blanco Puro (#FFFFFF)
-- **Regla Anti-Slop**: Máximo 2 familias tipográficas en todo el proyecto. Cero gradientes pastel flotantes generados por inercia.
-
----
-
-## 🔤 Tipografía Recomendada
-- **Familia Elegida**: Dela Gothic One / Roboto (Títulos) + Inter (Cuerpo)
-- **Escala H1 Contenida (Anti-Gigantismo)**: `clamp(2.2rem, 3.8vw, 3.2rem)`
+## 🎨 Sistema de Colores OKLCH & Tokens Visuales
+- **Atmósfera Temática**: Fuerza Industrial & Obra Fuerte (Soluciones para el hogar y la construcción)
+- **Fondo Principal**: `oklch(0.14 0.02 30) - Gris Construcción (#1E293B)`
+- **Color Acento**: `oklch(0.68 0.20 40) - Naranja Industrial (#EA580C)`
+- **Superficies**: `oklch(0.20 0.03 35) con patrones de herramientas`
+- **Texto Principal**: `oklch(0.98 0.01 30) - Blanco Firme (#FAFAFA)`
 
 ---
 
-## 🗺️ Sitemap Sugerido (Estructura de Secciones)
-- 1. Hero Todo para Tu Obra y Hogar
-- 2. Herramientas, Sanitarios & Pinturas
-- 3. Marcas Oficiales que Trabajamos
-- 4. Descuentos a Gremios
-- 5. Consultar Stock WhatsApp
+## 🔤 Reglas Tipográficas Anti-AI Slop
+- **Familias Permitidas**: Dela Gothic One / Roboto (Títulos) + Inter (Cuerpo) (Máximo 2 familias tipográficas en todo el proyecto).
+- **Tipografía H1 Contenida (Anti-Gigantismo)**: `clamp(2.2rem, 3.8vw, 3.2rem)`
 
 ---
 
-## 🛠️ Directivas para Open Design
-1. **Responsive First**: Optimizado para pantallas táctiles y celulares.
-2. **Conversión Inmediata**: Botón flotante de WhatsApp visible en todo el scroll.
-3. **Carga Rápida**: Componentes limpios y animaciones livianas en CSS / GSAP.
+## 🗺️ Sitemap Sugerido (6 Secciones Canónicas)
+- **1. HERO HERRAMIENTAS & OBRA: Taladros, Sanitarios y Pinturas + Consultar Stock WhatsApp.**
+- **2. RUBROS DESTACADOS: Herramientas Eléctricas, Plomería, Electricidad y Pinturas.**
+- **3. MARCAS OFICIALES: Bosch, Stanley, Awaduct, Ferrum y AkzoNobel.**
+- **4. DESCUENTOS A GREMIOS: Precios especiales a contratistas y plomeros.**
+- **5. ENTREGA EN OBRA: Envíos pesados a domicilio en MDP.**
+- **6. PRESUPUESTOS POR WHATSAPP: Envío de listas de materiales.**
+
+---
+
+## 🛠️ Prompt Directo para Open Design MCP (`start_run`)
+```markdown
+Usá la skill landing-web-opendesign para construir la landing page de Ferretería Ferretodo.
+Respetá los datos verificados del dossier research/dossiers/25-ferreteria-ferretodo/dossier.md.
+Aplica la atmósfera Fuerza Industrial & Obra Fuerte (Soluciones para el hogar y la construcción), paleta OKLCH oklch(0.68 0.20 40) - Naranja Industrial (#EA580C), tipografía Dela Gothic One / Roboto (Títulos) + Inter (Cuerpo) y botón flotante de WhatsApp.
+```

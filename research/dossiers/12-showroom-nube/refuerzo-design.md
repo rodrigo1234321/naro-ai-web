@@ -1,27 +1,33 @@
-# Refuerzo de Diseño & Sistema Visual: Showroom Nube
+# Refuerzo de Diseño, Tokens & Estructura: Showroom Nube
 
-## 🎨 Paleta de Colores Sugerida (OKLCH / CSS Tokens)
-- **Modo / Atmósfera**: Beige Nube (#FDFBF7), Rosa Terracota (oklch(0.72 0.12 35)), Negro Suave (#1F2937)
-- **Regla Anti-Slop**: Máximo 2 familias tipográficas en todo el proyecto. Cero gradientes pastel flotantes generados por inercia.
-
----
-
-## 🔤 Tipografía Recomendada
-- **Familia Elegida**: Tenor Sans / Playfair (Títulos) + Plus Jakarta Sans (Cuerpo)
-- **Escala H1 Contenida (Anti-Gigantismo)**: `clamp(2.2rem, 3.8vw, 3.2rem)`
+## 🎨 Sistema de Colores OKLCH & Tokens Visuales
+- **Atmósfera Temática**: Dark Luxury & High Fashion Glass (Exclusividad, tendencias en tendencia, prendas delicadas)
+- **Fondo Principal**: `oklch(0.14 0.02 350) - Negro Nube (#180E15)`
+- **Color Acento**: `oklch(0.82 0.12 350) - Cuarzo Rosa Trendy (#F472B6)`
+- **Superficies**: `oklch(0.20 0.03 345) con cristal esmerilado brillante`
+- **Texto Principal**: `oklch(0.98 0.01 350) - Seda Pura (#FAF5FF)`
 
 ---
 
-## 🗺️ Sitemap Sugerido (Estructura de Secciones)
-- 1. Hero Lookbook Nueva Colección
-- 2. Galería de Drops & Outfits
-- 3. Guía de Talles & Envíos
-- 4. Agendar Visita al Showroom por WhatsApp
-- 5. Instagram Feed
+## 🔤 Reglas Tipográficas Anti-AI Slop
+- **Familias Permitidas**: Tenor Sans (Títulos de Moda) + Plus Jakarta Sans (Cuerpo) (Máximo 2 familias tipográficas en todo el proyecto).
+- **Tipografía H1 Contenida (Anti-Gigantismo)**: `clamp(2.2rem, 3.8vw, 3.2rem)`
 
 ---
 
-## 🛠️ Directivas para Open Design
-1. **Responsive First**: Optimizado para pantallas táctiles y celulares.
-2. **Conversión Inmediata**: Botón flotante de WhatsApp visible en todo el scroll.
-3. **Carga Rápida**: Componentes limpios y animaciones livianas en CSS / GSAP.
+## 🗺️ Sitemap Sugerido (6 Secciones Canónicas)
+- **1. HERO LOOKBOOK: Galería tipo Instagram Stories de Nueva Colección + Agendar Cita.**
+- **2. DROPS & OUTFITS: Vestidos de Fiesta, Jeans Cargo, Blusas de Seda y Sacos.**
+- **3. ACCESORIOS & CARTERAS: Complementos de cuero y bisutería fina.**
+- **4. GUÍA DE TALLES & CALCE: Asesoramiento personalizado de imagen.**
+- **5. ENVIOS A TODO EL PAÍS: Envíos locales sin cargo en MDP.**
+- **6. COMPRA DIRECTA WHATSAPP: Atelier atendido por sus dueñas.**
+
+---
+
+## 🛠️ Prompt Directo para Open Design MCP (`start_run`)
+```markdown
+Usá la skill landing-web-opendesign para construir la landing page de Showroom Nube.
+Respetá los datos verificados del dossier research/dossiers/12-showroom-nube/dossier.md.
+Aplica la atmósfera Dark Luxury & High Fashion Glass (Exclusividad, tendencias en tendencia, prendas delicadas), paleta OKLCH oklch(0.82 0.12 350) - Cuarzo Rosa Trendy (#F472B6), tipografía Tenor Sans (Títulos de Moda) + Plus Jakarta Sans (Cuerpo) y botón flotante de WhatsApp.
+```

@@ -1,27 +1,33 @@
-# Refuerzo de Diseño & Sistema Visual: Regalería Dulce Detalle
+# Refuerzo de Diseño, Tokens & Estructura: Regalería Dulce Detalle
 
-## 🎨 Paleta de Colores Sugerida (OKLCH / CSS Tokens)
-- **Modo / Atmósfera**: Rosa Pastelería (#FCE7F3), Amarillo Sol (#FEF08A), Violeta Dulce (#8B5CF6)
-- **Regla Anti-Slop**: Máximo 2 familias tipográficas en todo el proyecto. Cero gradientes pastel flotantes generados por inercia.
-
----
-
-## 🔤 Tipografía Recomendada
-- **Familia Elegida**: Fredoka / Outfit (Títulos) + Inter (Cuerpo)
-- **Escala H1 Contenida (Anti-Gigantismo)**: `clamp(2.2rem, 3.8vw, 3.2rem)`
+## 🎨 Sistema de Colores OKLCH & Tokens Visuales
+- **Atmósfera Temática**: Dulce Pop & Alegría Festiva (Regalos sorpresa que emocionan)
+- **Fondo Principal**: `oklch(0.16 0.03 330) - Noche Dulce (#1A0E1A)`
+- **Color Acento**: `oklch(0.78 0.16 340) - Rosa Dulce Detalle (#EC4899)`
+- **Superficies**: `oklch(0.96 0.03 80) - Amarillo Pastel (#FEF08A)`
+- **Texto Principal**: `oklch(0.98 0.01 330) - Blanco Nieve (#FAFAFA)`
 
 ---
 
-## 🗺️ Sitemap Sugerido (Estructura de Secciones)
-- 1. Hero Sorprendé a Quien Más Querés
-- 2. Regalos por Ocasión (Aniversario, Cumple)
-- 3. Boxes & Peluches Destacados
-- 4. Envío Sorpresa a Domicilio
-- 5. Comprar por WhatsApp
+## 🔤 Reglas Tipográficas Anti-AI Slop
+- **Familias Permitidas**: Fredoka (Títulos Divertidos) + Inter (Cuerpo) (Máximo 2 familias tipográficas en todo el proyecto).
+- **Tipografía H1 Contenida (Anti-Gigantismo)**: `clamp(2.2rem, 3.8vw, 3.2rem)`
 
 ---
 
-## 🛠️ Directivas para Open Design
-1. **Responsive First**: Optimizado para pantallas táctiles y celulares.
-2. **Conversión Inmediata**: Botón flotante de WhatsApp visible en todo el scroll.
-3. **Carga Rápida**: Componentes limpios y animaciones livianas en CSS / GSAP.
+## 🗺️ Sitemap Sugerido (6 Secciones Canónicas)
+- **1. HERO EMPATÍA & REGALOS: Box Sorpresa con Globos + Comprar Regalo por WhatsApp.**
+- **2. CATÁLOGO POR OCASIÓN: Cumpleaños, Aniversarios, Nacimientos y Agradecimientos.**
+- **3. PELUCHES GIGANTES & BOXES: Desayunos sorpresa y golosinas importadas.**
+- **4. ENVÍO SORPRESA A DOMICILIO: Entrega en la puerta agendada en MDP.**
+- **5. TARJETAS PERSONALIZADAS: Mensajes dedicados impresos.**
+- **6. CONSULTA WHATSAPP: Armado de regalo personalizado.**
+
+---
+
+## 🛠️ Prompt Directo para Open Design MCP (`start_run`)
+```markdown
+Usá la skill landing-web-opendesign para construir la landing page de Regalería Dulce Detalle.
+Respetá los datos verificados del dossier research/dossiers/22-regaleria-dulce-detalle/dossier.md.
+Aplica la atmósfera Dulce Pop & Alegría Festiva (Regalos sorpresa que emocionan), paleta OKLCH oklch(0.78 0.16 340) - Rosa Dulce Detalle (#EC4899), tipografía Fredoka (Títulos Divertidos) + Inter (Cuerpo) y botón flotante de WhatsApp.
+```

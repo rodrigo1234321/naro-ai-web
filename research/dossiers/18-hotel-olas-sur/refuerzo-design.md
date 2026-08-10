@@ -1,27 +1,33 @@
-# Refuerzo de Diseño & Sistema Visual: Hotel Olas Sur
+# Refuerzo de Diseño, Tokens & Estructura: Hotel Olas Sur
 
-## 🎨 Paleta de Colores Sugerida (OKLCH / CSS Tokens)
-- **Modo / Atmósfera**: Azul Noche Real (#0F172A), Dorado Sol (oklch(0.78 0.14 75)), Blanco Mármol (#F8FAFC)
-- **Regla Anti-Slop**: Máximo 2 familias tipográficas en todo el proyecto. Cero gradientes pastel flotantes generados por inercia.
-
----
-
-## 🔤 Tipografía Recomendada
-- **Familia Elegida**: Cormorant Garamond (Títulos) + Plus Jakarta Sans (Cuerpo)
-- **Escala H1 Contenida (Anti-Gigantismo)**: `clamp(2.2rem, 3.8vw, 3.2rem)`
+## 🎨 Sistema de Colores OKLCH & Tokens Visuales
+- **Atmósfera Temática**: Boutique Real & Dorado Mármol (Confort hotelero de primera línea en la costa)
+- **Fondo Principal**: `oklch(0.12 0.03 250) - Azul Noche Hotelero (#0F172A)`
+- **Color Acento**: `oklch(0.78 0.14 75) - Dorado Sol (#D97706)`
+- **Superficies**: `oklch(0.98 0.01 240) - Mármol Blanco (#F8FAFC)`
+- **Texto Principal**: `oklch(0.99 0.01 250) - Blanco Pura Seda (#FFFFFF)`
 
 ---
 
-## 🗺️ Sitemap Sugerido (Estructura de Secciones)
-- 1. Hero Confort Frente al Mar
-- 2. Habitaciones & Suites
-- 3. Servicios (Desayuno, Spa, Cochera)
-- 4. Galería de Instalaciones
-- 5. Reserva Directa por WhatsApp
+## 🔤 Reglas Tipográficas Anti-AI Slop
+- **Familias Permitidas**: Cormorant Garamond (Títulos Hotel) + Plus Jakarta Sans (Cuerpo) (Máximo 2 familias tipográficas en todo el proyecto).
+- **Tipografía H1 Contenida (Anti-Gigantismo)**: `clamp(2.2rem, 3.8vw, 3.2rem)`
 
 ---
 
-## 🛠️ Directivas para Open Design
-1. **Responsive First**: Optimizado para pantallas táctiles y celulares.
-2. **Conversión Inmediata**: Botón flotante de WhatsApp visible en todo el scroll.
-3. **Carga Rápida**: Componentes limpios y animaciones livianas en CSS / GSAP.
+## 🗺️ Sitemap Sugerido (6 Secciones Canónicas)
+- **1. HERO CONFORT BOUTIQUE: Suite Matrimonial Vista al Mar + Reservar Habitación.**
+- **2. HABITACIONES & SUITES: Matrimoniales, Triples y Aparts con Kitchenette.**
+- **3. SERVICIOS DESTACADOS: Desayuno Buffet, Spa, Cochera Cubierta y Wi-Fi.**
+- **4. GALERÍA DE INSTALACIONES: Solarium, Piscina y Restó Bar.**
+- **5. UBICACIÓN PRIVILEGIADA: A pasos de la playa y el paseo de compras.**
+- **6. RESERVAS DIRECTAS: Botón WhatsApp sin comisiones de terceros.**
+
+---
+
+## 🛠️ Prompt Directo para Open Design MCP (`start_run`)
+```markdown
+Usá la skill landing-web-opendesign para construir la landing page de Hotel Olas Sur.
+Respetá los datos verificados del dossier research/dossiers/18-hotel-olas-sur/dossier.md.
+Aplica la atmósfera Boutique Real & Dorado Mármol (Confort hotelero de primera línea en la costa), paleta OKLCH oklch(0.78 0.14 75) - Dorado Sol (#D97706), tipografía Cormorant Garamond (Títulos Hotel) + Plus Jakarta Sans (Cuerpo) y botón flotante de WhatsApp.
+```
