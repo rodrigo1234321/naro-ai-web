@@ -64,6 +64,13 @@ const SOURCES = [
     assetsDir: path.join(ROOT, "sites", "restaurante-la-marina"),
     assetsExclude: ["index.html"],
   },
+  {
+    html: path.join(ROOT, "index.html"),
+    name: "nora-ai",
+    assetsDir: path.join(ROOT),
+    assetsExclude: ["index.html", "app.js", "styles.css"],
+    assetsInclude: ["app.js", "styles.css"],
+  },
 ];
 
 function main() {
@@ -79,7 +86,13 @@ function main() {
     copyFile(s.html, path.join(RAW_DIR, `${s.name}.html`));
     if (s.assetsDir && fs.existsSync(s.assetsDir)) {
       const dest = path.join(RAW_DIR, s.name);
-      if (s.assetsExclude) {
+      if (s.assetsInclude) {
+        fs.mkdirSync(dest, { recursive: true });
+        for (const name of s.assetsInclude) {
+          const src = path.join(s.assetsDir, name);
+          if (fs.existsSync(src)) fs.copyFileSync(src, path.join(dest, name));
+        }
+      } else if (s.assetsExclude) {
         for (const entry of fs.readdirSync(s.assetsDir, { withFileTypes: true })) {
           if (s.assetsExclude.includes(entry.name)) continue;
           const src = path.join(s.assetsDir, entry.name);
