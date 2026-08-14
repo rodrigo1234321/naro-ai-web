@@ -65,13 +65,13 @@
     "url": "/whatsapp-saas/"
   },
   {
-    "slug": "control-comercio",
-    "name": "ControlComercio // POS & Stock IA",
-    "categoria": "Software & IA",
+    "slug": "gestion-comercial",
+    "name": "GestiónComercial // Sistema POS, Stock & Facturación",
+    "categoria": "Software & SaaS",
     "icon": "fa-cash-register",
     "color": "#8b5cf6",
-    "desc": "Sistema POS y gestión comercial para comercios argentinos con control de caja, stock y asistente IA.",
-    "url": "https://control-comercio-kappa.vercel.app/",
+    "desc": "Sistema POS y gestión integral de ventas, stock en tiempo real y facturación para PyMEs y comercios minoristas.",
+    "url": "https://gestioncomercial-weld.vercel.app/dashboard",
     "is_external": true
   },
   {
