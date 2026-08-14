@@ -25,22 +25,61 @@ const FAMILIA_COLORS = {
   servicios: '#f472b6'
 }
 
+function buildPersonalUrl(slug) {
+  const params = new URLSearchParams(location.search)
+  const qs = new URLSearchParams()
+  for (const k of ['n', 't', 'd']) {
+    const v = params.get(k)
+    if (v) qs.set(k, v)
+  }
+  const q = qs.toString()
+  return `https://mis-clientes-html.pages.dev/demos/${slug}.html${q ? '?' + q : ''}`
+}
+
+function copyText(text) {
+  if (navigator.clipboard?.writeText) return navigator.clipboard.writeText(text)
+  return new Promise((resolve, reject) => {
+    const ta = document.createElement('textarea')
+    ta.value = text
+    ta.style.position = 'fixed'
+    ta.style.opacity = '0'
+    document.body.appendChild(ta)
+    ta.select()
+    try { document.execCommand('copy') ? resolve() : reject(new Error('copy fail')) } catch (e) { reject(e) }
+    document.body.removeChild(ta)
+  })
+}
+
 function DemoCard({ slug }) {
   const r = getRubro(slug)
+  const [copied, setCopied] = useState(false)
   if (!r) return null
   const color = FAMILIA_COLORS[r.familia] || '#888'
+
+  const onCopy = () => {
+    copyText(buildPersonalUrl(slug))
+      .then(() => setCopied(true))
+      .catch(() => setCopied(false))
+    setTimeout(() => setCopied(false), 1600)
+  }
+
   return (
-    <a className="g-card" href={`./${slug}.html`} style={{ '--acc': color }}>
-      <div className="g-thumb">
+    <div className="g-card" style={{ '--acc': color }}>
+      <a className="g-thumb" href={`./${slug}.html`}>
         <img src={`./assets/${slug}/hero.jpg`} alt={r.nombre} loading="lazy" onError={(e) => { e.currentTarget.style.display = 'none' }} />
         <span className="g-tag" style={{ background: color }}>{FAMILIA_LABELS[r.familia] || r.familia}</span>
-      </div>
+      </a>
       <div className="g-body">
         <h3>{r.nombre}</h3>
         <p>{r.rubro}</p>
-        <span className="g-open">Abrir demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M7 17L17 7M9 7h8v8" /></svg></span>
+        <div className="g-actions">
+          <a className="g-open" href={`./${slug}.html`}>Abrir demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M7 17L17 7M9 7h8v8" /></svg></a>
+          <button className={`g-copy${copied ? ' copied' : ''}`} onClick={onCopy}>
+            {copied ? '¡Copiado!' : 'Copiar enlace'}
+          </button>
+        </div>
       </div>
-    </a>
+    </div>
   )
 }
 

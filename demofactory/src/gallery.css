@@ -171,6 +171,34 @@
 
 .g-open svg { width: 15px; height: 15px }
 
+.g-actions {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.g-actions .g-open { margin-top: 0 }
+
+.g-copy {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #c9c9d6;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.18s, border-color 0.18s, color 0.18s;
+  white-space: nowrap;
+}
+
+.g-copy:hover { background: var(--acc); border-color: var(--acc); color: #0a0a0f }
+
+.g-copy.copied { background: #22c55e; border-color: #22c55e; color: #0a0a0f }
+
 .g-foot {
   text-align: center;
   padding: 26px 0 40px;
