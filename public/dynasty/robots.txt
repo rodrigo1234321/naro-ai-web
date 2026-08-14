@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rodrigo1234321.github.io/dynasty/sitemap.xml

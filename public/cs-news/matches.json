@@ -1,0 +1,38 @@
+[
+  {
+    "id": "match-1",
+    "torneo": "BLAST PREMIER 2026",
+    "estado": "PRÓXIMO",
+    "isLive": false,
+    "equipo1": "Vitality",
+    "flag1": "🐝",
+    "equipo2": "FaZe",
+    "flag2": "🔴",
+    "score": "VS",
+    "destacado": true
+  },
+  {
+    "id": "match-2",
+    "torneo": "ESL LATAM LEAGUE",
+    "estado": "PRÓXIMO",
+    "isLive": false,
+    "equipo1": "9z",
+    "flag1": "🟣",
+    "equipo2": "KRÜ",
+    "flag2": "💖",
+    "score": "VS",
+    "destacado": true
+  },
+  {
+    "id": "match-3",
+    "torneo": "IEM KATOWICE 2026",
+    "estado": "RESULTADO",
+    "isLive": false,
+    "equipo1": "NAVI",
+    "flag1": "🟡",
+    "equipo2": "Spirit",
+    "flag2": "⚡",
+    "score": "2 - 1",
+    "destacado": false
+  }
+]

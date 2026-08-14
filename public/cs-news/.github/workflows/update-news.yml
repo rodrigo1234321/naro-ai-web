@@ -1,0 +1,98 @@
+name: Auto Actualizar Noticias y Postear en X
+
+on:
+  schedule:
+    - cron: '0 */4 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-news:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          # Removido cache: 'npm' temporalmente para evitar problemas de lockfile
+
+      - name: Instalar dependencias
+        run: npm install
+
+      - name: Instalar navegador Chromium y dependencias para Playwright
+        run: npx playwright install --with-deps chromium
+
+      - name: Ejecutar script de reposición de noticias
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          SITE_URL: ${{ vars.SITE_URL }}
+          SITE_NAME: ${{ vars.SITE_NAME }}
+          SEARCH_QUERY: ${{ vars.SEARCH_QUERY }}
+        run: |
+          node scripts/update-news.js > stdout.log 2> stderr.log || echo "CRASHED" > crashed.txt
+          
+          if [ -f crashed.txt ]; then
+            echo "### ❌ Error Crítico en update-news.js" >> $GITHUB_STEP_SUMMARY
+            echo '```text' >> $GITHUB_STEP_SUMMARY
+            cat stderr.log >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+            
+            # Chequeo específico de GEMINI_API_KEY vacía
+            if [ -z "${GEMINI_API_KEY}" ]; then
+              echo "⚠️ **ALERTA:** ¡La variable de entorno GEMINI_API_KEY está VACÍA en Github Actions! Asegúrate de que el Secret está bien escrito." >> $GITHUB_STEP_SUMMARY
+            fi
+            
+            exit 1 # Forzar salida para detener el workflow
+          fi
+
+      - name: Commitear y Subir cambios
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto: actualización de noticias y páginas estáticas" && git pull --rebase && git push)
+
+      - name: Publicar Tweet en X (Twitter)
+        env:
+          TWITTER_AUTH_TOKEN: ${{ secrets.TWITTER_AUTH_TOKEN }}
+          TWITTER_CT0: ${{ secrets.TWITTER_CT0 }}
+          HEADLESS: 'true'
+        run: node scripts/post-tweet.js
+
+      - name: Mostrar Borrador de Tweet para X
+        if: always()
+        run: |
+          echo "### 🗞️ Panorama — Automatización de Noticias" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          if [ -f tweet-status.txt ]; then
+            STATUS=$(head -n 1 tweet-status.txt)
+            DETAIL=$(tail -n +2 tweet-status.txt)
+            if [ "$STATUS" = "SUCCESS" ]; then
+              echo "✅ **Tweet publicado y confirmado por X.** $DETAIL" >> $GITHUB_STEP_SUMMARY
+            elif [ "$STATUS" = "SKIPPED" ]; then
+              echo "⏭️ **Se saltó la publicación:** $DETAIL" >> $GITHUB_STEP_SUMMARY
+            else
+              echo "❌ **El tweet NO se publicó.** $DETAIL" >> $GITHUB_STEP_SUMMARY
+            fi
+          else
+            echo "⚠️ No se generó tweet-status.txt — el script pudo haber fallado antes de escribir el estado." >> $GITHUB_STEP_SUMMARY
+          fi
+
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          if [ -f tweet.txt ]; then
+            echo "#### 🐦 Borrador del Tweet para X:" >> $GITHUB_STEP_SUMMARY
+            echo '```text' >> $GITHUB_STEP_SUMMARY
+            cat tweet.txt >> $GITHUB_STEP_SUMMARY
+            echo '' >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "*Tip: Si el tweet no se publicó, copiá este borrador y pegalo manualmente en tu cuenta.*" >> $GITHUB_STEP_SUMMARY
+          fi

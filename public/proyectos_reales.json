@@ -1,11 +1,30 @@
 [
   {
+    "slug": "dynasty",
+    "name": "Dynasty // E-Commerce & Showroom",
+    "categoria": "Moda & Tech",
+    "icon": "fa-crown",
+    "color": "#bef264",
+    "desc": "E-commerce oficial de Dynasty con catálogo de productos, buzos heavyweight, tech y checkout integrado.",
+    "url": "/dynasty/",
+    "external_url": "https://dynasty.ar"
+  },
+  {
+    "slug": "naro-ai",
+    "name": "Naro AI // Agencia de Inteligencia Artificial",
+    "categoria": "Software & IA",
+    "icon": "fa-brain",
+    "color": "#3b82f6",
+    "desc": "Sitio oficial de la agencia de IA y automatizaciones de Mar del Plata con cotizador de ROI y catálogo de servicios.",
+    "url": "/naro-ai/"
+  },
+  {
     "slug": "stella-maris-pastas",
     "name": "Stella Maris Pastas Artesanales",
     "categoria": "Gastronomía",
     "icon": "fa-bowl-food",
     "color": "#ea580c",
-    "desc": "Fábrica de pastas frescas, rotisería gourmet y minutas tradicionales en Mar del Plata.",
+    "desc": "Fábrica de pastas frescas, rotisería gourmet y minutas tradicionales con comanda directa a cocina.",
     "url": "/stella-maris-pastas/"
   },
   {
@@ -14,61 +33,62 @@
     "categoria": "Gastronomía",
     "icon": "fa-mug-hot",
     "color": "#c2410c",
-    "desc": "Tostaduría de café de origen, carta sensorial de filtrados y pastelería de autor.",
+    "desc": "Tostaduría de café de origen, carta sensorial de filtrados y pastelería artesanal de autor.",
     "url": "/kaffa-cafe/"
   },
   {
     "slug": "estar-peralta-ramos",
-    "name": "Estar Peralta Ramos",
+    "name": "Estar Peralta Ramos // Cabañas & Spa",
     "categoria": "Turismo",
     "icon": "fa-tree",
     "color": "#16a34a",
-    "desc": "Cabañas boutique y suites inmersas en el Bosque Peralta Ramos con hidromasaje y deck.",
+    "desc": "Cabañas boutique y suites en el Bosque Peralta Ramos con hidromasaje, deck privado y fogón.",
     "url": "/estar-peralta-ramos/"
   },
   {
     "slug": "ms-refrigeracion",
-    "name": "MS Refrigeración & Climatización",
+    "name": "MS Refrigeración Industrial & Clima",
     "categoria": "Industria & B2B",
     "icon": "fa-snowflake",
     "color": "#0284c7",
-    "desc": "Ingeniería en refrigeración industrial, cámaras frigoríficas y mantenimiento térmico.",
+    "desc": "Ingeniería en refrigeración industrial, cámaras frigoríficas y mantenimiento térmico para empresas.",
     "url": "/ms-refrigeracion/"
   },
   {
     "slug": "whatsapp-saas",
-    "name": "Bot WhatsApp IA SaaS",
+    "name": "WhatsApp Bot IA SaaS Platform",
     "categoria": "Software & IA",
     "icon": "fa-robot",
     "color": "#25d366",
-    "desc": "Plataforma SaaS para conectar bots de WhatsApp con inteligencia artificial 24/7.",
+    "desc": "Plataforma SaaS para automatizar atención y ventas por WhatsApp las 24 horas con Inteligencia Artificial.",
     "url": "/whatsapp-saas/"
   },
   {
-    "slug": "ml-afiliados-tech",
-    "name": "Tech Reviews & E-Commerce",
-    "categoria": "E-Commerce",
-    "icon": "fa-laptop",
+    "slug": "control-comercio",
+    "name": "ControlComercio // POS & Stock IA",
+    "categoria": "Software & IA",
+    "icon": "fa-cash-register",
     "color": "#8b5cf6",
-    "desc": "Portal de reviews tecnológicas, hardware y recomendaciones de compra online.",
-    "url": "/ml-afiliados-tech/"
+    "desc": "Sistema POS y gestión comercial para comercios argentinos con control de caja, stock y asistente IA.",
+    "url": "https://control-comercio-kappa.vercel.app/",
+    "is_external": true
   },
   {
     "slug": "restaurante-la-marina",
-    "name": "Restaurante La Marina",
+    "name": "Restaurante La Marina // Puerto MDP",
     "categoria": "Gastronomía",
     "icon": "fa-fish",
     "color": "#0284c7",
-    "desc": "Tradición marisquera en el puerto de MDP: cazuelas, pescados frescos y rabas.",
+    "desc": "Tradición marisquera en el puerto de Mar del Plata: cazuelas de mariscos, pescados frescos y rabas.",
     "url": "/restaurante-la-marina/"
   },
   {
     "slug": "cerveceria-trebi",
-    "name": "Cervecería Trebi",
+    "name": "Cervecería Trebi // Taphouse de Autor",
     "categoria": "Gastronomía",
     "icon": "fa-beer-mug-empty",
     "color": "#f59e0b",
-    "desc": "Taproom de cervezas artesanales galardonadas, burgers caseras y terraza cervecera.",
+    "desc": "Taproom de cervezas artesanales multipremiadas, hamburguesas caseras y terraza cervecera.",
     "url": "/cerveceria-trebi/"
   },
   {
@@ -77,97 +97,61 @@
     "categoria": "Gastronomía",
     "icon": "fa-pizza-slice",
     "color": "#b91c1c",
-    "desc": "Pizzas de fermentación lenta de 48 hs al horno de leña napolitano a 450°C.",
+    "desc": "Pizzas de fermentación lenta de 48 hs horneadas a la leña a 450°C estilo tradicional napolitano.",
     "url": "/bruder-pizzeria/"
   },
   {
-    "slug": "asador-el-fogon",
-    "name": "Asador Parrilla El Fogón",
-    "categoria": "Gastronomía",
-    "icon": "fa-drumstick-bite",
-    "color": "#ea580c",
-    "desc": "Cortes premium madurados, asador a la cruz criollo y empanadas cortadas a cuchillo.",
-    "url": "/asador-el-fogon/"
-  },
-  {
-    "slug": "heladeria-don-freysse",
-    "name": "Heladería Don Freysse",
-    "categoria": "Gastronomía",
-    "icon": "fa-ice-cream",
-    "color": "#ec4899",
-    "desc": "Helados artesanales 100% naturales con leche de campo y cacao belga.",
-    "url": "/heladeria-don-freysse/"
-  },
-  {
-    "slug": "aubone-spa-medico",
-    "name": "Aubone Spa Médico & Estética",
-    "categoria": "Salud & Belleza",
-    "icon": "fa-spa",
-    "color": "#d946ef",
-    "desc": "Medicina estética avanzada, dermatología láser, plasma rico y tratamientos anti-age.",
-    "url": "/aubone-spa-medico/"
-  },
-  {
     "slug": "centro-medico-edison",
-    "name": "Centro Médico Edison",
+    "name": "Centro Médico Edison // Consultorios",
     "categoria": "Salud & Medicina",
     "icon": "fa-hospital",
     "color": "#0284c7",
-    "desc": "Policlínico con más de 20 especialidades médicas, laboratorio y turnos online.",
+    "desc": "Centro policlínico con más de 20 especialidades médicas, laboratorio y agendamiento online.",
     "url": "/centro-medico-edison/"
   },
   {
-    "slug": "dental-studio-mdp",
-    "name": "Dental Studio MDP",
-    "categoria": "Salud & Medicina",
-    "icon": "fa-tooth",
-    "color": "#0ea5e9",
-    "desc": "Clínica de rehabilitación oral de alta complejidad, carillas cerámicas e implantes.",
-    "url": "/dental-studio-mdp/"
-  },
-  {
-    "slug": "black-barberia",
-    "name": "Black Estilistas & Barbería",
-    "categoria": "Moda & Estilo",
-    "icon": "fa-scissors",
-    "color": "#18181b",
-    "desc": "Barbería clásica, afeitado tradicional con toalla caliente y cortes de tendencia.",
-    "url": "/black-barberia/"
-  },
-  {
     "slug": "alfa-gym",
-    "name": "Alfa Gym & Rendimiento",
+    "name": "Alfa Gym // Centro de Alto Rendimiento",
     "categoria": "Fitness & Deporte",
     "icon": "fa-dumbbell",
     "color": "#ef4444",
-    "desc": "Gimnasio de musculación pesada, cross-training y preparación física para atletas.",
+    "desc": "Centro de entrenamiento de fuerza, musculación pesada y acondicionamiento físico de alto nivel.",
     "url": "/alfa-gym/"
   },
   {
-    "slug": "inmobiliaria-radix",
-    "name": "Inmobiliaria Radix",
-    "categoria": "Inmuebles",
-    "icon": "fa-building",
-    "color": "#d97706",
-    "desc": "Comercialización de edificios en pozo, lotes en barrios cerrados y tasaciones.",
-    "url": "/inmobiliaria-radix/"
+    "slug": "ml-afiliados-tech",
+    "name": "Tech Reviews & Hardware Argentina",
+    "categoria": "E-Commerce",
+    "icon": "fa-laptop",
+    "color": "#8b5cf6",
+    "desc": "Portal de reviews tecnológicas, armado de PC gamer y recomendaciones de compra para Argentina.",
+    "url": "/ml-afiliados-tech/"
   },
   {
-    "slug": "estudio-juridico-rey-areco",
-    "name": "Estudio Jurídico Rey Areco",
-    "categoria": "Legal & Abogacía",
-    "icon": "fa-scale-balanced",
-    "color": "#1e3a8a",
-    "desc": "Asesoramiento legal corporativo, derecho laboral, civil y accidentes ART.",
-    "url": "/estudio-juridico-rey-areco/"
+    "slug": "cs-news",
+    "name": "CS News // Esports & Gaming Portal",
+    "categoria": "Medios & Prensa",
+    "icon": "fa-gamepad",
+    "color": "#f97316",
+    "desc": "Portal de noticias de Counter-Strike, torneos de esports, estadísticas de partidos y cobertura en vivo.",
+    "url": "/cs-news/"
   },
   {
-    "slug": "estudio-contable-codagnone",
-    "name": "Estudio Contable Codagnone",
-    "categoria": "Servicios & Pymes",
-    "icon": "fa-chart-line",
-    "color": "#059669",
-    "desc": "Auditoría impositiva, liquidación de haberes y planificación fiscal para empresas.",
-    "url": "/estudio-contable-codagnone/"
+    "slug": "panorama-web",
+    "name": "Panorama Web // Portal de Noticias",
+    "categoria": "Medios & Prensa",
+    "icon": "fa-newspaper",
+    "color": "#06b6d4",
+    "desc": "Diario digital y magazine de noticias de Mar del Plata con secciones de actualidad, economía y cultura.",
+    "url": "/panorama-web/"
+  },
+  {
+    "slug": "portfolio-dev",
+    "name": "Portfolio de Desarrollo Web & IA",
+    "categoria": "Software & IA",
+    "icon": "fa-code",
+    "color": "#ec4899",
+    "desc": "Portfolio profesional interactivo con stack moderno de tecnologías, animaciones y proyectos entregados.",
+    "url": "/portfolio-dev/"
   }
 ]

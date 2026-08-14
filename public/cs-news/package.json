@@ -1,0 +1,30 @@
+{
+  "name": "cs-news",
+  "version": "1.0.0",
+  "description": "CS2 Noticia — Portal editorial especializado en Counter-Strike 2 y Esports",
+  "main": "scripts/update-news.js",
+  "scripts": {
+    "update-news": "node scripts/update-news.js",
+    "post-tweet": "node scripts/post-tweet.js",
+    "start": "npx serve ."
+  },
+  "keywords": [
+    "cs2",
+    "counter-strike",
+    "hltv",
+    "esports",
+    "noticias",
+    "9z-team"
+  ],
+  "author": "CS2 Noticia (@cs2noticia)",
+  "license": "MIT",
+  "dependencies": {
+    "@mozilla/readability": "^0.6.0",
+    "dotenv": "^16.4.5",
+    "jsdom": "^29.1.1",
+    "node-fetch": "^3.3.2",
+    "playwright": "^1.49.1",
+    "playwright-extra": "^4.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2"
+  }
+}

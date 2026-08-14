@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio de Rodrigo — Desarrollador Full Stack especializado en soluciones potenciadas por Inteligencia Artificial. Proyectos con Next.js, Gemini AI, Claude, y tecnologías modernas.">
+  <meta name="theme-color" content="#0a0a0f">
+
+  <title>Rodrigo | Desarrollador AI-Powered</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Favicon (inline SVG) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ====== NAVBAR ====== -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="#" class="nav-logo">
+        <span class="logo-dot"></span>
+        rodrigo.dev
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#about">Sobre mí</a></li>
+        <li><a href="#tech">Stack</a></li>
+        <li><a href="#services">Servicios</a></li>
+        <li><a href="#projects">Proyectos</a></li>
+        <li><a href="#process">Proceso</a></li>
+        <li><a href="#contact" class="nav-cta">Contacto</a></li>
+      </ul>
+
+      <button class="nav-toggle" aria-label="Abrir menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+
+  <!-- ====== HERO ====== -->
+  <section class="hero" id="hero">
+    <div class="hero-grid-bg"></div>
+    <div class="container">
+      <div class="hero-content">
+
+        <div class="hero-text">
+          <div class="hero-badge">
+            <span class="badge-dot"></span>
+            <span class="typing-text">Construyendo con IA</span>
+          </div>
+
+          <h1>
+            Desarrollo software
+            <span class="gradient-text">potenciado por IA</span>
+          </h1>
+
+          <p class="hero-description">
+            Creo aplicaciones web modernas que integran inteligencia artificial de forma nativa.
+            Desde SaaS empresariales con asistentes de lenguaje natural hasta sitios estáticos
+            ultra-optimizados para SEO y velocidad extrema.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#projects" class="btn-primary">
+              <span>Ver proyectos</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <a href="#contact" class="btn-secondary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span>Hablemos</span>
+            </a>
+          </div>
+
+            <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-number" data-count="5" data-suffix="+">0</div>
+              <div class="stat-label">Proyectos con IA</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number" data-count="100" data-suffix="%">0</div>
+              <div class="stat-label">AI-Assisted Code</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number" data-count="15" data-suffix="+">0</div>
+              <div class="stat-label">Tecnologías</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="orb-wrapper">
+            <div class="orb"></div>
+            <div class="orb-ring"></div>
+            <div class="orb-ring orb-ring-2"></div>
+            <div class="floating-badge">Next.js 16</div>
+            <div class="floating-badge">Gemini AI</div>
+            <div class="floating-badge">Claude AI</div>
+            <div class="floating-badge">PostgreSQL</div>
+            <div class="floating-badge">Remotion</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ====== ABOUT ====== -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">Sobre mí</span>
+        <h2 class="section-title">Desarrollo impulsado por<br><span class="gradient-text">Inteligencia Artificial</span></h2>
+        <p class="section-subtitle">
+          Combino las mejores herramientas de IA con arquitecturas modernas para crear
+          soluciones que resuelven problemas reales de forma eficiente y escalable.
+        </p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-text reveal" data-delay="200">
+          <p>
+            Soy un desarrollador que ha adoptado la <strong>inteligencia artificial como metodología central</strong>
+            de trabajo. Cada proyecto que construyo integra IA no solo como feature, sino como
+            parte fundamental del flujo de desarrollo.
+          </p>
+          <p>
+            Con experiencia en el ecosistema <strong>Next.js, React y Node.js</strong>, me especializo
+            en crear aplicaciones SaaS empresariales con asistentes inteligentes y sitios de alto
+            rendimiento optimizados para buscadores. Mi enfoque combina <strong>código limpio,
+            arquitectura sólida y experiencia de usuario premium</strong>.
+          </p>
+          <p>
+            Trabajo con herramientas como <strong>Gemini, Claude y GitHub Copilot</strong> para
+            acelerar el desarrollo sin sacrificar calidad. Creo en que la IA potencia al
+            desarrollador — no lo reemplaza.
+          </p>
+        </div>
+
+        <div class="about-cards reveal" data-delay="400">
+          <div class="about-card">
+            <span class="card-icon">&#x1F9E0;</span>
+            <h4>IA Nativa</h4>
+            <p>Integro modelos de lenguaje directamente en las aplicaciones para interfaces conversacionales inteligentes.</p>
+          </div>
+          <div class="about-card">
+            <span class="card-icon">&#x26A1;</span>
+            <h4>Performance</h4>
+            <p>Optimización obsesiva: SSR, ISR, lazy loading y métricas Core Web Vitals en verde.</p>
+          </div>
+          <div class="about-card">
+            <span class="card-icon">&#x1F3D7;</span>
+            <h4>Arquitectura</h4>
+            <p>Diseño multitenant, bases de datos relacionales robustas y APIs escalables desde el día uno.</p>
+          </div>
+          <div class="about-card">
+            <span class="card-icon">&#x1F50D;</span>
+            <h4>SEO Técnico</h4>
+            <p>Sitios que rankean: estructura semántica, metadata dinámica, schema markup y velocidad.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ====== TECH STACK ====== -->
+  <section class="tech-stack" id="tech">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">Tech Stack</span>
+        <h2 class="section-title">Herramientas que<br><span class="gradient-text">potencian mis proyectos</span></h2>
+        <p class="section-subtitle">
+          Un ecosistema de tecnologías modernas cuidadosamente seleccionadas para cada tipo de proyecto.
+        </p>
+      </div>
+
+      <div class="tech-grid">
+        <div class="tech-item reveal" data-delay="0">
+          <div class="tech-icon nextjs">N</div>
+          <span class="tech-name">Next.js 14</span>
+        </div>
+        <div class="tech-item reveal" data-delay="50">
+          <div class="tech-icon react">R</div>
+          <span class="tech-name">React</span>
+        </div>
+        <div class="tech-item reveal" data-delay="100">
+          <div class="tech-icon ts">TS</div>
+          <span class="tech-name">TypeScript</span>
+        </div>
+        <div class="tech-item reveal" data-delay="150">
+          <div class="tech-icon postgres">PG</div>
+          <span class="tech-name">PostgreSQL</span>
+        </div>
+        <div class="tech-item reveal" data-delay="200">
+          <div class="tech-icon gemini">AI</div>
+          <span class="tech-name">Gemini AI</span>
+        </div>
+        <div class="tech-item reveal" data-delay="250">
+          <div class="tech-icon prisma">P</div>
+          <span class="tech-name">Prisma ORM</span>
+        </div>
+        <div class="tech-item reveal" data-delay="300">
+          <div class="tech-icon tailwind">TW</div>
+          <span class="tech-name">Tailwind CSS</span>
+        </div>
+        <div class="tech-item reveal" data-delay="350">
+          <div class="tech-icon html">H5</div>
+          <span class="tech-name">HTML5</span>
+        </div>
+        <div class="tech-item reveal" data-delay="400">
+          <div class="tech-icon css">C3</div>
+          <span class="tech-name">CSS3</span>
+        </div>
+        <div class="tech-item reveal" data-delay="450">
+          <div class="tech-icon js">JS</div>
+          <span class="tech-name">JavaScript</span>
+        </div>
+        <div class="tech-item reveal" data-delay="500">
+          <div class="tech-icon vercel">&#9650;</div>
+          <span class="tech-name">Vercel</span>
+        </div>
+        <div class="tech-item reveal" data-delay="550">
+          <div class="tech-icon seo">&#x2713;</div>
+          <span class="tech-name">SEO Avanzado</span>
+        </div>
+        <div class="tech-item reveal" data-delay="600">
+          <div class="tech-icon claude">CL</div>
+          <span class="tech-name">Claude AI</span>
+        </div>
+        <div class="tech-item reveal" data-delay="650">
+          <div class="tech-icon remotion">RM</div>
+          <span class="tech-name">Remotion</span>
+        </div>
+        <div class="tech-item reveal" data-delay="700">
+          <div class="tech-icon ffmpeg">FF</div>
+          <span class="tech-name">FFmpeg</span>
+        </div>
+        <div class="tech-item reveal" data-delay="750">
+          <div class="tech-icon nestjs">N</div>
+          <span class="tech-name">NestJS</span>
+        </div>
+        <div class="tech-item reveal" data-delay="800">
+          <div class="tech-icon supabase">SB</div>
+          <span class="tech-name">Supabase</span>
+        </div>
+        <div class="tech-item reveal" data-delay="850">
+          <div class="tech-icon docker">D</div>
+          <span class="tech-name">Docker</span>
+        </div>
+        <div class="tech-item reveal" data-delay="900">
+          <div class="tech-icon nodejs">NJ</div>
+          <span class="tech-name">Node.js</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ====== PROJECTS ====== -->
+  <section class="projects" id="projects">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">Proyectos</span>
+        <h2 class="section-title">Soluciones reales<br><span class="gradient-text">construidas con IA</span></h2>
+        <p class="section-subtitle">
+          Cada proyecto es una combinación de arquitectura sólida, inteligencia artificial integrada
+          y una experiencia de usuario cuidada al detalle.
+        </p>
+      </div>
+
+      <div class="project-showcase">
+
+        <!-- ═══ PROJECT 1: GestiónComercial ═══ -->
+        <div class="project-card reveal">
+          <div class="project-visual">
+            <div class="project-browser">
+              <div class="mockup-header">
+                <span class="mockup-dot"></span>
+                <span class="mockup-dot"></span>
+                <span class="mockup-dot"></span>
+                <span class="mockup-url">https://control-comercio-weld.vercel.app</span>
+              </div>
+              <div class="project-browser__body">
+                <img src="img/gestion-comercial.webp" alt="Sitio de GestiónComercial: SaaS de stock y ventas para PyMEs" loading="lazy" decoding="async">
+              </div>
+            </div>
+          </div>
+
+          <div class="project-info">
+            <div class="project-number">01 — SAAS PRINCIPAL</div>
+            <h3 class="project-title">GestiónComercial</h3>
+            <p class="project-type">SaaS de stock, ventas y cuentas corrientes para PyMEs</p>
+
+            <p class="project-description">
+              Plataforma SaaS diseñada para kioscos, almacenes, ferreterías y dietéticas.
+              Control de stock en tiempo real, punto de venta (POS), reportes de ganancias,
+              fiados con historial completo y un <strong>asistente con IA</strong> que responde
+              consultas sobre el negocio en lenguaje natural.
+            </p>
+
+            <ul class="project-features">
+              <li>
+                <span class="feature-icon">&#x2713;</span>
+                <span><strong>Asistente con IA</strong> — Chat integrado que consulta el stock, registra productos y responde preguntas del negocio directamente en el panel.</span>
+              </li>
+              <li>
+                <span class="feature-icon">&#x2713;</span>
+                <span><strong>Punto de Venta (POS)</strong> — Ventas con múltiples productos en segundos: efectivo, tarjetas y transferencias. El stock se descuenta solo.</span>
+              </li>
+              <li>
+                <span class="feature-icon">&#x2713;</span>
+                <span><strong>Reportes de Ganancias</strong> — Ventas del día, del mes y ganancia real calculada sobre el precio de costo.</span>
+              </li>
+              <li>
+                <span class="feature-icon">&#x2713;</span>
+                <span><strong>Cuentas Corrientes</strong> — Fiado de clientes con historial completo de deudas y pagos.</span>
+              </li>
+              <li>
+                <span class="feature-icon">&#x2713;</span>
+                <span><strong>PWA Instalable</strong> — Instalable en el celular del comercio con funcionamiento offline, pensado para el mostrador.</span>
+              </li>
+            </ul>
+
+            <div class="project-tech-tags">
+              <span class="tech-tag">Next.js</span>
+              <span class="tech-tag">TypeScript</span>
+              <span class="tech-tag">Prisma</span>
+              <span class="tech-tag">PostgreSQL</span>
+              <span class="tech-tag">IA</span>
+              <span class="tech-tag">PWA</span>
+              <span class="tech-tag">Vercel</span>
+            </div>
+
+            <div class="project-links">
+              <a href="https://control-comercio-weld.vercel.app" target="_blank" rel="noopener noreferrer" class="project-link project-link--primary">
+                Visitar sitio
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ PROJECT 2: Lucky Detail ═══ -->
+        <div class="project-card reveal">
+          <div class="project-visual">
+            <div class="project-browser">
+              <div class="mockup-header">
+                <span class="mockup-dot"></span>
+                <span class="mockup-dot"></span>
+                <span class="mockup-dot"></span>
+                <span class="mockup-url">https://rodrigo1234321.github.io/lucky-detail</span>
+              </div>
+              <div class="project-browser__body">
+                <img src="img/lucky-detail.webp" alt="Sitio de Lucky Detail: estética vehicular premium en Mar del Plata" loading="lazy" decoding="async">
+              </div>
+            </div>
+          </div>
+
+          <div class="project-info">
+            <div class="project-number">02 — WEB PARA COMERCIO LOCAL</div>
+            <h3 class="project-title">Lucky Detail</h3>
+            <p class="project-type">Estética vehicular premium — cliente real en Mar del Plata</p>
+
+            <p class="project-description">
+              Sitio web para un taller de detailing con 5/5 estrellas en Google Maps.
+              Presenta servicios de lavado premium, corrección de pintura, cerámicos y
+              limpieza de interiores con <strong>slider antes/después interactivo</strong>,
+              reseñas reales de clientes y reserva de turnos directa por <strong>WhatsApp</strong>.
+            </p>
+
+            <ul class="project-features">
+              <li>
+                <span class="feature-icon">&#x2713;</span>
+                <span><strong>Antes/Después Interactivo</strong> — Sliders comparativos que muestran la transformación real de los vehículos.</span>
+              </li>
+              <li>
+                <span class="feature-icon">&#x2713;</span>
+                <span><strong>Reserva por WhatsApp</strong> — Botón de turno con mensaje prearmado en cada servicio y botón flotante siempre visible.</span>
+              </li>
+              <li>
+                <span class="feature-icon">&#x2713;</span>
+                <span><strong>Social Proof Real</strong> — Sección de reseñas con calificación 5/5 de Google Maps y contador de reseñas animado.</span>
+              </li>
+              <li>
+                <span class="feature-icon">&#x2713;</span>
+                <span><strong>SEO Local</strong> — Meta y Open Graph optimizados para búsquedas de detailing en Mar del Plata.</span>
+              </li>
+              <li>
+                <span class="feature-icon">&#x2713;</span>
+                <span><strong>Ubicación y Horarios</strong> — Mapa embebido de Google, horarios y medios de pago en una sección completa.</span>
+              </li>
+            </ul>
+
+            <div class="project-tech-tags">
+              <span class="tech-tag">HTML5</span>
+              <span class="tech-tag">CSS3</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">SEO Local</span>
+              <span class="tech-tag">WhatsApp</span>
+              <span class="tech-tag">Google Maps</span>
+            </div>
+
+            <div class="project-links">
+              <a href="https://rodrigo1234321.github.io/lucky-detail/" target="_blank" rel="noopener noreferrer" class="project-link project-link--primary">
+                Visitar sitio
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+              <a href="https://github.com/rodrigo1234321/lucky-detail" target="_blank" rel="noopener noreferrer" class="project-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                Ver código
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ PROJECT 3: Dynasty ═══ -->
+        <div class="project-card reveal">
+          <div class="project-visual">
+            <div class="project-browser">
+              <div class="mockup-header">
+                <span class="mockup-dot"></span>
+                <span class="mockup-dot"></span>
+                <span class="mockup-dot"></span>
+                <span class="mockup-url">https://rodrigo1234321.github.io/dynasty</span>
+              </div>
+              <div class="project-browser__body">
+                <img src="img/dynasty.webp" alt="E-commerce Dynasty: tech y gadgets con estética CRT" loading="lazy" decoding="async">
+              </div>
+            </div>
+          </div>
+
+          <div class="project-info">
+            <div class="project-number">03 — E-COMMERCE</div>
+            <h3 class="project-title">Dynasty.ar</h3>
+            <p class="project-type">Tienda online de tech &amp; gadgets con estética CRT</p>
+
+            <p class="project-description">
+              E-commerce completo construido sobre <strong>Next.js 16</strong>: catálogo con
+              filtros por categoría, carrito persistente y un <strong>checkout que envía el
+              pedido armado por WhatsApp</strong> — productos, envío, descuento por transferencia
+              y total — para que la venta se cierre en segundos sin pasarela.
+            </p>
+
+            <ul class="project-features">
+              <li>
+                <span class="feature-icon">&#x2713;</span>
+                <span><strong>Checkout por WhatsApp</strong> — El pedido completo se arma automáticamente y se envía al WhatsApp del local para confirmación directa.</span>
+              </li>
+              <li>
+                <span class="feature-icon">&#x2713;</span>
+                <span><strong>Carrito con Zustand</strong> — Estado global con persistencia, suma de cantidades inmutable y cuotas calculadas con la misma función que el resto del sitio.</span>
+              </li>
+              <li>
+                <span class="feature-icon">&#x2713;</span>
+                <span><strong>Catálogo con Categorías</strong> — Filtros sincronizados con la URL (?category=) y búsqueda sin recargar la página.</span>
+              </li>
+              <li>
+                <span class="feature-icon">&#x2713;</span>
+                <span><strong>Calculadora de Envío</strong> — Cálculo de costo de envío con umbral de envío gratis según zona.</span>
+              </li>
+              <li>
+                <span class="feature-icon">&#x2713;</span>
+                <span><strong>SEO Técnico</strong> — Metadata dinámica, Open Graph, tipografía de marca propia y páginas legales (envíos, contacto, devoluciones).</span>
+              </li>
+            </ul>
+
+            <div class="project-tech-tags">
+              <span class="tech-tag">Next.js 16</span>
+              <span class="tech-tag">React 19</span>
+              <span class="tech-tag">TypeScript</span>
+              <span class="tech-tag">Zustand</span>
+              <span class="tech-tag">Tailwind</span>
+              <span class="tech-tag">WhatsApp</span>
+            </div>
+
+            <div class="project-links">
+              <a href="https://rodrigo1234321.github.io/dynasty/" target="_blank" rel="noopener noreferrer" class="project-link project-link--primary">
+                Visitar sitio
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+              <a href="https://github.com/rodrigo1234321/dynasty" target="_blank" rel="noopener noreferrer" class="project-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                Ver código
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ PROJECT 4: Panorama.ar ═══ -->
+        <div class="project-card reveal">
+          <div class="project-visual">
+            <div class="project-browser">
+              <div class="mockup-header">
+                <span class="mockup-dot"></span>
+                <span class="mockup-dot"></span>
+                <span class="mockup-dot"></span>
+                <span class="mockup-url">https://panorama-web-one.vercel.app</span>
+              </div>
+              <div class="project-browser__body">
+                <img src="img/panorama.webp" alt="Panorama.ar: portal de noticias argentino" loading="lazy" decoding="async">
+              </div>
+            </div>
+          </div>
+
+          <div class="project-info">
+            <div class="project-number">04 — PORTAL DE NOTICIAS</div>
+            <h3 class="project-title">Panorama.ar</h3>
+            <p class="project-type">Portal de noticias argentino con actualización automática</p>
+
+            <p class="project-description">
+              Portal de noticias sobre economía, sociedad y política argentina, <strong>desplegado
+              y corriendo en Vercel</strong>. Un scraper con <strong>Playwright</strong> actualiza
+              las noticias de forma automática a un JSON, y el sitio las renderiza con ticker de
+              última hora, buscador client-side y modo oscuro/claro.
+            </p>
+
+            <ul class="project-features">
+              <li>
+                <span class="feature-icon">&#x2713;</span>
+                <span><strong>Actualización Automática</strong> — Script Node.js con Playwright que scrapea noticias y las publica sin intervención manual.</span>
+              </li>
+              <li>
+                <span class="feature-icon">&#x2713;</span>
+                <span><strong>Ticker de Última Hora</strong> — Barra informativa en tiempo real con pausa al hacer hover.</span>
+              </li>
+              <li>
+                <span class="feature-icon">&#x2713;</span>
+                <span><strong>Buscador Client-Side</strong> — Filtrado instantáneo por categoría, término o fecha sin recargar la página.</span>
+              </li>
+              <li>
+                <span class="feature-icon">&#x2713;</span>
+                <span><strong>Dark / Light Mode</strong> — Tema persistente en localStorage con transiciones suaves.</span>
+              </li>
+              <li>
+                <span class="feature-icon">&#x2713;</span>
+                <span><strong>SEO Completo</strong> — Sitemap XML generado por script, robots.txt y artículos optimizados por categoría.</span>
+              </li>
+            </ul>
+
+            <div class="project-tech-tags">
+              <span class="tech-tag">HTML5</span>
+              <span class="tech-tag">CSS3</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">Playwright</span>
+              <span class="tech-tag">Node.js</span>
+              <span class="tech-tag">SEO</span>
+            </div>
+
+            <div class="project-links">
+              <a href="https://panorama-web-one.vercel.app" target="_blank" rel="noopener noreferrer" class="project-link project-link--primary">
+                Visitar sitio
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+              <a href="https://github.com/rodrigo1234321/panorama-web" target="_blank" rel="noopener noreferrer" class="project-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                Ver código
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ PROJECT 5: MS Refrigeración ═══ -->
+        <div class="project-card reveal">
+          <div class="project-visual">
+            <div class="project-browser">
+              <div class="mockup-header">
+                <span class="mockup-dot"></span>
+                <span class="mockup-dot"></span>
+                <span class="mockup-dot"></span>
+                <span class="mockup-url">https://rodrigo1234321.github.io/ms-refrigeracion-web</span>
+              </div>
+              <div class="project-browser__body">
+                <img src="img/ms-refrigeracion.webp" alt="Sitio corporativo de MS Refrigeración: industrial, naval y gastronómico" loading="lazy" decoding="async">
+              </div>
+            </div>
+          </div>
+
+          <div class="project-info">
+            <div class="project-number">05 — WEB CORPORATIVA</div>
+            <h3 class="project-title">MS Refrigeración</h3>
+            <p class="project-type">Sitio corporativo para empresa de refrigeración en Mar del Plata</p>
+
+            <p class="project-description">
+              Sitio web profesional multi-página para una empresa con más de 10 años en
+              refrigeración <strong>industrial, naval y gastronómica</strong>. Optimizado con
+              <strong>SEO técnico y datos estructurados LocalBusiness</strong>, botón de
+              WhatsApp flotante para emergencias 24/7 e integración con <strong>n8n</strong>
+              para captar y notificar leads de contacto en tiempo real.
+            </p>
+
+            <ul class="project-features">
+              <li>
+                <span class="feature-icon">&#x2713;</span>
+                <span><strong>SEO Local con Schema.org</strong> — JSON-LD LocalBusiness, Open Graph, canónicas y mapa del sitio XML para posicionar en búsquedas locales.</span>
+              </li>
+              <li>
+                <span class="feature-icon">&#x2713;</span>
+                <span><strong>Multi-Página Profesional</strong> — Inicio, servicios, industrias, clientes, sobre nosotros y contacto con navegación fluida.</span>
+              </li>
+              <li>
+                <span class="feature-icon">&#x2713;</span>
+                <span><strong>WhatsApp Flotante</strong> — Contacto directo con mensaje predefinido, ideal para emergencias de frío 24/7.</span>
+              </li>
+              <li>
+                <span class="feature-icon">&#x2713;</span>
+                <span><strong>Automatización n8n</strong> — Workflow que notifica los formularios de contacto y da seguimiento a leads en tiempo real.</span>
+              </li>
+              <li>
+                <span class="feature-icon">&#x2713;</span>
+                <span><strong>Responsive y Veloz</strong> — Diseño adaptativo con tipografía fluida y rendimiento optimizado.</span>
+              </li>
+            </ul>
+
+            <div class="project-tech-tags">
+              <span class="tech-tag">HTML5</span>
+              <span class="tech-tag">CSS3</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">JSON-LD</span>
+              <span class="tech-tag">SEO Local</span>
+              <span class="tech-tag">n8n</span>
+            </div>
+
+            <div class="project-links">
+              <a href="https://rodrigo1234321.github.io/ms-refrigeracion-web/" target="_blank" rel="noopener noreferrer" class="project-link project-link--primary">
+                Visitar sitio
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+              <a href="https://github.com/rodrigo1234321/ms-refrigeracion-web" target="_blank" rel="noopener noreferrer" class="project-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                Ver código
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ PROJECT 6: ml-afiliados-tech ═══ -->
+        <div class="project-card reveal">
+          <div class="project-visual">
+            <div class="project-browser">
+              <div class="mockup-header">
+                <span class="mockup-dot"></span>
+                <span class="mockup-dot"></span>
+                <span class="mockup-dot"></span>
+                <span class="mockup-url">https://rodrigo1234321.github.io/meliafiliados</span>
+              </div>
+              <div class="project-browser__body">
+                <img src="img/ml-afiliados.webp" alt="Portal de afiliados tech: artículos, comparador y calculadora de presupuesto" loading="lazy" decoding="async">
+              </div>
+            </div>
+          </div>
+
+          <div class="project-info">
+            <div class="project-number">06 — PORTAL SEO / AFILIADOS</div>
+            <h3 class="project-title">ml-afiliados-tech</h3>
+            <p class="project-type">Portal de contenido tech con SEO avanzado y herramientas client-side</p>
+
+            <p class="project-description">
+              Portal de afiliados de tecnología enfocado en el mercado argentino: artículos de
+              compra (auriculares gamer, monitores para CS2, notebooks calidad-precio, armado de
+              PC por presupuesto) con <strong>SEO on-page completo</strong> y herramientas
+              útiles en JavaScript puro: <strong>comparador de productos</strong>, calculadora
+              de presupuesto y command palette.
+            </p>
+
+            <ul class="project-features">
+              <li>
+                <span class="feature-icon">&#x2713;</span>
+                <span><strong>8 Categorías + Artículos SEO</strong> — Contenido optimizado por keyword con sitemap.xml y robots.txt.</span>
+              </li>
+              <li>
+                <span class="feature-icon">&#x2713;</span>
+                <span><strong>Comparador de Productos</strong> — Herramienta client-side para comparar specs y precios lado a lado.</span>
+              </li>
+              <li>
+                <span class="feature-icon">&#x2713;</span>
+                <span><strong>Calculadora de Presupuesto</strong> — Arma una PC gamer según el presupuesto disponible en ARS.</span>
+              </li>
+              <li>
+                <span class="feature-icon">&#x2713;</span>
+                <span><strong>Command Palette</strong> — Navegación rápida estilo IDE con atajo de teclado y tema oscuro/claro.</span>
+              </li>
+              <li>
+                <span class="feature-icon">&#x2713;</span>
+                <span><strong>Compliance</strong> — Política de privacidad, descargo de responsabilidad y página de contacto incluidas.</span>
+              </li>
+            </ul>
+
+            <div class="project-tech-tags">
+              <span class="tech-tag">HTML5</span>
+              <span class="tech-tag">CSS3</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">SEO</span>
+              <span class="tech-tag">JSON-LD</span>
+              <span class="tech-tag">Affiliate</span>
+            </div>
+
+            <div class="project-links">
+              <a href="https://rodrigo1234321.github.io/meliafiliados/" target="_blank" rel="noopener noreferrer" class="project-link project-link--primary">
+                Visitar sitio
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+              <a href="https://github.com/rodrigo1234321/meliafiliados" target="_blank" rel="noopener noreferrer" class="project-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                Ver código
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ====== SERVICES ====== -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">Servicios</span>
+        <h2 class="section-title">Soluciones que<br><span class="gradient-text">transforman negocios</span></h2>
+        <p class="section-subtitle">
+          Desde asistentes inteligentes hasta sitios web ultrarrápidos. Cada solución está 
+          potenciada por IA y construida con tecnologías modernas.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card reveal" data-delay="0">
+          <div class="service-icon-wrapper">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 1 10 10c0 5-4 8-10 10S2 17 2 12 7 2 12 2z"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
+          </div>
+          <h3>SaaS con IA Integrada</h3>
+          <p>Plataformas multitenant con asistentes inteligentes, dashboards en tiempo real y automatización de procesos de negocio.</p>
+        </div>
+
+        <div class="service-card reveal" data-delay="100">
+          <div class="service-icon-wrapper">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h3>Chatbots & Asistentes IA</h3>
+          <p>Agentes conversacionales con Gemini, Claude y modelos open-source. Atención al cliente, recomendaciones y consultas a bases de datos.</p>
+        </div>
+
+        <div class="service-card reveal" data-delay="200">
+          <div class="service-icon-wrapper">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--accent-purple)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <h3>Sitios Web Ultra-Rápidos</h3>
+          <p>Static sites, landing pages y portales con SEO perfecto, Core Web Vitals en verde y diseño premium glassmorphism.</p>
+        </div>
+
+        <div class="service-card reveal" data-delay="300">
+          <div class="service-icon-wrapper">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--accent-green)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          </div>
+          <h3>Automatización con IA</h3>
+          <p>Workflows inteligentes, generación automatizada de contenido, scraping, y pipelines de producción con n8n y Node.js.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ====== PROCESS ====== -->
+  <section class="process" id="process">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">Proceso</span>
+        <h2 class="section-title">Cómo construyo<br><span class="gradient-text">software con IA</span></h2>
+        <p class="section-subtitle">
+          Un flujo de trabajo donde la inteligencia artificial está presente en cada etapa,
+          desde la ideación hasta el despliegue.
+        </p>
+      </div>
+
+      <div class="process-timeline">
+        <div class="process-step reveal" data-delay="0">
+          <div class="step-number">01</div>
+          <h4>Análisis con IA</h4>
+          <p>Uso modelos de lenguaje para analizar requerimientos, explorar arquitecturas y generar especificaciones técnicas detalladas antes de escribir una línea de código.</p>
+        </div>
+        <div class="process-step reveal" data-delay="150">
+          <div class="step-number">02</div>
+          <h4>Arquitectura</h4>
+          <p>Diseño la estructura del proyecto con patrones probados: multitenant, API-first, component-driven. Cada decisión técnica se valida contra los objetivos del negocio.</p>
+        </div>
+        <div class="process-step reveal" data-delay="300">
+          <div class="step-number">03</div>
+          <h4>Desarrollo Acelerado</h4>
+          <p>Codifico con asistencia de IA usando Gemini y Copilot para acelerar la implementación, manteniendo revisión humana rigurosa en cada iteración.</p>
+        </div>
+        <div class="process-step reveal" data-delay="450">
+          <div class="step-number">04</div>
+          <h4>Optimización</h4>
+          <p>Testing exhaustivo, optimización de performance, SEO técnico y despliegue en plataformas de edge computing para máxima velocidad global.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ====== CONTACT ====== -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">Contacto</span>
+        <h2 class="section-title">Trabajemos<br><span class="gradient-text">juntos</span></h2>
+        <p class="section-subtitle">
+          Si tenés un proyecto en mente que podría beneficiarse de inteligencia artificial
+          o simplemente querés charlar sobre tecnología, escribime.
+        </p>
+      </div>
+
+      <div class="contact-grid reveal" data-delay="200">
+        <a href="mailto:rodrigosanmartin07@gmail.com" class="contact-card">
+          <div class="contact-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <h4>Email</h4>
+          <p>rodrigosanmartin07@gmail.com</p>
+        </a>
+
+        <a href="https://github.com/rodrigo1234321" target="_blank" rel="noopener noreferrer" class="contact-card">
+          <div class="contact-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--accent-cyan)"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          </div>
+          <h4>GitHub</h4>
+          <p>@rodrigo1234321</p>
+        </a>
+
+        <a href="https://linkedin.com/in/rodrigo" target="_blank" rel="noopener noreferrer" class="contact-card">
+          <div class="contact-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--accent-purple)"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </div>
+          <h4>LinkedIn</h4>
+          <p>/in/rodrigo</p>
+        </a>
+      </div>
+
+      <div class="contact-cta reveal" data-delay="400">
+        <a href="mailto:rodrigosanmartin07@gmail.com" class="btn-primary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <span>Enviar un email</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="footer">
+    <div class="container">
+      <p>Diseñado y desarrollado con <span>IA + creatividad</span> &mdash; Rodrigo &copy; 2026</p>
+    </div>
+  </footer>
+
+
+  <!-- Scripts -->
+  <script src="scripts.js"></script>
+
+</body>
+</html>

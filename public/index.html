@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MIS CLIENTES WEB | Showcase de 34 Webs y Demos Comerciales</title>
-  <meta name="description" content="Catálogo maestro con 15 Demos de Alta Conversión y 19 Proyectos Reales creados para comercios y empresas de Mar del Plata.">
+  <title>MIS CLIENTES WEB | Catálogo de Demos y Proyectos Reales</title>
+  <meta name="description" content="15 Demos Maestras con personalización en tiempo real y 17 Proyectos Reales de Producción creados en Mar del Plata.">
   <meta name="theme-color" content="#090d16">
 
   <!-- Google Fonts: Space Grotesk & Plus Jakarta Sans -->
@@ -23,6 +23,7 @@
       --accent-cyan: #06b6d4;
       --accent-amber: #f59e0b;
       --accent-emerald: #10b981;
+      --accent-lime: #bef264;
       --text-primary: #f8fafc;
       --text-secondary: #94a3b8;
       --text-muted: #64748b;
@@ -47,7 +48,6 @@
 
     h1, h2, h3, h4 { font-family: var(--font-display); color: var(--text-primary); letter-spacing: -0.02em; }
     h1 { font-size: clamp(2.3rem, 4.4vw, 3.9rem); line-height: 1.08; font-weight: 900; }
-    h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); line-height: 1.18; font-weight: 800; }
     p { color: var(--text-secondary); font-size: 1.05rem; }
     a { text-decoration: none; color: inherit; }
 
@@ -68,7 +68,7 @@
 
     /* Section Tabs */
     .section-tabs-wrap {
-      display: flex; justify-content: center; gap: 1rem; margin: 2rem auto 2.5rem; max-width: 720px;
+      display: flex; justify-content: center; gap: 1rem; margin: 2rem auto 2.5rem; max-width: 760px;
     }
     .tab-btn {
       flex: 1; padding: 1rem 1.6rem; border-radius: var(--radius-md); font-family: var(--font-display); font-size: 0.92rem;
@@ -179,19 +179,24 @@
         <div class="brand-logo-icon"><i class="fa-solid fa-layer-group"></i></div>
         <div>
           <span class="brand-title">MIS CLIENTES WEB</span>
-          <span style="font-size: 0.65rem; color: var(--accent-cyan); font-weight: 800; display: block; letter-spacing: 0.15em;">SHOWCASE DE 34 WEBS · MAR DEL PLATA</span>
+          <span style="font-size: 0.65rem; color: var(--accent-cyan); font-weight: 800; display: block; letter-spacing: 0.15em;">SHOWCASE DE WEBS & DEMOS · MAR DEL PLATA</span>
         </div>
       </div>
-      <div class="badge-live"><span class="live-dot"></span> 34 Sitios Online</div>
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <a href="/dynasty/" target="_blank" class="btn-launch" style="padding: 0.55rem 1.1rem; font-size: 0.78rem; text-decoration: none; background: #bef264; color: #000; font-weight: 900;">
+          <i class="fa-solid fa-crown"></i> Dynasty Live
+        </a>
+        <div class="badge-live"><span class="live-dot"></span> 32 Sitios Oficiales Activos</div>
+      </div>
     </div>
   </header>
 
   <main class="container">
     <section style="padding: 4rem 0 2rem; text-align: center;">
-      <div class="badge-live" style="margin-bottom: 0.5rem;"><i class="fa-solid fa-gem"></i> Catálogo Completo y Sin Plantillas Repetitivas</div>
-      <h1>SHOWCASE DE <span style="color: var(--accent-blue);">34 SITIOS WEB REALES & DEMOS</span></h1>
+      <div class="badge-live" style="margin-bottom: 0.5rem;"><i class="fa-solid fa-gem"></i> Calidad de Producción & Sin Plantillas Genéricas</div>
+      <h1>CATÁLOGO DE <span style="color: var(--accent-blue);">DEMOS MAESTRAS & PROYECTOS REALES</span></h1>
       <p style="max-width: 800px; margin: 0 auto 1.5rem;">
-        Páginas web artesanales con identidad única para cada negocio. Podés ver las <strong>15 Demos Maestras con personalización en tiempo real</strong> o explorar los <strong>19 Proyectos Reales</strong> creados para comercios y empresas de Mar del Plata.
+        Páginas web artesanales con identidad única. Podés usar las <strong>15 Demos Maestras con personalización en tiempo real</strong> para prospectar o explorar los <strong>17 Proyectos Reales en producción</strong> (incluyendo Dynasty, Naro AI, Stella Maris, MS Refrigeración y ControlComercio).
       </p>
 
       <!-- Selector de Vista -->
@@ -200,7 +205,7 @@
           <i class="fa-solid fa-wand-magic-sparkles"></i> 15 Demos Maestras (Personalizables)
         </button>
         <button class="tab-btn" id="tab-real" onclick="switchView('real')">
-          <i class="fa-solid fa-trophy"></i> 19 Proyectos Reales en Producción
+          <i class="fa-solid fa-trophy"></i> 17 Proyectos Reales en Producción
         </button>
       </div>
     </section>
@@ -210,7 +215,7 @@
       <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
         <div>
           <strong style="font-family: var(--font-display); font-size: 1.15rem; display: block;">⚡ Personalizador de Prospectos en Vivo</strong>
-          <span style="font-size: 0.85rem; color: var(--text-muted);">Escribí los datos de tu cliente y los enlaces de las 15 demos se actualizarán automáticamente:</span>
+          <span style="font-size: 0.85rem; color: var(--text-muted);">Escribí los datos de tu cliente y los enlaces de las 15 demos maestras se adaptarán al instante:</span>
         </div>
         <button id="btn-reset-params" style="background: none; border: 1px solid var(--border-subtle); color: var(--text-secondary); padding: 0.35rem 0.85rem; border-radius: var(--radius-sm); font-size: 0.78rem; cursor: pointer;">↺ Restablecer</button>
       </div>
@@ -236,13 +241,13 @@
 
     <!-- Filtros de Categoría -->
     <div class="category-pills-row">
-      <button class="cat-btn active" data-filter="all">⚡ Todos (<span id="count-total">34</span>)</button>
-      <button class="cat-btn" data-filter="salud">🩺 Salud & Estética</button>
-      <button class="cat-btn" data-filter="gastronomia">🍽️ Gastronomía & Bares</button>
-      <button class="cat-btn" data-filter="moda">👗 Moda & Estilo</button>
-      <button class="cat-btn" data-filter="inmuebles">🏢 Inmuebles & Turismo</button>
-      <button class="cat-btn" data-filter="b2b">📦 Comercio & B2B</button>
-      <button class="cat-btn" data-filter="servicios">💼 Servicios & Legal</button>
+      <button class="cat-btn active" data-filter="all">⚡ Todos (<span id="count-total">32</span>)</button>
+      <button class="cat-btn" data-filter="salud">🩺 Salud & Kinesiología</button>
+      <button class="cat-btn" data-filter="gastro">🍽️ Gastronomía & Bares</button>
+      <button class="cat-btn" data-filter="moda">👗 Moda & Streetwear</button>
+      <button class="cat-btn" data-filter="turismo">🌲 Turismo & Cabañas</button>
+      <button class="cat-btn" data-filter="industria">📦 Industria & B2B</button>
+      <button class="cat-btn" data-filter="software">🤖 Software & IA</button>
     </div>
 
     <!-- Grid Contenedor -->
@@ -617,20 +622,66 @@
     </div>
     
 
-      <!-- 19 Proyectos Reales -->
+      <!-- 17 Proyectos Reales -->
       
+    <div class="demo-card real-card" data-category="moda & tech">
+      <div class="card-top">
+        <div class="card-meta-row">
+          <span class="cat-tag" style="color: #bef264; border-color: #bef26444;">Moda & Tech</span>
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span class="real-badge">PRODUCCIÓN</span>
+            <i class="fa-solid fa-crown" style="color: #bef264; font-size: 1.2rem;"></i>
+          </div>
+        </div>
+        <h3 class="card-title">Dynasty // E-Commerce & Showroom</h3>
+        <span class="card-slug-label">Sitio Oficial en Vivo · Mar del Plata</span>
+        <p class="card-desc">E-commerce oficial de Dynasty con catálogo de productos, buzos heavyweight, tech y checkout integrado.</p>
+      </div>
+      <div class="card-footer">
+        <a href="/dynasty/" target="_blank" class="btn-launch btn-real-launch">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir Proyecto Real
+        </a>
+        <button class="btn-copy-link" data-slug="dynasty/">
+          <i class="fa-regular fa-copy"></i> Copiar enlace directo
+        </button>
+      </div>
+    </div>
+    
+    <div class="demo-card real-card" data-category="software & ia">
+      <div class="card-top">
+        <div class="card-meta-row">
+          <span class="cat-tag" style="color: #3b82f6; border-color: #3b82f644;">Software & IA</span>
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span class="real-badge">PRODUCCIÓN</span>
+            <i class="fa-solid fa-brain" style="color: #3b82f6; font-size: 1.2rem;"></i>
+          </div>
+        </div>
+        <h3 class="card-title">Naro AI // Agencia de Inteligencia Artificial</h3>
+        <span class="card-slug-label">Sitio Oficial en Vivo · Mar del Plata</span>
+        <p class="card-desc">Sitio oficial de la agencia de IA y automatizaciones de Mar del Plata con cotizador de ROI y catálogo de servicios.</p>
+      </div>
+      <div class="card-footer">
+        <a href="/naro-ai/" target="_blank" class="btn-launch btn-real-launch">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir Proyecto Real
+        </a>
+        <button class="btn-copy-link" data-slug="naro-ai/">
+          <i class="fa-regular fa-copy"></i> Copiar enlace directo
+        </button>
+      </div>
+    </div>
+    
     <div class="demo-card real-card" data-category="gastronomía">
       <div class="card-top">
         <div class="card-meta-row">
           <span class="cat-tag" style="color: #ea580c; border-color: #ea580c44;">Gastronomía</span>
           <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <span class="real-badge">REAL</span>
+            <span class="real-badge">PRODUCCIÓN</span>
             <i class="fa-solid fa-bowl-food" style="color: #ea580c; font-size: 1.2rem;"></i>
           </div>
         </div>
         <h3 class="card-title">Stella Maris Pastas Artesanales</h3>
-        <span class="card-slug-label">Sitio Web en Producción · Mar del Plata</span>
-        <p class="card-desc">Fábrica de pastas frescas, rotisería gourmet y minutas tradicionales en Mar del Plata.</p>
+        <span class="card-slug-label">Sitio Oficial en Vivo · Mar del Plata</span>
+        <p class="card-desc">Fábrica de pastas frescas, rotisería gourmet y minutas tradicionales con comanda directa a cocina.</p>
       </div>
       <div class="card-footer">
         <a href="/stella-maris-pastas/" target="_blank" class="btn-launch btn-real-launch">
@@ -647,13 +698,13 @@
         <div class="card-meta-row">
           <span class="cat-tag" style="color: #c2410c; border-color: #c2410c44;">Gastronomía</span>
           <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <span class="real-badge">REAL</span>
+            <span class="real-badge">PRODUCCIÓN</span>
             <i class="fa-solid fa-mug-hot" style="color: #c2410c; font-size: 1.2rem;"></i>
           </div>
         </div>
         <h3 class="card-title">Kaffa Café de Especialidad</h3>
-        <span class="card-slug-label">Sitio Web en Producción · Mar del Plata</span>
-        <p class="card-desc">Tostaduría de café de origen, carta sensorial de filtrados y pastelería de autor.</p>
+        <span class="card-slug-label">Sitio Oficial en Vivo · Mar del Plata</span>
+        <p class="card-desc">Tostaduría de café de origen, carta sensorial de filtrados y pastelería artesanal de autor.</p>
       </div>
       <div class="card-footer">
         <a href="/kaffa-cafe/" target="_blank" class="btn-launch btn-real-launch">
@@ -670,13 +721,13 @@
         <div class="card-meta-row">
           <span class="cat-tag" style="color: #16a34a; border-color: #16a34a44;">Turismo</span>
           <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <span class="real-badge">REAL</span>
+            <span class="real-badge">PRODUCCIÓN</span>
             <i class="fa-solid fa-tree" style="color: #16a34a; font-size: 1.2rem;"></i>
           </div>
         </div>
-        <h3 class="card-title">Estar Peralta Ramos</h3>
-        <span class="card-slug-label">Sitio Web en Producción · Mar del Plata</span>
-        <p class="card-desc">Cabañas boutique y suites inmersas en el Bosque Peralta Ramos con hidromasaje y deck.</p>
+        <h3 class="card-title">Estar Peralta Ramos // Cabañas & Spa</h3>
+        <span class="card-slug-label">Sitio Oficial en Vivo · Mar del Plata</span>
+        <p class="card-desc">Cabañas boutique y suites en el Bosque Peralta Ramos con hidromasaje, deck privado y fogón.</p>
       </div>
       <div class="card-footer">
         <a href="/estar-peralta-ramos/" target="_blank" class="btn-launch btn-real-launch">
@@ -693,13 +744,13 @@
         <div class="card-meta-row">
           <span class="cat-tag" style="color: #0284c7; border-color: #0284c744;">Industria & B2B</span>
           <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <span class="real-badge">REAL</span>
+            <span class="real-badge">PRODUCCIÓN</span>
             <i class="fa-solid fa-snowflake" style="color: #0284c7; font-size: 1.2rem;"></i>
           </div>
         </div>
-        <h3 class="card-title">MS Refrigeración & Climatización</h3>
-        <span class="card-slug-label">Sitio Web en Producción · Mar del Plata</span>
-        <p class="card-desc">Ingeniería en refrigeración industrial, cámaras frigoríficas y mantenimiento térmico.</p>
+        <h3 class="card-title">MS Refrigeración Industrial & Clima</h3>
+        <span class="card-slug-label">Sitio Oficial en Vivo · Mar del Plata</span>
+        <p class="card-desc">Ingeniería en refrigeración industrial, cámaras frigoríficas y mantenimiento térmico para empresas.</p>
       </div>
       <div class="card-footer">
         <a href="/ms-refrigeracion/" target="_blank" class="btn-launch btn-real-launch">
@@ -716,13 +767,13 @@
         <div class="card-meta-row">
           <span class="cat-tag" style="color: #25d366; border-color: #25d36644;">Software & IA</span>
           <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <span class="real-badge">REAL</span>
+            <span class="real-badge">PRODUCCIÓN</span>
             <i class="fa-solid fa-robot" style="color: #25d366; font-size: 1.2rem;"></i>
           </div>
         </div>
-        <h3 class="card-title">Bot WhatsApp IA SaaS</h3>
-        <span class="card-slug-label">Sitio Web en Producción · Mar del Plata</span>
-        <p class="card-desc">Plataforma SaaS para conectar bots de WhatsApp con inteligencia artificial 24/7.</p>
+        <h3 class="card-title">WhatsApp Bot IA SaaS Platform</h3>
+        <span class="card-slug-label">Sitio Oficial en Vivo · Mar del Plata</span>
+        <p class="card-desc">Plataforma SaaS para automatizar atención y ventas por WhatsApp las 24 horas con Inteligencia Artificial.</p>
       </div>
       <div class="card-footer">
         <a href="/whatsapp-saas/" target="_blank" class="btn-launch btn-real-launch">
@@ -734,24 +785,24 @@
       </div>
     </div>
     
-    <div class="demo-card real-card" data-category="e-commerce">
+    <div class="demo-card real-card" data-category="software & ia">
       <div class="card-top">
         <div class="card-meta-row">
-          <span class="cat-tag" style="color: #8b5cf6; border-color: #8b5cf644;">E-Commerce</span>
+          <span class="cat-tag" style="color: #8b5cf6; border-color: #8b5cf644;">Software & IA</span>
           <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <span class="real-badge">REAL</span>
-            <i class="fa-solid fa-laptop" style="color: #8b5cf6; font-size: 1.2rem;"></i>
+            <span class="real-badge">PRODUCCIÓN</span>
+            <i class="fa-solid fa-cash-register" style="color: #8b5cf6; font-size: 1.2rem;"></i>
           </div>
         </div>
-        <h3 class="card-title">Tech Reviews & E-Commerce</h3>
-        <span class="card-slug-label">Sitio Web en Producción · Mar del Plata</span>
-        <p class="card-desc">Portal de reviews tecnológicas, hardware y recomendaciones de compra online.</p>
+        <h3 class="card-title">ControlComercio // POS & Stock IA</h3>
+        <span class="card-slug-label">Sitio Oficial en Vivo · Mar del Plata</span>
+        <p class="card-desc">Sistema POS y gestión comercial para comercios argentinos con control de caja, stock y asistente IA.</p>
       </div>
       <div class="card-footer">
-        <a href="/ml-afiliados-tech/" target="_blank" class="btn-launch btn-real-launch">
-          <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir Proyecto Real
+        <a href="https://control-comercio-kappa.vercel.app/" target="_blank" class="btn-launch btn-real-launch">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir SaaS en Vivo
         </a>
-        <button class="btn-copy-link" data-slug="ml-afiliados-tech/">
+        <button class="btn-copy-link" data-slug="https://control-comercio-kappa.vercel.app/">
           <i class="fa-regular fa-copy"></i> Copiar enlace directo
         </button>
       </div>
@@ -762,13 +813,13 @@
         <div class="card-meta-row">
           <span class="cat-tag" style="color: #0284c7; border-color: #0284c744;">Gastronomía</span>
           <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <span class="real-badge">REAL</span>
+            <span class="real-badge">PRODUCCIÓN</span>
             <i class="fa-solid fa-fish" style="color: #0284c7; font-size: 1.2rem;"></i>
           </div>
         </div>
-        <h3 class="card-title">Restaurante La Marina</h3>
-        <span class="card-slug-label">Sitio Web en Producción · Mar del Plata</span>
-        <p class="card-desc">Tradición marisquera en el puerto de MDP: cazuelas, pescados frescos y rabas.</p>
+        <h3 class="card-title">Restaurante La Marina // Puerto MDP</h3>
+        <span class="card-slug-label">Sitio Oficial en Vivo · Mar del Plata</span>
+        <p class="card-desc">Tradición marisquera en el puerto de Mar del Plata: cazuelas de mariscos, pescados frescos y rabas.</p>
       </div>
       <div class="card-footer">
         <a href="/restaurante-la-marina/" target="_blank" class="btn-launch btn-real-launch">
@@ -785,13 +836,13 @@
         <div class="card-meta-row">
           <span class="cat-tag" style="color: #f59e0b; border-color: #f59e0b44;">Gastronomía</span>
           <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <span class="real-badge">REAL</span>
+            <span class="real-badge">PRODUCCIÓN</span>
             <i class="fa-solid fa-beer-mug-empty" style="color: #f59e0b; font-size: 1.2rem;"></i>
           </div>
         </div>
-        <h3 class="card-title">Cervecería Trebi</h3>
-        <span class="card-slug-label">Sitio Web en Producción · Mar del Plata</span>
-        <p class="card-desc">Taproom de cervezas artesanales galardonadas, burgers caseras y terraza cervecera.</p>
+        <h3 class="card-title">Cervecería Trebi // Taphouse de Autor</h3>
+        <span class="card-slug-label">Sitio Oficial en Vivo · Mar del Plata</span>
+        <p class="card-desc">Taproom de cervezas artesanales multipremiadas, hamburguesas caseras y terraza cervecera.</p>
       </div>
       <div class="card-footer">
         <a href="/cerveceria-trebi/" target="_blank" class="btn-launch btn-real-launch">
@@ -808,13 +859,13 @@
         <div class="card-meta-row">
           <span class="cat-tag" style="color: #b91c1c; border-color: #b91c1c44;">Gastronomía</span>
           <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <span class="real-badge">REAL</span>
+            <span class="real-badge">PRODUCCIÓN</span>
             <i class="fa-solid fa-pizza-slice" style="color: #b91c1c; font-size: 1.2rem;"></i>
           </div>
         </div>
         <h3 class="card-title">Bruder Pizzería Napolitana</h3>
-        <span class="card-slug-label">Sitio Web en Producción · Mar del Plata</span>
-        <p class="card-desc">Pizzas de fermentación lenta de 48 hs al horno de leña napolitano a 450°C.</p>
+        <span class="card-slug-label">Sitio Oficial en Vivo · Mar del Plata</span>
+        <p class="card-desc">Pizzas de fermentación lenta de 48 hs horneadas a la leña a 450°C estilo tradicional napolitano.</p>
       </div>
       <div class="card-footer">
         <a href="/bruder-pizzeria/" target="_blank" class="btn-launch btn-real-launch">
@@ -826,87 +877,18 @@
       </div>
     </div>
     
-    <div class="demo-card real-card" data-category="gastronomía">
-      <div class="card-top">
-        <div class="card-meta-row">
-          <span class="cat-tag" style="color: #ea580c; border-color: #ea580c44;">Gastronomía</span>
-          <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <span class="real-badge">REAL</span>
-            <i class="fa-solid fa-drumstick-bite" style="color: #ea580c; font-size: 1.2rem;"></i>
-          </div>
-        </div>
-        <h3 class="card-title">Asador Parrilla El Fogón</h3>
-        <span class="card-slug-label">Sitio Web en Producción · Mar del Plata</span>
-        <p class="card-desc">Cortes premium madurados, asador a la cruz criollo y empanadas cortadas a cuchillo.</p>
-      </div>
-      <div class="card-footer">
-        <a href="/asador-el-fogon/" target="_blank" class="btn-launch btn-real-launch">
-          <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir Proyecto Real
-        </a>
-        <button class="btn-copy-link" data-slug="asador-el-fogon/">
-          <i class="fa-regular fa-copy"></i> Copiar enlace directo
-        </button>
-      </div>
-    </div>
-    
-    <div class="demo-card real-card" data-category="gastronomía">
-      <div class="card-top">
-        <div class="card-meta-row">
-          <span class="cat-tag" style="color: #ec4899; border-color: #ec489944;">Gastronomía</span>
-          <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <span class="real-badge">REAL</span>
-            <i class="fa-solid fa-ice-cream" style="color: #ec4899; font-size: 1.2rem;"></i>
-          </div>
-        </div>
-        <h3 class="card-title">Heladería Don Freysse</h3>
-        <span class="card-slug-label">Sitio Web en Producción · Mar del Plata</span>
-        <p class="card-desc">Helados artesanales 100% naturales con leche de campo y cacao belga.</p>
-      </div>
-      <div class="card-footer">
-        <a href="/heladeria-don-freysse/" target="_blank" class="btn-launch btn-real-launch">
-          <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir Proyecto Real
-        </a>
-        <button class="btn-copy-link" data-slug="heladeria-don-freysse/">
-          <i class="fa-regular fa-copy"></i> Copiar enlace directo
-        </button>
-      </div>
-    </div>
-    
-    <div class="demo-card real-card" data-category="salud & belleza">
-      <div class="card-top">
-        <div class="card-meta-row">
-          <span class="cat-tag" style="color: #d946ef; border-color: #d946ef44;">Salud & Belleza</span>
-          <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <span class="real-badge">REAL</span>
-            <i class="fa-solid fa-spa" style="color: #d946ef; font-size: 1.2rem;"></i>
-          </div>
-        </div>
-        <h3 class="card-title">Aubone Spa Médico & Estética</h3>
-        <span class="card-slug-label">Sitio Web en Producción · Mar del Plata</span>
-        <p class="card-desc">Medicina estética avanzada, dermatología láser, plasma rico y tratamientos anti-age.</p>
-      </div>
-      <div class="card-footer">
-        <a href="/aubone-spa-medico/" target="_blank" class="btn-launch btn-real-launch">
-          <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir Proyecto Real
-        </a>
-        <button class="btn-copy-link" data-slug="aubone-spa-medico/">
-          <i class="fa-regular fa-copy"></i> Copiar enlace directo
-        </button>
-      </div>
-    </div>
-    
     <div class="demo-card real-card" data-category="salud & medicina">
       <div class="card-top">
         <div class="card-meta-row">
           <span class="cat-tag" style="color: #0284c7; border-color: #0284c744;">Salud & Medicina</span>
           <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <span class="real-badge">REAL</span>
+            <span class="real-badge">PRODUCCIÓN</span>
             <i class="fa-solid fa-hospital" style="color: #0284c7; font-size: 1.2rem;"></i>
           </div>
         </div>
-        <h3 class="card-title">Centro Médico Edison</h3>
-        <span class="card-slug-label">Sitio Web en Producción · Mar del Plata</span>
-        <p class="card-desc">Policlínico con más de 20 especialidades médicas, laboratorio y turnos online.</p>
+        <h3 class="card-title">Centro Médico Edison // Consultorios</h3>
+        <span class="card-slug-label">Sitio Oficial en Vivo · Mar del Plata</span>
+        <p class="card-desc">Centro policlínico con más de 20 especialidades médicas, laboratorio y agendamiento online.</p>
       </div>
       <div class="card-footer">
         <a href="/centro-medico-edison/" target="_blank" class="btn-launch btn-real-launch">
@@ -918,64 +900,18 @@
       </div>
     </div>
     
-    <div class="demo-card real-card" data-category="salud & medicina">
-      <div class="card-top">
-        <div class="card-meta-row">
-          <span class="cat-tag" style="color: #0ea5e9; border-color: #0ea5e944;">Salud & Medicina</span>
-          <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <span class="real-badge">REAL</span>
-            <i class="fa-solid fa-tooth" style="color: #0ea5e9; font-size: 1.2rem;"></i>
-          </div>
-        </div>
-        <h3 class="card-title">Dental Studio MDP</h3>
-        <span class="card-slug-label">Sitio Web en Producción · Mar del Plata</span>
-        <p class="card-desc">Clínica de rehabilitación oral de alta complejidad, carillas cerámicas e implantes.</p>
-      </div>
-      <div class="card-footer">
-        <a href="/dental-studio-mdp/" target="_blank" class="btn-launch btn-real-launch">
-          <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir Proyecto Real
-        </a>
-        <button class="btn-copy-link" data-slug="dental-studio-mdp/">
-          <i class="fa-regular fa-copy"></i> Copiar enlace directo
-        </button>
-      </div>
-    </div>
-    
-    <div class="demo-card real-card" data-category="moda & estilo">
-      <div class="card-top">
-        <div class="card-meta-row">
-          <span class="cat-tag" style="color: #18181b; border-color: #18181b44;">Moda & Estilo</span>
-          <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <span class="real-badge">REAL</span>
-            <i class="fa-solid fa-scissors" style="color: #18181b; font-size: 1.2rem;"></i>
-          </div>
-        </div>
-        <h3 class="card-title">Black Estilistas & Barbería</h3>
-        <span class="card-slug-label">Sitio Web en Producción · Mar del Plata</span>
-        <p class="card-desc">Barbería clásica, afeitado tradicional con toalla caliente y cortes de tendencia.</p>
-      </div>
-      <div class="card-footer">
-        <a href="/black-barberia/" target="_blank" class="btn-launch btn-real-launch">
-          <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir Proyecto Real
-        </a>
-        <button class="btn-copy-link" data-slug="black-barberia/">
-          <i class="fa-regular fa-copy"></i> Copiar enlace directo
-        </button>
-      </div>
-    </div>
-    
     <div class="demo-card real-card" data-category="fitness & deporte">
       <div class="card-top">
         <div class="card-meta-row">
           <span class="cat-tag" style="color: #ef4444; border-color: #ef444444;">Fitness & Deporte</span>
           <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <span class="real-badge">REAL</span>
+            <span class="real-badge">PRODUCCIÓN</span>
             <i class="fa-solid fa-dumbbell" style="color: #ef4444; font-size: 1.2rem;"></i>
           </div>
         </div>
-        <h3 class="card-title">Alfa Gym & Rendimiento</h3>
-        <span class="card-slug-label">Sitio Web en Producción · Mar del Plata</span>
-        <p class="card-desc">Gimnasio de musculación pesada, cross-training y preparación física para atletas.</p>
+        <h3 class="card-title">Alfa Gym // Centro de Alto Rendimiento</h3>
+        <span class="card-slug-label">Sitio Oficial en Vivo · Mar del Plata</span>
+        <p class="card-desc">Centro de entrenamiento de fuerza, musculación pesada y acondicionamiento físico de alto nivel.</p>
       </div>
       <div class="card-footer">
         <a href="/alfa-gym/" target="_blank" class="btn-launch btn-real-launch">
@@ -987,70 +923,93 @@
       </div>
     </div>
     
-    <div class="demo-card real-card" data-category="inmuebles">
+    <div class="demo-card real-card" data-category="e-commerce">
       <div class="card-top">
         <div class="card-meta-row">
-          <span class="cat-tag" style="color: #d97706; border-color: #d9770644;">Inmuebles</span>
+          <span class="cat-tag" style="color: #8b5cf6; border-color: #8b5cf644;">E-Commerce</span>
           <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <span class="real-badge">REAL</span>
-            <i class="fa-solid fa-building" style="color: #d97706; font-size: 1.2rem;"></i>
+            <span class="real-badge">PRODUCCIÓN</span>
+            <i class="fa-solid fa-laptop" style="color: #8b5cf6; font-size: 1.2rem;"></i>
           </div>
         </div>
-        <h3 class="card-title">Inmobiliaria Radix</h3>
-        <span class="card-slug-label">Sitio Web en Producción · Mar del Plata</span>
-        <p class="card-desc">Comercialización de edificios en pozo, lotes en barrios cerrados y tasaciones.</p>
+        <h3 class="card-title">Tech Reviews & Hardware Argentina</h3>
+        <span class="card-slug-label">Sitio Oficial en Vivo · Mar del Plata</span>
+        <p class="card-desc">Portal de reviews tecnológicas, armado de PC gamer y recomendaciones de compra para Argentina.</p>
       </div>
       <div class="card-footer">
-        <a href="/inmobiliaria-radix/" target="_blank" class="btn-launch btn-real-launch">
+        <a href="/ml-afiliados-tech/" target="_blank" class="btn-launch btn-real-launch">
           <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir Proyecto Real
         </a>
-        <button class="btn-copy-link" data-slug="inmobiliaria-radix/">
+        <button class="btn-copy-link" data-slug="ml-afiliados-tech/">
           <i class="fa-regular fa-copy"></i> Copiar enlace directo
         </button>
       </div>
     </div>
     
-    <div class="demo-card real-card" data-category="legal & abogacía">
+    <div class="demo-card real-card" data-category="medios & prensa">
       <div class="card-top">
         <div class="card-meta-row">
-          <span class="cat-tag" style="color: #1e3a8a; border-color: #1e3a8a44;">Legal & Abogacía</span>
+          <span class="cat-tag" style="color: #f97316; border-color: #f9731644;">Medios & Prensa</span>
           <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <span class="real-badge">REAL</span>
-            <i class="fa-solid fa-scale-balanced" style="color: #1e3a8a; font-size: 1.2rem;"></i>
+            <span class="real-badge">PRODUCCIÓN</span>
+            <i class="fa-solid fa-gamepad" style="color: #f97316; font-size: 1.2rem;"></i>
           </div>
         </div>
-        <h3 class="card-title">Estudio Jurídico Rey Areco</h3>
-        <span class="card-slug-label">Sitio Web en Producción · Mar del Plata</span>
-        <p class="card-desc">Asesoramiento legal corporativo, derecho laboral, civil y accidentes ART.</p>
+        <h3 class="card-title">CS News // Esports & Gaming Portal</h3>
+        <span class="card-slug-label">Sitio Oficial en Vivo · Mar del Plata</span>
+        <p class="card-desc">Portal de noticias de Counter-Strike, torneos de esports, estadísticas de partidos y cobertura en vivo.</p>
       </div>
       <div class="card-footer">
-        <a href="/estudio-juridico-rey-areco/" target="_blank" class="btn-launch btn-real-launch">
+        <a href="/cs-news/" target="_blank" class="btn-launch btn-real-launch">
           <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir Proyecto Real
         </a>
-        <button class="btn-copy-link" data-slug="estudio-juridico-rey-areco/">
+        <button class="btn-copy-link" data-slug="cs-news/">
           <i class="fa-regular fa-copy"></i> Copiar enlace directo
         </button>
       </div>
     </div>
     
-    <div class="demo-card real-card" data-category="servicios & pymes">
+    <div class="demo-card real-card" data-category="medios & prensa">
       <div class="card-top">
         <div class="card-meta-row">
-          <span class="cat-tag" style="color: #059669; border-color: #05966944;">Servicios & Pymes</span>
+          <span class="cat-tag" style="color: #06b6d4; border-color: #06b6d444;">Medios & Prensa</span>
           <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <span class="real-badge">REAL</span>
-            <i class="fa-solid fa-chart-line" style="color: #059669; font-size: 1.2rem;"></i>
+            <span class="real-badge">PRODUCCIÓN</span>
+            <i class="fa-solid fa-newspaper" style="color: #06b6d4; font-size: 1.2rem;"></i>
           </div>
         </div>
-        <h3 class="card-title">Estudio Contable Codagnone</h3>
-        <span class="card-slug-label">Sitio Web en Producción · Mar del Plata</span>
-        <p class="card-desc">Auditoría impositiva, liquidación de haberes y planificación fiscal para empresas.</p>
+        <h3 class="card-title">Panorama Web // Portal de Noticias</h3>
+        <span class="card-slug-label">Sitio Oficial en Vivo · Mar del Plata</span>
+        <p class="card-desc">Diario digital y magazine de noticias de Mar del Plata con secciones de actualidad, economía y cultura.</p>
       </div>
       <div class="card-footer">
-        <a href="/estudio-contable-codagnone/" target="_blank" class="btn-launch btn-real-launch">
+        <a href="/panorama-web/" target="_blank" class="btn-launch btn-real-launch">
           <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir Proyecto Real
         </a>
-        <button class="btn-copy-link" data-slug="estudio-contable-codagnone/">
+        <button class="btn-copy-link" data-slug="panorama-web/">
+          <i class="fa-regular fa-copy"></i> Copiar enlace directo
+        </button>
+      </div>
+    </div>
+    
+    <div class="demo-card real-card" data-category="software & ia">
+      <div class="card-top">
+        <div class="card-meta-row">
+          <span class="cat-tag" style="color: #ec4899; border-color: #ec489944;">Software & IA</span>
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span class="real-badge">PRODUCCIÓN</span>
+            <i class="fa-solid fa-code" style="color: #ec4899; font-size: 1.2rem;"></i>
+          </div>
+        </div>
+        <h3 class="card-title">Portfolio de Desarrollo Web & IA</h3>
+        <span class="card-slug-label">Sitio Oficial en Vivo · Mar del Plata</span>
+        <p class="card-desc">Portfolio profesional interactivo con stack moderno de tecnologías, animaciones y proyectos entregados.</p>
+      </div>
+      <div class="card-footer">
+        <a href="/portfolio-dev/" target="_blank" class="btn-launch btn-real-launch">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir Proyecto Real
+        </a>
+        <button class="btn-copy-link" data-slug="portfolio-dev/">
           <i class="fa-regular fa-copy"></i> Copiar enlace directo
         </button>
       </div>
@@ -1066,27 +1025,12 @@
       <p style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 800; color: #ffffff; margin-bottom: 0.3rem;">
         MIS CLIENTES WEB · PLATAFORMA DE SITIOS Y DEMOS COMERCIALES
       </p>
-      <p>34 Sitios Web en Producción · Desplegado en Cloudflare Pages · Mar del Plata, Argentina</p>
+      <p>32 Sitios Web en Producción · Desplegado en Cloudflare Pages · Mar del Plata, Argentina</p>
     </div>
   </footer>
-    <div className="foot-col">
-      <h4>Proyectos Reales</h4>
-      <div className="proyecto-card" style={{'--acc': var(--acc)}}>
-        <a href="https://mis-clientes-html.pages.dev/stella-maris-pastas/" target="_blank" rel="noreferrer" className="enlace-proyecto">
-          <h5>Stella Maris Pastas</h5>
-          <p>F&aacute;brica de pastas frescas, rotiser&iacute;a gourmet y minutas.</p>
-        </a>
-      </div>
-      <div className="proyecto-card" style={{'--acc': var(--acc)}}>
-        <a href="https://mis-clientes-html.pages.dev/estar-peralta-ramos/" target="_blank" rel="noreferrer" className="enlace-proyecto">
-          <h5>Estar Peralta Ramos</h5>
-          <p>Caba&ntilde;as boutique en el bosque con hidromasaje y deck.</p>
-        </a>
-      </div>
-    </div>
 
   <script>
-    let currentView = 'master'; // 'master' | 'real' | 'all'
+    let currentView = 'master'; // 'master' | 'real'
 
     const tabMaster = document.getElementById('tab-master');
     const tabReal = document.getElementById('tab-real');
@@ -1110,7 +1054,6 @@
         masterCards.forEach(c => c.style.display = 'none');
         realCards.forEach(c => c.style.display = 'flex');
       }
-      // Reset filter button
       catBtns.forEach(b => b.classList.remove('active'));
       document.querySelector('.cat-btn[data-filter="all"]').classList.add('active');
     }
@@ -1128,7 +1071,10 @@
         const targetCards = currentView === 'master' ? masterCards : realCards;
         targetCards.forEach(c => {
           const cat = c.dataset.category || '';
-          if (filter === 'all' || cat.includes(filter) || (filter === 'inmuebles' && (cat.includes('inmueble') || cat.includes('turismo') || cat.includes('servicios')))) {
+          if (filter === 'all' || cat.includes(filter) || 
+              (filter === 'turismo' && (cat.includes('turismo') || cat.includes('inmueble'))) ||
+              (filter === 'gastro' && cat.includes('gastro')) ||
+              (filter === 'software' && (cat.includes('software') || cat.includes('ia') || cat.includes('tech')))) {
             c.style.display = 'flex';
           } else {
             c.style.display = 'none';
@@ -1195,9 +1141,9 @@
       btn.addEventListener('click', () => {
         const slug = btn.dataset.slug;
         const qs = currentView === 'master' ? getQS() : '';
-        const fullUrl = `${window.location.origin}/${slug}${qs}`;
+        const fullUrl = slug.startsWith('http') ? slug : `${window.location.origin}/${slug.replace(/^\//, '')}${qs}`;
         navigator.clipboard.writeText(fullUrl).then(() => {
-          showToast(`¡Enlace copiado: /${slug}${qs}!`);
+          showToast(`¡Enlace copiado!`);
         }).catch(() => prompt('Copiá el enlace:', fullUrl));
       });
     });

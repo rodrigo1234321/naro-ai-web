@@ -1,0 +1,6 @@
+1:"$Sreact.fragment"
+2:I[65574,["/_next/static/chunks/1efir4r-6jfzs.js","/_next/static/chunks/1t6xytnqmzdy0.js","/_next/static/chunks/1hdpd05xo4xzh.js","/_next/static/chunks/0jx2_471e0y9c.js","/_next/static/chunks/3ay2dlmkm_xym.js","/_next/static/chunks/0k21ta1aahg1o.js","/_next/static/chunks/2tzryjmitmkn_.js"],"default"]
+3:I[12948,["/_next/static/chunks/1efir4r-6jfzs.js","/_next/static/chunks/1t6xytnqmzdy0.js","/_next/static/chunks/1hdpd05xo4xzh.js","/_next/static/chunks/0jx2_471e0y9c.js","/_next/static/chunks/3ay2dlmkm_xym.js","/_next/static/chunks/0k21ta1aahg1o.js"],"OutletBoundary"]
+4:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"slug":"adaptador-samsung-45w"}],[["$","script","script-0",{"src":"/_next/static/chunks/2tzryjmitmkn_.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"OKf5t_xdQgmdRkmgfVu6m"}
+5:null
