@@ -1,0 +1,667 @@
+/* Hallmark · pre-emit critique: P5 H4 E5 S4 R5 V5 · genre: editorial · theme: Atelier · macrostructure: 02-long-document */
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stella Maris — Pastas Frescas & Comidas Caseras | Güemes, Mar del Plata</title>
+    <meta name="description" content="Fábrica de pastas frescas artesanales y rotisería gourmet en Güemes, Mar del Plata. Sorrentinos, ravioles, lasagna y comidas caseras en Alberti 1201. Tel: 0223 4515183.">
+    <meta name="theme-color" content="#120e0c">
+
+    <!-- OpenGraph Metadata -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Stella Maris — Pastas & Comidas Caseras en Güemes">
+    <meta property="og:description" content="Pastas caseras elaboradas diariamente con ingredientes de primera calidad. Sorrentinos, canelones y platos listos para llevar. Alberti 1201.">
+    <meta property="og:image" content="assets/hero_pastas.jpg">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- JSON-LD Schema.org for Stella Maris Local Business -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "Stella Maris Pastas y Comidas Caseras",
+      "image": "assets/hero_pastas.jpg",
+      "telephone": "+542234515183",
+      "priceRange": "$$",
+      "servesCuisine": "Pastas Artesanales, Comida Casera, Rotiseria",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Alberti 1201",
+        "addressLocality": "Mar del Plata",
+        "addressRegion": "Buenos Aires",
+        "addressCountry": "AR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -38.0125,
+        "longitude": -57.5458
+      }
+    }
+    </script>
+
+    <style>
+        /* Hallmark Token System — Atelier Editorial Palette */
+        :root {
+            --color-paper-0: #120e0c;
+            --color-paper-1: #1a1512;
+            --color-paper-2: #241d19;
+            --color-terracotta: #c85a32;
+            --color-gold: #e5a93c;
+            --color-wheat: #f4eae1;
+            --color-text-muted: #a3958b;
+            --color-border: rgba(244, 234, 225, 0.08);
+            
+            --font-display: 'Outfit', serif, sans-serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+
+            --space-1: 4px;
+            --space-2: 8px;
+            --space-3: 16px;
+            --space-4: 24px;
+            --space-5: 32px;
+            --space-6: 48px;
+            --space-7: 64px;
+        }
+
+        html, body {
+            overflow-x: clip;
+            background-color: var(--color-paper-0);
+            color: var(--color-wheat);
+            font-family: var(--font-body);
+            line-height: 1.6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-display);
+            font-style: normal !important;
+            overflow-wrap: anywhere;
+            min-width: 0;
+        }
+
+        /* Navigation Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 var(--space-4);
+            background: rgba(18, 14, 12, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--color-border);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--color-wheat);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--color-terracotta);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--space-4);
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--color-text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-gold);
+        }
+
+        .btn-order-header {
+            background: linear-gradient(135deg, var(--color-terracotta), #a04220);
+            color: white;
+            padding: 10px 22px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 0 20px rgba(200, 90, 50, 0.3);
+            transition: transform 0.2s ease;
+        }
+
+        .btn-order-header:hover {
+            transform: translateY(-1px);
+        }
+
+        /* Marquee Ticker */
+        .marquee-strip {
+            width: 100%;
+            overflow: hidden;
+            background: rgba(200, 90, 50, 0.08);
+            border-bottom: 1px solid var(--color-border);
+            padding: 12px 0;
+            white-space: nowrap;
+            margin-top: 76px;
+        }
+
+        .marquee-track {
+            display: inline-flex;
+            gap: 3rem;
+            animation: marquee 26s linear infinite;
+        }
+
+        .marquee-item {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--color-wheat);
+        }
+
+        .marquee-item i {
+            color: var(--color-terracotta);
+            margin-right: 6px;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            padding: var(--space-6) var(--space-4) var(--space-7) var(--space-4);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+        }
+
+        .tag-location {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 0.82rem;
+            font-weight: 800;
+            background: rgba(229, 169, 60, 0.1);
+            border: 1px solid rgba(229, 169, 60, 0.3);
+            color: var(--color-gold);
+            margin-bottom: var(--space-4);
+        }
+
+        .hero-title {
+            font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+            font-weight: 900;
+            text-align: center;
+            line-height: 1.15;
+            margin-bottom: var(--space-3);
+            max-width: 860px;
+        }
+
+        .hero-title span {
+            color: var(--color-terracotta);
+        }
+
+        .hero-sub {
+            font-size: 1.1rem;
+            color: var(--color-text-muted);
+            text-align: center;
+            max-width: 620px;
+            margin-bottom: var(--space-5);
+        }
+
+        .hero-card {
+            background: var(--color-paper-1);
+            border-radius: 24px;
+            border: 1px solid var(--color-border);
+            max-width: 900px;
+            width: 100%;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-card-img {
+            width: 100%;
+            height: 100%;
+            min-height: 280px;
+            object-fit: cover;
+        }
+
+        .hero-card-body {
+            padding: var(--space-5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-card-body h2 {
+            font-size: 1.6rem;
+            margin-bottom: var(--space-2);
+        }
+
+        .info-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: var(--space-2);
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+        }
+
+        .info-badge i {
+            color: var(--color-terracotta);
+        }
+
+        /* Common Section Layout */
+        section {
+            padding: var(--space-7) var(--space-4);
+        }
+
+        .sec-head {
+            text-align: center;
+            margin-bottom: var(--space-6);
+        }
+
+        .sec-tag {
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-gold);
+            margin-bottom: var(--space-1);
+            display: block;
+        }
+
+        .sec-title {
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            font-weight: 900;
+        }
+
+        /* Menu Cards Grid */
+        .grid-menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: var(--space-4);
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .menu-card {
+            background: var(--color-paper-1);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--color-terracotta);
+        }
+
+        .menu-card-img {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+        }
+
+        .menu-card-content {
+            padding: var(--space-4);
+        }
+
+        .menu-card-h3 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin-bottom: var(--space-2);
+            color: var(--color-wheat);
+        }
+
+        .menu-card-p {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Interactive WhatsApp Order Calculator */
+        .calculator-box {
+            background: var(--color-paper-1);
+            border-radius: 24px;
+            border: 1px solid var(--color-border);
+            padding: var(--space-5);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .calc-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: var(--space-3);
+            margin-top: var(--space-4);
+        }
+
+        .calc-group label {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--color-text-muted);
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .calc-group select, .calc-group input {
+            width: 100%;
+            padding: 10px 14px;
+            border-radius: 10px;
+            background: var(--color-paper-2);
+            border: 1px solid var(--color-border);
+            color: white;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        /* Location Section */
+        .location-grid {
+            max-width: 1050px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-4);
+            background: var(--color-paper-1);
+            border-radius: 24px;
+            padding: var(--space-5);
+            border: 1px solid var(--color-border);
+        }
+
+        .map-frame {
+            width: 100%;
+            height: 300px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+        }
+
+        .map-frame iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Floating WhatsApp Button */
+        .wa-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: #25d366;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.7rem;
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.5);
+            z-index: 999;
+            text-decoration: none;
+        }
+
+        footer {
+            padding: var(--space-5) var(--space-4);
+            background: var(--color-paper-0);
+            border-top: 1px solid var(--color-border);
+            text-align: center;
+            color: var(--color-text-muted);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 800px) {
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#hero" class="logo">
+            <i class="fa-solid fa-wheat-awn"></i> Stella <span>Maris</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#hero">Inicio</a></li>
+            <li><a href="#menu">Nuestras Pastas</a></li>
+            <li><a href="#pedido">Hacer Pedido</a></li>
+            <li><a href="#ubicacion">Ubicación</a></li>
+        </ul>
+        <a href="https://wa.me/542234515183?text=Hola!%20Quiero%20hacer%20un%20pedido%20de%20pastas%20en%20Stella%20Maris" target="_blank" class="btn-order-header">
+            <i class="fa-brands fa-whatsapp"></i> Pedir por WhatsApp
+        </a>
+    </header>
+
+    <div class="marquee-strip">
+        <div class="marquee-track">
+            <div class="marquee-item"><i class="fa-solid fa-utensils"></i> SORRENTINOS ARTESANALES</div>
+            <div class="marquee-item"><i class="fa-solid fa-wheat-awn"></i> RAVIOLES CASEROS ELABORADOS EN EL DÍA</div>
+            <div class="marquee-item"><i class="fa-solid fa-plate-wheat"></i> LASAGNA Y CANELONES TRADICIONALES</div>
+            <div class="marquee-item"><i class="fa-solid fa-store"></i> ROTISERÍA Y COMIDAS ELABORADAS</div>
+            <!-- Loop -->
+            <div class="marquee-item"><i class="fa-solid fa-utensils"></i> SORRENTINOS ARTESANALES</div>
+            <div class="marquee-item"><i class="fa-solid fa-wheat-awn"></i> RAVIOLES CASEROS ELABORADOS EN EL DÍA</div>
+            <div class="marquee-item"><i class="fa-solid fa-plate-wheat"></i> LASAGNA Y CANELONES TRADICIONALES</div>
+            <div class="marquee-item"><i class="fa-solid fa-store"></i> ROTISERÍA Y COMIDAS ELABORADAS</div>
+        </div>
+    </div>
+
+    <main>
+        <section class="hero" id="hero">
+            <div class="tag-location">
+                <i class="fa-solid fa-location-dot"></i> GÜEMES — MAR DEL PLATA
+            </div>
+
+            <h1 class="hero-title">
+                EL SABOR DE LAS <span>PASTAS CASERAS</span> HECHAS CON AMOR
+            </h1>
+            <p class="hero-sub">
+                Desde Güemes para toda la ciudad. Sorrentinos, ravioles, canelones y platos caseros elaborados diariamente en Alberti 1201.
+            </p>
+
+            <div class="hero-card">
+                <img src="assets/hero_pastas.jpg" alt="Pastas frescas artesanales" class="hero-card-img">
+                <div class="hero-card-body">
+                    <h2>Stella Maris</h2>
+                    <p style="color: var(--color-gold); font-weight: 700; margin-bottom: 12px;">Pastas & Comidas Caseras</p>
+                    
+                    <div class="info-badge">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Alberti 1201 (esq. Güemes), Mar del Plata</span>
+                    </div>
+                    <div class="info-badge">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>Teléfono: 0223 4515183</span>
+                    </div>
+                    <div class="info-badge">
+                        <i class="fa-solid fa-clock"></i>
+                        <span>Abierto Martes a Domingo (Mañana y Tarde)</span>
+                    </div>
+
+                    <a href="https://wa.me/542234515183?text=Hola!%20Quiero%20hacer%20un%20pedido%20en%20Stella%20Maris" target="_blank" class="btn-order-header" style="margin-top: 16px; justify-content: center;">
+                        <i class="fa-brands fa-whatsapp"></i> Hacer Pedido por WhatsApp
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="menu">
+            <div class="sec-head">
+                <span class="sec-tag">ELABORACIÓN DIARIA</span>
+                <h2 class="sec-title">NUESTRAS ESPECIALIDADES</h2>
+            </div>
+
+            <div class="grid-menu">
+                <div class="menu-card">
+                    <img src="assets/sorrentinos.jpg" alt="Sorrentinos caseros" class="menu-card-img">
+                    <div class="menu-card-content">
+                        <h3 class="menu-card-h3">Sorrentinos Artesanales</h3>
+                        <p class="menu-card-p">
+                            Rellenos abundantes de Jamón y Queso, Pollo y Verdura, o Calabaza y Mozzarella. Elaborados con harina seleccionada.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <img src="assets/lasagna.jpg" alt="Lasagna casera horneada" class="menu-card-img">
+                    <div class="menu-card-content">
+                        <h3 class="menu-card-h3">Lasagna & Canelones</h3>
+                        <p class="menu-card-p">
+                            Lasagna de carne y muzzarella horneada a fuego lento. Canelones de choclo, verdura o carne con salsas caseras a elección.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <img src="assets/hero_pastas.jpg" alt="Ravioles y pastas frescas" class="menu-card-img">
+                    <div class="menu-card-content">
+                        <h3 class="menu-card-h3">Ravioles & Fideos Caseros</h3>
+                        <p class="menu-card-p">
+                            Tallarines al huevo, ñoquis de papa artesanales y ravioles caseros acompañados de tuco tradicional o salsa estofado.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pedido">
+            <div class="sec-head">
+                <span class="sec-tag">PEDIDO RÁPIDO</span>
+                <h2 class="sec-title">ARMÁ TU PEDIDO A DOMICILIO</h2>
+            </div>
+
+            <div class="calculator-box">
+                <h3 style="font-size: 1.4rem; text-align: center; color: var(--color-gold);">Calculá tu Pedido y Enviá por WhatsApp</h3>
+                <p style="text-align: center; color: var(--color-text-muted); font-size: 0.9rem; margin-top: 4px;">Seleccioná las porciones y te armamos el mensaje listo para enviar.</p>
+
+                <form class="calc-form" onsubmit="sendOrderWhatsApp(event)">
+                    <div class="calc-group">
+                        <label>Tipo de Pasta / Plato</label>
+                        <select id="p-type">
+                            <option value="Sorrentinos de Jamón y Queso">Sorrentinos de Jamón y Queso</option>
+                            <option value="Ravioles de Pollo y Verdura">Ravioles de Pollo y Verdura</option>
+                            <option value="Lasagna Horneada">Lasagna de Carne y Muzzarella</option>
+                            <option value="Ñoquis de Papa">Ñoquis de Papa Caseros</option>
+                            <option value="Canelones de Verdura">Canelones de Verdura y Salsa</option>
+                        </select>
+                    </div>
+
+                    <div class="calc-group">
+                        <label>Salsa a Elección</label>
+                        <select id="p-sauce">
+                            <option value="Tuco Tradicional">Tuco Tradicional</option>
+                            <option value="Salsa Mixta">Salsa Mixta (Tuco + Crema)</option>
+                            <option value="Bolognesa">Bolognesa de Carne</option>
+                            <option value="Béchamel (Blanca)">Béchamel (Blanca)</option>
+                            <option value="Sin Salsa (Solo Pastas)">Sin Salsa (Solo Pastas)</option>
+                        </select>
+                    </div>
+
+                    <div class="calc-group">
+                        <label>Cantidad de Porciones</label>
+                        <input type="number" id="p-portions" min="1" max="20" value="2" required>
+                    </div>
+
+                    <button type="submit" class="btn-order-header" style="grid-column: 1 / -1; justify-content: center; margin-top: 10px;">
+                        <i class="fa-brands fa-whatsapp"></i> Enviar Pedido a Stella Maris
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <section id="ubicacion">
+            <div class="sec-head">
+                <span class="sec-tag">ZONA GÜEMES</span>
+                <h2 class="sec-title">NUESTRO LOCAL</h2>
+            </div>
+
+            <div class="location-grid">
+                <div>
+                    <h3 style="font-size: 1.6rem; margin-bottom: 16px;">Alberti 1201 (esq. Güemes)</h3>
+                    <p style="color: var(--color-text-muted); margin-bottom: 20px;">
+                        Visitanos en nuestro local en Güemes para retirar tus pastas recién hechas o solicitar envío a domicilio.
+                    </p>
+                    <div style="margin-bottom: 12px; font-size: 0.9rem;">
+                        <i class="fa-solid fa-location-dot" style="color: var(--color-terracotta);"></i> Alberti 1201, Mar del Plata.
+                    </div>
+                    <div style="margin-bottom: 12px; font-size: 0.9rem;">
+                        <i class="fa-solid fa-phone" style="color: var(--color-gold);"></i> 0223 4515183
+                    </div>
+                    <div style="margin-bottom: 20px; font-size: 0.9rem;">
+                        <i class="fa-solid fa-clock" style="color: var(--color-terracotta);"></i> Martes a Domingo
+                    </div>
+
+                    <a href="https://maps.google.com/?q=Alberti+1201+Mar+del+Plata" target="_blank" class="btn-order-header">
+                        <i class="fa-solid fa-map-location-dot"></i> Ver en Google Maps
+                    </a>
+                </div>
+
+                <div class="map-frame">
+                    <iframe src="https://maps.google.com/maps?q=Alberti+1201,+Mar+del+Plata,+Argentina&t=&z=16&ie=UTF8&iwloc=&output=embed" loading="lazy"></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Stella Maris — Pastas y Comidas Caseras (Güemes, Mar del Plata). Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- WhatsApp Floating Action Button -->
+    <a href="https://wa.me/542234515183?text=Hola!%20Quiero%20consultar%20por%20pastas%20frescas%20en%20Stella%20Maris" target="_blank" class="wa-float" aria-label="Contacto WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script>
+        function sendOrderWhatsApp(e) {
+            e.preventDefault();
+            const type = document.getElementById('p-type').value;
+            const sauce = document.getElementById('p-sauce').value;
+            const portions = document.getElementById('p-portions').value;
+
+            const msg = `Hola Stella Maris! Quisiera hacer un pedido de ${portions} porciones de ${type} con salsa ${sauce}.`;
+            window.open(`https://wa.me/542234515183?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+    </script>
+</body>
+</html>

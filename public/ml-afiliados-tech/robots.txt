@@ -1,0 +1,13 @@
+# robots.txt para TechAfiliados
+User-agent: *
+Allow: /
+Allow: /index.html
+Allow: /categorias/
+Allow: /articulos/
+
+# Bloquear páginas de políticas y legal para optimizar el rastreo de Google
+Disallow: /politica-privacidad.html
+Disallow: /descargo-responsabilidad.html
+
+# Enlace al Sitemap XML
+Sitemap: https://techafiliados.ar/sitemap.xml

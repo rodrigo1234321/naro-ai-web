@@ -1,22 +1,1080 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Demo Factory — 28 demos para negocios de Mar del Plata</title>
-<meta name="description" content="Demo Factory de Naro AI: 28 demos en vivo de webs premium por rubro para negocios de Mar del Plata.">
-<meta property="og:title" content="Demo Factory — Naro AI Mar del Plata">
-<meta property="og:description" content="28 demos en vivo de webs premium por rubro.">
-<meta property="og:type" content="website">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="./assets/index-Cp5DkCdC.js"></script>
-  <link rel="modulepreload" crossorigin href="./assets/react-BRnhmgIC.js">
-  <link rel="modulepreload" crossorigin href="./assets/rubros-DTWL6SYw.js">
-  <link rel="stylesheet" crossorigin href="./assets/index-CvbSe-L8.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo Factory — 34 Webs y Demos para Negocios de Mar del Plata | Naro AI</title>
+  <meta name="description" content="34 Sitios Web únicos, reales y de alta conversión sin plantillas repetitivas para comercios y empresas de Mar del Plata.">
+  <meta name="theme-color" content="#090d16">
+
+  <!-- Google Fonts: Space Grotesk & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-base: #090d16;
+      --bg-surface: #111726;
+      --bg-card: rgba(17, 23, 38, 0.95);
+      --bg-elevated: #1a233a;
+      --accent-primary: #3b82f6;
+      --accent-cyan: #06b6d4;
+      --accent-emerald: #10b981;
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-medium: rgba(255, 255, 255, 0.16);
+      --font-display: 'Space Grotesk', system-ui, sans-serif;
+      --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 22px;
+      --radius-xl: 32px;
+      --radius-full: 9999px;
+      --shadow-md: 0 12px 35px rgba(0, 0, 0, 0.6);
+      --shadow-blue: 0 10px 30px rgba(59, 130, 246, 0.35);
+      --transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; background-color: var(--bg-base); color: var(--text-primary); font-family: var(--font-body); overflow-x: hidden; scroll-behavior: smooth; }
+    body { min-height: 100vh; line-height: 1.6; background-color: var(--bg-base); color: var(--text-primary); -webkit-font-smoothing: antialiased; background-image: radial-gradient(at 15% 15%, rgba(59, 130, 246, 0.12) 0, transparent 45%), radial-gradient(at 85% 85%, rgba(16, 185, 129, 0.08) 0, transparent 45%); }
+    .container { width: 100%; max-width: 1380px; margin: 0 auto; padding: 0 clamp(1rem, 3.5vw, 2.5rem); }
+
+    h1, h2, h3, h4 { font-family: var(--font-display); color: var(--text-primary); letter-spacing: -0.02em; }
+    h1 { font-size: clamp(2.3rem, 4.4vw, 3.9rem); line-height: 1.08; font-weight: 900; }
+    p { color: var(--text-secondary); font-size: 1.05rem; }
+    a { text-decoration: none; color: inherit; }
+
+    .header { padding: 1.4rem 0; border-bottom: 1px solid var(--border-subtle); background: rgba(9, 13, 22, 0.9); backdrop-filter: blur(20px); position: sticky; top: 0; z-index: 100; }
+    .header-inner { display: flex; justify-content: space-between; align-items: center; }
+    .brand-box { display: flex; align-items: center; gap: 0.9rem; }
+    .brand-logo-icon { width: 44px; height: 44px; border-radius: var(--radius-sm); background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 1.3rem; }
+    .brand-title { font-family: var(--font-display); font-size: 1.35rem; font-weight: 900; }
+
+    .badge-live {
+      display: inline-flex; align-items: center; gap: 0.55rem; padding: 0.45rem 1.25rem;
+      background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.35); border-radius: var(--radius-full);
+      font-family: var(--font-display); font-size: 0.82rem; font-weight: 800; color: var(--accent-emerald); text-transform: uppercase;
+    }
+    .live-dot { width: 8px; height: 8px; border-radius: 50%; background-color: var(--accent-emerald); box-shadow: 0 0 10px rgba(16, 185, 129, 0.9); animation: pulse 1.8s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.3; transform: scale(1.35); } }
+
+    .hero { padding: 4rem 0 3rem; text-align: center; }
+    .hero h1 { max-width: 950px; margin: 1.2rem auto 1rem; }
+    .hero p { max-width: 750px; margin: 0 auto 2.5rem; }
+
+    .customizer-box {
+      background: var(--bg-surface); border: 1px solid var(--border-medium); border-radius: var(--radius-xl);
+      padding: 2rem 2.5rem; max-width: 1150px; margin: 0 auto 3.5rem; box-shadow: var(--shadow-md); text-align: left;
+    }
+    .customizer-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr) auto; gap: 1.2rem; align-items: flex-end; margin-top: 1.2rem;
+    }
+    .input-group { display: flex; flex-direction: column; gap: 0.45rem; }
+    .input-label { font-family: var(--font-display); font-size: 0.8rem; font-weight: 800; color: var(--accent-primary); text-transform: uppercase; }
+    .custom-input {
+      padding: 0.85rem 1rem; background: var(--bg-elevated); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm);
+      color: #ffffff; font-family: var(--font-body); font-size: 0.92rem; font-weight: 600; outline: none; transition: var(--transition);
+    }
+    .custom-input:focus { border-color: var(--accent-primary); }
+
+    .filters-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.65rem; margin-bottom: 3.5rem; }
+    .cat-btn {
+      padding: 0.6rem 1.4rem; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-full);
+      font-family: var(--font-display); font-size: 0.8rem; font-weight: 800; color: var(--text-secondary); cursor: pointer;
+      transition: var(--transition); text-transform: uppercase;
+    }
+    .cat-btn:hover { border-color: var(--accent-primary); color: var(--accent-primary); }
+    .cat-btn.active { background: var(--accent-primary); border-color: var(--accent-primary); color: #ffffff; box-shadow: var(--shadow-blue); }
+
+    .demos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.2rem; margin-bottom: 6rem; }
+    .demo-card {
+      background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg);
+      overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; transition: var(--transition);
+    }
+    .demo-card:hover { border-color: var(--accent-primary); transform: translateY(-6px); box-shadow: 0 20px 45px rgba(59, 130, 246, 0.2); }
+
+    .card-top { padding: 1.8rem 1.8rem 1.2rem; }
+    .card-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem; }
+    .cat-tag { font-family: var(--font-display); font-size: 0.72rem; font-weight: 900; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: var(--radius-full); background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-subtle); }
+    .card-title { font-size: 1.35rem; font-weight: 800; margin-bottom: 0.2rem; }
+    .card-subtitle { font-size: 0.82rem; color: var(--accent-cyan); font-weight: 700; display: block; margin-bottom: 0.8rem; }
+    .card-desc { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.2rem; }
+    .tags-cloud { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .mini-tag { font-size: 0.75rem; color: var(--text-muted); background: rgba(255, 255, 255, 0.03); padding: 0.2rem 0.6rem; border-radius: var(--radius-sm); border: 1px solid rgba(255, 255, 255, 0.05); }
+
+    .dual-badge {
+      background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%); color: #ffffff; font-size: 0.68rem; font-weight: 900;
+      padding: 0.2rem 0.55rem; border-radius: var(--radius-full); font-family: var(--font-display); letter-spacing: 0.08em;
+    }
+    .real-badge {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: #ffffff; font-size: 0.68rem; font-weight: 900;
+      padding: 0.2rem 0.55rem; border-radius: var(--radius-full); font-family: var(--font-display); letter-spacing: 0.08em;
+    }
+
+    .card-footer { padding: 1.3rem 1.8rem; background: var(--bg-elevated); border-top: 1px solid var(--border-subtle); display: flex; flex-direction: column; gap: 0.7rem; }
+    .btn-launch {
+      display: flex; align-items: center; justify-content: center; gap: 0.6rem; padding: 0.85rem; border-radius: var(--radius-sm);
+      background: var(--accent-primary); color: #ffffff; font-family: var(--font-display); font-weight: 800; font-size: 0.85rem;
+      text-transform: uppercase; transition: var(--transition);
+    }
+    .btn-launch:hover { background: #2563eb; transform: translateY(-2px); }
+    .dual-links-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+    .btn-sub-launch {
+      display: flex; align-items: center; justify-content: center; gap: 0.4rem; padding: 0.75rem; border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.08); border: 1px solid var(--border-medium); color: var(--text-primary); font-family: var(--font-display);
+      font-size: 0.75rem; font-weight: 800; text-transform: uppercase; transition: var(--transition);
+    }
+    .btn-sub-launch:hover { background: var(--bg-surface); border-color: var(--accent-blue); color: var(--accent-blue); }
+
+    .btn-copy-link { background: none; border: none; color: var(--text-muted); font-size: 0.78rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.4rem; padding: 0.3rem 0; }
+    .btn-copy-link:hover { color: var(--accent-cyan); }
+
+    .toast-box {
+      position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(100px);
+      background: var(--bg-surface); border: 1px solid var(--accent-emerald); color: #ffffff; padding: 0.85rem 1.8rem;
+      border-radius: var(--radius-full); font-family: var(--font-display); font-size: 0.88rem; font-weight: 800;
+      opacity: 0; pointer-events: none; transition: all 0.35s ease; z-index: 10000;
+    }
+    .toast-box.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+    .footer { border-top: 1px solid var(--border-subtle); padding: 3.5rem 0 2.5rem; text-align: center; color: var(--text-muted); font-size: 0.85rem; background: #060910; }
+
+    @media (max-width: 992px) {
+      .demos-grid, .customizer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    }
+  </style>
 </head>
 <body>
-<div id="root"></div>
+
+  <header class="header">
+    <div class="container header-inner">
+      <div class="brand-box">
+        <div class="brand-logo-icon"><i class="fa-solid fa-layer-group"></i></div>
+        <div>
+          <span class="brand-title">DEMO FACTORY</span>
+          <span style="font-size: 0.65rem; color: var(--accent-cyan); font-weight: 800; display: block; letter-spacing: 0.15em;">NARO AI · MAR DEL PLATA</span>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <a href="/" class="btn-launch" style="padding: 0.55rem 1.25rem; font-size: 0.78rem; text-decoration: none; background: rgba(255, 255, 255, 0.08); border: 1px solid var(--border-medium);">
+          <i class="fa-solid fa-house"></i> Portal Principal (Showcase 34)
+        </a>
+        <div class="badge-live"><span class="live-dot"></span> 34 Sitios Oficiales Activos</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="badge-live" style="margin-bottom: 0.5rem;"><i class="fa-solid fa-wand-magic-sparkles"></i> 34 Diseños Reales & Artesanales</div>
+      <h1>CATÁLOGO MAESTRO DE <span style="color: var(--accent-primary);">34 WEBS & DEMOS EN VIVO</span></h1>
+      <p>Explorá nuestras 15 Demos de Alta Conversión o nuestros 19 Proyectos Reales. Cada web posee su propia identidad, interactividad y personalización.</p>
+    </section>
+
+    <!-- Customizer Dock -->
+    <section class="customizer-box">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <strong style="font-family: var(--font-display); font-size: 1.15rem; display: block;">⚡ Personalizador de Prospectos en Vivo</strong>
+          <span style="font-size: 0.85rem; color: var(--text-muted);">Ingresá los datos del cliente y los enlaces de las demos maestras se actualizarán al instante:</span>
+        </div>
+        <button id="btn-reset" style="background: none; border: 1px solid var(--border-subtle); color: var(--text-secondary); padding: 0.35rem 0.85rem; border-radius: var(--radius-sm); font-size: 0.78rem; cursor: pointer;">↺ Restablecer</button>
+      </div>
+
+      <div class="customizer-grid">
+        <div class="input-group">
+          <label class="input-label">1. Nombre del Comercio (?n=):</label>
+          <input type="text" id="cust-name" placeholder="Ej: Clínica Mitre / Café Roma" class="custom-input">
+        </div>
+        <div class="input-group">
+          <label class="input-label">2. Teléfono WhatsApp (?t=):</label>
+          <input type="text" id="cust-phone" placeholder="Ej: 5492235000000" class="custom-input">
+        </div>
+        <div class="input-group">
+          <label class="input-label">3. Dirección Local (?d=):</label>
+          <input type="text" id="cust-addr" placeholder="Ej: Güemes 3140, MDP" class="custom-input">
+        </div>
+        <div>
+          <button id="btn-apply" class="btn-launch" style="padding: 0.85rem 1.4rem; font-size: 0.82rem; width: 100%;"><i class="fa-solid fa-bolt"></i> Aplicar</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filters -->
+    <div class="filters-row">
+      <button class="cat-btn active" data-filter="all">⚡ Todos (34)</button>
+      <button class="cat-btn" data-filter="salud">🩺 Salud & Estética</button>
+      <button class="cat-btn" data-filter="gastro">🍽️ Gastronomía & Bares</button>
+      <button class="cat-btn" data-filter="moda">👗 Moda & Estilo</button>
+      <button class="cat-btn" data-filter="inmobiliaria">🏢 Inmuebles & Turismo</button>
+      <button class="cat-btn" data-filter="comercio">📦 Comercio & B2B</button>
+      <button class="cat-btn" data-filter="servicios">💼 Servicios & SaaS</button>
+    </div>
+
+    <!-- Demos Grid -->
+    <div class="demos-grid" id="grid">
+      
+    <div class="demo-card" data-fam="salud" data-file="/01-clinica-medica/">
+      <div class="card-top">
+        <div class="card-meta">
+          <span class="cat-tag" style="color:#0284c7; border-color:#0284c744;">Salud & Medicina</span>
+          <div style="display:flex; align-items:center; gap:0.4rem;">
+            
+            <i class="fa-solid fa-user-doctor" style="color:#0284c7; font-size: 1.25rem;"></i>
+          </div>
+        </div>
+        <h3 class="card-title">01. Clínica & Consultorios Médicos</h3>
+        <span class="card-subtitle">Demo de Alta Conversión</span>
+        <p class="card-desc">Staff de especialistas por cartilla, selector de turnos online y cobertura de obras sociales.</p>
+        <div class="tags-cloud"><span class="mini-tag">Cartilla Médica</span><span class="mini-tag">Turnos Online</span><span class="mini-tag">Obras Sociales</span></div>
+      </div>
+      <div class="card-footer">
+        <a href="/01-clinica-medica/" target="_blank" class="btn-launch demo-link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> Ver Demo en Vivo</a>
+        <button class="btn-copy-link" data-file="01-clinica-medica/">
+          <i class="fa-regular fa-copy"></i> Copiar enlace personalizado
+        </button>
+      </div>
+    </div>
+    
+    <div class="demo-card" data-fam="salud" data-file="/02-odontologia/">
+      <div class="card-top">
+        <div class="card-meta">
+          <span class="cat-tag" style="color:#0ea5e9; border-color:#0ea5e944;">Salud & Medicina</span>
+          <div style="display:flex; align-items:center; gap:0.4rem;">
+            
+            <i class="fa-solid fa-tooth" style="color:#0ea5e9; font-size: 1.25rem;"></i>
+          </div>
+        </div>
+        <h3 class="card-title">02. Odontología & Estética Dental</h3>
+        <span class="card-subtitle">Demo de Alta Conversión</span>
+        <p class="card-desc">Comparador interactivo Antes/Después de blanqueamiento e implantes y turnero de guardia.</p>
+        <div class="tags-cloud"><span class="mini-tag">Antes / Después</span><span class="mini-tag">Implantes</span><span class="mini-tag">Guardia Dental</span></div>
+      </div>
+      <div class="card-footer">
+        <a href="/02-odontologia/" target="_blank" class="btn-launch demo-link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> Ver Demo en Vivo</a>
+        <button class="btn-copy-link" data-file="02-odontologia/">
+          <i class="fa-regular fa-copy"></i> Copiar enlace personalizado
+        </button>
+      </div>
+    </div>
+    
+    <div class="demo-card" data-fam="estetica" data-file="/03-estetica-belleza/">
+      <div class="card-top">
+        <div class="card-meta">
+          <span class="cat-tag" style="color:#ec4899; border-color:#ec489944;">Estética & Spa</span>
+          <div style="display:flex; align-items:center; gap:0.4rem;">
+            
+            <i class="fa-solid fa-spa" style="color:#ec4899; font-size: 1.25rem;"></i>
+          </div>
+        </div>
+        <h3 class="card-title">03. Estética, Spa & Belleza</h3>
+        <span class="card-subtitle">Demo de Alta Conversión</span>
+        <p class="card-desc">Packs de spa (Faciales, Láser, Masajes), cálculo en 3 y 6 cuotas y gift cards de regalo.</p>
+        <div class="tags-cloud"><span class="mini-tag">Packs de Spa</span><span class="mini-tag">Depilación Láser</span><span class="mini-tag">Cuotas</span></div>
+      </div>
+      <div class="card-footer">
+        <a href="/03-estetica-belleza/" target="_blank" class="btn-launch demo-link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> Ver Demo en Vivo</a>
+        <button class="btn-copy-link" data-file="03-estetica-belleza/">
+          <i class="fa-regular fa-copy"></i> Copiar enlace personalizado
+        </button>
+      </div>
+    </div>
+    
+    <div class="demo-card" data-fam="salud" data-file="/04-kinesiologia/">
+      <div class="card-top">
+        <div class="card-meta">
+          <span class="cat-tag" style="color:#059669; border-color:#05966944;">Salud & Medicina</span>
+          <div style="display:flex; align-items:center; gap:0.4rem;">
+            
+            <i class="fa-solid fa-bone" style="color:#059669; font-size: 1.25rem;"></i>
+          </div>
+        </div>
+        <h3 class="card-title">04. Kinesiología & Fisioterapia</h3>
+        <span class="card-subtitle">Demo de Alta Conversión</span>
+        <p class="card-desc">Test interactivo de síntoma doloroso y solicitud de turno para RPG, fisioterapia y readaptación.</p>
+        <div class="tags-cloud"><span class="mini-tag">Test de Síntomas</span><span class="mini-tag">Rehabilitación</span><span class="mini-tag">RPG</span></div>
+      </div>
+      <div class="card-footer">
+        <a href="/04-kinesiologia/" target="_blank" class="btn-launch demo-link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> Ver Demo en Vivo</a>
+        <button class="btn-copy-link" data-file="04-kinesiologia/">
+          <i class="fa-regular fa-copy"></i> Copiar enlace personalizado
+        </button>
+      </div>
+    </div>
+    
+    <div class="demo-card" data-fam="gastronomia" data-file="/05-restaurante/">
+      <div class="card-top">
+        <div class="card-meta">
+          <span class="cat-tag" style="color:#ea580c; border-color:#ea580c44;">Gastronomía & Bares</span>
+          <div style="display:flex; align-items:center; gap:0.4rem;">
+            
+            <i class="fa-solid fa-utensils" style="color:#ea580c; font-size: 1.25rem;"></i>
+          </div>
+        </div>
+        <h3 class="card-title">05. Restaurante Gourmet & Fuegos</h3>
+        <span class="card-subtitle">Demo de Alta Conversión</span>
+        <p class="card-desc">Reservas de mesa con mapa de sectores (Salón, Cava VIP, Patio de Fuegos) y maridaje de autor.</p>
+        <div class="tags-cloud"><span class="mini-tag">Mapa de Sectores</span><span class="mini-tag">Cava VIP</span><span class="mini-tag">Menú Degustación</span></div>
+      </div>
+      <div class="card-footer">
+        <a href="/05-restaurante/" target="_blank" class="btn-launch demo-link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> Ver Demo en Vivo</a>
+        <button class="btn-copy-link" data-file="05-restaurante/">
+          <i class="fa-regular fa-copy"></i> Copiar enlace personalizado
+        </button>
+      </div>
+    </div>
+    
+    <div class="demo-card" data-fam="gastronomia" data-file="/06-cafeteria/">
+      <div class="card-top">
+        <div class="card-meta">
+          <span class="cat-tag" style="color:#c2410c; border-color:#c2410c44;">Gastronomía & Bares</span>
+          <div style="display:flex; align-items:center; gap:0.4rem;">
+            
+            <i class="fa-solid fa-mug-hot" style="color:#c2410c; font-size: 1.25rem;"></i>
+          </div>
+        </div>
+        <h3 class="card-title">06. Cafetería de Especialidad</h3>
+        <span class="card-subtitle">Demo de Alta Conversión</span>
+        <p class="card-desc">Carta sensorial con perfiles de notas de cata, tuestes de origen y fotos de café en alta definición.</p>
+        <div class="tags-cloud"><span class="mini-tag">Notas de Cata</span><span class="mini-tag">Café de Origen</span><span class="mini-tag">Brunch</span></div>
+      </div>
+      <div class="card-footer">
+        <a href="/06-cafeteria/" target="_blank" class="btn-launch demo-link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> Ver Demo en Vivo</a>
+        <button class="btn-copy-link" data-file="06-cafeteria/">
+          <i class="fa-regular fa-copy"></i> Copiar enlace personalizado
+        </button>
+      </div>
+    </div>
+    
+    <div class="demo-card" data-fam="gastronomia" data-file="/07-viandas-saludables/">
+      <div class="card-top">
+        <div class="card-meta">
+          <span class="cat-tag" style="color:#16a34a; border-color:#16a34a44;">Gastronomía & Bares</span>
+          <div style="display:flex; align-items:center; gap:0.4rem;">
+            
+            <i class="fa-solid fa-bowl-food" style="color:#16a34a; font-size: 1.25rem;"></i>
+          </div>
+        </div>
+        <h3 class="card-title">07. Viandas Saludables & Meal Prep</h3>
+        <span class="card-subtitle">Demo de Alta Conversión</span>
+        <p class="card-desc">Planificador semanal de viandas (5, 10, 14 packs) con desglose de macros (Kcal, Proteínas).</p>
+        <div class="tags-cloud"><span class="mini-tag">Packs Semanales</span><span class="mini-tag">Macros Kcal/Prot</span><span class="mini-tag">Sin TACC/Keto</span></div>
+      </div>
+      <div class="card-footer">
+        <a href="/07-viandas-saludables/" target="_blank" class="btn-launch demo-link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> Ver Demo en Vivo</a>
+        <button class="btn-copy-link" data-file="07-viandas-saludables/">
+          <i class="fa-regular fa-copy"></i> Copiar enlace personalizado
+        </button>
+      </div>
+    </div>
+    
+    <div class="demo-card" data-fam="gastronomia" data-file="/08-rotiseria-delivery/">
+      <div class="card-top">
+        <div class="card-meta">
+          <span class="cat-tag" style="color:#b91c1c; border-color:#b91c1c44;">Gastronomía & Bares</span>
+          <div style="display:flex; align-items:center; gap:0.4rem;">
+            
+            <i class="fa-solid fa-drumstick-bite" style="color:#b91c1c; font-size: 1.25rem;"></i>
+          </div>
+        </div>
+        <h3 class="card-title">08. Rotisería & Minutas Delivery</h3>
+        <span class="card-subtitle">Demo de Alta Conversión</span>
+        <p class="card-desc">Carrusel horizontal scrollytelling con minutas y carrito lateral con comanda directa a cocina.</p>
+        <div class="tags-cloud"><span class="mini-tag">Delivery Rápido</span><span class="mini-tag">Minutas XL</span><span class="mini-tag">Comanda WhatsApp</span></div>
+      </div>
+      <div class="card-footer">
+        <a href="/08-rotiseria-delivery/" target="_blank" class="btn-launch demo-link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> Ver Demo en Vivo</a>
+        <button class="btn-copy-link" data-file="08-rotiseria-delivery/">
+          <i class="fa-regular fa-copy"></i> Copiar enlace personalizado
+        </button>
+      </div>
+    </div>
+    
+    <div class="demo-card" data-fam="gastronomia" data-file="/09-cerveceria-bar/">
+      <div class="card-top">
+        <div class="card-meta">
+          <span class="cat-tag" style="color:#8b5cf6; border-color:#8b5cf644;">Gastronomía & Bares</span>
+          <div style="display:flex; align-items:center; gap:0.4rem;">
+            <span class="dual-badge">DUAL</span>
+            <i class="fa-solid fa-martini-glass" style="color:#8b5cf6; font-size: 1.25rem;"></i>
+          </div>
+        </div>
+        <h3 class="card-title">09. Bar de Especialidad & Cervecería (Dual)</h3>
+        <span class="card-subtitle">Demo de Alta Conversión</span>
+        <p class="card-desc">Dos versiones: Speakeasy Coctelería de Autor (index.html) y Taproom 16 Canillas (cerveceria.html).</p>
+        <div class="tags-cloud"><span class="mini-tag">Speakeasy</span><span class="mini-tag">16 Canillas</span><span class="mini-tag">Happy Hour Timer</span></div>
+      </div>
+      <div class="card-footer">
+        <div class="dual-links-grid"><a href="/09-cerveceria-bar/" target="_blank" class="btn-sub-launch demo-sub-link">🍸 Speakeasy Cócteles</a><a href="/09-cerveceria-bar/cerveceria.html" target="_blank" class="btn-sub-launch demo-sub-link">🍺 Taproom 16 Canillas</a></div>
+        <button class="btn-copy-link" data-file="09-cerveceria-bar/">
+          <i class="fa-regular fa-copy"></i> Copiar enlace personalizado
+        </button>
+      </div>
+    </div>
+    
+    <div class="demo-card" data-fam="moda" data-file="/10-showroom-indumentaria/">
+      <div class="card-top">
+        <div class="card-meta">
+          <span class="cat-tag" style="color:#bef264; border-color:#bef26444;">Moda & Showroom</span>
+          <div style="display:flex; align-items:center; gap:0.4rem;">
+            <span class="dual-badge">DUAL</span>
+            <i class="fa-solid fa-shirt" style="color:#bef264; font-size: 1.25rem;"></i>
+          </div>
+        </div>
+        <h3 class="card-title">10. Showroom e Indumentaria (Dual)</h3>
+        <span class="card-subtitle">Demo de Alta Conversión</span>
+        <p class="card-desc">Dos versiones: DYNASTY Streetwear (index.html) y AURELIA Alta Costura Femenina (boutique.html).</p>
+        <div class="tags-cloud"><span class="mini-tag">Talles en Vivo</span><span class="mini-tag">15% OFF Transferencia</span><span class="mini-tag">Envío Gratis ></span></div>
+      </div>
+      <div class="card-footer">
+        <div class="dual-links-grid"><a href="/10-showroom-indumentaria/" target="_blank" class="btn-sub-launch demo-sub-link">⚡ Dynasty Streetwear</a><a href="/10-showroom-indumentaria/boutique.html" target="_blank" class="btn-sub-launch demo-sub-link">🌸 Aurelia Boutique</a></div>
+        <button class="btn-copy-link" data-file="10-showroom-indumentaria/">
+          <i class="fa-regular fa-copy"></i> Copiar enlace personalizado
+        </button>
+      </div>
+    </div>
+    
+    <div class="demo-card" data-fam="servicios" data-file="/11-inmobiliaria/">
+      <div class="card-top">
+        <div class="card-meta">
+          <span class="cat-tag" style="color:#d97706; border-color:#d9770644;">Servicios & Inmuebles</span>
+          <div style="display:flex; align-items:center; gap:0.4rem;">
+            
+            <i class="fa-solid fa-building" style="color:#d97706; font-size: 1.25rem;"></i>
+          </div>
+        </div>
+        <h3 class="card-title">11. Inmobiliaria & Bienes Raíces</h3>
+        <span class="card-subtitle">Demo de Alta Conversión</span>
+        <p class="card-desc">Dock de búsqueda rápida, fichas técnicas (m², suites, cocheras), tasador online y agendador de visitas.</p>
+        <div class="tags-cloud"><span class="mini-tag">Buscador Inmobiliario</span><span class="mini-tag">Fichas m²</span><span class="mini-tag">Tasación Online</span></div>
+      </div>
+      <div class="card-footer">
+        <a href="/11-inmobiliaria/" target="_blank" class="btn-launch demo-link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> Ver Demo en Vivo</a>
+        <button class="btn-copy-link" data-file="11-inmobiliaria/">
+          <i class="fa-regular fa-copy"></i> Copiar enlace personalizado
+        </button>
+      </div>
+    </div>
+    
+    <div class="demo-card" data-fam="moda" data-file="/12-regaleria/">
+      <div class="card-top">
+        <div class="card-meta">
+          <span class="cat-tag" style="color:#c2785c; border-color:#c2785c44;">Moda & Showroom</span>
+          <div style="display:flex; align-items:center; gap:0.4rem;">
+            
+            <i class="fa-solid fa-gift" style="color:#c2785c; font-size: 1.25rem;"></i>
+          </div>
+        </div>
+        <h3 class="card-title">12. Regalería & Deco Hogar</h3>
+        <span class="card-subtitle">Demo de Alta Conversión</span>
+        <p class="card-desc">Armador interactivo de Gift Box con dedicatoria caligrafiada para la tarjeta y packaging de regalo.</p>
+        <div class="tags-cloud"><span class="mini-tag">Armá tu Gift Box</span><span class="mini-tag">Tarjeta Caligrafiada</span><span class="mini-tag">Velas de Soja</span></div>
+      </div>
+      <div class="card-footer">
+        <a href="/12-regaleria/" target="_blank" class="btn-launch demo-link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> Ver Demo en Vivo</a>
+        <button class="btn-copy-link" data-file="12-regaleria/">
+          <i class="fa-regular fa-copy"></i> Copiar enlace personalizado
+        </button>
+      </div>
+    </div>
+    
+    <div class="demo-card" data-fam="b2b" data-file="/13-imprenta-grafica/">
+      <div class="card-top">
+        <div class="card-meta">
+          <span class="cat-tag" style="color:#2563eb; border-color:#2563eb44;">Empresarial & B2B</span>
+          <div style="display:flex; align-items:center; gap:0.4rem;">
+            
+            <i class="fa-solid fa-print" style="color:#2563eb; font-size: 1.25rem;"></i>
+          </div>
+        </div>
+        <h3 class="card-title">13. Imprenta & Gráfica Digital</h3>
+        <span class="card-subtitle">Demo de Alta Conversión</span>
+        <p class="card-desc">Cotizador técnico en vivo por volumen, packaging microcorrugado, laca UV y checklist Pre-Flight.</p>
+        <div class="tags-cloud"><span class="mini-tag">Cotizador en Vivo</span><span class="mini-tag">Descuento por Volumen</span><span class="mini-tag">Pre-Flight 300DPI</span></div>
+      </div>
+      <div class="card-footer">
+        <a href="/13-imprenta-grafica/" target="_blank" class="btn-launch demo-link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> Ver Demo en Vivo</a>
+        <button class="btn-copy-link" data-file="13-imprenta-grafica/">
+          <i class="fa-regular fa-copy"></i> Copiar enlace personalizado
+        </button>
+      </div>
+    </div>
+    
+    <div class="demo-card" data-fam="b2b" data-file="/14-distribuidora-mayorista/">
+      <div class="card-top">
+        <div class="card-meta">
+          <span class="cat-tag" style="color:#f59e0b; border-color:#f59e0b44;">Empresarial & B2B</span>
+          <div style="display:flex; align-items:center; gap:0.4rem;">
+            
+            <i class="fa-solid fa-truck-ramp-box" style="color:#f59e0b; font-size: 1.25rem;"></i>
+          </div>
+        </div>
+        <h3 class="card-title">14. Distribuidora Mayorista B2B</h3>
+        <span class="card-subtitle">Demo de Alta Conversión</span>
+        <p class="card-desc">Portal B2B con súper combos, sellos AFIP/ARBA, medidor de mínimo () y lista de precios Excel.</p>
+        <div class="tags-cloud"><span class="mini-tag">Súper Combos -25%</span><span class="mini-tag">Mínimo Mayorista</span><span class="mini-tag">Factura A y B</span></div>
+      </div>
+      <div class="card-footer">
+        <a href="/14-distribuidora-mayorista/" target="_blank" class="btn-launch demo-link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> Ver Demo en Vivo</a>
+        <button class="btn-copy-link" data-file="14-distribuidora-mayorista/">
+          <i class="fa-regular fa-copy"></i> Copiar enlace personalizado
+        </button>
+      </div>
+    </div>
+    
+    <div class="demo-card" data-fam="servicios" data-file="/15-petshop-veterinaria/">
+      <div class="card-top">
+        <div class="card-meta">
+          <span class="cat-tag" style="color:#059669; border-color:#05966944;">Servicios & Inmuebles</span>
+          <div style="display:flex; align-items:center; gap:0.4rem;">
+            
+            <i class="fa-solid fa-paw" style="color:#059669; font-size: 1.25rem;"></i>
+          </div>
+        </div>
+        <h3 class="card-title">15. Pet Shop & Veterinaria</h3>
+        <span class="card-subtitle">Demo de Alta Conversión</span>
+        <p class="card-desc">Calculador de ración diaria por peso, agendador de turnos para spa canino y envío gratis en el día.</p>
+        <div class="tags-cloud"><span class="mini-tag">Calculador Ración g/día</span><span class="mini-tag">Spa Canino</span><span class="mini-tag">Delivery Gratis</span></div>
+      </div>
+      <div class="card-footer">
+        <a href="/15-petshop-veterinaria/" target="_blank" class="btn-launch demo-link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> Ver Demo en Vivo</a>
+        <button class="btn-copy-link" data-file="15-petshop-veterinaria/">
+          <i class="fa-regular fa-copy"></i> Copiar enlace personalizado
+        </button>
+      </div>
+    </div>
+    
+    <div class="demo-card" data-fam="gastronomía" data-file="/stella-maris-pastas/">
+      <div class="card-top">
+        <div class="card-meta">
+          <span class="cat-tag" style="color:#ea580c; border-color:#ea580c44;">Gastronomía</span>
+          <div style="display:flex; align-items:center; gap:0.4rem;">
+            <span class="real-badge">REAL</span>
+            <i class="fa-solid fa-bowl-food" style="color:#ea580c; font-size: 1.25rem;"></i>
+          </div>
+        </div>
+        <h3 class="card-title">Stella Maris Pastas Artesanales</h3>
+        <span class="card-subtitle" style="color: var(--accent-emerald);">Proyecto Real en Producción</span>
+        <p class="card-desc">Fábrica de pastas frescas, rotisería gourmet y minutas tradicionales en Mar del Plata.</p>
+      </div>
+      <div class="card-footer">
+        <a href="/stella-maris-pastas/" target="_blank" class="btn-launch" style="background: linear-gradient(135deg, #059669 0%, #047857 100%);">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir Proyecto Real
+        </a>
+        <button class="btn-copy-link" data-file="stella-maris-pastas/">
+          <i class="fa-regular fa-copy"></i> Copiar enlace directo
+        </button>
+      </div>
+    </div>
+    
+    <div class="demo-card" data-fam="gastronomía" data-file="/kaffa-cafe/">
+      <div class="card-top">
+        <div class="card-meta">
+          <span class="cat-tag" style="color:#c2410c; border-color:#c2410c44;">Gastronomía</span>
+          <div style="display:flex; align-items:center; gap:0.4rem;">
+            <span class="real-badge">REAL</span>
+            <i class="fa-solid fa-mug-hot" style="color:#c2410c; font-size: 1.25rem;"></i>
+          </div>
+        </div>
+        <h3 class="card-title">Kaffa Café de Especialidad</h3>
+        <span class="card-subtitle" style="color: var(--accent-emerald);">Proyecto Real en Producción</span>
+        <p class="card-desc">Tostaduría de café de origen, carta sensorial de filtrados y pastelería de autor.</p>
+      </div>
+      <div class="card-footer">
+        <a href="/kaffa-cafe/" target="_blank" class="btn-launch" style="background: linear-gradient(135deg, #059669 0%, #047857 100%);">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir Proyecto Real
+        </a>
+        <button class="btn-copy-link" data-file="kaffa-cafe/">
+          <i class="fa-regular fa-copy"></i> Copiar enlace directo
+        </button>
+      </div>
+    </div>
+    
+    <div class="demo-card" data-fam="turismo" data-file="/estar-peralta-ramos/">
+      <div class="card-top">
+        <div class="card-meta">
+          <span class="cat-tag" style="color:#16a34a; border-color:#16a34a44;">Turismo</span>
+          <div style="display:flex; align-items:center; gap:0.4rem;">
+            <span class="real-badge">REAL</span>
+            <i class="fa-solid fa-tree" style="color:#16a34a; font-size: 1.25rem;"></i>
+          </div>
+        </div>
+        <h3 class="card-title">Estar Peralta Ramos</h3>
+        <span class="card-subtitle" style="color: var(--accent-emerald);">Proyecto Real en Producción</span>
+        <p class="card-desc">Cabañas boutique y suites inmersas en el Bosque Peralta Ramos con hidromasaje y deck.</p>
+      </div>
+      <div class="card-footer">
+        <a href="/estar-peralta-ramos/" target="_blank" class="btn-launch" style="background: linear-gradient(135deg, #059669 0%, #047857 100%);">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir Proyecto Real
+        </a>
+        <button class="btn-copy-link" data-file="estar-peralta-ramos/">
+          <i class="fa-regular fa-copy"></i> Copiar enlace directo
+        </button>
+      </div>
+    </div>
+    
+    <div class="demo-card" data-fam="industria & b2b" data-file="/ms-refrigeracion/">
+      <div class="card-top">
+        <div class="card-meta">
+          <span class="cat-tag" style="color:#0284c7; border-color:#0284c744;">Industria & B2B</span>
+          <div style="display:flex; align-items:center; gap:0.4rem;">
+            <span class="real-badge">REAL</span>
+            <i class="fa-solid fa-snowflake" style="color:#0284c7; font-size: 1.25rem;"></i>
+          </div>
+        </div>
+        <h3 class="card-title">MS Refrigeración & Climatización</h3>
+        <span class="card-subtitle" style="color: var(--accent-emerald);">Proyecto Real en Producción</span>
+        <p class="card-desc">Ingeniería en refrigeración industrial, cámaras frigoríficas y mantenimiento térmico.</p>
+      </div>
+      <div class="card-footer">
+        <a href="/ms-refrigeracion/" target="_blank" class="btn-launch" style="background: linear-gradient(135deg, #059669 0%, #047857 100%);">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir Proyecto Real
+        </a>
+        <button class="btn-copy-link" data-file="ms-refrigeracion/">
+          <i class="fa-regular fa-copy"></i> Copiar enlace directo
+        </button>
+      </div>
+    </div>
+    
+    <div class="demo-card" data-fam="software & ia" data-file="/whatsapp-saas/">
+      <div class="card-top">
+        <div class="card-meta">
+          <span class="cat-tag" style="color:#25d366; border-color:#25d36644;">Software & IA</span>
+          <div style="display:flex; align-items:center; gap:0.4rem;">
+            <span class="real-badge">REAL</span>
+            <i class="fa-solid fa-robot" style="color:#25d366; font-size: 1.25rem;"></i>
+          </div>
+        </div>
+        <h3 class="card-title">Bot WhatsApp IA SaaS</h3>
+        <span class="card-subtitle" style="color: var(--accent-emerald);">Proyecto Real en Producción</span>
+        <p class="card-desc">Plataforma SaaS para conectar bots de WhatsApp con inteligencia artificial 24/7.</p>
+      </div>
+      <div class="card-footer">
+        <a href="/whatsapp-saas/" target="_blank" class="btn-launch" style="background: linear-gradient(135deg, #059669 0%, #047857 100%);">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir Proyecto Real
+        </a>
+        <button class="btn-copy-link" data-file="whatsapp-saas/">
+          <i class="fa-regular fa-copy"></i> Copiar enlace directo
+        </button>
+      </div>
+    </div>
+    
+    <div class="demo-card" data-fam="e-commerce" data-file="/ml-afiliados-tech/">
+      <div class="card-top">
+        <div class="card-meta">
+          <span class="cat-tag" style="color:#8b5cf6; border-color:#8b5cf644;">E-Commerce</span>
+          <div style="display:flex; align-items:center; gap:0.4rem;">
+            <span class="real-badge">REAL</span>
+            <i class="fa-solid fa-laptop" style="color:#8b5cf6; font-size: 1.25rem;"></i>
+          </div>
+        </div>
+        <h3 class="card-title">Tech Reviews & E-Commerce</h3>
+        <span class="card-subtitle" style="color: var(--accent-emerald);">Proyecto Real en Producción</span>
+        <p class="card-desc">Portal de reviews tecnológicas, hardware y recomendaciones de compra online.</p>
+      </div>
+      <div class="card-footer">
+        <a href="/ml-afiliados-tech/" target="_blank" class="btn-launch" style="background: linear-gradient(135deg, #059669 0%, #047857 100%);">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir Proyecto Real
+        </a>
+        <button class="btn-copy-link" data-file="ml-afiliados-tech/">
+          <i class="fa-regular fa-copy"></i> Copiar enlace directo
+        </button>
+      </div>
+    </div>
+    
+    <div class="demo-card" data-fam="gastronomía" data-file="/restaurante-la-marina/">
+      <div class="card-top">
+        <div class="card-meta">
+          <span class="cat-tag" style="color:#0284c7; border-color:#0284c744;">Gastronomía</span>
+          <div style="display:flex; align-items:center; gap:0.4rem;">
+            <span class="real-badge">REAL</span>
+            <i class="fa-solid fa-fish" style="color:#0284c7; font-size: 1.25rem;"></i>
+          </div>
+        </div>
+        <h3 class="card-title">Restaurante La Marina</h3>
+        <span class="card-subtitle" style="color: var(--accent-emerald);">Proyecto Real en Producción</span>
+        <p class="card-desc">Tradición marisquera en el puerto de MDP: cazuelas, pescados frescos y rabas.</p>
+      </div>
+      <div class="card-footer">
+        <a href="/restaurante-la-marina/" target="_blank" class="btn-launch" style="background: linear-gradient(135deg, #059669 0%, #047857 100%);">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir Proyecto Real
+        </a>
+        <button class="btn-copy-link" data-file="restaurante-la-marina/">
+          <i class="fa-regular fa-copy"></i> Copiar enlace directo
+        </button>
+      </div>
+    </div>
+    
+    <div class="demo-card" data-fam="gastronomía" data-file="/cerveceria-trebi/">
+      <div class="card-top">
+        <div class="card-meta">
+          <span class="cat-tag" style="color:#f59e0b; border-color:#f59e0b44;">Gastronomía</span>
+          <div style="display:flex; align-items:center; gap:0.4rem;">
+            <span class="real-badge">REAL</span>
+            <i class="fa-solid fa-beer-mug-empty" style="color:#f59e0b; font-size: 1.25rem;"></i>
+          </div>
+        </div>
+        <h3 class="card-title">Cervecería Trebi</h3>
+        <span class="card-subtitle" style="color: var(--accent-emerald);">Proyecto Real en Producción</span>
+        <p class="card-desc">Taproom de cervezas artesanales galardonadas, burgers caseras y terraza cervecera.</p>
+      </div>
+      <div class="card-footer">
+        <a href="/cerveceria-trebi/" target="_blank" class="btn-launch" style="background: linear-gradient(135deg, #059669 0%, #047857 100%);">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir Proyecto Real
+        </a>
+        <button class="btn-copy-link" data-file="cerveceria-trebi/">
+          <i class="fa-regular fa-copy"></i> Copiar enlace directo
+        </button>
+      </div>
+    </div>
+    
+    <div class="demo-card" data-fam="gastronomía" data-file="/bruder-pizzeria/">
+      <div class="card-top">
+        <div class="card-meta">
+          <span class="cat-tag" style="color:#b91c1c; border-color:#b91c1c44;">Gastronomía</span>
+          <div style="display:flex; align-items:center; gap:0.4rem;">
+            <span class="real-badge">REAL</span>
+            <i class="fa-solid fa-pizza-slice" style="color:#b91c1c; font-size: 1.25rem;"></i>
+          </div>
+        </div>
+        <h3 class="card-title">Bruder Pizzería Napolitana</h3>
+        <span class="card-subtitle" style="color: var(--accent-emerald);">Proyecto Real en Producción</span>
+        <p class="card-desc">Pizzas de fermentación lenta de 48 hs al horno de leña napolitano a 450°C.</p>
+      </div>
+      <div class="card-footer">
+        <a href="/bruder-pizzeria/" target="_blank" class="btn-launch" style="background: linear-gradient(135deg, #059669 0%, #047857 100%);">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir Proyecto Real
+        </a>
+        <button class="btn-copy-link" data-file="bruder-pizzeria/">
+          <i class="fa-regular fa-copy"></i> Copiar enlace directo
+        </button>
+      </div>
+    </div>
+    
+    <div class="demo-card" data-fam="gastronomía" data-file="/asador-el-fogon/">
+      <div class="card-top">
+        <div class="card-meta">
+          <span class="cat-tag" style="color:#ea580c; border-color:#ea580c44;">Gastronomía</span>
+          <div style="display:flex; align-items:center; gap:0.4rem;">
+            <span class="real-badge">REAL</span>
+            <i class="fa-solid fa-drumstick-bite" style="color:#ea580c; font-size: 1.25rem;"></i>
+          </div>
+        </div>
+        <h3 class="card-title">Asador Parrilla El Fogón</h3>
+        <span class="card-subtitle" style="color: var(--accent-emerald);">Proyecto Real en Producción</span>
+        <p class="card-desc">Cortes premium madurados, asador a la cruz criollo y empanadas cortadas a cuchillo.</p>
+      </div>
+      <div class="card-footer">
+        <a href="/asador-el-fogon/" target="_blank" class="btn-launch" style="background: linear-gradient(135deg, #059669 0%, #047857 100%);">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir Proyecto Real
+        </a>
+        <button class="btn-copy-link" data-file="asador-el-fogon/">
+          <i class="fa-regular fa-copy"></i> Copiar enlace directo
+        </button>
+      </div>
+    </div>
+    
+    <div class="demo-card" data-fam="gastronomía" data-file="/heladeria-don-freysse/">
+      <div class="card-top">
+        <div class="card-meta">
+          <span class="cat-tag" style="color:#ec4899; border-color:#ec489944;">Gastronomía</span>
+          <div style="display:flex; align-items:center; gap:0.4rem;">
+            <span class="real-badge">REAL</span>
+            <i class="fa-solid fa-ice-cream" style="color:#ec4899; font-size: 1.25rem;"></i>
+          </div>
+        </div>
+        <h3 class="card-title">Heladería Don Freysse</h3>
+        <span class="card-subtitle" style="color: var(--accent-emerald);">Proyecto Real en Producción</span>
+        <p class="card-desc">Helados artesanales 100% naturales con leche de campo y cacao belga.</p>
+      </div>
+      <div class="card-footer">
+        <a href="/heladeria-don-freysse/" target="_blank" class="btn-launch" style="background: linear-gradient(135deg, #059669 0%, #047857 100%);">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir Proyecto Real
+        </a>
+        <button class="btn-copy-link" data-file="heladeria-don-freysse/">
+          <i class="fa-regular fa-copy"></i> Copiar enlace directo
+        </button>
+      </div>
+    </div>
+    
+    <div class="demo-card" data-fam="salud & belleza" data-file="/aubone-spa-medico/">
+      <div class="card-top">
+        <div class="card-meta">
+          <span class="cat-tag" style="color:#d946ef; border-color:#d946ef44;">Salud & Belleza</span>
+          <div style="display:flex; align-items:center; gap:0.4rem;">
+            <span class="real-badge">REAL</span>
+            <i class="fa-solid fa-spa" style="color:#d946ef; font-size: 1.25rem;"></i>
+          </div>
+        </div>
+        <h3 class="card-title">Aubone Spa Médico & Estética</h3>
+        <span class="card-subtitle" style="color: var(--accent-emerald);">Proyecto Real en Producción</span>
+        <p class="card-desc">Medicina estética avanzada, dermatología láser, plasma rico y tratamientos anti-age.</p>
+      </div>
+      <div class="card-footer">
+        <a href="/aubone-spa-medico/" target="_blank" class="btn-launch" style="background: linear-gradient(135deg, #059669 0%, #047857 100%);">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir Proyecto Real
+        </a>
+        <button class="btn-copy-link" data-file="aubone-spa-medico/">
+          <i class="fa-regular fa-copy"></i> Copiar enlace directo
+        </button>
+      </div>
+    </div>
+    
+    <div class="demo-card" data-fam="salud & medicina" data-file="/centro-medico-edison/">
+      <div class="card-top">
+        <div class="card-meta">
+          <span class="cat-tag" style="color:#0284c7; border-color:#0284c744;">Salud & Medicina</span>
+          <div style="display:flex; align-items:center; gap:0.4rem;">
+            <span class="real-badge">REAL</span>
+            <i class="fa-solid fa-hospital" style="color:#0284c7; font-size: 1.25rem;"></i>
+          </div>
+        </div>
+        <h3 class="card-title">Centro Médico Edison</h3>
+        <span class="card-subtitle" style="color: var(--accent-emerald);">Proyecto Real en Producción</span>
+        <p class="card-desc">Policlínico con más de 20 especialidades médicas, laboratorio y turnos online.</p>
+      </div>
+      <div class="card-footer">
+        <a href="/centro-medico-edison/" target="_blank" class="btn-launch" style="background: linear-gradient(135deg, #059669 0%, #047857 100%);">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir Proyecto Real
+        </a>
+        <button class="btn-copy-link" data-file="centro-medico-edison/">
+          <i class="fa-regular fa-copy"></i> Copiar enlace directo
+        </button>
+      </div>
+    </div>
+    
+    <div class="demo-card" data-fam="salud & medicina" data-file="/dental-studio-mdp/">
+      <div class="card-top">
+        <div class="card-meta">
+          <span class="cat-tag" style="color:#0ea5e9; border-color:#0ea5e944;">Salud & Medicina</span>
+          <div style="display:flex; align-items:center; gap:0.4rem;">
+            <span class="real-badge">REAL</span>
+            <i class="fa-solid fa-tooth" style="color:#0ea5e9; font-size: 1.25rem;"></i>
+          </div>
+        </div>
+        <h3 class="card-title">Dental Studio MDP</h3>
+        <span class="card-subtitle" style="color: var(--accent-emerald);">Proyecto Real en Producción</span>
+        <p class="card-desc">Clínica de rehabilitación oral de alta complejidad, carillas cerámicas e implantes.</p>
+      </div>
+      <div class="card-footer">
+        <a href="/dental-studio-mdp/" target="_blank" class="btn-launch" style="background: linear-gradient(135deg, #059669 0%, #047857 100%);">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir Proyecto Real
+        </a>
+        <button class="btn-copy-link" data-file="dental-studio-mdp/">
+          <i class="fa-regular fa-copy"></i> Copiar enlace directo
+        </button>
+      </div>
+    </div>
+    
+    <div class="demo-card" data-fam="moda & estilo" data-file="/black-barberia/">
+      <div class="card-top">
+        <div class="card-meta">
+          <span class="cat-tag" style="color:#18181b; border-color:#18181b44;">Moda & Estilo</span>
+          <div style="display:flex; align-items:center; gap:0.4rem;">
+            <span class="real-badge">REAL</span>
+            <i class="fa-solid fa-scissors" style="color:#18181b; font-size: 1.25rem;"></i>
+          </div>
+        </div>
+        <h3 class="card-title">Black Estilistas & Barbería</h3>
+        <span class="card-subtitle" style="color: var(--accent-emerald);">Proyecto Real en Producción</span>
+        <p class="card-desc">Barbería clásica, afeitado tradicional con toalla caliente y cortes de tendencia.</p>
+      </div>
+      <div class="card-footer">
+        <a href="/black-barberia/" target="_blank" class="btn-launch" style="background: linear-gradient(135deg, #059669 0%, #047857 100%);">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir Proyecto Real
+        </a>
+        <button class="btn-copy-link" data-file="black-barberia/">
+          <i class="fa-regular fa-copy"></i> Copiar enlace directo
+        </button>
+      </div>
+    </div>
+    
+    <div class="demo-card" data-fam="fitness & deporte" data-file="/alfa-gym/">
+      <div class="card-top">
+        <div class="card-meta">
+          <span class="cat-tag" style="color:#ef4444; border-color:#ef444444;">Fitness & Deporte</span>
+          <div style="display:flex; align-items:center; gap:0.4rem;">
+            <span class="real-badge">REAL</span>
+            <i class="fa-solid fa-dumbbell" style="color:#ef4444; font-size: 1.25rem;"></i>
+          </div>
+        </div>
+        <h3 class="card-title">Alfa Gym & Rendimiento</h3>
+        <span class="card-subtitle" style="color: var(--accent-emerald);">Proyecto Real en Producción</span>
+        <p class="card-desc">Gimnasio de musculación pesada, cross-training y preparación física para atletas.</p>
+      </div>
+      <div class="card-footer">
+        <a href="/alfa-gym/" target="_blank" class="btn-launch" style="background: linear-gradient(135deg, #059669 0%, #047857 100%);">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir Proyecto Real
+        </a>
+        <button class="btn-copy-link" data-file="alfa-gym/">
+          <i class="fa-regular fa-copy"></i> Copiar enlace directo
+        </button>
+      </div>
+    </div>
+    
+    <div class="demo-card" data-fam="inmuebles" data-file="/inmobiliaria-radix/">
+      <div class="card-top">
+        <div class="card-meta">
+          <span class="cat-tag" style="color:#d97706; border-color:#d9770644;">Inmuebles</span>
+          <div style="display:flex; align-items:center; gap:0.4rem;">
+            <span class="real-badge">REAL</span>
+            <i class="fa-solid fa-building" style="color:#d97706; font-size: 1.25rem;"></i>
+          </div>
+        </div>
+        <h3 class="card-title">Inmobiliaria Radix</h3>
+        <span class="card-subtitle" style="color: var(--accent-emerald);">Proyecto Real en Producción</span>
+        <p class="card-desc">Comercialización de edificios en pozo, lotes en barrios cerrados y tasaciones.</p>
+      </div>
+      <div class="card-footer">
+        <a href="/inmobiliaria-radix/" target="_blank" class="btn-launch" style="background: linear-gradient(135deg, #059669 0%, #047857 100%);">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir Proyecto Real
+        </a>
+        <button class="btn-copy-link" data-file="inmobiliaria-radix/">
+          <i class="fa-regular fa-copy"></i> Copiar enlace directo
+        </button>
+      </div>
+    </div>
+    
+    <div class="demo-card" data-fam="legal & abogacía" data-file="/estudio-juridico-rey-areco/">
+      <div class="card-top">
+        <div class="card-meta">
+          <span class="cat-tag" style="color:#1e3a8a; border-color:#1e3a8a44;">Legal & Abogacía</span>
+          <div style="display:flex; align-items:center; gap:0.4rem;">
+            <span class="real-badge">REAL</span>
+            <i class="fa-solid fa-scale-balanced" style="color:#1e3a8a; font-size: 1.25rem;"></i>
+          </div>
+        </div>
+        <h3 class="card-title">Estudio Jurídico Rey Areco</h3>
+        <span class="card-subtitle" style="color: var(--accent-emerald);">Proyecto Real en Producción</span>
+        <p class="card-desc">Asesoramiento legal corporativo, derecho laboral, civil y accidentes ART.</p>
+      </div>
+      <div class="card-footer">
+        <a href="/estudio-juridico-rey-areco/" target="_blank" class="btn-launch" style="background: linear-gradient(135deg, #059669 0%, #047857 100%);">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir Proyecto Real
+        </a>
+        <button class="btn-copy-link" data-file="estudio-juridico-rey-areco/">
+          <i class="fa-regular fa-copy"></i> Copiar enlace directo
+        </button>
+      </div>
+    </div>
+    
+    <div class="demo-card" data-fam="servicios & pymes" data-file="/estudio-contable-codagnone/">
+      <div class="card-top">
+        <div class="card-meta">
+          <span class="cat-tag" style="color:#059669; border-color:#05966944;">Servicios & Pymes</span>
+          <div style="display:flex; align-items:center; gap:0.4rem;">
+            <span class="real-badge">REAL</span>
+            <i class="fa-solid fa-chart-line" style="color:#059669; font-size: 1.25rem;"></i>
+          </div>
+        </div>
+        <h3 class="card-title">Estudio Contable Codagnone</h3>
+        <span class="card-subtitle" style="color: var(--accent-emerald);">Proyecto Real en Producción</span>
+        <p class="card-desc">Auditoría impositiva, liquidación de haberes y planificación fiscal para empresas.</p>
+      </div>
+      <div class="card-footer">
+        <a href="/estudio-contable-codagnone/" target="_blank" class="btn-launch" style="background: linear-gradient(135deg, #059669 0%, #047857 100%);">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir Proyecto Real
+        </a>
+        <button class="btn-copy-link" data-file="estudio-contable-codagnone/">
+          <i class="fa-regular fa-copy"></i> Copiar enlace directo
+        </button>
+      </div>
+    </div>
+    
+    </div>
+  </main>
+
+  <div class="toast-box" id="toast">¡Enlace copiado al portapapeles!</div>
+
+  <footer class="footer">
+    <div class="container">
+      <p style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 800; color: #ffffff; margin-bottom: 0.3rem;">DEMO FACTORY · PLATAFORMA DE PROSPECCIÓN</p>
+      <p>Naro AI · Mar del Plata · 34 Sitios Web en Producción</p>
+    </div>
+  </footer>
+
+  <script>
+    const catBtns = document.querySelectorAll('.cat-btn');
+    const cards = document.querySelectorAll('.demo-card');
+    const custName = document.getElementById('cust-name');
+    const custPhone = document.getElementById('cust-phone');
+    const custAddr = document.getElementById('cust-addr');
+    const toast = document.getElementById('toast');
+
+    catBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        catBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        cards.forEach(c => {
+          const fam = c.dataset.fam || '';
+          const match = filter === 'all' || fam.includes(filter) || (filter === 'inmobiliaria' && (fam.includes('turismo') || fam.includes('inmueble')));
+          c.style.display = match ? 'flex' : 'none';
+        });
+      });
+    });
+
+    function getQS() {
+      const n = custName.value.trim();
+      const t = custPhone.value.trim();
+      const d = custAddr.value.trim();
+      const p = new URLSearchParams();
+      if (n) p.set('n', n);
+      if (t) p.set('t', t);
+      if (d) p.set('d', d);
+      const qs = p.toString();
+      return qs ? `?${qs}` : '';
+    }
+
+    function updateLinks() {
+      const qs = getQS();
+      cards.forEach(c => {
+        const file = c.dataset.file;
+        const btn = c.querySelector('.demo-link-btn');
+        if (btn) btn.href = `${file}${qs}`;
+
+        const subLinks = c.querySelectorAll('.demo-sub-link');
+        subLinks.forEach(sub => {
+          const raw = sub.getAttribute('href').split('?')[0];
+          sub.href = `${raw}${qs}`;
+        });
+      });
+    }
+
+    custName.addEventListener('input', updateLinks);
+    custPhone.addEventListener('input', updateLinks);
+    custAddr.addEventListener('input', updateLinks);
+    document.getElementById('btn-apply').addEventListener('click', () => {
+      updateLinks();
+      showToast('¡Enlaces actualizados con los datos de tu cliente!');
+    });
+    document.getElementById('btn-reset').addEventListener('click', () => {
+      custName.value = ''; custPhone.value = ''; custAddr.value = '';
+      updateLinks();
+      showToast('Parámetros restablecidos');
+    });
+
+    function showToast(msg) {
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3000);
+    }
+
+    document.querySelectorAll('.btn-copy-link').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const file = btn.dataset.file;
+        const qs = getQS();
+        const fullUrl = `${window.location.origin}/${file.replace(/^\//, '')}${qs}`;
+        navigator.clipboard.writeText(fullUrl).then(() => {
+          showToast(`¡Enlace copiado: /${file.replace(/^\//, '')}${qs}!`);
+        }).catch(() => prompt('Copiá el enlace:', fullUrl));
+      });
+    });
+  </script>
 </body>
 </html>

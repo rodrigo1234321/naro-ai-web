@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bruder | Pizzería Napolitana a la Leña & Taproom en Mar del Plata</title>
+  <meta name="description" content="Pizzería artesanal napolitana de masa madre a 450°C y taproom de 12 canillas de cerveza tirada en San Lorenzo, Mar del Plata. Pedidos y reservas por WhatsApp.">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Bruder Pizzería & Taproom — Mar del Plata">
+  <meta property="og:description" content="Masa madre leudada 48hs, horno de piedra volcánica a 450°C y 12 canillas de cerveza artesanal tirada. Reservá tu mesa por WhatsApp.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts: Space Grotesk + DM Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Three.js CDN for 3D Wood-Fired Oven Scrollytelling -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- React & Babel Standalone CDN -->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <style>
+    /* OKLCH Flagship Palette · Wood-Fire Embers & Craft Amber */
+    :root {
+      --color-bg-main: #0d0906;
+      --color-card-bg: rgba(28, 18, 12, 0.82);
+      --color-card-hover: rgba(38, 24, 16, 0.9);
+      --color-fire-orange: #f36b21;
+      --color-amber-glow: #e2a84b;
+      --color-red-marinara: #d24b28;
+      --color-red-hover: #b5381a;
+      --color-foam-cream: #faf5ed;
+      --color-text-secondary: #c8b9a6;
+      --color-border: rgba(243, 107, 33, 0.2);
+      --color-border-glow: rgba(226, 168, 75, 0.6);
+
+      --font-display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+      --font-body: 'DM Sans', system-ui, -apple-system, sans-serif;
+
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 26px;
+      --radius-pill: 999px;
+
+      --shadow-subtle: 0 4px 24px rgba(0, 0, 0, 0.5);
+      --shadow-elevated: 0 14px 44px rgba(0, 0, 0, 0.75);
+
+      --transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      overflow-x: clip;
+      font-family: var(--font-body);
+      background-color: var(--color-bg-main);
+      color: var(--color-foam-cream);
+      line-height: 1.65;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Fixed Fullscreen Wood-Fire Embers Canvas Background */
+    #woodfire-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .app-content-wrap {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Keyframe Animations */
+    @keyframes pulseEmbers {
+      0%, 100% { box-shadow: 0 0 18px rgba(243, 107, 33, 0.4); }
+      50% { box-shadow: 0 0 35px rgba(243, 107, 33, 0.85); }
+    }
+    @keyframes subtleFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    /* Anti-Gigantismo Typography Control */
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: var(--color-foam-cream);
+    }
+
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.55rem;
+      padding: 0.85rem 1.8rem; font-family: var(--font-display); font-size: 0.92rem; font-weight: 700;
+      border-radius: var(--radius-sm); text-decoration: none; transition: var(--transition);
+      cursor: pointer; border: none; letter-spacing: 0.02em;
+    }
+
+    .btn-fire {
+      background: linear-gradient(135deg, var(--color-fire-orange) 0%, var(--color-red-marinara) 100%);
+      color: #ffffff; box-shadow: 0 4px 18px rgba(243, 107, 33, 0.45);
+    }
+    .btn-fire:hover {
+      transform: translateY(-2px); box-shadow: 0 8px 28px rgba(243, 107, 33, 0.7);
+    }
+
+    .btn-amber {
+      background-color: var(--color-amber-glow); color: #0d0906;
+      box-shadow: 0 4px 18px rgba(226, 168, 75, 0.35);
+    }
+    .btn-amber:hover {
+      transform: translateY(-2px); box-shadow: 0 8px 28px rgba(226, 168, 75, 0.6);
+    }
+
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.04); color: var(--color-foam-cream);
+      border: 1px solid var(--color-border); backdrop-filter: blur(8px);
+    }
+    .btn-outline:hover {
+      border-color: var(--color-amber-glow); color: var(--color-amber-glow);
+      background: rgba(255, 255, 255, 0.08); transform: translateY(-2px);
+    }
+
+    .badge-subtle {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.35rem 0.95rem; background: rgba(28, 18, 12, 0.85);
+      border: 1px solid var(--color-border); border-radius: var(--radius-pill);
+      font-size: 0.8rem; font-weight: 600; color: var(--color-amber-glow);
+      letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 1.25rem;
+      backdrop-filter: blur(10px);
+    }
+
+    /* Header Nav */
+    .nav-header {
+      background: rgba(13, 9, 6, 0.9); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--color-border); padding: 1.1rem 0;
+      position: sticky; top: 0; z-index: 1000;
+    }
+    .nav-flex { display: flex; justify-content: space-between; align-items: center; }
+
+    .brand-logo {
+      font-family: var(--font-display); font-size: 1.35rem; font-weight: 700;
+      color: var(--color-foam-cream); text-decoration: none; display: flex; align-items: center; gap: 0.4rem;
+    }
+    .brand-logo span { color: var(--color-fire-orange); }
+
+    .nav-links { display: flex; gap: 1.75rem; list-style: none; align-items: center; }
+    .nav-links a {
+      color: var(--color-text-secondary); text-decoration: none; font-size: 0.88rem;
+      font-weight: 500; transition: var(--transition);
+    }
+    .nav-links a:hover { color: var(--color-amber-glow); }
+    @media (max-width: 850px) { .nav-links { display: none; } }
+
+    /* Hero Section */
+    .hero-section { padding: 5.5rem 0 4.5rem 0; position: relative; }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3rem; align-items: center; }
+    @media (max-width: 920px) { .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
+
+    .hero-title { font-size: clamp(2.2rem, 3.8vw, 3.2rem); margin-bottom: 1.25rem; color: #ffffff; }
+    .hero-title span { color: var(--color-fire-orange); }
+
+    .hero-subtitle { font-size: 1.1rem; color: var(--color-text-secondary); margin-bottom: 2rem; max-width: 550px; font-weight: 400; line-height: 1.65; }
+
+    .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2.5rem; }
+    @media (max-width: 600px) { .stats-row { grid-template-columns: 1fr; } }
+
+    .stat-card {
+      background: var(--color-card-bg); backdrop-filter: blur(12px);
+      border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 1.25rem; text-align: center;
+      transition: var(--transition); animation: subtleFloat 6s ease-in-out infinite;
+    }
+    .stat-card:hover { border-color: var(--color-border-glow); transform: translateY(-3px); }
+    .stat-num { font-family: var(--font-display); font-size: 1.8rem; font-weight: 700; color: var(--color-fire-orange); margin-bottom: 0.2rem; }
+    .stat-label { font-size: 0.8rem; color: var(--color-text-secondary); }
+
+    /* 3D Wood-Fired Oven Scrollytelling Frame */
+    .three-box-container {
+      position: relative; border-radius: var(--radius-lg); overflow: hidden;
+      border: 1px solid var(--color-border-glow); box-shadow: var(--shadow-elevated); height: 420px;
+      background: radial-gradient(circle at 50% 50%, rgba(243, 107, 33, 0.2) 0%, rgba(13, 9, 6, 0.95) 80%);
+    }
+    #three-oven-canvas { width: 100%; height: 100%; display: block; }
+    .scrolly-badge {
+      position: absolute; bottom: 1.25rem; left: 1.25rem; right: 1.25rem;
+      background: rgba(13, 9, 6, 0.88); backdrop-filter: blur(12px); padding: 0.85rem 1.25rem;
+      border-radius: var(--radius-md); border: 1px solid var(--color-border);
+      display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; color: var(--color-amber-glow);
+    }
+
+    .section-wrap { padding: 4.75rem 0; border-top: 1px solid var(--color-border); position: relative; }
+    .section-header { text-align: center; max-width: 650px; margin: 0 auto 3.25rem auto; }
+    .section-header h2 { font-size: clamp(1.8rem, 2.8vw, 2.4rem); color: #ffffff; margin-top: 0.4rem; }
+
+    /* Glassmorphism Cards */
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+    .dish-card {
+      background: var(--color-card-bg); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border-radius: var(--radius-md); padding: 1.75rem; border: 1px solid var(--color-border);
+      transition: var(--transition); display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .dish-card:hover { transform: translateY(-4px); border-color: var(--color-border-glow); background: var(--color-card-hover); }
+
+    .dish-title { font-size: 1.2rem; color: #ffffff; margin-bottom: 0.3rem; }
+    .dish-tag {
+      display: inline-block; font-size: 0.75rem; font-family: monospace; padding: 0.2rem 0.55rem;
+      border-radius: 4px; font-weight: 700; text-transform: uppercase; background: rgba(243, 107, 33, 0.18);
+      color: var(--color-fire-orange); margin-bottom: 0.5rem;
+    }
+    .dish-desc { font-size: 0.88rem; color: var(--color-text-secondary); margin-bottom: 1.25rem; line-height: 1.55; }
+
+    /* Menu Tabs */
+    .menu-tabs { display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2.75rem; }
+    .tab-btn {
+      padding: 0.65rem 1.5rem; border-radius: var(--radius-pill); font-family: var(--font-display);
+      font-size: 0.88rem; font-weight: 600; border: 1px solid var(--color-border); background: var(--color-card-bg);
+      color: var(--color-text-secondary); cursor: pointer; transition: var(--transition);
+    }
+    .tab-btn.active, .tab-btn:hover {
+      background: var(--color-fire-orange); color: #ffffff; border-color: var(--color-fire-orange);
+      font-weight: 700;
+    }
+
+    .menu-panel { display: none; }
+    .menu-panel.active { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+
+    /* Taproom 12 Taps Interactive Grid */
+    .taproom-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
+    .tap-card {
+      background: rgba(28, 18, 12, 0.85); border: 1px solid var(--color-border);
+      border-radius: var(--radius-md); padding: 1.35rem; position: relative; transition: var(--transition);
+    }
+    .tap-card:hover { border-color: var(--color-amber-glow); transform: translateY(-3px); }
+    .tap-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; }
+    .tap-badge { font-family: monospace; font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 4px; background: rgba(226, 168, 75, 0.2); color: var(--color-amber-glow); }
+    .tap-fill-bar { height: 6px; background: rgba(255, 255, 255, 0.08); border-radius: 3px; overflow: hidden; margin-top: 1rem; }
+    .tap-fill-inner { height: 100%; background: linear-gradient(90deg, var(--color-fire-orange), var(--color-amber-glow)); border-radius: 3px; }
+
+    #react-pizzeria-suite { margin-top: 2.5rem; }
+
+    /* Map Box */
+    .map-frame { width: 100%; height: 380px; border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--color-border); box-shadow: var(--shadow-elevated); }
+    .map-frame iframe { width: 100%; height: 100%; border: 0; }
+
+    footer { background: rgba(8, 5, 3, 0.96); border-top: 1px solid var(--color-border); padding: 4.5rem 0 2.25rem 0; color: var(--color-text-secondary); }
+    .footer-flex { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.75rem; }
+
+    .fab-wa { position: fixed; bottom: 2rem; right: 2rem; width: 62px; height: 62px; background: #25D366; color: #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; animation: pulseEmbers 3s infinite; z-index: 9999; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <!-- Fullscreen Wood-Fire Embers & Smoke Particle Engine Canvas -->
+  <canvas id="woodfire-canvas"></canvas>
+
+  <div class="app-content-wrap">
+    <!-- Header Nav -->
+    <header class="nav-header">
+      <div class="container nav-flex">
+        <a href="#" class="brand-logo">🔥 BRUDER <span>// PIZZA_&_TAPROOM</span></a>
+        <ul class="nav-links">
+          <li><a href="#horno-3d">Horno 3D</a></li>
+          <li><a href="#carta">Carta a la Leña</a></li>
+          <li><a href="#taproom">Taproom 12 Canillas</a></li>
+          <li><a href="#customizer">Armador 50/50</a></li>
+          <li><a href="#contacto">Contacto WhatsApp</a></li>
+        </ul>
+        <a href="https://wa.me/5492235915720?text=Hola%20Bruder!%20Quiero%20hacer%20un%20pedido%20o%20reservar." class="btn btn-fire" style="padding: 0.55rem 1.3rem; font-size: 0.84rem;" target="_blank">Pedir por WhatsApp ➔</a>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="horno-3d">
+      <div class="container">
+        <div class="hero-grid">
+          <div>
+            <div class="badge-subtle">🔥 PIZZA NAPOLITANA A 450°C & CERVEZA TIRADA · MAR DEL PLATA</div>
+            <h1 class="hero-title">Masa Madre de Leña & <span>12 Canillas de Taproom</span>.</h1>
+            <p class="hero-subtitle">Leudado natural de 48 horas en horno de piedra volcánica con salsa de tomates de San Marzano, fior di latte fresco y la mejor selección de cerveza artesanal tirada.</p>
+
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+              <a href="https://wa.me/5492235915720?text=Hola%20Bruder!%20Quiero%20reservar%20una%20mesa." class="btn btn-fire" target="_blank">Reservar Mesa por WhatsApp ➔</a>
+              <a href="#customizer" class="btn btn-outline">⚛️ Armá tu Pizza 50/50</a>
+            </div>
+
+            <div class="stats-row">
+              <div class="stat-card"><div class="stat-num">450°C</div><div class="stat-label">Piedra Volcánica</div></div>
+              <div class="stat-card"><div class="stat-num">48 Horas</div><div class="stat-label">Leudado Natural</div></div>
+              <div class="stat-card"><div class="stat-num">12 Canillas</div><div class="stat-label">Taproom Artesanal</div></div>
+            </div>
+          </div>
+
+          <!-- 3D Wood-Fired Oven Scrollytelling Frame -->
+          <div class="three-box-container">
+            <canvas id="three-oven-canvas"></canvas>
+            <div class="scrolly-badge">
+              <span>🔥 Horno 3D & Pala Napolitana · Mové el cursor y hacé scroll</span>
+              <strong id="oven-status-text">Horno a 450°C ➔</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="section-wrap" id="carta">
+      <div class="container">
+        <div class="section-header">
+          <div class="badge-subtle">Propuesta Gastronómica</div>
+          <h2>Nuestra Carta Digital a la Leña</h2>
+        </div>
+
+        <div class="menu-tabs">
+          <button class="tab-btn active" onclick="switchTab('pizzas')">🍕 Pizzas Napolitanas</button>
+          <button class="tab-btn" onclick="switchTab('tapas')">🍟 Tapas & Entradas</button>
+          <button class="tab-btn" onclick="switchTab('postres')">🍮 Postres Artesanales</button>
+        </div>
+
+        <div class="menu-panel active" id="tab-pizzas">
+          <div class="dish-card">
+            <div>
+              <span class="dish-tag">Estrella de la Casa</span>
+              <h3 class="dish-title">Bruder Margherita Speciale</h3>
+              <p class="dish-desc">Tomates de San Marzano, mozzarella fior di latte, albahaca fresca de huerta, oliva extra virgen y borde aireado cornicione.</p>
+            </div>
+            <a href="https://wa.me/5492235915720?text=Hola%20Bruder!%20Quiero%20Margherita." class="btn btn-fire" style="padding: 0.5rem 1rem; font-size: 0.8rem;" target="_blank">Pedir por WhatsApp ➔</a>
+          </div>
+
+          <div class="dish-card">
+            <div>
+              <span class="dish-tag">Recomendado Chef</span>
+              <h3 class="dish-title">Diavola Cantimpalo & Miel de Chiles</h3>
+              <p class="dish-desc">Base de tomate italiano, fior di latte, salame cantimpalo crocante, hilos de miel especiada con chiles y aceite picante.</p>
+            </div>
+            <a href="https://wa.me/5492235915720?text=Hola%20Bruder!%20Quiero%20Diavola." class="btn btn-fire" style="padding: 0.5rem 1rem; font-size: 0.8rem;" target="_blank">Pedir por WhatsApp ➔</a>
+          </div>
+
+          <div class="dish-card">
+            <div>
+              <span class="dish-tag">Clásico Napolitano</span>
+              <h3 class="dish-title">Quattro Formaggi Rústica</h3>
+              <p class="dish-desc">Mozzarella fior di latte, queso azul de maduración intensa, provolone ahumado a la leña, bocconcini y nueces picadas.</p>
+            </div>
+            <a href="https://wa.me/5492235915720?text=Hola%20Bruder!%20Quiero%20Quattro%20Formaggi." class="btn btn-fire" style="padding: 0.5rem 1rem; font-size: 0.8rem;" target="_blank">Pedir por WhatsApp ➔</a>
+          </div>
+        </div>
+
+        <div class="menu-panel" id="tab-tapas">
+          <div class="dish-card">
+            <div>
+              <span class="dish-tag">Para Compartir</span>
+              <h3 class="dish-title">Bocconcini de Mozzarella Rebozados</h3>
+              <p class="dish-desc">Bolas de mozzarella fresca fior di latte empanadas en panko con dip de marinara de tomates asados.</p>
+            </div>
+            <a href="https://wa.me/5492235915720?text=Hola%20Bruder!%20Quiero%20Bocconcini." class="btn btn-fire" style="padding: 0.5rem 1rem; font-size: 0.8rem;" target="_blank">Pedir por WhatsApp ➔</a>
+          </div>
+        </div>
+
+        <div class="menu-panel" id="tab-postres">
+          <div class="dish-card">
+            <div>
+              <span class="dish-tag">Típico Italiano</span>
+              <h3 class="dish-title">Tiramisú al Mascarpone & Espresso</h3>
+              <p class="dish-desc">Vainillas embebidas en café espresso fuerte y licor de avellanas, intercaladas con crema mascarpone y cacao amargo.</p>
+            </div>
+            <a href="https://wa.me/5492235915720?text=Hola%20Bruder!%20Quiero%20Tiramisu." class="btn btn-fire" style="padding: 0.5rem 1rem; font-size: 0.8rem;" target="_blank">Pedir por WhatsApp ➔</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Taproom 12 Canillas Grid Section -->
+    <section class="section-wrap" id="taproom">
+      <div class="container">
+        <div class="section-header">
+          <div class="badge-subtle">🍺 Taproom Artesanal</div>
+          <h2>Nuestras 12 Canillas en Vivo</h2>
+          <p style="color: var(--color-text-secondary); margin-top: 0.4rem;">
+            Cervezas tiradas de producción propia y microcervecerías invitadas de Mar del Plata.
+          </p>
+        </div>
+
+        <div class="taproom-grid">
+          <div class="tap-card">
+            <div class="tap-header">
+              <strong style="color: #fff;">01. Neipa Tropical Session</strong>
+              <span class="tap-badge">IPA · 5.8% ABV</span>
+            </div>
+            <p style="font-size: 0.82rem; color: var(--color-text-secondary);">Lúpulos Citra y Mosaic. Notas intensas a maracuyá y durazno.</p>
+            <div class="tap-fill-bar"><div class="tap-fill-inner" style="width: 85%;"></div></div>
+          </div>
+
+          <div class="tap-card">
+            <div class="tap-header">
+              <strong style="color: #fff;">02. Irish Red Ale de Leña</strong>
+              <span class="tap-badge">RED · 5.2% ABV</span>
+            </div>
+            <p style="font-size: 0.82rem; color: var(--color-text-secondary);">Maltas tostadas rojizas con perfil acaramelado balanceado.</p>
+            <div class="tap-fill-bar"><div class="tap-fill-inner" style="width: 70%;"></div></div>
+          </div>
+
+          <div class="tap-card">
+            <div class="tap-header">
+              <strong style="color: #fff;">03. Honey Beer de la Casa</strong>
+              <span class="tap-badge">HONEY · 6.0% ABV</span>
+            </div>
+            <p style="font-size: 0.82rem; color: var(--color-text-secondary);">Elaborada con miel orgánica de la sierra marplatense.</p>
+            <div class="tap-fill-bar"><div class="tap-fill-inner" style="width: 90%;"></div></div>
+          </div>
+
+          <div class="tap-card">
+            <div class="tap-header">
+              <strong style="color: #fff;">04. Imperial Stout Roble</strong>
+              <span class="tap-badge">STOUT · 7.5% ABV</span>
+            </div>
+            <p style="font-size: 0.82rem; color: var(--color-text-secondary);">Notas profundas a café de especialidad, chocolate amargo y madera.</p>
+            <div class="tap-fill-bar"><div class="tap-fill-inner" style="width: 60%;"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- React Customizer Section -->
+    <section class="section-wrap" id="customizer" style="background: rgba(255, 255, 255, 0.015);">
+      <div class="container">
+        <div class="section-header">
+          <div class="badge-subtle">⚛️ REACT STANDALONE ENGINE</div>
+          <h2>Armador Interactivo de Pizza 50/50 & Maridaje</h2>
+        </div>
+
+        <div id="react-pizzeria-suite"></div>
+      </div>
+    </section>
+
+    <!-- Location Map Section -->
+    <section class="section-wrap" id="contacto">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center;">
+          <div>
+            <div class="badge-subtle">📍 Ubicación San Lorenzo</div>
+            <h2 style="font-size: 2.2rem; color: #ffffff; margin-bottom: 1rem;">Estamos en San Lorenzo 1250</h2>
+            <div style="background: var(--color-card-bg); padding: 1.35rem; border-radius: var(--radius-md); border: 1px solid var(--color-border); margin-bottom: 1.75rem; font-size: 0.9rem;">
+              <p style="margin-bottom: 0.45rem;">📍 <strong>Dirección:</strong> San Lorenzo 1250, Mar del Plata</p>
+              <p style="margin-bottom: 0.45rem;">📞 <strong>Teléfono Directo:</strong> 0223 5915720</p>
+              <p style="margin-bottom: 0.45rem;">💬 <strong>WhatsApp Pedidos:</strong> +54 9 223 5915720</p>
+              <p>🕒 <strong>Horarios:</strong> Martes a Domingos de 19:00 a 01:30 hs</p>
+            </div>
+            <a href="https://wa.me/5492235915720?text=Hola%20Bruder!" class="btn btn-fire" target="_blank">
+              Abrir Chat de WhatsApp Directo
+            </a>
+          </div>
+
+          <div class="map-frame">
+            <iframe src="https://maps.google.com/maps?q=San+Lorenzo+1250,+Mar+del+Plata&z=15&output=embed" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container footer-flex">
+        <div>
+          <a href="#" class="brand-logo" style="font-size: 1.55rem;">🔥 BRUDER <span>// PIZZA</span></a>
+          <p style="font-size: 0.88rem; margin-top: 0.4rem; color: var(--color-text-secondary);">
+            Pizzería a la leña & Taproom 12 Canillas · San Lorenzo 1250, Mar del Plata.
+          </p>
+        </div>
+        <div style="font-size: 0.85rem; color: var(--color-text-secondary);">
+          © 2026 Bruder Pizzería — Todos los derechos reservados.
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <a href="https://wa.me/5492235915720?text=Hola%20Bruder!" class="fab-wa" target="_blank" title="WhatsApp">💬</a>
+
+  <!-- Wood-Fire Embers & Smoke Particles Canvas Background Engine (Zero-Dependency) -->
+  <script>
+    (function() {
+      const canvas = document.getElementById('woodfire-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      let width = canvas.width = window.innerWidth;
+      let height = canvas.height = window.innerHeight;
+      let mouse = { x: width / 2, y: height / 2, currX: width / 2, currY: height / 2 };
+
+      window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      window.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+      });
+
+      // Embers rising from oven sparks
+      const embers = [];
+      for (let i = 0; i < 95; i++) {
+        embers.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 1.4,
+          vy: -Math.random() * 1.8 - 0.6, // Rise upward like fire embers
+          size: Math.random() * 3.5 + 1.2,
+          hue: Math.random() * 25 + 20, // Fire Orange & Amber Spark
+          alpha: Math.random() * 0.8 + 0.2
+        });
+      }
+
+      function drawEmbersEngine() {
+        mouse.currX += (mouse.x - mouse.currX) * 0.08;
+        mouse.currY += (mouse.y - mouse.currY) * 0.08;
+
+        // Dark charcoal background
+        ctx.fillStyle = '#0d0906';
+        ctx.fillRect(0, 0, width, height);
+
+        // Render warm oven fire glow aura around cursor and bottom
+        const fireAura = ctx.createRadialGradient(mouse.currX, mouse.currY, 0, mouse.currX, mouse.currY, 320);
+        fireAura.addColorStop(0, 'rgba(243, 107, 33, 0.35)');
+        fireAura.addColorStop(0.5, 'rgba(210, 75, 40, 0.12)');
+        fireAura.addColorStop(1, 'rgba(13, 9, 6, 0)');
+        ctx.fillStyle = fireAura;
+        ctx.beginPath();
+        ctx.arc(mouse.currX, mouse.currY, 320, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Update and draw embers
+        for (let i = 0; i < embers.length; i++) {
+          let p = embers[i];
+          p.x += p.vx;
+          p.y += p.vy;
+
+          // Mouse wind turbulence vortex
+          const dx = mouse.currX - p.x;
+          const dy = mouse.currY - p.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 200) {
+            const force = (200 - dist) / 200;
+            p.x += (dx / dist) * force * 3;
+            p.y += (dy / dist) * force * 3;
+          }
+
+          // Reset embers at bottom when they float off top
+          if (p.y < -10) {
+            p.y = height + 10;
+            p.x = Math.random() * width;
+          }
+          if (p.x < 0) p.x = width;
+          if (p.x > width) p.x = 0;
+
+          // Draw Glowing Ember
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fillStyle = `hsla(${p.hue}, 95%, 55%, ${p.alpha})`;
+          ctx.shadowBlur = 12;
+          ctx.shadowColor = `hsl(${p.hue}, 95%, 50%)`;
+          ctx.fill();
+          ctx.shadowBlur = 0;
+        }
+
+        requestAnimationFrame(drawEmbersEngine);
+      }
+      drawEmbersEngine();
+    })();
+
+    // 3D Wood-Fired Oven Scrollytelling Scene (Three.js)
+    (function() {
+      const container = document.querySelector('.three-box-container');
+      const canvas = document.getElementById('three-oven-canvas');
+      if (!canvas || !window.THREE) return;
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+      camera.position.set(0, 0, 7.5);
+
+      const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+      renderer.setSize(container.clientWidth, container.clientHeight);
+
+      // Warm Oven Lighting
+      const ambLight = new THREE.AmbientLight(0xffffff, 0.7);
+      scene.add(ambLight);
+
+      const fireLight = new THREE.PointLight(0xf36b21, 2.5, 20);
+      fireLight.position.set(0, -1, 3);
+      scene.add(fireLight);
+
+      // 3D Pizza Paddle + Oven Object Group
+      const ovenGroup = new THREE.Group();
+
+      // Oven Dome Arch Mesh
+      const domeGeo = new THREE.SphereGeometry(3, 32, 16, 0, Math.PI * 2, 0, Math.PI * 0.5);
+      const domeMat = new THREE.MeshStandardMaterial({ color: 0x281810, roughness: 0.9, wireframe: true });
+      const domeMesh = new THREE.Mesh(domeGeo, domeMat);
+      domeMesh.position.y = -1.2;
+      ovenGroup.add(domeMesh);
+
+      // Pizza Paddle Disc
+      const paddleGeo = new THREE.CylinderGeometry(1.8, 1.8, 0.1, 32);
+      const paddleMat = new THREE.MeshStandardMaterial({ color: 0xe2a84b, roughness: 0.4 });
+      const paddleMesh = new THREE.Mesh(paddleGeo, paddleMat);
+      paddleMesh.position.set(0, 0, 0.5);
+      ovenGroup.add(paddleMesh);
+
+      ovenGroup.rotation.x = 0.5;
+      scene.add(ovenGroup);
+
+      let mouseX = 0, mouseY = 0;
+      container.addEventListener('mousemove', (e) => {
+        const rect = container.getBoundingClientRect();
+        mouseX = ((e.clientX - rect.left) / container.clientWidth) * 2 - 1;
+        mouseY = -((e.clientY - rect.top) / container.clientHeight) * 2 + 1;
+      });
+
+      const ovenStatus = document.getElementById('oven-status-text');
+
+      function animateOven() {
+        requestAnimationFrame(animateOven);
+
+        ovenGroup.rotation.y += (mouseX * 1.2 - ovenGroup.rotation.y) * 0.05;
+        ovenGroup.rotation.x += (mouseY * 0.5 + 0.5 - ovenGroup.rotation.x) * 0.05;
+
+        const scrollY = window.scrollY || 0;
+        paddleMesh.position.z = 0.5 + Math.min(scrollY / 350, 1.8);
+
+        if (scrollY > 150) {
+          ovenStatus.innerText = 'Pala Deslizando Pizza Napolitana ➔';
+        } else {
+          ovenStatus.innerText = 'Horno a 450°C Encendido ➔';
+        }
+
+        renderer.render(scene, camera);
+      }
+      animateOven();
+    })();
+
+    function switchTab(catId) {
+      document.querySelectorAll('.menu-panel').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+
+      document.getElementById('tab-' + catId).classList.add('active');
+      event.currentTarget.classList.add('active');
+    }
+  </script>
+
+  <!-- React Standalone Pizzeria Suite -->
+  <script type="text/babel">
+    const { useState } = React;
+
+    function PizzeriaCustomizerApp() {
+      const [half1, setHalf1] = useState('Bruder Margherita Speciale');
+      const [half2, setHalf2] = useState('Diavola Cantimpalo & Miel');
+      const [beer, setBeer] = useState('Neipa Tropical Session (Pinta)');
+      const [dough, setDough] = useState('Masa Madre Napolitana (48hs Leudado)');
+
+      const pizzas = ['Bruder Margherita Speciale', 'Diavola Cantimpalo & Miel', 'Quattro Formaggi Rústica', 'Fugazzeta Rellena de Fior di Latte'];
+      const beers = ['Neipa Tropical Session (Pinta)', 'Irish Red Ale de Leña (Pinta)', 'Honey Beer de la Casa (Pinta)', 'Imperial Stout Roble (Pinta)'];
+
+      const handleSendWA = () => {
+        const msg = `Hola Bruder! Quiero encargar mi Pizza 50/50 (${dough}): Mitad 1: ${half1} | Mitad 2: ${half2} | Maridaje Birra: ${beer}.`;
+        window.open(`https://wa.me/5492235915720?text=${encodeURIComponent(msg)}`, '_blank');
+      };
+
+      return (
+        <div style={{
+          background: 'var(--color-card-bg)',
+          borderRadius: 'var(--radius-lg)',
+          padding: '2.5rem',
+          border: '1px solid var(--color-border)',
+          boxShadow: 'var(--shadow-elevated)',
+          display: 'grid',
+          gridTemplateColumns: '1.2fr 0.8fr',
+          gap: '2.5rem'
+        }}>
+          <div>
+            <h3 style={{ fontSize: '1.4rem', color: '#fff', marginBottom: '1rem' }}>
+              🍕 Armador Interactivo de Pizza 50/50 & Maridaje
+            </h3>
+
+            <div style={{ marginBottom: '1.5rem' }}>
+              <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--color-fire-orange)', marginBottom: '0.5rem' }}>
+                1. Selección de Masa:
+              </label>
+              <select
+                value={dough}
+                onChange={(e) => setDough(e.target.value)}
+                style={{ width: '100%', padding: '0.6rem', background: 'rgba(0,0,0,0.5)', border: '1px solid var(--color-border)', color: '#fff', borderRadius: '6px' }}
+              >
+                <option value="Masa Madre Napolitana (48hs Leudado)">Masa Madre Napolitana (48hs Leudado)</option>
+                <option value="Masa Fina Crujiente a la Piedra">Masa Fina Crujiente a la Piedra</option>
+              </select>
+            </div>
+
+            <div style={{ marginBottom: '1.5rem' }}>
+              <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--color-amber-glow)', marginBottom: '0.5rem' }}>
+                2. Selección Primera Mitad:
+              </label>
+              <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                {pizzas.map(p => (
+                  <button
+                    key={p}
+                    onClick={() => setHalf1(p)}
+                    style={{
+                      padding: '0.5rem 1rem',
+                      borderRadius: 'var(--radius-pill)',
+                      border: '1px solid var(--color-border)',
+                      background: half1 === p ? 'var(--color-red-marinara)' : 'rgba(255,255,255,0.03)',
+                      color: '#fff',
+                      fontSize: '0.85rem',
+                      cursor: 'pointer'
+                    }}
+                  >
+                    {p}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div style={{ marginBottom: '1.5rem' }}>
+              <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--color-amber-glow)', marginBottom: '0.5rem' }}>
+                3. Selección Segunda Mitad:
+              </label>
+              <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                {pizzas.map(p => (
+                  <button
+                    key={p}
+                    onClick={() => setHalf2(p)}
+                    style={{
+                      padding: '0.5rem 1rem',
+                      borderRadius: 'var(--radius-pill)',
+                      border: '1px solid var(--color-border)',
+                      background: half2 === p ? 'var(--color-red-marinara)' : 'rgba(255,255,255,0.03)',
+                      color: '#fff',
+                      fontSize: '0.85rem',
+                      cursor: 'pointer'
+                    }}
+                  >
+                    {p}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div style={{ marginBottom: '1.5rem' }}>
+              <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--color-amber-glow)', marginBottom: '0.5rem' }}>
+                4. Maridaje Cerveza Tirada (12 Canillas):
+              </label>
+              <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                {beers.map(b => (
+                  <button
+                    key={b}
+                    onClick={() => setBeer(b)}
+                    style={{
+                      padding: '0.5rem 1rem',
+                      borderRadius: 'var(--radius-pill)',
+                      border: '1px solid var(--color-border)',
+                      background: beer === b ? 'var(--color-amber-glow)' : 'rgba(255,255,255,0.03)',
+                      color: beer === b ? '#0d0906' : '#fff',
+                      fontSize: '0.85rem',
+                      fontWeight: beer === b ? 'bold' : 'normal',
+                      cursor: 'pointer'
+                    }}
+                  >
+                    {b}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div style={{
+            background: 'rgba(0, 0, 0, 0.5)',
+            borderRadius: 'var(--radius-md)',
+            padding: '1.75rem',
+            border: '1px solid var(--color-border)',
+            display: 'flex',
+            flexDirection: 'column',
+            justify: 'space-between'
+          }}>
+            <div>
+              <h4 style={{ fontSize: '1.2rem', color: 'var(--color-fire-orange)', marginBottom: '1rem' }}>
+                Resumen de Pedido 50/50
+              </h4>
+              <div style={{ fontSize: '0.88rem', lineHeight: '1.85', color: 'var(--color-text-secondary)' }}>
+                <p>🥖 <strong>Masa:</strong> <span style={{ color: '#fff' }}>{dough}</span></p>
+                <p>🍕 <strong>Mitad 1:</strong> <span style={{ color: '#fff' }}>{half1}</span></p>
+                <p>🍕 <strong>Mitad 2:</strong> <span style={{ color: '#fff' }}>{half2}</span></p>
+                <p>🍺 <strong>Birra:</strong> <span style={{ color: '#fff' }}>{beer}</span></p>
+              </div>
+            </div>
+
+            <button
+              onClick={handleSendWA}
+              className="btn btn-fire"
+              style={{ width: '100%', marginTop: '1.5rem' }}
+            >
+              Enviar Pedido a WhatsApp ➔
+            </button>
+          </div>
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('react-pizzeria-suite'));
+    root.render(<PizzeriaCustomizerApp />);
+  </script>
+</body>
+</html>

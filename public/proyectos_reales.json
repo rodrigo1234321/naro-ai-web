@@ -1,0 +1,173 @@
+[
+  {
+    "slug": "stella-maris-pastas",
+    "name": "Stella Maris Pastas Artesanales",
+    "categoria": "Gastronomía",
+    "icon": "fa-bowl-food",
+    "color": "#ea580c",
+    "desc": "Fábrica de pastas frescas, rotisería gourmet y minutas tradicionales en Mar del Plata.",
+    "url": "/stella-maris-pastas/"
+  },
+  {
+    "slug": "kaffa-cafe",
+    "name": "Kaffa Café de Especialidad",
+    "categoria": "Gastronomía",
+    "icon": "fa-mug-hot",
+    "color": "#c2410c",
+    "desc": "Tostaduría de café de origen, carta sensorial de filtrados y pastelería de autor.",
+    "url": "/kaffa-cafe/"
+  },
+  {
+    "slug": "estar-peralta-ramos",
+    "name": "Estar Peralta Ramos",
+    "categoria": "Turismo",
+    "icon": "fa-tree",
+    "color": "#16a34a",
+    "desc": "Cabañas boutique y suites inmersas en el Bosque Peralta Ramos con hidromasaje y deck.",
+    "url": "/estar-peralta-ramos/"
+  },
+  {
+    "slug": "ms-refrigeracion",
+    "name": "MS Refrigeración & Climatización",
+    "categoria": "Industria & B2B",
+    "icon": "fa-snowflake",
+    "color": "#0284c7",
+    "desc": "Ingeniería en refrigeración industrial, cámaras frigoríficas y mantenimiento térmico.",
+    "url": "/ms-refrigeracion/"
+  },
+  {
+    "slug": "whatsapp-saas",
+    "name": "Bot WhatsApp IA SaaS",
+    "categoria": "Software & IA",
+    "icon": "fa-robot",
+    "color": "#25d366",
+    "desc": "Plataforma SaaS para conectar bots de WhatsApp con inteligencia artificial 24/7.",
+    "url": "/whatsapp-saas/"
+  },
+  {
+    "slug": "ml-afiliados-tech",
+    "name": "Tech Reviews & E-Commerce",
+    "categoria": "E-Commerce",
+    "icon": "fa-laptop",
+    "color": "#8b5cf6",
+    "desc": "Portal de reviews tecnológicas, hardware y recomendaciones de compra online.",
+    "url": "/ml-afiliados-tech/"
+  },
+  {
+    "slug": "restaurante-la-marina",
+    "name": "Restaurante La Marina",
+    "categoria": "Gastronomía",
+    "icon": "fa-fish",
+    "color": "#0284c7",
+    "desc": "Tradición marisquera en el puerto de MDP: cazuelas, pescados frescos y rabas.",
+    "url": "/restaurante-la-marina/"
+  },
+  {
+    "slug": "cerveceria-trebi",
+    "name": "Cervecería Trebi",
+    "categoria": "Gastronomía",
+    "icon": "fa-beer-mug-empty",
+    "color": "#f59e0b",
+    "desc": "Taproom de cervezas artesanales galardonadas, burgers caseras y terraza cervecera.",
+    "url": "/cerveceria-trebi/"
+  },
+  {
+    "slug": "bruder-pizzeria",
+    "name": "Bruder Pizzería Napolitana",
+    "categoria": "Gastronomía",
+    "icon": "fa-pizza-slice",
+    "color": "#b91c1c",
+    "desc": "Pizzas de fermentación lenta de 48 hs al horno de leña napolitano a 450°C.",
+    "url": "/bruder-pizzeria/"
+  },
+  {
+    "slug": "asador-el-fogon",
+    "name": "Asador Parrilla El Fogón",
+    "categoria": "Gastronomía",
+    "icon": "fa-drumstick-bite",
+    "color": "#ea580c",
+    "desc": "Cortes premium madurados, asador a la cruz criollo y empanadas cortadas a cuchillo.",
+    "url": "/asador-el-fogon/"
+  },
+  {
+    "slug": "heladeria-don-freysse",
+    "name": "Heladería Don Freysse",
+    "categoria": "Gastronomía",
+    "icon": "fa-ice-cream",
+    "color": "#ec4899",
+    "desc": "Helados artesanales 100% naturales con leche de campo y cacao belga.",
+    "url": "/heladeria-don-freysse/"
+  },
+  {
+    "slug": "aubone-spa-medico",
+    "name": "Aubone Spa Médico & Estética",
+    "categoria": "Salud & Belleza",
+    "icon": "fa-spa",
+    "color": "#d946ef",
+    "desc": "Medicina estética avanzada, dermatología láser, plasma rico y tratamientos anti-age.",
+    "url": "/aubone-spa-medico/"
+  },
+  {
+    "slug": "centro-medico-edison",
+    "name": "Centro Médico Edison",
+    "categoria": "Salud & Medicina",
+    "icon": "fa-hospital",
+    "color": "#0284c7",
+    "desc": "Policlínico con más de 20 especialidades médicas, laboratorio y turnos online.",
+    "url": "/centro-medico-edison/"
+  },
+  {
+    "slug": "dental-studio-mdp",
+    "name": "Dental Studio MDP",
+    "categoria": "Salud & Medicina",
+    "icon": "fa-tooth",
+    "color": "#0ea5e9",
+    "desc": "Clínica de rehabilitación oral de alta complejidad, carillas cerámicas e implantes.",
+    "url": "/dental-studio-mdp/"
+  },
+  {
+    "slug": "black-barberia",
+    "name": "Black Estilistas & Barbería",
+    "categoria": "Moda & Estilo",
+    "icon": "fa-scissors",
+    "color": "#18181b",
+    "desc": "Barbería clásica, afeitado tradicional con toalla caliente y cortes de tendencia.",
+    "url": "/black-barberia/"
+  },
+  {
+    "slug": "alfa-gym",
+    "name": "Alfa Gym & Rendimiento",
+    "categoria": "Fitness & Deporte",
+    "icon": "fa-dumbbell",
+    "color": "#ef4444",
+    "desc": "Gimnasio de musculación pesada, cross-training y preparación física para atletas.",
+    "url": "/alfa-gym/"
+  },
+  {
+    "slug": "inmobiliaria-radix",
+    "name": "Inmobiliaria Radix",
+    "categoria": "Inmuebles",
+    "icon": "fa-building",
+    "color": "#d97706",
+    "desc": "Comercialización de edificios en pozo, lotes en barrios cerrados y tasaciones.",
+    "url": "/inmobiliaria-radix/"
+  },
+  {
+    "slug": "estudio-juridico-rey-areco",
+    "name": "Estudio Jurídico Rey Areco",
+    "categoria": "Legal & Abogacía",
+    "icon": "fa-scale-balanced",
+    "color": "#1e3a8a",
+    "desc": "Asesoramiento legal corporativo, derecho laboral, civil y accidentes ART.",
+    "url": "/estudio-juridico-rey-areco/"
+  },
+  {
+    "slug": "estudio-contable-codagnone",
+    "name": "Estudio Contable Codagnone",
+    "categoria": "Servicios & Pymes",
+    "icon": "fa-chart-line",
+    "color": "#059669",
+    "desc": "Auditoría impositiva, liquidación de haberes y planificación fiscal para empresas.",
+    "url": "/estudio-contable-codagnone/"
+  }
+]

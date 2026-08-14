@@ -1,0 +1,1206 @@
+{
+  "generated_at": "2026-08-12T22:58:47.215Z",
+  "total": 37,
+  "clients": [
+    {
+      "slug": "aderezo",
+      "source": "aderezo.html",
+      "hasAssetsFolder": false,
+      "title": "Aderezo — Pedidos por WhatsApp | Mar del Plata",
+      "desc": "Comprá en Aderezo por WhatsApp: Accesorios, avíos y herramientas para marroquinería en Mar del Plata. Pedí por WhatsApp. Mar del Plata.",
+      "robots": "index, follow",
+      "h1s": [
+        "Aderezo"
+      ],
+      "h2s": [
+        "Todo para tu taller",
+        "Comprá en 3 pasos",
+        "Comprar directo, sin vueltas",
+        "Pedilo en un toque",
+        "Estamos acá"
+      ],
+      "phones": [
+        "5492234213131",
+        "+54 549213131"
+      ],
+      "addresses": [
+        "c.com",
+        "av.is-scrolled{background:rgba(250,246,239,.9);backdrop-filter:blur(14px);-webkit-b",
+        "c.2-.2.5-.3.6-.3h.5c.2 0 .4-.1.6.4.2.6.8 1.9.8 2 .1.1.1.2 0 .4l-.4.5c-.1.2-.3.3-.1",
+        "c.2-.2.5-.3.6-.3h.5c.2 0 .4-.1.6.4.2.6.8 1.9.8 2 .1.1.1.2 0 .4l-.4.5c-.1.2-.3.3-.1"
+      ],
+      "schemaName": "Aderezo",
+      "schemaTel": "+54 549213131",
+      "schemaAddr": "San Martín 3848 Loc 1",
+      "schemaHours": "",
+      "geo": ""
+    },
+    {
+      "slug": "all-design",
+      "source": "all-design.html",
+      "hasAssetsFolder": false,
+      "title": "ALL DESIGN — Pedidos por WhatsApp | Mar del Plata",
+      "desc": "Comprá en ALL DESIGN por WhatsApp: Diseño, vinilos y decoración para tu casa o negocio en Mar del Plata. Presupuestá por WhatsApp. Mar del Plata.",
+      "robots": "index, follow",
+      "h1s": [
+        "ALL DESIGN"
+      ],
+      "h2s": [
+        "Tu espacio, con diseño propio",
+        "Comprá en 3 pasos",
+        "Comprar directo, sin vueltas",
+        "Pedilo en un toque",
+        "Estamos acá"
+      ],
+      "phones": [
+        "5492233068213",
+        "+54 549068213"
+      ],
+      "addresses": [
+        "c.com",
+        "Av. Colón 3957",
+        "av.is-scrolled{background:rgba(250,246,239,.9);backdrop-filter:blur(14px);-webkit-b",
+        "c.2-.2.5-.3.6-.3h.5c.2 0 .4-.1.6.4.2.6.8 1.9.8 2 .1.1.1.2 0 .4l-.4.5c-.1.2-.3.3-.1"
+      ],
+      "schemaName": "ALL DESIGN",
+      "schemaTel": "+54 549068213",
+      "schemaAddr": "Av. Colón 3957",
+      "schemaHours": "",
+      "geo": ""
+    },
+    {
+      "slug": "antes-muerta-que-sencilla-showroom",
+      "source": "antes-muerta-que-sencilla-showroom.html",
+      "hasAssetsFolder": false,
+      "title": "Antes Muerta que Sencilla Showroom | Showrooms e Indumentaria en Mar del Plata",
+      "desc": "Antes Muerta que Sencilla Showroom - Creación de Página Web Profesional + Bot de Atención Automatizado 24/7. Reservas y consultas por WhatsApp.",
+      "robots": "",
+      "h1s": [
+        "Atención y Servicios de Excelencia en Antes Muerta que Sencilla Showroom"
+      ],
+      "h2s": [
+        "Nuestros Servicios Destacados",
+        "Visitanos en Mar del Plata"
+      ],
+      "phones": [
+        "5492235812606"
+      ],
+      "addresses": [
+        "c.com"
+      ],
+      "schemaName": "",
+      "schemaTel": "",
+      "schemaAddr": "",
+      "schemaHours": "",
+      "geo": ""
+    },
+    {
+      "slug": "bulgarie",
+      "source": "bulgarie.html",
+      "hasAssetsFolder": false,
+      "title": "Bulgarie | Showrooms e Indumentaria en Mar del Plata",
+      "desc": "Bulgarie - Creación de Página Web Profesional + Bot de Atención Automatizado 24/7. Reservas y consultas por WhatsApp.",
+      "robots": "",
+      "h1s": [
+        "Atención y Servicios de Excelencia en Bulgarie"
+      ],
+      "h2s": [
+        "Nuestros Servicios Destacados",
+        "Visitanos en Mar del Plata"
+      ],
+      "phones": [
+        "5492234715806"
+      ],
+      "addresses": [
+        "c.com"
+      ],
+      "schemaName": "",
+      "schemaTel": "",
+      "schemaAddr": "",
+      "schemaHours": "",
+      "geo": ""
+    },
+    {
+      "slug": "cabanas-entre-los-arboles",
+      "source": "cabanas-entre-los-arboles.html",
+      "hasAssetsFolder": false,
+      "title": "Cabañas Entre Los Arboles | Cabañas y Complejos en Mar del Plata",
+      "desc": "Cabañas Entre Los Arboles - Cabañas y Complejos en Mar del Plata. Creación de Sitio Web Responsivo + Bot de Reservas/Consultas 24/7 por WhatsApp. Atención directa por WhatsApp las 24hs.",
+      "robots": "",
+      "h1s": [
+        "Excelencia y Atención Profesional en Cabañas Entre Los Arboles"
+      ],
+      "h2s": [
+        "Nuestros Servicios Destacados",
+        "¿Por Qué Elegir Cabañas Entre Los Arboles?",
+        "Agendá tu Turno o Consulta por WhatsApp",
+        "Ubicación en Mar del Plata"
+      ],
+      "phones": [
+        "5492236820432"
+      ],
+      "addresses": [
+        "c.com"
+      ],
+      "schemaName": "",
+      "schemaTel": "",
+      "schemaAddr": "",
+      "schemaHours": "",
+      "geo": ""
+    },
+    {
+      "slug": "cardiologia-dra-ana-gracia-alonso",
+      "source": "cardiologia-dra-ana-gracia-alonso.html",
+      "hasAssetsFolder": false,
+      "title": "Dra. Ana Gracia Alonso — Turnos por WhatsApp | Mar del Plata",
+      "desc": "Agendá tu turno en Dra. Ana Gracia Alonso por WhatsApp, sin llamadas ni esperas. El cuidado de tu corazón, con estudios de precisión y un seguimiento que no te suelta. Turnos por WhatsApp. Mar del Plata.",
+      "robots": "index, follow",
+      "h1s": [
+        "Dra. Ana Gracia Alonso"
+      ],
+      "h2s": [
+        "¿Qué necesitás hoy?",
+        "Tu salud, con menos vueltas",
+        "Tu turno en 3 pasos",
+        "Pedí tu turno en un toque",
+        "Estamos acá"
+      ],
+      "phones": [
+        "5492234897029",
+        "+54 549897029"
+      ],
+      "addresses": [
+        "c.com",
+        "Av. Fortunato de la Plaza 3668",
+        "av.is-scrolled{background:rgba(246,250,249,.88);backdrop-filter:blur(14px);-webkit-",
+        "c.2-.2.5-.3.6-.3h.5c.2 0 .4-.1.6.4.2.6.8 1.9.8 2 .1.1.1.2 0 .4l-.4.5c-.1.2-.3.3-.1"
+      ],
+      "schemaName": "Dra. Ana Gracia Alonso",
+      "schemaTel": "+54 549897029",
+      "schemaAddr": "Av. Fortunato de la Plaza 3668",
+      "schemaHours": "",
+      "geo": "\"-38.0514547\",\"-57.5630227\""
+    },
+    {
+      "slug": "casa-moda",
+      "source": "casa-moda.html",
+      "hasAssetsFolder": false,
+      "title": "Casa Moda — Pedidos por WhatsApp | Mar del Plata",
+      "desc": "Comprá en Casa Moda por WhatsApp: Moda, textil y artículos para el hogar en Mar del Plata. Pedí por WhatsApp y recibilo en tu casa. Mar del Plata.",
+      "robots": "index, follow",
+      "h1s": [
+        "Casa Moda"
+      ],
+      "h2s": [
+        "Estilo para vos y tu casa",
+        "Comprá en 3 pasos",
+        "Comprar directo, sin vueltas",
+        "Pedilo en un toque",
+        "Estamos acá"
+      ],
+      "phones": [
+        "5492233390574",
+        "+54 549390574"
+      ],
+      "addresses": [
+        "c.com",
+        "Av. Independencia 4424",
+        "av.is-scrolled{background:rgba(250,246,239,.9);backdrop-filter:blur(14px);-webkit-b",
+        "c.2-.2.5-.3.6-.3h.5c.2 0 .4-.1.6.4.2.6.8 1.9.8 2 .1.1.1.2 0 .4l-.4.5c-.1.2-.3.3-.1"
+      ],
+      "schemaName": "Casa Moda",
+      "schemaTel": "+54 549390574",
+      "schemaAddr": "Av. Independencia 4424",
+      "schemaHours": "",
+      "geo": ""
+    },
+    {
+      "slug": "centro-de-dia-lackar-del-sur",
+      "source": "centro-de-dia-lackar-del-sur.html",
+      "hasAssetsFolder": false,
+      "title": "Centro de Día Lackar — Turnos por WhatsApp | Mar del Plata",
+      "desc": "Agendá tu turno en Centro de Día Lackar por WhatsApp, sin llamadas ni esperas. Un lugar de cuidado y contención para tu familia. Talleres, rehabilitación y acompañamiento con turno por What Mar del Plata.",
+      "robots": "index, follow",
+      "h1s": [
+        "Centro de Día Lackar"
+      ],
+      "h2s": [
+        "¿Qué necesitás hoy?",
+        "Tu salud, con menos vueltas",
+        "Tu turno en 3 pasos",
+        "Pedí tu turno en un toque",
+        "Estamos acá"
+      ],
+      "phones": [
+        "5492235361345",
+        "+54 549361345"
+      ],
+      "addresses": [
+        "c.com",
+        "av.is-scrolled{background:rgba(246,250,249,.88);backdrop-filter:blur(14px);-webkit-",
+        "c.2-.2.5-.3.6-.3h.5c.2 0 .4-.1.6.4.2.6.8 1.9.8 2 .1.1.1.2 0 .4l-.4.5c-.1.2-.3.3-.1",
+        "c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-."
+      ],
+      "schemaName": "Centro de Día Lackar",
+      "schemaTel": "+54 549361345",
+      "schemaAddr": "Figueroa Alcorta 2041",
+      "schemaHours": "",
+      "geo": "\"-38.0546988\",\"-57.5593401\""
+    },
+    {
+      "slug": "centro-medico-edison",
+      "source": "centro-medico-edison.html",
+      "hasAssetsFolder": false,
+      "title": "Centro Médico Edison — Turnos por WhatsApp | Mar del Plata",
+      "desc": "Agendá tu turno en Centro Médico Edison por WhatsApp, sin llamadas ni esperas. Medicina de cabecera y especialistas en un solo centro médico. Turnos por WhatsApp, sin llamadas ni esperas. Mar del Plata.",
+      "robots": "index, follow",
+      "h1s": [
+        "Centro Médico Edison"
+      ],
+      "h2s": [
+        "¿Qué necesitás hoy?",
+        "Tu salud, con menos vueltas",
+        "Tu turno en 3 pasos",
+        "Pedí tu turno en un toque",
+        "Estamos acá"
+      ],
+      "phones": [
+        "5492234844218",
+        "+54 549844218"
+      ],
+      "addresses": [
+        "c.com",
+        "av.is-scrolled{background:rgba(246,250,249,.88);backdrop-filter:blur(14px);-webkit-",
+        "c.2-.2.5-.3.6-.3h.5c.2 0 .4-.1.6.4.2.6.8 1.9.8 2 .1.1.1.2 0 .4l-.4.5c-.1.2-.3.3-.1",
+        "c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-."
+      ],
+      "schemaName": "Centro Médico Edison",
+      "schemaTel": "+54 549844218",
+      "schemaAddr": "Mar del Plata",
+      "schemaHours": "",
+      "geo": "\"-38.0520065\",\"-57.5622668\""
+    },
+    {
+      "slug": "clinica-luro",
+      "source": "clinica-luro.html",
+      "hasAssetsFolder": false,
+      "title": "Clínica Luro — Turnos por WhatsApp | Mar del Plata",
+      "desc": "Agendá tu turno en Clínica Luro por WhatsApp, sin llamadas ni esperas. Atención médica integral en el corazón de Mar del Plata. Agendá tu turno por WhatsApp en menos de un minuto, s Mar del Plata.",
+      "robots": "index, follow",
+      "h1s": [
+        "Clínica Luro"
+      ],
+      "h2s": [
+        "¿Qué necesitás hoy?",
+        "Tu salud, con menos vueltas",
+        "Tu turno en 3 pasos",
+        "Pedí tu turno en un toque",
+        "Estamos acá"
+      ],
+      "phones": [
+        "5492234755656",
+        "+54 549755656"
+      ],
+      "addresses": [
+        "c.com",
+        "Av. Pedro Luro 4636",
+        "av.is-scrolled{background:rgba(246,250,249,.88);backdrop-filter:blur(14px);-webkit-",
+        "c.2-.2.5-.3.6-.3h.5c.2 0 .4-.1.6.4.2.6.8 1.9.8 2 .1.1.1.2 0 .4l-.4.5c-.1.2-.3.3-.1"
+      ],
+      "schemaName": "Clínica Luro",
+      "schemaTel": "+54 549755656",
+      "schemaAddr": "Av. Pedro Luro 4636",
+      "schemaHours": "",
+      "geo": "\"-37.9884251\",\"-57.5668361\""
+    },
+    {
+      "slug": "consultorio-edison",
+      "source": "consultorio-edison.html",
+      "hasAssetsFolder": false,
+      "title": "Consultorio Edison — Turnos por WhatsApp | Mar del Plata",
+      "desc": "Agendá tu turno en Consultorio Edison por WhatsApp, sin llamadas ni esperas. Atención médica cercana y sin vueltas. Sacá tu turno por WhatsApp y evitate la espera en el consultorio. Mar del Plata.",
+      "robots": "index, follow",
+      "h1s": [
+        "Consultorio Edison"
+      ],
+      "h2s": [
+        "¿Qué necesitás hoy?",
+        "Tu salud, con menos vueltas",
+        "Tu turno en 3 pasos",
+        "Pedí tu turno en un toque",
+        "Estamos acá"
+      ],
+      "phones": [
+        "5492235726019",
+        "+54 549726019"
+      ],
+      "addresses": [
+        "c.com",
+        "av.is-scrolled{background:rgba(246,250,249,.88);backdrop-filter:blur(14px);-webkit-",
+        "c.2-.2.5-.3.6-.3h.5c.2 0 .4-.1.6.4.2.6.8 1.9.8 2 .1.1.1.2 0 .4l-.4.5c-.1.2-.3.3-.1",
+        "c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-."
+      ],
+      "schemaName": "Consultorio Edison",
+      "schemaTel": "+54 549726019",
+      "schemaAddr": "Mar del Plata",
+      "schemaHours": "",
+      "geo": "\"-38.0577019\",\"-57.5680904\""
+    },
+    {
+      "slug": "consultorios-integrales-colinas",
+      "source": "consultorios-integrales-colinas.html",
+      "hasAssetsFolder": false,
+      "title": "Consultorios Colinas — Turnos por WhatsApp | Mar del Plata",
+      "desc": "Agendá tu turno en Consultorios Colinas por WhatsApp, sin llamadas ni esperas. Salud integral para toda la familia: kinesiología, psicología, nutrición y más en un solo lugar. Mar del Plata.",
+      "robots": "index, follow",
+      "h1s": [
+        "Consultorios Colinas"
+      ],
+      "h2s": [
+        "¿Qué necesitás hoy?",
+        "Tu salud, con menos vueltas",
+        "Tu turno en 3 pasos",
+        "Pedí tu turno en un toque",
+        "Estamos acá"
+      ],
+      "phones": [
+        "5492235528621",
+        "+54 549528621"
+      ],
+      "addresses": [
+        "c.com",
+        "Av. Fortunato de la Plaza 3251",
+        "av.is-scrolled{background:rgba(246,250,249,.88);backdrop-filter:blur(14px);-webkit-",
+        "c.2-.2.5-.3.6-.3h.5c.2 0 .4-.1.6.4.2.6.8 1.9.8 2 .1.1.1.2 0 .4l-.4.5c-.1.2-.3.3-.1"
+      ],
+      "schemaName": "Consultorios Colinas",
+      "schemaTel": "+54 549528621",
+      "schemaAddr": "Av. Fortunato de la Plaza 3251",
+      "schemaHours": "",
+      "geo": "\"-38.0539556\",\"-57.5589605\""
+    },
+    {
+      "slug": "consultorios-medicos-luro",
+      "source": "consultorios-medicos-luro.html",
+      "hasAssetsFolder": false,
+      "title": "Consultorios Luro — Turnos por WhatsApp | Mar del Plata",
+      "desc": "Agendá tu turno en Consultorios Luro por WhatsApp, sin llamadas ni esperas. Consultorios médicos sobre Av. Pedro Luro, con especialistas y turnos confirmados al instante por WhatsApp. Mar del Plata.",
+      "robots": "index, follow",
+      "h1s": [
+        "Consultorios Luro"
+      ],
+      "h2s": [
+        "¿Qué necesitás hoy?",
+        "Tu salud, con menos vueltas",
+        "Tu turno en 3 pasos",
+        "Pedí tu turno en un toque",
+        "Estamos acá"
+      ],
+      "phones": [
+        "5492234727714",
+        "+54 549727714"
+      ],
+      "addresses": [
+        "Av. Pedro Luro, con especialistas y turnos confirmados al instante por WhatsApp. Ma",
+        "Av. Pedro Luro, con especialistas y turnos confirmados al instante por WhatsApp. Ma",
+        "c.com",
+        "Av. Pedro Luro, con especialistas y turnos confirmados al instante por WhatsApp. Ma"
+      ],
+      "schemaName": "Consultorios Luro",
+      "schemaTel": "+54 549727714",
+      "schemaAddr": "Av. Pedro Luro 3806",
+      "schemaHours": "",
+      "geo": "\"-37.9925144\",\"-57.5586543\""
+    },
+    {
+      "slug": "consultorios-san-juan",
+      "source": "consultorios-san-juan.html",
+      "hasAssetsFolder": false,
+      "title": "Consultorios San Juan — Turnos por WhatsApp | Mar del Plata",
+      "desc": "Agendá tu turno en Consultorios San Juan por WhatsApp, sin llamadas ni esperas. Especialistas que te atienden con calma y puntualidad. Reservá tu consulta por WhatsApp en 30 segundos. Mar del Plata.",
+      "robots": "index, follow",
+      "h1s": [
+        "Consultorios San Juan"
+      ],
+      "h2s": [
+        "¿Qué necesitás hoy?",
+        "Tu salud, con menos vueltas",
+        "Tu turno en 3 pasos",
+        "Pedí tu turno en un toque",
+        "Estamos acá"
+      ],
+      "phones": [
+        "5492236901190",
+        "+54 549901190"
+      ],
+      "addresses": [
+        "c.com",
+        "av.is-scrolled{background:rgba(246,250,249,.88);backdrop-filter:blur(14px);-webkit-",
+        "c.2-.2.5-.3.6-.3h.5c.2 0 .4-.1.6.4.2.6.8 1.9.8 2 .1.1.1.2 0 .4l-.4.5c-.1.2-.3.3-.1",
+        "c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-."
+      ],
+      "schemaName": "Consultorios San Juan",
+      "schemaTel": "+54 549901190",
+      "schemaAddr": "Mar del Plata",
+      "schemaHours": "",
+      "geo": "\"-38.0021957\",\"-57.5721762\""
+    },
+    {
+      "slug": "cordoba-consultorios-medicos",
+      "source": "cordoba-consultorios-medicos.html",
+      "hasAssetsFolder": false,
+      "title": "Córdoba Consultorios — Turnos por WhatsApp | Mar del Plata",
+      "desc": "Agendá tu turno en Córdoba Consultorios por WhatsApp, sin llamadas ni esperas. Consultorios médicos con especialistas que te acompañan. Turnos por WhatsApp confirmados al instante. Mar del Plata.",
+      "robots": "index, follow",
+      "h1s": [
+        "Córdoba Consultorios"
+      ],
+      "h2s": [
+        "¿Qué necesitás hoy?",
+        "Tu salud, con menos vueltas",
+        "Tu turno en 3 pasos",
+        "Pedí tu turno en un toque",
+        "Estamos acá"
+      ],
+      "phones": [
+        "5492236280955",
+        "+54 549280955"
+      ],
+      "addresses": [
+        "c.com",
+        "av.is-scrolled{background:rgba(246,250,249,.88);backdrop-filter:blur(14px);-webkit-",
+        "c.2-.2.5-.3.6-.3h.5c.2 0 .4-.1.6.4.2.6.8 1.9.8 2 .1.1.1.2 0 .4l-.4.5c-.1.2-.3.3-.1",
+        "c.7-.7 1.7-1 2.7-.8 1.4.3 2.4 1.6 2.3 3-.2 1.4-1.3 2.5-2.7 2.8"
+      ],
+      "schemaName": "Córdoba Consultorios",
+      "schemaTel": "+54 549280955",
+      "schemaAddr": "Mar del Plata",
+      "schemaHours": "",
+      "geo": "\"-38.0223832\",\"-57.5652576\""
+    },
+    {
+      "slug": "decor-wall",
+      "source": "decor-wall.html",
+      "hasAssetsFolder": false,
+      "title": "Decor Wall — Pedidos por WhatsApp | Mar del Plata",
+      "desc": "Comprá en Decor Wall por WhatsApp: Vinilos, paneles y revestimientos de pared en Mar del Plata. Consultá por WhatsApp y transformá tu espacio. Mar del Plata.",
+      "robots": "index, follow",
+      "h1s": [
+        "Decor Wall"
+      ],
+      "h2s": [
+        "Cambiá tu espacio en un fin de semana",
+        "Comprá en 3 pasos",
+        "Comprar directo, sin vueltas",
+        "Pedilo en un toque",
+        "Estamos acá"
+      ],
+      "phones": [
+        "5492235779054",
+        "+54 549779054"
+      ],
+      "addresses": [
+        "c.com",
+        "av.is-scrolled{background:rgba(250,246,239,.9);backdrop-filter:blur(14px);-webkit-b",
+        "c.2-.2.5-.3.6-.3h.5c.2 0 .4-.1.6.4.2.6.8 1.9.8 2 .1.1.1.2 0 .4l-.4.5c-.1.2-.3.3-.1",
+        "c.2-.2.5-.3.6-.3h.5c.2 0 .4-.1.6.4.2.6.8 1.9.8 2 .1.1.1.2 0 .4l-.4.5c-.1.2-.3.3-.1"
+      ],
+      "schemaName": "Decor Wall",
+      "schemaTel": "+54 549779054",
+      "schemaAddr": "Mar del Plata",
+      "schemaHours": "",
+      "geo": ""
+    },
+    {
+      "slug": "dimension-atelier",
+      "source": "dimension-atelier.html",
+      "hasAssetsFolder": false,
+      "title": "Dimensión Atelier — Pedidos por WhatsApp | Mar del Plata",
+      "desc": "Comprá en Dimensión Atelier por WhatsApp: Diseño, objetos y decoración hechos a mano en Mar del Plata. Consultá y pedí por WhatsApp. Mar del Plata.",
+      "robots": "index, follow",
+      "h1s": [
+        "Dimensión Atelier"
+      ],
+      "h2s": [
+        "Objetos con diseño y personalidad",
+        "Comprá en 3 pasos",
+        "Comprar directo, sin vueltas",
+        "Pedilo en un toque",
+        "Estamos acá"
+      ],
+      "phones": [
+        "5492234910519",
+        "+54 549910519"
+      ],
+      "addresses": [
+        "c.com",
+        "av.is-scrolled{background:rgba(250,246,239,.9);backdrop-filter:blur(14px);-webkit-b",
+        "c.2-.2.5-.3.6-.3h.5c.2 0 .4-.1.6.4.2.6.8 1.9.8 2 .1.1.1.2 0 .4l-.4.5c-.1.2-.3.3-.1",
+        "c.2-.2.5-.3.6-.3h.5c.2 0 .4-.1.6.4.2.6.8 1.9.8 2 .1.1.1.2 0 .4l-.4.5c-.1.2-.3.3-.1"
+      ],
+      "schemaName": "Dimensión Atelier",
+      "schemaTel": "+54 549910519",
+      "schemaAddr": "Mar del Plata",
+      "schemaHours": "",
+      "geo": ""
+    },
+    {
+      "slug": "espacio-edison",
+      "source": "espacio-edison.html",
+      "hasAssetsFolder": false,
+      "title": "Espacio Edison — Turnos por WhatsApp | Mar del Plata",
+      "desc": "Agendá tu turno en Espacio Edison por WhatsApp, sin llamadas ni esperas. Un espacio de salud y bienestar en Av. Edison 1736. Terapias y consultas con turno por WhatsApp. Mar del Plata.",
+      "robots": "index, follow",
+      "h1s": [
+        "Espacio Edison"
+      ],
+      "h2s": [
+        "¿Qué necesitás hoy?",
+        "Tu salud, con menos vueltas",
+        "Tu turno en 3 pasos",
+        "Pedí tu turno en un toque",
+        "Estamos acá"
+      ],
+      "phones": [
+        "5492236686410",
+        "+54 549686410"
+      ],
+      "addresses": [
+        "Av. Edison 1736. Terapias y consultas con turno por WhatsApp. Mar del Plata.",
+        "Av. Edison 1736. Terapias y consultas con turno por WhatsApp. Mar del Plata.",
+        "c.com",
+        "Av. Edison 1736. Terapias y consultas con turno por WhatsApp. Mar del Plata."
+      ],
+      "schemaName": "Espacio Edison",
+      "schemaTel": "+54 549686410",
+      "schemaAddr": "Av. Edison 1736",
+      "schemaHours": "",
+      "geo": "\"-38.0507907\",\"-57.5589663\""
+    },
+    {
+      "slug": "estetica-n",
+      "source": "estetica-n.html",
+      "hasAssetsFolder": false,
+      "title": "Estética N — Turnos por WhatsApp | Mar del Plata",
+      "desc": "Agendá tu turno en Estética N por WhatsApp, sin llamadas ni esperas. Tu centro de estética y belleza en Mar del Plata. Agendá tus tratamientos por WhatsApp en 30 segundos. Mar del Plata.",
+      "robots": "index, follow",
+      "h1s": [
+        "Estética N"
+      ],
+      "h2s": [
+        "¿Qué necesitás hoy?",
+        "Tu belleza, con menos vueltas",
+        "Tu turno en 3 pasos",
+        "Pedí tu turno en un toque",
+        "Estamos acá"
+      ],
+      "phones": [
+        "5492235982676",
+        "+54 549982676"
+      ],
+      "addresses": [
+        "c.com",
+        "Av. Fortunato de la Plaza 3668",
+        "av.is-scrolled{background:rgba(246,250,249,.88);backdrop-filter:blur(14px);-webkit-",
+        "c.2-.2.5-.3.6-.3h.5c.2 0 .4-.1.6.4.2.6.8 1.9.8 2 .1.1.1.2 0 .4l-.4.5c-.1.2-.3.3-.1"
+      ],
+      "schemaName": "Estética N",
+      "schemaTel": "+54 549982676",
+      "schemaAddr": "Av. Fortunato de la Plaza 3668",
+      "schemaHours": "",
+      "geo": "\"-38.0514613\",\"-57.5630524\""
+    },
+    {
+      "slug": "humus-mar-del-plata",
+      "source": "humus-mar-del-plata.html",
+      "hasAssetsFolder": false,
+      "title": "Humus — Pedidos por WhatsApp | Mar del Plata",
+      "desc": "Comprá en Humus por WhatsApp: Huerta, plantas y productos orgánicos en Mar del Plata. Pedí por WhatsApp y retirá tu kit listo. Mar del Plata.",
+      "robots": "index, follow",
+      "h1s": [
+        "Humus"
+      ],
+      "h2s": [
+        "Verde todo el año",
+        "Comprá en 3 pasos",
+        "Comprar directo, sin vueltas",
+        "Pedilo en un toque",
+        "Estamos acá"
+      ],
+      "phones": [
+        "5492236956240",
+        "+54 549956240"
+      ],
+      "addresses": [
+        "c.com",
+        "av.is-scrolled{background:rgba(250,246,239,.9);backdrop-filter:blur(14px);-webkit-b",
+        "c.2-.2.5-.3.6-.3h.5c.2 0 .4-.1.6.4.2.6.8 1.9.8 2 .1.1.1.2 0 .4l-.4.5c-.1.2-.3.3-.1",
+        "c.2-.2.5-.3.6-.3h.5c.2 0 .4-.1.6.4.2.6.8 1.9.8 2 .1.1.1.2 0 .4l-.4.5c-.1.2-.3.3-.1"
+      ],
+      "schemaName": "Humus",
+      "schemaTel": "+54 549956240",
+      "schemaAddr": "Rivadavia 3178",
+      "schemaHours": "",
+      "geo": ""
+    },
+    {
+      "slug": "kiva-cafe",
+      "source": "kiva-cafe.html",
+      "hasAssetsFolder": true,
+      "title": "Kiva Café — Café de Especialidad & Brunch en Güemes | Mar del Plata",
+      "desc": "Café de especialidad de origen seleccionado, panadería artesanal de masa madre y brunch gourmet en Güemes, Mar del Plata. Viví la experiencia Kiva en Avellaneda 2325.",
+      "robots": "index, follow",
+      "h1s": [
+        "El Ritual del Buen Café frente a la Brisa Marina"
+      ],
+      "h2s": [
+        "Más que una Cafetería, una Experiencia para Sentir",
+        "Menú & Selección de Estación",
+        "Reservá tu Mesa o Hacé tu Pedido Take Away",
+        "Lo que Dice Nuestra Comunidad en Güemes",
+        "Avellaneda 2325, Mar del Plata"
+      ],
+      "phones": [
+        "5492236157605",
+        "+5492236157605",
+        "+54 9 223 615-7605"
+      ],
+      "addresses": [
+        "c.com",
+        "rutar del silencio o trabajar con café de nivel mundial."
+      ],
+      "schemaName": "Kiva Café",
+      "schemaTel": "+5492236157605",
+      "schemaAddr": "Avellaneda 2325",
+      "schemaHours": "",
+      "geo": ""
+    },
+    {
+      "slug": "krearte",
+      "source": "krearte.html",
+      "hasAssetsFolder": false,
+      "title": "Krearte — Pedidos por WhatsApp | Mar del Plata",
+      "desc": "Comprá en Krearte por WhatsApp: Arte, artesanías y regalos originales en Mar del Plata. Pedí por WhatsApp y retirá o recibí en tu casa. Mar del Plata.",
+      "robots": "index, follow",
+      "h1s": [
+        "Krearte"
+      ],
+      "h2s": [
+        "Piezas únicas hechas con amor",
+        "Comprá en 3 pasos",
+        "Comprar directo, sin vueltas",
+        "Pedilo en un toque",
+        "Estamos acá"
+      ],
+      "phones": [
+        "5492236186114",
+        "+54 549186114"
+      ],
+      "addresses": [
+        "c.com",
+        "av.is-scrolled{background:rgba(250,246,239,.9);backdrop-filter:blur(14px);-webkit-b",
+        "c.2-.2.5-.3.6-.3h.5c.2 0 .4-.1.6.4.2.6.8 1.9.8 2 .1.1.1.2 0 .4l-.4.5c-.1.2-.3.3-.1",
+        "c.2-.2.5-.3.6-.3h.5c.2 0 .4-.1.6.4.2.6.8 1.9.8 2 .1.1.1.2 0 .4l-.4.5c-.1.2-.3.3-.1"
+      ],
+      "schemaName": "Krearte",
+      "schemaTel": "+54 549186114",
+      "schemaAddr": "San Juan 390",
+      "schemaHours": "",
+      "geo": ""
+    },
+    {
+      "slug": "kytos-salud-integral",
+      "source": "kytos-salud-integral.html",
+      "hasAssetsFolder": false,
+      "title": "KYTOS Salud — Turnos por WhatsApp | Mar del Plata",
+      "desc": "Agendá tu turno en KYTOS Salud por WhatsApp, sin llamadas ni esperas. Salud integral en Mar del Plata: cuerpo, mente y movimiento bajo un mismo techo. Turnos por WhatsApp. Mar del Plata.",
+      "robots": "index, follow",
+      "h1s": [
+        "KYTOS Salud"
+      ],
+      "h2s": [
+        "¿Qué necesitás hoy?",
+        "Tu salud, con menos vueltas",
+        "Tu turno en 3 pasos",
+        "Pedí tu turno en un toque",
+        "Estamos acá"
+      ],
+      "phones": [
+        "5492235915750",
+        "+54 549915750"
+      ],
+      "addresses": [
+        "c.com",
+        "Av. Edison 2044",
+        "av.is-scrolled{background:rgba(246,250,249,.88);backdrop-filter:blur(14px);-webkit-",
+        "c.2-.2.5-.3.6-.3h.5c.2 0 .4-.1.6.4.2.6.8 1.9.8 2 .1.1.1.2 0 .4l-.4.5c-.1.2-.3.3-.1"
+      ],
+      "schemaName": "KYTOS Salud",
+      "schemaTel": "+54 549915750",
+      "schemaAddr": "Av. Edison 2044",
+      "schemaHours": "",
+      "geo": "\"-38.0529923\",\"-57.5615702\""
+    },
+    {
+      "slug": "la-isla",
+      "source": "la-isla.html",
+      "hasAssetsFolder": false,
+      "title": "La Isla — Pedidos por WhatsApp | Mar del Plata",
+      "desc": "Comprá en La Isla por WhatsApp: Regalos y decoración originales en el centro de Mar del Plata. Pedí por WhatsApp y lo tenés listo para regalar Mar del Plata.",
+      "robots": "index, follow",
+      "h1s": [
+        "La Isla"
+      ],
+      "h2s": [
+        "El detalle que hace la diferencia",
+        "Comprá en 3 pasos",
+        "Comprar directo, sin vueltas",
+        "Pedilo en un toque",
+        "Estamos acá"
+      ],
+      "phones": [
+        "5492234757183",
+        "+54 549757183"
+      ],
+      "addresses": [
+        "c.com",
+        "av.is-scrolled{background:rgba(250,246,239,.9);backdrop-filter:blur(14px);-webkit-b",
+        "c.2-.2.5-.3.6-.3h.5c.2 0 .4-.1.6.4.2.6.8 1.9.8 2 .1.1.1.2 0 .4l-.4.5c-.1.2-.3.3-.1",
+        "c.2-.2.5-.3.6-.3h.5c.2 0 .4-.1.6.4.2.6.8 1.9.8 2 .1.1.1.2 0 .4l-.4.5c-.1.2-.3.3-.1"
+      ],
+      "schemaName": "La Isla",
+      "schemaTel": "+54 549757183",
+      "schemaAddr": "San Juan 1714",
+      "schemaHours": "",
+      "geo": ""
+    },
+    {
+      "slug": "molduras-aguilera",
+      "source": "molduras-aguilera.html",
+      "hasAssetsFolder": false,
+      "title": "Molduras Aguilera — Pedidos por WhatsApp | Mar del Plata",
+      "desc": "Comprá en Molduras Aguilera por WhatsApp: Marcos, molduras y enmarcados a medida en Mar del Plata. Pedí tu trabajo por WhatsApp y retiralo listo. Mar del Plata.",
+      "robots": "index, follow",
+      "h1s": [
+        "Molduras Aguilera"
+      ],
+      "h2s": [
+        "Enmarcamos lo que más querés",
+        "Comprá en 3 pasos",
+        "Comprar directo, sin vueltas",
+        "Pedilo en un toque",
+        "Estamos acá"
+      ],
+      "phones": [
+        "5492234813482",
+        "+54 549813482"
+      ],
+      "addresses": [
+        "c.com",
+        "Av. Juan B. Justo 2136",
+        "av.is-scrolled{background:rgba(250,246,239,.9);backdrop-filter:blur(14px);-webkit-b",
+        "c.2-.2.5-.3.6-.3h.5c.2 0 .4-.1.6.4.2.6.8 1.9.8 2 .1.1.1.2 0 .4l-.4.5c-.1.2-.3.3-.1"
+      ],
+      "schemaName": "Molduras Aguilera",
+      "schemaTel": "+54 549813482",
+      "schemaAddr": "Av. Juan B. Justo 2136",
+      "schemaHours": "",
+      "geo": ""
+    },
+    {
+      "slug": "monograf",
+      "source": "monograf.html",
+      "hasAssetsFolder": false,
+      "title": "Monograf — Pedidos por WhatsApp | Mar del Plata",
+      "desc": "Comprá en Monograf por WhatsApp: Imprenta y servicio gráfico en Mar del Plata. Tarjetas, gigantografías y más, pedidas por WhatsApp. Mar del Plata.",
+      "robots": "index, follow",
+      "h1s": [
+        "Monograf"
+      ],
+      "h2s": [
+        "Impreso rápido y prolijo",
+        "Comprá en 3 pasos",
+        "Comprar directo, sin vueltas",
+        "Pedilo en un toque",
+        "Estamos acá"
+      ],
+      "phones": [
+        "5492234745197",
+        "+54 549745197"
+      ],
+      "addresses": [
+        "c.com",
+        "av.is-scrolled{background:rgba(250,246,239,.9);backdrop-filter:blur(14px);-webkit-b",
+        "c.2-.2.5-.3.6-.3h.5c.2 0 .4-.1.6.4.2.6.8 1.9.8 2 .1.1.1.2 0 .4l-.4.5c-.1.2-.3.3-.1",
+        "c.2-.2.5-.3.6-.3h.5c.2 0 .4-.1.6.4.2.6.8 1.9.8 2 .1.1.1.2 0 .4l-.4.5c-.1.2-.3.3-.1"
+      ],
+      "schemaName": "Monograf",
+      "schemaTel": "+54 549745197",
+      "schemaAddr": "Alberti 5033",
+      "schemaHours": "",
+      "geo": ""
+    },
+    {
+      "slug": "nora-ai",
+      "source": "nora-ai.html",
+      "hasAssetsFolder": true,
+      "title": "Naro AI — Agencia de Inteligencia Artificial & Crecimiento Digital | Mar del Plata",
+      "desc": "Agencia de IA y Desarrollo 100% dedicada a potenciar el comercio de Mar del Plata. Páginas Web de Alta Conversión (Sin Abono), Bots de WhatsApp 24/7 y Sistemas de Gestión POS.",
+      "robots": "index, follow",
+      "h1s": [
+        "Automatizamos comercios de Mar del Plata con IA"
+      ],
+      "h2s": [
+        "De la Vereda al Teléfono: Por qué el Comercio de Mar del Plata Necesita IA",
+        "Ecosistema Digital 360° para tu Comercio",
+        "Proyectos Desarrollados en Mar del Plata",
+        "Calculadora de Ventas Recuperadas",
+        "Interactuá con el Bot de IA de Naro AI",
+        "Preguntas Frecuentes & Manejo de Objeciones",
+        "Impulsá tu Comercio en Mar del Plata Hoy"
+      ],
+      "phones": [
+        "5492235000000",
+        "+5492235000000",
+        "5426"
+      ],
+      "addresses": [
+        "c.com"
+      ],
+      "schemaName": "Naro AI",
+      "schemaTel": "+5492235000000",
+      "schemaAddr": "",
+      "schemaHours": "",
+      "geo": ""
+    },
+    {
+      "slug": "oceano-mar-consultorios",
+      "source": "oceano-mar-consultorios.html",
+      "hasAssetsFolder": false,
+      "title": "Océano Mar — Turnos por WhatsApp | Mar del Plata",
+      "desc": "Agendá tu turno en Océano Mar por WhatsApp, sin llamadas ni esperas. Especialistas bajo el mismo techo, con atención humana y turnos digitales. Cerca del mar, cerca de vos. Mar del Plata.",
+      "robots": "index, follow",
+      "h1s": [
+        "Océano Mar"
+      ],
+      "h2s": [
+        "¿Qué necesitás hoy?",
+        "Tu salud, con menos vueltas",
+        "Tu turno en 3 pasos",
+        "Pedí tu turno en un toque",
+        "Estamos acá"
+      ],
+      "phones": [
+        "5492234545719",
+        "+54 549545719"
+      ],
+      "addresses": [
+        "c.com",
+        "av.is-scrolled{background:rgba(246,250,249,.88);backdrop-filter:blur(14px);-webkit-",
+        "c.2-.2.5-.3.6-.3h.5c.2 0 .4-.1.6.4.2.6.8 1.9.8 2 .1.1.1.2 0 .4l-.4.5c-.1.2-.3.3-.1",
+        "c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-."
+      ],
+      "schemaName": "Océano Mar",
+      "schemaTel": "+54 549545719",
+      "schemaAddr": "Rodríguez Peña 2675",
+      "schemaHours": "",
+      "geo": "\"-38.0124754\",\"-57.5584932\""
+    },
+    {
+      "slug": "patchandflag",
+      "source": "patchandflag.html",
+      "hasAssetsFolder": false,
+      "title": "Patch & Flag — Pedidos por WhatsApp | Mar del Plata",
+      "desc": "Comprá en Patch & Flag por WhatsApp: Parches bordados, banderas y sublimación textil en Mar del Plata. Pedilo por WhatsApp y lo tenés en pocos días Mar del Plata.",
+      "robots": "index, follow",
+      "h1s": [
+        "Patch & Flag"
+      ],
+      "h2s": [
+        "Personalizado en tela, a tu medida",
+        "Comprá en 3 pasos",
+        "Comprar directo, sin vueltas",
+        "Pedilo en un toque",
+        "Estamos acá"
+      ],
+      "phones": [
+        "54922324837908",
+        "+54 549837908"
+      ],
+      "addresses": [
+        "c.com",
+        "av.is-scrolled{background:rgba(250,246,239,.9);backdrop-filter:blur(14px);-webkit-b",
+        "c.2-.2.5-.3.6-.3h.5c.2 0 .4-.1.6.4.2.6.8 1.9.8 2 .1.1.1.2 0 .4l-.4.5c-.1.2-.3.3-.1",
+        "c.2-.2.5-.3.6-.3h.5c.2 0 .4-.1.6.4.2.6.8 1.9.8 2 .1.1.1.2 0 .4l-.4.5c-.1.2-.3.3-.1"
+      ],
+      "schemaName": "Patch & Flag",
+      "schemaTel": "+54 549837908",
+      "schemaAddr": "Gral. Roca 2343",
+      "schemaHours": "",
+      "geo": ""
+    },
+    {
+      "slug": "restaurante-la-marina",
+      "source": "restaurante-la-marina.html",
+      "hasAssetsFolder": true,
+      "title": "Restaurante La Marina · Cocina del Puerto · Mar del Plata",
+      "desc": "Restaurante La Marina, cocina de mar junto al puerto de Mar del Plata. Pescados del día, mariscos y fuego. Reservá por WhatsApp.",
+      "robots": "",
+      "h1s": [
+        "El mar entray se sienta a la mesa."
+      ],
+      "h2s": [
+        "Lo que sale del fuego.",
+        "Menú de estación.",
+        "Atmósfera de puerto.",
+        "Lo que dicen en el puerto.",
+        "Dónde estamos y cuándo abrimos.",
+        "Reservá tu mesa junto al mar."
+      ],
+      "phones": [
+        "5492235193360",
+        "+542235193360",
+        "+54 9 223 519-3360"
+      ],
+      "addresses": [
+        "c.com",
+        "c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.7-.5.5c-.2.2-.4.4-.1.7",
+        "c.2-.3.4-.2.7-.1l2 .9c.4.2.6.3.7.4.1.2.1.6-.1 1Z",
+        "c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2"
+      ],
+      "schemaName": "",
+      "schemaTel": "",
+      "schemaAddr": "",
+      "schemaHours": "",
+      "geo": ""
+    },
+    {
+      "slug": "rompecabezas",
+      "source": "rompecabezas.html",
+      "hasAssetsFolder": false,
+      "title": "Rompecabezas — Pedidos por WhatsApp | Mar del Plata",
+      "desc": "Comprá en Rompecabezas por WhatsApp: Rompecabezas, juegos de mesa y puzzles personalizados en Mar del Plata. Pedí por WhatsApp. Mar del Plata.",
+      "robots": "index, follow",
+      "h1s": [
+        "Rompecabezas"
+      ],
+      "h2s": [
+        "Horas de diversión en familia",
+        "Comprá en 3 pasos",
+        "Comprar directo, sin vueltas",
+        "Pedilo en un toque",
+        "Estamos acá"
+      ],
+      "phones": [
+        "5492234463693",
+        "+54 549463693"
+      ],
+      "addresses": [
+        "c.com",
+        "av.is-scrolled{background:rgba(250,246,239,.9);backdrop-filter:blur(14px);-webkit-b",
+        "c.2-.2.5-.3.6-.3h.5c.2 0 .4-.1.6.4.2.6.8 1.9.8 2 .1.1.1.2 0 .4l-.4.5c-.1.2-.3.3-.1",
+        "c.2-.2.5-.3.6-.3h.5c.2 0 .4-.1.6.4.2.6.8 1.9.8 2 .1.1.1.2 0 .4l-.4.5c-.1.2-.3.3-.1"
+      ],
+      "schemaName": "Rompecabezas",
+      "schemaTel": "+54 549463693",
+      "schemaAddr": "Belgrano 3044",
+      "schemaHours": "",
+      "geo": ""
+    },
+    {
+      "slug": "san-lorenzo-instituto-medico",
+      "source": "san-lorenzo-instituto-medico.html",
+      "hasAssetsFolder": false,
+      "title": "Instituto San Lorenzo — Turnos por WhatsApp | Mar del Plata",
+      "desc": "Agendá tu turno en Instituto San Lorenzo por WhatsApp, sin llamadas ni esperas. Instituto médico de confianza en el centro de Mar del Plata. Reservá tu consulta por WhatsApp al instante. Mar del Plata.",
+      "robots": "index, follow",
+      "h1s": [
+        "Instituto San Lorenzo"
+      ],
+      "h2s": [
+        "¿Qué necesitás hoy?",
+        "Tu salud, con menos vueltas",
+        "Tu turno en 3 pasos",
+        "Pedí tu turno en un toque",
+        "Estamos acá"
+      ],
+      "phones": [
+        "5492234920134",
+        "+54 549920134"
+      ],
+      "addresses": [
+        "c.com",
+        "av.is-scrolled{background:rgba(246,250,249,.88);backdrop-filter:blur(14px);-webkit-",
+        "c.2-.2.5-.3.6-.3h.5c.2 0 .4-.1.6.4.2.6.8 1.9.8 2 .1.1.1.2 0 .4l-.4.5c-.1.2-.3.3-.1",
+        "c.7-.7 1.7-1 2.7-.8 1.4.3 2.4 1.6 2.3 3-.2 1.4-1.3 2.5-2.7 2.8"
+      ],
+      "schemaName": "Instituto San Lorenzo",
+      "schemaTel": "+54 549920134",
+      "schemaAddr": "San Lorenzo 2076",
+      "schemaHours": "",
+      "geo": "\"-38.014277\",\"-57.5513675\""
+    },
+    {
+      "slug": "sanatorio-avenida",
+      "source": "sanatorio-avenida.html",
+      "hasAssetsFolder": false,
+      "title": "Sanatorio Avenida — Turnos por WhatsApp | Mar del Plata",
+      "desc": "Agendá tu turno en Sanatorio Avenida por WhatsApp, sin llamadas ni esperas. Atención de confianza para toda la familia. Guardia y consultorios con turnos confirmados al instante por What Mar del Plata.",
+      "robots": "index, follow",
+      "h1s": [
+        "Sanatorio Avenida"
+      ],
+      "h2s": [
+        "¿Qué necesitás hoy?",
+        "Tu salud, con menos vueltas",
+        "Tu turno en 3 pasos",
+        "Pedí tu turno en un toque",
+        "Estamos acá"
+      ],
+      "phones": [
+        "5492234956854",
+        "+54 549956854"
+      ],
+      "addresses": [
+        "Avenida — Turnos por WhatsApp | Mar del Plata",
+        "Avenida por WhatsApp, sin llamadas ni esperas. Atención de confianza para toda la famil",
+        "Avenida — Turnos por WhatsApp | Mar del Plata",
+        "Avenida por WhatsApp, sin llamadas ni esperas. Atención de confianza para toda la famil"
+      ],
+      "schemaName": "Sanatorio Avenida",
+      "schemaTel": "+54 549956854",
+      "schemaAddr": "Lamadrid 3060 B7602HGJ",
+      "schemaHours": "",
+      "geo": "\"-38.0143675\",\"-57.5476155\""
+    },
+    {
+      "slug": "terca",
+      "source": "terca.html",
+      "hasAssetsFolder": true,
+      "title": "Terca — Viandas &amp; Catering · Mar del Plata",
+      "desc": "Terca — Viandas & Catering en Mar del Plata. Viandas caseras recién hechas todos los días, catering artesanal para eventos, perniles, lunch y mesas dulces. Envíos a domicilio en MDP.",
+      "robots": "",
+      "h1s": [
+        "La comida casera que querés, todos los días en tu mesa."
+      ],
+      "h2s": [
+        "Viandas caseras para todos los días",
+        "Catering artesanal para tu evento",
+        "Pedir es facilísimo",
+        "Hecho como en casa, con ganas",
+        "Contacto &amp; zona de entrega",
+        "¿Listo para comer rico hoy?"
+      ],
+      "phones": [
+        "5492236958037",
+        "+542236958037"
+      ],
+      "addresses": [
+        "c.com",
+        "av.is-scrolled{border-bottom-color:var(--border);box-shadow:var(--shadow-sm)} .nav_",
+        "av.is-open .nav__toggle span{background:transparent} .nav.is-open .nav__toggle span",
+        "av.is-open .nav__toggle span::after{top:0;transform:rotate(-45deg)} /* HERO */ .he"
+      ],
+      "schemaName": "",
+      "schemaTel": "",
+      "schemaAddr": "",
+      "schemaHours": "",
+      "geo": ""
+    },
+    {
+      "slug": "turmalina",
+      "source": "turmalina.html",
+      "hasAssetsFolder": false,
+      "title": "Turmalina — Pedidos por WhatsApp | Mar del Plata",
+      "desc": "Comprá en Turmalina por WhatsApp: Bijou artesanal y accesorios en Mar del Plata. Pedí tu favorito por WhatsApp y retiralo en el local. Mar del Plata.",
+      "robots": "index, follow",
+      "h1s": [
+        "Turmalina"
+      ],
+      "h2s": [
+        "Detalles que brillan",
+        "Comprá en 3 pasos",
+        "Comprar directo, sin vueltas",
+        "Pedilo en un toque",
+        "Estamos acá"
+      ],
+      "phones": [
+        "5492234763814",
+        "+54 549763814"
+      ],
+      "addresses": [
+        "c.com",
+        "av.is-scrolled{background:rgba(250,246,239,.9);backdrop-filter:blur(14px);-webkit-b",
+        "c.2-.2.5-.3.6-.3h.5c.2 0 .4-.1.6.4.2.6.8 1.9.8 2 .1.1.1.2 0 .4l-.4.5c-.1.2-.3.3-.1",
+        "c.2-.2.5-.3.6-.3h.5c.2 0 .4-.1.6.4.2.6.8 1.9.8 2 .1.1.1.2 0 .4l-.4.5c-.1.2-.3.3-.1"
+      ],
+      "schemaName": "Turmalina",
+      "schemaTel": "+54 549763814",
+      "schemaAddr": "San Juan 1738",
+      "schemaHours": "",
+      "geo": ""
+    },
+    {
+      "slug": "urgencias-odontologicas",
+      "source": "urgencias-odontologicas.html",
+      "hasAssetsFolder": false,
+      "title": "Urgencias Odontologicas | Odontología en Mar del Plata",
+      "desc": "Urgencias Odontologicas - Odontología en Mar del Plata. Página Web + Agendador Automatizado de Turnos por WhatsApp. Atención directa por WhatsApp las 24hs.",
+      "robots": "",
+      "h1s": [
+        "Excelencia y Atención Profesional en Urgencias Odontologicas"
+      ],
+      "h2s": [
+        "Nuestros Servicios Destacados",
+        "¿Por Qué Elegir Urgencias Odontologicas?",
+        "Agendá tu Turno o Consulta por WhatsApp",
+        "Ubicación en Mar del Plata"
+      ],
+      "phones": [
+        "5492235623742"
+      ],
+      "addresses": [
+        "c.com"
+      ],
+      "schemaName": "",
+      "schemaTel": "",
+      "schemaAddr": "",
+      "schemaHours": "",
+      "geo": ""
+    },
+    {
+      "slug": "verde-limon",
+      "source": "verde-limon.html",
+      "hasAssetsFolder": true,
+      "title": "Verde Limón — Almacén Natural &amp; Tienda Saludable · Mar del Plata",
+      "desc": "Verde Limón, almacén natural y tienda saludable en Mar del Plata. Granel, frutos secos, biocosmética, sin TACC, superalimentos. Pedí por WhatsApp y te lo llevamos.",
+      "robots": "",
+      "h1s": [
+        "Comer natural, sin complicarse con gusto."
+      ],
+      "h2s": [
+        "Todo lo que necesitás para vivir sano, en un solo lugar",
+        "Un almacén pensado para cuidarte",
+        "Tres pasos y lo tenés en casa",
+        "Veninos a visitar",
+        "Cuidate rico, cuidate natural"
+      ],
+      "phones": [
+        "5492235704488",
+        "+542235704488",
+        "+54 9 223 570-4488"
+      ],
+      "addresses": [
+        "c.com",
+        "c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012",
+        "c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012",
+        "c.jpg')"
+      ],
+      "schemaName": "",
+      "schemaTel": "",
+      "schemaAddr": "",
+      "schemaHours": "",
+      "geo": ""
+    }
+  ]
+}

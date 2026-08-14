@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 70" width="320" height="70">
+  <defs>
+    <linearGradient id="snowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00d2ff" />
+      <stop offset="100%" stop-color="#00a8e8" />
+    </linearGradient>
+  </defs>
+  <!-- Logo Icon -->
+  <g transform="translate(10, 10)">
+    <!-- Outer hexagonal tech ring -->
+    <polygon points="25,5 45,15 45,35 25,45 5,35 5,15" fill="none" stroke="#0a1b3a" stroke-width="2" />
+    <!-- Cold center snowflake core -->
+    <path d="M25,12 L25,38 M12,25 L38,25 M16,16 L34,34 M16,34 L34,16" stroke="url(#snowGrad)" stroke-width="3" stroke-linecap="round" />
+    <circle cx="25" cy="25" r="4" fill="#00a8e8" />
+  </g>
+  <!-- Logo Text -->
+  <text x="75" y="32" font-family="'Montserrat', sans-serif" font-size="24" font-weight="800" fill="#0a1b3a" letter-spacing="1">MS</text>
+  <text x="115" y="32" font-family="'Montserrat', sans-serif" font-size="24" font-weight="500" fill="#4a5568" letter-spacing="1">REFRIGERACION</text>
+  <text x="75" y="52" font-family="'Roboto', sans-serif" font-size="11" font-weight="600" fill="#00a8e8" letter-spacing="2">INDUSTRIAL • NAVAL • ALIMENTICIA</text>
+</svg>

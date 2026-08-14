@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kaffa — Café de Especialidad | Mar del Plata</title>
+<meta name="description" content="Kaffa es una cafetería de especialidad en Mar del Plata. Tostamos granos de origen dos veces por semana y los servimos con calma. Reservá tu mesa o pedí por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --parchment:#F5F0E8;
+  --parchment-soft:#EDE5D8;
+  --espresso:#1A1110;
+  --espresso-soft:#2B1D1A;
+  --terracotta:#C1440E;
+  --caramel:#D4A574;
+  --cream:#FFF9F0;
+  --text:#241A16;
+  --text-soft:#6B5A50;
+  --line:rgba(26,17,16,.14);
+  --line-light:rgba(245,240,232,.16);
+  --radius:12px;
+  --shadow-lg:0 24px 60px -30px rgba(26,17,16,.45);
+  --ease:cubic-bezier(.22,1,.36,1);
+  --serif:"Fraunces",serif;
+  --sans:"DM Sans",sans-serif;
+  --mono:"JetBrains Mono",monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+body{
+  font-family:var(--sans);
+  background:var(--parchment);
+  color:var(--text);
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.05;letter-spacing:-.01em}
+.container{width:min(1240px,92%);margin-inline:auto}
+section{padding:clamp(4rem,9vw,7.5rem) 0}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:.6rem;
+  font-size:.78rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--terracotta);
+}
+.eyebrow::before{content:"";width:34px;height:2px;background:var(--terracotta);border-radius:2px}
+.eyebrow--light{color:var(--caramel)}
+.eyebrow--light::before{background:var(--caramel)}
+.section-title{font-size:clamp(1.9rem,4.4vw,3.4rem);margin:.6rem 0 1.1rem}
+.section-lead{color:var(--text-soft);max-width:58ch;font-size:clamp(.95rem,1.2vw,1.05rem)}
+.section-head{padding-bottom:clamp(2.2rem,5vw,3.6rem)}
+
+/* ---------- Reveal ---------- */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.is-in{opacity:1;transform:none}
+.reveal[data-delay="1"]{transition-delay:.1s}
+.reveal[data-delay="2"]{transition-delay:.2s}
+.reveal[data-delay="3"]{transition-delay:.3s}
+
+/* ---------- Nav (Contrast Fixed) ---------- */
+.nav{
+  position:fixed;inset:0 0 auto;z-index:100;
+  padding:1.2rem 0;
+  transition:background .4s var(--ease),box-shadow .4s var(--ease),padding .4s var(--ease);
+}
+.nav.is-scrolled{
+  background:rgba(245,240,232,.92);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  box-shadow:0 1px 0 var(--line);
+  padding:.75rem 0;
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.logo{font-family:var(--serif);font-weight:700;font-size:1.5rem;letter-spacing:-.02em;display:flex;align-items:baseline;gap:.15rem;color:var(--cream);transition:color .4s var(--ease)}
+.logo em{font-style:normal;color:var(--terracotta)}
+.logo small{font-family:var(--mono);font-size:.58rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(245,240,232,.72);margin-left:.4rem;transition:color .4s var(--ease)}
+.nav.is-scrolled .logo{color:var(--espresso)}
+.nav.is-scrolled .logo small{color:var(--text-soft)}
+
+.nav-links{display:flex;align-items:center;gap:2rem}
+.nav-links a{font-size:.9rem;font-weight:500;color:var(--cream);opacity:.92;position:relative;padding:.2rem 0;transition:color .4s var(--ease),opacity .2s}
+.nav-links a:hover{opacity:1}
+.nav.is-scrolled .nav-links a{color:var(--text);opacity:1}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--terracotta);transition:width .35s var(--ease)}
+.nav-links a:hover::after{width:100%}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.55rem;
+  font-family:var(--sans);font-weight:600;font-size:.88rem;letter-spacing:.02em;
+  padding:.8rem 1.4rem;border-radius:10px;border:none;cursor:pointer;
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease),background .3s var(--ease),color .3s;
+  white-space:nowrap;
+}
+.btn-primary{background:var(--terracotta);color:var(--cream)}
+.btn-primary:hover{background:#a6380a;transform:translateY(-2px);box-shadow:0 12px 28px -10px rgba(193,68,14,.55)}
+.btn-outline{background:transparent;color:var(--cream);box-shadow:inset 0 0 0 1.5px rgba(245,240,232,.3)}
+.btn-outline:hover{box-shadow:inset 0 0 0 1.5px var(--cream);background:rgba(245,240,232,.08);transform:translateY(-2px)}
+.btn svg{width:18px;height:18px;flex:none}
+
+.hamburger{display:none;background:none;border:none;cursor:pointer;padding:.4rem}
+.hamburger span{display:block;width:26px;height:2px;background:var(--cream);margin:6px 0;transition:transform .35s var(--ease),opacity .2s,background .4s}
+.nav.is-scrolled .hamburger span{background:var(--espresso)}
+.nav-links.is-open{display:flex}
+.nav-links.is-open a{color:var(--text);opacity:1}
+.mobile-cta{display:none}
+
+/* ---------- Hero (El Ritual de Origen) ---------- */
+.hero{
+  min-height:100svh;
+  display:flex;flex-direction:column;justify-content:center;
+  position:relative;color:var(--cream);
+  padding:8rem 0 4rem;
+  overflow:hidden;
+  background:var(--espresso);
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background:radial-gradient(circle at 75% 30%, rgba(193,68,14,.18) 0%, transparent 55%),
+             radial-gradient(circle at 20% 80%, rgba(212,165,116,.12) 0%, transparent 50%),
+             var(--espresso);
+}
+.hero-bg::after{
+  content:"";position:absolute;inset:0;
+  background-image:linear-gradient(to bottom, rgba(26,17,16,.4), rgba(26,17,16,.85));
+}
+.hero .container{position:relative;z-index:2}
+.hero-grid{
+  display:grid;grid-template-columns:1.15fr 0.85fr;
+  gap:clamp(2.5rem,5vw,5rem);align-items:center;
+}
+.hero-stamp{
+  display:inline-flex;align-items:center;gap:.65rem;
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--caramel);background:rgba(43,29,26,.8);
+  border:1px solid rgba(212,165,116,.3);border-radius:6px;
+  padding:.5rem 1rem;margin-bottom:1.6rem;backdrop-filter:blur(8px);
+}
+.hero-stamp .stamp-dot{width:7px;height:7px;border-radius:50%;background:var(--terracotta)}
+
+.hero h1{
+  font-family:var(--serif);font-size:clamp(2.5rem,5.6vw,4.8rem);
+  font-weight:300;line-height:1.06;margin-bottom:1.4rem;color:var(--cream);
+}
+.hero h1 .hero-emph{
+  font-style:italic;font-weight:600;color:var(--caramel);display:inline;
+}
+.hero-sub{
+  max-width:48ch;color:rgba(245,240,232,.85);
+  font-size:clamp(1rem,1.3vw,1.12rem);line-height:1.65;margin-bottom:2.2rem;
+}
+.hero-ctas{display:flex;gap:1.1rem;flex-wrap:wrap;margin-bottom:1.5rem}
+
+.hero-visual{position:relative}
+.hero-img-wrap{
+  border-radius:18px;overflow:hidden;
+  box-shadow:var(--shadow-lg);border:1px solid rgba(245,240,232,.15);
+  position:relative;
+}
+.hero-img-wrap img{
+  width:100%;aspect-ratio:4/4.6;object-fit:cover;
+  filter:saturate(.92) contrast(1.05);
+  transition:transform 1.2s var(--ease);
+}
+.hero-visual:hover .hero-img-wrap img{transform:scale(1.03)}
+
+/* Live Roast Batch Stamp (Signature Element) */
+.roast-badge-card{
+  position:absolute;bottom:-1.8rem;left:-1.8rem;z-index:3;
+  background:rgba(36,26,24,.92);border:1px solid rgba(212,165,116,.35);
+  border-radius:12px;padding:1.1rem 1.4rem;
+  box-shadow:0 20px 45px rgba(0,0,0,.5);backdrop-filter:blur(12px);
+  max-width:280px;
+}
+.badge-tag{font-family:var(--mono);font-size:.66rem;color:var(--terracotta);letter-spacing:.16em;text-transform:uppercase;font-weight:600}
+.badge-title{font-family:var(--serif);font-size:1.15rem;color:var(--cream);font-weight:600;margin:.25rem 0 .2rem}
+.badge-meta{font-family:var(--mono);font-size:.74rem;color:rgba(245,240,232,.75);display:flex;gap:.8rem}
+.badge-meta span{color:var(--caramel)}
+
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:3rem}
+  .roast-badge-card{position:relative;bottom:auto;left:auto;margin-top:-2rem;max-width:100%}
+}
+
+
+/* ---------- Marquee ---------- */
+.marquee{
+  background:var(--terracotta);color:var(--cream);overflow:hidden;
+  padding:1.05rem 0;transform:rotate(-1deg) scale(1.02);position:relative;z-index:5;
+  box-shadow:var(--shadow-lg);
+}
+.marquee-track{display:flex;gap:0;width:max-content;animation:marquee 30s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee span{
+  font-family:var(--serif);font-weight:600;font-size:clamp(1.1rem,2.4vw,1.6rem);
+  padding:0 1.2rem;white-space:nowrap;display:flex;align-items:center;gap:1.2rem;
+}
+.marquee span::after{content:"✳";font-size:.7em;opacity:.6}
+@keyframes marquee{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.marquee-track{animation:none;width:100%;justify-content:center;flex-wrap:wrap}}
+
+/* ---------- Historia ---------- */
+.historia-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,6vw,5rem);align-items:center}
+.arch{
+  border-radius:50% 50% var(--radius) var(--radius);
+  overflow:hidden;box-shadow:var(--shadow-lg);
+  position:relative;
+}
+.arch img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/5.2;filter:saturate(.95);transition:transform 1.2s var(--ease)}
+.arch:hover img{transform:scale(1.06)}
+.arch-sm{
+  position:absolute;width:46%;bottom:-3rem;right:-2rem;z-index:2;
+  border-radius:50% 50% var(--radius) var(--radius);overflow:hidden;
+  border:8px solid var(--parchment);box-shadow:var(--shadow-lg);
+}
+.arch-sm img{aspect-ratio:4/4.4;width:100%}
+.historia-copy p{color:var(--text-soft);margin-bottom:1.1rem}
+.roast-days{margin-top:1.8rem;padding:1.4rem 1.6rem;background:var(--cream);border:1px solid var(--line);border-radius:var(--radius)}
+.roast-days b{font-family:var(--serif);font-size:1.08rem;display:block;margin-bottom:.4rem}
+.roast-days .days{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.6rem}
+.roast-days .day{
+  font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  padding:.4rem .8rem;border-radius:999px;background:var(--parchment-soft);color:var(--text-soft);
+}
+.roast-days .day.on{background:var(--terracotta);color:var(--cream);box-shadow:0 4px 12px -3px rgba(193,68,14,.45)}
+
+/* ---------- Carta Editorial Boutique ---------- */
+.menu{background:var(--espresso);color:var(--cream);position:relative;overflow:hidden;padding:clamp(5rem,9vw,8rem) 0}
+.menu::before{
+  content:"";position:absolute;width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(193,68,14,.2) 0%,transparent 70%);
+  top:-200px;right:-180px;pointer-events:none;
+}
+.menu .section-lead{color:rgba(245,240,232,.75)}
+
+.menu-board{
+  display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,4vw,3.5rem);
+  margin-top:1.5rem;
+}
+.menu-column{display:flex;flex-direction:column;gap:1.6rem}
+.menu-col-header{
+  font-family:var(--mono);font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--caramel);border-bottom:1px solid rgba(212,165,116,.3);
+  padding-bottom:.6rem;margin-bottom:.4rem;display:flex;align-items:center;justify-content:space-between;
+}
+.menu-col-header span{opacity:.7}
+
+.menu-item{
+  background:rgba(245,240,232,.035);
+  border:1px solid rgba(245,240,232,.1);
+  border-radius:12px;padding:1.4rem 1.5rem;
+  display:flex;flex-direction:column;gap:.6rem;
+  transition:background .35s var(--ease),border-color .35s var(--ease),transform .35s var(--ease);
+}
+.menu-item:hover{
+  background:rgba(245,240,232,.075);
+  border-color:rgba(212,165,116,.45);
+  transform:translateY(-3px);
+}
+.item-head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
+.item-title{font-family:var(--serif);font-size:1.32rem;font-weight:600;color:var(--cream);display:flex;align-items:center;gap:.6rem}
+.item-price{font-family:var(--serif);font-size:1.35rem;font-weight:600;color:var(--caramel);white-space:nowrap}
+
+.item-meta{display:flex;align-items:center;gap:1rem;font-family:var(--mono);font-size:.7rem;color:rgba(245,240,232,.6);text-transform:uppercase;letter-spacing:.08em}
+.item-origin{color:var(--terracotta);font-weight:600}
+.roast-dots{display:inline-flex;gap:.25rem;align-items:center}
+.roast-dots i{width:7px;height:7px;border-radius:50%;background:rgba(245,240,232,.2)}
+.roast-dots i.on{background:var(--caramel)}
+
+.item-tasting{font-family:var(--sans);font-size:.88rem;color:rgba(245,240,232,.78);line-height:1.55}
+
+.item-order-link{
+  display:inline-flex;align-items:center;gap:.4rem;
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--caramel);margin-top:.3rem;opacity:.85;transition:opacity .2s,color .2s;
+}
+.item-order-link:hover{opacity:1;color:var(--cream)}
+
+/* Unified Order Banner */
+.menu-order-bar{
+  margin-top:3.5rem;background:rgba(36,26,24,.85);
+  border:1px solid rgba(212,165,116,.3);border-radius:14px;
+  padding:1.6rem 2rem;display:flex;align-items:center;justify-content:space-between;
+  gap:1.5rem;flex-wrap:wrap;backdrop-filter:blur(8px);
+}
+.order-bar-text h4{font-family:var(--serif);font-size:1.25rem;color:var(--cream);font-weight:600}
+.order-bar-text p{font-family:var(--sans);font-size:.88rem;color:rgba(245,240,232,.7);margin-top:.2rem}
+
+@media (max-width:900px){
+  .menu-board{grid-template-columns:1fr;gap:2rem}
+  .menu-order-bar{flex-direction:column;align-items:flex-start}
+  .menu-order-bar .btn{width:100%}
+}
+
+/* ---------- Orígenes (Pasaporte de Terroir) ---------- */
+.origins{background:var(--parchment);padding:clamp(5rem,8vw,7.5rem) 0}
+.origins-showcase{
+  display:grid;grid-template-columns:1.2fr 0.8fr;gap:clamp(2rem,4vw,3.5rem);
+  margin-top:2rem;align-items:start;
+}
+.origin-featured{
+  background:var(--cream);border:1px solid var(--line);border-radius:16px;
+  overflow:hidden;box-shadow:var(--shadow-md);display:flex;flex-direction:column;
+}
+.origin-img-box{position:relative;overflow:hidden;aspect-ratio:16/9}
+.origin-img-box img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.origin-featured:hover .origin-img-box img{transform:scale(1.04)}
+.origin-coords-badge{
+  position:absolute;top:1rem;left:1rem;background:rgba(26,17,16,.82);
+  color:var(--caramel);font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;
+  padding:.4rem .8rem;border-radius:6px;backdrop-filter:blur(6px);
+}
+
+.origin-featured-body{padding:1.8rem 2rem;display:flex;flex-direction:column;gap:.8rem}
+.origin-featured-body .place{font-family:var(--mono);font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--terracotta);font-weight:600}
+.origin-featured-body h3{font-family:var(--serif);font-size:1.8rem;color:var(--text)}
+.origin-featured-body p{font-family:var(--sans);font-size:.95rem;color:var(--text-soft);line-height:1.6}
+
+.origin-specs-row{
+  display:flex;gap:1.5rem;flex-wrap:wrap;border-top:1px solid var(--line);
+  padding-top:1rem;margin-top:.5rem;font-family:var(--mono);font-size:.75rem;color:var(--text-soft);
+}
+.origin-specs-row b{color:var(--text);font-weight:600}
+
+.origin-list{display:flex;flex-direction:column;gap:1.4rem}
+.origin-card-sm{
+  background:var(--cream);border:1px solid var(--line);border-radius:14px;
+  padding:1.4rem 1.6rem;display:flex;flex-direction:column;gap:.6rem;
+  box-shadow:var(--shadow-sm);transition:transform .35s var(--ease),border-color .35s var(--ease);
+}
+.origin-card-sm:hover{transform:translateY(-3px);border-color:var(--terracotta)}
+.origin-card-sm .place{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--terracotta);font-weight:600}
+.origin-card-sm h3{font-family:var(--serif);font-size:1.3rem;color:var(--text)}
+.origin-card-sm p{font-family:var(--sans);font-size:.88rem;color:var(--text-soft)}
+
+/* ---------- Brew Bar (Laboratorio de Extracción Interactivo) ---------- */
+.brew{background:var(--espresso);color:var(--cream);padding:clamp(5rem,9vw,8rem) 0;position:relative}
+.brew-tabs{
+  display:flex;gap:.8rem;overflow-x:auto;padding-bottom:.8rem;margin-top:2rem;
+  border-bottom:1px solid rgba(245,240,232,.15);scrollbar-width:none;
+}
+.brew-tabs::-webkit-scrollbar{display:none}
+.brew-tab-btn{
+  font-family:var(--mono);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;
+  padding:.7rem 1.3rem;border-radius:8px;border:1px solid rgba(245,240,232,.15);
+  background:rgba(245,240,232,.04);color:rgba(245,240,232,.7);cursor:pointer;
+  transition:all .3s var(--ease);white-space:nowrap;
+}
+.brew-tab-btn:hover{color:var(--cream);background:rgba(245,240,232,.09)}
+.brew-tab-btn.is-active{
+  background:var(--terracotta);color:var(--cream);border-color:var(--terracotta);
+  box-shadow:0 8px 20px -6px rgba(193,68,14,.6);
+}
+
+.brew-lab-panel{
+  display:grid;grid-template-columns:1.1fr 0.9fr;gap:clamp(2rem,5vw,4rem);
+  margin-top:2.5rem;align-items:center;
+}
+.brew-info-box h3{font-family:var(--serif);font-size:clamp(2rem,4vw,2.8rem);color:var(--cream);margin-bottom:.8rem}
+.brew-info-box p{font-family:var(--sans);font-size:1.02rem;color:rgba(245,240,232,.8);line-height:1.65;margin-bottom:1.6rem}
+
+.brew-taste-bars{display:flex;flex-direction:column;gap:.9rem;max-width:380px}
+.taste-bar-item{display:flex;flex-direction:column;gap:.3rem}
+.taste-bar-label{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,240,232,.7)}
+.taste-bar-track{width:100%;height:6px;background:rgba(245,240,232,.15);border-radius:4px;overflow:hidden}
+.taste-bar-fill{height:100%;background:var(--caramel);border-radius:4px;transition:width .5s var(--ease)}
+
+.brew-metrics-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;
+}
+.metric-card{
+  background:rgba(245,240,232,.045);border:1px solid rgba(245,240,232,.12);
+  border-radius:12px;padding:1.3rem;display:flex;flex-direction:column;gap:.3rem;
+  transition:border-color .3s;
+}
+.metric-card:hover{border-color:rgba(212,165,116,.4)}
+.metric-lbl{font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--caramel)}
+.metric-val{font-family:var(--mono);font-size:1.4rem;font-weight:600;color:var(--cream)}
+.metric-desc{font-family:var(--sans);font-size:.78rem;color:rgba(245,240,232,.6)}
+
+@media (max-width:900px){
+  .origins-showcase,.brew-lab-panel{grid-template-columns:1fr;gap:2rem}
+  .brew-metrics-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:480px){
+  .brew-metrics-grid{grid-template-columns:1fr}
+}
+
+/* ---------- Galeria ---------- */
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.gallery-item{border-radius:var(--radius);overflow:hidden;position:relative;aspect-ratio:1}
+.gallery-item.tall{aspect-ratio:3/3.8;grid-row:span 2}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease),filter .5s}
+.gallery-item:hover img{transform:scale(1.1)}
+.gallery-item::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(26,17,16,.55),transparent 45%);opacity:0;transition:opacity .4s}
+.gallery-item:hover::after{opacity:1}
+.gallery-item .cap{
+  position:absolute;left:1.1rem;bottom:1rem;z-index:2;color:var(--cream);
+  font-family:var(--serif);font-size:1.05rem;opacity:0;transform:translateY(8px);
+  transition:opacity .4s,transform .4s var(--ease);
+}
+.gallery-item:hover .cap{opacity:1;transform:none}
+
+/* ---------- Testimonios ---------- */
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.quote{
+  background:var(--cream);border:1px solid var(--line);border-radius:var(--radius);
+  padding:1.8rem;display:flex;flex-direction:column;gap:1.1rem;
+  transition:transform .4s var(--ease),box-shadow .4s;
+}
+.quote:hover{transform:translateY(-6px);box-shadow:0 22px 45px -26px rgba(26,17,16,.4)}
+.quote .stars{color:var(--terracotta);letter-spacing:.2em;font-size:.95rem}
+.quote p{font-family:var(--serif);font-style:italic;font-size:1.08rem;flex:1}
+.quote cite{font-style:normal;display:flex;align-items:center;gap:.8rem}
+.quote cite .ava{
+  width:44px;height:44px;border-radius:50%;background:var(--parchment-soft);
+  display:grid;place-items:center;font-family:var(--serif);font-weight:600;color:var(--terracotta);flex:none;
+}
+.quote cite b{font-size:.92rem;display:block}
+.quote cite span{font-size:.78rem;color:var(--text-soft)}
+
+/* ---------- Reservas ---------- */
+.book{background:var(--espresso);color:var(--cream);position:relative;overflow:hidden}
+.book::after{
+  content:"";position:absolute;width:480px;height:480px;border-radius:50%;
+  background:radial-gradient(circle,var(--caramel) 0%,transparent 68%);opacity:.14;
+  bottom:-200px;left:-140px;pointer-events:none;
+}
+.book-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(2.4rem,6vw,5rem);align-items:center;position:relative;z-index:1}
+.book-copy .section-lead{color:rgba(245,240,232,.72)}
+.book-points{display:grid;gap:1rem;margin-top:2rem}
+.book-point{display:flex;gap:1rem;align-items:flex-start}
+.book-point .ic{width:42px;height:42px;flex:none;border-radius:12px;background:rgba(245,240,232,.08);display:grid;place-items:center}
+.book-point .ic svg{width:20px;height:20px;color:var(--caramel)}
+.book-point b{font-size:.95rem;display:block}
+.book-point p{font-size:.84rem;color:rgba(245,240,232,.66)}
+.book-form{
+  background:rgba(245,240,232,.05);border:1px solid var(--line-light);
+  border-top:3px solid var(--terracotta);
+  border-radius:calc(var(--radius) + 6px);padding:clamp(1.6rem,3vw,2.4rem);
+  display:grid;gap:1.2rem;backdrop-filter:blur(8px);
+}
+.book-form .row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.field{display:grid;gap:.4rem}
+.field label{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,240,232,.6)}
+.field input,.field select{
+  font-family:var(--sans);font-size:1rem;color:var(--cream);
+  background:rgba(26,17,16,.5);border:1px solid var(--line-light);border-radius:12px;
+  padding:.85rem 1rem;width:100%;transition:border-color .3s;
+  -webkit-appearance:none;appearance:none;
+}
+.field input:focus,.field select:focus{outline:none;border-color:var(--caramel)}
+.field select option{color:var(--text);background:var(--cream)}
+.field input[type="date"]::-webkit-calendar-picker-indicator{filter:invert(.8) sepia(1) saturate(3) hue-rotate(-15deg);cursor:pointer}
+.book-form .btn{width:100%;justify-content:center;padding:1rem}
+.book-note{font-size:.76rem;color:rgba(245,240,232,.5);text-align:center}
+
+/* ---------- Contacto ---------- */
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.4rem}
+.contact-card{
+  background:var(--cream);border:1px solid var(--line);border-radius:var(--radius);
+  padding:1.8rem;transition:transform .4s var(--ease),box-shadow .4s;
+}
+.contact-card:hover{transform:translateY(-6px);box-shadow:0 22px 45px -26px rgba(26,17,16,.35)}
+.contact-card .ic{width:46px;height:46px;border-radius:14px;background:var(--parchment-soft);display:grid;place-items:center;margin-bottom:1.1rem}
+.contact-card .ic svg{width:22px;height:22px;color:var(--terracotta)}
+.contact-card h3{font-size:1.15rem;margin-bottom:.5rem}
+.contact-card p{font-size:.9rem;color:var(--text-soft);line-height:1.7}
+.contact-card a{color:var(--terracotta);font-weight:500;font-size:.9rem}
+.hours{width:100%;border-collapse:collapse;margin-top:.4rem}
+.hours td{font-size:.88rem;color:var(--text-soft);padding:.22rem 0}
+.hours td:last-child{text-align:right;font-weight:700;color:var(--text)}
+.hours td.today{color:var(--terracotta)}
+
+/* ---------- Footer ---------- */
+.footer{background:var(--espresso);color:var(--cream);padding:clamp(3rem,6vw,4.5rem) 0 2.2rem}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2.4rem;margin-bottom:2.6rem}
+.footer .logo{color:var(--cream);font-size:1.6rem}
+.footer .logo small{color:rgba(245,240,232,.5)}
+.footer-brand p{color:rgba(245,240,232,.6);font-size:.9rem;max-width:34ch;margin-top:1rem}
+.footer h4{font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--caramel);margin-bottom:1rem}
+.footer ul{display:grid;gap:.6rem}
+.footer a{color:rgba(245,240,232,.72);font-size:.92rem;transition:color .3s}
+.footer a:hover{color:var(--cream)}
+.footer-bottom{border-top:1px solid var(--line-light);padding-top:1.6rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.8rem;color:rgba(245,240,232,.5)}
+.footer-bottom a{color:var(--caramel)}
+
+/* ---------- WhatsApp float ---------- */
+.wa-float{
+  position:fixed;right:1.4rem;bottom:1.4rem;z-index:90;
+  width:58px;height:58px;border-radius:50%;
+  background:#25D366;display:grid;place-items:center;
+  box-shadow:0 14px 30px -10px rgba(37,211,102,.55);
+  transition:transform .3s var(--ease);
+}
+.wa-float:hover{transform:scale(1.1) rotate(6deg)}
+.wa-float svg{width:30px;height:30px;color:#fff}
+.wa-float::before{content:"";position:absolute;inset:0;border-radius:50%;background:#25D366;animation:ring 2.6s var(--ease) infinite;z-index:-1}
+@keyframes ring{0%{transform:scale(1);opacity:.55}100%{transform:scale(1.7);opacity:0}}
+
+/* ---------- Responsive ---------- */
+@media (max-width:900px){
+  .historia-grid,.book-grid{grid-template-columns:1fr}
+  .arch-sm{right:.5rem}
+  .origins-grid{columns:2}
+  .bento{grid-template-columns:repeat(2,1fr)}
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+  .quotes{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .hero-stats{gap:1.6rem}
+}
+@media (max-width:640px){
+  .nav-links{
+    position:fixed;inset:0 0 auto;z-index:99;
+    flex-direction:column;align-items:flex-start;gap:1.4rem;
+    background:var(--parchment);padding:6rem 8% 2.5rem;
+    transform:translateY(-100%);transition:transform .5s var(--ease);
+    box-shadow:0 30px 60px -30px rgba(26,17,16,.4);
+  }
+  .nav-links.is-open{transform:none}
+  .nav-links a{font-size:1.6rem;font-family:var(--serif);font-weight:600;width:100%}
+  .nav-links .btn{display:none}
+  .mobile-cta{display:inline-flex;margin-top:.6rem}
+  .hamburger{display:block}
+  .hamburger.is-open span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+  .hamburger.is-open span:nth-child(2){opacity:0}
+  .hamburger.is-open span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+  .origins-grid{columns:1}
+  .bento{grid-template-columns:1fr;grid-auto-rows:auto}
+  .bento-item.wide,.bento-item.tall{grid-column:span 1;grid-row:span 1;min-height:140px}
+  .book-form .row{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .hero h1{max-width:100%}
+  .scroll-hint{display:none}
+  .marquee{transform:rotate(-1.5deg) scale(1.04)}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav" aria-label="Navegación principal">
+  <div class="container nav-inner">
+    <a href="#inicio" class="logo">Kaffa<em>.</em><small>Especialidad</small></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#historia">Historia</a></li>
+      <li><a href="#carta">Carta</a></li>
+      <li><a href="#origenes">Orígenes</a></li>
+      <li><a href="#brew">Brew Bar</a></li>
+      <li><a href="#contacto">Visitanos</a></li>
+      <li><a href="https://wa.me/5492230000000?text=Hola%20Kaffa!%20Quiero%20hacer%20un%20pedido." target="_blank" rel="noopener" class="btn btn-primary mobile-cta">Pedir por WhatsApp</a></li>
+    </ul>
+    <a href="https://wa.me/5492230000000?text=Hola%20Kaffa!%20Quiero%20hacer%20un%20pedido." target="_blank" rel="noopener" class="btn btn-primary">Pedir por WhatsApp</a>
+    <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="inicio">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="hero-stamp reveal">
+          <span class="stamp-dot"></span> LOTE #248 · TOSTADO MARTES & VIERNES
+        </div>
+        <h1 class="reveal" data-delay="1">El café que se bebe <em class="hero-emph">despacio.</em></h1>
+        <p class="hero-sub reveal" data-delay="2">Cafetería de especialidad en Mar del Plata. Tostamos dos veces por semana en lotes de 5kg. Granos de origen recién tostados, servidos con calma y sin apuro.</p>
+        <div class="hero-ctas reveal" data-delay="3">
+          <a href="#carta" class="btn btn-primary">Ver la carta</a>
+          <a href="#reservas" class="btn btn-outline">Reservá tu mesa</a>
+        </div>
+      </div>
+      <div class="hero-visual reveal" data-delay="2">
+        <div class="hero-img-wrap">
+          <img src="https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Taza de café filtrado artesanal en Kaffa" loading="eager">
+        </div>
+        <!-- Live Roast Batch Stamp (Signature Element) -->
+        <div class="roast-badge-card">
+          <div class="badge-tag">TOSTADO EN VIVO · MDP</div>
+          <div class="badge-title">Etiopía Guji & Colombia</div>
+          <div class="badge-meta"><span>PRÓXIMO: VIERNES</span> · BATCH 5KG</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track" id="marqueeTrack">
+    <span>Origen</span><span>Tostado fresco</span><span>Cata a ciegas</span><span>Filtrado en calma</span><span>Tercera ola</span>
+    <span>Origen</span><span>Tostado fresco</span><span>Cata a ciegas</span><span>Filtrado en calma</span><span>Tercera ola</span>
+  </div>
+</div>
+
+<!-- HISTORIA -->
+<section class="historia" id="historia">
+  <div class="container historia-grid">
+    <div class="reveal" style="position:relative">
+      <div class="arch">
+        <img src="https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Barista preparando un café de filtrado" loading="lazy">
+      </div>
+      <div class="arch arch-sm">
+        <img src="https://images.pexels.com/photos/894695/pexels-photo-894695.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Granos de café tostados" loading="lazy">
+      </div>
+    </div>
+    <div class="historia-copy">
+      <span class="eyebrow reveal">Nuestra historia</span>
+      <h2 class="section-title reveal" data-delay="1">Poca cantidad, mucho oficio</h2>
+      <p class="reveal" data-delay="1">Kaffa nace de la región de Etiopía donde se descubrió el café, y del mismo impulso: querer que el origen se sienta en la taza. Compramos granos verdes a pequeños productores y los tostamos nosotros mismos, en lotes de 5 kilos, en el horno que se ve desde la barra.</p>
+      <p class="reveal" data-delay="2">No vendemos inventario estancado. Cada lote está fechado, cada bolsa dice cuándo se tostó, y cuando se termina, se termina. El café es fresco o no es.</p>
+      <div class="roast-days reveal" data-delay="2">
+        <b>Días de tostado — fresco garantizado</b>
+        <span style="font-size:.86rem;color:var(--text-soft)">Tostamos martes y viernes. Lo que pedís hoy se tuesta (o ya está) de esa semana.</span>
+        <div class="days">
+          <span class="day">Lun</span><span class="day on">Mar</span><span class="day">Mié</span><span class="day">Jue</span><span class="day on">Vie</span><span class="day">Sáb</span><span class="day">Dom</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CARTA EDITORIAL BOUTIQUE -->
+<section class="menu" id="carta">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow eyebrow--light reveal">La carta</span>
+      <h2 class="section-title reveal" data-delay="1">Elegí tu taza <span style="color:var(--caramel)">de hoy</span></h2>
+      <p class="section-lead reveal" data-delay="2">Cada café lleva notas de cata y su nivel de tostado. Pedilo por WhatsApp y te espera listo en la barra.</p>
+    </div>
+
+    <div class="menu-board">
+      <!-- COLUMNA 1: ESPRESSO & BEBIDAS -->
+      <div class="menu-column reveal">
+        <div class="menu-col-header">
+          <span>01 · TAZAS DE ESPRESSO & LECHE</span>
+          <span>SERVIDAS AL MOMENTO</span>
+        </div>
+
+        <article class="menu-item">
+          <div class="item-head">
+            <h3 class="item-title">Flat White</h3>
+            <span class="item-price">$3.800</span>
+          </div>
+          <div class="item-meta">
+            <span class="item-origin">Blend Kaffa</span>
+            <span class="roast-dots"><span>TOSTADO</span> <i class="on"></i><i class="on"></i><i></i><i></i><i></i></span>
+          </div>
+          <p class="item-tasting">Doble shot, microfoam sedoso. Notas de caramelo y avellana. El clásico que pide repetir.</p>
+          <a href="https://wa.me/5492230000000?text=Hola%20Kaffa!%20Quiero%20pedir%3A%20%F0%9F%98%8B%20Flat%20White%20(%243.800)." target="_blank" rel="noopener" class="item-order-link">Pedir este café →</a>
+        </article>
+
+        <article class="menu-item">
+          <div class="item-head">
+            <h3 class="item-title">Cortado Miel</h3>
+            <span class="item-price">$3.200</span>
+          </div>
+          <div class="item-meta">
+            <span class="item-origin">Colombia</span>
+            <span class="roast-dots"><span>TOSTADO</span> <i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span>
+          </div>
+          <p class="item-tasting">Espresso, leche al vapor y una cucharada de miel del sudeste. Dulce, suave, adictivo.</p>
+          <a href="https://wa.me/5492230000000?text=Hola%20Kaffa!%20Quiero%20pedir%3A%20Cortado%20Miel%20(%243.200)." target="_blank" rel="noopener" class="item-order-link">Pedir este café →</a>
+        </article>
+
+        <article class="menu-item">
+          <div class="item-head">
+            <h3 class="item-title">Cold Brew Nitro</h3>
+            <span class="item-price">$4.800</span>
+          </div>
+          <div class="item-meta">
+            <span class="item-origin">Tostado Medio</span>
+            <span class="roast-dots"><span>TOSTADO</span> <i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
+          </div>
+          <p class="item-tasting">Extracción en frío 18 horas, gasificada con nitrógeno. Cuerpo de stout, notas de cacao amargo.</p>
+          <a href="https://wa.me/5492230000000?text=Hola%20Kaffa!%20Quiero%20pedir%3A%20Cold%20Brew%20Nitro%20(%244.800)." target="_blank" rel="noopener" class="item-order-link">Pedir este café →</a>
+        </article>
+      </div>
+
+      <!-- COLUMNA 2: FILTRADOS & ESPECIALES -->
+      <div class="menu-column reveal" data-delay="1">
+        <div class="menu-col-header">
+          <span>02 · FILTRADOS, BOLLERÍA & GRANOS</span>
+          <span>EDICIONES LIMITADAS</span>
+        </div>
+
+        <article class="menu-item">
+          <div class="item-head">
+            <h3 class="item-title">V60 · Etiopía Guji</h3>
+            <span class="item-price">$4.200</span>
+          </div>
+          <div class="item-meta">
+            <span class="item-origin">Tostado Claro</span>
+            <span class="roast-dots"><span>TOSTADO</span> <i class="on"></i><i></i><i></i><i></i><i></i></span>
+          </div>
+          <p class="item-tasting">Jazmín, bergamota y té negro. Filtrado en V60, servido en calma. Lote tostado esta semana.</p>
+          <a href="https://wa.me/5492230000000?text=Hola%20Kaffa!%20Quiero%20pedir%3A%20V60%20Etiop%C3%ADa%20Guji%20(%244.200)." target="_blank" rel="noopener" class="item-order-link">Pedir este café →</a>
+        </article>
+
+        <article class="menu-item">
+          <div class="item-head">
+            <h3 class="item-title">Cardamomo Roll</h3>
+            <span class="item-price">$2.900</span>
+          </div>
+          <div class="item-meta">
+            <span class="item-origin">Horno Propio</span>
+            <span class="roast-dots"><span>BOLLERÍA</span></span>
+          </div>
+          <p class="item-tasting">Rollo sueco de cardamomo horneado cada mañana. Va perfecto con un V60.</p>
+          <a href="https://wa.me/5492230000000?text=Hola%20Kaffa!%20Quiero%20pedir%3A%20Cardamomo%20Roll%20(%242.900)." target="_blank" rel="noopener" class="item-order-link">Pedir para acompañar →</a>
+        </article>
+
+        <article class="menu-item">
+          <div class="item-head">
+            <h3 class="item-title">Granos 250g · Origen</h3>
+            <span class="item-price">$9.500</span>
+          </div>
+          <div class="item-meta">
+            <span class="item-origin">Para Casa</span>
+            <span class="roast-dots"><span>ELEGÍ NIVEL</span> <i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>
+          </div>
+          <p class="item-tasting">Tu origen favorito, molido a tu gusto o en grano entero. Fechado y tostado esta semana.</p>
+          <a href="https://wa.me/5492230000000?text=Hola%20Kaffa!%20Quiero%20pedir%3A%20Granos%20250g%20(%249.500)." target="_blank" rel="noopener" class="item-order-link">Pedir bolsa de granos →</a>
+        </article>
+      </div>
+    </div>
+
+    <!-- Unified Order Banner -->
+    <div class="menu-order-bar reveal" data-delay="2">
+      <div class="order-bar-text">
+        <h4>¿Querés hacer tu pedido para retirar?</h4>
+        <p>Escribinos por WhatsApp y lo preparamos fresco para cuando llegues a la barra.</p>
+      </div>
+      <a href="https://wa.me/5492230000000?text=Hola%20Kaffa!%20Quiero%20hacer%20un%20pedido." target="_blank" rel="noopener" class="btn btn-primary">
+        Pedir por WhatsApp directo
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ORIGENES (Pasaporte de Terroir) -->
+<section class="origins" id="origenes">
+  <div class="container">
+    <div class="section-head" style="display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap">
+      <div>
+        <span class="eyebrow reveal">Orígenes</span>
+        <h2 class="section-title reveal" data-delay="1">De dónde viene lo que tomás</h2>
+      </div>
+      <p class="section-lead reveal" data-delay="2" style="max-width:36ch;margin:0">Rotamos granos verdes de pequeños productores. Este mes, tres terroirs con perfil de cata único.</p>
+    </div>
+
+    <div class="origins-showcase">
+      <!-- Origen Protagonista Principal -->
+      <article class="origin-featured reveal">
+        <div class="origin-img-box">
+          <img src="https://images.pexels.com/photos/1174172/pexels-photo-1174172.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Plantación de café en Etiopía Guji" loading="lazy">
+          <span class="origin-coords-badge">5°53'N 38°55'E · 2.100 MSNM</span>
+        </div>
+        <div class="origin-featured-body">
+          <span class="place">Origen Protagonista del Mes</span>
+          <h3>Etiopía · Guji (La cuna del café)</h3>
+          <p>Grano de variedad silvestre procesado mediante lavado en estación de beneficio de alta montaña. Ofrece una acidez cítrica brillante, notas florales prominentes y un retrogusto limpio que recuerda al té de jazmín.</p>
+          <div class="origin-specs-row">
+            <span>PROCESO: <b>LAVADO</b></span>
+            <span>TOSTADO: <b>CLARO</b></span>
+            <span>NOTAS: <b>JAZMÍN · BERGAMOTA · TÉ NEGRO</b></span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Lista Secundaria de Orígenes -->
+      <div class="origin-list reveal" data-delay="1">
+        <article class="origin-card-sm">
+          <span class="place">Colombia · Huila · 1.850 MSNM</span>
+          <h3>Miel y caña</h3>
+          <p>Proceso honey artesanal. Notas de caramelo, azúcar morena y un cuerpo envolvente de tostado medio.</p>
+        </article>
+
+        <article class="origin-card-sm">
+          <span class="place">Brasil · Cerrado · 1.100 MSNM</span>
+          <h3>Chocolate y nuez</h3>
+          <p>Proceso natural secado al sol. Taza dulce, estable y balanceada, ideal para espressos y bebidas con leche.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BREW BAR (Laboratorio de Extracción Interactivo) -->
+<section class="brew" id="brew">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow eyebrow--light reveal">Brew bar</span>
+      <h2 class="section-title reveal" data-delay="1">Seis formas de tomar lo mismo, <span style="color:var(--caramel)">y que se sientan distintas</span></h2>
+      <p class="section-lead reveal" data-delay="2">El mismo grano cambia radicalmente según la física de extracción. Seleccioná un método para ver sus parámetros técnicos.</p>
+    </div>
+
+    <!-- Tab Buttons -->
+    <div class="brew-tabs reveal" id="brewTabs" role="tablist" aria-label="Métodos de filtrado">
+      <button class="brew-tab-btn is-active" data-method="v60">01. V60</button>
+      <button class="brew-tab-btn" data-method="espresso">02. Espresso</button>
+      <button class="brew-tab-btn" data-method="chemex">03. Chemex</button>
+      <button class="brew-tab-btn" data-method="aeropress">04. AeroPress</button>
+      <button class="brew-tab-btn" data-method="coldbrew">05. Cold Brew Nitro</button>
+      <button class="brew-tab-btn" data-method="sifon">06. Sifón</button>
+    </div>
+
+    <!-- Lab Display Panel -->
+    <div class="brew-lab-panel reveal" data-delay="1">
+      <div class="brew-info-box">
+        <h3 id="brewTitle">V60 Pour-Over</h3>
+        <p id="brewDesc">Claridad total en la taza. El filtro de papel cónico resalta la acidez cítrica y las notas florales complejas. Nuestro método recomendado para lotes lavados de Etiopía.</p>
+        <div class="brew-taste-bars">
+          <div class="taste-bar-item">
+            <div class="taste-bar-label"><span>Acidez</span><span id="acidityVal">Alta (90%)</span></div>
+            <div class="taste-bar-track"><div class="taste-bar-fill" id="acidityBar" style="width:90%"></div></div>
+          </div>
+          <div class="taste-bar-item">
+            <div class="taste-bar-label"><span>Cuerpo</span><span id="bodyVal">Sedoso (50%)</span></div>
+            <div class="taste-bar-track"><div class="taste-bar-fill" id="bodyBar" style="width:50%"></div></div>
+          </div>
+          <div class="taste-bar-item">
+            <div class="taste-bar-label"><span>Dulzor</span><span id="sweetVal">Medio (70%)</span></div>
+            <div class="taste-bar-track"><div class="taste-bar-fill" id="sweetBar" style="width:70%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Technical Metrics Grid -->
+      <div class="brew-metrics-grid">
+        <div class="metric-card">
+          <span class="metric-lbl">Ratio Agua/Café</span>
+          <span class="metric-val" id="mRatio">1 : 16</span>
+          <span class="metric-desc">15g café / 240ml agua</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-lbl">Tiempo Extracción</span>
+          <span class="metric-val" id="mTime">2:45 min</span>
+          <span class="metric-desc">Vertido continuo en espiral</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-lbl">Temperatura Agua</span>
+          <span class="metric-val" id="mTemp">92°C</span>
+          <span class="metric-desc">Agua de vertiente filtrada</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-lbl">Molienda</span>
+          <span class="metric-val" id="mGrind">Media-Fina</span>
+          <span class="metric-desc">Molino de muelas cónicas</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIA -->
+<section class="gallery-sec">
+  <div class="container">
+    <div class="section-head" style="display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap">
+      <div>
+        <span class="eyebrow reveal">El local</span>
+        <h2 class="section-title reveal" data-delay="1">Vení a verlo</h2>
+      </div>
+      <p class="section-lead reveal" data-delay="2" style="max-width:34ch;margin:0">Rincón de barro, madera y luz de tarde. La barra da a la calle y el horno da a la barra.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item tall reveal"><img src="https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Taza de café con leche con arte" loading="lazy"><span class="cap">Latte art diario</span></div>
+      <div class="gallery-item reveal"><img src="https://images.pexels.com/photos/374147/pexels-photo-374147.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Personas conversando en la cafetería" loading="lazy"><span class="cap">Rincón de charlas</span></div>
+      <div class="gallery-item reveal" data-delay="1"><img src="https://images.pexels.com/photos/376560/pexels-photo-376560.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Café de especialidad servido" loading="lazy"><span class="cap">Tercera ola</span></div>
+      <div class="gallery-item reveal" data-delay="1"><img src="https://images.pexels.com/photos/1695052/pexels-photo-1695052.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Barista sirviendo café" loading="lazy"><span class="cap">La barra</span></div>
+      <div class="gallery-item reveal" data-delay="2"><img src="https://images.pexels.com/photos/1233427/pexels-photo-1233427.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Café y postre sobre mesa" loading="lazy"><span class="cap">Pausa dulce</span></div>
+      <div class="gallery-item reveal" data-delay="2"><img src="https://images.pexels.com/photos/509376/pexels-photo-509376.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Mesas de la cafetería" loading="lazy"><span class="cap">Tardes largas</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section>
+  <div class="container">
+    <div class="section-head" style="text-align:center">
+      <span class="eyebrow reveal" style="justify-content:center">Regulars</span>
+      <h2 class="section-title reveal" data-delay="1">Los que vuelven todos los días</h2>
+    </div>
+    <div class="quotes">
+      <blockquote class="quote reveal">
+        <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+        <p>"Probé el Guji en V60 y dejé de tomar café en cualquier lado. El nivel de detalle en la barra es de otro planeta."</p>
+        <cite>
+          <span class="ava">MP</span>
+          <div><b>Martina P.</b><span>Diseñadora · La Perla</span></div>
+        </cite>
+      </blockquote>
+      <blockquote class="quote reveal" data-delay="1">
+        <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+        <p>"Trabajo acá todas las mañanas con un flat white y no me van a echar jamás. Buen wifi, mejor café."</p>
+        <cite>
+          <span class="ava">JO</span>
+          <div><b>Julián O.</b><span>Desarrollador · remoto</span></div>
+        </cite>
+      </blockquote>
+      <blockquote class="quote reveal" data-delay="2">
+        <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+        <p>"El cold brew nitro es el mejor de la ciudad. Y los días de tostado te avisan qué entró. Eso no lo hace nadie."</p>
+        <cite>
+          <span class="ava">CG</span>
+          <div><b>Carla G.</b><span>Docente · Playa Grande</span></div>
+        </cite>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVAS -->
+<section class="book" id="reservas">
+  <div class="container book-grid">
+    <div class="book-copy">
+      <span class="eyebrow eyebrow--light reveal">Reservas</span>
+      <h2 class="section-title reveal" data-delay="1">Separamos tu mesa,<br>no te apuramos</h2>
+      <p class="section-lead reveal" data-delay="2">Elegí día, hora y cuántos son. Te confirmamos por WhatsApp y preparamos la mesa junto a la ventana si la pedís.</p>
+      <div class="book-points">
+        <div class="book-point reveal" data-delay="1">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16v4H4zM7 8v12M17 8v12M10 12h4"/></svg></span>
+          <div><b>Confirmación inmediata</b><p>Respondemos en menos de 5 minutos en horario de apertura.</p></div>
+        </div>
+        <div class="book-point reveal" data-delay="2">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+          <div><b>Mesa para 2 horas</b><p>El café es para quedarse. Sin apuro, sin reloj en la mesa.</p></div>
+        </div>
+      </div>
+    </div>
+    <form class="book-form reveal" data-delay="1" id="bookForm" aria-label="Formulario de reserva">
+      <div class="row">
+        <div class="field">
+          <label for="bkName">Tu nombre</label>
+          <input type="text" id="bkName" name="nombre" required placeholder="María López">
+        </div>
+        <div class="field">
+          <label for="bkGuests">Personas</label>
+          <select id="bkGuests" name="personas">
+            <option value="1">1 persona</option>
+            <option value="2" selected>2 personas</option>
+            <option value="3">3 personas</option>
+            <option value="4">4 personas</option>
+            <option value="5">5 personas</option>
+            <option value="6">6 o más</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label for="bkDate">Fecha</label>
+          <input type="date" id="bkDate" name="fecha" required>
+        </div>
+        <div class="field">
+          <label for="bkTime">Hora</label>
+          <select id="bkTime" name="hora">
+            <option value="09:00">09:00</option>
+            <option value="10:00">10:00</option>
+            <option value="11:00">11:00</option>
+            <option value="12:00">12:00</option>
+            <option value="16:00">16:00</option>
+            <option value="17:00">17:00</option>
+            <option value="18:00" selected>18:00</option>
+            <option value="19:00">19:00</option>
+            <option value="20:00">20:00</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label for="bkMsg">Algo más (opcional)</label>
+        <input type="text" id="bkMsg" name="mensaje" placeholder="Mesa junto a la ventana, silla para bebé…">
+      </div>
+      <button type="submit" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.3A10 10 0 1 0 12 2zm4.8 13.5c-.2.6-1.2 1.1-1.7 1.2-.5.1-.9.2-2.6-.5-2-1-3.4-3.2-3.5-3.4-.1-.2-.9-1.2-.9-2.2s.6-1.6.8-1.8c.2-.2.5-.3.6-.3h.5c.2 0 .4-.1.6.4.2.6.8 1.9.8 2 .1.1.1.2 0 .4l-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.4 1.8 2.2 1.2 1 2 1.3 2.3 1.4.3.1.4.1.6-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.6-.2.3.1 1.7.8 2 1 .3.1.4.2.5.3 0 .1 0 .7-.3 1.3z"/></svg>
+        Reservar por WhatsApp
+      </button>
+      <p class="book-note">Abrimos de martes a domingo, 8:00 a 20:00. Lunes descansamos (y tostamos).</p>
+    </form>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow reveal">Visitanos</span>
+      <h2 class="section-title reveal" data-delay="1">Estamos en el centro,<br>con olor a tostado</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card reveal">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+        <h3>Dirección</h3>
+        <p>Av. Colón 2140,<br>Mar del Plata, Buenos Aires</p>
+        <a href="https://maps.google.com/?q=Av+Colon+2140+Mar+del+Plata" target="_blank" rel="noopener">Cómo llegar →</a>
+      </div>
+      <div class="contact-card reveal" data-delay="1">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+        <h3>Horarios</h3>
+        <table class="hours" aria-label="Horarios de atención">
+          <tr><td>Lunes</td><td class="today">Cerrado · tostamos</td></tr>
+          <tr><td>Mar a Vie</td><td>08:00 – 20:00</td></tr>
+          <tr><td>Sáb y Dom</td><td>09:00 – 21:00</td></tr>
+        </table>
+      </div>
+      <div class="contact-card reveal" data-delay="2">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.3A10 10 0 1 0 12 2z"/></svg></span>
+        <h3>Pedidos & reservas</h3>
+        <p>WhatsApp directo a la barra.<br>Respondemos en horario de apertura.</p>
+        <a href="https://wa.me/5492230000000" target="_blank" rel="noopener">+54 9 223 000-0000 →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#inicio" class="logo">Kaffa<em>.</em><small>Especialidad</small></a>
+        <p>Café de origen, tostado fresco y servido con calma. Desde Mar del Plata, para los que se toman el café en serio.</p>
+      </div>
+      <div>
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="#historia">Historia</a></li>
+          <li><a href="#carta">Carta</a></li>
+          <li><a href="#origenes">Orígenes</a></li>
+          <li><a href="#brew">Brew Bar</a></li>
+          <li><a href="#reservas">Reservas</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="https://wa.me/5492230000000" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://maps.google.com/?q=Av+Colon+2140+Mar+del+Plata" target="_blank" rel="noopener">Ubicación</a></li>
+          <li><a href="mailto:hola@kaffacafe.com.ar">hola@kaffacafe.com.ar</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year">2026</span> Kaffa Café de Especialidad. Todos los derechos reservados.</span>
+      <span>Hecho con café y un poco de barro.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a class="wa-float" href="https://wa.me/5492230000000?text=Hola%20Kaffa!%20Quiero%20hacer%20un%20pedido." target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.3A10 10 0 1 0 12 2zm4.8 13.5c-.2.6-1.2 1.1-1.7 1.2-.5.1-.9.2-2.6-.5-2-1-3.4-3.2-3.5-3.4-.1-.2-.9-1.2-.9-2.2s.6-1.6.8-1.8c.2-.2.5-.3.6-.3h.5c.2 0 .4-.1.6.4.2.6.8 1.9.8 2 .1.1.1.2 0 .4l-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.4 1.8 2.2 1.2 1 2 1.3 2.3 1.4.3.1.4.1.6-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.6-.2.3.1 1.7.8 2 1 .3.1.4.2.5.3 0 .1 0 .7-.3 1.3z"/></svg>
+</a>
+
+<script>
+(function(){
+  "use strict";
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- Nav scroll ---------- */
+  var nav = document.getElementById("nav");
+  function onScroll(){
+    nav.classList.toggle("is-scrolled", window.scrollY > 40);
+  }
+  window.addEventListener("scroll", onScroll, {passive:true});
+  onScroll();
+
+  /* ---------- Reveal on scroll ---------- */
+  var reveals = document.querySelectorAll(".reveal");
+  if (reduce || !("IntersectionObserver" in window)) {
+    reveals.forEach(function(el){ el.classList.add("is-in"); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); }
+      });
+    }, {threshold:0.12, rootMargin:"0px 0px -6% 0px"});
+    reveals.forEach(function(el){ io.observe(el); });
+  }
+  /* ---------- Brew Bar Interactivo ---------- */
+  var brewData = {
+    v60: {
+      title: "V60 Pour-Over",
+      desc: "Claridad total en la taza. El filtro de papel cónico resalta la acidez cítrica y las notas florales complejas. Nuestro método recomendado para lotes lavados de Etiopía.",
+      acidity: "90%", acidityLabel: "Alta (90%)",
+      body: "50%", bodyLabel: "Sedoso (50%)",
+      sweet: "70%", sweetLabel: "Medio (70%)",
+      ratio: "1 : 16", ratioDesc: "15g café / 240ml agua",
+      time: "2:45 min", timeDesc: "Vertido continuo en espiral",
+      temp: "92°C", tempDesc: "Agua de vertiente filtrada",
+      grind: "Media-Fina", grindDesc: "Molino de muelas cónicas"
+    },
+    espresso: {
+      title: "Espresso de Alta Presión",
+      desc: "30 segundos de extracción bajo 9 bares de presión. Cuerpo denso, emulsión de aceites naturales y crema dorada con notas de chocolate amargo.",
+      acidity: "60%", acidityLabel: "Media (60%)",
+      body: "95%", bodyLabel: "Muy Denso (95%)",
+      sweet: "85%", sweetLabel: "Intenso (85%)",
+      ratio: "1 : 2", ratioDesc: "18g café / 36ml taza",
+      time: "0:30 min", timeDesc: "Presión 9 Bar constante",
+      temp: "93°C", tempDesc: "Caldera de precisión PID",
+      grind: "Muy Fina", grindDesc: "Micrométrica"
+    },
+    chemex: {
+      title: "Chemex Filter",
+      desc: "Filtro de papel de triple grosor que retiene todos los aceites pesados. Produce una taza extraordinariamente limpia, brillante y de textura sedosa.",
+      acidity: "85%", acidityLabel: "Alta-Limpia (85%)",
+      body: "40%", bodyLabel: "Ligero (40%)",
+      sweet: "75%", sweetLabel: "Dulce (75%)",
+      ratio: "1 : 15", ratioDesc: "30g café / 450ml agua",
+      time: "4:00 min", timeDesc: "Inclusión lenta en 3 fases",
+      temp: "94°C", tempDesc: "Temperatura de infusión alta",
+      grind: "Media-Gruesa", grindDesc: "Granulometría uniforme"
+    },
+    aeropress: {
+      title: "AeroPress Immersion",
+      desc: "Inmersión total combinada con presión neumática manual. Extrae máxima dulzura y notas afrutadas sin amargor residual.",
+      acidity: "70%", acidityLabel: "Balanceada (70%)",
+      body: "75%", bodyLabel: "Medio-Alto (75%)",
+      sweet: "90%", sweetLabel: "Alta (90%)",
+      ratio: "1 : 14", ratioDesc: "16g café / 225ml agua",
+      time: "1:30 min", timeDesc: "Inmersión + Émbolo manual",
+      temp: "88°C", tempDesc: "Temperatura moderada",
+      grind: "Fina-Media", grindDesc: "Molido versátil"
+    },
+    coldbrew: {
+      title: "Cold Brew Nitro",
+      desc: "18 horas de infusión lenta en agua helada, gasificada con nitrógeno puro. Sin acidez agresiva, textura cremosamente similar a una cerveza stout.",
+      acidity: "30%", acidityLabel: "Muy Baja (30%)",
+      body: "90%", bodyLabel: "Cremoso Nitro (90%)",
+      sweet: "95%", sweetLabel: "Caramelo (95%)",
+      ratio: "1 : 8", ratioDesc: "100g café / 800ml agua",
+      time: "18:00 hs", timeDesc: "Extracción continua en frío",
+      temp: "15°C", tempDesc: "Agua helada filtrada",
+      grind: "Gruesa", grindDesc: "Corte grueso artesanal"
+    },
+    sifon: {
+      title: "Sifón Japonés (VacPot)",
+      desc: "Inmersión al vacío por transferencia térmica. Combina la riqueza de cuerpo de una prensa francesa con la claridad de un filtro de tela.",
+      acidity: "75%", acidityLabel: "Brillante (75%)",
+      body: "80%", bodyLabel: "Redondo (80%)",
+      sweet: "80%", sweetLabel: "Alta (80%)",
+      ratio: "1 : 15", ratioDesc: "20g café / 300ml agua",
+      time: "2:00 min", timeDesc: "Vacío térmico 2 etapas",
+      temp: "95°C", tempDesc: "Vapor de alta temperatura",
+      grind: "Media", grindDesc: "Molienda media exacta"
+    }
+  };
+
+  var tabBtns = document.querySelectorAll(".brew-tab-btn");
+  tabBtns.forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var method = this.getAttribute("data-method");
+      if (!brewData[method]) return;
+      tabBtns.forEach(function(b){ b.classList.remove("is-active"); });
+      this.classList.add("is-active");
+
+      var d = brewData[method];
+      document.getElementById("brewTitle").textContent = d.title;
+      document.getElementById("brewDesc").textContent = d.desc;
+      document.getElementById("acidityVal").textContent = d.acidityLabel;
+      document.getElementById("acidityBar").style.width = d.acidity;
+      document.getElementById("bodyVal").textContent = d.bodyLabel;
+      document.getElementById("bodyBar").style.width = d.body;
+      document.getElementById("sweetVal").textContent = d.sweetLabel;
+      document.getElementById("sweetBar").style.width = d.sweet;
+      document.getElementById("mRatio").textContent = d.ratio;
+      document.getElementById("mTime").textContent = d.time;
+      document.getElementById("mTemp").textContent = d.temp;
+      document.getElementById("mGrind").textContent = d.grind;
+    });
+  });
+  /* ---------- Hamburger ---------- */
+  var burger = document.getElementById("hamburger");
+  var links = document.getElementById("navLinks");
+  function closeMenu(){ links.classList.remove("is-open"); burger.classList.remove("is-open"); burger.setAttribute("aria-expanded","false"); }
+  burger.addEventListener("click", function(){
+    var open = links.classList.toggle("is-open");
+    burger.classList.toggle("is-open", open);
+    burger.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  links.querySelectorAll("a").forEach(function(a){ a.addEventListener("click", closeMenu); });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape") closeMenu(); });
+
+  /* ---------- Año dinámico ---------- */
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  /* ---------- Reserva → WhatsApp ---------- */
+  var form = document.getElementById("bookForm");
+  var dateInput = document.getElementById("bkDate");
+  var today = new Date().toISOString().split("T")[0];
+  dateInput.min = today;
+  dateInput.value = today;
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    var nombre = document.getElementById("bkName").value.trim() || "S/T";
+    var personas = document.getElementById("bkGuests").value;
+    var fecha = dateInput.value;
+    var hora = document.getElementById("bkTime").value;
+    var msg = document.getElementById("bkMsg").value.trim();
+    var texto = "Hola Kaffa! Quiero reservar una mesa." +
+      "\nNombre: " + nombre +
+      "\nPersonas: " + personas +
+      "\nFecha: " + fecha +
+      "\nHora: " + hora +
+      (msg ? "\nNota: " + msg : "");
+    window.open("https://wa.me/5492230000000?text=" + encodeURIComponent(texto), "_blank", "noopener");
+  });
+})();
+</script>
+</body>
+</html>

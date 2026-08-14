@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auditoría de Negocio - MS Refrigeración</title>
+  <style>
+    :root {
+      --color-primary: #0a1b3a;
+      --color-accent: #00a8e8;
+      --color-success: #38a169;
+      --color-warning: #ecc94b;
+      --color-danger: #e53e3e;
+      --color-bg: #f7fafc;
+      --color-card: #ffffff;
+      --color-text: #2d3748;
+      --color-text-muted: #718096;
+      --border-radius: 12px;
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--color-primary), #162a56);
+      color: white;
+      padding: 2.5rem;
+      border-radius: var(--border-radius);
+      box-shadow: 0 10px 25px rgba(10, 27, 58, 0.15);
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(0, 168, 232, 0.2) 0%, rgba(0,0,0,0) 70%);
+      border-radius: 50%;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .header-info h1 {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    .header-info p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1rem;
+    }
+
+    .score-badge {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      padding: 1.5rem;
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      text-align: center;
+    }
+
+    .score-badge.warning {
+      border-color: var(--color-warning);
+    }
+
+    .score-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--color-warning);
+    }
+
+    .score-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-top: 0.25rem;
+    }
+
+    /* Resumen Ejecutivo */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .summary-card {
+      background-color: var(--color-card);
+      padding: 1.5rem;
+      border-radius: var(--border-radius);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+      border-left: 4px solid var(--color-accent);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .summary-card.critical {
+      border-left-color: var(--color-danger);
+    }
+
+    .summary-card.warning {
+      border-left-color: var(--color-warning);
+    }
+
+    .summary-card.success {
+      border-left-color: var(--color-success);
+    }
+
+    .summary-card h3 {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--color-text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .summary-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    /* Secciones */
+    .section-card {
+      background-color: var(--color-card);
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      padding-bottom: 0.75rem;
+    }
+
+    /* Hallazgos y Fugas */
+    .finding-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .finding-item {
+      background-color: rgba(229, 62, 62, 0.03);
+      border: 1px solid rgba(229, 62, 62, 0.1);
+      padding: 1.5rem;
+      border-radius: var(--border-radius);
+      display: flex;
+      gap: 1rem;
+    }
+
+    .finding-badge {
+      background-color: var(--color-danger);
+      color: white;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      align-self: flex-start;
+      white-space: nowrap;
+    }
+
+    .finding-details h4 {
+      font-size: 1.1rem;
+      color: var(--color-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .finding-details p {
+      color: var(--color-text);
+      font-size: 0.95rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .finding-details ul {
+      margin-left: 1.5rem;
+      margin-bottom: 0.75rem;
+      font-size: 0.95rem;
+      color: var(--color-text);
+    }
+
+    /* Categorías */
+    .category-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .category-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      border-radius: var(--border-radius);
+      border: 1px solid rgba(0,0,0,0.05);
+      transition: var(--transition);
+    }
+
+    .category-row:hover {
+      background-color: rgba(0, 168, 232, 0.02);
+      border-color: rgba(0, 168, 232, 0.1);
+    }
+
+    .category-info {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex: 1;
+    }
+
+    .category-icon {
+      width: 40px;
+      height: 40px;
+      background-color: rgba(10, 27, 58, 0.05);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-primary);
+      font-weight: 700;
+    }
+
+    .category-details h5 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--color-primary);
+    }
+
+    .category-progress {
+      width: 150px;
+      height: 8px;
+      background-color: #edf2f7;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 0.25rem;
+    }
+
+    .category-progress-bar {
+      height: 100%;
+      background-color: var(--color-accent);
+      border-radius: 4px;
+    }
+
+    .category-progress-bar.success { background-color: var(--color-success); }
+    .category-progress-bar.warning { background-color: var(--color-warning); }
+    .category-progress-bar.danger { background-color: var(--color-danger); }
+
+    .category-score {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      width: 60px;
+      text-align: right;
+    }
+
+    /* Plan de Acción */
+    .action-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    .action-table th, .action-table td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .action-table th {
+      font-weight: 600;
+      color: var(--color-primary);
+      background-color: rgba(10, 27, 58, 0.02);
+    }
+
+    .priority-indicator {
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+    }
+
+    .priority-indicator.high { color: var(--color-danger); }
+    .priority-indicator.medium { color: var(--color-warning); }
+    .priority-indicator.low { color: var(--color-success); }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      
+      .finding-item {
+        flex-direction: column;
+      }
+      
+      .category-row {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+      }
+      
+      .category-score {
+        align-self: flex-end;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <div class="header-content">
+        <div class="header-info">
+          <h1>Auditoría de Negocio - MS Refrigeración</h1>
+          <p>Análisis de embudo de ventas, experiencia del cliente (UX) e incoherencias de conversión.</p>
+        </div>
+        <div class="score-badge warning">
+          <span class="score-number">72</span>
+          <span class="score-label">Puntaje Negocio</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Resumen Ejecutivo -->
+    <div class="summary-grid">
+      <div class="summary-card critical">
+        <h3>Fugas de Leads</h3>
+        <span class="summary-value">3 Críticas</span>
+      </div>
+      <div class="summary-card warning">
+        <h3>Oportunidades</h3>
+        <span class="summary-value">2 Medianas</span>
+      </div>
+      <div class="summary-card success">
+        <h3>Puntos Fuertes</h3>
+        <span class="summary-value">Diseño y Foco</span>
+      </div>
+    </div>
+
+    <!-- Fugas de Conversión Detectadas -->
+    <div class="section-card">
+      <h2 class="section-title">Incoherencias y Fugas de Clientes</h2>
+      <div class="finding-list">
+        
+        <div class="finding-item">
+          <span class="finding-badge">Fuga Crítica</span>
+          <div class="finding-details">
+            <h4>Advertencia de Conexión No Segura (SSL)</h4>
+            <p>El error en el certificado SSL en producción (https) destruye la confianza de clientes corporativos (gerentes de frigoríficos, armadores). Al ver la advertencia roja del navegador, un alto porcentaje abandona el sitio.</p>
+            <p><strong>Impacto:</strong> Bloquea la captación digital de clientes nuevos B2B.</p>
+          </div>
+        </div>
+
+        <div class="finding-item">
+          <span class="finding-badge">Fuga Crítica</span>
+          <div class="finding-details">
+            <h4>Formulario de Contacto Genérico</h4>
+            <p>El formulario en <code>contacto.html</code> solicita datos básicos pero no califica al cliente. Para un servicio de alta complejidad naval/industrial, es crucial saber si se trata de un buque pesquero o una planta, y si requiere una guardia de urgencia 24 hs.</p>
+            <p><strong>Impacto:</strong> Demora la respuesta ante emergencias críticas y dificulta la priorización de leads de alto valor.</p>
+          </div>
+        </div>
+
+        <div class="finding-item">
+          <span class="finding-badge">Oportunidad</span>
+          <div class="finding-details">
+            <h4>Ausencia de una Sección de Preguntas Frecuentes (FAQ)</h4>
+            <p>Los jefes de mantenimiento y armadores de Mar del Plata tienen preguntas específicas antes de contratar:</p>
+            <ul>
+              <li>¿Cuentan con habilitación permanente para ingreso a zona primaria aduanera / puerto?</li>
+              <li>¿Con qué refrigerantes operan (Amoníaco, R404, Glicol)?</li>
+              <li>¿Tienen repuestos en stock o tiempos de entrega para marcas como Danfoss o Bitzer?</li>
+            </ul>
+            <p>Resolver estas dudas directamente en la web reduce la fricción del primer contacto.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Calificación de Pilares de Negocio -->
+    <div class="section-card">
+      <h2 class="section-title">Pilares de Negocio Digital</h2>
+      <div class="category-grid">
+        
+        <div class="category-row">
+          <div class="category-info">
+            <span class="category-icon">UX</span>
+            <div class="category-details">
+              <h5>Experiencia de Usuario (Web UX)</h5>
+              <div class="category-progress">
+                <div class="category-progress-bar warning" style="width: 70%"></div>
+              </div>
+            </div>
+          </div>
+          <span class="category-score">70/100</span>
+        </div>
+
+        <div class="category-row">
+          <div class="category-info">
+            <span class="category-icon">CY</span>
+            <div class="category-details">
+              <h5>Copywriting y Propuesta de Valor</h5>
+              <div class="category-progress">
+                <div class="category-progress-bar success" style="width: 75%"></div>
+              </div>
+            </div>
+          </div>
+          <span class="category-score">75/100</span>
+        </div>
+
+        <div class="category-row">
+          <div class="category-info">
+            <span class="category-icon">GB</span>
+            <div class="category-details">
+              <h5>Google Business / Maps</h5>
+              <div class="category-progress">
+                <div class="category-progress-bar success" style="width: 80%"></div>
+              </div>
+            </div>
+          </div>
+          <span class="category-score">80/100</span>
+        </div>
+
+        <div class="category-row">
+          <div class="category-info">
+            <span class="category-icon">EM</span>
+            <div class="category-details">
+              <h5>Embudo de Captación (Funnel)</h5>
+              <div class="category-progress">
+                <div class="category-progress-bar warning" style="width: 60%"></div>
+              </div>
+            </div>
+          </div>
+          <span class="category-score">60/100</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Plan de Acción Priorizado -->
+    <div class="section-card">
+      <h2 class="section-title">Plan de Acción Sugerido</h2>
+      <table class="action-table">
+        <thead>
+          <tr>
+            <th>Prioridad</th>
+            <th>Acción</th>
+            <th>Impacto</th>
+            <th>Esfuerzo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="priority-indicator high">Alta</span></td>
+            <td>Corregir certificado SSL en hosting</td>
+            <td>Máximo (Seguridad)</td>
+            <td>Bajo (Configuración)</td>
+          </tr>
+          <tr>
+            <td><span class="priority-indicator high">Alta</span></td>
+            <td>Calificar leads en el formulario de contacto</td>
+            <td>Alto (Conversión)</td>
+            <td>Bajo (Código HTML)</td>
+          </tr>
+          <tr>
+            <td><span class="priority-indicator medium">Media</span></td>
+            <td>Implementar sección de FAQs B2B</td>
+            <td>Medio (Fricción)</td>
+            <td>Bajo (Contenido)</td>
+          </tr>
+          <tr>
+            <td><span class="priority-indicator medium">Media</span></td>
+            <td>Configurar alerta de Urgencia en n8n</td>
+            <td>Alto (Servicio)</td>
+            <td>Medio (Integración)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+</body>
+</html>

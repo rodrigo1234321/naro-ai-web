@@ -1,0 +1,1188 @@
+/* Hallmark · pre-emit critique: P5 H4 E5 S4 R5 V5 · genre: atmospheric · theme: Bloom · macrostructure: 05-workbench */
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estar Peralta Ramos — Bowling, Pool & Gastro en Mar del Plata</title>
+    <meta name="description" content="Centro de entretenimiento y gastronomía en Mar del Plata. Pistas de bowling neón, mesas de pool, coctelería de autor, pizzas y Happy Hour de Lunes a Jueves. Génova 2040.">
+    <meta name="theme-color" content="#07090e">
+    
+    <!-- OpenGraph Metadata -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Estar Peralta Ramos — Bowling, Pool & Gastro Lounge">
+    <meta property="og:description" content="Entretenimiento nocturno en Mar del Plata. Bowling neón, pool profesional, gastronomía artesanal y Happy Hour. Génova 2040.">
+    <meta property="og:image" content="assets/hero_bg.jpg">
+    <meta property="og:url" content="https://www.instagram.com/estar.peralta.ramos.mdp/">
+
+    <!-- Google Fonts (Roman display & body typography) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Schema.org Local Business JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EntertainmentBusiness",
+      "name": "Estar Peralta Ramos",
+      "image": "assets/hero_bg.jpg",
+      "url": "https://www.instagram.com/estar.peralta.ramos.mdp/",
+      "telephone": "+5492230000000",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Génova 2040",
+        "addressLocality": "Mar del Plata",
+        "addressRegion": "Buenos Aires",
+        "postalCode": "B7603EZJ",
+        "addressCountry": "AR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -38.0322,
+        "longitude": -57.5562
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "18:00",
+          "closes": "03:00"
+        }
+      ]
+    }
+    </script>
+    
+    <style>
+        /* Hallmark Token System — No mid-render inline color improvisation */
+        :root {
+            --color-paper-0: #05070b;
+            --color-paper-1: #090c14;
+            --color-paper-2: #111624;
+            --color-paper-3: #192033;
+            --color-accent-cyan: #00f3ff;
+            --color-accent-pink: #ff007f;
+            --color-accent-gold: #ffb700;
+            --color-text-main: #f8fafc;
+            --color-text-muted: #94a3b8;
+            --color-border: rgba(255, 255, 255, 0.08);
+            --color-focus: rgba(0, 243, 255, 0.5);
+            
+            --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            
+            --space-1: 4px;
+            --space-2: 8px;
+            --space-3: 16px;
+            --space-4: 24px;
+            --space-5: 32px;
+            --space-6: 48px;
+            --space-7: 64px;
+            --space-8: 96px;
+        }
+
+        /* Hallmark Mobile & Layout Safety Floor */
+        html, body {
+            overflow-x: clip;
+            background-color: var(--color-paper-0);
+            color: var(--color-text-main);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        /* Hallmark Typography Purity — Headings are ALWAYS roman (font-style: normal) */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-display);
+            font-style: normal !important;
+            overflow-wrap: anywhere;
+            min-width: 0;
+        }
+
+        /* Ambient Canvas Particles */
+        #particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.5;
+        }
+
+        /* Header Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 var(--space-4);
+            background: rgba(5, 7, 11, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--color-border);
+            z-index: 1000;
+        }
+
+        .brand-logo {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            color: var(--color-text-main);
+            text-decoration: none;
+        }
+
+        .brand-logo i {
+            color: var(--color-accent-pink);
+            filter: drop-shadow(0 0 8px var(--color-accent-pink));
+        }
+
+        .nav-items {
+            display: flex;
+            gap: var(--space-4);
+            list-style: none;
+        }
+
+        .nav-items a {
+            color: var(--color-text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+        }
+
+        .nav-items a:hover {
+            color: var(--color-accent-cyan);
+        }
+
+        .btn-header-cta {
+            background: linear-gradient(135deg, var(--color-accent-pink), #d9006c);
+            color: white;
+            padding: 10px 22px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(255, 0, 127, 0.35);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-header-cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 0 30px rgba(255, 0, 127, 0.6);
+        }
+
+        /* Marquee Ticker */
+        .marquee-strip {
+            width: 100%;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.02);
+            border-bottom: 1px solid var(--color-border);
+            padding: 12px 0;
+            white-space: nowrap;
+            position: relative;
+            z-index: 2;
+            margin-top: 76px;
+        }
+
+        .marquee-track {
+            display: inline-flex;
+            gap: 2.5rem;
+            animation: marqueeScroll 25s linear infinite;
+        }
+
+        .marquee-node {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--color-text-muted);
+        }
+
+        .marquee-node i {
+            color: var(--color-accent-cyan);
+        }
+
+        @keyframes marqueeScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Hero Section */
+        .hero-container {
+            position: relative;
+            padding: var(--space-6) var(--space-4) var(--space-7) var(--space-4);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+            min-height: 85vh;
+        }
+
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            background: rgba(0, 243, 255, 0.08);
+            border: 1px solid rgba(0, 243, 255, 0.25);
+            color: var(--color-accent-cyan);
+            margin-bottom: var(--space-4);
+        }
+
+        .status-beacon {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #00ff88;
+            box-shadow: 0 0 10px #00ff88;
+        }
+
+        /* Hallmark Tokenized Card Component */
+        .profile-card {
+            position: relative;
+            background: var(--color-paper-1);
+            border-radius: 24px;
+            padding: var(--space-5);
+            max-width: 520px;
+            width: 100%;
+            border: 1px solid var(--color-border);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            margin-bottom: var(--space-5);
+            overflow: hidden;
+        }
+
+        .card-beam {
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1.5px;
+            background: linear-gradient(90deg, transparent, var(--color-accent-cyan), var(--color-accent-pink), transparent);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            animation: beam 5s linear infinite;
+        }
+
+        @keyframes beam {
+            0% { opacity: 0.2; transform: rotate(0deg); }
+            50% { opacity: 1; }
+            100% { opacity: 0.2; transform: rotate(360deg); }
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            margin-bottom: var(--space-3);
+        }
+
+        .avatar-ring {
+            width: 76px;
+            height: 76px;
+            border-radius: 50%;
+            padding: 3px;
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            flex-shrink: 0;
+        }
+
+        .avatar-core {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: var(--color-paper-2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--color-accent-cyan);
+            border: 2px solid var(--color-paper-0);
+        }
+
+        .profile-meta h2 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .badge-verified {
+            color: #3897f0;
+            font-size: 0.95rem;
+        }
+
+        .handle-link {
+            color: var(--color-accent-cyan);
+            font-size: 0.88rem;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            background: var(--color-paper-2);
+            border-radius: 14px;
+            padding: var(--space-2) var(--space-3);
+            margin: var(--space-3) 0;
+            border: 1px solid var(--color-border);
+            text-align: center;
+        }
+
+        .stat-val {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 1.05rem;
+        }
+
+        .stat-lbl {
+            font-size: 0.7rem;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+        }
+
+        .profile-bio {
+            font-size: 0.9rem;
+            color: #cbd5e1;
+            margin-bottom: var(--space-4);
+            line-height: 1.5;
+        }
+
+        .profile-actions {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: var(--space-2);
+        }
+
+        .btn-action-primary {
+            background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c);
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            font-weight: 700;
+            text-decoration: none;
+            text-align: center;
+            font-size: 0.82rem;
+            display: block;
+        }
+
+        .btn-action-secondary {
+            background: rgba(255, 255, 255, 0.06);
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            font-weight: 700;
+            border: 1px solid var(--color-border);
+            font-size: 0.82rem;
+            cursor: pointer;
+        }
+
+        /* Headline & Subtitle */
+        .headline-text {
+            font-size: clamp(2.4rem, 5vw, 4.2rem);
+            font-weight: 900;
+            text-align: center;
+            line-height: 1.15;
+            margin-bottom: var(--space-3);
+            max-width: 880px;
+        }
+
+        .accent-gradient {
+            background: linear-gradient(120deg, #ffffff 0%, var(--color-accent-cyan) 40%, var(--color-accent-pink) 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .headline-sub {
+            font-size: 1.1rem;
+            color: var(--color-text-muted);
+            text-align: center;
+            max-width: 640px;
+            margin-bottom: var(--space-5);
+        }
+
+        /* Sections Common */
+        section {
+            padding: var(--space-7) var(--space-4);
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-head {
+            text-align: center;
+            margin-bottom: var(--space-6);
+        }
+
+        .section-tag {
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-accent-cyan);
+            margin-bottom: var(--space-1);
+            display: block;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            font-weight: 900;
+        }
+
+        /* Hallmark Mobile Grid — minmax(0, 1fr) for image tracks */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: var(--space-4);
+            max-width: 1140px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: var(--color-paper-1);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--color-accent-cyan);
+        }
+
+        .card-media {
+            width: 100%;
+            height: 210px;
+            overflow: hidden;
+        }
+
+        .card-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: var(--space-4);
+        }
+
+        .card-icon-box {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: rgba(255, 0, 127, 0.12);
+            color: var(--color-accent-pink);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15rem;
+            margin-bottom: var(--space-3);
+            border: 1px solid rgba(255, 0, 127, 0.25);
+        }
+
+        .card-h3 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: var(--space-2);
+        }
+
+        .card-p {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Promo Happy Hour */
+        .promo-card {
+            background: linear-gradient(135deg, rgba(255, 0, 127, 0.12), rgba(0, 243, 255, 0.1));
+            border: 1px solid var(--color-border);
+            border-radius: 24px;
+            padding: var(--space-5) var(--space-4);
+            max-width: 1050px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-4);
+            align-items: center;
+        }
+
+        .promo-tag {
+            display: inline-block;
+            background: var(--color-accent-gold);
+            color: black;
+            font-weight: 900;
+            padding: 4px 14px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            margin-bottom: var(--space-2);
+        }
+
+        .hours-box {
+            background: var(--color-paper-0);
+            border-radius: 18px;
+            padding: var(--space-4);
+            border: 1px solid var(--color-border);
+        }
+
+        .hour-item {
+            display: flex;
+            justify-content: space-between;
+            padding: var(--space-2) 0;
+            border-bottom: 1px solid var(--color-border);
+            font-size: 0.9rem;
+        }
+
+        .hour-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Reviews Grid */
+        .reviews-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: var(--space-3);
+            max-width: 1050px;
+            margin: 0 auto;
+        }
+
+        .review-box {
+            background: var(--color-paper-1);
+            border-radius: 16px;
+            padding: var(--space-4);
+            border: 1px solid var(--color-border);
+        }
+
+        .stars {
+            color: var(--color-accent-gold);
+            margin-bottom: var(--space-2);
+            font-size: 0.9rem;
+        }
+
+        .review-quote {
+            font-size: 0.9rem;
+            color: #cbd5e1;
+            margin-bottom: var(--space-3);
+        }
+
+        .review-by {
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: white;
+        }
+
+        /* FAQ Accordions */
+        .faq-wrap {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2);
+        }
+
+        .faq-card {
+            background: var(--color-paper-1);
+            border-radius: 14px;
+            border: 1px solid var(--color-border);
+            overflow: hidden;
+        }
+
+        .faq-q {
+            padding: var(--space-3) var(--space-4);
+            font-weight: 700;
+            font-size: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .faq-q i {
+            color: var(--color-accent-cyan);
+            transition: transform 0.2s ease;
+        }
+
+        .faq-a {
+            padding: 0 var(--space-4) var(--space-3) var(--space-4);
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            display: none;
+            line-height: 1.6;
+        }
+
+        .faq-card.active .faq-a {
+            display: block;
+        }
+
+        .faq-card.active .faq-q i {
+            transform: rotate(180deg);
+        }
+
+        /* Location Layout */
+        .location-wrap {
+            max-width: 1050px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-4);
+            background: var(--color-paper-1);
+            border-radius: 24px;
+            padding: var(--space-5);
+            border: 1px solid var(--color-border);
+        }
+
+        .map-box {
+            width: 100%;
+            height: 300px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+        }
+
+        .map-box iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Booking Modal */
+        .modal-bg {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .modal-bg.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-box {
+            background: var(--color-paper-1);
+            border: 1px solid var(--color-accent-cyan);
+            border-radius: 20px;
+            padding: var(--space-5);
+            max-width: 460px;
+            width: 90%;
+            position: relative;
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: none;
+            border: none;
+            color: var(--color-text-muted);
+            font-size: 1.3rem;
+            cursor: pointer;
+        }
+
+        .form-row {
+            margin-top: var(--space-3);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-1);
+        }
+
+        .form-row label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--color-text-muted);
+        }
+
+        .form-row input, .form-row select {
+            padding: 10px 14px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--color-border);
+            color: white;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .form-row input:focus, .form-row select:focus {
+            border-color: var(--color-accent-cyan);
+        }
+
+        /* WhatsApp Floating Widget */
+        .wa-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: #25d366;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.7rem;
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.5);
+            z-index: 999;
+            text-decoration: none;
+        }
+
+        footer {
+            padding: var(--space-5) var(--space-4);
+            background: var(--color-paper-0);
+            border-top: 1px solid var(--color-border);
+            text-align: center;
+            color: var(--color-text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="particle-canvas"></canvas>
+
+    <header>
+        <a href="#hero" class="brand-logo">
+            <i class="fa-solid fa-bowling-ball"></i> Estar Peralta Ramos
+        </a>
+        <ul class="nav-items">
+            <li><a href="#hero">Inicio</a></li>
+            <li><a href="#atracciones">Juegos & Barra</a></li>
+            <li><a href="#happy-hour">Happy Hour</a></li>
+            <li><a href="#reseñas">Reseñas</a></li>
+            <li><a href="#faq">Preguntas</a></li>
+            <li><a href="#ubicacion">Ubicación</a></li>
+        </ul>
+        <button class="btn-header-cta" onclick="toggleModal(true)">
+            <i class="fa-solid fa-calendar-check"></i> Reservar
+        </button>
+    </header>
+
+    <div class="marquee-strip">
+        <div class="marquee-track">
+            <div class="marquee-node"><i class="fa-solid fa-bowling-ball"></i> PISTAS DE BOWLING NEÓN</div>
+            <div class="marquee-node"><i class="fa-solid fa-circle-dot"></i> MESAS DE POOL PROFESIONALES</div>
+            <div class="marquee-node"><i class="fa-solid fa-pizza-slice"></i> PIZZAS & HAMBURGUESAS GOURMET</div>
+            <div class="marquee-node"><i class="fa-solid fa-martini-glass-citrus"></i> COCTELERÍA DE AUTOR</div>
+            <div class="marquee-node"><i class="fa-solid fa-fire"></i> HAPPY HOUR LUNES A JUEVES</div>
+            <div class="marquee-node"><i class="fa-solid fa-gamepad"></i> ARCADE & JUEGOS</div>
+            <!-- Loop -->
+            <div class="marquee-node"><i class="fa-solid fa-bowling-ball"></i> PISTAS DE BOWLING NEÓN</div>
+            <div class="marquee-node"><i class="fa-solid fa-circle-dot"></i> MESAS DE POOL PROFESIONALES</div>
+            <div class="marquee-node"><i class="fa-solid fa-pizza-slice"></i> PIZZAS & HAMBURGUESAS GOURMET</div>
+            <div class="marquee-node"><i class="fa-solid fa-martini-glass-citrus"></i> COCTELERÍA DE AUTOR</div>
+            <div class="marquee-node"><i class="fa-solid fa-fire"></i> HAPPY HOUR LUNES A JUEVES</div>
+            <div class="marquee-node"><i class="fa-solid fa-gamepad"></i> ARCADE & JUEGOS</div>
+        </div>
+    </div>
+
+    <main>
+        <section class="hero-container" id="hero">
+            <div class="status-indicator">
+                <div class="status-beacon"></div>
+                <span id="status-text">ABIERTO HOY DESDE LAS 18:00 HS</span>
+            </div>
+
+            <div class="profile-card">
+                <div class="card-beam"></div>
+                <div class="profile-header">
+                    <div class="avatar-ring">
+                        <div class="avatar-core">
+                            <i class="fa-solid fa-bowling-ball"></i>
+                        </div>
+                    </div>
+                    <div class="profile-meta">
+                        <h2>Estar Peralta Ramos <i class="fa-solid fa-circle-check badge-verified"></i></h2>
+                        <a href="https://www.instagram.com/estar.peralta.ramos.mdp/" target="_blank" class="handle-link">@estar.peralta.ramos.mdp</a>
+                        <p style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 2px;">Centro de Entretenimiento & Gastro Bar</p>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <div>
+                        <div class="stat-val">🎳 Bowling</div>
+                        <div class="stat-lbl">Pistas Neón</div>
+                    </div>
+                    <div>
+                        <div class="stat-val">🎱 Pool</div>
+                        <div class="stat-lbl">Mesas Pro</div>
+                    </div>
+                    <div>
+                        <div class="stat-val">🍕 Gastro</div>
+                        <div class="stat-lbl">& Tragos</div>
+                    </div>
+                </div>
+
+                <div class="profile-bio">
+                    🎳 Bowling, pool, juegos y mucho más<br>
+                    🍕 Comida y tragos gourmet<br>
+                    🔥 Happy hour de lunes a jueves<br>
+                    ⏰ Todos los días desde 18hs (lunes cerrado)
+                </div>
+
+                <div class="profile-actions">
+                    <a href="https://www.instagram.com/estar.peralta.ramos.mdp/" target="_blank" class="btn-action-primary">
+                        <i class="fa-brands fa-instagram"></i> Seguir en Instagram
+                    </a>
+                    <button onclick="toggleModal(true)" class="btn-action-secondary">
+                        <i class="fa-solid fa-calendar-plus"></i> Reservar Ahora
+                    </button>
+                </div>
+            </div>
+
+            <h1 class="headline-text">
+                TU LUGAR DE ENCUENTRO Y <span class="accent-gradient">DIVERSIÓN EN MAR DEL PLATA</span>
+            </h1>
+            <p class="headline-sub">
+                Pistas de bowling automatizadas, mesas de pool profesional, coctelería de autor y gastronomía artesanal en Génova 2040.
+            </p>
+        </section>
+
+        <section id="atracciones">
+            <div class="section-head">
+                <span class="section-tag">EXPERIENCIA COMPLETA</span>
+                <h2 class="section-title">JUEGOS & GASTRONOMÍA</h2>
+            </div>
+
+            <div class="cards-grid">
+                <div class="feature-card">
+                    <div class="card-media">
+                        <img src="assets/bowling.jpg" alt="Pistas de Bowling Neón">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-icon-box">
+                            <i class="fa-solid fa-bowling-ball"></i>
+                        </div>
+                        <h3 class="card-h3">Pistas de Bowling Neón</h3>
+                        <p class="card-p">
+                            Pistas automatizadas con iluminación neón, marcadores digitales y calzado incluido. Ideal para amigos y eventos.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="card-media">
+                        <img src="assets/pool.jpg" alt="Mesas de Pool Profesional">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-icon-box" style="color: var(--color-accent-cyan); background: rgba(0,243,255,0.12); border-color: rgba(0,243,255,0.25);">
+                            <i class="fa-solid fa-circle-dot"></i>
+                        </div>
+                        <h3 class="card-h3">Mesas de Pool & Billar</h3>
+                        <p class="card-p">
+                            Mesas de paño profesional en ambiente climatizado con música seleccionada y atención directa a la mesa.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="card-media">
+                        <img src="assets/cocktails.jpg" alt="Comida y Coctelería de Autor">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-icon-box" style="color: var(--color-accent-gold); background: rgba(255,183,0,0.12); border-color: rgba(255,183,0,0.25);">
+                            <i class="fa-solid fa-martini-glass-citrus"></i>
+                        </div>
+                        <h3 class="card-h3">Comida & Tragos de Autor</h3>
+                        <p class="card-p">
+                            Pizzas recién horneadas, hamburguesas gourmet caseras, picadas abundantes y carta de tragos de autor.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="happy-hour">
+            <div class="promo-card">
+                <div>
+                    <span class="promo-tag">🔥 PROMO DESTACADA</span>
+                    <h3 style="font-size: 2.1rem; color: var(--color-accent-gold); margin-bottom: 12px;">HAPPY HOUR LUNES A JUEVES</h3>
+                    <p style="color: #cbd5e1; font-size: 1rem; margin-bottom: 20px;">
+                        Promociones en cervezas tiradas y tragos seleccionados de 18:00 a 21:00 hs.
+                    </p>
+                    <button onclick="toggleModal(true)" class="btn-header-cta">
+                        <i class="fa-solid fa-glass-water-droplet"></i> Consultar Promos
+                    </button>
+                </div>
+
+                <div class="hours-box">
+                    <h4 style="margin-bottom: 14px; font-size: 1.15rem;">
+                        <i class="fa-solid fa-clock" style="color: var(--color-accent-cyan);"></i> Horarios de Atención
+                    </h4>
+                    <div class="hour-item">
+                        <span>Lunes</span>
+                        <span style="color: var(--color-accent-pink); font-weight: 700;">CERRADO</span>
+                    </div>
+                    <div class="hour-item">
+                        <span>Martes a Jueves</span>
+                        <span style="color: var(--color-accent-cyan); font-weight: 700;">18:00 hs a Cierre</span>
+                    </div>
+                    <div class="hour-item">
+                        <span>Viernes a Domingo</span>
+                        <span style="color: var(--color-accent-cyan); font-weight: 700;">18:00 hs a Cierre</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="reseñas">
+            <div class="section-head">
+                <span class="section-tag">RESEÑAS REALES</span>
+                <h2 class="section-title">LO QUE DICEN NUESTROS VISITANTES</h2>
+            </div>
+
+            <div class="reviews-container">
+                <div class="review-box">
+                    <div class="stars">★★★★★</div>
+                    <p class="review-quote">"Excelente lugar para ir con amigos en Mar del Plata. Las pistas de bowling impecables y la atención súper rápida."</p>
+                    <div class="review-by">— Nicolás G.</div>
+                </div>
+                <div class="review-box">
+                    <div class="stars">★★★★★</div>
+                    <p class="review-quote">"Festejamos un cumpleaños y la pasamos bárbaro. Las pizzas muy buenas y el ambiente neón es genial."</p>
+                    <div class="review-by">— Camila R.</div>
+                </div>
+                <div class="review-box">
+                    <div class="stars">★★★★★</div>
+                    <p class="review-quote">"Muy buenas mesas de pool y excelentes tragos. Génova 2040 es parada obligada en la zona."</p>
+                    <div class="review-by">— Martín P.</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq">
+            <div class="section-head">
+                <span class="section-tag">PREGUNTAS FRECUENTES</span>
+                <h2 class="section-title">ACLARAMOS TUS DUDAS</h2>
+            </div>
+
+            <div class="faq-wrap">
+                <div class="faq-card">
+                    <div class="faq-q">
+                        <span>¿Es necesario reservar pista con anticipación?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-a">
+                        Recomendamos reservar especialmente los viernes, sábados y feriados por WhatsApp para asegurar tu horario sin demoras.
+                    </div>
+                </div>
+
+                <div class="faq-card">
+                    <div class="faq-q">
+                        <span>¿Qué días y horarios funciona el Happy Hour?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-a">
+                        El Happy Hour está activo de Lunes a Jueves desde la apertura (18:00 hs) con promociones en cervezas tiradas y tragos seleccionados.
+                    </div>
+                </div>
+
+                <div class="faq-card">
+                    <div class="faq-q">
+                        <span>¿Se pueden organizar eventos de cumpleaños?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-a">
+                        ¡Sí! Organizamos cumpleaños y eventos corporativos con combos de pistas, pool y catering. Escribinos por WhatsApp para armar tu propuesta.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ubicacion">
+            <div class="section-head">
+                <span class="section-tag">VISITANOS EN MAR DEL PLATA</span>
+                <h2 class="section-title">UBICACIÓN & MAPA</h2>
+            </div>
+
+            <div class="location-wrap">
+                <div>
+                    <h3 style="font-size: 1.6rem; margin-bottom: 16px;">Génova 2040</h3>
+                    <p style="color: var(--color-text-muted); margin-bottom: 20px; font-size: 0.95rem;">
+                        Ubicados a metros de la Av. Peralta Ramos en Mar del Plata, con fácil estacionamiento en la zona.
+                    </p>
+                    <div style="margin-bottom: 14px; font-size: 0.9rem;">
+                        <i class="fa-solid fa-location-dot" style="color: var(--color-accent-pink);"></i> Génova 2040, B7603EZJ Mar del Plata, Argentina.
+                    </div>
+                    <div style="margin-bottom: 20px; font-size: 0.9rem;">
+                        <i class="fa-solid fa-clock" style="color: var(--color-accent-cyan);"></i> Martes a Domingo desde las 18:00 hs (Lunes cerrado).
+                    </div>
+                    <button onclick="toggleModal(true)" class="btn-header-cta">
+                        <i class="fa-brands fa-whatsapp"></i> Consultar por WhatsApp
+                    </button>
+                </div>
+
+                <div class="map-box">
+                    <iframe src="https://maps.google.com/maps?q=Genova+2040,+Mar+del+Plata,+Argentina&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy"></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Estar Peralta Ramos — Mar del Plata, Argentina. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div class="modal-bg" id="modal">
+        <div class="modal-box">
+            <button class="modal-close-btn" onclick="toggleModal(false)">&times;</button>
+            <h3 style="color: white; font-size: 1.4rem;">Reserva en Estar Peralta Ramos</h3>
+            <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 4px;">Te redirigiremos a WhatsApp con los datos completados.</p>
+            
+            <form onsubmit="handleReservation(event)">
+                <div class="form-row">
+                    <label>Nombre</label>
+                    <input type="text" id="res-name" placeholder="Tu nombre" required>
+                </div>
+                <div class="form-row">
+                    <label>Atracción</label>
+                    <select id="res-service">
+                        <option value="Bowling">Bowling (Pistas)</option>
+                        <option value="Pool">Pool & Billar</option>
+                        <option value="Bar / Gastro">Mesa Bar / Gastronomía</option>
+                        <option value="Cumpleaños">Cumpleaños / Evento</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <label>Personas</label>
+                    <input type="number" id="res-people" min="1" max="30" value="4" required>
+                </div>
+                <div class="form-row">
+                    <label>Fecha</label>
+                    <input type="date" id="res-date" required>
+                </div>
+                <button type="submit" class="btn-header-cta" style="margin-top: 18px; width: 100%; justify-content: center;">
+                    <i class="fa-brands fa-whatsapp"></i> Confirmar por WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Floating WhatsApp Widget -->
+    <a href="https://wa.me/5492230000000?text=Hola!%20Quiero%20consultar%20por%20disponibilidad%20en%20Estar%20Peralta%20Ramos" target="_blank" class="wa-float" aria-label="WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script>
+        // Particle FX
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor() { this.reset(); }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = (Math.random() - 0.5) * 0.4;
+                this.speedY = (Math.random() - 0.5) * 0.4;
+                this.color = Math.random() > 0.5 ? '#00f3ff' : '#ff007f';
+                this.alpha = Math.random() * 0.4 + 0.1;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset();
+            }
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.alpha;
+                ctx.fillStyle = this.color;
+                ctx.shadowBlur = 8;
+                ctx.shadowColor = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        function init() {
+            particles = [];
+            for (let i = 0; i < 45; i++) particles.push(new Particle());
+        }
+        function loop() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(loop);
+        }
+        init(); loop();
+
+        // FAQ Toggle
+        document.querySelectorAll('.faq-q').forEach(q => {
+            q.addEventListener('click', () => {
+                q.parentElement.classList.toggle('active');
+            });
+        });
+
+        // Modal Logic
+        function toggleModal(show) {
+            const modal = document.getElementById('modal');
+            if (show) modal.classList.add('active');
+            else modal.classList.remove('active');
+        }
+
+        function handleReservation(e) {
+            e.preventDefault();
+            const name = document.getElementById('res-name').value;
+            const service = document.getElementById('res-service').value;
+            const people = document.getElementById('res-people').value;
+            const date = document.getElementById('res-date').value;
+
+            const text = `Hola! Soy ${name}. Quisiera reservar para ${people} personas en ${service} el día ${date}.`;
+            window.open(`https://wa.me/5492230000000?text=${encodeURIComponent(text)}`, '_blank');
+            toggleModal(false);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auditoría SEO - MS Refrigeración</title>
+  <style>
+    :root {
+      --color-primary: #0a1b3a;
+      --color-accent: #00a8e8;
+      --color-success: #38a169;
+      --color-warning: #ecc94b;
+      --color-danger: #e53e3e;
+      --color-bg: #f7fafc;
+      --color-card: #ffffff;
+      --color-text: #2d3748;
+      --color-text-muted: #718096;
+      --border-radius: 12px;
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--color-primary), #162a56);
+      color: white;
+      padding: 2.5rem;
+      border-radius: var(--border-radius);
+      box-shadow: 0 10px 25px rgba(10, 27, 58, 0.15);
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(0, 168, 232, 0.2) 0%, rgba(0,0,0,0) 70%);
+      border-radius: 50%;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .header-info h1 {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    .header-info p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1rem;
+    }
+
+    .score-badge {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      padding: 1.5rem;
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      text-align: center;
+    }
+
+    .score-badge.warning {
+      border-color: var(--color-warning);
+    }
+
+    .score-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--color-warning);
+    }
+
+    .score-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-top: 0.25rem;
+    }
+
+    /* Resumen Ejecutivo */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .summary-card {
+      background-color: var(--color-card);
+      padding: 1.5rem;
+      border-radius: var(--border-radius);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+      border-left: 4px solid var(--color-accent);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .summary-card.critical {
+      border-left-color: var(--color-danger);
+    }
+
+    .summary-card.warning {
+      border-left-color: var(--color-warning);
+    }
+
+    .summary-card.success {
+      border-left-color: var(--color-success);
+    }
+
+    .summary-card h3 {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--color-text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .summary-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    /* Secciones */
+    .section-card {
+      background-color: var(--color-card);
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      padding-bottom: 0.75rem;
+    }
+
+    /* Correcciones Prioritarias */
+    .priority-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .priority-item {
+      background-color: rgba(229, 62, 62, 0.03);
+      border: 1px solid rgba(229, 62, 62, 0.1);
+      padding: 1.5rem;
+      border-radius: var(--border-radius);
+      display: flex;
+      gap: 1rem;
+    }
+
+    .priority-item.warning {
+      background-color: rgba(236, 201, 75, 0.03);
+      border-color: rgba(236, 201, 75, 0.1);
+    }
+
+    .priority-badge {
+      background-color: var(--color-danger);
+      color: white;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      align-self: flex-start;
+      white-space: nowrap;
+    }
+
+    .priority-item.warning .priority-badge {
+      background-color: var(--color-warning);
+      color: var(--color-primary);
+    }
+
+    .priority-details h4 {
+      font-size: 1.1rem;
+      color: var(--color-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .priority-details p {
+      color: var(--color-text);
+      font-size: 0.95rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .priority-details code {
+      background-color: rgba(0,0,0,0.05);
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+      font-size: 0.85rem;
+    }
+
+    .priority-details pre {
+      background-color: #2d3748;
+      color: #f7fafc;
+      padding: 1rem;
+      border-radius: 6px;
+      overflow-x: auto;
+      font-family: SFMono-Regular, Consolas, monospace;
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+    }
+
+    /* Categorías */
+    .category-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .category-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      border-radius: var(--border-radius);
+      border: 1px solid rgba(0,0,0,0.05);
+      transition: var(--transition);
+    }
+
+    .category-row:hover {
+      background-color: rgba(0, 168, 232, 0.02);
+      border-color: rgba(0, 168, 232, 0.1);
+    }
+
+    .category-info {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex: 1;
+    }
+
+    .category-icon {
+      width: 40px;
+      height: 40px;
+      background-color: rgba(10, 27, 58, 0.05);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-primary);
+      font-weight: 700;
+    }
+
+    .category-details h5 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--color-primary);
+    }
+
+    .category-progress {
+      width: 150px;
+      height: 8px;
+      background-color: #edf2f7;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 0.25rem;
+    }
+
+    .category-progress-bar {
+      height: 100%;
+      background-color: var(--color-accent);
+      border-radius: 4px;
+    }
+
+    .category-progress-bar.success { background-color: var(--color-success); }
+    .category-progress-bar.warning { background-color: var(--color-warning); }
+    .category-progress-bar.danger { background-color: var(--color-danger); }
+
+    .category-score {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      width: 60px;
+      text-align: right;
+    }
+
+    /* Tabla de Hallazgos */
+    .findings-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    .findings-table th, .findings-table td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .findings-table th {
+      font-weight: 600;
+      color: var(--color-primary);
+      background-color: rgba(10, 27, 58, 0.02);
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .status-badge.success {
+      background-color: rgba(56, 161, 105, 0.1);
+      color: var(--color-success);
+    }
+
+    .status-badge.warning {
+      background-color: rgba(236, 201, 75, 0.1);
+      color: #b7791f;
+    }
+
+    .status-badge.danger {
+      background-color: rgba(229, 62, 62, 0.1);
+      color: var(--color-danger);
+    }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      
+      .priority-item {
+        flex-direction: column;
+      }
+      
+      .category-row {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+      }
+      
+      .category-score {
+        align-self: flex-end;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <div class="header-content">
+        <div class="header-info">
+          <h1>Auditoría SEO - MS Refrigeración</h1>
+          <p>Análisis técnico y estructural del sitio local para posicionamiento en motores de búsqueda.</p>
+        </div>
+        <div class="score-badge warning">
+          <span class="score-number">63</span>
+          <span class="score-label">Puntaje Global</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Resumen Ejecutivo -->
+    <div class="summary-grid">
+      <div class="summary-card critical">
+        <h3>Errores Críticos</h3>
+        <span class="summary-value">4</span>
+      </div>
+      <div class="summary-card warning">
+        <h3>Advertencias</h3>
+        <span class="summary-value">2</span>
+      </div>
+      <div class="summary-card success">
+        <h3>Pruebas Aprobadas</h3>
+        <span class="summary-value">8</span>
+      </div>
+    </div>
+
+    <!-- Correcciones Prioritarias -->
+    <div class="section-card">
+      <h2 class="section-title">Correcciones Prioritarias</h2>
+      <div class="priority-list">
+        
+        <div class="priority-item">
+          <span class="priority-badge">Crítico</span>
+          <div class="priority-details">
+            <h4>Error de Certificado SSL / HTTPS en el Dominio en Vivo</h4>
+            <p>El dominio en vivo <code>https://msrefrigeracion.com.ar/</code> presenta un error de certificado TLS (válido para otro host). Esto bloquea el rastreo de Google y ahuyenta al 100% de los usuarios debido a las advertencias de seguridad del navegador.</p>
+            <p><strong>Solución:</strong> Reinstalar o renovar el certificado SSL (Let's Encrypt gratuito) desde el panel de control del hosting (cPanel, Plesk o Wiroos) para el dominio correcto.</p>
+          </div>
+        </div>
+
+        <div class="priority-item">
+          <span class="priority-badge">Crítico</span>
+          <div class="priority-details">
+            <h4>Ausencia de Datos Estructurados (Schema Markup)</h4>
+            <p>Ninguna de las páginas posee marcado estructurado JSON-LD. Esto impide que Google interprete de manera enriquecida los servicios técnicos, el tipo de negocio local (LocalBusiness) y los datos de contacto en Mar del Plata.</p>
+            <p><strong>Solución:</strong> Inyectar el siguiente bloque de marcado estructurado en el <code>&lt;head&gt;</code> de <code>index.html</code>:</p>
+            <pre>&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "MS Refrigeración",
+  "image": "https://msrefrigeracion.com.ar/assets/images/logo.svg",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Bermejo 758",
+    "addressLocality": "Mar del Plata",
+    "addressRegion": "Buenos Aires",
+    "postalCode": "7600",
+    "addressCountry": "AR"
+  },
+  "telephone": "+542235054977"
+}
+&lt;/script&gt;</pre>
+          </div>
+        </div>
+
+        <div class="priority-item warning">
+          <span class="priority-badge">Advertencia</span>
+          <div class="priority-details">
+            <h4>Sitemap y Robots.txt Obsoletos de WordPress en el Servidor</h4>
+            <p>El servidor en vivo sigue sirviendo archivos <code>sitemap.xml</code> y <code>robots.txt</code> remanentes de la instalación antigua de WordPress, apuntando a carpetas inexistentes (<code>/wp-admin/</code>). Esto genera desorientación en los robots de búsqueda.</p>
+            <p><strong>Solución:</strong> Crear archivos locales limpios <code>sitemap.xml</code> y <code>robots.txt</code> en la raíz del proyecto para sobreescribir los remanentes.</p>
+          </div>
+        </div>
+
+        <div class="priority-item warning">
+          <span class="priority-badge">Advertencia</span>
+          <div class="priority-details">
+            <h4>Ausencia de Etiquetas Open Graph y Twitter Cards</h4>
+            <p>El código actual carece de propiedades meta para redes sociales (<code>og:title</code>, <code>og:image</code>, etc.). Cuando se comparte el enlace en WhatsApp o LinkedIn, no se renderizan imágenes ni descripciones atractivas.</p>
+            <p><strong>Solución:</strong> Agregar meta tags Open Graph básicos en todas las páginas.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Desglose por Categoría -->
+    <div class="section-card">
+      <h2 class="section-title">Desglose de Optimización</h2>
+      <div class="category-grid">
+        
+        <div class="category-row">
+          <div class="category-info">
+            <span class="category-icon">MT</span>
+            <div class="category-details">
+              <h5>Meta Tags Estándar</h5>
+              <div class="category-progress">
+                <div class="category-progress-bar success" style="width: 80%"></div>
+              </div>
+            </div>
+          </div>
+          <span class="category-score">80/100</span>
+        </div>
+
+        <div class="category-row">
+          <div class="category-info">
+            <span class="category-icon">H</span>
+            <div class="category-details">
+              <h5>Estructura de Encabezados (Headings)</h5>
+              <div class="category-progress">
+                <div class="category-progress-bar success" style="width: 90%"></div>
+              </div>
+            </div>
+          </div>
+          <span class="category-score">90/100</span>
+        </div>
+
+        <div class="category-row">
+          <div class="category-info">
+            <span class="category-icon">OG</span>
+            <div class="category-details">
+              <h5>Open Graph / Social</h5>
+              <div class="category-progress">
+                <div class="category-progress-bar danger" style="width: 0%"></div>
+              </div>
+            </div>
+          </div>
+          <span class="category-score">0/100</span>
+        </div>
+
+        <div class="category-row">
+          <div class="category-info">
+            <span class="category-icon">DE</span>
+            <div class="category-details">
+              <h5>Datos Estructurados (Schema)</h5>
+              <div class="category-progress">
+                <div class="category-progress-bar danger" style="width: 0%"></div>
+              </div>
+            </div>
+          </div>
+          <span class="category-score">0/100</span>
+        </div>
+
+        <div class="category-row">
+          <div class="category-info">
+            <span class="category-icon">TC</span>
+            <div class="category-details">
+              <h5>Aspectos Técnicos e indexación</h5>
+              <div class="category-progress">
+                <div class="category-progress-bar warning" style="width: 50%"></div>
+              </div>
+            </div>
+          </div>
+          <span class="category-score">50/100</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Tabla Detallada -->
+    <div class="section-card">
+      <h2 class="section-title">Todos los Hallazgos</h2>
+      <table class="findings-table">
+        <thead>
+          <tr>
+            <th>Elemento</th>
+            <th>Estado</th>
+            <th>Observación</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Etiquetas &lt;title&gt;</td>
+            <td><span class="status-badge success">Aprobado</span></td>
+            <td>Presentes, descriptivas y de longitud correcta en todas las páginas.</td>
+          </tr>
+          <tr>
+            <td>Meta Descriptions</td>
+            <td><span class="status-badge success">Aprobado</span></td>
+            <td>Presentes y personalizadas para cada sección del sitio web.</td>
+          </tr>
+          <tr>
+            <td>Viewport Meta</td>
+            <td><span class="status-badge success">Aprobado</span></td>
+            <td>Configurado correctamente para compatibilidad móvil.</td>
+          </tr>
+          <tr>
+            <td>Estructura H1</td>
+            <td><span class="status-badge success">Aprobado</span></td>
+            <td>Un único H1 por página, jerarquía limpia en general.</td>
+          </tr>
+          <tr>
+            <td>Atributos Alt en Imágenes</td>
+            <td><span class="status-badge success">Aprobado</span></td>
+            <td>Los logos principales cuentan con atributo alt correcto.</td>
+          </tr>
+          <tr>
+            <td>Robots.txt local</td>
+            <td><span class="status-badge danger">Error</span></td>
+            <td>Falta crear el archivo localmente para pisar la configuración de WordPress.</td>
+          </tr>
+          <tr>
+            <td>Sitemap.xml local</td>
+            <td><span class="status-badge danger">Error</span></td>
+            <td>Falta crear el archivo localmente con las páginas del sitio estático.</td>
+          </tr>
+          <tr>
+            <td>Etiquetas de Redes Sociales</td>
+            <td><span class="status-badge danger">Error</span></td>
+            <td>Faltan propiedades Open Graph y Twitter Cards.</td>
+          </tr>
+          <tr>
+            <td>Schema.org JSON-LD</td>
+            <td><span class="status-badge danger">Error</span></td>
+            <td>No existe marcado de datos estructurados para potenciar rich snippets.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+</body>
+</html>

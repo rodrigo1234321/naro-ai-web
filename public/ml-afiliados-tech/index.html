@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechAfiliados | El mejor Hardware y Notebooks en Argentina</title>
+    <meta name="description" content="Encuentra las mejores recomendaciones de hardware, PCs gamer, notebooks y periféricos al mejor precio de Mercado Libre Argentina. Guías de compra actualizadas y honestas.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://techafiliados.ar/">
+    <meta property="og:title" content="TechAfiliados | Hardware y Gaming en Argentina">
+    <meta property="og:description" content="Guías y análisis del mejor hardware de computadoras y notebooks recomendados en Argentina. Ahorrá con enlaces verificados.">
+    <meta property="og:image" content="https://techafiliados.ar/img/og-home.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="TechAfiliados | Hardware y Gaming en Argentina">
+    <meta property="twitter:description" content="Guías y análisis del mejor hardware de computadoras y notebooks recomendados en Argentina. Ahorrá con enlaces de Mercado Libre.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <!-- CSS stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "TechAfiliados",
+      "url": "https://techafiliados.ar/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://techafiliados.ar/?search={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+</head>
+<body>
+
+    <!-- NAV BARRA DE NAVEGACIÓN -->
+    <header class="header-nav">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">
+                Tech<span>Afiliados</span>
+                <span class="logo-badge">ARG</span>
+            </a>
+
+            <!-- Buscador Central -->
+            <div class="nav-search-box">
+                <div class="search-input-wrapper">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="search-input" class="search-input-field" placeholder="Buscar notebook, placa de video, auriculares..." aria-label="Buscar productos y artículos">
+                </div>
+                <!-- Dropdown de Resultados -->
+                <div id="search-results" class="search-results-overlay"></div>
+            </div>
+
+            <!-- Enlaces de navegación -->
+            <ul class="nav-links-menu" id="nav-links">
+                <li><a href="index.html" class="nav-link-item active">Inicio</a></li>
+                <li><a href="categorias/notebooks.html" class="nav-link-item">Notebooks</a></li>
+                <li><a href="categorias/pcs-gamer.html" class="nav-link-item">PCs Gamer</a></li>
+                <li><a href="categorias/placas-de-video.html" class="nav-link-item">Componentes</a></li>
+                <li><a href="sobre-nosotros.html" class="nav-link-item">Nosotros</a></li>
+                <li><a href="contacto.html" class="nav-link-item">Contacto</a></li>
+            </ul>
+
+            <!-- Botón toggle móvil -->
+            <button class="mobile-toggle-btn" id="mobile-menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        
+        <!-- HERO SECTION -->
+        <section class="hero-section">
+            <div class="container">
+                <span class="hero-tag">⚡ Hardware & Gaming Argentina</span>
+                <h1 class="hero-title">El Hardware que Necesitás, al <span class="gradient-text">Mejor Precio</span></h1>
+                <p class="hero-subtitle">Analizamos las mejores opciones disponibles en Mercado Libre Argentina para que armes tu setup gamer o elijas tu próxima notebook sin equivocarte.</p>
+                
+                <!-- Buscador para móviles e inicio -->
+                <div class="hero-search-wrapper" style="max-width: 500px; margin: 0 auto;">
+                    <!-- Nota: El input de abajo se enlaza con la misma lógica en main.js si le damos el id correcto, o podemos enfocar el de arriba -->
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">Usa el buscador de arriba para encontrar guías de compra al instante.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CATEGORÍAS PRINCIPALES -->
+        <section class="section-padding container">
+            <div class="section-title-wrap">
+                <h2>Categorías de Hardware</h2>
+                <p class="section-desc">Seleccioná una categoría para ver comparativas detalladas y productos recomendados.</p>
+            </div>
+            
+            <div class="categories-grid">
+                <!-- Notebooks -->
+                <a href="categorias/notebooks.html" class="category-card">
+                    <span class="category-icon">💻</span>
+                    <h3 class="category-name">Notebooks</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary);">Para oficina, estudio y gaming portátil.</p>
+                    <span class="category-link-text">Ver modelos ➔</span>
+                </a>
+                
+                <!-- PCs Gamer -->
+                <a href="categorias/pcs-gamer.html" class="category-card">
+                    <span class="category-icon">🖥️</span>
+                    <h3 class="category-name">PCs Gamer</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary);">Presupuestos y setups de escritorio completos.</p>
+                    <span class="category-link-text">Ver configuraciones ➔</span>
+                </a>
+
+                <!-- Procesadores -->
+                <a href="categorias/procesadores.html" class="category-card">
+                    <span class="category-icon">🧠</span>
+                    <h3 class="category-name">Procesadores</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary);">AMD Ryzen e Intel Core al mejor costo.</p>
+                    <span class="category-link-text">Ver CPUs ➔</span>
+                </a>
+
+                <!-- Placas de video -->
+                <a href="categorias/placas-de-video.html" class="category-card">
+                    <span class="category-icon">🎮</span>
+                    <h3 class="category-name">Placas de Video</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary);">Nvidia RTX y AMD Radeon disponibles.</p>
+                    <span class="category-link-text">Ver GPUs ➔</span>
+                </a>
+
+                <!-- Monitores -->
+                <a href="categorias/monitores.html" class="category-card">
+                    <span class="category-icon">📺</span>
+                    <h3 class="category-name">Monitores</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary);">Alta tasa de refresco, IPS y paneles gamer.</p>
+                    <span class="category-link-text">Ver pantallas ➔</span>
+                </a>
+
+                <!-- Teclados -->
+                <a href="categorias/teclados.html" class="category-card">
+                    <span class="category-icon">⌨️</span>
+                    <h3 class="category-name">Teclados</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary);">Mecánicos, TKL y ergonomía gamer.</p>
+                    <span class="category-link-text">Ver teclados ➔</span>
+                </a>
+
+                <!-- Mouse Gamer -->
+                <a href="categorias/mouse-gamer.html" class="category-card">
+                    <span class="category-icon">🖱️</span>
+                    <h3 class="category-name">Mouse Gamer</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary);">Sensores precisos y peso ultraliviano.</p>
+                    <span class="category-link-text">Ver ratones ➔</span>
+                </a>
+
+                <!-- Auriculares -->
+                <a href="categorias/auriculares.html" class="category-card">
+                    <span class="category-icon">🎧</span>
+                    <h3 class="category-name">Auriculares</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary);">Audio envolvente y micrófonos limpios.</p>
+                    <span class="category-link-text">Ver headsets ➔</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- PRODUCTOS DESTACADOS DE AFILIADOS -->
+        <section class="section-padding" style="background-color: var(--bg-surface); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+            <div class="container">
+                <div class="section-title-wrap">
+                    <h2>Ofertas Destacadas</h2>
+                    <p class="section-desc">Componentes y periféricos con excelentes valoraciones y stock en Argentina.</p>
+                </div>
+
+                <div class="products-grid">
+                    <!-- Notebook ASUS TUF -->
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <span class="product-badge">Recomendado Gaming</span>
+                            <!-- SVG Placeholder premium para Notebook -->
+                            <svg viewBox="0 0 100 100" width="120" height="120">
+                                <rect x="20" y="30" width="60" height="35" rx="3" fill="#1b263b" stroke="#00f2fe" stroke-width="2"/>
+                                <path d="M10,65 L90,65 L85,73 L15,73 Z" fill="#2d3748" stroke="#00f2fe" stroke-width="2"/>
+                                <line x1="45" y1="70" x2="55" y2="70" stroke="#00f2fe" stroke-width="3" stroke-linecap="round"/>
+                                <circle cx="50" cy="47" r="8" fill="none" stroke="#4facfe" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="product-info-wrap">
+                            <span class="product-category-tag">Notebooks</span>
+                            <h3 class="product-card-title">ASUS TUF Gaming F15</h3>
+                            <div class="product-rating">
+                                <span>⭐⭐⭐⭐⭐</span> <span class="product-rating-count">(4.8 - 124 reviews)</span>
+                            </div>
+                            <ul class="product-features-list">
+                                <li>Procesador Intel Core i5</li>
+                                <li>8GB / 16GB RAM DDR4</li>
+                                <li>Placa de Video Nvidia RTX 3050</li>
+                                <li>Pantalla 15.6" 144Hz FHD</li>
+                            </ul>
+                            <div class="product-card-footer">
+                                <div>
+                                    <span class="product-price-label">Rango en ARS:</span>
+                                    <div class="product-price-range">Gama Media-Alta</div>
+                                </div>
+                                <a href="#" data-affiliate="notebook-asus-tuf" class="cta-button">Ver en ML ↗</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Placa de Video RX 6600 -->
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <span class="product-badge">Calidad/Precio GPU</span>
+                            <!-- SVG GPU -->
+                            <svg viewBox="0 0 100 100" width="120" height="120">
+                                <rect x="15" y="30" width="70" height="40" rx="4" fill="#1b263b" stroke="#ef4444" stroke-width="2"/>
+                                <circle cx="38" cy="50" r="12" fill="none" stroke="#ef4444" stroke-width="2"/>
+                                <circle cx="62" cy="50" r="12" fill="none" stroke="#ef4444" stroke-width="2"/>
+                                <path d="M10,40 L15,40" stroke="#a0aec0" stroke-width="3"/>
+                                <path d="M10,48 L15,48" stroke="#a0aec0" stroke-width="3"/>
+                                <path d="M10,56 L15,56" stroke="#a0aec0" stroke-width="3"/>
+                            </svg>
+                        </div>
+                        <div class="product-info-wrap">
+                            <span class="product-category-tag">Placas de Video</span>
+                            <h3 class="product-card-title">AMD Radeon RX 6600 8GB</h3>
+                            <div class="product-rating">
+                                <span>⭐⭐⭐⭐★</span> <span class="product-rating-count">(4.7 - 238 reviews)</span>
+                            </div>
+                            <ul class="product-features-list">
+                                <li>Ideal para jugar a 1080p Ultra</li>
+                                <li>Consumo energético muy bajo</li>
+                                <li>8GB VRAM GDDR6</li>
+                                <li>Excelente rendimiento/precio</li>
+                            </ul>
+                            <div class="product-card-footer">
+                                <div>
+                                    <span class="product-price-label">Rango en ARS:</span>
+                                    <div class="product-price-range">Gama Entrada-Media</div>
+                                </div>
+                                <a href="#" data-affiliate="gpu-rx-6600" class="cta-button">Ver en ML ↗</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Teclado Redragon Kumara -->
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <span class="product-badge">Top Ventas</span>
+                            <!-- SVG Teclado -->
+                            <svg viewBox="0 0 100 100" width="120" height="120">
+                                <rect x="15" y="35" width="70" height="30" rx="3" fill="#1b263b" stroke="#8a2be2" stroke-width="2"/>
+                                <rect x="22" y="42" width="6" height="6" rx="1" fill="#8a2be2"/>
+                                <rect x="32" y="42" width="6" height="6" rx="1" fill="#8a2be2"/>
+                                <rect x="42" y="42" width="6" height="6" rx="1" fill="#8a2be2"/>
+                                <rect x="52" y="42" width="6" height="6" rx="1" fill="#8a2be2"/>
+                                <rect x="62" y="42" width="6" height="6" rx="1" fill="#8a2be2"/>
+                                <rect x="72" y="42" width="6" height="6" rx="1" fill="#8a2be2"/>
+                                <rect x="30" y="52" width="40" height="6" rx="1" fill="#8a2be2"/>
+                            </svg>
+                        </div>
+                        <div class="product-info-wrap">
+                            <span class="product-category-tag">Teclados</span>
+                            <h3 class="product-card-title">Redragon Kumara K552 TKL</h3>
+                            <div class="product-rating">
+                                <span>⭐⭐⭐⭐⭐</span> <span class="product-rating-count">(4.8 - 1.250 reviews)</span>
+                            </div>
+                            <ul class="product-features-list">
+                                <li>Interruptores Mecánicos Outemu Blue/Red</li>
+                                <li>Formato TKL (Sin pad numérico)</li>
+                                <li>Iluminación RGB programable</li>
+                                <li>Estructura de metal altamente durable</li>
+                            </ul>
+                            <div class="product-card-footer">
+                                <div>
+                                    <span class="product-price-label">Rango en ARS:</span>
+                                    <div class="product-price-range">Económico</div>
+                                </div>
+                                <a href="#" data-affiliate="teclado-redragon-kumara" class="cta-button">Ver en ML ↗</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- INTERACTIVE PC BUILDER PROMO BANNER -->
+        <section class="container" style="margin-top: 2rem; margin-bottom: 2rem;">
+            <div style="background: linear-gradient(135deg, rgba(0, 242, 254, 0.1) 0%, rgba(138, 43, 226, 0.1) 100%); border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); padding: 3rem 2rem; text-align: center; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);">
+                <div style="position: absolute; top: -50px; left: -50px; width: 150px; height: 150px; background-color: var(--color-primary); filter: blur(100px); opacity: 0.2; pointer-events: none;"></div>
+                <div style="position: absolute; bottom: -50px; right: -50px; width: 150px; height: 150px; background-color: var(--color-accent); filter: blur(100px); opacity: 0.2; pointer-events: none;"></div>
+                
+                <span class="hero-tag" style="margin-bottom: 1rem; background-color: rgba(255, 255, 255, 0.05);">🔧 Herramienta Exclusiva</span>
+                <h2 style="font-size: 2.2rem; margin-bottom: 1rem; background: linear-gradient(135deg, var(--text-primary) 30%, var(--color-primary) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: block; border-bottom: none;">Calculadora de PC Gamer Interactiva</h2>
+                <p style="color: var(--text-secondary); max-width: 650px; margin: 0 auto 2rem auto; font-size: 1.05rem;">Ajustá tu presupuesto en pesos y descubrí al instante la configuración de componentes más equilibrada de Mercado Libre. ¡Evitá cuellos de botella y ahorrá!</p>
+                <a href="categorias/pcs-gamer.html" class="cta-button cta-button-large" style="display: inline-flex; width: auto; min-width: 250px;">Ajustar mi presupuesto ➔</a>
+            </div>
+        </section>
+
+        <!-- ARTÍCULOS DE ANÁLISIS RECIENTES (SEO) -->
+        <section class="section-padding container">
+            <div class="section-title-wrap">
+                <h2>Guías de Compra & Análisis</h2>
+                <p class="section-desc">Artículos detallados escritos por expertos para ayudarte a tomar la mejor decisión tecnológica.</p>
+            </div>
+
+            <div class="articles-grid">
+                <!-- Artículo Notebooks Calidad Precio -->
+                <article class="article-card">
+                    <div class="article-thumb-container">
+                        <!-- SVG Thumbnail Notebooks -->
+                        <svg viewBox="0 0 200 150" width="100%" height="100%">
+                            <rect width="200" height="150" fill="#0f172a"/>
+                            <path d="M20,110 L180,110 L170,125 L30,125 Z" fill="#1e293b" stroke="#00f2fe" stroke-width="2"/>
+                            <rect x="40" y="40" width="120" height="70" rx="4" fill="#1e293b" stroke="#00f2fe" stroke-width="2"/>
+                            <path d="M80,85 L120,55" stroke="#38bdf8" stroke-width="4" stroke-linecap="round"/>
+                            <circle cx="120" cy="55" r="8" fill="#00f2fe"/>
+                            <text x="100" y="140" fill="#94a3b8" font-family="sans-serif" font-size="10" text-anchor="middle">Notebooks 2026</text>
+                        </svg>
+                    </div>
+                    <div class="article-card-info">
+                        <div class="article-meta-tags">
+                            <span class="article-meta-tag">Notebooks</span>
+                            <span class="article-meta-tag">Guía de compra</span>
+                        </div>
+                        <span class="article-date-read">📅 Junio 2026 • ⏱️ 6 min lectura</span>
+                        <h3 class="article-card-title">Mejores notebooks calidad precio Argentina</h3>
+                        <p class="article-card-desc">Comparamos los modelos de notebooks más convenientes de Asus, Lenovo y HP para trabajar y estudiar, analizándolos en pesos argentinos.</p>
+                        <a href="articulos/mejores-notebooks-calidad-precio-argentina.html" class="article-card-link">Leer análisis completo ➔</a>
+                    </div>
+                </article>
+
+                <!-- Artículo PC 1 Millon -->
+                <article class="article-card">
+                    <div class="article-thumb-container">
+                        <!-- SVG Thumbnail PC Gamer -->
+                        <svg viewBox="0 0 200 150" width="100%" height="100%">
+                            <rect width="200" height="150" fill="#0f172a"/>
+                            <rect x="45" y="30" width="55" height="90" rx="4" fill="#1e293b" stroke="#8a2be2" stroke-width="2"/>
+                            <circle cx="72.5" cy="50" r="10" fill="none" stroke="#8a2be2" stroke-width="2"/>
+                            <circle cx="72.5" cy="95" r="15" fill="none" stroke="#8a2be2" stroke-width="2"/>
+                            <rect x="115" y="65" width="45" height="35" rx="3" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+                            <line x1="137.5" y1="100" x2="137.5" y2="115" stroke="#38bdf8" stroke-width="3"/>
+                            <line x1="125" y1="115" x2="150" y2="115" stroke="#38bdf8" stroke-width="3"/>
+                        </svg>
+                    </div>
+                    <div class="article-card-info">
+                        <div class="article-meta-tags">
+                            <span class="article-meta-tag">PCs Gamer</span>
+                            <span class="article-meta-tag">Presupuesto</span>
+                        </div>
+                        <span class="article-date-read">📅 Junio 2026 • ⏱️ 8 min lectura</span>
+                        <h3 class="article-card-title">Qué PC gamer armar con $1.000.000</h3>
+                        <p class="article-card-desc">Guía detallada de componentes optimizados para ensamblar una computadora gamer completa en Argentina por menos de un millón de pesos.</p>
+                        <a href="articulos/que-pc-gamer-armar-con-1-millon-pesos.html" class="article-card-link">Leer análisis completo ➔</a>
+                    </div>
+                </article>
+
+                <!-- Artículo Auriculares Económicos -->
+                <article class="article-card">
+                    <div class="article-thumb-container">
+                        <!-- SVG Thumbnail Auriculares -->
+                        <svg viewBox="0 0 200 150" width="100%" height="100%">
+                            <rect width="200" height="150" fill="#0f172a"/>
+                            <circle cx="100" cy="75" r="30" fill="none" stroke="#ef4444" stroke-width="3"/>
+                            <rect x="62" y="65" width="12" height="30" rx="6" fill="#ef4444"/>
+                            <rect x="126" y="65" width="12" height="30" rx="6" fill="#ef4444"/>
+                            <path d="M60,75 L45,110 L80,105" stroke="#e2e8f0" stroke-width="2" fill="none" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="article-card-info">
+                        <div class="article-meta-tags">
+                            <span class="article-meta-tag">Auriculares</span>
+                            <span class="article-meta-tag">Económicos</span>
+                        </div>
+                        <span class="article-date-read">📅 Junio 2026 • ⏱️ 5 min lectura</span>
+                        <h3 class="article-card-title">Mejores auriculares gamer económicos</h3>
+                        <p class="article-card-desc">Encuentra periféricos cómodos con micrófono de gran fidelidad y excelente relación precio-calidad sin desbalancear tu presupuesto.</p>
+                        <a href="articulos/mejores-auriculares-gamer-economicos.html" class="article-card-link">Leer análisis completo ➔</a>
+                    </div>
+                </article>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <!-- Monitores para CS2 (Agregado para tener los 4 en el buscador y el sitemap) -->
+                <a href="articulos/mejores-monitores-para-cs2.html" class="article-card-link" style="font-size: 1rem; border-bottom: 2px solid var(--color-primary); padding-bottom: 4px;">
+                    Ver artículo: Mejores Monitores para jugar CS2 (144Hz y 240Hz) ➔
+                </a>
+            </div>
+        </section>
+
+        <!-- AVISO DE AFILIADO / DIVULGACIÓN LEGAL -->
+        <section class="container">
+            <div class="affiliate-disclosure">
+                <!-- Se inyecta dinámicamente con JS, pero dejamos un fallback estático para SEO -->
+                <p class="disclosure-text">⚠️ <strong>Advertencia de Afiliado:</strong> Como afiliado de Mercado Libre, esta web genera ingresos por las compras elegibles realizadas a través de los enlaces provistos. El precio final del producto no cambia para vos.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- PIE DE PÁGINA (FOOTER) -->
+    <footer class="footer-wrap">
+        <div class="container footer-grid">
+            <div class="footer-logo-desc">
+                <a href="index.html" class="logo">Tech<span>Afiliados</span></a>
+                <p>Tu guía confiable para elegir componentes de computadoras, notebooks gamer y periféricos de alto rendimiento en Argentina. Comparamos ofertas de Mercado Libre para facilitarte la compra.</p>
+            </div>
+            <div>
+                <h4 class="footer-col-title">Secciones</h4>
+                <ul class="footer-links-list">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <li><a href="politica-privacidad.html">Política de Privacidad</a></li>
+                    <li><a href="descargo-responsabilidad.html">Aviso de Afiliación</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-col-title">Categorías</h4>
+                <ul class="footer-links-list">
+                    <li><a href="categorias/notebooks.html">Notebooks</a></li>
+                    <li><a href="categorias/pcs-gamer.html">PCs Gamer</a></li>
+                    <li><a href="categorias/placas-de-video.html">Placas de Video</a></li>
+                    <li><a href="categorias/monitores.html">Monitores</a></li>
+                    <li><a href="categorias/auriculares.html">Auriculares</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-col-title">Contacto</h4>
+                <ul class="footer-links-list">
+                    <li>📍 Buenos Aires, Argentina</li>
+                    <li>✉️ info@techafiliados.ar</li>
+                    <li style="margin-top: 15px;">
+                        <span style="display: inline-block; padding: 4px 8px; border-radius: 4px; background-color: var(--bg-card); font-size: 0.8rem; border: 1px solid var(--border-color);">
+                            Actualizado: 2026
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-legal-disclosure">
+            <p>© 2026 TechAfiliados. Todos los derechos reservados. Esta es una web informativa que participa del programa de afiliados de Mercado Libre Argentina.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="js/affiliate-config.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/theme-toggle.js"></script>
+    <script src="js/command-palette.js"></script>
+</body>
+</html>

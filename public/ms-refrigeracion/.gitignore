@@ -1,0 +1,23 @@
+# Windows thumbnail cache files
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# Folder config file
+Folder.jpg
+Folder.db
+[Tt]humbs.db
+
+# VS Code
+.vscode/
+
+# JetBrains
+.idea/
+
+# Local logs
+*.log
+
+# Temp/Backup files
+*~
+*.swp
+*.bak

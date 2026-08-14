@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALFA GYM | Centro de Entrenamiento & High Performance en Mar del Plata</title>
+  <meta name="description" content="Centro de entrenamiento de alto rendimiento, musculación, crossfit y preparación física en Av. Colón, Mar del Plata. Pedí tu pase libre por WhatsApp.">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="ALFA GYM — High Performance Center">
+  <meta property="og:description" content="Equipamiento de fuerza olímpico, entrenadores certificados y planes de nutrición. Solicita tu pase de prueba por WhatsApp.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts: Space Grotesk + DM Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Three.js CDN for 3D Dumbbell Scrollytelling -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- React & Babel Standalone CDN -->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <style>
+    /* OKLCH Flagship Palette · Obsidian Black & Electric Neon Volt */
+    :root {
+      --color-bg-main: #080c14;
+      --color-card-bg: rgba(14, 20, 32, 0.82);
+      --color-card-hover: rgba(22, 32, 50, 0.9);
+      --color-neon-volt: #ccff00;
+      --color-cyan-glow: #00d2ff;
+      --color-foam-cream: #f8fafc;
+      --color-text-secondary: #94a3b8;
+      --color-border: rgba(204, 255, 0, 0.2);
+      --color-border-glow: rgba(204, 255, 0, 0.65);
+
+      --font-display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+      --font-body: 'DM Sans', system-ui, -apple-system, sans-serif;
+
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 26px;
+      --radius-pill: 999px;
+
+      --shadow-subtle: 0 4px 24px rgba(0, 0, 0, 0.5);
+      --shadow-elevated: 0 14px 44px rgba(0, 0, 0, 0.75);
+
+      --transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      overflow-x: clip;
+      font-family: var(--font-body);
+      background-color: var(--color-bg-main);
+      color: var(--color-foam-cream);
+      line-height: 1.65;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Fixed Fullscreen Electric Kinetic Canvas Background */
+    #electric-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .app-content-wrap {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Keyframe Animations */
+    @keyframes pulseVolt {
+      0%, 100% { box-shadow: 0 0 18px rgba(204, 255, 0, 0.4); }
+      50% { box-shadow: 0 0 35px rgba(204, 255, 0, 0.85); }
+    }
+    @keyframes subtleFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    /* Anti-Gigantismo Typography Control */
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: var(--color-foam-cream);
+    }
+
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.55rem;
+      padding: 0.85rem 1.8rem; font-family: var(--font-display); font-size: 0.92rem; font-weight: 700;
+      border-radius: var(--radius-sm); text-decoration: none; transition: var(--transition);
+      cursor: pointer; border: none; letter-spacing: 0.02em;
+    }
+
+    .btn-volt {
+      background: linear-gradient(135deg, var(--color-neon-volt) 0%, #a6d900 100%);
+      color: #080c14; box-shadow: 0 4px 18px rgba(204, 255, 0, 0.45);
+    }
+    .btn-volt:hover {
+      transform: translateY(-2px); box-shadow: 0 8px 28px rgba(204, 255, 0, 0.7);
+    }
+
+    .btn-cyan {
+      background-color: var(--color-cyan-glow); color: #080c14;
+      box-shadow: 0 4px 18px rgba(0, 210, 255, 0.35);
+    }
+    .btn-cyan:hover {
+      transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0, 210, 255, 0.6);
+    }
+
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.04); color: var(--color-foam-cream);
+      border: 1px solid var(--color-border); backdrop-filter: blur(8px);
+    }
+    .btn-outline:hover {
+      border-color: var(--color-neon-volt); color: var(--color-neon-volt);
+      background: rgba(255, 255, 255, 0.08); transform: translateY(-2px);
+    }
+
+    .badge-subtle {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.35rem 0.95rem; background: rgba(14, 20, 32, 0.85);
+      border: 1px solid var(--color-border); border-radius: var(--radius-pill);
+      font-size: 0.8rem; font-weight: 600; color: var(--color-neon-volt);
+      letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 1.25rem;
+      backdrop-filter: blur(10px);
+    }
+
+    /* Header Nav */
+    .nav-header {
+      background: rgba(8, 12, 20, 0.9); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--color-border); padding: 1.1rem 0;
+      position: sticky; top: 0; z-index: 1000;
+    }
+    .nav-flex { display: flex; justify-content: space-between; align-items: center; }
+
+    .brand-logo {
+      font-family: var(--font-display); font-size: 1.35rem; font-weight: 700;
+      color: var(--color-foam-cream); text-decoration: none; display: flex; align-items: center; gap: 0.4rem;
+    }
+    .brand-logo span { color: var(--color-neon-volt); }
+
+    .nav-links { display: flex; gap: 1.75rem; list-style: none; align-items: center; }
+    .nav-links a {
+      color: var(--color-text-secondary); text-decoration: none; font-size: 0.88rem;
+      font-weight: 500; transition: var(--transition);
+    }
+    .nav-links a:hover { color: var(--color-neon-volt); }
+    @media (max-width: 850px) { .nav-links { display: none; } }
+
+    /* Hero Section */
+    .hero-section { padding: 5.5rem 0 4.5rem 0; position: relative; }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3rem; align-items: center; }
+    @media (max-width: 920px) { .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
+
+    .hero-title { font-size: clamp(2.2rem, 3.8vw, 3.2rem); margin-bottom: 1.25rem; color: #ffffff; }
+    .hero-title span { color: var(--color-neon-volt); }
+
+    .hero-subtitle { font-size: 1.1rem; color: var(--color-text-secondary); margin-bottom: 2rem; max-width: 550px; font-weight: 400; line-height: 1.65; }
+
+    .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2.5rem; }
+    @media (max-width: 600px) { .stats-row { grid-template-columns: 1fr; } }
+
+    .stat-card {
+      background: var(--color-card-bg); backdrop-filter: blur(12px);
+      border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 1.25rem; text-align: center;
+      transition: var(--transition); animation: subtleFloat 6s ease-in-out infinite;
+    }
+    .stat-card:hover { border-color: var(--color-border-glow); transform: translateY(-3px); }
+    .stat-num { font-family: var(--font-display); font-size: 1.8rem; font-weight: 700; color: var(--color-neon-volt); margin-bottom: 0.2rem; }
+    .stat-label { font-size: 0.8rem; color: var(--color-text-secondary); }
+
+    /* 3D Dumbbell Frame */
+    .three-box-container {
+      position: relative; border-radius: var(--radius-lg); overflow: hidden;
+      border: 1px solid var(--color-border-glow); box-shadow: var(--shadow-elevated); height: 420px;
+      background: radial-gradient(circle at 50% 50%, rgba(204, 255, 0, 0.15) 0%, rgba(8, 12, 20, 0.95) 80%);
+    }
+    #three-gym-canvas { width: 100%; height: 100%; display: block; }
+    .scrolly-badge {
+      position: absolute; bottom: 1.25rem; left: 1.25rem; right: 1.25rem;
+      background: rgba(8, 12, 20, 0.88); backdrop-filter: blur(12px); padding: 0.85rem 1.25rem;
+      border-radius: var(--radius-md); border: 1px solid var(--color-border);
+      display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; color: var(--color-neon-volt);
+    }
+
+    .section-wrap { padding: 4.75rem 0; border-top: 1px solid var(--color-border); position: relative; }
+    .section-header { text-align: center; max-width: 650px; margin: 0 auto 3.25rem auto; }
+    .section-header h2 { font-size: clamp(1.8rem, 2.8vw, 2.4rem); color: #ffffff; margin-top: 0.4rem; }
+
+    /* Glassmorphism Cards */
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+    .disc-card {
+      background: var(--color-card-bg); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border-radius: var(--radius-md); padding: 1.75rem; border: 1px solid var(--color-border);
+      transition: var(--transition); display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .disc-card:hover { transform: translateY(-4px); border-color: var(--color-border-glow); background: var(--color-card-hover); }
+
+    .disc-title { font-size: 1.2rem; color: #ffffff; margin-bottom: 0.3rem; }
+    .disc-tag {
+      display: inline-block; font-size: 0.75rem; font-family: monospace; padding: 0.2rem 0.55rem;
+      border-radius: 4px; font-weight: 700; text-transform: uppercase; background: rgba(204, 255, 0, 0.18);
+      color: var(--color-neon-volt); margin-bottom: 0.5rem;
+    }
+    .disc-desc { font-size: 0.88rem; color: var(--color-text-secondary); margin-bottom: 1.25rem; line-height: 1.55; }
+
+    /* Menu Tabs */
+    .menu-tabs { display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2.75rem; }
+    .tab-btn {
+      padding: 0.65rem 1.5rem; border-radius: var(--radius-pill); font-family: var(--font-display);
+      font-size: 0.88rem; font-weight: 600; border: 1px solid var(--color-border); background: var(--color-card-bg);
+      color: var(--color-text-secondary); cursor: pointer; transition: var(--transition);
+    }
+    .tab-btn.active, .tab-btn:hover {
+      background: var(--color-neon-volt); color: #080c14; border-color: var(--color-neon-volt);
+      font-weight: 700;
+    }
+
+    .menu-panel { display: none; }
+    .menu-panel.active { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+
+    #react-fitness-suite { margin-top: 2.5rem; }
+
+    /* Gallery Section */
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    @media (max-width: 750px) { .gallery-grid { grid-template-columns: 1fr; } }
+    .gal-item { height: 240px; border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--color-border); position: relative; }
+    .gal-item img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
+    .gal-item:hover img { transform: scale(1.08); }
+
+    /* Map Box */
+    .map-frame { width: 100%; height: 380px; border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--color-border); box-shadow: var(--shadow-elevated); }
+    .map-frame iframe { width: 100%; height: 100%; border: 0; }
+
+    footer { background: rgba(5, 8, 14, 0.96); border-top: 1px solid var(--color-border); padding: 4.5rem 0 2.25rem 0; color: var(--color-text-secondary); }
+    .footer-flex { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.75rem; }
+
+    .fab-wa { position: fixed; bottom: 2rem; right: 2rem; width: 62px; height: 62px; background: #25D366; color: #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; animation: pulseVolt 3s infinite; z-index: 9999; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <!-- Fullscreen Electric Kinetic Canvas Background -->
+  <canvas id="electric-canvas"></canvas>
+
+  <div class="app-content-wrap">
+    <!-- Header Nav -->
+    <header class="nav-header">
+      <div class="container nav-flex">
+        <a href="#" class="brand-logo">⚡ ALFA GYM <span>// HIGH_PERFORMANCE</span></a>
+        <ul class="nav-links">
+          <li><a href="#3d-dumbbell">Mancuerna 3D</a></li>
+          <li><a href="#disciplinas">Disciplinas</a></li>
+          <li><a href="#fitness-calc">Calculadora IMC</a></li>
+          <li><a href="#instalaciones">Instalaciones</a></li>
+          <li><a href="#contacto">Contacto WhatsApp</a></li>
+        </ul>
+        <a href="https://wa.me/5492235129480?text=Hola%20ALFA%20GYM!%20Quiero%20pedir%20mi%20pase%20libre%20de%20prueba." class="btn btn-volt" style="padding: 0.55rem 1.3rem; font-size: 0.84rem;" target="_blank">Pedir Pase Libre por WhatsApp ➔</a>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="3d-dumbbell">
+      <div class="container">
+        <div class="hero-grid">
+          <div>
+            <div class="badge-subtle">⚡ CENTRO DE ENTRENAMIENTO & HIGH PERFORMANCE · MAR DEL PLATA</div>
+            <h1 class="hero-title">Superá tus límites con <span>equipamiento olímpico</span>.</h1>
+            <p class="hero-subtitle">Musculación libre, crossfit de alta intensidad, preparación física personalizada y programas de nutrición deportiva en Av. Colón.</p>
+
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+              <a href="https://wa.me/5492235129480?text=Hola%20ALFA%20GYM!%20Quiero%20solicitar%20un%20pase%20libre." class="btn btn-volt" target="_blank">Pedir Pase Libre por WhatsApp ➔</a>
+              <a href="#fitness-calc" class="btn btn-outline">⚛️ Probar Calculadora IMC</a>
+            </div>
+
+            <div class="stats-row">
+              <div class="stat-card"><div class="stat-num">1.200m²</div><div class="stat-label">Área de Entrenamiento</div></div>
+              <div class="stat-card"><div class="stat-num">Olímpico</div><div class="stat-label">Equipamiento Cromo</div></div>
+              <div class="stat-card"><div class="stat-num">100%</div><div class="stat-label">Coaches Certificados</div></div>
+            </div>
+          </div>
+
+          <!-- 3D Dumbbell Frame -->
+          <div class="three-box-container">
+            <canvas id="three-gym-canvas"></canvas>
+            <div class="scrolly-badge">
+              <span>🤖 Mancuerna Olímpica 3D · Mové el cursor y hacé scroll</span>
+              <strong id="gym-status-text">Mancuerna Completa ➔</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Disciplines Section -->
+    <section class="section-wrap" id="disciplinas">
+      <div class="container">
+        <div class="section-header">
+          <div class="badge-subtle">Programas de Entrenamiento</div>
+          <h2>Áreas & Disciplinas Especializadas</h2>
+        </div>
+
+        <div class="menu-tabs">
+          <button class="tab-btn active" onclick="switchTab('musculacion')">🏋️ Musculación & Peso Libre</button>
+          <button class="tab-btn" onclick="switchTab('crossfit')">🔥 Crossfit & Funcional</button>
+          <button class="tab-btn" onclick="switchTab('combat')">🥊 Boxeo & Combat</button>
+        </div>
+
+        <div class="menu-panel active" id="tab-musculacion">
+          <div class="disc-card">
+            <div>
+              <span class="disc-tag">Área Principal</span>
+              <h3 class="disc-title">Musculación & Zonas de Peso Libre</h3>
+              <p class="disc-desc">Barras olímpicas, mancuernas de 2kg a 50kg, bancos ajustables y máquinas electromagnéticas de aislamiento muscular de última generación.</p>
+            </div>
+            <a href="https://wa.me/5492235129480?text=Hola%20ALFA%20GYM!%20Quiero%20info%20de%20Musculacion." class="btn btn-volt" style="padding: 0.5rem 1rem; font-size: 0.8rem;" target="_blank">Pedir Pase por WhatsApp ➔</a>
+          </div>
+
+          <div class="disc-card">
+            <div>
+              <span class="disc-tag">Powerlifting</span>
+              <h3 class="disc-title">Rack de Sentadillas & Banco Plano</h3>
+              <p class="disc-desc">Plataformas de levantamiento con discos de goma de competición para sentadilla, press de banca y peso muerto sin restricciones.</p>
+            </div>
+            <a href="https://wa.me/5492235129480?text=Hola%20ALFA%20GYM!%20Quiero%20info%20de%20Powerlifting." class="btn btn-volt" style="padding: 0.5rem 1rem; font-size: 0.8rem;" target="_blank">Pedir Pase por WhatsApp ➔</a>
+          </div>
+        </div>
+
+        <div class="menu-panel" id="tab-crossfit">
+          <div class="disc-card">
+            <div>
+              <span class="disc-tag">Alta Intensidad</span>
+              <h3 class="disc-title">Cross Training & WOD Diario</h3>
+              <p class="disc-desc">Circuitos guiados por coaches certificados con kettebells, sogas de combate, cajones pliométricos y remorgómetros de remo.</p>
+            </div>
+            <a href="https://wa.me/5492235129480?text=Hola%20ALFA%20GYM!%20Quiero%20info%20de%20Crossfit." class="btn btn-volt" style="padding: 0.5rem 1rem; font-size: 0.8rem;" target="_blank">Pedir Pase por WhatsApp ➔</a>
+          </div>
+        </div>
+
+        <div class="menu-panel" id="tab-combat">
+          <div class="disc-card">
+            <div>
+              <span class="disc-tag">Contacto & Cardio</span>
+              <h3 class="disc-title">Boxeo Recreativo & Kickboxing</h3>
+              <p class="disc-desc">Ring reglamentario, bolsas pesadas de golpeo y entrenamiento de agilidad, reflejos y quema de calorías extrema.</p>
+            </div>
+            <a href="https://wa.me/5492235129480?text=Hola%20ALFA%20GYM!%20Quiero%20info%20de%20Boxeo." class="btn btn-volt" style="padding: 0.5rem 1rem; font-size: 0.8rem;" target="_blank">Pedir Pase por WhatsApp ➔</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- React Fitness Calculator Section -->
+    <section class="section-wrap" id="fitness-calc" style="background: rgba(255, 255, 255, 0.015);">
+      <div class="container">
+        <div class="section-header">
+          <div class="badge-subtle">⚛️ REACT STANDALONE ENGINE</div>
+          <h2>Calculadora de IMC & Diagnóstico de Entrenamiento</h2>
+        </div>
+
+        <div id="react-fitness-suite"></div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section-wrap" id="instalaciones">
+      <div class="container">
+        <div class="section-header">
+          <div class="badge-subtle">📸 Equipamiento Olímpico</div>
+          <h2>Nuestras Instalaciones en Mar del Plata</h2>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gal-item"><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80" alt="Gimnasio musculacion"></div>
+          <div class="gal-item"><img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80" alt="Crossfit entrenamiento"></div>
+          <div class="gal-item"><img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=800&q=80" alt="Pesas olimpicas"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Location Map Section -->
+    <section class="section-wrap" id="contacto">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center;">
+          <div>
+            <div class="badge-subtle">📍 Ubicación Av. Colón</div>
+            <h2 style="font-size: 2.2rem; color: #ffffff; margin-bottom: 1rem;">Estamos en Av. Colón 2450</h2>
+            <div style="background: var(--color-card-bg); padding: 1.35rem; border-radius: var(--radius-md); border: 1px solid var(--color-border); margin-bottom: 1.75rem; font-size: 0.9rem;">
+              <p style="margin-bottom: 0.45rem;">📍 <strong>Dirección:</strong> Av. Colón 2450, Mar del Plata</p>
+              <p style="margin-bottom: 0.45rem;">📞 <strong>Teléfono Directo:</strong> 0223 5129480</p>
+              <p style="margin-bottom: 0.45rem;">💬 <strong>WhatsApp Consultas:</strong> +54 9 223 5129480</p>
+              <p>🕒 <strong>Horarios:</strong> Lunes a Viernes de 07:00 a 23:00 hs / Sábados de 09:00 a 20:00 hs</p>
+            </div>
+            <a href="https://wa.me/5492235129480?text=Hola%20ALFA%20GYM!" class="btn btn-volt" target="_blank">
+              Abrir Chat de WhatsApp Directo
+            </a>
+          </div>
+
+          <div class="map-frame">
+            <iframe src="https://maps.google.com/maps?q=Av.+Colon+2450,+Mar+del+Plata&z=15&output=embed" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container footer-flex">
+        <div>
+          <a href="#" class="brand-logo" style="font-size: 1.55rem;">⚡ ALFA GYM <span>// HIGH PERFORMANCE</span></a>
+          <p style="font-size: 0.88rem; margin-top: 0.4rem; color: var(--color-text-secondary);">
+            Centro de Entrenamiento & Musculación Olímpica · Av. Colón 2450, Mar del Plata.
+          </p>
+        </div>
+        <div style="font-size: 0.85rem; color: var(--color-text-secondary);">
+          © 2026 ALFA GYM — Todos los derechos reservados.
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <a href="https://wa.me/5492235129480?text=Hola%20ALFA%20GYM!" class="fab-wa" target="_blank" title="WhatsApp">💬</a>
+
+  <!-- High-Frequency Electric Kinetic Canvas Engine (Zero-Dependency) -->
+  <script>
+    (function() {
+      const canvas = document.getElementById('electric-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      let width = canvas.width = window.innerWidth;
+      let height = canvas.height = window.innerHeight;
+      let mouse = { x: width / 2, y: height / 2, currX: width / 2, currY: height / 2 };
+
+      window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      window.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+      });
+
+      const sparks = [];
+      for (let i = 0; i < 90; i++) {
+        sparks.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 2.2,
+          vy: (Math.random() - 0.5) * 2.2,
+          size: Math.random() * 3 + 1.5,
+          hue: Math.random() > 0.5 ? 75 : 195 // Neon Volt (#ccff00) & Cyan (#00d2ff)
+        });
+      }
+
+      function drawElectricEngine() {
+        mouse.currX += (mouse.x - mouse.currX) * 0.1;
+        mouse.currY += (mouse.y - mouse.currY) * 0.1;
+
+        ctx.fillStyle = '#080c14';
+        ctx.fillRect(0, 0, width, height);
+
+        // Electric Neon Volt aura around cursor
+        const voltAura = ctx.createRadialGradient(mouse.currX, mouse.currY, 0, mouse.currX, mouse.currY, 320);
+        voltAura.addColorStop(0, 'rgba(204, 255, 0, 0.32)');
+        voltAura.addColorStop(0.5, 'rgba(0, 210, 255, 0.12)');
+        voltAura.addColorStop(1, 'rgba(8, 12, 20, 0)');
+        ctx.fillStyle = voltAura;
+        ctx.beginPath();
+        ctx.arc(mouse.currX, mouse.currY, 320, 0, Math.PI * 2);
+        ctx.fill();
+
+        for (let i = 0; i < sparks.length; i++) {
+          let p = sparks[i];
+          p.x += p.vx;
+          p.y += p.vy;
+
+          const dx = mouse.currX - p.x;
+          const dy = mouse.currY - p.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 220) {
+            const force = (220 - dist) / 220;
+            p.x -= (dx / dist) * force * 6.5;
+            p.y -= (dy / dist) * force * 6.5;
+          }
+
+          if (p.x < 0) p.x = width;
+          if (p.x > width) p.x = 0;
+          if (p.y < 0) p.y = height;
+          if (p.y > height) p.y = 0;
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fillStyle = `hsl(${p.hue}, 100%, 55%)`;
+          ctx.shadowBlur = 14;
+          ctx.shadowColor = `hsl(${p.hue}, 100%, 60%)`;
+          ctx.fill();
+          ctx.shadowBlur = 0;
+
+          for (let j = i + 1; j < sparks.length; j++) {
+            let p2 = sparks[j];
+            const ldx = p.x - p2.x;
+            const ldy = p.y - p2.y;
+            const ldist = Math.sqrt(ldx * ldx + ldy * ldy);
+            if (ldist < 140) {
+              const alpha = (1 - ldist / 140) * 0.45;
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.strokeStyle = `rgba(204, 255, 0, ${alpha})`;
+              ctx.lineWidth = 1.3;
+              ctx.stroke();
+            }
+          }
+        }
+        requestAnimationFrame(drawElectricEngine);
+      }
+      drawElectricEngine();
+    })();
+
+    // Three.js 3D Chrome Dumbbell Scrollytelling Engine
+    (function() {
+      const container = document.querySelector('.three-box-container');
+      const canvas = document.getElementById('three-gym-canvas');
+      if (!canvas || !window.THREE) return;
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+      camera.position.set(0, 0, 7.5);
+
+      const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+      renderer.setSize(container.clientWidth, container.clientHeight);
+
+      // Metallic Lighting
+      const ambLight = new THREE.AmbientLight(0xffffff, 0.9);
+      scene.add(ambLight);
+
+      const voltLight = new THREE.PointLight(0xccff00, 2.8, 20);
+      voltLight.position.set(5, 5, 5);
+      scene.add(voltLight);
+
+      // 3D Chrome Barbell Group
+      const dumbbellGroup = new THREE.Group();
+
+      // Chrome Central Bar
+      const barGeo = new THREE.CylinderGeometry(0.2, 0.2, 5, 32);
+      const chromeMat = new THREE.MeshStandardMaterial({ color: 0xe2e8f0, metalness: 0.95, roughness: 0.15 });
+      const barMesh = new THREE.Mesh(barGeo, chromeMat);
+      barMesh.rotation.z = Math.PI / 2;
+      dumbbellGroup.add(barMesh);
+
+      // Left Discs
+      const discGeo = new THREE.CylinderGeometry(1.6, 1.6, 0.3, 32);
+      const ironMat = new THREE.MeshStandardMaterial({ color: 0x1e293b, metalness: 0.8, roughness: 0.3 });
+      const disc1 = new THREE.Mesh(discGeo, ironMat);
+      disc1.rotation.z = Math.PI / 2;
+      disc1.position.x = -1.5;
+      dumbbellGroup.add(disc1);
+
+      // Right Discs
+      const disc2 = new THREE.Mesh(discGeo, ironMat);
+      disc2.rotation.z = Math.PI / 2;
+      disc2.position.x = 1.5;
+      dumbbellGroup.add(disc2);
+
+      dumbbellGroup.rotation.x = 0.45;
+      scene.add(dumbbellGroup);
+
+      let mouseX = 0, mouseY = 0;
+      container.addEventListener('mousemove', (e) => {
+        const rect = container.getBoundingClientRect();
+        mouseX = ((e.clientX - rect.left) / container.clientWidth) * 2 - 1;
+        mouseY = -((e.clientY - rect.top) / container.clientHeight) * 2 + 1;
+      });
+
+      const gymStatus = document.getElementById('gym-status-text');
+
+      function animateDumbbell() {
+        requestAnimationFrame(animateDumbbell);
+
+        dumbbellGroup.rotation.y += (mouseX * 1.5 - dumbbellGroup.rotation.y) * 0.05;
+        dumbbellGroup.rotation.x += (mouseY * 0.5 + 0.45 - dumbbellGroup.rotation.x) * 0.05;
+
+        const scrollY = window.scrollY || 0;
+        const explode = Math.min(scrollY / 350, 1.5);
+
+        disc1.position.x = -1.5 - explode * 0.8;
+        disc2.position.x = 1.5 + explode * 0.8;
+
+        if (explode > 0.4) {
+          gymStatus.innerText = 'Despiece 3D Disco Olímpico ➔';
+        } else {
+          gymStatus.innerText = 'Mancuerna Completa ➔';
+        }
+
+        renderer.render(scene, camera);
+      }
+      animateDumbbell();
+    })();
+
+    function switchTab(catId) {
+      document.querySelectorAll('.menu-panel').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+
+      document.getElementById('tab-' + catId).classList.add('active');
+      event.currentTarget.classList.add('active');
+    }
+  </script>
+
+  <!-- React Standalone Fitness Suite -->
+  <script type="text/babel">
+    const { useState } = React;
+
+    function FitnessSuiteApp() {
+      const [weight, setWeight] = useState(75);
+      const [height, setHeight] = useState(175);
+      const [goal, setGoal] = useState('Musculación & Hipertrofia');
+      const [days, setDays] = useState('4 Días a la semana');
+
+      const bmi = (weight / Math.pow(height / 100, 2)).toFixed(1);
+
+      const handleSendWA = () => {
+        const msg = `Hola ALFA GYM! Quiero solicitar mi Pase Libre de Prueba. Datos: Peso ${weight}kg | Altura ${height}cm | IMC ${bmi} | Objetivo: ${goal} | Frecuencia: ${days}.`;
+        window.open(`https://wa.me/5492235129480?text=${encodeURIComponent(msg)}`, '_blank');
+      };
+
+      return (
+        <div style={{
+          background: 'var(--color-card-bg)',
+          borderRadius: 'var(--radius-lg)',
+          padding: '2.5rem',
+          border: '1px solid var(--color-border)',
+          boxShadow: 'var(--shadow-elevated)',
+          display: 'grid',
+          gridTemplateColumns: '1.2fr 0.8fr',
+          gap: '2.5rem'
+        }}>
+          <div>
+            <h3 style={{ fontSize: '1.4rem', color: '#fff', marginBottom: '1rem' }}>
+              ⚛️ Calculadora IMC & Diagnóstico de Rutina
+            </h3>
+
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1.5rem' }}>
+              <div>
+                <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--color-neon-volt)', marginBottom: '0.4rem' }}>
+                  Peso (kg): {weight} kg
+                </label>
+                <input
+                  type="range"
+                  min="40"
+                  max="140"
+                  value={weight}
+                  onChange={(e) => setWeight(Number(e.target.value))}
+                  style={{ width: '100%' }}
+                />
+              </div>
+
+              <div>
+                <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--color-neon-volt)', marginBottom: '0.4rem' }}>
+                  Altura (cm): {height} cm
+                </label>
+                <input
+                  type="range"
+                  min="140"
+                  max="210"
+                  value={height}
+                  onChange={(e) => setHeight(Number(e.target.value))}
+                  style={{ width: '100%' }}
+                />
+              </div>
+            </div>
+
+            <div style={{ marginBottom: '1.5rem' }}>
+              <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--color-text-secondary)', marginBottom: '0.5rem' }}>
+                Objetivo Principal:
+              </label>
+              <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                {['Musculación & Hipertrofia', 'Fuerza & Powerlifting', 'Pérdida de Grasa', 'Crossfit & Rendimiento'].map(g => (
+                  <button
+                    key={g}
+                    onClick={() => setGoal(g)}
+                    style={{
+                      padding: '0.5rem 1rem',
+                      borderRadius: 'var(--radius-pill)',
+                      border: '1px solid var(--color-border)',
+                      background: goal === g ? 'var(--color-neon-volt)' : 'rgba(255,255,255,0.03)',
+                      color: goal === g ? '#080c14' : '#fff',
+                      fontSize: '0.85rem',
+                      fontWeight: goal === g ? 'bold' : 'normal',
+                      cursor: 'pointer'
+                    }}
+                  >
+                    {g}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div style={{
+            background: 'rgba(8, 12, 20, 0.65)',
+            borderRadius: 'var(--radius-md)',
+            padding: '1.75rem',
+            border: '1px solid var(--color-border)',
+            display: 'flex',
+            flexDirection: 'column',
+            justify: 'space-between'
+          }}>
+            <div>
+              <h4 style={{ fontSize: '1.2rem', color: 'var(--color-neon-volt)', marginBottom: '1rem' }}>
+                Diagnóstico de Entrenamiento
+              </h4>
+              <div style={{ fontSize: '0.88rem', lineHeight: '1.85', color: 'var(--color-text-secondary)' }}>
+                <p>📊 <strong>Tu IMC Calculado:</strong> <span style={{ color: 'var(--color-neon-volt)', fontWeight: 'bold' }}>{bmi}</span></p>
+                <p>🏋️ <strong>Objetivo:</strong> <span style={{ color: '#fff' }}>{goal}</span></p>
+                <p>⚡ <strong>Rutina Sugerida:</strong> <span style={{ color: '#fff' }}>Split 4 Días + Hipertrofia</span></p>
+              </div>
+            </div>
+
+            <button
+              onClick={handleSendWA}
+              className="btn btn-volt"
+              style={{ width: '100%', marginTop: '1.5rem' }}
+            >
+              Pedir Pase Libre por WhatsApp ➔
+            </button>
+          </div>
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('react-fitness-suite'));
+    root.render(<FitnessSuiteApp />);
+  </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+{
+  "note": "Matriz de diversidad: cada página tiene una dirección de diseño única (layout + paleta + tipografía + motion) para que NUNCA se repitan entre sí. Rubros agrupados. 'elevar_base' = ya existe versión de calidad en Projects/webs/ o en raw_html con contenido rico.",
+  "groups": [
+    {
+      "rubro": "salud",
+      "clients": [
+        { "slug": "clinica-luro", "direction": "Paper & Ink Editorial", "detail": "Fondo marfil, serif editorial (Fraunces/Newsreader), acento cian profundo sobrio, grilla editorial asimétrica, hairlines en vez de sombras, numeración editorial de secciones." },
+        { "slug": "cardiologia-dra-ana-gracia-alonso", "direction": "Cardiology Precision", "detail": "Blanco + azul eléctrico, motif de línea ECG en hero, layout técnico minimal, ficha de estudios con íconos lineales." },
+        { "slug": "centro-de-dia-lackar-del-sur", "direction": "Cuidado Cálido Familiar", "detail": "Terracota + durazno suave, formas redondeadas, ilustraciones blandas, tono de contención y familia, sin estética fría hospitalaria." },
+        { "slug": "centro-medico-edison", "direction": "Institucional Clásico", "detail": "Azul marino + dorado sobrio, layout institucional de clínica grande, jerarquía clara, confianza y tradición." },
+        { "slug": "consultorio-edison", "direction": "Neo-Glass Clinical", "detail": "Glassmorphism suave menta + blanco, tarjetas translúcidas con hairline, aire moderno y limpio." },
+        { "slug": "consultorios-integrales-colinas", "direction": "Wellness Bento Térmico", "detail": "Verde salvia + arena, grid bento de especialidades, orgánico, multi-disciplina, micro-interacciones en cards." },
+        { "slug": "consultorios-medicos-luro", "direction": "Brutalist-Lite Bicolor", "detail": "Negro + crema, tipografía display fuerte, bordes marcados, contraste alto, moderno urbano." },
+        { "slug": "consultorios-san-juan", "direction": "Editorial Cálido", "detail": "Papel crema + terracota, serif display, testimonios grandes como piezas editoriales, calma." },
+        { "slug": "cordoba-consultorios-medicos", "direction": "Dark Sereno Premium", "detail": "Slate oscuro + cian suave, elegancia nocturna, gradientes sutiles permitidos acá, premium." },
+        { "slug": "espacio-edison", "direction": "Espacio Natural Orgánico", "detail": "Verde bosque + madera clara, formas orgánicas, terapias y bienestar, texturas naturales." },
+        { "slug": "estetica-n", "direction": "Belleza Rosé Gold", "detail": "Rosa cuarzo + oro, femenino elegante, tratamientos de estética, curvas suaves, lujo accesible." },
+        { "slug": "kytos-salud-integral", "direction": "ELEVAR_BASE Botanical Cyan Split Studio", "detail": "Usar como base la versión de Projects/webs/kytos-salud-integral (Split Studio, Botanical Cyan, oklch). Pulir y desplegar." },
+        { "slug": "oceano-mar-consultorios", "direction": "Marina Calm Coastal", "detail": "Azul océano + arena, aire costero, glass suave, hero con referencia al mar, serenidad." },
+        { "slug": "san-lorenzo-instituto-medico", "direction": "Institucional Confiable Grid", "detail": "Azul medio + blanco, grid de especialistas/equipo, sólido y confiable, profesional." },
+        { "slug": "sanatorio-avenida", "direction": "Guardia Urbana", "detail": "Azul eléctrico + gris, energía controlada, foco en guardia/urgencias y consultorios, botones contundentes." },
+        { "slug": "urgencias-odontologicas", "direction": "Dental Ice Precision", "detail": "Blanco + azul hielo, precisión clínica, acento coral suave para 'urgencias', velocidad de contacto." }
+      ]
+    },
+    {
+      "rubro": "retail-deco",
+      "clients": [
+        { "slug": "aderezo", "direction": "Taller Artesanal Cuero", "detail": "Café cuero + dorado, warm industrial, texturas, herramientas de marroquinería, artesanal premium." },
+        { "slug": "all-design", "direction": "Pop Graphic Noir", "detail": "Negro + neón coral/lima, tipografía display bold, marquee de servicios, vinilos/deco, energía creativa." },
+        { "slug": "casa-moda", "direction": "Moda Hogar Fresco", "detail": "Salvia + crema, elegante hogareño, serif suave, moda textil + hogar, calma." },
+        { "slug": "decor-wall", "direction": "Mural Studio Gallery", "detail": "Grid galería grande, colores vibrantes + blanco, hero pantalla completa, vinilos/paneles de pared." },
+        { "slug": "dimension-atelier", "direction": "Artesanía Piedra Editoral", "detail": "Piedra + verde oliva, editorial artesanal, objetos hechos a mano, fotos reales de productos, premium." },
+        { "slug": "humus-mar-del-plata", "direction": "Tierra Viva Orgánica", "detail": "Verde natural + tierra marrón, orgánico, texturas vegetales, huerta/plantas, bienestar." },
+        { "slug": "krearte", "direction": "Arte Collage Playful", "detail": "Papeles coloridos, collage, serif juguetona, arte/artesanías/regalos, alegría." },
+        { "slug": "la-isla", "direction": "Regalo Boutique Coral", "detail": "Coral + teal, alegre, tipografía rounded, regalos y decoración, cercano y amable." },
+        { "slug": "molduras-aguilera", "direction": "Atelier Dorado Galería", "detail": "Negro + dorado, galería de marcos y molduras, sofisticado, enmarcado a medida." },
+        { "slug": "monograf", "direction": "Swiss Print Studio", "detail": "Blanco + rojo/negro, grilla suiza, grotesca Helvetica-like, imprenta, precisión tipográfica." },
+        { "slug": "patchandflag", "direction": "Textil Utility Chic", "detail": "Verde oliva + beige, parches bordados, utilitario moderno, personalización textil." },
+        { "slug": "rompecabezas", "direction": "Juego Geométrico Primario", "detail": "Bloques primarios (rojo/amarillo/azul), geométrico playful, puzzles y juegos de mesa, diversión familiar." },
+        { "slug": "turmalina", "direction": "Bijou Glam Pizarra", "detail": "Pizarra oscura + dorado, lujo accesible, bijou artesanal, brillo, elegante." },
+        { "slug": "antes-muerta-que-sencilla-showroom", "direction": "Fashion Editorial B&W", "detail": "Blanco y negro, editorial de moda, serif display + grilla magazine, showroom, estética de revista." },
+        { "slug": "bulgarie", "direction": "Pastel Luxury Glass", "detail": "Rosa palo + oro rosa, cristal esmerilado, instagramero, showroom indumentaria, exclusivo." }
+      ]
+    },
+    {
+      "rubro": "gastronomia",
+      "clients": [
+        { "slug": "kiva-cafe", "direction": "ELEVAR_BASE Ritual del Buen Café", "detail": "Base en raw_html/kiva-cafe (ya rica). Pulir detalles, mantener identidad cafetería de especialidad Güemes." },
+        { "slug": "restaurante-la-marina", "direction": "ELEVAR_BASE Cocina de Puerto", "detail": "Base en raw_html/restaurante-la-marina (ya rica). Pulir y desplegar, cocina de mar + fuego." },
+        { "slug": "terca", "direction": "ELEVAR_BASE Viandas & Catering", "detail": "Base en raw_html/terca (ya rica con assets). Pulir, viandas caseras + catering artesanal." },
+        { "slug": "verde-limon", "direction": "ELEVAR_BASE Almacén Natural", "detail": "Base en raw_html/verde-limon (ya rica con assets). Pulir, granel y tienda saludable." }
+      ]
+    },
+    {
+      "rubro": "cabanas",
+      "clients": [
+        { "slug": "cabanas-entre-los-arboles", "direction": "Bosque Serena Inmersivo", "detail": "Verde profundo + madera, galería grande de cabañas, inmersivo, desconexión, reservas por WhatsApp." }
+      ]
+    },
+    {
+      "rubro": "agencia",
+      "clients": [
+        { "slug": "nora-ai", "direction": "ELEVAR_BASE Naro AI Agencia", "detail": "Base en raw_html/nora-ai (ya rica). Pulir, agencia de IA y crecimiento digital, alta conversión." }
+      ]
+    }
+  ]
+}

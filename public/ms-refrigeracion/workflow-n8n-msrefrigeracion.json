@@ -1,0 +1,176 @@
+{
+  "name": "MS Refrigeración - Lead Capture & Urgencia Alert",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "ms-refrigeracion-lead",
+        "options": {}
+      },
+      "name": "Webhook Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        250,
+        300
+      ],
+      "id": "webhook-trigger-id"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "YOUR_GOOGLE_SHEET_ID_HERE",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Hoja 1",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Fecha": "={{ new Date().toLocaleString('es-AR') }}",
+            "Nombre / Empresa": "={{ $json.body.name }}",
+            "Email": "={{ $json.body.email }}",
+            "Teléfono": "={{ $json.body.phone }}",
+            "Sector": "={{ $json.body.sector }}",
+            "Urgencia": "={{ $json.body.urgencia ? 'SÍ' : 'NO' }}",
+            "Mensaje": "={{ $json.body.message }}"
+          },
+          "matchingColumns": [],
+          "schema": []
+        },
+        "options": {}
+      },
+      "name": "Save to Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 3,
+      "position": [
+        480,
+        300
+      ],
+      "id": "google-sheets-id",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "YOUR_GOOGLE_CREDENTIAL_ID",
+          "name": "Google Sheets Connection"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.body.urgencia }}",
+              "operation": "equal",
+              "value2": "on"
+            }
+          ]
+        }
+      },
+      "name": "Is Emergency?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        700,
+        300
+      ],
+      "id": "if-emergency-id"
+    },
+    {
+      "parameters": {
+        "chatId": "YOUR_TELEGRAM_CHAT_ID",
+        "text": "=🚨 *¡ALERTA DE GUARDIA 24 HS!* 🚨\n\nHa ingresado una solicitud de asistencia técnica de urgencia.\n\n*Empresa:* {{ $json.body.name }}\n*Teléfono:* {{ $json.body.phone }}\n*Email:* {{ $json.body.email }}\n*Sector:* {{ $json.body.sector }}\n\n*Mensaje:* \n{{ $json.body.message }}\n\n_Por favor, contactar al cliente de inmediato._",
+        "additionalFields": {
+          "parse_mode": "Markdown"
+        }
+      },
+      "name": "Send Telegram Alert (Techs)",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [
+        920,
+        180
+      ],
+      "id": "telegram-alert-id",
+      "credentials": {
+        "telegramApi": {
+          "id": "YOUR_TELEGRAM_CREDENTIAL_ID",
+          "name": "Telegram Bot Connection"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fromEmail": "contacto@msrefrigeracion.com.ar",
+        "toEmail": "administracion@msrefrigeracion.com.ar",
+        "subject": "=Nuevo Lead Comercial: {{ $json.body.name }}",
+        "html": "=<h3>Nuevo contacto recibido desde el sitio web</h3>\n<p><strong>Nombre / Empresa:</strong> {{ $json.body.name }}</p>\n<p><strong>Email:</strong> {{ $json.body.email }}</p>\n<p><strong>Teléfono:</strong> {{ $json.body.phone }}</p>\n<p><strong>Sector:</strong> {{ $json.body.sector }}</p>\n<p><strong>Urgencia 24h:</strong> No</p>\n<p><strong>Mensaje:</strong></p>\n<p>{{ $json.body.message }}</p>",
+        "options": {}
+      },
+      "name": "Send Email Notification (Admin)",
+      "type": "n8n-nodes-base.email",
+      "typeVersion": 1,
+      "position": [
+        920,
+        420
+      ],
+      "id": "email-notification-id",
+      "credentials": {
+        "smtp": {
+          "id": "YOUR_SMTP_CREDENTIAL_ID",
+          "name": "SMTP Connection"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Webhook Trigger": {
+      "main": [
+        [
+          {
+            "node": "Save to Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save to Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Is Emergency?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Is Emergency?": {
+      "main": [
+        [
+          {
+            "node": "Send Telegram Alert (Techs)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send Email Notification (Admin)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {},
+  "id": "ms-refrigeracion-workflow"
+}
