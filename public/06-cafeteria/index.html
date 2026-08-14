@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOTÁNICA | Specialty Coffee Roastery, Bakery Artesanal & Oasis Urbano</title>
+  <meta name="description" content="Tostaduría de café de especialidad, pastelería artesanal horneada a diario y brunch en un jardín botánico pet friendly y luminoso. Visitanos en el corazón de la ciudad.">
+  <meta name="theme-color" content="#fcf8f2">
+  
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="BOTÁNICA | Café de Especialidad & Bakery Botánico">
+  <meta property="og:description" content="El rincón más lindo y tentador para tu café diario, co-working y brunch.">
+  <meta property="og:image" content="assets/hero.jpg">
+
+  <!-- Google Fonts: Plus Jakarta Sans, Playfair Display & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* ==========================================================================
+       1. VARIABLES Y TOKENS DE DISEÑO (WARM OFF-WHITE, TERRACOTA & BOTANICAL GREEN)
+       ========================================================================== */
+    :root {
+      --bg-base: #fcf8f2; /* Luminous Warm Oat White */
+      --bg-surface: #ffffff;
+      --bg-warm-tint: #f6efe3;
+      
+      --accent-brown: #2e180e; /* Espresso Roast */
+      --accent-orange: #e06d2c; /* Warm Terracota */
+      --accent-orange-hover: #c25418;
+      --accent-orange-light: #ffedd5;
+      
+      --accent-green: #2d5a3f; /* Botanical Matcha Forest */
+      --accent-green-light: #ecfdf5;
+      --accent-green-border: #a7f3d0;
+
+      --text-primary: #1c100b;
+      --text-secondary: #4a3528;
+      --text-muted: #7c6a5d;
+
+      --border-subtle: #eadecd;
+      --border-medium: #d4c4b0;
+      --border-orange: #fed7aa;
+
+      --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-xl: 32px;
+      --radius-full: 9999px;
+
+      --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      --shadow-sm: 0 3px 8px rgba(46, 24, 14, 0.04);
+      --shadow-md: 0 10px 28px -4px rgba(46, 24, 14, 0.08);
+      --shadow-lg: 0 20px 45px -4px rgba(224, 109, 44, 0.12);
+      --shadow-orange: 0 10px 25px rgba(224, 109, 44, 0.28);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+    }
+
+    body {
+      min-height: 100vh;
+      line-height: 1.5;
+      background-color: var(--bg-base);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(255, 237, 213, 0.75) 0, transparent 45%), 
+        radial-gradient(at 100% 100%, rgba(236, 253, 245, 0.85) 0, transparent 45%),
+        radial-gradient(at 50% 50%, rgba(254, 243, 199, 0.35) 0, transparent 60%);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+    }
+
+    .app-container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 3.5vw, 2.5rem);
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+      font-weight: 800;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 4.2vw, 3.6rem);
+      line-height: 1.12;
+    }
+
+    h2 {
+      font-size: clamp(1.7rem, 2.8vw, 2.4rem);
+      line-height: 1.2;
+    }
+
+    h3 {
+      font-size: clamp(1.15rem, 1.8vw, 1.35rem);
+    }
+
+    p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1.1rem;
+      background: var(--accent-orange-light);
+      border: 1px solid var(--border-orange);
+      border-radius: var(--radius-full);
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--accent-orange-hover);
+    }
+
+    .badge-pill.green {
+      background: var(--accent-green-light);
+      border-color: var(--accent-green-border);
+      color: var(--accent-green);
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--accent-green);
+      box-shadow: 0 0 8px rgba(45, 90, 63, 0.7);
+      animation: pulse-dot 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.25); }
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      padding: 0.85rem 1.65rem;
+      border-radius: var(--radius-md);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.92rem;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-terracota {
+      background: linear-gradient(135deg, #e06d2c 0%, #c25418 100%);
+      color: #ffffff;
+      box-shadow: var(--shadow-orange);
+    }
+
+    .btn-terracota:hover {
+      background: linear-gradient(135deg, #f97316 0%, #e06d2c 100%);
+      box-shadow: 0 12px 28px rgba(224, 109, 44, 0.35);
+      transform: translateY(-2px);
+      color: #ffffff;
+    }
+
+    .btn-secondary {
+      background: #ffffff;
+      color: var(--text-primary);
+      border: 1px solid var(--border-medium);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-warm-tint);
+      border-color: var(--accent-orange);
+      color: var(--accent-orange);
+      transform: translateY(-2px);
+    }
+
+    /* Navbar */
+    .navbar-wrapper {
+      position: sticky;
+      top: 1.25rem;
+      z-index: 100;
+      margin-bottom: 2.5rem;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.8rem 1.6rem;
+      background: rgba(252, 248, 242, 0.94);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      box-shadow: 0 10px 30px rgba(46, 24, 14, 0.06);
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo-icon-box {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #ffedd5, #ecfdf5);
+      border: 1px solid #fed7aa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-green);
+      font-size: 1.3rem;
+    }
+
+    .brand-name {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+      letter-spacing: -0.01em;
+    }
+
+    .brand-sub {
+      font-size: 0.68rem;
+      color: var(--accent-orange);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.8rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      transition: var(--transition-smooth);
+    }
+
+    .nav-link:hover {
+      color: var(--accent-orange);
+    }
+
+    /* Hero Section */
+    .hero-section {
+      padding: 1.5rem 0 4.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .hero-title-highlight {
+      color: var(--accent-orange);
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 600;
+    }
+
+    .hero-desc {
+      font-size: 1.12rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      max-width: 540px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .hero-perks-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border-subtle);
+      margin-top: 0.5rem;
+    }
+
+    .perk-badge-item {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+    }
+
+    .perk-badge-item i {
+      color: var(--accent-green);
+      font-size: 1.05rem;
+    }
+
+    /* Mosaico Fotográfico del Hero */
+    .hero-mosaic-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-rows: 240px 220px;
+      gap: 1rem;
+    }
+
+    .mosaic-photo-card {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      border: 2px solid #ffffff;
+      position: relative;
+      transition: var(--transition-smooth);
+    }
+
+    .mosaic-photo-card:hover {
+      transform: scale(1.02);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .mosaic-photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .mosaic-photo-card.span-2 {
+      grid-row: span 2;
+    }
+
+    .mosaic-tag-pill {
+      position: absolute;
+      bottom: 1rem;
+      left: 1rem;
+      padding: 0.4rem 0.9rem;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius-full);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Carta Visual */
+    .visual-menu-section {
+      padding: 4rem 0;
+      margin-bottom: 5rem;
+    }
+
+    .menu-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .menu-filter-chips {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 3rem;
+    }
+
+    .filter-chip-btn {
+      padding: 0.65rem 1.35rem;
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .filter-chip-btn:hover {
+      border-color: var(--accent-orange);
+      color: var(--accent-orange);
+    }
+
+    .filter-chip-btn.active {
+      background: linear-gradient(135deg, #e06d2c, #c25418);
+      border-color: #e06d2c;
+      color: #ffffff;
+      box-shadow: 0 4px 15px rgba(224, 109, 44, 0.25);
+    }
+
+    .visual-food-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .food-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-md);
+      transition: var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .food-card:hover {
+      border-color: var(--accent-orange);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .food-img-wrapper {
+      height: 240px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .food-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+
+    .food-card:hover .food-img-wrapper img {
+      transform: scale(1.08);
+    }
+
+    .food-badge-tag {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--accent-orange);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .food-body {
+      padding: 1.6rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+      gap: 0.8rem;
+    }
+
+    .food-title {
+      font-size: 1.25rem;
+      color: var(--text-primary);
+      margin-bottom: 0.3rem;
+    }
+
+    .food-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .food-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .food-price {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--accent-orange);
+    }
+
+    .food-notes-badge {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--accent-green);
+      background: var(--accent-green-light);
+      padding: 0.25rem 0.6rem;
+      border-radius: var(--radius-sm);
+    }
+
+    /* TIENDA DE CAFÉ EN GRANO PARA LLEVAR */
+    .roastery-store-section {
+      padding: 4rem 0;
+      margin-bottom: 5rem;
+    }
+
+    .roastery-store-wrapper {
+      background: #ffffff;
+      border: 1px solid var(--border-orange);
+      border-radius: var(--radius-xl);
+      padding: 3.5rem;
+      box-shadow: var(--shadow-lg);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .coffee-bag-card {
+      background: var(--bg-warm-tint);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    /* Mosaico Galería */
+    .experience-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 5rem;
+    }
+
+    .exp-photo-card {
+      height: 280px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      position: relative;
+      box-shadow: var(--shadow-md);
+    }
+
+    .exp-photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+    }
+
+    .exp-photo-card:hover img {
+      transform: scale(1.08);
+    }
+
+    .exp-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 1.2rem;
+      background: linear-gradient(180deg, transparent 0%, rgba(28, 16, 11, 0.85) 100%);
+      color: #ffffff;
+      font-family: var(--font-display);
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    /* Ubicación */
+    .location-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      padding: 3.5rem;
+      border-radius: var(--radius-xl);
+      margin-bottom: 5rem;
+      align-items: center;
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .location-details {
+      display: flex;
+      flex-direction: column;
+      gap: 1.35rem;
+    }
+
+    .location-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .location-icon {
+      font-size: 1.35rem;
+      color: var(--accent-orange);
+      margin-top: 0.2rem;
+    }
+
+    .map-embed-wrapper {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      height: 340px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .map-embed-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 3rem 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      background: #ffffff;
+    }
+
+    @media (max-width: 992px) {
+      .hero-section, .roastery-store-wrapper, .location-card {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .visual-food-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .experience-gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .visual-food-grid, .experience-gallery-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-mosaic-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+      }
+      .mosaic-photo-card.span-2 {
+        grid-row: span 1;
+        height: 260px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <!-- Navbar Flotante -->
+    <header class="navbar-wrapper">
+      <nav class="navbar">
+        <a href="#" class="brand-logo">
+          <div class="logo-icon-box">
+            <i class="fa-solid fa-leaf"></i>
+          </div>
+          <div class="brand-name">
+            <span id="brand-title">BOTÁNICA</span>
+            <span class="brand-sub" id="brand-location">Specialty Coffee & Bakery</span>
+          </div>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#carta" class="nav-link">La Carta</a></li>
+          <li><a href="#tostaduria" class="nav-link">Granos de Origen</a></li>
+          <li><a href="#experiencia" class="nav-link">El Jardín</a></li>
+          <li><a href="#contacto" class="nav-link">Cómo Llegar</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <div class="badge-pill green">
+            <span class="live-dot"></span>
+            Abierto Hoy · Pet Friendly
+          </div>
+          <a href="#contacto" class="btn btn-terracota" style="padding: 0.55rem 1.2rem; font-size: 0.85rem;">
+            <i class="fa-solid fa-location-dot"></i> Visitanos
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero Section Visual-First con Mosaico Fotográfico -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <div class="badge-pill">
+          <i class="fa-solid fa-mug-hot"></i>
+          <span id="hero-tagline">Tostaduría de Altura · Masa Madre · Brunch</span>
+        </div>
+        <h1>
+          Un oasis botánico, <span class="hero-title-highlight">café de especialidad</span> y momentos de calma.
+        </h1>
+        <p class="hero-desc">
+          Vení a disfrutar de café de especialidad de origen calibrado a diario, croissants hojaldrados con manteca de campo y un patio lleno de plantas y luz natural.
+        </p>
+        <div class="hero-actions">
+          <a href="#carta" class="btn btn-terracota">
+            <i class="fa-solid fa-utensils"></i>
+            Ver Carta de Café & Pastelería
+          </a>
+          <a href="#contacto" id="hero-maps-btn" class="btn btn-secondary">
+            <i class="fa-solid fa-map-location-dot" style="color: var(--accent-orange);"></i>
+            Cómo Llegar al Jardín
+          </a>
+        </div>
+
+        <div class="hero-perks-row">
+          <div class="perk-badge-item">
+            <i class="fa-solid fa-paw"></i>
+            <span>100% Pet Friendly</span>
+          </div>
+          <div class="perk-badge-item">
+            <i class="fa-solid fa-wifi"></i>
+            <span>Wi-Fi 500MB & Enchufes</span>
+          </div>
+          <div class="perk-badge-item">
+            <i class="fa-solid fa-sun"></i>
+            <span>Mesas al Aire Libre</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mosaico Fotográfico de Alto Apetito -->
+      <div class="hero-mosaic-grid">
+        <div class="mosaic-photo-card span-2">
+          <img src="assets/latte_art.jpg" alt="Arte latte en taza de cerámica artesanal">
+          <span class="mosaic-tag-pill"><i class="fa-solid fa-star" style="color: var(--accent-orange);"></i> Flat White de Avena</span>
+        </div>
+        <div class="mosaic-photo-card">
+          <img src="assets/croissant.jpg" alt="Croissant recién horneado de masa madre">
+          <span class="mosaic-tag-pill">🥐 Hojaldre 100% Manteca</span>
+        </div>
+        <div class="mosaic-photo-card">
+          <img src="assets/garden_vibe.jpg" alt="Jardín botánico con luz natural">
+          <span class="mosaic-tag-pill">🌿 Patio Verde</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Carta Visual de Alto Apetito (Fotos Grandes) -->
+    <section id="carta" class="visual-menu-section">
+      <div class="menu-header">
+        <div class="badge-pill green">Tentaciones del Día</div>
+        <h2 style="margin: 0.8rem 0 0.5rem;">CARTA DE CAFETERÍA & BAKERY</h2>
+        <p>Elegí con los ojos. Cada preparación se elabora al momento con granos recién molidos y harinas orgánicas.</p>
+      </div>
+
+      <!-- Filtros Dinámicos -->
+      <div class="menu-filter-chips">
+        <button class="filter-chip-btn active" data-filter="all">🌟 Todo el Menú</button>
+        <button class="filter-chip-btn" data-filter="cafe">☕ Cafés & Matchas</button>
+        <button class="filter-chip-btn" data-filter="bakery">🥐 Bakery & Dulce</button>
+        <button class="filter-chip-btn" data-filter="brunch">🥑 Brunch Salado</button>
+      </div>
+
+      <!-- Grilla de Platos con Fotos -->
+      <div class="visual-food-grid" id="food-grid-container">
+
+        <!-- 1. Flat White -->
+        <div class="food-card" data-category="cafe">
+          <div class="food-img-wrapper">
+            <img src="assets/latte_art.jpg" alt="Flat White de Avena">
+            <span class="food-badge-tag">⭐ El Favorito</span>
+          </div>
+          <div class="food-body">
+            <div>
+              <h3 class="food-title">Flat White Doble con Avena</h3>
+              <p class="food-desc">Doble shot de espresso ristretto de Brasil Cerrado con leche de avena emulsionada a textura sedosa.</p>
+            </div>
+            <div class="food-footer">
+              <span class="food-price">$4.800</span>
+              <span class="food-notes-badge">Notas: Avellanas & Cacao</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Croissant de Pistacho -->
+        <div class="food-card" data-category="bakery">
+          <div class="food-img-wrapper">
+            <img src="assets/croissant.jpg" alt="Croissant artesanal relleno">
+            <span class="food-badge-tag">🔥 Horneado Diario</span>
+          </div>
+          <div class="food-body">
+            <div>
+              <h3 class="food-title">Croissant de Pistacho & Frambuesa</h3>
+              <p class="food-desc">Hojaldrado francés crujiente relleno de crema de pistacho casera y coulis de frambuesas frescas.</p>
+            </div>
+            <div class="food-footer">
+              <span class="food-price">$4.800</span>
+              <span class="food-notes-badge">100% Manteca</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Avocado Toast -->
+        <div class="food-card" data-category="brunch">
+          <div class="food-img-wrapper">
+            <img src="assets/avocado_toast.jpg" alt="Avocado toast gourmet">
+            <span class="food-badge-tag">🥑 Brunch Estrella</span>
+          </div>
+          <div class="food-body">
+            <div>
+              <h3 class="food-title">Avocado Toast con Huevo Poché</h3>
+              <p class="food-desc">Pan de centeno de masa madre, palta hass en láminas, huevo poché con yema cremosa y dukkah de frutos secos.</p>
+            </div>
+            <div class="food-footer">
+              <span class="food-price">$6.200</span>
+              <span class="food-notes-badge">Masa Madre 48hs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Iced Matcha Latte -->
+        <div class="food-card" data-category="cafe">
+          <div class="food-img-wrapper">
+            <img src="assets/iced_matcha.jpg" alt="Iced Matcha Latte Ceremonial">
+            <span class="food-badge-tag">🌿 Ceremonial Uji</span>
+          </div>
+          <div class="food-body">
+            <div>
+              <h3 class="food-title">Iced Matcha Latte Ceremonial</h3>
+              <p class="food-desc">Té verde ceremonial de Kioto batido a mano, servido sobre hielo con leche vegetal y toque de vainilla.</p>
+            </div>
+            <div class="food-footer">
+              <span class="food-price">$5.500</span>
+              <span class="food-notes-badge">Antioxidante Puro</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Cinnamon Roll -->
+        <div class="food-card" data-category="bakery">
+          <div class="food-img-wrapper">
+            <img src="assets/cinnamon_roll.jpg" alt="Cinnamon Roll glaseado">
+            <span class="food-badge-tag">🍯 Glaseado Suave</span>
+          </div>
+          <div class="food-body">
+            <div>
+              <h3 class="food-title">Cinnamon Roll de Cardamomo</h3>
+              <p class="food-desc">Masa esponjosa perfumada con cardamomo, canela de Ceilán, azúcar mascabado y glaseado tibio.</p>
+            </div>
+            <div class="food-footer">
+              <span class="food-price">$4.200</span>
+              <span class="food-notes-badge">Receta Nórdica</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Cookie Choc 70% -->
+        <div class="food-card" data-category="bakery">
+          <div class="food-img-wrapper">
+            <img src="assets/cookie.jpg" alt="Cookie con chocolate derretido">
+            <span class="food-badge-tag">🍫 Chocolate Belga 70%</span>
+          </div>
+          <div class="food-body">
+            <div>
+              <h3 class="food-title">Cookie Chunky con Sal Marina</h3>
+              <p class="food-desc">Galletita horneada al punto húmedo, trozos generosos de chocolate amargo y escamas de sal patagónica.</p>
+            </div>
+            <div class="food-footer">
+              <span class="food-price">$3.500</span>
+              <span class="food-notes-badge">Centro Húmedo</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Granos de Especialidad para Llevar a Casa (Tostaduría) -->
+    <section id="tostaduria" class="roastery-store-section">
+      <div class="roastery-store-wrapper">
+        <div>
+          <div class="badge-pill">
+            <i class="fa-solid fa-bag-shopping"></i> Tostaduría en Casa
+          </div>
+          <h2 style="margin: 1rem 0 0.8rem;">Llevate Nuestro Café en Grano o Molido</h2>
+          <p>Tostamos semanalmente en pequeños lotes para garantizar máxima frescura aromática. Te lo molemos en el momento según tu cafetera (Italiana, Filtro de Papel, Prensa Francesa o Espresso).</p>
+          
+          <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem;">
+            <div style="display: flex; align-items: center; gap: 0.75rem; font-size: 0.92rem;">
+              <i class="fa-solid fa-circle-check" style="color: var(--accent-green);"></i>
+              <span><strong>Huila, Colombia (1.750 msnm):</strong> Notas a mandarina y panela</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.75rem; font-size: 0.92rem;">
+              <i class="fa-solid fa-circle-check" style="color: var(--accent-green);"></i>
+              <span><strong>Yirgacheffe, Etiopía (2.000 msnm):</strong> Notas florales y durazno</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.75rem; font-size: 0.92rem;">
+              <i class="fa-solid fa-circle-check" style="color: var(--accent-green);"></i>
+              <span><strong>Cerrado, Brasil (1.150 msnm):</strong> Notas a chocolate con leche</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="coffee-bag-card">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span class="badge-pill green">Bolsa 250g con Válvula</span>
+            <strong style="font-size: 1.3rem; color: var(--accent-orange);">$14.500 ARS</strong>
+          </div>
+          <p style="font-size: 0.9rem; color: var(--text-secondary);">Pedí tu bolsa en nuestro mostrador o consultanos por envíos de café en grano a domicilio:</p>
+          <a href="#" id="coffee-bag-wa-btn" target="_blank" class="btn btn-secondary" style="width: 100%;">
+            <i class="fa-brands fa-whatsapp" style="color: #25d366;"></i>
+            Consultar Variedades de Café en Grano
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mosaico / Galería de Experiencia Botánica -->
+    <section id="experiencia">
+      <div class="menu-header">
+        <div class="badge-pill green">El Espacio</div>
+        <h2 style="margin: 0.8rem 0 0.5rem;">LA EXPERIENCIA EN EL JARDÍN</h2>
+        <p>Un lugar pensado para pausar el día: plantas naturales, sol de tarde, buena música y tu mascota al lado.</p>
+      </div>
+
+      <div class="experience-gallery-grid">
+        <div class="exp-photo-card">
+          <img src="assets/garden_vibe.jpg" alt="Rincón botánico con sol">
+          <div class="exp-caption">🌿 Rincón Botánico & Luz Natural</div>
+        </div>
+        <div class="exp-photo-card">
+          <img src="assets/pet_friendly.jpg" alt="Cafetería pet friendly con perros">
+          <div class="exp-caption">🐶 Patio 100% Pet Friendly</div>
+        </div>
+        <div class="exp-photo-card">
+          <img src="assets/hero.jpg" alt="Barra de baristas en vivo">
+          <div class="exp-caption">☕ Baristas Calibrando en Vivo</div>
+        </div>
+        <div class="exp-photo-card">
+          <img src="assets/pastry.jpg" alt="Bandeja de brunch recién horneado">
+          <div class="exp-caption">🥐 Brunch Horneado cada Mañana</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ubicación y Mapa -->
+    <section id="contacto" class="location-card">
+      <div class="location-details">
+        <div class="badge-pill green">
+          <i class="fa-solid fa-map-pin"></i> Sede & Jardín
+        </div>
+        <h2 id="contact-heading">Vení a Conocer BOTÁNICA</h2>
+        <p>Sin reserva previa. Mesas por orden de llegada con espacio para trabajar, leer o compartir un café.</p>
+
+        <div class="location-row">
+          <i class="fa-solid fa-location-dot location-icon"></i>
+          <div>
+            <strong style="color: var(--text-primary); display: block;">Dirección:</strong>
+            <span id="contact-address-text">Av. Principal 2450, Centro</span>
+          </div>
+        </div>
+
+        <div class="location-row">
+          <i class="fa-solid fa-clock location-icon"></i>
+          <div>
+            <strong style="color: var(--text-primary); display: block;">Horarios de Cafetería:</strong>
+            <span>Lunes a Sábados: 08:00 a 20:30 hs</span><br>
+            <span>Domingos: 09:00 a 20:00 hs | <strong>Brunch todo el día</strong></span>
+          </div>
+        </div>
+
+        <div class="location-row">
+          <i class="fa-solid fa-laptop location-icon" style="color: var(--accent-green);"></i>
+          <div>
+            <strong style="color: var(--text-primary); display: block;">Servicios del Local:</strong>
+            <span>Wi-Fi 500MB de libre acceso · Enchufes en mesas · Pet Friendly con bebederos</span>
+          </div>
+        </div>
+
+        <div style="margin-top: 1rem;">
+          <a href="https://maps.google.com" id="map-link-btn" target="_blank" class="btn btn-terracota">
+            <i class="fa-solid fa-diamond-turn-right"></i> Abrir Indicaciones en Google Maps
+          </a>
+        </div>
+      </div>
+
+      <div class="map-embed-wrapper">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3143.954546424564!2d-57.55847842358826!3d-37.99424754406385!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDU5JzM5LjMiUyA1N8KwMzMnMzAuNSJX!5e0!3m2!1ses!2sar!4v1700000000000!5m2!1ses!2sar" loading="lazy"></iframe>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p id="footer-text">© 2026 BOTÁNICA · Specialty Coffee Roastery & Artisan Bakery.</p>
+      <p style="margin-top: 0.5rem; font-size: 0.8rem;">Demo interactiva de alta conversión lista para personalización comercial en tiempo real.</p>
+    </footer>
+
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const clientName = urlParams.get('n') || 'BOTÁNICA Specialty Coffee';
+    const clientPhone = urlParams.get('t') || '5492235000000';
+    const clientAddress = urlParams.get('d') || 'Av. Principal 2450, Centro';
+
+    document.getElementById('brand-title').textContent = clientName.toUpperCase();
+    document.getElementById('contact-heading').textContent = `Vení a Conocer ${clientName}`;
+    document.getElementById('contact-address-text').textContent = clientAddress;
+    document.getElementById('footer-text').textContent = `© 2026 ${clientName} · Specialty Coffee Roastery & Artisan Bakery.`;
+    document.getElementById('map-link-btn').href = `https://maps.google.com/?q=${encodeURIComponent(clientAddress)}`;
+    document.getElementById('hero-maps-btn').href = `https://maps.google.com/?q=${encodeURIComponent(clientAddress)}`;
+
+    const genericWaUrl = `https://wa.me/${clientPhone}?text=${encodeURIComponent('Hola ' + clientName + '! Quisiera consultar por sus variedades de café en grano para llevar a casa.')}`;
+    document.getElementById('coffee-bag-wa-btn').href = genericWaUrl;
+
+    // Filtros de la Carta Visual
+    const filterButtons = document.querySelectorAll('.filter-chip-btn');
+    const foodCards = document.querySelectorAll('.food-card');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+        foodCards.forEach(card => {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VETCARE | Centro Veterinario, Pet Shop & Spa Canino</title>
+  <meta name="description" content="Atención médica veterinaria, peluquería canina profesional, alimentos balanceados con envío en el día sin cargo y calculador de ración personalizada.">
+  <meta name="theme-color" content="#059669">
+  
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="VETCARE | Pet Shop, Veterinaria & Peluquería Canina">
+  <meta property="og:description" content="Salud, nutrición y spa para tu mascota con entrega a domicilio y turnos online.">
+  <meta property="og:image" content="assets/hero_vet_dog.jpg">
+
+  <!-- Google Fonts: Outfit, Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* ==========================================================================
+       1. VARIABLES Y TOKENS DE DISEÑO (EMERALD VET, WARM ORANGE & CRISP WHITE)
+       ========================================================================== */
+    :root {
+      --bg-base: #ffffff;
+      --bg-surface: #ffffff;
+      --bg-subtle: #f8fafc;
+      --bg-emerald-subtle: #ecfdf5;
+      
+      --accent-emerald: #059669; /* Medical Emerald */
+      --accent-emerald-hover: #047857;
+      --accent-emerald-light: #d1fae5;
+      
+      --accent-orange: #f97316; /* Warm Pet Orange */
+      --accent-orange-hover: #ea580c;
+      --accent-orange-light: #ffedd5;
+
+      --accent-red: #dc2626;
+
+      --text-primary: #0f172a; /* Deep Charcoal */
+      --text-secondary: #334155;
+      --text-muted: #64748b;
+
+      --border-subtle: #e2e8f0;
+      --border-medium: #cbd5e1;
+      --border-emerald: #a7f3d0;
+      --border-orange: #fed7aa;
+
+      --font-display: 'Outfit', system-ui, sans-serif;
+      --font-ui: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 22px;
+      --radius-xl: 32px;
+      --radius-full: 9999px;
+
+      --transition-smooth: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+      --shadow-md: 0 10px 30px -4px rgba(15, 23, 42, 0.08);
+      --shadow-lg: 0 20px 45px -4px rgba(5, 150, 105, 0.12);
+      --shadow-emerald: 0 10px 25px rgba(5, 150, 105, 0.25);
+      --shadow-orange: 0 10px 25px rgba(249, 115, 22, 0.25);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+    }
+
+    body {
+      min-height: 100vh;
+      line-height: 1.6;
+      background-color: var(--bg-base);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(209, 250, 229, 0.6) 0, transparent 40%), 
+        radial-gradient(at 100% 100%, rgba(255, 237, 213, 0.5) 0, transparent 40%);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+    }
+
+    .app-container {
+      width: 100%;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 3.5vw, 2.5rem);
+    }
+
+    h1, h2, h3, h4 {
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.3rem, 4.6vw, 3.9rem);
+      line-height: 1.08;
+      font-weight: 900;
+    }
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      line-height: 1.18;
+      font-weight: 800;
+    }
+
+    p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .badge-emerald {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.45rem 1.3rem;
+      background: var(--bg-emerald-subtle);
+      border: 1px solid var(--border-emerald);
+      border-radius: var(--radius-full);
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--accent-emerald);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--accent-emerald);
+      box-shadow: 0 0 10px rgba(5, 150, 105, 0.8);
+      animation: pulse-dot 1.8s infinite ease-in-out;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.3; transform: scale(1.35); }
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      padding: 0.95rem 2.2rem;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 0.92rem;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: var(--transition-smooth);
+      text-transform: uppercase;
+    }
+
+    .btn-emerald {
+      background: linear-gradient(135deg, #059669 0%, #047857 100%);
+      color: #ffffff;
+      box-shadow: var(--shadow-emerald);
+    }
+
+    .btn-emerald:hover {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      box-shadow: 0 12px 30px rgba(5, 150, 105, 0.45);
+      transform: translateY(-2px);
+      color: #ffffff;
+    }
+
+    .btn-orange {
+      background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+      color: #ffffff;
+      box-shadow: var(--shadow-orange);
+    }
+
+    .btn-orange:hover {
+      background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);
+      box-shadow: 0 12px 30px rgba(249, 115, 22, 0.45);
+      transform: translateY(-2px);
+      color: #ffffff;
+    }
+
+    .btn-secondary {
+      background: #ffffff;
+      color: var(--text-primary);
+      border: 1px solid var(--border-medium);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-subtle);
+      border-color: var(--accent-emerald);
+      color: var(--accent-emerald);
+      transform: translateY(-2px);
+    }
+
+    .btn-whatsapp {
+      background: #25d366;
+      color: #ffffff;
+      font-weight: 800;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    }
+
+    .btn-whatsapp:hover {
+      background: #20ba5a;
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
+      transform: translateY(-2px);
+      color: #ffffff;
+    }
+
+    /* Navbar */
+    .navbar-wrapper {
+      position: sticky;
+      top: 1.25rem;
+      z-index: 100;
+      margin-bottom: 2rem;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 2.2rem;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .logo-icon-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--accent-emerald-light);
+      border: 1px solid var(--border-emerald);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-emerald);
+      font-size: 1.4rem;
+    }
+
+    .brand-name {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 900;
+      color: var(--text-primary);
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+      letter-spacing: 0.03em;
+    }
+
+    .brand-sub {
+      font-family: var(--font-ui);
+      font-size: 0.65rem;
+      color: var(--accent-emerald);
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.2rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-family: var(--font-ui);
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      transition: var(--transition-smooth);
+    }
+
+    .nav-link:hover {
+      color: var(--accent-emerald);
+    }
+
+    /* HERO: COMPANION ANIMAL & INTERACTIVE DOCK */
+    .hero-section {
+      padding: 1rem 0 4.5rem;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+
+    .hero-title-highlight {
+      color: var(--accent-emerald);
+    }
+
+    .hero-desc {
+      font-size: 1.15rem;
+      line-height: 1.75;
+      color: var(--text-secondary);
+      max-width: 580px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .hero-perks-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid var(--border-subtle);
+      margin-top: 0.5rem;
+    }
+
+    .perk-mini {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .perk-val {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: var(--accent-emerald);
+    }
+
+    .perk-lbl {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .hero-image-card {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-lg);
+      background: #ffffff;
+    }
+
+    .hero-image-card img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-overlay-tag {
+      position: absolute;
+      bottom: 1.25rem;
+      left: 1.25rem;
+      right: 1.25rem;
+      padding: 1.1rem 1.4rem;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(15px);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-emerald);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: var(--shadow-md);
+    }
+
+    /* CALCULADOR DE RACIÓN INTERACTIVO */
+    .calculator-section {
+      padding: 4rem 0;
+      margin-bottom: 5rem;
+    }
+
+    .calc-card-wrapper {
+      background: #ffffff;
+      border: 1px solid var(--border-emerald);
+      border-radius: var(--radius-xl);
+      padding: 3.5rem;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .calc-grid-form {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.2rem;
+      margin: 2.2rem 0;
+    }
+
+    .calc-field-box {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .calc-lbl {
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--accent-emerald);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .calc-select {
+      padding: 0.85rem;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-ui);
+      font-size: 0.92rem;
+      font-weight: 700;
+      outline: none;
+      transition: var(--transition-smooth);
+    }
+
+    .calc-select:focus {
+      border-color: var(--accent-emerald);
+      background: #ffffff;
+    }
+
+    .calc-result-dock {
+      background: linear-gradient(135deg, #059669 0%, #047857 100%);
+      color: #ffffff;
+      padding: 1.8rem 2.2rem;
+      border-radius: var(--radius-lg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      box-shadow: var(--shadow-emerald);
+    }
+
+    /* GRID DE CATÁLOGO PET SHOP */
+    .catalog-section {
+      padding: 2rem 0 5rem;
+    }
+
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.2rem;
+      margin-top: 2.5rem;
+    }
+
+    .pet-card {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition-smooth);
+    }
+
+    .pet-card:hover {
+      border-color: var(--accent-emerald);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .pet-img-wrapper {
+      height: 250px;
+      overflow: hidden;
+      position: relative;
+      background: var(--bg-subtle);
+    }
+
+    .pet-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+
+    .pet-card:hover .pet-img-wrapper img {
+      transform: scale(1.08);
+    }
+
+    .pet-tag {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid var(--border-emerald);
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--accent-emerald);
+    }
+
+    .pet-body {
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+      gap: 1.2rem;
+    }
+
+    .pet-price {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 900;
+      color: var(--accent-emerald);
+    }
+
+    /* AGENDADOR DE TURNOS PELUQUERÍA & SPA CANINO */
+    .grooming-section {
+      background: #ffffff;
+      border: 1px solid var(--border-orange);
+      border-radius: var(--radius-xl);
+      padding: 3.5rem;
+      margin-bottom: 5rem;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 3.5rem;
+      align-items: center;
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* CARRITO LATERAL DRAWER */
+    .cart-drawer-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .cart-drawer-backdrop.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      max-width: 460px;
+      height: 100vh;
+      background: #ffffff;
+      border-left: 1px solid var(--border-subtle);
+      box-shadow: -10px 0 40px rgba(0, 0, 0, 0.15);
+      z-index: 10000;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      padding: 2.2rem;
+    }
+
+    .cart-drawer.open {
+      transform: translateX(0);
+    }
+
+    .shipping-meter-wrap {
+      background: var(--bg-emerald-subtle);
+      padding: 0.9rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-emerald);
+      margin: 1.2rem 0;
+    }
+
+    .shipping-bar-bg {
+      width: 100%;
+      height: 6px;
+      background: rgba(0, 0, 0, 0.08);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      margin-top: 0.5rem;
+    }
+
+    .shipping-bar-fill {
+      height: 100%;
+      background: var(--accent-emerald);
+      border-radius: var(--radius-full);
+      transition: width 0.4s ease;
+    }
+
+    .cart-items-scroll {
+      flex-grow: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .cart-item-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.9rem;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+    }
+
+    .btn-qty {
+      width: 26px;
+      height: 26px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-medium);
+      background: #ffffff;
+      cursor: pointer;
+      font-weight: 800;
+    }
+
+    /* BOTÓN FLOTANTE DEL CARRITO */
+    .floating-cart-btn {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 0.9rem 1.6rem;
+      background: var(--accent-emerald);
+      color: #ffffff;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 0.92rem;
+      border-radius: var(--radius-full);
+      box-shadow: var(--shadow-emerald);
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .floating-cart-btn:hover {
+      transform: scale(1.06) translateY(-3px);
+      box-shadow: 0 15px 40px rgba(5, 150, 105, 0.45);
+    }
+
+    .cart-badge-bubble {
+      background: #ffffff;
+      color: var(--accent-emerald);
+      font-size: 0.8rem;
+      font-weight: 900;
+      padding: 0.2rem 0.55rem;
+      border-radius: var(--radius-full);
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 4rem 0 2.5rem;
+      background: #ffffff;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 992px) {
+      .hero-section, .calc-grid-form, .catalog-grid, .grooming-section {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <!-- Navbar -->
+    <header class="navbar-wrapper">
+      <nav class="navbar">
+        <a href="#" class="brand-logo">
+          <div class="logo-icon-box">
+            <i class="fa-solid fa-paw"></i>
+          </div>
+          <div class="brand-name">
+            <span id="brand-title">VETCARE</span>
+            <span class="brand-sub" id="brand-location">Veterinaria & Pet Shop</span>
+          </div>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#calculador" class="nav-link">Calculador Ración</a></li>
+          <li><a href="#catalogo" class="nav-link">Alimentos & Farmacia</a></li>
+          <li><a href="#peluqueria" class="nav-link">Peluquería & Spa</a></li>
+          <li><a href="#contacto" class="nav-link">Guardia & Ubicación</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <div class="badge-emerald" style="padding: 0.4rem 1.1rem; font-size: 0.78rem;">
+            <span class="live-dot"></span>
+            Envíos en el Día Sin Cargo
+          </div>
+          <button id="btn-open-cart-nav" class="btn btn-emerald" style="padding: 0.55rem 1.3rem; font-size: 0.82rem; margin-left: 0.5rem;">
+            <i class="fa-solid fa-cart-shopping"></i> Carrito (<span class="nav-cart-count">0</span>)
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- HERO LOOKBOOK MASCOTAS -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <div class="badge-emerald">
+          <i class="fa-solid fa-heart-pulse"></i>
+          <span>MÉDICOS MATRICULADOS · ENVÍO EN EL DÍA GRATIS</span>
+        </div>
+        <h1>
+          SALUD, NUTRICIÓN & <span class="hero-title-highlight">SPA CANINO</span> PARA QUIEN MÁS QUERÉS.
+        </h1>
+        <p class="hero-desc">
+          Alimentos balanceados premium, farmacia veterinaria, consultas médicas preventivas y spa de peluquería canina con productos hipoalergénicos en Mar del Plata.
+        </p>
+        <div class="hero-actions">
+          <a href="#calculador" class="btn btn-emerald">
+            <i class="fa-solid fa-calculator"></i>
+            Calcular Ración de Alimento
+          </a>
+          <a href="#peluqueria" class="btn btn-orange">
+            <i class="fa-solid fa-scissors"></i>
+            Agendar Turno de Peluquería
+          </a>
+        </div>
+
+        <div class="hero-perks-row">
+          <div class="perk-mini">
+            <span class="perk-val">SIN CARGO</span>
+            <span class="perk-lbl">Envíos de Bolsas 15/20kg</span>
+          </div>
+          <div class="perk-mini">
+            <span class="perk-val">SPA CANINO</span>
+            <span class="perk-lbl">Baño & Corte por Raza</span>
+          </div>
+          <div class="perk-mini">
+            <span class="perk-val">GUARDIA</span>
+            <span class="perk-lbl">Atención de Urgencias</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-image-card">
+          <img src="assets/hero_vet_dog.jpg" alt="Golden Retriever y atención veterinaria">
+          <div class="hero-overlay-tag">
+            <div>
+              <strong style="font-family: var(--font-display); font-size: 1.15rem; display: block;">PLAN SALUD & VACUNACIÓN</strong>
+              <span style="font-size: 0.78rem; color: var(--accent-emerald); font-weight: 700;">Desparasitaciones y vacunas al día</span>
+            </div>
+            <a href="#catalogo" class="btn btn-emerald" style="padding: 0.45rem 1rem; font-size: 0.75rem;">Ver Productos</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALCULADOR DE RACIÓN INTERACTIVO -->
+    <section id="calculador" class="calculator-section">
+      <div class="calc-card-wrapper">
+        <div style="text-align: center; max-width: 680px; margin: 0 auto;">
+          <div class="badge-emerald"><i class="fa-solid fa-bowl-food"></i> Nutrición Personalizada</div>
+          <h2 style="margin: 0.8rem 0 0.4rem;">CALCULÁ LA RACIÓN IDEAL PARA TU MASCOTA</h2>
+          <p>Ingresá los datos de tu perro o gato para saber los gramos diarios exactos y la duración de la bolsa.</p>
+        </div>
+
+        <div class="calc-grid-form">
+          <div class="calc-field-box">
+            <label class="calc-lbl">1. Especie:</label>
+            <select id="calc-pet-species" class="calc-select">
+              <option value="dog" selected>🐶 Perro</option>
+              <option value="cat">🐱 Gato</option>
+            </select>
+          </div>
+
+          <div class="calc-field-box">
+            <label class="calc-lbl">2. Edad:</label>
+            <select id="calc-pet-age" class="calc-select">
+              <option value="puppy">Cachorro (< 1 año)</option>
+              <option value="adult" selected>Adulto (1 a 7 años)</option>
+              <option value="senior">Senior (+ 7 años)</option>
+            </select>
+          </div>
+
+          <div class="calc-field-box">
+            <label class="calc-lbl">3. Tamaño / Peso:</label>
+            <select id="calc-pet-size" class="calc-select">
+              <option value="mini">Mini / Pequeño (< 10 kg)</option>
+              <option value="medium" selected>Mediano (10 a 25 kg)</option>
+              <option value="large">Grande (25 a 45 kg)</option>
+              <option value="giant">Gigante (+ 45 kg)</option>
+            </select>
+          </div>
+
+          <div class="calc-field-box">
+            <label class="calc-lbl">4. Necesidad:</label>
+            <select id="calc-pet-diet" class="calc-select">
+              <option value="regular" selected>Mantenimiento Óptimo</option>
+              <option value="sensitive">Piel Sensible / Dermo</option>
+              <option value="weight">Control de Peso / Light</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="calc-result-dock">
+          <div>
+            <span style="font-family: var(--font-display); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.9; display: block;">Recomendación Veterinaria:</span>
+            <div style="display: flex; align-items: baseline; gap: 1.2rem; margin-top: 0.2rem; flex-wrap: wrap;">
+              <strong id="calc-food-name" style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 800;">Royal Canin Medium Adult 15kg</strong>
+              <span id="calc-ration-display" style="font-size: 0.95rem; background: rgba(255, 255, 255, 0.2); padding: 0.3rem 0.8rem; border-radius: var(--radius-sm); font-weight: 700;">Ración: 280 g/día (~54 días de duración)</span>
+            </div>
+          </div>
+
+          <button id="btn-order-recommended-food" class="btn btn-orange" style="padding: 0.85rem 1.6rem;">
+            <i class="fa-solid fa-truck-fast"></i> Pedir Bolsa c/ Envío Gratis
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATÁLOGO DE ALIMENTOS & FARMACIA -->
+    <section id="catalogo" class="catalog-section">
+      <div style="text-align: center; max-width: 680px; margin: 0 auto 3rem;">
+        <div class="badge-emerald">Pet Shop & Farmacia</div>
+        <h2 style="margin: 0.8rem 0 0.4rem;">ALIMENTOS PREMIUM & ACCESORIOS</h2>
+        <p>Bolsas de 15kg y 20kg con regalos incluidos y despacho directo a tu puerta.</p>
+      </div>
+
+      <div class="catalog-grid">
+        
+        <!-- Producto 1: Royal Canin Maxi Adult -->
+        <div class="pet-card">
+          <div class="pet-img-wrapper">
+            <img src="assets/dog_food_bowl.jpg" alt="Alimento balanceado premium">
+            <span class="pet-tag">🐕 + Comedero de Regalo</span>
+          </div>
+          <div class="pet-body">
+            <div>
+              <h3 style="font-family: var(--font-display); font-size: 1.3rem;">Royal Canin Maxi Adult 15kg</h3>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.3rem;">Fórmula de alta digestibilidad para perros adultos de raza grande. Incluye comedero antiahogo.</p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span class="pet-price">$72.000</span>
+              <button class="btn btn-emerald btn-add-pet-js" data-name="Royal Canin Maxi Adult 15kg" data-price="72000" style="padding: 0.6rem 1.2rem; font-size: 0.8rem;">+ Comprar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Producto 2: Pro Plan Sensitive -->
+        <div class="pet-card">
+          <div class="pet-img-wrapper">
+            <img src="assets/happy_puppy.jpg" alt="Cachorro saludable">
+            <span class="pet-tag">🐕 Salmón & Piel Sensible</span>
+          </div>
+          <div class="pet-body">
+            <div>
+              <h3 style="font-family: var(--font-display); font-size: 1.3rem;">Pro Plan Sensitive Skin 15kg</h3>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.3rem;">Proteína de salmón para perros con sensibilidad cutánea o alergias alimentarias recurrentes.</p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span class="pet-price">$78.500</span>
+              <button class="btn btn-emerald btn-add-pet-js" data-name="Pro Plan Sensitive Skin 15kg" data-price="78500" style="padding: 0.6rem 1.2rem; font-size: 0.8rem;">+ Comprar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Producto 3: Sieger Criadores -->
+        <div class="pet-card">
+          <div class="pet-img-wrapper">
+            <img src="assets/hero_vet_dog.jpg" alt="Alimento balanceado Sieger">
+            <span class="pet-tag">🐕 Bolsa Rendimiento 20kg</span>
+          </div>
+          <div class="pet-body">
+            <div>
+              <h3 style="font-family: var(--font-display); font-size: 1.3rem;">Sieger Criadores Alta Energía 20kg</h3>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.3rem;">Nutrición balanceada de alto rendimiento con glucosamina y condroitina para articulaciones.</p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span class="pet-price">$64.000</span>
+              <button class="btn btn-emerald btn-add-pet-js" data-name="Sieger Criadores 20kg" data-price="64000" style="padding: 0.6rem 1.2rem; font-size: 0.8rem;">+ Comprar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Producto 4: Pipeta Antipulgas -->
+        <div class="pet-card">
+          <div class="pet-img-wrapper">
+            <img src="assets/vet_exam_cat.jpg" alt="Veterinaria y farmacia">
+            <span class="pet-tag">💊 Triple Acción 30 Días</span>
+          </div>
+          <div class="pet-body">
+            <div>
+              <h3 style="font-family: var(--font-display); font-size: 1.3rem;">Pipeta Antipulgas & Garrapatas</h3>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.3rem;">Protección integral contra pulgas, garrapatas y mosquitos transmisores de leishmaniasis.</p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span class="pet-price">$12.500</span>
+              <button class="btn btn-emerald btn-add-pet-js" data-name="Pipeta Antipulgas Triple Acción" data-price="12500" style="padding: 0.6rem 1.2rem; font-size: 0.8rem;">+ Comprar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Producto 5: Colchón Ortopédico -->
+        <div class="pet-card">
+          <div class="pet-img-wrapper">
+            <img src="assets/pet_accessories.jpg" alt="Accesorios para mascotas">
+            <span class="pet-tag">🛏️ Antidesgarro & Lavable</span>
+          </div>
+          <div class="pet-body">
+            <div>
+              <h3 style="font-family: var(--font-display); font-size: 1.3rem;">Colchón Ortopédico Antidesgarro XL</h3>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.3rem;">Espuma de alta densidad con funda de cordura impermeable extraíble para lavado fácil.</p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span class="pet-price">$34.000</span>
+              <button class="btn btn-emerald btn-add-pet-js" data-name="Colchón Ortopédico XL" data-price="34000" style="padding: 0.6rem 1.2rem; font-size: 0.8rem;">+ Comprar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Producto 6: Snacks Dentales -->
+        <div class="pet-card">
+          <div class="pet-img-wrapper">
+            <img src="assets/dog_food_bowl.jpg" alt="Snacks para perros">
+            <span class="pet-tag">🦷 Pack Mensual x28</span>
+          </div>
+          <div class="pet-body">
+            <div>
+              <h3 style="font-family: var(--font-display); font-size: 1.3rem;">Snacks Dentales Higiene Bucal x28</h3>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.3rem;">Previene la formación de sarro, fortalece encías y refresca el aliento de forma natural.</p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span class="pet-price">$9.800</span>
+              <button class="btn btn-emerald btn-add-pet-js" data-name="Snacks Dentales x28" data-price="9800" style="padding: 0.6rem 1.2rem; font-size: 0.8rem;">+ Comprar</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- AGENDADOR DE TURNOS PELUQUERÍA & SPA CANINO -->
+    <section id="peluqueria" class="grooming-section">
+      <div>
+        <div class="badge-emerald" style="background: var(--accent-orange-light); color: var(--accent-orange-hover); border-color: var(--border-orange);">
+          <i class="fa-solid fa-shower"></i> Spa Canino Profesional
+        </div>
+        <h2 style="margin: 0.8rem 0 0.4rem;">PELUQUERÍA, BAÑO MEDICADO & CORTE DE RAZA</h2>
+        <p>Tu mascota merece un trato amoroso y sin estrés. Usamos turbinas silenciosas, shampoo hipoalergénico y cortes específicos de raza.</p>
+        
+        <div style="margin-top: 2rem; display: flex; flex-direction: column; gap: 0.8rem;">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <i class="fa-solid fa-check" style="color: var(--accent-orange); font-size: 1.1rem;"></i>
+            <span style="font-size: 0.92rem;">Baño desparasitario + Corte higiénico + Limpieza de oídos.</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <i class="fa-solid fa-check" style="color: var(--accent-orange); font-size: 1.1rem;"></i>
+            <span style="font-size: 0.92rem;">Corte a tijera o máquina según estándar de raza.</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <i class="fa-solid fa-check" style="color: var(--accent-orange); font-size: 1.1rem;"></i>
+            <span style="font-size: 0.92rem;">Productos 100% hipoalergénicos aprobados por SENASA.</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="background: var(--bg-subtle); padding: 2.2rem; border-radius: var(--radius-lg); border: 1px solid var(--border-subtle);">
+        <h3 style="font-family: var(--font-display); font-size: 1.25rem; margin-bottom: 1.2rem;">Reservar Turno de Spa / Peluquería</h3>
+        
+        <div style="margin-bottom: 1rem;">
+          <label style="display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 0.35rem;">Nombre de la Mascota y Raza:</label>
+          <input type="text" id="grooming-pet-name" placeholder="Ej: Milo (Caniche Toy)" style="width: 100%; padding: 0.8rem; border-radius: var(--radius-sm); border: 1px solid var(--border-medium); outline: none;">
+        </div>
+
+        <div style="margin-bottom: 1rem;">
+          <label style="display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 0.35rem;">Servicio Solicitado:</label>
+          <select id="grooming-service-type" style="width: 100%; padding: 0.8rem; border-radius: var(--radius-sm); border: 1px solid var(--border-medium); outline: none; font-weight: 600;">
+            <option value="Baño y Corte de Raza Completo">Baño Completo + Corte de Raza</option>
+            <option value="Baño Medicado y Desparasitado">Baño Medicado / Desparasitario</option>
+            <option value="Corte Higiénico y Uñas">Corte Higiénico & Uñas</option>
+            <option value="Deslanado con Turbina">Deslanado Profundo c/ Turbina</option>
+          </select>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.2rem;">
+          <div>
+            <label style="display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 0.35rem;">Fecha:</label>
+            <input type="date" id="grooming-date" value="2026-08-16" style="width: 100%; padding: 0.8rem; border-radius: var(--radius-sm); border: 1px solid var(--border-medium); outline: none;">
+          </div>
+          <div>
+            <label style="display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 0.35rem;">Horario:</label>
+            <select id="grooming-time" style="width: 100%; padding: 0.8rem; border-radius: var(--radius-sm); border: 1px solid var(--border-medium); outline: none; font-weight: 600;">
+              <option value="10:00 hs">10:00 hs</option>
+              <option value="14:30 hs" selected>14:30 hs</option>
+              <option value="17:00 hs">17:00 hs</option>
+            </select>
+          </div>
+        </div>
+
+        <button id="btn-book-grooming-wa" class="btn btn-orange" style="width: 100%; padding: 0.95rem;">
+          <i class="fa-brands fa-whatsapp"></i> Confirmar Turno por WhatsApp
+        </button>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- CARRITO LATERAL DRAWER -->
+  <div class="cart-drawer-backdrop" id="cart-backdrop"></div>
+  <div class="cart-drawer" id="cart-drawer">
+    <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 1.2rem; border-bottom: 1px solid var(--border-subtle);">
+      <h3 style="font-family: var(--font-display); font-size: 1.35rem;"><i class="fa-solid fa-bag-shopping" style="color: var(--accent-emerald);"></i> MI PEDIDO PET SHOP</h3>
+      <button id="btn-close-cart" style="background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--text-muted);">✕</button>
+    </div>
+
+    <!-- Barra de Envío Gratis -->
+    <div class="shipping-meter-wrap">
+      <div style="display: flex; justify-content: space-between; font-size: 0.78rem; font-family: var(--font-display); font-weight: 800;">
+        <span id="shipping-progress-text">Te faltan $35.000 para ENVÍO GRATIS</span>
+        <i class="fa-solid fa-truck-fast" style="color: var(--accent-emerald);"></i>
+      </div>
+      <div class="shipping-bar-bg">
+        <div class="shipping-bar-fill" id="shipping-bar" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <div class="cart-items-scroll" id="cart-items-container">
+      <p style="color: var(--text-muted); text-align: center; margin-top: 4rem;">Tu carrito está vacío.<br>Sumá alimentos o accesorios para tu mascota.</p>
+    </div>
+
+    <div style="border-top: 1px solid var(--border-subtle); padding-top: 1.2rem; display: flex; flex-direction: column; gap: 0.75rem;">
+      <div style="display: flex; justify-content: space-between; font-size: 1.35rem; font-family: var(--font-display); font-weight: 900; color: var(--text-primary);">
+        <span>Total Pedido:</span>
+        <span id="cart-total-final" style="color: var(--accent-emerald);">$0 ARS</span>
+      </div>
+
+      <button id="btn-checkout-pet-wa" class="btn btn-whatsapp" style="width: 100%; padding: 0.95rem; margin-top: 0.5rem;">
+        <i class="fa-brands fa-whatsapp"></i> Coordinar Envío a Domicilio por WhatsApp
+      </button>
+    </div>
+  </div>
+
+  <!-- BOTÓN FLOTANTE DEL CARRITO -->
+  <div class="floating-cart-btn" id="floating-cart-btn">
+    <i class="fa-solid fa-paw" style="font-size: 1.2rem;"></i>
+    <span>Ver Carrito</span>
+    <span class="cart-badge-bubble" id="cart-bubble-count">0</span>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer" id="contacto">
+    <div class="app-container">
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem;">
+        <div class="logo-icon-box" style="width: 48px; height: 48px;">
+          <i class="fa-solid fa-paw" style="font-size: 1.5rem;"></i>
+        </div>
+        <h3 id="footer-brand-title" style="font-family: var(--font-display); font-size: 1.4rem; letter-spacing: 0.04em;">VETCARE CLÍNICA VETERINARIA & PET SHOP</h3>
+        <p id="footer-address-text" style="color: var(--text-secondary);">Av. Independencia 2840 · Mar del Plata</p>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Consultas Clínicas · Vacunación · Peluquería Canina · Alimentos Balanceados</p>
+      </div>
+      <p id="footer-copy" style="font-size: 0.8rem; color: var(--text-muted);">© 2026 VETCARE · Cuidado Integral de Mascotas.</p>
+    </div>
+  </footer>
+
+  <!-- GSAP & Lenis CDN -->
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <script>
+    // =========================================================================
+    // 0. LENIS + GSAP SCROLLTRIGGER 60FPS
+    // =========================================================================
+    gsap.registerPlugin(ScrollTrigger);
+
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true
+    });
+
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+    gsap.ticker.lagSmoothing(0);
+
+    // =========================================================================
+    // 1. LECTOR DE PARÁMETROS DINÁMICOS URL (?n=Nombre&t=Telefono&d=Direccion)
+    // =========================================================================
+    const urlParams = new URLSearchParams(window.location.search);
+    const clientName = urlParams.get('n') || 'VETCARE';
+    const clientPhone = urlParams.get('t') || '5492235000000';
+    const clientAddress = urlParams.get('d') || 'Av. Independencia 2840';
+
+    document.getElementById('brand-title').textContent = clientName.toUpperCase();
+    document.getElementById('footer-brand-title').textContent = clientName.toUpperCase();
+    document.getElementById('footer-address-text').textContent = clientAddress;
+    document.getElementById('footer-copy').textContent = `© 2026 ${clientName} · Cuidado Integral de Mascotas.`;
+
+    // =========================================================================
+    // 2. CALCULADOR DE RACIÓN INTERACTIVO
+    // =========================================================================
+    const petSpecies = document.getElementById('calc-pet-species');
+    const petAge = document.getElementById('calc-pet-age');
+    const petSize = document.getElementById('calc-pet-size');
+    const petDiet = document.getElementById('calc-pet-diet');
+    const calcFoodName = document.getElementById('calc-food-name');
+    const calcRationDisplay = document.getElementById('calc-ration-display');
+    const orderFoodBtn = document.getElementById('btn-order-recommended-food');
+
+    function updateRationCalculator() {
+      const species = petSpecies.value;
+      const age = petAge.value;
+      const size = petSize.value;
+      const diet = petDiet.value;
+
+      let food = 'Royal Canin Medium Adult 15kg';
+      let grams = 280;
+      let bagWeight = 15000;
+      let price = 72000;
+
+      if (species === 'cat') {
+        food = 'Royal Canin Cat Sterilised 7.5kg';
+        grams = 55;
+        bagWeight = 7500;
+        price = 48000;
+      } else {
+        if (size === 'mini') {
+          food = diet === 'sensitive' ? 'Pro Plan Sensitive Skin Mini 7.5kg' : 'Royal Canin Mini Adult 7.5kg';
+          grams = 110;
+          bagWeight = 7500;
+          price = 45000;
+        } else if (size === 'large' || size === 'giant') {
+          food = diet === 'sensitive' ? 'Pro Plan Sensitive Skin Adult 15kg' : 'Royal Canin Maxi Adult 15kg';
+          grams = 380;
+          bagWeight = 15000;
+          price = 78500;
+        } else {
+          food = diet === 'weight' ? 'Sieger Light Control Peso 15kg' : 'Royal Canin Medium Adult 15kg';
+          grams = 260;
+          bagWeight = 15000;
+          price = 66000;
+        }
+      }
+
+      const days = Math.round(bagWeight / grams);
+      calcFoodName.textContent = food;
+      calcRationDisplay.textContent = `Ración: ${grams} g/día (~${days} días de duración)`;
+
+      orderFoodBtn.onclick = () => {
+        const itemKey = food;
+        const existing = cart.find(i => i.name === itemKey);
+        if (existing) { existing.qty += 1; } else { cart.push({ name: itemKey, price: price, qty: 1 }); }
+        renderCart();
+        openCart();
+      };
+    }
+
+    petSpecies.addEventListener('change', updateRationCalculator);
+    petAge.addEventListener('change', updateRationCalculator);
+    petSize.addEventListener('change', updateRationCalculator);
+    petDiet.addEventListener('change', updateRationCalculator);
+
+    updateRationCalculator();
+
+    // =========================================================================
+    // 3. CARRITO PET SHOP & CHECKOUT WHATSAPP
+    // =========================================================================
+    let cart = [];
+    const cartDrawer = document.getElementById('cart-drawer');
+    const cartBackdrop = document.getElementById('cart-backdrop');
+    const floatingCartBtn = document.getElementById('floating-cart-btn');
+    const navCartBtn = document.getElementById('btn-open-cart-nav');
+    const closeCartBtn = document.getElementById('btn-close-cart');
+    const cartItemsContainer = document.getElementById('cart-items-container');
+    const cartTotalFinal = document.getElementById('cart-total-final');
+    const cartBubbleCount = document.getElementById('cart-bubble-count');
+    const navCartCount = document.querySelector('.nav-cart-count');
+    const shippingProgressText = document.getElementById('shipping-progress-text');
+    const shippingBar = document.getElementById('shipping-bar');
+    const checkoutPetBtn = document.getElementById('btn-checkout-pet-wa');
+
+    const FREE_SHIPPING_LIMIT = 35000;
+
+    function openCart() {
+      cartDrawer.classList.add('open');
+      cartBackdrop.classList.add('open');
+    }
+
+    function closeCart() {
+      cartDrawer.classList.remove('open');
+      cartBackdrop.classList.remove('open');
+    }
+
+    floatingCartBtn.addEventListener('click', openCart);
+    navCartBtn.addEventListener('click', openCart);
+    closeCartBtn.addEventListener('click', closeCart);
+    cartBackdrop.addEventListener('click', closeCart);
+
+    document.querySelectorAll('.btn-add-pet-js').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const name = btn.dataset.name;
+        const price = parseInt(btn.dataset.price);
+
+        const existing = cart.find(item => item.name === name);
+        if (existing) {
+          existing.qty += 1;
+        } else {
+          cart.push({ name, price, qty: 1 });
+        }
+
+        gsap.fromTo(floatingCartBtn, { scale: 1.25 }, { scale: 1, duration: 0.35, ease: 'back.out(2)' });
+        renderCart();
+        openCart();
+      });
+    });
+
+    function renderCart() {
+      const totalUnits = cart.reduce((sum, i) => sum + i.qty, 0);
+      cartBubbleCount.textContent = totalUnits;
+      navCartCount.textContent = totalUnits;
+
+      if (cart.length === 0) {
+        cartItemsContainer.innerHTML = '<p style="color: var(--text-muted); text-align: center; margin-top: 4rem;">Tu carrito está vacío.<br>Sumá alimentos o accesorios para tu mascota.</p>';
+        cartTotalFinal.textContent = '$0 ARS';
+        shippingProgressText.textContent = `Te faltan $${FREE_SHIPPING_LIMIT.toLocaleString('es-AR')} para ENVÍO GRATIS`;
+        shippingBar.style.width = '0%';
+        return;
+      }
+
+      let html = '';
+      let subtotal = 0;
+
+      cart.forEach((item, index) => {
+        const itemSub = item.price * item.qty;
+        subtotal += itemSub;
+
+        html += `
+          <div class="cart-item-row">
+            <div>
+              <strong style="font-size: 0.92rem; display: block;">${item.name}</strong>
+              <span style="font-size: 0.78rem; color: var(--accent-emerald); font-weight: 800;">$${item.price.toLocaleString('es-AR')} c/u</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.4rem;">
+              <button class="btn-qty" onclick="changeQty(${index}, -1)">-</button>
+              <span style="font-family: var(--font-display); font-weight: 800; min-width: 18px; text-align: center;">${item.qty}</span>
+              <button class="btn-qty" onclick="changeQty(${index}, 1)">+</button>
+            </div>
+          </div>
+        `;
+      });
+
+      cartItemsContainer.innerHTML = html;
+      cartTotalFinal.textContent = `$${subtotal.toLocaleString('es-AR')} ARS`;
+
+      // Barra de Envío Gratis
+      if (subtotal >= FREE_SHIPPING_LIMIT) {
+        shippingProgressText.textContent = '¡CONSEGUISTE ENVÍO GRATIS EN EL DÍA!';
+        shippingBar.style.width = '100%';
+      } else {
+        const missing = FREE_SHIPPING_LIMIT - subtotal;
+        const pct = Math.min((subtotal / FREE_SHIPPING_LIMIT) * 100, 100);
+        shippingProgressText.textContent = `Te faltan $${missing.toLocaleString('es-AR')} para ENVÍO GRATIS`;
+        shippingBar.style.width = `${pct}%`;
+      }
+    }
+
+    window.changeQty = function(index, delta) {
+      cart[index].qty += delta;
+      if (cart[index].qty <= 0) {
+        cart.splice(index, 1);
+      }
+      renderCart();
+    };
+
+    checkoutPetBtn.addEventListener('click', () => {
+      if (cart.length === 0) {
+        alert('Tu carrito está vacío.');
+        return;
+      }
+
+      const total = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+      const itemsText = cart.map(i => `• ${i.qty}x ${i.name} ($${(i.price * i.qty).toLocaleString('es-AR')})`).join('\n');
+
+      const message = `Hola ${clientName}! Quisiera realizar el siguiente pedido para mi mascota:\n\n` +
+                      `🐾 *Productos Seleccionados:*\n${itemsText}\n\n` +
+                      `💵 *Total:* $${total.toLocaleString('es-AR')} ARS\n\n` +
+                      `¿Me confirman para coordinar el envío a domicilio? ¡Muchas gracias!`;
+
+      window.open(`https://wa.me/${clientPhone}?text=${encodeURIComponent(message)}`, '_blank');
+    });
+
+    // =========================================================================
+    // 4. AGENDAR TURNO PELUQUERÍA & SPA CANINO
+    // =========================================================================
+    const bookGroomingBtn = document.getElementById('btn-book-grooming-wa');
+    const petNameInput = document.getElementById('grooming-pet-name');
+    const serviceTypeInput = document.getElementById('grooming-service-type');
+    const dateInput = document.getElementById('grooming-date');
+    const timeInput = document.getElementById('grooming-time');
+
+    bookGroomingBtn.addEventListener('click', () => {
+      const pet = petNameInput.value.trim() || 'Mascota';
+      const service = serviceTypeInput.value;
+      const date = dateInput.value;
+      const time = timeInput.value;
+
+      const message = `Hola ${clientName}! Quisiera solicitar un turno para peluquería canina / spa:\n\n` +
+                      `🐶 *Mascota:* ${pet}\n` +
+                      `✂️ *Servicio:* ${service}\n` +
+                      `📅 *Fecha:* ${date}\n` +
+                      `⏰ *Horario:* ${time}\n\n` +
+                      `¿Tienen disponibilidad en esa franja? ¡Muchas gracias!`;
+
+      window.open(`https://wa.me/${clientPhone}?text=${encodeURIComponent(message)}`, '_blank');
+    });
+  </script>
+</body>
+</html>

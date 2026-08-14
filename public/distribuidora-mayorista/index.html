@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LOGISTEC | Central Mayorista, Súper Promos B2B & Distribución</title>
+  <meta name="description" content="Central Mayorista y Distribuidora B2B. Súper promos por bulto y pallet, descuentos de hasta 25% OFF, mínimo de compra $180.000 ARS y Factura A y B con respaldo AFIP/ARCA y ARBA.">
+  <meta name="theme-color" content="#0b0f19">
+  
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="LOGISTEC | Central Mayorista & Súper Promos B2B">
+  <meta property="og:description" content="Precios directos de fábrica, ofertas quincenales, entrega puerta a puerta y factura oficial.">
+  <meta property="og:image" content="assets/promo_banner_deal.jpg">
+
+  <!-- Google Fonts: Space Grotesk, Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=Space+Grotesk:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* ==========================================================================
+       1. VARIABLES Y TOKENS DE DISEÑO (HIGH-ENERGY AMBER, INDUSTRIAL SLATE & RED PROMO)
+       ========================================================================== */
+    :root {
+      --bg-base: #f8fafc;
+      --bg-surface: #ffffff;
+      --bg-subtle: #f1f5f9;
+      --bg-dark: #0b0f19; /* Deep Industrial Slate */
+      --bg-dark-card: #151b28;
+      
+      --accent-amber: #f59e0b; /* Safety Industrial Amber */
+      --accent-amber-hover: #d97706;
+      --accent-amber-light: #fef3c7;
+      
+      --promo-red: #ef4444; /* High Impact Promo Red */
+      --promo-red-dark: #b91c1c;
+      --promo-red-light: #fee2e2;
+
+      --accent-green: #16a34a; /* Discount Badge */
+      --accent-green-light: #dcfce7;
+      --accent-blue: #2563eb;
+
+      --text-primary: #0b0f19;
+      --text-secondary: #334155;
+      --text-muted: #64748b;
+      --text-inverse: #f8fafc;
+
+      --border-subtle: #e2e8f0;
+      --border-medium: #cbd5e1;
+      --border-amber: #fde68a;
+      --border-red: #fca5a5;
+
+      --font-display: 'Space Grotesk', monospace, sans-serif;
+      --font-ui: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+      --radius-xl: 30px;
+      --radius-full: 9999px;
+
+      --transition-smooth: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      --shadow-sm: 0 2px 8px rgba(11, 15, 25, 0.04);
+      --shadow-md: 0 10px 30px -4px rgba(11, 15, 25, 0.08);
+      --shadow-lg: 0 20px 45px -4px rgba(245, 158, 11, 0.2);
+      --shadow-amber: 0 10px 25px rgba(245, 158, 11, 0.35);
+      --shadow-red: 0 10px 25px rgba(239, 68, 68, 0.35);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+    }
+
+    body {
+      min-height: 100vh;
+      line-height: 1.6;
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+    }
+
+    /* TOP ANNOUNCEMENT MARQUEE */
+    .top-marquee {
+      background: #b91c1c;
+      color: #ffffff;
+      padding: 0.55rem 1rem;
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+      border-bottom: 2px solid #f59e0b;
+      box-shadow: 0 4px 12px rgba(185, 28, 28, 0.3);
+    }
+
+    .app-container {
+      width: 100%;
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 3.5vw, 2.5rem);
+    }
+
+    h1, h2, h3, h4 {
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.3rem, 4.5vw, 3.9rem);
+      line-height: 1.06;
+      font-weight: 900;
+    }
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3vw, 2.7rem);
+      line-height: 1.16;
+      font-weight: 900;
+    }
+
+    p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .badge-amber {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.45rem 1.25rem;
+      background: var(--accent-amber-light);
+      border: 1px solid var(--border-amber);
+      border-radius: var(--radius-full);
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: #92400e;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .badge-promo-flame {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.45rem 1.25rem;
+      background: var(--promo-red);
+      color: #ffffff;
+      border-radius: var(--radius-full);
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+      animation: flame-pulse 2s infinite ease-in-out;
+    }
+
+    @keyframes flame-pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--accent-amber);
+      box-shadow: 0 0 10px rgba(245, 158, 11, 0.9);
+      animation: pulse-dot 1.8s infinite ease-in-out;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.3; transform: scale(1.35); }
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      padding: 0.95rem 2.2rem;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-ui);
+      font-weight: 900;
+      font-size: 0.92rem;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: var(--transition-smooth);
+      text-transform: uppercase;
+    }
+
+    .btn-amber {
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      color: #0b0f19;
+      box-shadow: var(--shadow-amber);
+      font-weight: 900;
+    }
+
+    .btn-amber:hover {
+      background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+      box-shadow: 0 12px 30px rgba(245, 158, 11, 0.5);
+      transform: translateY(-2px);
+      color: #0b0f19;
+    }
+
+    .btn-red-deal {
+      background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+      color: #ffffff;
+      box-shadow: var(--shadow-red);
+    }
+
+    .btn-red-deal:hover {
+      background: linear-gradient(135deg, #f87171 0%, #ef4444 100%);
+      box-shadow: 0 12px 30px rgba(239, 68, 68, 0.55);
+      transform: translateY(-2px);
+      color: #ffffff;
+    }
+
+    .btn-secondary {
+      background: #ffffff;
+      color: var(--text-primary);
+      border: 1px solid var(--border-medium);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-subtle);
+      border-color: var(--accent-amber);
+      color: #92400e;
+      transform: translateY(-2px);
+    }
+
+    .btn-whatsapp {
+      background: #25d366;
+      color: #ffffff;
+      font-weight: 800;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    }
+
+    .btn-whatsapp:hover {
+      background: #20ba5a;
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
+      transform: translateY(-2px);
+      color: #ffffff;
+    }
+
+    /* Navbar */
+    .navbar-wrapper {
+      position: sticky;
+      top: 1rem;
+      z-index: 100;
+      margin-bottom: 2rem;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 2.2rem;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      box-shadow: 0 10px 30px rgba(11, 15, 25, 0.06);
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .logo-icon-box {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-amber);
+      font-size: 1.35rem;
+    }
+
+    .brand-name {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 900;
+      color: var(--text-primary);
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+      letter-spacing: 0.05em;
+    }
+
+    .brand-sub {
+      font-family: var(--font-ui);
+      font-size: 0.65rem;
+      color: #d97706;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.2rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-family: var(--font-ui);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--text-secondary);
+      transition: var(--transition-smooth);
+    }
+
+    .nav-link:hover {
+      color: var(--accent-amber-hover);
+    }
+
+    /* BARRA DE SELLOS FISCALES & GARANTÍAS */
+    .compliance-bar {
+      background: #ffffff;
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-lg);
+      padding: 1.2rem 2rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 3.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .compliance-item {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .compliance-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--bg-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-amber-hover);
+      font-size: 1.15rem;
+      flex-shrink: 0;
+    }
+
+    /* HERO: MEGA WAREHOUSE & PROMO HUB */
+    .hero-section {
+      padding: 1rem 0 3.5rem;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+
+    .hero-title-highlight {
+      color: #b91c1c;
+      background: #fee2e2;
+      padding: 0 0.4rem;
+      border-radius: var(--radius-sm);
+    }
+
+    .hero-desc {
+      font-size: 1.15rem;
+      line-height: 1.75;
+      color: var(--text-secondary);
+      max-width: 580px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .hero-perks-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid var(--border-subtle);
+      margin-top: 0.5rem;
+    }
+
+    .perk-mini {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .perk-val {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: #b91c1c;
+    }
+
+    .perk-lbl {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+      font-weight: 600;
+    }
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .hero-image-card {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      border: 1px solid var(--border-medium);
+      box-shadow: var(--shadow-lg);
+      background: var(--bg-dark);
+    }
+
+    .hero-image-card img {
+      width: 100%;
+      height: 490px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-overlay-tag {
+      position: absolute;
+      bottom: 1.25rem;
+      left: 1.25rem;
+      right: 1.25rem;
+      padding: 1.1rem 1.4rem;
+      background: rgba(11, 15, 25, 0.95);
+      backdrop-filter: blur(15px);
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #ffffff;
+    }
+
+    /* SECCIÓN DE SÚPER PROMOS QUINCENALES */
+    .promos-section {
+      background: var(--bg-dark);
+      color: #ffffff;
+      border-radius: var(--radius-xl);
+      padding: 4rem 3.5rem;
+      margin-bottom: 5rem;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      border: 2px solid rgba(245, 158, 11, 0.3);
+    }
+
+    .promos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+
+    .promo-card {
+      background: var(--bg-dark-card);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--transition-smooth);
+      position: relative;
+    }
+
+    .promo-card:hover {
+      border-color: var(--accent-amber);
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(245, 158, 11, 0.25);
+    }
+
+    .promo-img-wrap {
+      height: 200px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .promo-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .promo-card:hover .promo-img-wrap img {
+      transform: scale(1.08);
+    }
+
+    .promo-badge-ribbon {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: #ef4444;
+      color: #ffffff;
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      font-weight: 900;
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      box-shadow: 0 4px 12px rgba(239, 68, 68, 0.5);
+    }
+
+    .promo-card-body {
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    /* FILTROS POR CATEGORÍA */
+    .category-chips-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 3rem 0 2rem;
+    }
+
+    .cat-btn {
+      padding: 0.65rem 1.6rem;
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      font-family: var(--font-ui);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .cat-btn:hover {
+      border-color: var(--accent-amber);
+      color: #92400e;
+    }
+
+    .cat-btn.active {
+      background: var(--accent-amber);
+      border-color: var(--accent-amber);
+      color: #0b0f19;
+      font-weight: 800;
+      box-shadow: var(--shadow-amber);
+    }
+
+    /* GRID DE PRODUCTOS B2B */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.2rem;
+      margin-bottom: 5rem;
+    }
+
+    .b2b-product-card {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition-smooth);
+      position: relative;
+    }
+
+    .b2b-product-card:hover {
+      border-color: var(--accent-amber);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .b2b-img-wrapper {
+      height: 230px;
+      overflow: hidden;
+      position: relative;
+      background: var(--bg-subtle);
+    }
+
+    .b2b-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+
+    .b2b-product-card:hover .b2b-img-wrapper img {
+      transform: scale(1.08);
+    }
+
+    .sku-tag {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-full);
+      background: rgba(11, 15, 25, 0.92);
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: #fbbf24;
+    }
+
+    .discount-pill {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-full);
+      background: #ef4444;
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 900;
+      color: #ffffff;
+      box-shadow: 0 4px 10px rgba(239, 68, 68, 0.4);
+    }
+
+    .b2b-body {
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+      gap: 1.2rem;
+    }
+
+    .price-box-wrap {
+      background: var(--bg-subtle);
+      padding: 0.9rem 1.1rem;
+      border-radius: var(--radius-md);
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .bulto-price {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 900;
+      color: #b91c1c;
+    }
+
+    .bulto-old-price {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      text-decoration: line-through;
+      margin-left: 0.4rem;
+    }
+
+    .unit-cost-lbl {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      font-weight: 700;
+    }
+
+    /* CARRITO DRAWER B2B */
+    .cart-drawer-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(8px);
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .cart-drawer-backdrop.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      max-width: 480px;
+      height: 100vh;
+      background: #ffffff;
+      border-left: 1px solid var(--border-medium);
+      box-shadow: -10px 0 40px rgba(0, 0, 0, 0.2);
+      z-index: 10000;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      padding: 2.2rem;
+    }
+
+    .cart-drawer.open {
+      transform: translateX(0);
+    }
+
+    .minimum-meter-wrap {
+      background: var(--accent-amber-light);
+      padding: 0.9rem 1.1rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-amber);
+      margin: 1.2rem 0;
+    }
+
+    .min-bar-bg {
+      width: 100%;
+      height: 8px;
+      background: rgba(0, 0, 0, 0.1);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      margin-top: 0.5rem;
+    }
+
+    .min-bar-fill {
+      height: 100%;
+      background: #d97706;
+      border-radius: var(--radius-full);
+      transition: width 0.4s ease;
+    }
+
+    .cart-items-scroll {
+      flex-grow: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .cart-item-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.9rem;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+    }
+
+    .btn-qty {
+      width: 26px;
+      height: 26px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-medium);
+      background: #ffffff;
+      cursor: pointer;
+      font-weight: 800;
+    }
+
+    /* BOTÓN FLOTANTE DEL CARRITO */
+    .floating-cart-btn {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 0.95rem 1.8rem;
+      background: var(--accent-amber);
+      color: #0b0f19;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 0.92rem;
+      border-radius: var(--radius-full);
+      box-shadow: var(--shadow-amber);
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .floating-cart-btn:hover {
+      transform: scale(1.06) translateY(-3px);
+      box-shadow: 0 15px 40px rgba(245, 158, 11, 0.5);
+    }
+
+    .cart-badge-bubble {
+      background: #0b0f19;
+      color: var(--accent-amber);
+      font-size: 0.8rem;
+      font-weight: 900;
+      padding: 0.2rem 0.55rem;
+      border-radius: var(--radius-full);
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 4rem 0 2.5rem;
+      background: #ffffff;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 992px) {
+      .hero-section, .promos-grid, .products-grid, .compliance-bar {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .nav-links, .top-marquee {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-marquee">
+    <span>🔥 OFERTAS RELÁMPAGO: HASTA 25% OFF POR BULTO CERRADO</span>
+    <span>•</span>
+    <span>📦 MÍNIMO MAYORISTA: $180.000 ARS</span>
+    <span>•</span>
+    <span>🚚 ENTREGA EN 24/48HS CON FLOTA PROPIA</span>
+    <span>•</span>
+    <span>🏛️ FACTURA A Y B OFICIAL</span>
+  </div>
+
+  <div class="app-container">
+    
+    <!-- Navbar -->
+    <header class="navbar-wrapper">
+      <nav class="navbar">
+        <a href="#" class="brand-logo">
+          <div class="logo-icon-box">
+            <i class="fa-solid fa-truck-ramp-box"></i>
+          </div>
+          <div class="brand-name">
+            <span id="brand-title">LOGISTEC</span>
+            <span class="brand-sub" id="brand-location">Central Mayorista & Abastecimiento</span>
+          </div>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#promos" class="nav-link">🔥 Súper Promos</a></li>
+          <li><a href="#catalogo" class="nav-link">Catálogo Mayorista</a></li>
+          <li><a href="#precios" class="nav-link" id="btn-download-prices-nav">Descargar Lista Precios</a></li>
+          <li><a href="#rutas" class="nav-link">Rutas & Logística</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <button id="btn-open-cart-nav" class="btn btn-amber" style="padding: 0.55rem 1.4rem; font-size: 0.82rem;">
+            <i class="fa-solid fa-dolly"></i> Mi Pedido (<span class="nav-cart-count">0</span> bultos)
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- BARRA DE RESPALDO FISCAL Y COMPLIANCE -->
+    <div class="compliance-bar">
+      <div class="compliance-item">
+        <div class="compliance-icon"><i class="fa-solid fa-building-columns"></i></div>
+        <div>
+          <strong style="font-size: 0.88rem; display: block;">Respaldo AFIP / ARCA</strong>
+          <span style="font-size: 0.75rem; color: var(--text-muted);">Factura A con CUIT y Factura B</span>
+        </div>
+      </div>
+
+      <div class="compliance-item">
+        <div class="compliance-icon"><i class="fa-solid fa-file-shield"></i></div>
+        <div>
+          <strong style="font-size: 0.88rem; display: block;">Certificación ARBA</strong>
+          <span style="font-size: 0.75rem; color: var(--text-muted);">Remito Electrónico de Carga (COT)</span>
+        </div>
+      </div>
+
+      <div class="compliance-item">
+        <div class="compliance-icon"><i class="fa-solid fa-truck-droplet"></i></div>
+        <div>
+          <strong style="font-size: 0.88rem; display: block;">Flota Refrigerada</strong>
+          <span style="font-size: 0.75rem; color: var(--text-muted);">Cadena de frío y descarga coordinada</span>
+        </div>
+      </div>
+
+      <div class="compliance-item">
+        <div class="compliance-icon"><i class="fa-solid fa-barcode"></i></div>
+        <div>
+          <strong style="font-size: 0.88rem; display: block;">Código EAN Homologado</strong>
+          <span style="font-size: 0.75rem; color: var(--text-muted);">Trazabilidad y rotación garantizada</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- HERO LOOKBOOK INDUSTRIAL B2B -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <div class="badge-promo-flame">
+          <i class="fa-solid fa-bolt"></i>
+          <span>OFERTAS QUINCENALES · HASTA 25% OFF</span>
+        </div>
+        <h1>
+          CENTRAL MAYORISTA & DISTRIBUCIÓN <span class="hero-title-highlight">AL MEJOR PRECIO</span>.
+        </h1>
+        <p class="hero-desc">
+          Abastecemos almacenes, autoservicios, kioscos y cadenas gastronómicas en Mar del Plata y la costa. Precios directos de fábrica por bulto cerrado y pallet, con entrega en 24/48hs.
+        </p>
+        <div class="hero-actions">
+          <a href="#promos" class="btn btn-red-deal">
+            <i class="fa-solid fa-fire"></i>
+            Ver Súper Combos
+          </a>
+          <button id="btn-download-list-hero" class="btn btn-secondary">
+            <i class="fa-solid fa-file-excel" style="color: #16a34a;"></i>
+            Descargar Lista de Precios
+          </button>
+        </div>
+
+        <div class="hero-perks-row">
+          <div class="perk-mini">
+            <span class="perk-val">$180.000</span>
+            <span class="perk-lbl">Mínimo Mayorista</span>
+          </div>
+          <div class="perk-mini">
+            <span class="perk-val">HASTA 25%</span>
+            <span class="perk-lbl">Ahorro en Combos</span>
+          </div>
+          <div class="perk-mini">
+            <span class="perk-val">24/48 HS</span>
+            <span class="perk-lbl">Reparto en tu Local</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-image-card">
+          <img src="assets/promo_banner_deal.jpg" alt="Centro logístico y racks mayoristas">
+          <div class="hero-overlay-tag">
+            <div>
+              <strong style="font-family: var(--font-display); font-size: 1.15rem; display: block;">NAVE LOGÍSTICA CENTRAL</strong>
+              <span style="font-size: 0.78rem; color: #fbbf24;">+3.500 m² de almacenamiento · 8 camiones en ruta</span>
+            </div>
+            <a href="#catalogo" class="btn btn-amber" style="padding: 0.45rem 1rem; font-size: 0.75rem;">Comprar</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN DE MEGA COMBOS & PROMOS DEL MES -->
+    <section id="promos" class="promos-section">
+      <div style="text-align: center; max-width: 680px; margin: 0 auto;">
+        <div class="badge-promo-flame">
+          <i class="fa-solid fa-fire-burner"></i> Liquidación de Temporada
+        </div>
+        <h2 style="color: #ffffff; margin: 0.8rem 0 0.4rem;">COMBOS MAYORISTAS QUINCENALES</h2>
+        <p style="color: #cbd5e1;">Packs comerciales armados con los productos de más alta rotación y hasta un 25% de ahorro directo.</p>
+      </div>
+
+      <div class="promos-grid">
+        
+        <!-- Combo 1: Kiosco Prime -->
+        <div class="promo-card">
+          <div class="promo-img-wrap">
+            <img src="assets/promo_chocolates.jpg" alt="Combo Kiosco Starter">
+            <span class="promo-badge-ribbon">🔥 20% OFF</span>
+          </div>
+          <div class="promo-card-body">
+            <div>
+              <div style="font-size: 0.75rem; color: #fbbf24; font-family: var(--font-display); font-weight: 800; text-transform: uppercase;">SKU: CMB-KIOSK-01</div>
+              <h3 style="font-family: var(--font-display); font-size: 1.35rem; color: #ffffff; margin-top: 0.3rem;">Combo Kiosco Starter</h3>
+              <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 0.4rem;">12 cajas de alfajores triples + 18 displays de chocolates + 24 packs de papas fritas y snacks.</p>
+            </div>
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.8rem;">
+                <span style="font-size: 0.85rem; color: #94a3b8; text-decoration: line-through;">$243.750</span>
+                <strong style="font-family: var(--font-display); font-size: 1.65rem; color: #fbbf24;">$195.000</strong>
+              </div>
+              <button class="btn btn-amber btn-add-b2b-js" data-name="Combo Kiosco Starter (20% OFF)" data-price="195000" style="width: 100%; padding: 0.8rem;">
+                + Sumar Combo
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Combo 2: Pack Almacén -->
+        <div class="promo-card">
+          <div class="promo-img-wrap">
+            <img src="assets/promo_oil_pallet.jpg" alt="Pack Almacén y Autoservicio">
+            <span class="promo-badge-ribbon">🔥 25% OFF</span>
+          </div>
+          <div class="promo-card-body">
+            <div>
+              <div style="font-size: 0.75rem; color: #fbbf24; font-family: var(--font-display); font-weight: 800; text-transform: uppercase;">SKU: CMB-ALM-02</div>
+              <h3 style="font-family: var(--font-display); font-size: 1.35rem; color: #ffffff; margin-top: 0.3rem;">Pack Almacén & Supermercado</h3>
+              <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 0.4rem;">10 cajas de aceite girasol x12u + 10 fardos de arroz 1kg + 10 cajas de fideos guiseros x20u.</p>
+            </div>
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.8rem;">
+                <span style="font-size: 0.85rem; color: #94a3b8; text-decoration: line-through;">$326.600</span>
+                <strong style="font-family: var(--font-display); font-size: 1.65rem; color: #fbbf24;">$245.000</strong>
+              </div>
+              <button class="btn btn-amber btn-add-b2b-js" data-name="Pack Almacén & Supermercado (25% OFF)" data-price="245000" style="width: 100%; padding: 0.8rem;">
+                + Sumar Combo
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Combo 3: Bebidas & Energizantes -->
+        <div class="promo-card">
+          <div class="promo-img-wrap">
+            <img src="assets/promo_soda_stack.jpg" alt="Pack Bebidas y Energizantes">
+            <span class="promo-badge-ribbon">🔥 22% OFF</span>
+          </div>
+          <div class="promo-card-body">
+            <div>
+              <div style="font-size: 0.75rem; color: #fbbf24; font-family: var(--font-display); font-weight: 800; text-transform: uppercase;">SKU: CMB-BEV-03</div>
+              <h3 style="font-family: var(--font-display); font-size: 1.35rem; color: #ffffff; margin-top: 0.3rem;">Mega Pack Bebidas & Energizantes</h3>
+              <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 0.4rem;">15 fardos de gaseosa cola 2.25L x6u + 6 bandejas de energizantes 473ml x24u.</p>
+            </div>
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.8rem;">
+                <span style="font-size: 0.85rem; color: #94a3b8; text-decoration: line-through;">$255.000</span>
+                <strong style="font-family: var(--font-display); font-size: 1.65rem; color: #fbbf24;">$198.900</strong>
+              </div>
+              <button class="btn btn-amber btn-add-b2b-js" data-name="Mega Pack Bebidas (22% OFF)" data-price="198900" style="width: 100%; padding: 0.8rem;">
+                + Sumar Combo
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CATÁLOGO MULTI-CATEGORÍA POR BULTO CERRADO -->
+    <div id="catalogo">
+      <div style="text-align: center; max-width: 680px; margin: 0 auto;">
+        <div class="badge-amber">Precios por Bulto Cerrado con Descuento</div>
+        <h2 style="margin: 0.8rem 0 0.4rem;">CATÁLOGO MAYORISTA 2026</h2>
+        <p>Precios mayoristas netos. Desglose automático de costo unitario para calcular tu margen comercial.</p>
+      </div>
+
+      <div class="category-chips-row">
+        <button class="cat-btn active" data-filter="all">📦 TODAS LAS CATEGORÍAS</button>
+        <button class="cat-btn" data-filter="almacen">🥫 ALMACÉN & COMESTIBLES</button>
+        <button class="cat-btn" data-filter="bebidas">🥤 BEBIDAS & AGUAS</button>
+        <button class="cat-btn" data-filter="golosinas">🍫 GOLOSINAS & SNACKS</button>
+        <button class="cat-btn" data-filter="limpieza">🧼 LIMPIEZA & DESPOSABLES</button>
+      </div>
+    </div>
+
+    <!-- GRID DE PRODUCTOS MAYORISTAS -->
+    <div class="products-grid">
+      
+      <!-- Producto 1: Aceite Girasol -->
+      <div class="b2b-product-card" data-category="almacen">
+        <div class="b2b-img-wrapper">
+          <img src="assets/promo_oil_pallet.jpg" alt="Aceite de Girasol por Caja">
+          <span class="sku-tag">🥫 Caja x 12 Unidades</span>
+          <span class="discount-pill">-20% OFF</span>
+        </div>
+        <div class="b2b-body">
+          <div>
+            <h3 style="font-family: var(--font-display); font-size: 1.25rem;">Aceite de Girasol Puro 1.5L</h3>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.3rem;">Aceite refinado 100% puro en botella PET. Presentación: Caja master x12u.</p>
+          </div>
+
+          <div class="price-box-wrap">
+            <div>
+              <span class="bulto-price">$24.900</span>
+              <span class="bulto-old-price">$31.200</span>
+              <span style="font-size: 0.75rem; color: var(--text-muted); display: block;">Precio por Caja Cerrada</span>
+            </div>
+            <span class="unit-cost-lbl">$2.075 / unidad</span>
+          </div>
+
+          <button class="btn btn-amber btn-add-b2b-js" data-name="Aceite Girasol 1.5L (Caja x12u)" data-price="24900" style="width: 100%; padding: 0.8rem;">
+            + Agregar Caja
+          </button>
+        </div>
+      </div>
+
+      <!-- Producto 2: Gaseosa Cola Pack -->
+      <div class="b2b-product-card" data-category="bebidas">
+        <div class="b2b-img-wrapper">
+          <img src="assets/promo_soda_stack.jpg" alt="Gaseosa Cola por Pack">
+          <span class="sku-tag">🥤 Pack x 6 Botellas</span>
+          <span class="discount-pill">-20% OFF</span>
+        </div>
+        <div class="b2b-body">
+          <div>
+            <h3 style="font-family: var(--font-display); font-size: 1.25rem;">Gaseosa Cola Primera Línea 2.25L</h3>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.3rem;">Fardo termocontraíble de 6 botellas PET. Máxima rotación comercial.</p>
+          </div>
+
+          <div class="price-box-wrap">
+            <div>
+              <span class="bulto-price">$15.600</span>
+              <span class="bulto-old-price">$19.500</span>
+              <span style="font-size: 0.75rem; color: var(--text-muted); display: block;">Precio por Pack x6u</span>
+            </div>
+            <span class="unit-cost-lbl">$2.600 / unidad</span>
+          </div>
+
+          <button class="btn btn-amber btn-add-b2b-js" data-name="Gaseosa Cola 2.25L (Pack x6u)" data-price="15600" style="width: 100%; padding: 0.8rem;">
+            + Agregar Pack
+          </button>
+        </div>
+      </div>
+
+      <!-- Producto 3: Snacks Papas Fritas -->
+      <div class="b2b-product-card" data-category="golosinas">
+        <div class="b2b-img-wrapper">
+          <img src="assets/promo_snacks.jpg" alt="Papas Fritas Snacks">
+          <span class="sku-tag">🍫 Caja Exhibidora x 18u</span>
+          <span class="discount-pill">-25% OFF</span>
+        </div>
+        <div class="b2b-body">
+          <div>
+            <h3 style="font-family: var(--font-display); font-size: 1.25rem;">Papas Fritas Clásicas Saladas 85g</h3>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.3rem;">Papas seleccionadas corte tradicional con atmósfera protectora para máxima frescura.</p>
+          </div>
+
+          <div class="price-box-wrap">
+            <div>
+              <span class="bulto-price">$17.550</span>
+              <span class="bulto-old-price">$23.400</span>
+              <span style="font-size: 0.75rem; color: var(--text-muted); display: block;">Precio por Caja x18u</span>
+            </div>
+            <span class="unit-cost-lbl">$975 / unidad</span>
+          </div>
+
+          <button class="btn btn-amber btn-add-b2b-js" data-name="Papas Fritas 85g (Caja x18u)" data-price="17550" style="width: 100%; padding: 0.8rem;">
+            + Agregar Caja
+          </button>
+        </div>
+      </div>
+
+      <!-- Producto 4: Lavandina Concentrada -->
+      <div class="b2b-product-card" data-category="limpieza">
+        <div class="b2b-img-wrapper">
+          <img src="assets/promo_cleaning.jpg" alt="Lavandina Concentrada por Caja">
+          <span class="sku-tag">🧼 Caja x 12 Botellas</span>
+          <span class="discount-pill">-25% OFF</span>
+        </div>
+        <div class="b2b-body">
+          <div>
+            <h3 style="font-family: var(--font-display); font-size: 1.25rem;">Lavandina Concentrada 55g/L 1L</h3>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.3rem;">Poder desinfectante industrial y doméstico. Envase reforzado con tapa de seguridad.</p>
+          </div>
+
+          <div class="price-box-wrap">
+            <div>
+              <span class="bulto-price">$11.850</span>
+              <span class="bulto-old-price">$15.800</span>
+              <span style="font-size: 0.75rem; color: var(--text-muted); display: block;">Precio por Caja x12u</span>
+            </div>
+            <span class="unit-cost-lbl">$987 / unidad</span>
+          </div>
+
+          <button class="btn btn-amber btn-add-b2b-js" data-name="Lavandina Concentrada 1L (Caja x12u)" data-price="11850" style="width: 100%; padding: 0.8rem;">
+            + Agregar Caja
+          </button>
+        </div>
+      </div>
+
+      <!-- Producto 5: Alfajor Triple Chocolate -->
+      <div class="b2b-product-card" data-category="golosinas">
+        <div class="b2b-img-wrapper">
+          <img src="assets/promo_chocolates.jpg" alt="Alfajores por Caja">
+          <span class="sku-tag">🍫 Caja x 24 Unidades</span>
+          <span class="discount-pill">-23% OFF</span>
+        </div>
+        <div class="b2b-body">
+          <div>
+            <h3 style="font-family: var(--font-display); font-size: 1.25rem;">Alfajor Triple Dulce de Leche x24</h3>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.3rem;">Triple capa con baño de repostería semiamargo y corazón de dulce de leche vacuno.</p>
+          </div>
+
+          <div class="price-box-wrap">
+            <div>
+              <span class="bulto-price">$18.500</span>
+              <span class="bulto-old-price">$24.000</span>
+              <span style="font-size: 0.75rem; color: var(--text-muted); display: block;">Precio por Caja x24u</span>
+            </div>
+            <span class="unit-cost-lbl">$770 / unidad</span>
+          </div>
+
+          <button class="btn btn-amber btn-add-b2b-js" data-name="Alfajores Triples (Caja x24u)" data-price="18500" style="width: 100%; padding: 0.8rem;">
+            + Agregar Caja
+          </button>
+        </div>
+      </div>
+
+      <!-- Producto 6: Energizante en Lata -->
+      <div class="b2b-product-card" data-category="bebidas">
+        <div class="b2b-img-wrapper">
+          <img src="assets/promo_beverages.jpg" alt="Energizante en Bandeja">
+          <span class="sku-tag">🥤 Bandeja x 24 Latas</span>
+          <span class="discount-pill">-21% OFF</span>
+        </div>
+        <div class="b2b-body">
+          <div>
+            <h3 style="font-family: var(--font-display); font-size: 1.25rem;">Bebida Energizante 473ml Lata</h3>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.3rem;">Bandeja termoencogible de 24 latas de 473ml con taurina y cafeína natural.</p>
+          </div>
+
+          <div class="price-box-wrap">
+            <div>
+              <span class="bulto-price">$34.900</span>
+              <span class="bulto-old-price">$44.000</span>
+              <span style="font-size: 0.75rem; color: var(--text-muted); display: block;">Precio por Bandeja x24u</span>
+            </div>
+            <span class="unit-cost-lbl">$1.454 / unidad</span>
+          </div>
+
+          <button class="btn btn-amber btn-add-b2b-js" data-name="Energizante 473ml (Bandeja x24u)" data-price="34900" style="width: 100%; padding: 0.8rem;">
+            + Agregar Bandeja
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SECCIÓN LOGÍSTICA & RUTAS DE REPARTO -->
+    <section id="rutas" style="background: #ffffff; border: 1px solid var(--border-medium); border-radius: var(--radius-xl); padding: 3.5rem; margin-bottom: 5rem; box-shadow: var(--shadow-lg);">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center;">
+        <div>
+          <div class="badge-amber"><i class="fa-solid fa-truck-fast"></i> Rutas & Zonas de Entrega</div>
+          <h2 style="margin: 0.8rem 0 0.4rem;">LOGÍSTICA PUERTA A PUERTA</h2>
+          <p>Llegamos a tu comercio con camiones propios, descarga coordinada y remito oficial de entrega.</p>
+          
+          <div style="margin-top: 2rem; display: flex; flex-direction: column; gap: 0.8rem;">
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+              <i class="fa-solid fa-check" style="color: var(--accent-amber); font-size: 1.1rem;"></i>
+              <span style="font-size: 0.92rem;"><strong>Mar del Plata & Batán:</strong> Entregas diarias Lunes a Sábados.</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+              <i class="fa-solid fa-check" style="color: var(--accent-amber); font-size: 1.1rem;"></i>
+              <span style="font-size: 0.92rem;"><strong>Miramar, Necochea & Balcarce:</strong> Martes y Viernes.</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+              <i class="fa-solid fa-check" style="color: var(--accent-amber); font-size: 1.1rem;"></i>
+              <span style="font-size: 0.92rem;"><strong>Costa Atlántica (Pinamar / Gesell):</strong> Miércoles y Sábados.</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <img src="assets/logistics_fleet.jpg" alt="Flota de reparto logístico" style="width: 100%; height: 320px; object-fit: cover; border-radius: var(--radius-lg);">
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- CARRITO LATERAL DRAWER MAYORISTA -->
+  <div class="cart-drawer-backdrop" id="cart-backdrop"></div>
+  <div class="cart-drawer" id="cart-drawer">
+    <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 1.2rem; border-bottom: 1px solid var(--border-subtle);">
+      <h3 style="font-family: var(--font-display); font-size: 1.35rem;"><i class="fa-solid fa-dolly" style="color: #d97706;"></i> PEDIDO MAYORISTA</h3>
+      <button id="btn-close-cart" style="background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--text-muted);">✕</button>
+    </div>
+
+    <!-- Barra de Mínimo Mayorista -->
+    <div class="minimum-meter-wrap">
+      <div style="display: flex; justify-content: space-between; font-size: 0.78rem; font-family: var(--font-display); font-weight: 800;">
+        <span id="min-progress-text">Te faltan $180.000 para el MÍNIMO MAYORISTA</span>
+        <i class="fa-solid fa-truck" style="color: #d97706;"></i>
+      </div>
+      <div class="min-bar-bg">
+        <div class="min-bar-fill" id="min-bar" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <div class="cart-items-scroll" id="cart-items-container">
+      <p style="color: var(--text-muted); text-align: center; margin-top: 4rem;">Tu pedido está vacío.<br>Sumá bultos cerrados o combos.</p>
+    </div>
+
+    <div style="border-top: 1px solid var(--border-subtle); padding-top: 1.2rem; display: flex; flex-direction: column; gap: 0.75rem;">
+      
+      <!-- Selector Factura A / B -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-bottom: 0.3rem;">
+        <select id="invoice-type" style="padding: 0.5rem; border-radius: var(--radius-sm); border: 1px solid var(--border-medium); font-size: 0.8rem; font-weight: 700;">
+          <option value="Factura A (Con CUIT)">Factura A (Con CUIT)</option>
+          <option value="Factura B / Final" selected>Factura B / Final</option>
+        </select>
+        <select id="delivery-zone-select" style="padding: 0.5rem; border-radius: var(--radius-sm); border: 1px solid var(--border-medium); font-size: 0.8rem; font-weight: 700;">
+          <option value="Mar del Plata Centro/Puerto">Mar del Plata</option>
+          <option value="Batán / Sierra de los Padres">Batán / Sierra</option>
+          <option value="Miramar / Necochea">Miramar / Necochea</option>
+          <option value="Costa Atlántica">Costa Atlántica</option>
+        </select>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; font-size: 1.35rem; font-family: var(--font-display); font-weight: 900; color: var(--text-primary);">
+        <span>Total Mayorista:</span>
+        <span id="cart-total-final" style="color: #b91c1c;">$0 ARS</span>
+      </div>
+
+      <button id="btn-checkout-b2b-wa" class="btn btn-whatsapp" style="width: 100%; padding: 0.95rem; margin-top: 0.5rem;">
+        <i class="fa-brands fa-whatsapp"></i> Emitir Comanda B2B a Logística
+      </button>
+    </div>
+  </div>
+
+  <!-- BOTÓN FLOTANTE DEL CARRITO -->
+  <div class="floating-cart-btn" id="floating-cart-btn">
+    <i class="fa-solid fa-dolly" style="font-size: 1.2rem;"></i>
+    <span>Ver Pedido</span>
+    <span class="cart-badge-bubble" id="cart-bubble-count">0</span>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="app-container">
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem;">
+        <div class="logo-icon-box" style="width: 48px; height: 48px;">
+          <i class="fa-solid fa-truck-ramp-box" style="font-size: 1.5rem;"></i>
+        </div>
+        <h3 id="footer-brand-title" style="font-family: var(--font-display); font-size: 1.4rem; letter-spacing: 0.06em;">LOGISTEC CENTRAL MAYORISTA B2B</h3>
+        <p id="footer-address-text" style="color: var(--text-secondary);">Ruta 88 Km 5.5, Parque Logístico · Mar del Plata</p>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Almacén · Bebidas · Golosinas · Limpieza · Gastronomía · Factura A / B Oficial</p>
+      </div>
+      <p id="footer-copy" style="font-size: 0.8rem; color: var(--text-muted);">© 2026 LOGISTEC · Abastecimiento Comercial Mayorista.</p>
+    </div>
+  </footer>
+
+  <!-- GSAP & Lenis CDN -->
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <script>
+    // =========================================================================
+    // 0. LENIS + GSAP SCROLLTRIGGER 60FPS
+    // =========================================================================
+    gsap.registerPlugin(ScrollTrigger);
+
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true
+    });
+
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+    gsap.ticker.lagSmoothing(0);
+
+    // =========================================================================
+    // 1. LECTOR DE PARÁMETROS DINÁMICOS URL (?n=Nombre&t=Telefono&d=Direccion)
+    // =========================================================================
+    const urlParams = new URLSearchParams(window.location.search);
+    const clientName = urlParams.get('n') || 'LOGISTEC Mayorista';
+    const clientPhone = urlParams.get('t') || '5492235000000';
+    const clientAddress = urlParams.get('d') || 'Ruta 88 Km 5.5, Parque Logístico';
+
+    document.getElementById('brand-title').textContent = clientName.toUpperCase();
+    document.getElementById('footer-brand-title').textContent = clientName.toUpperCase();
+    document.getElementById('footer-address-text').textContent = clientAddress;
+    document.getElementById('footer-copy').textContent = `© 2026 ${clientName} · Abastecimiento Comercial Mayorista.`;
+
+    // =========================================================================
+    // 2. DESCARGA SIMULADA DE LISTA DE PRECIOS EXCEL / PDF
+    // =========================================================================
+    function triggerPriceDownload() {
+      const message = `Hola ${clientName}! Quisiera solicitar la Lista de Precios Mayorista Oficial en Excel/PDF con las ofertas quincenales para mi comercio. ¡Muchas gracias!`;
+      window.open(`https://wa.me/${clientPhone}?text=${encodeURIComponent(message)}`, '_blank');
+    }
+
+    document.getElementById('btn-download-prices-nav').addEventListener('click', (e) => { e.preventDefault(); triggerPriceDownload(); });
+    document.getElementById('btn-download-list-hero').addEventListener('click', triggerPriceDownload);
+
+    // =========================================================================
+    // 3. FILTROS POR CATEGORÍA
+    // =========================================================================
+    const catBtns = document.querySelectorAll('.cat-btn');
+    const productCards = document.querySelectorAll('.b2b-product-card');
+
+    catBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        catBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+        productCards.forEach(card => {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // =========================================================================
+    // 4. CARRITO MAYORISTA B2B & CHECKOUT WHATSAPP
+    // =========================================================================
+    let cart = [];
+    const cartDrawer = document.getElementById('cart-drawer');
+    const cartBackdrop = document.getElementById('cart-backdrop');
+    const floatingCartBtn = document.getElementById('floating-cart-btn');
+    const navCartBtn = document.getElementById('btn-open-cart-nav');
+    const closeCartBtn = document.getElementById('btn-close-cart');
+    const cartItemsContainer = document.getElementById('cart-items-container');
+    const cartTotalFinal = document.getElementById('cart-total-final');
+    const cartBubbleCount = document.getElementById('cart-bubble-count');
+    const navCartCount = document.querySelector('.nav-cart-count');
+    const minProgressText = document.getElementById('min-progress-text');
+    const minBar = document.getElementById('min-bar');
+    const checkoutB2bBtn = document.getElementById('btn-checkout-b2b-wa');
+    const invoiceTypeSelect = document.getElementById('invoice-type');
+    const deliveryZoneSelect = document.getElementById('delivery-zone-select');
+
+    const MIN_WHOLESALE_LIMIT = 180000;
+
+    function openCart() {
+      cartDrawer.classList.add('open');
+      cartBackdrop.classList.add('open');
+    }
+
+    function closeCart() {
+      cartDrawer.classList.remove('open');
+      cartBackdrop.classList.remove('open');
+    }
+
+    floatingCartBtn.addEventListener('click', openCart);
+    navCartBtn.addEventListener('click', openCart);
+    closeCartBtn.addEventListener('click', closeCart);
+    cartBackdrop.addEventListener('click', closeCart);
+
+    document.querySelectorAll('.btn-add-b2b-js').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const name = btn.dataset.name;
+        const price = parseInt(btn.dataset.price);
+
+        const existing = cart.find(item => item.name === name);
+        if (existing) {
+          existing.qty += 1;
+        } else {
+          cart.push({ name, price, qty: 1 });
+        }
+
+        gsap.fromTo(floatingCartBtn, { scale: 1.25 }, { scale: 1, duration: 0.35, ease: 'back.out(2)' });
+        renderCart();
+        openCart();
+      });
+    });
+
+    function renderCart() {
+      const totalUnits = cart.reduce((sum, i) => sum + i.qty, 0);
+      cartBubbleCount.textContent = totalUnits;
+      navCartCount.textContent = totalUnits;
+
+      if (cart.length === 0) {
+        cartItemsContainer.innerHTML = '<p style="color: var(--text-muted); text-align: center; margin-top: 4rem;">Tu pedido está vacío.<br>Sumá bultos cerrados o combos.</p>';
+        cartTotalFinal.textContent = '$0 ARS';
+        minProgressText.textContent = `Te faltan $${MIN_WHOLESALE_LIMIT.toLocaleString('es-AR')} para el MÍNIMO MAYORISTA`;
+        minBar.style.width = '0%';
+        return;
+      }
+
+      let html = '';
+      let subtotal = 0;
+
+      cart.forEach((item, index) => {
+        const itemSub = item.price * item.qty;
+        subtotal += itemSub;
+
+        html += `
+          <div class="cart-item-row">
+            <div>
+              <strong style="font-size: 0.92rem; display: block;">${item.name}</strong>
+              <span style="font-size: 0.78rem; color: #b91c1c; font-weight: 800;">$${item.price.toLocaleString('es-AR')} x bulto</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.4rem;">
+              <button class="btn-qty" onclick="changeQty(${index}, -1)">-</button>
+              <span style="font-family: var(--font-display); font-weight: 800; min-width: 18px; text-align: center;">${item.qty}</span>
+              <button class="btn-qty" onclick="changeQty(${index}, 1)">+</button>
+            </div>
+          </div>
+        `;
+      });
+
+      cartItemsContainer.innerHTML = html;
+      cartTotalFinal.textContent = `$${subtotal.toLocaleString('es-AR')} ARS`;
+
+      // Barra de Mínimo Mayorista
+      if (subtotal >= MIN_WHOLESALE_LIMIT) {
+        minProgressText.textContent = '¡SUPERASTE EL MÍNIMO MAYORISTA! LISTO PARA EMITIR';
+        minBar.style.width = '100%';
+        minBar.style.backgroundColor = '#16a34a';
+      } else {
+        const missing = MIN_WHOLESALE_LIMIT - subtotal;
+        const pct = Math.min((subtotal / MIN_WHOLESALE_LIMIT) * 100, 100);
+        minProgressText.textContent = `Te faltan $${missing.toLocaleString('es-AR')} para el MÍNIMO ($180k)`;
+        minBar.style.width = `${pct}%`;
+        minBar.style.backgroundColor = '#d97706';
+      }
+    }
+
+    window.changeQty = function(index, delta) {
+      cart[index].qty += delta;
+      if (cart[index].qty <= 0) {
+        cart.splice(index, 1);
+      }
+      renderCart();
+    };
+
+    checkoutB2bBtn.addEventListener('click', () => {
+      if (cart.length === 0) {
+        alert('Tu pedido mayorista está vacío.');
+        return;
+      }
+
+      const subtotal = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+      const invoice = invoiceTypeSelect.value;
+      const zone = deliveryZoneSelect.value;
+      const itemsText = cart.map(i => `• ${i.qty}x Bulto(s) ${i.name} - $${(i.price * i.qty).toLocaleString('es-AR')}`).join('\n');
+
+      const message = `Hola ${clientName}! Quisiera emitir la siguiente comanda oficial de abastecimiento B2B con las ofertas vigentes:\n\n` +
+                      `📦 *Bultos y Packs Solicitados:*\n${itemsText}\n\n` +
+                      `📑 *Tipo de Factura:* ${invoice}\n` +
+                      `🚚 *Zona de Entrega:* ${zone}\n` +
+                      `💵 *Total Estimado:* $${subtotal.toLocaleString('es-AR')} ARS\n\n` +
+                      `¿Me confirman disponibilidad de stock para coordinar la carga en camión? ¡Muchas gracias!`;
+
+      window.open(`https://wa.me/${clientPhone}?text=${encodeURIComponent(message)}`, '_blank');
+    });
+  </script>
+</body>
+</html>

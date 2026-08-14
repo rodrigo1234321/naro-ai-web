@@ -6,7 +6,12 @@
  * 2. Transforma a URLs limpias: raw_html/nombre-cliente.html -> public/nombre-cliente/index.html
  * 3. Inyecta <meta name="robots" content="noindex, nofollow"> si no existe (privacidad de clientes)
  * 4. Copia una carpeta de assets hermana (raw_html/nombre-cliente/) si existe
- * 5. Genera public/index.json con el registro de todas las URLs publicadas
+ * 5. Actualiza public/index.json fusionando el registro de páginas raw_html
+ *    sin pisar el manifest de rubros generado por scripts/sync_15_demos.py
+ *
+ * IMPORTANTE: NO destructivo. No borra public/ para preservar los 15 rubros,
+ * la portada (public/index.html) y public/demos. Solo reescribe las carpetas
+ * que se generan desde raw_html/.
  *
  * Uso: node scripts/process-html.js
  */
@@ -68,20 +73,7 @@ function main() {
     process.exit(1);
   }
 
-  const demosDir = path.join(PUBLIC_DIR, "demos");
-  const demosBackup = path.join(ROOT, "temp_demos_backup");
-
-  if (fs.existsSync(demosDir)) {
-    copyDir(demosDir, demosBackup);
-  }
-
-  fs.rmSync(PUBLIC_DIR, { recursive: true, force: true });
   fs.mkdirSync(PUBLIC_DIR, { recursive: true });
-
-  if (fs.existsSync(demosBackup)) {
-    copyDir(demosBackup, demosDir);
-    fs.rmSync(demosBackup, { recursive: true, force: true });
-  }
 
   const pages = [];
   for (const file of listHtml(RAW_DIR)) {
@@ -90,6 +82,7 @@ function main() {
     const outDir = path.join(PUBLIC_DIR, slug);
     const outHtml = path.join(outDir, "index.html");
 
+    fs.rmSync(outDir, { recursive: true, force: true });
     fs.mkdirSync(outDir, { recursive: true });
     let html = fs.readFileSync(srcHtml, "utf-8");
     html = injectNoindex(html);
@@ -108,15 +101,25 @@ function main() {
     console.warn("No se encontraron archivos .html en raw_html/");
   }
 
-  const manifest = {
-    generated_at: new Date().toISOString(),
-    total: pages.length,
-    project: "mis-clientes-html",
-    base_url: "https://mis-clientes-html.pages.dev",
-    pages,
-  };
-  fs.writeFileSync(path.join(PUBLIC_DIR, "index.json"), JSON.stringify(manifest, null, 2), "utf-8");
-  console.log(`\nListo: ${pages.length} páginas publicadas en public/ (ver public/index.json)`);
+  const manifestPath = path.join(PUBLIC_DIR, "index.json");
+  let manifest = {};
+  try {
+    if (fs.existsSync(manifestPath)) {
+      manifest = JSON.parse(fs.readFileSync(manifestPath, "utf-8"));
+    }
+  } catch (e) {
+    console.warn("index.json ilegible, se regenera desde cero:", e.message);
+  }
+
+  const rubros = Array.isArray(manifest.rubros) ? manifest.rubros : [];
+  manifest.generated_at = new Date().toISOString();
+  manifest.total = rubros.length > 0 ? rubros.length : pages.length;
+  manifest.project = "mis-clientes-html";
+  manifest.base_url = "https://mis-clientes-html.pages.dev";
+  manifest.pages = pages;
+  manifest.rubros = rubros;
+  fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2), "utf-8");
+  console.log(`\nListo: ${pages.length} páginas raw_html publicadas. Rubros (${rubros.length}), portada y demos preservados en public/.`);
 }
 
 main();

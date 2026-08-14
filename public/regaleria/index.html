@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOTÁNICA & CASA | Regalería de Autor, Deco Hogar & Cerámica Artesanal</title>
+  <meta name="description" content="Objetos con alma para el hogar. Velas aromáticas de soja, vajilla de cerámica gres torneada a mano, difusores botánicos y Gift Boxes personalizadas.">
+  <meta name="theme-color" content="#fdfbf7">
+  
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="BOTÁNICA & CASA | Regalería de Autor & Deco Hogar">
+  <meta property="og:description" content="Velas de soja, cerámica artesanal y cajas de regalo armadas a medida con tarjeta caligrafiada.">
+  <meta property="og:image" content="assets/hero_deco.jpg">
+
+  <!-- Google Fonts: Cormorant Garamond, Outfit & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* ==========================================================================
+       1. VARIABLES Y TOKENS DE DISEÑO (WARM TERRACOTTA, SAGE GREEN & LINEN CREAM)
+       ========================================================================== */
+    :root {
+      --bg-base: #fdfbf7; /* Linen Cream */
+      --bg-surface: #ffffff;
+      --bg-subtle: #f7f3ed;
+      --bg-warm: #f2ebe1;
+      
+      --accent-terra: #c2785c; /* Artisan Terracotta */
+      --accent-terra-hover: #a0593e;
+      --accent-terra-light: #fbeee8;
+      
+      --accent-sage: #588157; /* Botanical Sage */
+      --accent-sage-light: #e9f0e8;
+
+      --accent-gold: #d4a373;
+
+      --text-primary: #2b2621; /* Warm Charcoal */
+      --text-secondary: #544e47;
+      --text-muted: #877e74;
+
+      --border-subtle: #e8e2d8;
+      --border-terra: #f0cfc2;
+      --border-sage: #cfe0cd;
+
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-display: 'Outfit', system-ui, sans-serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-xl: 34px;
+      --radius-full: 9999px;
+
+      --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      --shadow-sm: 0 2px 10px rgba(43, 38, 33, 0.04);
+      --shadow-md: 0 10px 30px -4px rgba(194, 120, 92, 0.08);
+      --shadow-lg: 0 20px 45px -4px rgba(194, 120, 92, 0.12);
+      --shadow-terra: 0 10px 25px rgba(194, 120, 92, 0.25);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+    }
+
+    body {
+      min-height: 100vh;
+      line-height: 1.6;
+      background-color: var(--bg-base);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(251, 238, 232, 0.7) 0, transparent 45%), 
+        radial-gradient(at 100% 100%, rgba(233, 240, 232, 0.6) 0, transparent 45%);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+    }
+
+    .app-container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 3.5vw, 2.5rem);
+    }
+
+    h1, h2, h3, h4 {
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+    }
+
+    h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.4rem, 4.8vw, 4.2rem);
+      line-height: 1.08;
+      font-weight: 700;
+    }
+
+    h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 3vw, 2.7rem);
+      line-height: 1.18;
+      font-weight: 700;
+    }
+
+    p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .badge-terra {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.45rem 1.3rem;
+      background: var(--accent-terra-light);
+      border: 1px solid var(--border-terra);
+      border-radius: var(--radius-full);
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--accent-terra);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--accent-terra);
+      box-shadow: 0 0 10px rgba(194, 120, 92, 0.8);
+      animation: pulse-dot 1.8s infinite ease-in-out;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.3; transform: scale(1.35); }
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      padding: 0.95rem 2.2rem;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: var(--transition-smooth);
+      text-transform: uppercase;
+    }
+
+    .btn-terra {
+      background: linear-gradient(135deg, #c2785c 0%, #a0593e 100%);
+      color: #ffffff;
+      box-shadow: var(--shadow-terra);
+    }
+
+    .btn-terra:hover {
+      background: linear-gradient(135deg, #d38b70 0%, #c2785c 100%);
+      box-shadow: 0 12px 30px rgba(194, 120, 92, 0.45);
+      transform: translateY(-2px);
+      color: #ffffff;
+    }
+
+    .btn-secondary {
+      background: #ffffff;
+      color: var(--text-primary);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-subtle);
+      border-color: var(--accent-terra);
+      color: var(--accent-terra);
+      transform: translateY(-2px);
+    }
+
+    .btn-whatsapp {
+      background: #25d366;
+      color: #ffffff;
+      font-weight: 800;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    }
+
+    .btn-whatsapp:hover {
+      background: #20ba5a;
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
+      transform: translateY(-2px);
+      color: #ffffff;
+    }
+
+    /* Navbar */
+    .navbar-wrapper {
+      position: sticky;
+      top: 1.25rem;
+      z-index: 100;
+      margin-bottom: 2.5rem;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 2.2rem;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      box-shadow: 0 10px 30px rgba(43, 38, 33, 0.05);
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .logo-icon-box {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--accent-terra-light);
+      border: 1px solid var(--border-terra);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-terra);
+      font-size: 1.2rem;
+    }
+
+    .brand-name {
+      font-family: var(--font-serif);
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+      letter-spacing: 0.05em;
+    }
+
+    .brand-sub {
+      font-family: var(--font-display);
+      font-size: 0.62rem;
+      color: var(--accent-terra);
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.2rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--text-secondary);
+      transition: var(--transition-smooth);
+      text-transform: uppercase;
+    }
+
+    .nav-link:hover {
+      color: var(--accent-terra);
+    }
+
+    /* HERO: ATMOSPHERIC WARM CERAMIC & GIFT */
+    .hero-section {
+      padding: 1.5rem 0 5rem;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+
+    .hero-title-highlight {
+      font-style: italic;
+      color: var(--accent-terra);
+    }
+
+    .hero-desc {
+      font-size: 1.15rem;
+      line-height: 1.75;
+      color: var(--text-secondary);
+      max-width: 580px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .hero-perks-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid var(--border-subtle);
+      margin-top: 0.5rem;
+    }
+
+    .perk-mini {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .perk-val {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--accent-terra);
+    }
+
+    .perk-lbl {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .hero-image-card {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-lg);
+      background: #ffffff;
+    }
+
+    .hero-image-card img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-overlay-tag {
+      position: absolute;
+      bottom: 1.25rem;
+      left: 1.25rem;
+      right: 1.25rem;
+      padding: 1.1rem 1.4rem;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(15px);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: var(--shadow-md);
+    }
+
+    /* ARMADOR INTERACTIVO DE GIFT BOX */
+    .giftbox-builder-section {
+      padding: 4rem 0;
+      margin-bottom: 5rem;
+    }
+
+    .builder-card-wrapper {
+      background: #ffffff;
+      border: 1px solid var(--border-terra);
+      border-radius: var(--radius-xl);
+      padding: 3.5rem;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .box-type-selector {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .box-type-btn {
+      padding: 1.2rem;
+      background: var(--bg-subtle);
+      border: 2px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      text-align: left;
+      transition: var(--transition-smooth);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .box-type-btn.active {
+      background: #ffffff;
+      border-color: var(--accent-terra);
+      box-shadow: 0 0 0 3px rgba(194, 120, 92, 0.2);
+    }
+
+    /* CATÁLOGO DE OBJETOS */
+    .catalog-section {
+      padding: 2rem 0 5rem;
+    }
+
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.2rem;
+      margin-top: 2.5rem;
+    }
+
+    .gift-card {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition-smooth);
+    }
+
+    .gift-card:hover {
+      border-color: var(--accent-terra);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .gift-img-wrapper {
+      height: 250px;
+      overflow: hidden;
+      position: relative;
+      background: var(--bg-warm);
+    }
+
+    .gift-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+
+    .gift-card:hover .gift-img-wrapper img {
+      transform: scale(1.08);
+    }
+
+    .gift-tag {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid var(--border-terra);
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--accent-terra);
+    }
+
+    .gift-body {
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+      gap: 1.2rem;
+    }
+
+    .gift-price {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--accent-terra);
+    }
+
+    /* CARRITO LATERAL DRAWER */
+    .cart-drawer-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .cart-drawer-backdrop.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      max-width: 460px;
+      height: 100vh;
+      background: #ffffff;
+      border-left: 1px solid var(--border-subtle);
+      box-shadow: -10px 0 40px rgba(0, 0, 0, 0.15);
+      z-index: 10000;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      padding: 2.2rem;
+    }
+
+    .cart-drawer.open {
+      transform: translateX(0);
+    }
+
+    .cart-items-scroll {
+      flex-grow: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .cart-item-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.9rem;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+    }
+
+    .btn-qty {
+      width: 26px;
+      height: 26px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-subtle);
+      background: #ffffff;
+      cursor: pointer;
+      font-weight: 800;
+    }
+
+    /* BOTÓN FLOTANTE DEL CARRITO */
+    .floating-cart-btn {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 0.9rem 1.6rem;
+      background: var(--accent-terra);
+      color: #ffffff;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 0.92rem;
+      border-radius: var(--radius-full);
+      box-shadow: var(--shadow-terra);
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .floating-cart-btn:hover {
+      transform: scale(1.06) translateY(-3px);
+      box-shadow: 0 15px 40px rgba(194, 120, 92, 0.45);
+    }
+
+    .cart-badge-bubble {
+      background: #ffffff;
+      color: var(--accent-terra);
+      font-size: 0.8rem;
+      font-weight: 900;
+      padding: 0.2rem 0.55rem;
+      border-radius: var(--radius-full);
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 4rem 0 2.5rem;
+      background: #ffffff;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 992px) {
+      .hero-section, .box-type-selector, .catalog-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <!-- Navbar -->
+    <header class="navbar-wrapper">
+      <nav class="navbar">
+        <a href="#" class="brand-logo">
+          <div class="logo-icon-box">
+            <i class="fa-solid fa-seedling"></i>
+          </div>
+          <div class="brand-name">
+            <span id="brand-title">BOTÁNICA & CASA</span>
+            <span class="brand-sub" id="brand-location">Regalería & Deco Hogar</span>
+          </div>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#giftbox" class="nav-link">Armar Gift Box</a></li>
+          <li><a href="#catalogo" class="nav-link">Objetos & Velas</a></li>
+          <li><a href="#contacto" class="nav-link">Envíos Cuidados</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <div class="badge-terra" style="padding: 0.4rem 1.1rem; font-size: 0.78rem;">
+            <span class="live-dot"></span>
+            Packaging de Regalo Incluido
+          </div>
+          <button id="btn-open-cart-nav" class="btn btn-terra" style="padding: 0.55rem 1.3rem; font-size: 0.82rem; margin-left: 0.5rem;">
+            <i class="fa-solid fa-gift"></i> Mi Pedido (<span class="nav-cart-count">0</span>)
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- HERO LOOKBOOK CALMO -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <div class="badge-terra">
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+          <span>OBJETOS CON ALMA · CERÁMICA & AROMAS</span>
+        </div>
+        <h1>
+          DETALLES QUE TRANSFORMAN TU CASA EN UN <span class="hero-title-highlight">REFUGIO CÁLIDO</span>.
+        </h1>
+        <p class="hero-desc">
+          Velas de soja en cuencos de cerámica torneada a mano, difusores con aceites esenciales botánicos y cajas de regalo armadas a medida con tarjeta caligrafiada.
+        </p>
+        <div class="hero-actions">
+          <a href="#giftbox" class="btn btn-terra">
+            <i class="fa-solid fa-gift"></i>
+            Armar mi Gift Box Personalizada
+          </a>
+          <a href="#catalogo" class="btn btn-secondary">
+            <i class="fa-solid fa-shapes"></i>
+            Ver Catálogo Completo
+          </a>
+        </div>
+
+        <div class="hero-perks-row">
+          <div class="perk-mini">
+            <span class="perk-val">100% Cera Soja</span>
+            <span class="perk-lbl">Vegana & No Tóxica</span>
+          </div>
+          <div class="perk-mini">
+            <span class="perk-val">Gres Artesanal</span>
+            <span class="perk-lbl">Piezas Únicas en Torno</span>
+          </div>
+          <div class="perk-mini">
+            <span class="perk-val">Tarjeta de Regalo</span>
+            <span class="perk-lbl">Escrita a Mano Sin Cargo</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-image-card">
+          <img src="assets/hero_deco.jpg" alt="Deco hogar y velas aromáticas">
+          <div class="hero-overlay-tag">
+            <div>
+              <strong style="font-family: var(--font-serif); font-size: 1.25rem; display: block;">GIFT BOXES PERSONALIZADAS</strong>
+              <span style="font-size: 0.78rem; color: var(--accent-terra); font-weight: 700;">Elegí los objetos y agregá tu dedicatoria</span>
+            </div>
+            <a href="#giftbox" class="btn btn-terra" style="padding: 0.45rem 1rem; font-size: 0.75rem;">Armar</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARMADOR INTERACTIVO DE GIFT BOX -->
+    <section id="giftbox" class="giftbox-builder-section">
+      <div class="builder-card-wrapper">
+        <div style="text-align: center; max-width: 680px; margin: 0 auto;">
+          <div class="badge-terra"><i class="fa-solid fa-gift"></i> Experiencia a Medida</div>
+          <h2 style="margin: 0.8rem 0 0.4rem;">ARMÁ TU CAJA DE REGALO PERSONALIZADA</h2>
+          <p>Elegí la presentación, sumá los objetos que más te gusten y escribí una dedicatoria especial.</p>
+        </div>
+
+        <!-- 1. Tipo de Caja -->
+        <div style="margin-top: 2.5rem;">
+          <strong style="font-family: var(--font-display); font-size: 0.95rem; text-transform: uppercase; color: var(--accent-terra);">1. Elegí la Presentación:</strong>
+          <div class="box-type-selector">
+            <div class="box-type-btn active" data-box-name="Caja Kraft con Cinta de Lino & Lacre" data-box-price="2500">
+              <div>
+                <strong style="display: block; font-size: 1rem;">Caja Kraft de Lujo</strong>
+                <span style="font-size: 0.82rem; color: var(--text-muted);">Cinta de lino crudo, viruta de madera y sello de lacre.</span>
+              </div>
+              <span style="font-weight: 800; color: var(--accent-terra); font-family: var(--font-display);">+$2.500</span>
+            </div>
+
+            <div class="box-type-btn" data-box-name="Cajón de Madera Pino Artesanal" data-box-price="4800">
+              <div>
+                <strong style="display: block; font-size: 1rem;">Cajón de Madera Rústica</strong>
+                <span style="font-size: 0.82rem; color: var(--text-muted);">Madera de pino reutilizable para decoración en el hogar.</span>
+              </div>
+              <span style="font-weight: 800; color: var(--accent-terra); font-family: var(--font-display);">+$4.800</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Dedicatoria para la Tarjeta -->
+        <div style="margin: 1.5rem 0;">
+          <strong style="font-family: var(--font-display); font-size: 0.95rem; text-transform: uppercase; color: var(--accent-terra); display: block; margin-bottom: 0.5rem;">
+            2. Dedicatoria para la Tarjeta de Regalo:
+          </strong>
+          <textarea id="gift-card-message" placeholder="Escribí aquí tu mensaje personalizado (lo escribimos a mano con tinta y caligrafía en una tarjeta especial)..." style="width: 100%; min-height: 90px; padding: 0.9rem; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); outline: none; font-family: var(--font-body); font-size: 0.9rem; resize: vertical;"></textarea>
+        </div>
+
+        <div style="background: var(--bg-subtle); padding: 1.5rem; border-radius: var(--radius-md); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <strong id="builder-box-selected-title" style="font-family: var(--font-display); font-size: 1.05rem;">Caja Kraft de Lujo Seleccionada</strong>
+            <span style="display: block; font-size: 0.85rem; color: var(--text-muted);">Sumá objetos del catálogo abajo para completar tu regalo.</span>
+          </div>
+          <a href="#catalogo" class="btn btn-terra" style="padding: 0.7rem 1.6rem;">
+            + Seleccionar Objetos Abajo
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATÁLOGO DE OBJETOS -->
+    <section id="catalogo" class="catalog-section">
+      <div style="text-align: center; max-width: 680px; margin: 0 auto 3rem;">
+        <div class="badge-terra">Colección Deco & Bazar</div>
+        <h2 style="margin: 0.8rem 0 0.4rem;">OBJETOS PARA EL HOGAR</h2>
+        <p>Añadí cada pieza a tu Gift Box o comprala de forma individual con envío protegido.</p>
+      </div>
+
+      <div class="catalog-grid">
+        
+        <!-- Objeto 1 -->
+        <div class="gift-card">
+          <div class="gift-img-wrapper">
+            <img src="assets/candle_ceramic.jpg" alt="Vela de Soja en Cerámica">
+            <span class="gift-tag">🕯️ Higo & Vainilla Bourbon</span>
+          </div>
+          <div class="gift-body">
+            <div>
+              <h3 style="font-family: var(--font-serif); font-size: 1.35rem;">Vela de Soja en Cuenco de Gres</h3>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.3rem;">380g de cera de soja pura con pabilo de madera que crepita suavemente al arder.</p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span class="gift-price">$16.500</span>
+              <button class="btn btn-terra btn-add-cart-js" data-name="Vela de Soja en Cuenco de Gres" data-price="16500" style="padding: 0.55rem 1.1rem; font-size: 0.8rem;">+ Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Objeto 2 -->
+        <div class="gift-card">
+          <div class="gift-img-wrapper">
+            <img src="assets/diffuser_aroma.jpg" alt="Difusor Ambiental">
+            <span class="gift-tag">🌿 Azahar & Flor de Naranjo</span>
+          </div>
+          <div class="gift-body">
+            <div>
+              <h3 style="font-family: var(--font-serif); font-size: 1.35rem;">Difusor con Varillas de Rattan</h3>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.3rem;">Envase de vidrio ámbar de 250ml con aceites botánicos puros de larga duración (90 días).</p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span class="gift-price">$14.200</span>
+              <button class="btn btn-terra btn-add-cart-js" data-name="Difusor Botánico Rattan 250ml" data-price="14200" style="padding: 0.55rem 1.1rem; font-size: 0.8rem;">+ Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Objeto 3 -->
+        <div class="gift-card">
+          <div class="gift-img-wrapper">
+            <img src="assets/ceramics_mugs.jpg" alt="Tazas Cerámica Gres">
+            <span class="gift-tag">☕ Set x2 Piezas</span>
+          </div>
+          <div class="gift-body">
+            <div>
+              <h3 style="font-family: var(--font-serif); font-size: 1.35rem;">Set x2 Tazas "Gota de Mar"</h3>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.3rem;">Cerámica esmaltada a mano con interior vitrificado brillante y textura exterior mate.</p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span class="gift-price">$18.900</span>
+              <button class="btn btn-terra btn-add-cart-js" data-name="Set x2 Tazas Gota de Mar" data-price="18900" style="padding: 0.55rem 1.1rem; font-size: 0.8rem;">+ Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Objeto 4 -->
+        <div class="gift-card">
+          <div class="gift-img-wrapper">
+            <img src="assets/vase_flowers.jpg" alt="Florero Nórdico">
+            <span class="gift-tag">🪴 Incluye Ramo Seco</span>
+          </div>
+          <div class="gift-body">
+            <div>
+              <h3 style="font-family: var(--font-serif); font-size: 1.35rem;">Florero Escultórico & Ramo Seco</h3>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.3rem;">Cerámica tono arena suave acompañada de bouquet de eucalipto, lavanda y espigas.</p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span class="gift-price">$22.500</span>
+              <button class="btn btn-terra btn-add-cart-js" data-name="Florero Escultórico c/ Ramo Seco" data-price="22500" style="padding: 0.55rem 1.1rem; font-size: 0.8rem;">+ Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Objeto 5 -->
+        <div class="gift-card">
+          <div class="gift-img-wrapper">
+            <img src="assets/giftbox_craft.jpg" alt="Gift Box Completa">
+            <span class="gift-tag">🎁 Lista para Entregar</span>
+          </div>
+          <div class="gift-body">
+            <div>
+              <h3 style="font-family: var(--font-serif); font-size: 1.35rem;">Box Completa "Momento Calma"</h3>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.3rem;">Incluye: Vela de soja, difusor botánico, taza de cerámica, caja de madera y tarjeta.</p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span class="gift-price">$42.000</span>
+              <button class="btn btn-terra btn-add-cart-js" data-name="Box Completa Momento Calma" data-price="42000" style="padding: 0.55rem 1.1rem; font-size: 0.8rem;">+ Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Objeto 6 -->
+        <div class="gift-card">
+          <div class="gift-img-wrapper">
+            <img src="assets/hero_deco.jpg" alt="Manta Waffle Algodón">
+            <span class="gift-tag">🧺 100% Algodón Crudo</span>
+          </div>
+          <div class="gift-body">
+            <div>
+              <h3 style="font-family: var(--font-serif); font-size: 1.35rem;">Manta Waffle Texturada (140x200)</h3>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.3rem;">Manta liviana con textura waffle en panal de abeja y terminación con flecos artesanales.</p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span class="gift-price">$36.000</span>
+              <button class="btn btn-terra btn-add-cart-js" data-name="Manta Waffle Algodón 140x200" data-price="36000" style="padding: 0.55rem 1.1rem; font-size: 0.8rem;">+ Agregar</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <!-- CARRITO LATERAL DRAWER -->
+  <div class="cart-drawer-backdrop" id="cart-backdrop"></div>
+  <div class="cart-drawer" id="cart-drawer">
+    <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 1.2rem; border-bottom: 1px solid var(--border-subtle);">
+      <h3 style="font-family: var(--font-serif); font-size: 1.45rem;"><i class="fa-solid fa-gift" style="color: var(--accent-terra);"></i> MI REGALO / PEDIDO</h3>
+      <button id="btn-close-cart" style="background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--text-muted);">✕</button>
+    </div>
+
+    <div class="cart-items-scroll" id="cart-items-container">
+      <p style="color: var(--text-muted); text-align: center; margin-top: 4rem;">Tu bolsa de regalo está vacía.<br>Agregá objetos del catálogo.</p>
+    </div>
+
+    <div style="border-top: 1px solid var(--border-subtle); padding-top: 1.2rem; display: flex; flex-direction: column; gap: 0.8rem;">
+      <div style="display: flex; justify-content: space-between; font-size: 1.3rem; font-family: var(--font-display); font-weight: 800; color: var(--text-primary);">
+        <span>Total Pedido:</span>
+        <span id="cart-total-price" style="color: var(--accent-terra);">$0 ARS</span>
+      </div>
+
+      <button id="btn-send-gift-wa" class="btn btn-whatsapp" style="width: 100%; padding: 0.95rem; margin-top: 0.5rem;">
+        <i class="fa-brands fa-whatsapp"></i> Confirmar Pedido de Regalo por WhatsApp
+      </button>
+    </div>
+  </div>
+
+  <!-- BOTÓN FLOTANTE DEL CARRITO -->
+  <div class="floating-cart-btn" id="floating-cart-btn">
+    <i class="fa-solid fa-gift" style="font-size: 1.2rem;"></i>
+    <span>Ver Pedido</span>
+    <span class="cart-badge-bubble" id="cart-bubble-count">0</span>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer" id="contacto">
+    <div class="app-container">
+      <p id="footer-text" style="font-family: var(--font-serif); font-size: 1.5rem; letter-spacing: 0.08em; color: var(--text-primary);">
+        BOTÁNICA & CASA · REGALERÍA & DECO
+      </p>
+      <p style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-muted);">
+        Tienda & Taller en Mar del Plata · Envíos con embalaje ultra protegido a todo el país.
+      </p>
+    </div>
+  </footer>
+
+  <!-- GSAP & Lenis CDN -->
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <script>
+    // =========================================================================
+    // 0. LENIS + GSAP SCROLLTRIGGER 60FPS
+    // =========================================================================
+    gsap.registerPlugin(ScrollTrigger);
+
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true
+    });
+
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+    gsap.ticker.lagSmoothing(0);
+
+    // =========================================================================
+    // 1. LECTOR DE PARÁMETROS DINÁMICOS URL (?n=Nombre&t=Telefono&d=Direccion)
+    // =========================================================================
+    const urlParams = new URLSearchParams(window.location.search);
+    const clientName = urlParams.get('n') || 'BOTÁNICA & CASA';
+    const clientPhone = urlParams.get('t') || '5492235000000';
+
+    document.getElementById('brand-title').textContent = clientName.toUpperCase();
+
+    // =========================================================================
+    // 2. ARMADOR DE GIFT BOX
+    // =========================================================================
+    let selectedBox = { name: 'Caja Kraft de Lujo', price: 2500 };
+    const boxButtons = document.querySelectorAll('.box-type-btn');
+    const builderBoxTitle = document.getElementById('builder-box-selected-title');
+
+    boxButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        boxButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        selectedBox = {
+          name: btn.dataset.boxName,
+          price: parseInt(btn.dataset.boxPrice)
+        };
+        builderBoxTitle.textContent = `${selectedBox.name} Seleccionada`;
+        renderCart();
+      });
+    });
+
+    // =========================================================================
+    // 3. CARRITO LATERAL & CHECKOUT WHATSAPP
+    // =========================================================================
+    let cart = [];
+    const cartDrawer = document.getElementById('cart-drawer');
+    const cartBackdrop = document.getElementById('cart-backdrop');
+    const floatingCartBtn = document.getElementById('floating-cart-btn');
+    const navCartBtn = document.getElementById('btn-open-cart-nav');
+    const closeCartBtn = document.getElementById('btn-close-cart');
+    const cartItemsContainer = document.getElementById('cart-items-container');
+    const cartTotalPrice = document.getElementById('cart-total-price');
+    const cartBubbleCount = document.getElementById('cart-bubble-count');
+    const navCartCount = document.querySelector('.nav-cart-count');
+    const sendGiftWaBtn = document.getElementById('btn-send-gift-wa');
+    const giftCardMessage = document.getElementById('gift-card-message');
+
+    function openCart() {
+      cartDrawer.classList.add('open');
+      cartBackdrop.classList.add('open');
+    }
+
+    function closeCart() {
+      cartDrawer.classList.remove('open');
+      cartBackdrop.classList.remove('open');
+    }
+
+    floatingCartBtn.addEventListener('click', openCart);
+    navCartBtn.addEventListener('click', openCart);
+    closeCartBtn.addEventListener('click', closeCart);
+    cartBackdrop.addEventListener('click', closeCart);
+
+    document.querySelectorAll('.btn-add-cart-js').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const name = btn.dataset.name;
+        const price = parseInt(btn.dataset.price);
+
+        const existing = cart.find(item => item.name === name);
+        if (existing) {
+          existing.qty += 1;
+        } else {
+          cart.push({ name, price, qty: 1 });
+        }
+
+        gsap.fromTo(floatingCartBtn, { scale: 1.25 }, { scale: 1, duration: 0.35, ease: 'back.out(2)' });
+        renderCart();
+        openCart();
+      });
+    });
+
+    function renderCart() {
+      const totalUnits = cart.reduce((sum, i) => sum + i.qty, 0);
+      cartBubbleCount.textContent = totalUnits;
+      navCartCount.textContent = totalUnits;
+
+      if (cart.length === 0) {
+        cartItemsContainer.innerHTML = '<p style="color: var(--text-muted); text-align: center; margin-top: 4rem;">Tu bolsa de regalo está vacía.<br>Agregá objetos del catálogo.</p>';
+        cartTotalPrice.textContent = '$0 ARS';
+        return;
+      }
+
+      let html = '';
+      let total = selectedBox.price;
+
+      html += `
+        <div class="cart-item-row" style="border-left: 3px solid var(--accent-terra);">
+          <div>
+            <strong style="font-size: 0.92rem; display: block;">🎁 Packaging: ${selectedBox.name}</strong>
+            <span style="font-size: 0.78rem; color: var(--accent-terra); font-weight: 700;">Packaging Especial · $${selectedBox.price.toLocaleString('es-AR')}</span>
+          </div>
+        </div>
+      `;
+
+      cart.forEach((item, index) => {
+        const itemSub = item.price * item.qty;
+        total += itemSub;
+
+        html += `
+          <div class="cart-item-row">
+            <div>
+              <strong style="font-size: 0.92rem; display: block;">${item.name}</strong>
+              <span style="font-size: 0.78rem; color: var(--accent-terra); font-weight: 700;">$${item.price.toLocaleString('es-AR')} c/u</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.4rem;">
+              <button class="btn-qty" onclick="changeQty(${index}, -1)">-</button>
+              <span style="font-family: var(--font-display); font-weight: 800; min-width: 18px; text-align: center;">${item.qty}</span>
+              <button class="btn-qty" onclick="changeQty(${index}, 1)">+</button>
+            </div>
+          </div>
+        `;
+      });
+
+      cartItemsContainer.innerHTML = html;
+      cartTotalPrice.textContent = `$${total.toLocaleString('es-AR')} ARS`;
+    }
+
+    window.changeQty = function(index, delta) {
+      cart[index].qty += delta;
+      if (cart[index].qty <= 0) {
+        cart.splice(index, 1);
+      }
+      renderCart();
+    };
+
+    sendGiftWaBtn.addEventListener('click', () => {
+      if (cart.length === 0) {
+        alert('Sumá al menos un objeto para preparar tu regalo.');
+        return;
+      }
+
+      const total = cart.reduce((sum, i) => sum + (i.price * i.qty), selectedBox.price);
+      const itemsText = cart.map(i => `• ${i.qty}x ${i.name} ($${(i.price * i.qty).toLocaleString('es-AR')})`).join('\n');
+      const dedication = giftCardMessage.value.trim() || 'Sin mensaje especificado';
+
+      const message = `Hola ${clientName}! Quisiera encargar la siguiente Gift Box / Pedido:\n\n` +
+                      `🎁 *Presentación:* ${selectedBox.name} ($${selectedBox.price.toLocaleString('es-AR')})\n` +
+                      `🕯️ *Objetos Seleccionados:*\n${itemsText}\n\n` +
+                      `💌 *Dedicatoria para la Tarjeta:*\n"${dedication}"\n\n` +
+                      `💵 *Total Final:* $${total.toLocaleString('es-AR')} ARS\n\n` +
+                      `¿Me confirman para coordinar entrega o retiro? ¡Muchas gracias!`;
+
+      window.open(`https://wa.me/${clientPhone}?text=${encodeURIComponent(message)}`, '_blank');
+    });
+  </script>
+</body>
+</html>

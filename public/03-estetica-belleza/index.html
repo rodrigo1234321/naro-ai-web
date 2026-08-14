@@ -1,0 +1,1700 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURA | Centro de Estética Avanzada, Depilación Láser & Medicina Spa</title>
+  <meta name="description" content="Tratamientos faciales y corporales no invasivos, depilación definitiva láser trionda, rejuvenecimiento y armonización facial. Tecnología médica ANMAT y atención personalizada.">
+  <meta name="theme-color" content="#fffaf7">
+  
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="AURA | Estética Avanzada & Rejuvenecimiento Natural">
+  <meta property="og:description" content="Tecnología médica certificada, depilación láser indolora y diseño de planes a tu medida.">
+  <meta property="og:image" content="assets/hero.jpg">
+
+  <!-- Google Fonts: Playfair Display & Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* ==========================================================================
+       1. VARIABLES Y TOKENS DE DISEÑO (SILK NUDE & WARM ROSE GOLD)
+       ========================================================================== */
+    :root {
+      --bg-base: #fffaf7;
+      --bg-white: #ffffff;
+      --bg-surface: #ffffff;
+      --bg-nude-soft: #fdf4ee;
+      --bg-rose-soft: #fdf2f8;
+      --bg-subtle: #fbf5f1;
+      
+      --accent-rose: #be185d; /* Velvet Rose */
+      --accent-rose-hover: #9f1239;
+      --accent-rose-light: #fce7f3;
+      --accent-gold: #d97706; /* Champagne Gold */
+      --accent-gold-light: #fef3c7;
+      --accent-glow: rgba(190, 24, 93, 0.18);
+
+      --text-primary: #1c1917; /* Deep Espresso */
+      --text-secondary: #44403c;
+      --text-muted: #78716c;
+
+      --border-subtle: #f3e8e2;
+      --border-medium: #e7d8cf;
+      --border-rose: #fbcfe8;
+      --border-gold: #fde68a;
+
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-heading: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 22px;
+      --radius-xl: 32px;
+      --radius-full: 9999px;
+
+      --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.03);
+      --shadow-md: 0 6px 24px -2px rgba(28, 25, 23, 0.05);
+      --shadow-lg: 0 16px 40px -4px rgba(190, 24, 93, 0.08);
+      --shadow-rose: 0 10px 25px rgba(190, 24, 93, 0.22);
+    }
+
+    /* ==========================================================================
+       2. RESET & ESTILOS GLOBALES
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+    }
+
+    body {
+      min-height: 100vh;
+      line-height: 1.6;
+      background-color: var(--bg-base);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(252, 231, 243, 0.6) 0, transparent 50%), 
+        radial-gradient(at 100% 100%, rgba(254, 243, 199, 0.5) 0, transparent 50%);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+    }
+
+    /* Canvas de destellos cálidos */
+    #aesthetic-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.65;
+    }
+
+    .app-container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 3.5vw, 2.5rem);
+    }
+
+    /* Tipografía */
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      color: var(--text-primary);
+      letter-spacing: -0.015em;
+      font-weight: 600;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      line-height: 1.15;
+    }
+
+    h2 {
+      font-size: clamp(1.7rem, 2.8vw, 2.5rem);
+      line-height: 1.2;
+    }
+
+    h3 {
+      font-size: clamp(1.2rem, 1.9vw, 1.45rem);
+    }
+
+    p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      font-weight: 400;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Tarjetas de Cristal Silk */
+    .silk-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      transition: var(--transition-smooth);
+    }
+
+    .silk-card:hover {
+      border-color: var(--border-rose);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-3px);
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1.1rem;
+      background: var(--accent-rose-light);
+      border: 1px solid var(--border-rose);
+      border-radius: var(--radius-full);
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent-rose);
+      letter-spacing: 0.01em;
+    }
+
+    .badge-pill.gold {
+      background: var(--accent-gold-light);
+      border-color: var(--border-gold);
+      color: var(--accent-gold);
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--accent-rose);
+      box-shadow: 0 0 8px rgba(190, 24, 93, 0.7);
+      animation: pulse-dot 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.25); }
+    }
+
+    /* Botones */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      padding: 0.85rem 1.65rem;
+      border-radius: var(--radius-md);
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #be185d 0%, #9f1239 100%);
+      color: #ffffff;
+      box-shadow: var(--shadow-rose);
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #9f1239 0%, #881337 100%);
+      box-shadow: 0 12px 30px rgba(190, 24, 93, 0.35);
+      transform: translateY(-2px);
+      color: #ffffff;
+    }
+
+    .btn-secondary {
+      background: #ffffff;
+      color: var(--text-primary);
+      border: 1px solid var(--border-medium);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-nude-soft);
+      border-color: var(--accent-rose);
+      color: var(--accent-rose);
+      transform: translateY(-2px);
+    }
+
+    .btn-whatsapp {
+      background: #25d366;
+      color: #ffffff;
+      font-weight: 700;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    }
+
+    .btn-whatsapp:hover {
+      background: #20ba5a;
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
+      transform: translateY(-2px);
+      color: #ffffff;
+    }
+
+    /* ==========================================================================
+       3. NAVBAR FLOTANTE
+       ========================================================================== */
+    .navbar-wrapper {
+      position: sticky;
+      top: 1.25rem;
+      z-index: 100;
+      margin-bottom: 2.5rem;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.8rem 1.6rem;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      box-shadow: 0 10px 30px rgba(28, 25, 23, 0.06);
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo-icon-box {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #fce7f3, #fef3c7);
+      border: 1px solid var(--border-rose);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-rose);
+      font-size: 1.25rem;
+    }
+
+    .brand-name {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+      letter-spacing: 0.05em;
+    }
+
+    .brand-sub {
+      font-family: var(--font-heading);
+      font-size: 0.68rem;
+      color: var(--accent-rose);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.8rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-family: var(--font-heading);
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: var(--transition-smooth);
+    }
+
+    .nav-link:hover {
+      color: var(--accent-rose);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    /* ==========================================================================
+       4. HERO SECTION
+       ========================================================================== */
+    .hero-section {
+      padding: 2.5rem 0 5rem;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .hero-title-highlight {
+      font-style: italic;
+      color: var(--accent-rose);
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      line-height: 1.75;
+      color: var(--text-secondary);
+      max-width: 580px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid var(--border-subtle);
+      margin-top: 1rem;
+    }
+
+    .metric-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .metric-value {
+      font-family: var(--font-display);
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--accent-rose);
+      line-height: 1.1;
+    }
+
+    .metric-label {
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+      font-weight: 500;
+    }
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .hero-image-card {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-lg);
+      background: #ffffff;
+    }
+
+    .hero-image-card img {
+      width: 100%;
+      height: 490px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.8s ease;
+    }
+
+    .hero-image-card:hover img {
+      transform: scale(1.03);
+    }
+
+    .hero-overlay-tag {
+      position: absolute;
+      bottom: 1.25rem;
+      left: 1.25rem;
+      right: 1.25rem;
+      padding: 1rem 1.25rem;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-md);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .doctor-badge-info {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .doctor-avatar-circle {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: url('assets/specialist.jpg') center/cover no-repeat;
+      border: 2px solid var(--accent-rose);
+    }
+
+    /* ==========================================================================
+       5. SLIDER ANTES / DESPUÉS (GLOW SKIN TRANSFORMER)
+       ========================================================================== */
+    .compare-section {
+      padding: 4rem 0;
+      margin-bottom: 5rem;
+    }
+
+    .compare-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+      align-items: center;
+      padding: 3.5rem;
+      border-radius: var(--radius-xl);
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .compare-viewer-box {
+      position: relative;
+      width: 100%;
+      height: 390px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      user-select: none;
+      cursor: ew-resize;
+    }
+
+    .compare-img-after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .compare-img-before-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 100%;
+      overflow: hidden;
+      border-right: 3px solid #ffffff;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .compare-img-before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(65%) brightness(92%) contrast(110%);
+    }
+
+    .compare-handle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 2px solid var(--accent-rose);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-rose);
+      font-size: 1rem;
+      pointer-events: none;
+    }
+
+    .compare-label-before, .compare-label-after {
+      position: absolute;
+      bottom: 1rem;
+      padding: 0.35rem 0.8rem;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      pointer-events: none;
+    }
+
+    .compare-label-before {
+      left: 1rem;
+      background: rgba(28, 25, 23, 0.75);
+      color: #ffffff;
+    }
+
+    .compare-label-after {
+      right: 1rem;
+      background: var(--accent-rose);
+      color: #ffffff;
+    }
+
+    /* ==========================================================================
+       6. COTIZADOR DE DEPILACIÓN LÁSER & PACKS CORPORALES
+       ========================================================================== */
+    .laser-calculator-section {
+      padding: 3rem 0;
+      margin-bottom: 5rem;
+    }
+
+    .laser-calc-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+      padding: 3.5rem;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-rose);
+      background: #ffffff;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .zone-selection-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.85rem;
+      margin-top: 1rem;
+    }
+
+    .zone-check-card {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.85rem 1rem;
+      background: var(--bg-nude-soft);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      user-select: none;
+    }
+
+    .zone-check-card:hover {
+      border-color: var(--accent-rose);
+      background: #ffffff;
+    }
+
+    .zone-check-card.active {
+      background: var(--accent-rose-light);
+      border-color: var(--accent-rose);
+    }
+
+    .zone-check-card input {
+      display: none;
+    }
+
+    .custom-checkbox {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      border: 2px solid var(--border-medium);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 0.65rem;
+      transition: var(--transition-smooth);
+    }
+
+    .zone-check-card.active .custom-checkbox {
+      background: var(--accent-rose);
+      border-color: var(--accent-rose);
+    }
+
+    .zone-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .zone-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .zone-price {
+      font-size: 0.78rem;
+      color: var(--accent-rose);
+      font-weight: 600;
+    }
+
+    .calc-summary-box {
+      margin-top: 1.5rem;
+      padding: 1.4rem;
+      background: var(--bg-rose-soft);
+      border: 1px dashed var(--border-rose);
+      border-radius: var(--radius-md);
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.92rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .summary-total {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent-rose);
+      border-top: 1px solid var(--border-rose);
+      padding-top: 0.65rem;
+      margin-top: 0.65rem;
+    }
+
+    /* ==========================================================================
+       7. BENTO GRID DE TRATAMIENTOS & APARATOLOGÍA
+       ========================================================================== */
+    .section-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 3.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+    }
+
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 5rem;
+    }
+
+    .bento-col-8 { grid-column: span 8; }
+    .bento-col-4 { grid-column: span 4; }
+    .bento-col-6 { grid-column: span 6; }
+    .bento-col-12 { grid-column: span 12; }
+
+    .bento-item {
+      padding: 2.2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .bento-icon-badge {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      background: var(--accent-rose-light);
+      border: 1px solid var(--border-rose);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: var(--accent-rose);
+      margin-bottom: 1.25rem;
+    }
+
+    .bento-icon-badge.gold {
+      background: var(--accent-gold-light);
+      border-color: var(--border-gold);
+      color: var(--accent-gold);
+    }
+
+    .bento-item h3 {
+      margin-bottom: 0.6rem;
+    }
+
+    .bento-list {
+      list-style: none;
+      margin-top: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .bento-list li {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .bento-list li i {
+      color: var(--accent-rose);
+      font-size: 0.85rem;
+    }
+
+    /* ==========================================================================
+       8. STAFF DE MÉDICAS & DERMATÓLOGAS
+       ========================================================================== */
+    .staff-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.75rem;
+      margin-bottom: 5rem;
+    }
+
+    .staff-card {
+      padding: 2rem 1.75rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .staff-photo {
+      width: 95px;
+      height: 95px;
+      border-radius: 50%;
+      margin-bottom: 1.2rem;
+      border: 3px solid var(--accent-rose);
+      box-shadow: 0 4px 15px rgba(190, 24, 93, 0.2);
+      object-fit: cover;
+    }
+
+    .staff-name {
+      font-size: 1.25rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .staff-role {
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      color: var(--accent-rose);
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+
+    .staff-mp {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 1.1rem;
+      font-weight: 500;
+    }
+
+    .staff-days {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      background: var(--bg-subtle);
+      padding: 0.45rem 0.85rem;
+      border-radius: var(--radius-sm);
+      margin-bottom: 1.25rem;
+      width: 100%;
+    }
+
+    /* ==========================================================================
+       9. UBICACIÓN, MAPA & HORARIOS
+       ========================================================================== */
+    .location-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      padding: 3.5rem;
+      border-radius: var(--radius-xl);
+      margin-bottom: 5rem;
+      align-items: center;
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .location-details {
+      display: flex;
+      flex-direction: column;
+      gap: 1.35rem;
+    }
+
+    .location-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .location-icon {
+      font-size: 1.35rem;
+      color: var(--accent-rose);
+      margin-top: 0.2rem;
+    }
+
+    .map-embed-wrapper {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      height: 340px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .map-embed-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* ==========================================================================
+       10. FAQ ACCORDION
+       ========================================================================== */
+    .faq-list {
+      max-width: 820px;
+      margin: 0 auto 5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .faq-item {
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      background: #ffffff;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition-smooth);
+    }
+
+    .faq-question {
+      padding: 1.3rem 1.6rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      font-family: var(--font-heading);
+      color: var(--text-primary);
+    }
+
+    .faq-question:hover {
+      color: var(--accent-rose);
+    }
+
+    .faq-answer {
+      padding: 0 1.6rem 1.4rem;
+      display: none;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.65;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 1rem;
+    }
+
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+
+    .faq-item.active {
+      border-color: var(--accent-rose);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* ==========================================================================
+       11. FOOTER & BOTÓN FLOTANTE
+       ========================================================================== */
+    .footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 3rem 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      background: #ffffff;
+    }
+
+    .floating-whatsapp {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.85rem 1.5rem;
+      background: #25d366;
+      color: #ffffff;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.95rem;
+      border-radius: var(--radius-full);
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+      transition: var(--transition-smooth);
+    }
+
+    .floating-whatsapp:hover {
+      transform: scale(1.05) translateY(-3px);
+      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.55);
+      color: #ffffff;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .hero-section, .compare-container, .laser-calc-wrapper {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .bento-col-8, .bento-col-4, .bento-col-6 {
+        grid-column: span 12;
+      }
+      .location-card {
+        grid-template-columns: 1fr;
+        padding: 2rem;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .zone-selection-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-metrics {
+        grid-template-columns: 1fr;
+      }
+      .floating-whatsapp span {
+        display: none;
+      }
+      .floating-whatsapp {
+        padding: 1rem;
+        border-radius: 50%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Canvas Interactivo de Destellos de Belleza -->
+  <canvas id="aesthetic-canvas"></canvas>
+
+  <div class="app-container">
+    
+    <!-- Navbar Flotante -->
+    <header class="navbar-wrapper">
+      <nav class="navbar">
+        <a href="#" class="brand-logo">
+          <div class="logo-icon-box">
+            <i class="fa-solid fa-spa"></i>
+          </div>
+          <div class="brand-name">
+            <span id="brand-title">AURA</span>
+            <span class="brand-sub" id="brand-location">Estética Avanzada & Spa</span>
+          </div>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#transformacion" class="nav-link">Glow Facial</a></li>
+          <li><a href="#depilacion" class="nav-link">Depilación Láser</a></li>
+          <li><a href="#tratamientos" class="nav-link">Tratamientos</a></li>
+          <li><a href="#staff" class="nav-link">Especialistas</a></li>
+          <li><a href="#contacto" class="nav-link">Ubicación</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <div class="badge-pill">
+            <span class="live-dot"></span>
+            Diagnóstico Sin Cargo
+          </div>
+          <a href="#depilacion" class="btn btn-primary" style="padding: 0.55rem 1.2rem; font-size: 0.88rem;">
+            Reservar Turno
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <div class="badge-pill">
+          <i class="fa-solid fa-sparkles"></i>
+          <span id="hero-tagline">Tecnología Médica ANMAT · Resultados Naturales</span>
+        </div>
+        <h1>
+          Realzá tu belleza con <span class="hero-title-highlight">armonía sensorial</span> y precisión.
+        </h1>
+        <p class="hero-desc">
+          Depilación definitiva láser trionda indolora, rejuvenecimiento facial con HIFU 7D y modelación corporal de alta eficacia. Sentite renovada en un espacio diseñado para tu bienestar y relajación.
+        </p>
+        <div class="hero-actions">
+          <a href="#depilacion" class="btn btn-primary">
+            <i class="fa-regular fa-calendar-check"></i>
+            Armar mi Pack de Sesiones
+          </a>
+          <a href="#" id="hero-wa-btn" target="_blank" class="btn btn-whatsapp">
+            <i class="fa-brands fa-whatsapp"></i>
+            WhatsApp Directo
+          </a>
+        </div>
+
+        <div class="hero-metrics">
+          <div class="metric-item">
+            <span class="metric-value">+8.500</span>
+            <span class="metric-label">Tratamientos Realizados</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-value">100%</span>
+            <span class="metric-label">Aparatología Médica</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-value">6 Cuotas</span>
+            <span class="metric-label">Sin Interés en Packs</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-image-card">
+          <img src="assets/hero.jpg" alt="Instalaciones de lujo de centro de estética AURA">
+          <div class="hero-overlay-tag">
+            <div class="doctor-badge-info">
+              <div class="doctor-avatar-circle"></div>
+              <div>
+                <strong style="font-size: 0.9rem; display: block; color: var(--text-primary);">Dra. Clara Rossi</strong>
+                <span style="font-size: 0.78rem; color: var(--accent-rose); font-weight: 600;">Dermatología & Medicina Estética · MP 42.190</span>
+              </div>
+            </div>
+            <span class="badge-pill gold" style="font-size: 0.75rem;">
+              <i class="fa-solid fa-star"></i> 4.9/5 Calificación
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slider Antes / Después (Glow Facial) -->
+    <section id="transformacion" class="compare-section">
+      <div class="compare-container">
+        <div class="compare-info">
+          <div class="badge-pill">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> Glow Skin Effect
+          </div>
+          <h2 style="margin: 1rem 0 0.8rem;">Piel Luminosa, Tersa y Libre de Manchas</h2>
+          <p>Deslizá la barra interactiva para apreciar la renovación cutánea con nuestro protocolo <strong>HydraGlow + Peeling Enzimático & Ácido Hialurónico</strong>. Regeneración celular profunda sin rojeces ni descamación agresiva.</p>
+          
+          <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem;">
+            <div style="display: flex; align-items: center; gap: 0.75rem; font-size: 0.92rem; color: var(--text-secondary);">
+              <i class="fa-solid fa-circle-check" style="color: var(--accent-rose);"></i>
+              <span>Poros minimizados y textura de porcelana</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.75rem; font-size: 0.92rem; color: var(--text-secondary);">
+              <i class="fa-solid fa-circle-check" style="color: var(--accent-rose);"></i>
+              <span>Hidratación profunda con ácido hialurónico reticulado</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.75rem; font-size: 0.92rem; color: var(--text-secondary);">
+              <i class="fa-solid fa-circle-check" style="color: var(--accent-rose);"></i>
+              <span>Efecto lifting no quirúrgico inmediato</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Visor Deslizante -->
+        <div class="compare-viewer-box" id="compare-box">
+          <img src="assets/glow.jpg" alt="Piel luminosa después del tratamiento facial" class="compare-img-after">
+          <div class="compare-img-before-wrapper" id="before-wrapper">
+            <img src="assets/glow.jpg" alt="Piel antes del tratamiento facial" class="compare-img-before" id="before-img">
+          </div>
+          <div class="compare-handle" id="compare-handle">
+            <i class="fa-solid fa-arrows-left-right"></i>
+          </div>
+          <span class="compare-label-before">Antes</span>
+          <span class="compare-label-after">Después</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cotizador Interactivo de Depilación Láser -->
+    <section id="depilacion" class="laser-calculator-section">
+      <div class="laser-calc-wrapper">
+        <div>
+          <div class="badge-pill">
+            <i class="fa-solid fa-calculator"></i> Simulador de Zonas
+          </div>
+          <h2 style="margin: 1rem 0 0.8rem;">Armá tu Combo de Depilación Láser</h2>
+          <p>Seleccioná las zonas que querés tratar. Si elegís el <strong>Pack de 6 Sesiones</strong>, obtenés un <strong>30% OFF directo</strong> + 1 sesión de retoque de regalo.</p>
+
+          <div class="zone-selection-grid">
+            <label class="zone-check-card active" data-zone="Axilas" data-price="7500">
+              <input type="checkbox" checked>
+              <div class="custom-checkbox"><i class="fa-solid fa-check"></i></div>
+              <div class="zone-info">
+                <span class="zone-name">Axilas</span>
+                <span class="zone-price">$7.500 / sesión</span>
+              </div>
+            </label>
+
+            <label class="zone-check-card active" data-zone="Cavado Completo" data-price="12000">
+              <input type="checkbox" checked>
+              <div class="custom-checkbox"><i class="fa-solid fa-check"></i></div>
+              <div class="zone-info">
+                <span class="zone-name">Cavado Completo</span>
+                <span class="zone-price">$12.000 / sesión</span>
+              </div>
+            </label>
+
+            <label class="zone-check-card active" data-zone="Pierna Entera" data-price="18000">
+              <input type="checkbox" checked>
+              <div class="custom-checkbox"><i class="fa-solid fa-check"></i></div>
+              <div class="zone-info">
+                <span class="zone-name">Pierna Entera</span>
+                <span class="zone-price">$18.000 / sesión</span>
+              </div>
+            </label>
+
+            <label class="zone-check-card" data-zone="Rostro Completo" data-price="8500">
+              <input type="checkbox">
+              <div class="custom-checkbox"><i class="fa-solid fa-check"></i></div>
+              <div class="zone-info">
+                <span class="zone-name">Rostro Completo</span>
+                <span class="zone-price">$8.500 / sesión</span>
+              </div>
+            </label>
+
+            <label class="zone-check-card" data-zone="Brazos" data-price="11000">
+              <input type="checkbox">
+              <div class="custom-checkbox"><i class="fa-solid fa-check"></i></div>
+              <div class="zone-info">
+                <span class="zone-name">Brazos Completos</span>
+                <span class="zone-price">$11.000 / sesión</span>
+              </div>
+            </label>
+
+            <label class="zone-check-card" data-zone="Espalda / Abdomen" data-price="15000">
+              <input type="checkbox">
+              <div class="custom-checkbox"><i class="fa-solid fa-check"></i></div>
+              <div class="zone-info">
+                <span class="zone-name">Espalda / Abdomen</span>
+                <span class="zone-price">$15.000 / sesión</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <div>
+          <div class="calc-summary-box">
+            <strong style="color: var(--accent-rose); font-size: 1rem; display: block; margin-bottom: 0.8rem;">
+              <i class="fa-solid fa-receipt"></i> Resumen de tu Plan Personalizado
+            </strong>
+            <div class="summary-row">
+              <span style="color: var(--text-secondary);">Zonas seleccionadas:</span>
+              <span id="sum-zones-count" style="font-weight: 600; color: var(--text-primary);">3 Zonas</span>
+            </div>
+            <div class="summary-row">
+              <span style="color: var(--text-secondary);">Detalle:</span>
+              <span id="sum-zones-list" style="font-weight: 600; color: var(--accent-rose); text-align: right; max-width: 220px;">Axilas, Cavado, Piernas</span>
+            </div>
+            <div class="summary-row">
+              <span style="color: var(--text-secondary);">Modalidad:</span>
+              <span style="font-weight: 600; color: var(--accent-gold);">Pack 6 Sesiones (30% OFF)</span>
+            </div>
+            <div class="summary-total summary-row">
+              <span>Total por Sesión en Pack:</span>
+              <span id="sum-pack-price">$26.250 ARS</span>
+            </div>
+          </div>
+
+          <div style="margin-top: 1.5rem;">
+            <div class="form-group" style="margin-bottom: 1rem;">
+              <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.4rem;">Tu Nombre para la Reserva:</label>
+              <input type="text" id="patient-name-aesthetic" class="form-control" placeholder="Ej: Carolina Fernández" style="width: 100%; padding: 0.85rem; border-radius: var(--radius-md); border: 1px solid var(--border-medium); outline: none;">
+            </div>
+
+            <button id="btn-send-laser-pack" class="btn btn-whatsapp" style="width: 100%; padding: 1rem;">
+              <i class="fa-brands fa-whatsapp" style="font-size: 1.25rem;"></i>
+              Reservar Promo Láser por WhatsApp
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bento Grid de Tratamientos Médicos & Spa -->
+    <section id="tratamientos">
+      <div class="section-header">
+        <div class="badge-pill">Menú de Experiencias</div>
+        <h2 class="section-title">Tratamientos Faciales & Corporales</h2>
+        <p>Aparatología de última generación y activos cosmecéuticos de grado médico para resultados visibles desde la primera sesión.</p>
+      </div>
+
+      <div class="bento-grid">
+        <!-- HIFU 7D -->
+        <div class="silk-card bento-item bento-col-8">
+          <div>
+            <div class="bento-icon-badge">
+              <i class="fa-solid fa-wand-magic"></i>
+            </div>
+            <h3>HIFU 7D Ultraformer · Lifting No Quirúrgico</h3>
+            <p>Ultrasonido focalizado de alta intensidad que tensa la musculatura facial profunda (SMAS), estimula la neocolagénesis y redefine el óvalo facial sin agujas ni tiempo de recuperación.</p>
+            <ul class="bento-list">
+              <li><i class="fa-solid fa-circle-check"></i> Reducción de papada y elevación de pómulos</li>
+              <li><i class="fa-solid fa-circle-check"></i> Resultados progresivos con duración de 12 a 18 meses</li>
+            </ul>
+          </div>
+          <div style="margin-top: 1.5rem; display: flex; align-items: center; justify-content: space-between; padding-top: 1rem; border-top: 1px solid var(--border-subtle);">
+            <span style="font-size: 0.85rem; color: var(--text-muted);">Sesión de 60 min · 1 vez al año</span>
+            <a href="#contacto" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.5rem 1rem;">Consultar HIFU</a>
+          </div>
+        </div>
+
+        <!-- Criolipólisis Plana -->
+        <div class="silk-card bento-item bento-col-4">
+          <div>
+            <div class="bento-icon-badge gold">
+              <i class="fa-solid fa-snowflake"></i>
+            </div>
+            <h3>Criolipólisis Plana</h3>
+            <p>Destrucción selectiva de células adiposas por frío controlado sin succión ni hematomas. Ideal para abdomen, flancos y pantalón de montar.</p>
+          </div>
+          <ul class="bento-list">
+            <li><i class="fa-solid fa-circle-check"></i> Reducción de 2 a 5 cm por sesión</li>
+            <li><i class="fa-solid fa-circle-check"></i> 100% indoloro y no invasivo</li>
+          </ul>
+        </div>
+
+        <!-- Toxina Botulínica & Rellenos -->
+        <div class="silk-card bento-item bento-col-4">
+          <div>
+            <div class="bento-icon-badge">
+              <i class="fa-solid fa-syringe"></i>
+            </div>
+            <h3>Armonización Médica</h3>
+            <p>Toxina botulínica (Botox) para líneas de expresión y ácido hialurónico reticulado para hidratación y perfilado labial sutil.</p>
+          </div>
+          <div style="margin-top: 1.2rem; font-size: 0.85rem; color: var(--accent-rose); font-weight: 600;">
+            <i class="fa-solid fa-shield-heart"></i> Aplicado por médica especialista
+          </div>
+        </div>
+
+        <!-- Peeling & Dermapen -->
+        <div class="silk-card bento-item bento-col-4">
+          <div>
+            <div class="bento-icon-badge gold">
+              <i class="fa-solid fa-droplet"></i>
+            </div>
+            <h3>Dermapen & Bio-Peeling</h3>
+            <p>Micro-punciones que inducen colágeno e introducen cócteles de vitaminas, péptidos y ácido tranexámico antimanchas.</p>
+          </div>
+          <div style="margin-top: 1.2rem; font-size: 0.85rem; color: var(--accent-gold); font-weight: 600;">
+            <i class="fa-solid fa-sparkles"></i> Piel radiante y luminosa
+          </div>
+        </div>
+
+        <!-- Masajes & Drenaje -->
+        <div class="silk-card bento-item bento-col-4">
+          <div>
+            <div class="bento-icon-badge">
+              <i class="fa-solid fa-hands"></i>
+            </div>
+            <h3>Drenaje & Masajes Spa</h3>
+            <p>Drenaje linfático manual método Vodder, masajes descontracturantes con aromaterapia y piedras calientes volcánicas.</p>
+          </div>
+          <div style="margin-top: 1.2rem; font-size: 0.85rem; color: var(--accent-rose); font-weight: 600;">
+            <i class="fa-solid fa-clock"></i> Sesiones de 50 o 80 minutos
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Staff de Especialistas -->
+    <section id="staff">
+      <div class="section-header">
+        <div class="badge-pill">Cuerpo Profesional</div>
+        <h2 class="section-title">Médicas & Cosmiatras Certificadas</h2>
+        <p>Atención personalizada con diagnóstico previo para cuidar tu piel con rigor médico y calidez humana.</p>
+      </div>
+
+      <div class="staff-grid">
+        <div class="silk-card staff-card">
+          <img src="assets/specialist.jpg" alt="Dra. Clara Rossi" class="staff-photo">
+          <h3 class="staff-name">Dra. Clara Rossi</h3>
+          <span class="staff-role">Directora Médica & Dermatóloga</span>
+          <span class="staff-mp">MN: 124.810 | MP: 42.190</span>
+          <div class="staff-days">
+            <i class="fa-regular fa-calendar"></i> Mar, Jue y Sáb · 10:00 a 19:00 hs
+          </div>
+          <button class="btn btn-secondary direct-aesthetic-btn" data-doctor="Dra. Clara Rossi" data-spec="Dermatología y Armonización" style="width: 100%; font-size: 0.88rem;">
+            Consultar con Dra. Rossi
+          </button>
+        </div>
+
+        <div class="silk-card staff-card">
+          <img src="assets/glow.jpg" alt="Lic. Valentina Paz" class="staff-photo">
+          <h3 class="staff-name">Lic. Valentina Paz</h3>
+          <span class="staff-role">Cosmiatra & Especialista Láser</span>
+          <span class="staff-mp">Matrícula Cosmiatría: 8.420</span>
+          <div class="staff-days">
+            <i class="fa-regular fa-calendar"></i> Lun a Vie · 09:00 a 18:00 hs
+          </div>
+          <button class="btn btn-secondary direct-aesthetic-btn" data-doctor="Lic. Valentina Paz" data-spec="Depilación Láser y Glow Facial" style="width: 100%; font-size: 0.88rem;">
+            Consultar con Lic. Paz
+          </button>
+        </div>
+
+        <div class="silk-card staff-card">
+          <img src="assets/hero.jpg" alt="Lic. Lucía Menéndez" class="staff-photo">
+          <h3 class="staff-name">Lic. Lucía Menéndez</h3>
+          <span class="staff-role">Kinesióloga Fisiatra & Drenaje</span>
+          <span class="staff-mp">MP: 31.905</span>
+          <div class="staff-days">
+            <i class="fa-regular fa-calendar"></i> Lun, Mié y Vie · 13:00 a 20:00 hs
+          </div>
+          <button class="btn btn-secondary direct-aesthetic-btn" data-doctor="Lic. Lucía Menéndez" data-spec="Modelación Corporal y Drenaje" style="width: 100%; font-size: 0.88rem;">
+            Consultar con Lic. Menéndez
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ubicación y Mapa -->
+    <section id="contacto" class="location-card">
+      <div class="location-details">
+        <div class="badge-pill">
+          <i class="fa-solid fa-map-pin"></i> Sede Spa & Estética
+        </div>
+        <h2 id="contact-heading">Visitanos en Nuestra Sede</h2>
+        <p>Un santuario de tranquilidad pensado para desconectar del ritmo diario y regalarte un momento único de cuidado personal.</p>
+
+        <div class="location-row">
+          <i class="fa-solid fa-location-dot location-icon"></i>
+          <div>
+            <strong style="color: var(--text-primary); display: block;">Dirección:</strong>
+            <span id="contact-address-text">Av. Principal 2450, Centro</span>
+          </div>
+        </div>
+
+        <div class="location-row">
+          <i class="fa-solid fa-clock location-icon"></i>
+          <div>
+            <strong style="color: var(--text-primary); display: block;">Horarios de Atención:</strong>
+            <span>Lunes a Viernes: 09:00 a 20:00 hs</span><br>
+            <span>Sábados: 09:00 a 17:00 hs | <strong>Atención con Turno Previo</strong></span>
+          </div>
+        </div>
+
+        <div class="location-row">
+          <i class="fa-brands fa-whatsapp location-icon" style="color: #25d366;"></i>
+          <div>
+            <strong style="color: var(--text-primary); display: block;">Línea Directa de WhatsApp:</strong>
+            <span id="contact-phone-text">+54 9 223 500-0000</span>
+          </div>
+        </div>
+
+        <div style="margin-top: 1rem;">
+          <a href="https://maps.google.com" id="map-link-btn" target="_blank" class="btn btn-secondary">
+            <i class="fa-solid fa-diamond-turn-right"></i> Abrir en Google Maps
+          </a>
+        </div>
+      </div>
+
+      <div class="map-embed-wrapper">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3143.954546424564!2d-57.55847842358826!3d-37.99424754406385!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDU5JzM5LjMiUyA1N8KwMzMnMzAuNSJX!5e0!3m2!1ses!2sar!4v1700000000000!5m2!1ses!2sar" loading="lazy"></iframe>
+      </div>
+    </section>
+
+    <!-- FAQ Accordion -->
+    <section class="faq-section">
+      <div class="section-header">
+        <div class="badge-pill">Dudas Frecuentes</div>
+        <h2 class="section-title">Preguntas sobre Tratamientos</h2>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item active">
+          <div class="faq-question">
+            <span>¿La depilación definitiva láser es apta para todo tipo de piel?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            Sí. Nuestro cabezal Trionda combina 3 longitudes de onda (Alexandrita, Diodo y Nd:YAG) con sistema de enfriamiento bajo cero que permite tratar pieles claras, bronceadas y morenas de forma segura e indolora los 365 días del año.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>¿Cuántas sesiones de HIFU 7D se necesitan para ver resultados?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            El HIFU 7D se realiza en 1 sola sesión anual. Se observa un 20% de resultado inmediato al salir del consultorio y el pico máximo de colágeno se alcanza entre los 60 y 90 días posteriores.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>¿Qué medios de pago y financiación ofrecen?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            Aceptamos tarjetas de crédito bancarias en 3 y 6 cuotas sin interés, débito y un 15% de descuento por pago en efectivo o transferencia bancaria en todos los packs de tratamiento.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p id="footer-text">© 2026 AURA · Centro de Estética Avanzada & Medicina Spa.</p>
+      <p style="margin-top: 0.5rem; font-size: 0.8rem;">Demo interactiva de alta conversión lista para personalización comercial en tiempo real.</p>
+    </footer>
+
+  </div>
+
+  <!-- Botón Flotante Persistente de WhatsApp Oficial -->
+  <a href="#" id="floating-wa-btn" target="_blank" class="floating-whatsapp" aria-label="Contactar por WhatsApp">
+    <i class="fa-brands fa-whatsapp" style="font-size: 1.4rem;"></i>
+    <span>WhatsApp Directo</span>
+  </a>
+
+  <!-- Scripts: Canvas Satinado, Slider Glow Facial & Cotizador de Láser -->
+  <script>
+    // =========================================================================
+    // 0. LECTOR DE PARÁMETROS DINÁMICOS URL (?n=Nombre&t=Telefono&d=Direccion)
+    // =========================================================================
+    const urlParams = new URLSearchParams(window.location.search);
+    const clientName = urlParams.get('n') || 'AURA Estética & Spa';
+    const clientPhone = urlParams.get('t') || '5492235000000';
+    const clientAddress = urlParams.get('d') || 'Av. Principal 2450, Centro';
+
+    document.getElementById('brand-title').textContent = clientName.toUpperCase();
+    document.getElementById('contact-heading').textContent = `Visitanos en ${clientName}`;
+    document.getElementById('contact-address-text').textContent = clientAddress;
+    document.getElementById('contact-phone-text').textContent = `+${clientPhone}`;
+    document.getElementById('footer-text').textContent = `© 2026 ${clientName} · Centro de Estética Avanzada & Medicina Spa.`;
+    document.getElementById('map-link-btn').href = `https://maps.google.com/?q=${encodeURIComponent(clientAddress)}`;
+
+    const genericWaUrl = `https://wa.me/${clientPhone}?text=${encodeURIComponent('Hola ' + clientName + '! Quisiera consultar por tratamientos estéticos y turnos.')}`;
+    document.getElementById('hero-wa-btn').href = genericWaUrl;
+    document.getElementById('floating-wa-btn').href = genericWaUrl;
+
+    // =========================================================================
+    // 1. MOTOR CANVAS DE DESTELLOS Y LUZ CÁLIDA PERLADA
+    // =========================================================================
+    const canvas = document.getElementById('aesthetic-canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height, particles = [];
+
+    function initCanvas() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      particles = [];
+      const count = Math.min(Math.floor(width * 0.025), 35);
+
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.35,
+          vy: (Math.random() - 0.5) * 0.35,
+          size: Math.random() * 2.5 + 1,
+          alpha: Math.random() * 0.5 + 0.2,
+          color: Math.random() > 0.4 ? '190, 24, 93' : '217, 119, 6'
+        });
+      }
+    }
+
+    window.addEventListener('resize', initCanvas);
+    initCanvas();
+
+    function renderCanvas() {
+      ctx.clearRect(0, 0, width, height);
+
+      particles.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0 || p.x > width) p.vx *= -1;
+        if (p.y < 0 || p.y > height) p.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${p.color}, ${p.alpha})`;
+        ctx.fill();
+      });
+
+      requestAnimationFrame(renderCanvas);
+    }
+    renderCanvas();
+
+    // =========================================================================
+    // 2. SLIDER INTERACTIVO GLOW FACIAL ANTES / DESPUÉS
+    // =========================================================================
+    const compareBox = document.getElementById('compare-box');
+    const beforeWrapper = document.getElementById('before-wrapper');
+    const beforeImg = document.getElementById('before-img');
+    const compareHandle = document.getElementById('compare-handle');
+    let isDragging = false;
+
+    function updateCompareWidth() {
+      beforeImg.style.width = compareBox.offsetWidth + 'px';
+    }
+    window.addEventListener('resize', updateCompareWidth);
+    updateCompareWidth();
+
+    function setSliderPosition(x) {
+      const rect = compareBox.getBoundingClientRect();
+      let pos = (x - rect.left) / rect.width;
+      if (pos < 0.05) pos = 0.05;
+      if (pos > 0.95) pos = 0.95;
+
+      const percent = pos * 100;
+      beforeWrapper.style.width = `${percent}%`;
+      compareHandle.style.left = `${percent}%`;
+    }
+
+    compareBox.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      setSliderPosition(e.clientX);
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      setSliderPosition(e.clientX);
+    });
+
+    window.addEventListener('mouseup', () => { isDragging = false; });
+
+    // Touch support
+    compareBox.addEventListener('touchstart', (e) => {
+      isDragging = true;
+      setSliderPosition(e.touches[0].clientX);
+    }, { passive: true });
+
+    window.addEventListener('touchmove', (e) => {
+      if (!isDragging) return;
+      setSliderPosition(e.touches[0].clientX);
+    }, { passive: true });
+
+    window.addEventListener('touchend', () => { isDragging = false; });
+
+    // =========================================================================
+    // 3. COTIZADOR DE DEPILACIÓN LÁSER INTERACTIVO
+    // =========================================================================
+    const zoneCards = document.querySelectorAll('.zone-check-card');
+    const sumZonesCount = document.getElementById('sum-zones-count');
+    const sumZonesList = document.getElementById('sum-zones-list');
+    const sumPackPrice = document.getElementById('sum-pack-price');
+    const patientName = document.getElementById('patient-name-aesthetic');
+    const sendLaserPackBtn = document.getElementById('btn-send-laser-pack');
+
+    function calculateLaserPack() {
+      let selectedZones = [];
+      let totalSinglePrice = 0;
+
+      zoneCards.forEach(card => {
+        const checkbox = card.querySelector('input');
+        if (checkbox.checked) {
+          card.classList.add('active');
+          selectedZones.push(card.dataset.zone);
+          totalSinglePrice += parseInt(card.dataset.price);
+        } else {
+          card.classList.remove('active');
+        }
+      });
+
+      if (selectedZones.length === 0) {
+        sumZonesCount.textContent = '0 Zonas';
+        sumZonesList.textContent = 'Seleccioná al menos 1 zona';
+        sumPackPrice.textContent = '$0 ARS';
+        return;
+      }
+
+      sumZonesCount.textContent = `${selectedZones.length} Zona${selectedZones.length > 1 ? 's' : ''}`;
+      sumZonesList.textContent = selectedZones.join(', ');
+
+      // 30% OFF en pack de 6 sesiones
+      const discountedPerSession = Math.round(totalSinglePrice * 0.7);
+      sumPackPrice.textContent = `$${discountedPerSession.toLocaleString('es-AR')} ARS`;
+    }
+
+    zoneCards.forEach(card => {
+      card.addEventListener('click', (e) => {
+        if (e.target.tagName !== 'INPUT') {
+          const checkbox = card.querySelector('input');
+          checkbox.checked = !checkbox.checked;
+        }
+        calculateLaserPack();
+      });
+    });
+
+    calculateLaserPack();
+
+    sendLaserPackBtn.addEventListener('click', () => {
+      let selectedZones = [];
+      zoneCards.forEach(card => {
+        if (card.querySelector('input').checked) {
+          selectedZones.push(card.dataset.zone);
+        }
+      });
+
+      const patient = patientName.value.trim() || 'Paciente';
+      const zonesText = selectedZones.length > 0 ? selectedZones.join(', ') : 'Zonas a evaluar';
+
+      const message = `Hola ${clientName}! Mi nombre es ${patient}. Quisiera reservar la promo del Pack 6 Sesiones de Depilación Láser para:\n\n` +
+                      `✨ *Zonas Seleccionadas:* ${zonesText}\n` +
+                      `🎁 *Beneficio:* 30% OFF + Retoque bonificado\n\n` +
+                      `Aguardo confirmación de disponibilidad para mi primera sesión diagnóstica. Muchas gracias!`;
+
+      const encoded = encodeURIComponent(message);
+      window.open(`https://wa.me/${clientPhone}?text=${encoded}`, '_blank');
+    });
+
+    // Botones directos de staff
+    document.querySelectorAll('.direct-aesthetic-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const doctor = btn.dataset.doctor;
+        const spec = btn.dataset.spec;
+        const message = `Hola ${clientName}! Quisiera solicitar un turno específico con ${doctor} (${spec}). Aguardo días disponibles.`;
+        window.open(`https://wa.me/${clientPhone}?text=${encodeURIComponent(message)}`, '_blank');
+      });
+    });
+
+    // =========================================================================
+    // 4. FAQ ACCORDION INTERACTIVO
+    // =========================================================================
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.querySelector('.faq-question').addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+        if (!isActive) item.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

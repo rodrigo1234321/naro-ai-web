@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALQUIMIA | Bar de Especialidad, Coctelería de Autor & Speakeasy</title>
+  <meta name="description" content="Coctelería de autor con destilados premium, mixología botánica, jazz lounge y tapas gourmet. Reservá tu mesa o living privado por WhatsApp.">
+  <meta name="theme-color" content="#0b0914">
+  
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ALQUIMIA | Bar de Especialidad & Coctelería de Autor">
+  <meta property="og:description" content="Tragos de autor ahumados, ambiente íntimo a la luz de las velas y tapas de charcutería fina.">
+  <meta property="og:image" content="assets/hero_bar.jpg">
+
+  <!-- Google Fonts Exóticas: Cinzel Decorative, Italiana & Syne -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Italiana&family=Syne:wght@500;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* ==========================================================================
+       1. VARIABLES Y TOKENS DE DISEÑO (MIDNIGHT VELVET, ULTRAVIOLET & CANDLE GOLD)
+       ========================================================================== */
+    :root {
+      --bg-base: #0b0914; /* Deep Velvet Midnight */
+      --bg-surface: #130f24;
+      --bg-card: rgba(28, 21, 54, 0.88);
+      --bg-elevated: #281e4d;
+      
+      --accent-violet: #8b5cf6; /* Ultraviolet Violet */
+      --accent-violet-light: #c084fc;
+      --accent-violet-glow: rgba(139, 92, 246, 0.4);
+      
+      --accent-gold: #f59e0b; /* Candle Gold / Amber */
+      --accent-gold-light: #fde68a;
+
+      --text-primary: #f8fafc; /* Crisp Silk White */
+      --text-secondary: #cbd5e1;
+      --text-muted: #94a3b8;
+
+      --border-subtle: rgba(139, 92, 246, 0.25);
+      --border-medium: rgba(139, 92, 246, 0.48);
+      --border-active: #8b5cf6;
+
+      --font-exotic: 'Cinzel Decorative', Georgia, serif;
+      --font-serif: 'Italiana', Georgia, serif;
+      --font-body: 'Syne', system-ui, sans-serif;
+
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-xl: 34px;
+      --radius-full: 9999px;
+
+      --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.6);
+      --shadow-md: 0 12px 35px rgba(0, 0, 0, 0.8);
+      --shadow-violet: 0 12px 35px rgba(139, 92, 246, 0.35);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+    }
+
+    body {
+      min-height: 100vh;
+      line-height: 1.6;
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+    }
+
+    /* Switcher Flotante de Versión (Cervecería / Bar) */
+    .version-switcher-bar {
+      position: fixed;
+      top: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(11, 9, 20, 0.95);
+      border: 1px solid var(--accent-violet-light);
+      padding: 0.35rem 0.6rem;
+      border-radius: var(--radius-full);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(15px);
+    }
+
+    .version-link-tab {
+      padding: 0.4rem 1.1rem;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: var(--transition-smooth);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .version-link-tab.active {
+      background: var(--accent-violet);
+      color: #ffffff;
+      box-shadow: 0 0 15px rgba(139, 92, 246, 0.6);
+    }
+
+    .version-link-tab:not(.active) {
+      color: var(--text-muted);
+    }
+
+    .version-link-tab:not(.active):hover {
+      color: var(--text-primary);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    /* Canvas de Luces Bokeh Violeta y Dorado */
+    #bokeh-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.65;
+    }
+
+    .app-container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 3.5vw, 2.5rem);
+    }
+
+    h1, h2, h3, h4 {
+      color: var(--text-primary);
+      letter-spacing: 0.02em;
+    }
+
+    h1 {
+      font-family: var(--font-exotic);
+      font-size: clamp(2.2rem, 4.6vw, 4.1rem);
+      line-height: 1.1;
+      font-weight: 900;
+    }
+
+    h2 {
+      font-family: var(--font-exotic);
+      font-size: clamp(1.7rem, 2.8vw, 2.6rem);
+      line-height: 1.2;
+      font-weight: 700;
+    }
+
+    p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .badge-violet {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.45rem 1.3rem;
+      background: rgba(139, 92, 246, 0.15);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-full);
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--accent-violet-light);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--accent-violet);
+      box-shadow: 0 0 12px rgba(139, 92, 246, 1);
+      animation: pulse-dot 1.8s infinite ease-in-out;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.3; transform: scale(1.35); }
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      padding: 0.95rem 2rem;
+      border-radius: var(--radius-md);
+      font-weight: 800;
+      font-size: 0.92rem;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: var(--transition-smooth);
+      text-transform: uppercase;
+    }
+
+    .btn-violet {
+      background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+      color: #ffffff;
+      box-shadow: var(--shadow-violet);
+    }
+
+    .btn-violet:hover {
+      background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
+      box-shadow: 0 14px 35px rgba(139, 92, 246, 0.6);
+      transform: translateY(-2px);
+      color: #ffffff;
+    }
+
+    .btn-glass {
+      background: rgba(28, 21, 54, 0.75);
+      color: var(--text-primary);
+      border: 1px solid var(--border-medium);
+      backdrop-filter: blur(15px);
+    }
+
+    .btn-glass:hover {
+      background: var(--bg-elevated);
+      border-color: var(--accent-violet);
+      color: var(--accent-violet-light);
+      transform: translateY(-2px);
+    }
+
+    /* Navbar */
+    .navbar-wrapper {
+      position: absolute;
+      top: 4.8rem;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 2.2rem;
+      background: rgba(11, 9, 20, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .logo-icon {
+      font-size: 1.5rem;
+      color: var(--accent-violet-light);
+    }
+
+    .brand-name {
+      font-family: var(--font-exotic);
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: var(--text-primary);
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+      letter-spacing: 0.08em;
+    }
+
+    .brand-sub {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      color: var(--accent-violet-light);
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.2rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--text-secondary);
+      transition: var(--transition-smooth);
+      text-transform: uppercase;
+    }
+
+    .nav-link:hover {
+      color: var(--accent-violet-light);
+    }
+
+    /* HERO: SPEAKEASY ATMOSPHERE */
+    .hero-speakeasy {
+      min-height: 96vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 12rem 1rem 5rem;
+      position: relative;
+      background: radial-gradient(circle at center, rgba(139, 92, 246, 0.22) 0%, rgba(11, 9, 20, 0.96) 85%), url('assets/hero_bar.jpg') center/cover no-repeat;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .hero-speakeasy::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(11, 9, 20, 0.8) 0%, rgba(11, 9, 20, 0.35) 50%, rgba(11, 9, 20, 1) 100%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 10;
+      max-width: 920px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.6rem;
+    }
+
+    .hero-title-highlight {
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--accent-violet-light);
+      text-shadow: 0 0 35px rgba(139, 92, 246, 0.7);
+    }
+
+    .hero-desc {
+      font-size: 1.18rem;
+      line-height: 1.75;
+      color: var(--text-secondary);
+      max-width: 720px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin-top: 0.5rem;
+    }
+
+    .lounge-session-banner {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      padding: 0.85rem 1.8rem;
+      background: rgba(28, 21, 54, 0.9);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-full);
+      box-shadow: 0 8px 30px rgba(139, 92, 246, 0.25);
+      backdrop-filter: blur(15px);
+      margin-top: 1.2rem;
+    }
+
+    /* CARTA DE COCTELERÍA DE AUTOR */
+    .cocktails-section {
+      padding: 6rem 0;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 3.5rem;
+    }
+
+    .cocktail-filter-chips {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .cocktail-chip-btn {
+      padding: 0.65rem 1.4rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .cocktail-chip-btn:hover {
+      border-color: var(--accent-violet);
+      color: var(--accent-violet-light);
+    }
+
+    .cocktail-chip-btn.active {
+      background: var(--accent-violet);
+      border-color: var(--accent-violet);
+      color: #ffffff;
+      box-shadow: var(--shadow-violet);
+    }
+
+    .cocktails-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.2rem;
+    }
+
+    .cocktail-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition-smooth);
+    }
+
+    .cocktail-card:hover {
+      border-color: var(--accent-violet);
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(139, 92, 246, 0.25);
+    }
+
+    .cocktail-img-box {
+      height: 230px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .cocktail-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+
+    .cocktail-card:hover .cocktail-img-box img {
+      transform: scale(1.08);
+    }
+
+    .cocktail-tag {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-full);
+      background: rgba(11, 9, 20, 0.92);
+      border: 1px solid var(--border-medium);
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--accent-violet-light);
+    }
+
+    .cocktail-body {
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+      gap: 1.2rem;
+    }
+
+    .cocktail-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .cocktail-name {
+      font-family: var(--font-serif);
+      font-size: 1.55rem;
+      color: var(--text-primary);
+    }
+
+    .cocktail-price {
+      font-family: var(--font-body);
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--accent-gold);
+    }
+
+    .flavor-profile-box {
+      background: rgba(11, 9, 20, 0.6);
+      padding: 0.9rem;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+    }
+
+    .flavor-bar-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .flavor-lbl {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    .flavor-progress {
+      width: 100%;
+      height: 5px;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+    }
+
+    .flavor-fill {
+      height: 100%;
+      border-radius: var(--radius-full);
+      background: var(--accent-violet);
+    }
+
+    .flavor-fill.gold {
+      background: var(--accent-gold);
+    }
+
+    /* RESERVA DE SECTOR EXCLUSIVO */
+    .reservation-section {
+      padding: 5rem 0;
+      margin-bottom: 5rem;
+    }
+
+    .reservation-wrapper {
+      background: var(--bg-card);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-xl);
+      padding: 3.5rem;
+      box-shadow: var(--shadow-md);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .sector-choice-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin: 1.5rem 0;
+    }
+
+    .sector-btn {
+      padding: 1rem 0.6rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      color: var(--text-secondary);
+      font-weight: 700;
+      font-size: 0.78rem;
+      cursor: pointer;
+      text-align: center;
+      transition: var(--transition-smooth);
+    }
+
+    .sector-btn.active {
+      background: rgba(139, 92, 246, 0.2);
+      border-color: var(--accent-violet);
+      color: var(--accent-violet-light);
+    }
+
+    /* TAPAS GOURMET & MARIDAJE */
+    .tapas-section {
+      padding: 4rem 0 6rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .tapas-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .tapas-card {
+      background: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition-smooth);
+    }
+
+    .tapas-card:hover {
+      border-color: var(--accent-violet);
+      transform: translateY(-4px);
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 4rem 0 2.5rem;
+      background: #07050d;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    .floating-whatsapp {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.85rem 1.5rem;
+      background: #25d366;
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 0.92rem;
+      letter-spacing: 0.05em;
+      border-radius: var(--radius-full);
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+      transition: var(--transition-smooth);
+      text-transform: uppercase;
+    }
+
+    .floating-whatsapp:hover {
+      transform: scale(1.05) translateY(-3px);
+      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.55);
+      color: #ffffff;
+    }
+
+    @media (max-width: 992px) {
+      .cocktails-grid, .reservation-wrapper, .tapas-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .floating-whatsapp span {
+        display: none;
+      }
+      .floating-whatsapp {
+        padding: 1rem;
+        border-radius: 50%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Switcher Superior de Versiones (Coctelería / Cervecería) -->
+  <div class="version-switcher-bar">
+    <a href="index.html" class="version-link-tab active">
+      <i class="fa-solid fa-martini-glass"></i> Speakeasy & Coctelería
+    </a>
+    <a href="cerveceria.html" class="version-link-tab">
+      <i class="fa-solid fa-beer-mug-empty"></i> Cervecería & Taproom
+    </a>
+  </div>
+
+  <!-- Canvas de Bokeh Violeta & Dorado -->
+  <canvas id="bokeh-canvas"></canvas>
+
+  <!-- Navbar -->
+  <header class="navbar-wrapper">
+    <nav class="navbar">
+      <a href="#" class="brand-logo">
+        <i class="fa-solid fa-martini-glass-citrus logo-icon"></i>
+        <div class="brand-name">
+          <span id="brand-title">ALQUIMIA</span>
+          <span class="brand-sub" id="brand-location">Cocktails & Speakeasy</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#cocktails" class="nav-link">Coctelería de Autor</a></li>
+        <li><a href="#tapas" class="nav-link">Tapas & Cava</a></li>
+        <li><a href="#reservas" class="nav-link">Reservas de Sector</a></li>
+        <li><a href="#contacto" class="nav-link">Ubicación</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="#reservas" class="btn btn-violet" style="padding: 0.55rem 1.3rem; font-size: 0.82rem;">
+          Reservar Mesa
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO: SPEAKEASY ATMOSPHERE -->
+  <section class="hero-speakeasy">
+    <div class="hero-inner">
+      <div class="badge-violet">
+        <span class="live-dot"></span>
+        Speakeasy & Coctelería Botánica
+      </div>
+      <h1>
+        EL ARTE DE LA MIXOLOGÍA, <span class="hero-title-highlight">LUCES TENUES</span> & ALQUIMIA NOCTURNA.
+      </h1>
+      <p class="hero-desc">
+        Destilados añejados, cócteles ahumados en madera de roble, infusiones botánicas y jazz lounge en un espacio íntimo a la luz de las velas.
+      </p>
+      
+      <div class="hero-actions">
+        <a href="#cocktails" class="btn btn-violet">
+          <i class="fa-solid fa-martini-glass"></i>
+          Ver Carta de Cócteles
+        </a>
+        <a href="#reservas" class="btn btn-glass">
+          <i class="fa-solid fa-calendar-check"></i>
+          Reservar una Noche
+        </a>
+      </div>
+
+      <div class="lounge-session-banner">
+        <i class="fa-solid fa-music" style="color: var(--accent-violet-light); font-size: 1.1rem;"></i>
+        <span style="font-weight: 700; font-size: 0.88rem;">
+          Esta Noche: <strong style="color: var(--text-primary);">Vinyl Session & Deep Soul Lounge</strong> (Desde 21:00 hs)
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <div class="app-container">
+
+    <!-- CARTA DE COCTELERÍA DE AUTOR -->
+    <section id="cocktails" class="cocktails-section">
+      <div class="section-header">
+        <div class="badge-violet">Mixología de Vanguardia</div>
+        <h2 style="margin: 0.8rem 0 0.4rem;">NUESTROS TRAGOS DE AUTOR</h2>
+        <p>Recetas exclusivas creadas por nuestros bartenders con maceraciones botánicas y destilados de colección.</p>
+      </div>
+
+      <!-- Filtros de Cócteles -->
+      <div class="cocktail-filter-chips">
+        <button class="cocktail-chip-btn active" data-filter="all">🍸 Toda la Carta</button>
+        <button class="cocktail-chip-btn" data-filter="autor">✨ Cócteles de Autor</button>
+        <button class="cocktail-chip-btn" data-filter="ahumado">🪵 Ahumados & Complejos</button>
+        <button class="cocktail-chip-btn" data-filter="refrescante">🌿 Cítricos & Florales</button>
+      </div>
+
+      <div class="cocktails-grid">
+
+        <!-- Trago 1: Negroni Ahumado -->
+        <div class="cocktail-card" data-category="ahumado">
+          <div class="cocktail-img-box">
+            <img src="assets/cocktail_negroni.jpg" alt="Negroni ahumado en campana">
+            <span class="cocktail-tag">🪵 En Campana de Roble</span>
+          </div>
+          <div class="cocktail-body">
+            <div>
+              <div class="cocktail-title-row">
+                <h3 class="cocktail-name">Smoky Negroni Antico</h3>
+                <span class="cocktail-price">$7.200</span>
+              </div>
+              <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 0.8rem 0;">Gin macerado en bayas, Campari infusionado en pieles de naranja y vermouth rosso añejado en barrica.</p>
+            </div>
+            <div class="flavor-profile-box">
+              <div class="flavor-bar-wrap">
+                <div class="flavor-lbl"><span>Amargor</span><strong>8/10</strong></div>
+                <div class="flavor-progress"><div class="flavor-fill" style="width: 80%;"></div></div>
+              </div>
+              <div class="flavor-bar-wrap">
+                <div class="flavor-lbl"><span>Complejidad</span><strong>9/10</strong></div>
+                <div class="flavor-progress"><div class="flavor-fill gold" style="width: 90%;"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Trago 2: Lavender Gin -->
+        <div class="cocktail-card" data-category="refrescante">
+          <div class="cocktail-img-box">
+            <img src="assets/cocktail_gin.jpg" alt="Gin tonic floral con lavanda">
+            <span class="cocktail-tag">🌸 Botánico & Floral</span>
+          </div>
+          <div class="cocktail-body">
+            <div>
+              <div class="cocktail-title-row">
+                <h3 class="cocktail-name">Lavender & Berry Tonic</h3>
+                <span class="cocktail-price">$6.500</span>
+              </div>
+              <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 0.8rem 0;">Gin destilado artesanal, flores de lavanda orgánica, tónica botánica premium y corteza de pomelo.</p>
+            </div>
+            <div class="flavor-profile-box">
+              <div class="flavor-bar-wrap">
+                <div class="flavor-lbl"><span>Frescura</span><strong>9/10</strong></div>
+                <div class="flavor-progress"><div class="flavor-fill" style="width: 90%;"></div></div>
+              </div>
+              <div class="flavor-bar-wrap">
+                <div class="flavor-lbl"><span>Dulzura</span><strong>4/10</strong></div>
+                <div class="flavor-progress"><div class="flavor-fill gold" style="width: 40%;"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Trago 3: Espresso Martini -->
+        <div class="cocktail-card" data-category="autor">
+          <div class="cocktail-img-box">
+            <img src="assets/cocktail_martini.jpg" alt="Velvet Espresso Martini">
+            <span class="cocktail-tag">☕ Cold Brew de Autor</span>
+          </div>
+          <div class="cocktail-body">
+            <div>
+              <div class="cocktail-title-row">
+                <h3 class="cocktail-name">Velvet Espresso Martini</h3>
+                <span class="cocktail-price">$6.900</span>
+              </div>
+              <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 0.8rem 0;">Vodka de vainilla, licor de café de la casa, extracción doble de espresso de especialidad y espuma aterciopelada.</p>
+            </div>
+            <div class="flavor-profile-box">
+              <div class="flavor-bar-wrap">
+                <div class="flavor-lbl"><span>Intensidad</span><strong>9/10</strong></div>
+                <div class="flavor-progress"><div class="flavor-fill" style="width: 90%;"></div></div>
+              </div>
+              <div class="flavor-bar-wrap">
+                <div class="flavor-lbl"><span>Cremosidad</span><strong>10/10</strong></div>
+                <div class="flavor-progress"><div class="flavor-fill gold" style="width: 100%;"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- RESERVA DE SECTOR EXCLUSIVO -->
+    <section id="reservas" class="reservation-section">
+      <div class="reservation-wrapper">
+        <div>
+          <div class="badge-violet"><i class="fa-solid fa-gem"></i> Experiencia Speakeasy</div>
+          <h2 style="margin: 0.8rem 0 0.4rem;">RESERVÁ TU ESPACIO</h2>
+          <p>Elegí la atmósfera ideal para tu noche: una charla frente al bartender, intimidad en nuestros sillones Chesterfield o la terraza nocturna.</p>
+
+          <div style="margin-top: 1.5rem;">
+            <label style="font-size: 0.82rem; font-weight: 800; display: block; margin-bottom: 0.5rem; text-transform: uppercase;">1. Seleccioná el Sector:</label>
+            <div class="sector-choice-cards">
+              <div class="sector-btn active" data-sector="Barra de Mixología">🍸 Barra Mixología</div>
+              <div class="sector-btn" data-sector="Living Chesterfield">🛋️ Living Privado</div>
+              <div class="sector-btn" data-sector="Terraza Calefaccionada">✨ Terraza Lounge</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div style="margin-bottom: 1.2rem;">
+            <label style="display: block; font-size: 0.82rem; font-weight: 800; margin-bottom: 0.4rem; text-transform: uppercase;">Cantidad de Personas:</label>
+            <select id="res-people-select" style="width: 100%; padding: 0.85rem; background: var(--bg-surface); border: 1px solid var(--border-medium); color: #ffffff; border-radius: var(--radius-sm); font-weight: 700; outline: none;">
+              <option value="2 Personas (Pareja / Amigos)">2 Personas (Pareja / Amigos)</option>
+              <option value="3 a 4 Personas">3 a 4 Personas</option>
+              <option value="5 a 8 Personas">5 a 8 Personas (Living Exclusivo)</option>
+            </select>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.2rem;">
+            <div>
+              <label style="display: block; font-size: 0.82rem; font-weight: 800; margin-bottom: 0.4rem; text-transform: uppercase;">Fecha:</label>
+              <input type="date" id="res-date-input" value="2026-08-15" style="width: 100%; padding: 0.85rem; background: var(--bg-surface); border: 1px solid var(--border-medium); color: #ffffff; border-radius: var(--radius-sm); outline: none;">
+            </div>
+            <div>
+              <label style="display: block; font-size: 0.82rem; font-weight: 800; margin-bottom: 0.4rem; text-transform: uppercase;">Horario:</label>
+              <select id="res-time-select" style="width: 100%; padding: 0.85rem; background: var(--bg-surface); border: 1px solid var(--border-medium); color: #ffffff; border-radius: var(--radius-sm); font-weight: 700; outline: none;">
+                <option value="20:00 hs">20:00 hs</option>
+                <option value="21:30 hs" selected>21:30 hs</option>
+                <option value="23:00 hs">23:00 hs</option>
+              </select>
+            </div>
+          </div>
+
+          <button id="btn-send-res-wa" class="btn btn-violet" style="width: 100%; padding: 1rem;">
+            <i class="fa-brands fa-whatsapp"></i>
+            Confirmar Reserva VIP por WhatsApp
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAPAS & CHARCUTERÍA FINA -->
+    <section id="tapas" class="tapas-section">
+      <div class="section-header">
+        <div class="badge-violet">Maridaje Perfecto</div>
+        <h2 style="margin: 0.8rem 0 0.4rem;">TAPAS DE AUTOR & CHARCUTERÍA</h2>
+        <p>Bocados delicados pensados para realzar cada nota aromática de nuestros cócteles.</p>
+      </div>
+
+      <div class="tapas-grid">
+        <div class="tapas-card">
+          <div style="height: 200px; overflow: hidden;">
+            <img src="assets/tapas_charcuterie.jpg" alt="Tabla de charcutería" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div style="padding: 1.5rem;">
+            <h3 style="font-family: var(--font-serif); font-size: 1.35rem;">Tabla de Quesos Madurados & Jamón Ibérico</h3>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.3rem;">Queso brie trufado, gouda añejo, jamón serrano reserva, nueces pecanas y miel de romero.</p>
+            <span style="display: block; margin-top: 1rem; font-size: 1.2rem; font-weight: 800; color: var(--accent-gold);">$14.500 ARS</span>
+          </div>
+        </div>
+
+        <div class="tapas-card">
+          <div style="height: 200px; overflow: hidden;">
+            <img src="assets/bar_ambiance.jpg" alt="Ambiente de bar" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div style="padding: 1.5rem;">
+            <h3 style="font-family: var(--font-serif); font-size: 1.35rem;">Bruschettas de Stracciatella & Tomates Confit</h3>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.3rem;">Pan de masa madre tostado al oliva, corazón cremoso de stracciatella, tomates cherry y pesto de albahaca.</p>
+            <span style="display: block; margin-top: 1rem; font-size: 1.2rem; font-weight: 800; color: var(--accent-gold);">$9.800 ARS</span>
+          </div>
+        </div>
+
+        <div class="tapas-card">
+          <div style="height: 200px; overflow: hidden;">
+            <img src="assets/hero_bar.jpg" alt="Cava de vinos" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div style="padding: 1.5rem;">
+            <h3 style="font-family: var(--font-serif); font-size: 1.35rem;">Cava de Vinos & Espumantes de Autor</h3>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.3rem;">Selección por copa y botella de bodegas boutique de Mendoza, Salta y la Patagonia argentina.</p>
+            <span style="display: block; margin-top: 1rem; font-size: 1.2rem; font-weight: 800; color: var(--accent-gold);">Copas desde $4.500</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer" id="contacto">
+    <div class="app-container">
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem; margin-bottom: 2rem;">
+        <i class="fa-solid fa-martini-glass-citrus" style="font-size: 2.2rem; color: var(--accent-violet-light);"></i>
+        <h3 id="footer-brand-title" style="font-family: var(--font-exotic); font-size: 1.6rem; letter-spacing: 0.1em;">ALQUIMIA SPEAKEASY</h3>
+        <p id="footer-address-text" style="color: var(--text-secondary);">Calle Oculta 1420, Güemes · Mar del Plata</p>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Miércoles a Domingos desde las 19:30 hs al cierre | Puerta con Reserva Previa</p>
+      </div>
+      <p id="footer-copy" style="font-size: 0.8rem; color: var(--text-muted);">© 2026 ALQUIMIA · Bar de Especialidad & Coctelería de Autor.</p>
+    </div>
+  </footer>
+
+  <!-- Botón Flotante Persistente de WhatsApp Oficial -->
+  <a href="#" id="floating-wa-btn" target="_blank" class="floating-whatsapp" aria-label="Contactar por WhatsApp">
+    <i class="fa-brands fa-whatsapp" style="font-size: 1.35rem;"></i>
+    <span>WhatsApp VIP</span>
+  </a>
+
+  <!-- GSAP & Lenis CDN -->
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <script>
+    // =========================================================================
+    // 0. LENIS + GSAP SCROLLTRIGGER 60FPS
+    // =========================================================================
+    gsap.registerPlugin(ScrollTrigger);
+
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true
+    });
+
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+    gsap.ticker.lagSmoothing(0);
+
+    // =========================================================================
+    // 1. MOTOR CANVAS DE BOKEH VIOLETA & DORADO SUAVE
+    // =========================================================================
+    const canvas = document.getElementById('bokeh-canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height, orbs = [];
+
+    function initCanvas() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      orbs = [];
+      const count = 18;
+
+      for (let i = 0; i < count; i++) {
+        orbs.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.3,
+          vy: (Math.random() - 0.5) * 0.3,
+          radius: Math.random() * 80 + 30,
+          color: i % 2 === 0 ? 'rgba(139, 92, 246, 0.12)' : 'rgba(245, 158, 11, 0.08)'
+        });
+      }
+    }
+
+    window.addEventListener('resize', initCanvas);
+    initCanvas();
+
+    function renderCanvas() {
+      ctx.clearRect(0, 0, width, height);
+
+      orbs.forEach(orb => {
+        orb.x += orb.vx;
+        orb.y += orb.vy;
+
+        if (orb.x < -orb.radius) orb.x = width + orb.radius;
+        if (orb.x > width + orb.radius) orb.x = -orb.radius;
+        if (orb.y < -orb.radius) orb.y = height + orb.radius;
+        if (orb.y > height + orb.radius) orb.y = -orb.radius;
+
+        const gradient = ctx.createRadialGradient(orb.x, orb.y, 0, orb.x, orb.y, orb.radius);
+        gradient.addColorStop(0, orb.color);
+        gradient.addColorStop(1, 'rgba(11, 9, 20, 0)');
+
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(orb.x, orb.y, orb.radius, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      requestAnimationFrame(renderCanvas);
+    }
+    renderCanvas();
+
+    // =========================================================================
+    // 2. LECTOR DE PARÁMETROS DINÁMICOS URL (?n=Nombre&t=Telefono&d=Direccion)
+    // =========================================================================
+    const urlParams = new URLSearchParams(window.location.search);
+    const clientName = urlParams.get('n') || 'ALQUIMIA Bar';
+    const clientPhone = urlParams.get('t') || '5492235000000';
+    const clientAddress = urlParams.get('d') || 'Calle Oculta 1420, Güemes';
+
+    document.getElementById('brand-title').textContent = clientName.toUpperCase();
+    document.getElementById('footer-brand-title').textContent = clientName.toUpperCase();
+    document.getElementById('footer-address-text').textContent = clientAddress;
+    document.getElementById('footer-copy').textContent = `© 2026 ${clientName} · Bar de Especialidad & Coctelería de Autor.`;
+
+    const genericWaUrl = `https://wa.me/${clientPhone}?text=${encodeURIComponent('Hola ' + clientName + '! Quisiera consultar por reservas para esta noche.')}`;
+    document.getElementById('floating-wa-btn').href = genericWaUrl;
+
+    // =========================================================================
+    // 3. FILTROS DE CÓCTELES
+    // =========================================================================
+    const filterButtons = document.querySelectorAll('.cocktail-chip-btn');
+    const cocktailCards = document.querySelectorAll('.cocktail-card');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+        cocktailCards.forEach(card => {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // =========================================================================
+    // 4. SELECTOR DE SECTOR & RESERVA POR WHATSAPP
+    // =========================================================================
+    let selectedSector = 'Barra de Mixología';
+    const sectorButtons = document.querySelectorAll('.sector-btn');
+    const peopleSelect = document.getElementById('res-people-select');
+    const dateInput = document.getElementById('res-date-input');
+    const timeSelect = document.getElementById('res-time-select');
+    const sendResBtn = document.getElementById('btn-send-res-wa');
+
+    sectorButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        sectorButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        selectedSector = btn.dataset.sector;
+      });
+    });
+
+    sendResBtn.addEventListener('click', () => {
+      const people = peopleSelect.value;
+      const date = dateInput.value;
+      const time = timeSelect.value;
+
+      const message = `Hola ${clientName}! Quisiera solicitar una reserva VIP:\n\n` +
+                      `🍸 *Sector Elegido:* ${selectedSector}\n` +
+                      `👥 *Personas:* ${people}\n` +
+                      `📅 *Fecha:* ${date}\n` +
+                      `⏰ *Horario:* ${time}\n\n` +
+                      `¿Me confirman disponibilidad en puerta? Muchas gracias!`;
+
+      window.open(`https://wa.me/${clientPhone}?text=${encodeURIComponent(message)}`, '_blank');
+    });
+  </script>
+</body>
+</html>

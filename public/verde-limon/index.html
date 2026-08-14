@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+    <meta name="robots" content="noindex, nofollow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verde Limón — Almacén Natural &amp; Tienda Saludable · Mar del Plata</title>
+<meta name="description" content="Verde Limón, almacén natural y tienda saludable en Mar del Plata. Granel, frutos secos, biocosmética, sin TACC, superalimentos. Pedí por WhatsApp y te lo llevamos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%2325d366'/%3E%3Cpath d='M32 12c-8 0-14 6-14 14v3c0 2 1 4 3 5l4 9c1 2 3 3 5 3v6h4v-6c2 0 4-1 5-3l4-9c2-1 3-3 3-5v-3c0-8-6-14-14-14zm0 4c6 0 10 4 10 10H22c0-6 4-10 10-10z' fill='%23fff'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg: oklch(0.975 0.008 105);
+  --bg-soft: oklch(0.985 0.014 130);
+  --surface: oklch(1 0.01 115 / 0.55);
+  --surface-strong: oklch(1 0.01 115 / 0.82);
+  --fg: oklch(0.30 0.09 150);
+  --fg-soft: oklch(0.42 0.07 150);
+  --muted: oklch(0.52 0.05 150);
+  --border: oklch(0.86 0.03 130 / 0.55);
+  --accent: oklch(0.77 0.20 142);
+  --accent-soft: oklch(0.94 0.05 140);
+  --forest: oklch(0.40 0.13 151);
+  --forest-deep: oklch(0.30 0.12 152);
+  --wa: oklch(0.78 0.18 153);
+  --wa-strong: oklch(0.63 0.17 153);
+  --wa-ink: oklch(0.26 0.12 152);
+  --gold: oklch(0.74 0.11 92);
+  --gold-soft: oklch(0.90 0.05 92);
+  --shadow: 0 24px 60px -28px oklch(0.35 0.10 150 / 0.45);
+  --radius-lg: 28px;
+  --radius-md: 20px;
+  --radius-sm: 14px;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --ease-out: cubic-bezier(.16,1,.3,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:auto;-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--font-body);
+  color:var(--fg);
+  background:
+    radial-gradient(1100px 700px at 88% -8%, oklch(0.80 0.10 142 / 0.30), transparent 60%),
+    radial-gradient(900px 620px at -10% 24%, oklch(0.88 0.05 110 / 0.55), transparent 55%),
+    linear-gradient(180deg, var(--bg-soft) 0%, var(--bg) 46%, oklch(0.985 0.012 120) 100%);
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+h1,h2,h3{font-family:var(--font-display);line-height:1.12;font-weight:600;letter-spacing:-0.01em}
+::selection{background:var(--accent);color:#fff}
+:focus{outline:none}
+:focus-visible{outline:3px solid var(--forest-deep);outline-offset:3px;border-radius:6px}
+.container{width:min(1180px, 100% - 48px);margin-inline:auto}
+section{position:relative}
+
+/* ============ Buttons ============ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
+  min-height:52px;padding:.8rem 1.5rem;border-radius:999px;
+  font-weight:600;font-size:.98rem;letter-spacing:.01em;
+  transition:transform .35s var(--ease-out), box-shadow .35s var(--ease-out), background-color .3s ease, color .3s ease, border-color .3s ease;
+  will-change:transform;
+}
+.btn svg{flex:none}
+.btn--wa{
+  background:var(--wa);color:var(--wa-ink);
+  box-shadow:0 14px 32px -14px oklch(0.60 0.18 153 / 0.85), inset 0 1px 0 oklch(1 0 0 / 0.35);
+  border:1px solid oklch(0.66 0.18 153 / 0.5);
+}
+.btn--wa:hover{
+  background:var(--forest);color:#fff;
+  transform:translateY(-3px);
+  box-shadow:0 20px 40px -16px oklch(0.30 0.12 152 / 0.7), inset 0 1px 0 oklch(1 0 0 / 0.2);
+}
+.btn--ghost{
+  background:var(--surface);color:var(--forest-deep);
+  border:1px solid var(--border);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+}
+.btn--ghost:hover{
+  background:oklch(1 0.01 115 / 0.9);border-color:oklch(0.62 0.13 150 / 0.6);
+  transform:translateY(-3px);
+  box-shadow:var(--shadow);
+}
+.btn--sm{min-height:44px;padding:.55rem 1.15rem;font-size:.92rem}
+.btn--lg{min-height:58px;padding:.95rem 1.9rem;font-size:1.04rem}
+
+/* ============ Glass ============ */
+.glass{
+  background:var(--surface);
+  backdrop-filter:blur(20px) saturate(160%);
+  -webkit-backdrop-filter:blur(20px) saturate(160%);
+  border:1px solid oklch(1 0.01 115 / 0.55);
+  box-shadow:var(--shadow), inset 0 1px 0 oklch(1 0 0 / 0.5), inset 0 -1px 0 oklch(0.30 0.10 150 / 0.08);
+}
+
+/* ============ Nav ============ */
+.nav{
+  position:fixed;inset:14px 14px auto;z-index:100;
+  border-radius:22px;
+}
+.nav__bar{
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding:.65rem .9rem .65rem 1.1rem;
+}
+.brand{display:flex;align-items:center;gap:.7rem;min-height:44px}
+.brand__mark{width:44px;height:44px;flex:none;border-radius:14px;display:grid;place-items:center;background:linear-gradient(145deg, var(--wa), var(--forest));box-shadow:0 8px 20px -8px oklch(0.40 0.13 151 / 0.8)}
+.brand__name{font-family:var(--font-display);font-weight:700;font-size:1.14rem;line-height:1.05;color:var(--forest-deep)}
+.brand__tag{font-size:.62rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.nav__links{display:flex;align-items:center;gap:.35rem}
+.nav__link{
+  padding:.55rem .85rem;border-radius:999px;font-size:.9rem;font-weight:500;color:var(--fg-soft);
+  transition:background-color .25s ease,color .25s ease;
+}
+.nav__link:hover{background:var(--accent-soft);color:var(--forest-deep)}
+.nav__cta{margin-left:.4rem}
+.nav__burger{
+  display:none;width:46px;height:46px;border-radius:14px;border:1px solid var(--border);
+  background:var(--surface);place-items:center;
+}
+.nav__burger svg{width:22px;height:22px;stroke:var(--forest-deep)}
+
+/* ============ Hero ============ */
+.hero{min-height:100svh;display:flex;align-items:center;padding:132px 0 60px;overflow:hidden}
+.hero__aurora{position:absolute;inset:0;z-index:0;pointer-events:none}
+.aurora__blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55}
+.aurora__b1{width:560px;height:560px;top:-180px;right:-120px;background:radial-gradient(circle at 35% 35%, oklch(0.80 0.14 142 / 0.9), transparent 65%);animation:drift1 22s ease-in-out infinite alternate}
+.aurora__b2{width:480px;height:480px;bottom:-160px;left:-140px;background:radial-gradient(circle at 60% 40%, oklch(0.86 0.06 105 / 0.9), transparent 65%);animation:drift2 26s ease-in-out infinite alternate}
+.aurora__b3{width:360px;height:360px;top:34%;left:38%;background:radial-gradient(circle at 50% 50%, oklch(0.74 0.11 92 / 0.45), transparent 68%);animation:drift3 30s ease-in-out infinite alternate}
+@keyframes drift1{from{transform:translate(0,0) scale(1)}to{transform:translate(-60px,40px) scale(1.12)}}
+@keyframes drift2{from{transform:translate(0,0) scale(1)}to{transform:translate(50px,-36px) scale(1.08)}}
+@keyframes drift3{from{transform:translate(0,0)}to{transform:translate(34px,26px)}}
+
+.hero__float{position:absolute;z-index:1;pointer-events:none;opacity:.9;animation:floaty 9s ease-in-out infinite}
+@keyframes floaty{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-22px) rotate(6deg)}}
+.f-hero{width:clamp(24px,3.4vw,40px)}
+
+.hero__grid{position:relative;z-index:2;display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(32px,5vw,64px);align-items:center}
+.hero__eyebrow{
+  display:inline-flex;align-items:center;gap:.55rem;
+  padding:.5rem 1rem;border-radius:999px;font-size:.8rem;font-weight:600;letter-spacing:.04em;color:var(--forest-deep);
+  background:var(--accent-soft);border:1px solid oklch(0.78 0.12 143 / 0.5);
+}
+.hero__eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px oklch(0.77 0.20 142 / 0.25)}
+.hero__title{margin-top:1.4rem;font-size:clamp(2.6rem, 6vw, 4.4rem);color:var(--forest-deep);max-width:14ch;line-height:1.14}
+.hero__title .accent{font-style:italic;color:var(--forest)}
+.hero__title .w{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.1em;margin-bottom:-.1em}
+.hero__title .wi{display:inline-block;will-change:transform,filter,opacity}
+.hero__sub{margin-top:1.4rem;font-size:clamp(1.02rem, 1.5vw, 1.18rem);color:var(--fg-soft);max-width:52ch}
+.hero__ctas{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:2.1rem;align-items:center}
+.hero__points{display:flex;flex-wrap:wrap;gap:.6rem 1.6rem;margin-top:2rem}
+.point{display:inline-flex;align-items:center;gap:.5rem;font-size:.92rem;font-weight:500;color:var(--fg-soft)}
+.point svg{width:18px;height:18px;flex:none;color:var(--accent)}
+
+.hero__visual{position:relative}
+.hero__panel{
+  position:relative;border-radius:34px;overflow:hidden;aspect-ratio:4/4.4;
+  box-shadow:0 40px 90px -40px oklch(0.30 0.10 150 / 0.6), inset 0 1px 0 oklch(1 0 0 / 0.55);
+  border:1px solid oklch(1 0.01 115 / 0.65);
+}
+.hero__panel img{width:100%;height:100%;object-fit:cover;transform:scale(1.02)}
+.hero__panel::after{content:"";position:absolute;inset:0;background:linear-gradient(200deg, oklch(0.20 0.08 150 / 0.28), transparent 38%, oklch(0.20 0.08 150 / 0.30))}
+.hero__chip{
+  position:absolute;display:flex;align-items:center;gap:.55rem;z-index:3;
+  padding:.6rem .9rem;border-radius:16px;font-size:.84rem;font-weight:600;color:var(--forest-deep);
+  background:oklch(0.99 0.01 115 / 0.72);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid oklch(1 0 0 / 0.6);box-shadow:0 18px 40px -18px oklch(0.20 0.08 150 / 0.55);
+  animation:chipfloat 6s ease-in-out infinite;
+}
+.hero__chip svg{width:18px;height:18px;color:var(--accent)}
+@keyframes chipfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.chip-1{top:6%;left:-8%;animation-delay:0s}
+.chip-2{bottom:12%;left:-10%;animation-delay:1.2s}
+.chip-3{top:44%;right:-7%;animation-delay:2.1s}
+.chip-3 svg{color:var(--gold)}
+
+/* ============ Marquee ============ */
+.marquee{position:relative;z-index:2;border-block:1px solid var(--border);padding:1.15rem 0;overflow:hidden;background:oklch(0.99 0.01 115 / 0.4);backdrop-filter:blur(10px)}
+.marquee__track{display:inline-flex;white-space:nowrap;animation:marquee 26s linear infinite;will-change:transform}
+.marquee span{display:inline-flex;align-items:center;gap:1.4rem;margin-right:1.4rem;font-size:.86rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--fg-soft)}
+.marquee svg{width:16px;height:16px;color:var(--accent);flex:none}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* ============ Section headers ============ */
+.sec{padding:clamp(72px,9vw,118px) 0}
+.sec__head{max-width:680px;margin-bottom:clamp(40px,5vw,64px)}
+.sec__head--center{margin-inline:auto;text-align:center}
+.kicker{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.78rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--forest);
+}
+.kicker::before{content:"";width:26px;height:2px;background:var(--accent);border-radius:2px}
+.kicker--center::after{content:"";width:26px;height:2px;background:var(--accent);border-radius:2px}
+.sec__title{margin-top:1rem;font-size:clamp(1.9rem, 3.6vw, 2.9rem);color:var(--forest-deep)}
+.sec__sub{margin-top:.9rem;font-size:1.05rem;color:var(--muted);max-width:58ch}
+.sec__head--center .sec__sub{margin-inline:auto}
+
+/* ============ Bento ============ */
+.bento{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:minmax(0,1fr);gap:20px}
+.bento__item:nth-child(1){grid-column:1 / 8;grid-row:1 / 3}
+.bento__item:nth-child(2){grid-column:8 / 13;grid-row:1 / 2}
+.bento__item:nth-child(3){grid-column:8 / 13;grid-row:2 / 3}
+.bento__item:nth-child(4){grid-column:1 / 6;grid-row:3 / 4}
+.bento__item:nth-child(5){grid-column:6 / 13;grid-row:3 / 4}
+.bento__card-wrap{perspective:1000px;height:100%}
+.bento__card{
+  position:relative;height:100%;border-radius:var(--radius-lg);overflow:hidden;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  border:1px solid oklch(1 0.01 115 / 0.55);
+  transform-style:preserve-3d;
+  transition:transform .45s var(--ease-out), box-shadow .45s var(--ease-out);
+  will-change:transform;
+  box-shadow:0 22px 52px -30px oklch(0.30 0.10 150 / 0.5), inset 0 1px 0 oklch(1 0 0 / 0.4);
+}
+.bento__card:hover{transform:translateY(-6px) rotateX(2.5deg) rotateY(-2.5deg);box-shadow:0 36px 80px -34px oklch(0.30 0.10 150 / 0.65)}
+.bento__bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .9s var(--ease-out)}
+.bento__card:hover .bento__bg{transform:scale(1.07)}
+.bento__shade{position:absolute;inset:0;background:linear-gradient(180deg, oklch(0.20 0.06 150 / 0.05) 20%, oklch(0.20 0.06 150 / 0.86) 82%)}
+.bento__glare{position:absolute;inset:0;pointer-events:none;border-radius:inherit;opacity:0;transition:opacity .35s ease;background:radial-gradient(620px circle at var(--gx,50%) var(--gy,50%), oklch(1 0 0 / 0.20), transparent 45%)}
+.bento__card:hover .bento__glare{opacity:1}
+.bento__body{position:relative;z-index:2;padding:1.5rem;color:#fff;transform:translateZ(34px)}
+.bento__label{display:inline-flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:oklch(0.90 0.06 142);padding:.35rem .8rem;border-radius:999px;background:oklch(0.20 0.06 150 / 0.5);border:1px solid oklch(1 0 0 / 0.18);backdrop-filter:blur(8px)}
+.bento__label svg{width:15px;height:15px}
+.bento__title{margin-top:.9rem;font-size:clamp(1.35rem, 2.2vw, 1.7rem);color:#fff}
+.bento__desc{margin-top:.5rem;font-size:.94rem;color:oklch(0.93 0.01 140 / 0.92);max-width:46ch}
+.bento__tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1rem}
+.tag{font-size:.74rem;font-weight:500;color:oklch(0.96 0.01 140);padding:.3rem .7rem;border-radius:999px;background:oklch(0.20 0.06 150 / 0.55);border:1px solid oklch(1 0 0 / 0.16);backdrop-filter:blur(8px)}
+.bento__cta{margin-top:1.15rem;display:inline-flex;align-items:center;gap:.5rem;font-size:.9rem;font-weight:600;color:#fff;border-bottom:1px solid oklch(0.90 0.06 142 / 0.6);padding-bottom:2px;transition:color .25s ease, border-color .25s ease}
+.bento__cta:hover{color:oklch(0.92 0.10 142);border-color:oklch(0.92 0.10 142)}
+.bento__cta svg{width:16px;height:16px;transition:transform .3s var(--ease-out)}
+.bento__cta:hover svg{transform:translateX(4px)}
+
+/* ============ Por qué ============ */
+.why__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.why__card{
+  position:relative;border-radius:var(--radius-lg);padding:2rem 1.7rem;
+  transition:transform .45s var(--ease-out), box-shadow .45s var(--ease-out), border-color .3s ease;
+}
+.why__card:hover{transform:translateY(-8px);box-shadow:0 34px 70px -34px oklch(0.30 0.10 150 / 0.5);border-color:oklch(0.78 0.12 143 / 0.6)}
+.why__icon{
+  width:60px;height:60px;border-radius:18px;display:grid;place-items:center;
+  background:var(--accent-soft);border:1px solid oklch(0.78 0.12 143 / 0.55);color:var(--forest);
+  transition:transform .45s var(--ease-out), background-color .3s ease;
+}
+.why__card:hover .why__icon{transform:scale(1.06) rotate(-3deg);background:oklch(0.90 0.08 142)}
+.why__icon svg{width:28px;height:28px}
+.why__title{margin-top:1.3rem;font-size:1.35rem;color:var(--forest-deep)}
+.why__desc{margin-top:.6rem;font-size:.96rem;color:var(--muted)}
+.why__seal{
+  display:inline-flex;align-items:center;gap:.55rem;margin-top:1.2rem;
+  font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:oklch(0.50 0.10 90);
+}
+.why__seal svg{width:16px;height:16px;color:var(--gold)}
+
+/* ============ Pasos ============ */
+.steps{position:relative}
+.steps__rail{position:absolute;top:44px;left:6.5%;right:6.5%;height:3px;z-index:0;background:oklch(0.86 0.03 130 / 0.6);border-radius:3px;overflow:hidden}
+.steps__fill{position:absolute;inset:0;transform-origin:left;transform:scaleX(0);background:linear-gradient(90deg, var(--accent), var(--forest))}
+.steps__grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.step{
+  border-radius:var(--radius-lg);padding:2.4rem 1.7rem 1.9rem;text-align:center;
+  transition:transform .45s var(--ease-out), box-shadow .45s var(--ease-out);
+}
+.step:hover{transform:translateY(-8px);box-shadow:0 34px 70px -34px oklch(0.30 0.10 150 / 0.5)}
+.step__num{
+  position:relative;width:88px;height:88px;margin-inline:auto;border-radius:50%;
+  display:grid;place-items:center;background:var(--surface);color:var(--forest-deep);
+  border:1px solid oklch(0.78 0.12 143 / 0.5);box-shadow:inset 0 1px 0 oklch(1 0 0 / 0.6);
+  font-family:var(--font-display);font-size:1.9rem;font-weight:700;
+}
+.step__icon{position:absolute;bottom:-6px;right:-6px;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--wa);color:#fff;box-shadow:0 8px 18px -8px oklch(0.60 0.18 153 / 0.9)}
+.step__icon svg{width:18px;height:18px}
+.step__title{margin-top:1.4rem;font-size:1.3rem;color:var(--forest-deep)}
+.step__desc{margin-top:.6rem;font-size:.95rem;color:var(--muted);max-width:30ch;margin-inline:auto}
+.steps__cta{display:flex;justify-content:center;margin-top:3rem}
+
+/* ============ Contacto ============ */
+.contact__grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:22px;align-items:stretch}
+.contact__card{border-radius:var(--radius-lg);padding:2.2rem;display:flex;flex-direction:column;gap:1.4rem}
+.contact__row{display:flex;gap:1rem;align-items:flex-start}
+.contact__row-icon{width:50px;height:50px;flex:none;border-radius:15px;display:grid;place-items:center;background:var(--accent-soft);border:1px solid oklch(0.78 0.12 143 / 0.55);color:var(--forest)}
+.contact__row-icon svg{width:24px;height:24px}
+.contact__row-label{font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.contact__row-value{font-size:1.05rem;font-weight:600;color:var(--fg);line-height:1.4}
+.contact__row-value a{transition:color .25s ease}
+.contact__row-value a:hover{color:var(--forest)}
+.contact__actions{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:.6rem}
+.contact__map{border-radius:var(--radius-lg);overflow:hidden;min-height:460px;border:1px solid oklch(1 0.01 115 / 0.55);box-shadow:var(--shadow);position:relative}
+.contact__map iframe{width:100%;height:100%;min-height:460px;border:0;filter:saturate(0.85) sepia(0.06)}
+.contact__map::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;border:1px solid oklch(1 0 0 / 0.5);box-shadow:inset 0 0 0 1px oklch(0.30 0.10 150 / 0.06)}
+
+/* ============ CTA final ============ */
+.final{position:relative;border-radius:40px;overflow:hidden;padding:clamp(48px,7vw,90px) clamp(24px,5vw,80px);text-align:center;color:#fff}
+.final__bg{position:absolute;inset:0;z-index:0;background:linear-gradient(140deg, oklch(0.34 0.13 151), oklch(0.22 0.10 152));}
+.final__bg::after{content:"";position:absolute;inset:0;background:
+  radial-gradient(520px 320px at 16% 12%, oklch(0.80 0.14 142 / 0.5), transparent 60%),
+  radial-gradient(480px 340px at 88% 86%, oklch(0.74 0.11 92 / 0.35), transparent 60%)}
+.final__content{position:relative;z-index:2;max-width:640px;margin-inline:auto}
+.final__title{font-size:clamp(2rem,4vw,3.2rem);color:#fff}
+.final__title em{font-style:italic;color:oklch(0.90 0.10 142)}
+.final__sub{margin:1rem auto 0;font-size:1.06rem;color:oklch(0.94 0.01 140 / 0.92);max-width:48ch}
+.final__ctas{display:flex;flex-wrap:wrap;gap:.9rem;justify-content:center;margin-top:2.2rem}
+.btn--wa-final{
+  background:var(--wa);color:var(--wa-ink);border:1px solid oklch(1 0 0 / 0.4);
+  box-shadow:0 18px 44px -16px oklch(0 0 0 / 0.5), inset 0 1px 0 oklch(1 0 0 / 0.35);
+}
+.btn--wa-final:hover{background:oklch(0.85 0.16 153);color:var(--wa-ink);transform:translateY(-3px)}
+.btn--light{
+  background:oklch(0.99 0.01 115 / 0.12);color:#fff;border:1px solid oklch(1 0 0 / 0.35);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+}
+.btn--light:hover{background:oklch(0.99 0.01 115 / 0.22);transform:translateY(-3px)}
+.final__meta{margin-top:1.9rem;font-size:.88rem;color:oklch(0.90 0.01 140 / 0.85);display:flex;flex-wrap:wrap;gap:.7rem 1.6rem;justify-content:center}
+.final__meta svg{width:16px;height:16px;vertical-align:-3px;margin-right:.35rem;color:oklch(0.90 0.10 142)}
+
+/* ============ Footer ============ */
+.footer{padding:56px 0 120px;border-top:1px solid var(--border);background:oklch(0.99 0.01 115 / 0.5)}
+.footer__grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px}
+.footer__brand{max-width:34ch}
+.footer__tag{font-size:.96rem;color:var(--muted);margin-top:.9rem}
+.footer__title{font-size:.82rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--forest-deep);margin-bottom:1rem}
+.footer__links{display:flex;flex-direction:column;gap:.6rem}
+.footer__link{font-size:.94rem;color:var(--fg-soft);transition:color .25s ease,padding-left .25s ease}
+.footer__link:hover{color:var(--forest);padding-left:4px}
+.footer__note{display:flex;flex-wrap:wrap;gap:.5rem 1.4rem;justify-content:space-between;margin-top:3rem;padding-top:1.6rem;border-top:1px solid var(--border);font-size:.85rem;color:var(--muted)}
+
+/* ============ Floating WhatsApp ============ */
+.wa-float{
+  position:fixed;right:18px;bottom:18px;z-index:120;
+  width:60px;height:60px;border-radius:50%;display:grid;place-items:center;
+  background:var(--wa-strong);color:#fff;box-shadow:0 18px 44px -12px oklch(0.55 0.17 153 / 0.9);
+  transition:transform .35s var(--ease-out), box-shadow .35s ease;
+}
+.wa-float::before{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid oklch(0.63 0.17 153 / 0.4);animation:pulse 2.6s ease-out infinite}
+.wa-float:hover{transform:scale(1.08)}
+.wa-float svg{width:30px;height:30px}
+@keyframes pulse{0%{transform:scale(.85);opacity:.9}70%{transform:scale(1.35);opacity:0}100%{opacity:0}}
+
+/* ============ Responsive ============ */
+@media (max-width: 960px){
+  .hero__grid{grid-template-columns:1fr}
+  .hero__visual{max-width:520px;margin-inline:auto;width:100%}
+  .bento{grid-template-columns:repeat(2,1fr);grid-auto-rows:auto}
+  .bento__item:nth-child(n){grid-column:span 1;grid-row:span 1}
+  .bento__card{min-height:340px}
+  .why__grid{grid-template-columns:1fr 1fr}
+  .steps__grid{grid-template-columns:1fr;gap:20px}
+  .steps__rail{display:none}
+  .contact__grid{grid-template-columns:1fr}
+  .footer__grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width: 720px){
+  .nav__links{
+    position:fixed;inset:0;flex-direction:column;justify-content:center;gap:1rem;
+    background:oklch(0.99 0.01 115 / 0.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+    transform:translateY(-110%);transition:transform .45s var(--ease-out);z-index:-1;
+  }
+  .nav__links.open{transform:none}
+  .nav__link{font-size:1.3rem;padding:1rem 2rem}
+  .nav__burger{display:grid}
+  .nav__cta{margin-left:0}
+  .bento{grid-template-columns:1fr}
+  .bento__item:nth-child(n){grid-column:span 1;grid-row:span 1;min-height:0}
+  .bento__card{min-height:300px}
+  .why__grid{grid-template-columns:1fr}
+  .contact__actions{flex-direction:column;align-items:stretch}
+  .contact__actions .btn{width:100%}
+  .footer__grid{grid-template-columns:1fr}
+  .hero{padding-top:120px}
+  .chip-1{left:0}.chip-2{left:0}.chip-3{right:0}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}
+  .marquee__track{animation:none;transform:none}
+}
+@media (prefers-reduced-transparency: reduce){
+  .glass,.nav,.bento__card,.step,.contact__card,.why__card{background:oklch(0.99 0.01 115 / 0.98)}
+}
+</style>
+</head>
+<body>
+
+<header class="nav" data-od-id="nav">
+  <nav class="nav__bar glass" aria-label="Navegación principal">
+    <a class="brand" href="#inicio" aria-label="Verde Limón — inicio" data-od-id="brand-logo">
+      <span class="brand__mark" aria-hidden="true">
+        <svg viewBox="0 0 64 64" width="26" height="26"><circle cx="32" cy="32" r="30" fill="none" stroke="#fff" stroke-width="3" opacity="0.9"/><path d="M32 12c-8 0-14 6-14 14v3c0 2 1 4 3 5l4 9c1 2 3 3 5 3v6h4v-6c2 0 4-1 5-3l4-9c2-1 3-3 3-5v-3c0-8-6-14-14-14zm0 4c6 0 10 4 10 10H22c0-6 4-10 10-10z" fill="#fff"/></svg>
+      </span>
+      <span>
+        <span class="brand__name">Verde Limón</span>
+        <span class="brand__tag" style="display:block">Almacén Natural</span>
+      </span>
+    </a>
+    <div class="nav__links" id="navLinks">
+      <a class="nav__link" href="#categorias">Categorías</a>
+      <a class="nav__link" href="#nosotros">Nosotros</a>
+      <a class="nav__link" href="#como-pedir">Cómo pedir</a>
+      <a class="nav__link" href="#contacto">Contacto</a>
+      <a class="btn btn--wa btn--sm nav__cta" href="https://wa.me/5492235704488?text=Hola%20Verde%20Lim%C3%B3n!%20Quiero%20hacer%20un%20pedido" target="_blank" rel="noopener" data-od-id="cta-nav-whatsapp">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Pedir por WhatsApp
+      </a>
+    </div>
+    <button class="nav__burger" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="14" y2="17"/></svg>
+    </button>
+  </nav>
+</header>
+
+<main id="inicio">
+  <!-- HERO -->
+  <section class="hero" data-od-id="hero">
+    <div class="hero__aurora" aria-hidden="true">
+      <div class="aurora__blob aurora__b1"></div>
+      <div class="aurora__blob aurora__b2"></div>
+      <div class="aurora__blob aurora__b3"></div>
+      <svg class="hero__float f-hero" style="top:16%;left:4%" viewBox="0 0 24 24" fill="currentColor" color="oklch(0.77 0.20 142 / 0.5)"><path d="M12 2C7 6 5 10 5 14c0 4 3 7 7 7s7-3 7-7c0-4-2-8-7-12z"/></svg>
+      <svg class="hero__float f-hero" style="bottom:18%;left:12%;animation-delay:1.6s" viewBox="0 0 24 24" fill="currentColor" color="oklch(0.74 0.11 92 / 0.55)"><path d="M12 2C7 6 5 10 5 14c0 4 3 7 7 7s7-3 7-7c0-4-2-8-7-12z"/></svg>
+      <svg class="hero__float f-hero" style="top:12%;right:6%;animation-delay:.8s" viewBox="0 0 24 24" fill="currentColor" color="oklch(0.40 0.13 151 / 0.35)"><path d="M12 2C7 6 5 10 5 14c0 4 3 7 7 7s7-3 7-7c0-4-2-8-7-12z"/></svg>
+      <svg class="hero__float f-hero" style="bottom:24%;right:10%;animation-delay:2.4s" viewBox="0 0 24 24" fill="currentColor" color="oklch(0.80 0.14 142 / 0.6)"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 6a6 6 0 0 0-6 6 6 6 0 0 0 6 6V6z" fill="currentColor"/></svg>
+    </div>
+    <div class="container hero__grid">
+      <div class="hero__content">
+        <span class="hero__eyebrow">Almacén Natural &amp; Tienda Saludable · Mar del Plata</span>
+        <h1 class="hero__title" data-od-id="hero-title">
+          <span class="w"><span class="wi">Comer</span></span>
+          <span class="w"><span class="wi">natural,</span></span><br>
+          <span class="w"><span class="wi">sin</span></span>
+          <span class="w"><span class="wi">complicarse</span></span><br>
+          <span class="w"><span class="wi accent">con</span></span>
+          <span class="w"><span class="wi accent">gusto.</span></span>
+        </h1>
+        <p class="hero__sub" data-od-id="hero-subtitle">En Verde Limón encontrás granel, frutos secos, biocosmética, sin TACC y superalimentos seleccionados con cuidado. Te lo llevamos a tu puerta o lo retirás en el local.</p>
+        <div class="hero__ctas">
+          <a class="btn btn--wa btn--lg" href="https://wa.me/5492235704488?text=Hola%20Verde%20Lim%C3%B3n!%20Quiero%20hacer%20un%20pedido" target="_blank" rel="noopener" data-od-id="cta-hero-whatsapp">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Pedir por WhatsApp
+          </a>
+          <a class="btn btn--ghost btn--lg" href="#categorias" data-od-id="cta-hero-categorias">Ver categorías</a>
+        </div>
+        <ul class="hero__points">
+          <li class="point"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Córdoba 2165, Mar del Plata</li>
+          <li class="point"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Envíos a domicilio en MDP</li>
+          <li class="point"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Sin TACC &amp; Vegano</li>
+        </ul>
+      </div>
+      <div class="hero__visual" data-od-id="hero-visual">
+        <div class="hero__panel">
+          <img src="assets/img-hero-citrus.jpg" alt="Cítricos verdes frescos, ingredientes naturales de Verde Limón" width="900" height="990" fetchpriority="high">
+        </div>
+        <span class="hero__chip chip-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2C7 6 5 10 5 14c0 4 3 7 7 7s7-3 7-7c0-4-2-8-7-12z"/></svg> Granel &amp; a granel</span>
+        <span class="hero__chip chip-2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Sin TACC · Vegano</span>
+        <span class="hero__chip chip-3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4L4.2 7.7l5.4-.8z"/></svg> Asesoramiento en local</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track" id="marqueeTrack">
+      <span>Alimentos Saludables <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7 6 5 10 5 14c0 4 3 7 7 7s7-3 7-7c0-4-2-8-7-12z"/></svg></span>
+      <span>Frutos Secos &amp; Snacks <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7 6 5 10 5 14c0 4 3 7 7 7s7-3 7-7c0-4-2-8-7-12z"/></svg></span>
+      <span>Biocosmética Natural <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7 6 5 10 5 14c0 4 3 7 7 7s7-3 7-7c0-4-2-8-7-12z"/></svg></span>
+      <span>Sin TACC &amp; Vegano <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7 6 5 10 5 14c0 4 3 7 7 7s7-3 7-7c0-4-2-8-7-12z"/></svg></span>
+      <span>Suplementos &amp; Superalimentos <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7 6 5 10 5 14c0 4 3 7 7 7s7-3 7-7c0-4-2-8-7-12z"/></svg></span>
+      <span>Enviás a domicilio en MDP <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7 6 5 10 5 14c0 4 3 7 7 7s7-3 7-7c0-4-2-8-7-12z"/></svg></span>
+      <span>Alimentos Saludables <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7 6 5 10 5 14c0 4 3 7 7 7s7-3 7-7c0-4-2-8-7-12z"/></svg></span>
+      <span>Frutos Secos &amp; Snacks <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7 6 5 10 5 14c0 4 3 7 7 7s7-3 7-7c0-4-2-8-7-12z"/></svg></span>
+      <span>Biocosmética Natural <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7 6 5 10 5 14c0 4 3 7 7 7s7-3 7-7c0-4-2-8-7-12z"/></svg></span>
+      <span>Sin TACC &amp; Vegano <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7 6 5 10 5 14c0 4 3 7 7 7s7-3 7-7c0-4-2-8-7-12z"/></svg></span>
+      <span>Suplementos &amp; Superalimentos <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7 6 5 10 5 14c0 4 3 7 7 7s7-3 7-7c0-4-2-8-7-12z"/></svg></span>
+      <span>Enviás a domicilio en MDP <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7 6 5 10 5 14c0 4 3 7 7 7s7-3 7-7c0-4-2-8-7-12z"/></svg></span>
+    </div>
+  </div>
+
+  <!-- CATEGORÍAS -->
+  <section class="sec" id="categorias" data-od-id="categorias">
+    <div class="container">
+      <header class="sec__head">
+        <span class="kicker">Nuestro almacén</span>
+        <h2 class="sec__title" data-od-id="categorias-title">Todo lo que necesitás para vivir sano, en un solo lugar</h2>
+        <p class="sec__sub">Cinco rincones cuidadosamente seleccionados para tu mesa, tu piel y tu energía. Consultanos por cualquier producto por WhatsApp.</p>
+      </header>
+      <div class="bento" data-od-id="bento-grid">
+        <article class="bento__item" data-od-id="bento-card-granel">
+          <div class="bento__card-wrap"><div class="bento__card tilt-card">
+            <div class="bento__bg" style="background-image:url('assets/img-granel.jpg')"></div>
+            <div class="bento__shade"></div>
+            <div class="bento__glare"></div>
+            <div class="bento__body">
+              <span class="bento__label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c2 2 4 3 4 6a4 4 0 0 1-4 4 4 4 0 0 1-4-4c0-3 2-4 4-6zm0 10c-4 4-8 6-8 9 0 1 1 2 2 2h12c1 0 2-1 2-2 0-3-4-5-8-9z"/></svg> Alimentos Saludables &amp; Granel</span>
+              <h3 class="bento__title">Granel y cocina natural</h3>
+              <p class="bento__desc">Harinas, cereales, semillas, legumbres y aceites por kilo, sin desperdicio y con la cantidad exacta que necesitás.</p>
+              <div class="bento__tags"><span class="tag">Harinas</span><span class="tag">Cereales</span><span class="tag">Semillas</span><span class="tag">Aceites</span></div>
+              <a class="bento__cta" href="https://wa.me/5492235704488?text=Hola%20Verde%20Lim%C3%B3n!%20Quiero%20consultar%20por%20el%20sector%20de%20granel" target="_blank" rel="noopener">Consultar por WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            </div>
+          </div></div>
+        </article>
+        <article class="bento__item" data-od-id="bento-card-frutos">
+          <div class="bento__card-wrap"><div class="bento__card tilt-card">
+            <div class="bento__bg" style="background-image:url('assets/img-frutos-secos.jpg')"></div>
+            <div class="bento__shade"></div>
+            <div class="bento__glare"></div>
+            <div class="bento__body">
+              <span class="bento__label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18V3z"/></svg> Frutos Secos &amp; Snacks</span>
+              <h3 class="bento__title">El picoteo que hace bien</h3>
+              <p class="bento__desc">Almendras, castañas, nueces y mixes energéticos para el momento del día en el que querés algo rico y nutritivo.</p>
+              <div class="bento__tags"><span class="tag">Almendras</span><span class="tag">Castañas</span><span class="tag">Nueces</span><span class="tag">Mix energético</span></div>
+              <a class="bento__cta" href="https://wa.me/5492235704488?text=Hola%20Verde%20Lim%C3%B3n!%20Quiero%20consultar%20por%20frutos%20secos%20y%20snacks" target="_blank" rel="noopener">Consultar por WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            </div>
+          </div></div>
+        </article>
+        <article class="bento__item" data-od-id="bento-card-biocosmetica">
+          <div class="bento__card-wrap"><div class="bento__card tilt-card">
+            <div class="bento__bg" style="background-image:url('assets/img-biocosmetica.jpg')"></div>
+            <div class="bento__shade"></div>
+            <div class="bento__glare"></div>
+            <div class="bento__body">
+              <span class="bento__label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 6 6 11a6 6 0 0 1-12 0c0-5 6-11 6-11z"/></svg> Biocosmética Natural</span>
+              <h3 class="bento__title">Cuidado consciente</h3>
+              <p class="bento__desc">Jabones botánicos, aceites esenciales y cosmética libre de tóxicos para que el cuidado de tu piel sea tan natural como tu alimentación.</p>
+              <div class="bento__tags"><span class="tag">Jabones botánicos</span><span class="tag">Aceites esenciales</span></div>
+              <a class="bento__cta" href="https://wa.me/5492235704488?text=Hola%20Verde%20Lim%C3%B3n!%20Quiero%20consultar%20por%20biocosmetica%20natural" target="_blank" rel="noopener">Consultar por WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            </div>
+          </div></div>
+        </article>
+        <article class="bento__item" data-od-id="bento-card-sintacc">
+          <div class="bento__card-wrap"><div class="bento__card tilt-card">
+            <div class="bento__bg" style="background-image:url('assets/img-sin-tacc.jpg')"></div>
+            <div class="bento__shade"></div>
+            <div class="bento__glare"></div>
+            <div class="bento__body">
+              <span class="bento__label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></svg> Sin TACC &amp; Vegano</span>
+              <h3 class="bento__title">Sin gluten, con todo el sabor</h3>
+              <p class="bento__desc">Galletitas, premezclas y congelados certificados. Una sección confiable para celíacos, veganos y todas las dietas.</p>
+              <div class="bento__tags"><span class="tag">Galletitas</span><span class="tag">Premezclas</span><span class="tag">Congelados</span><span class="tag">Certificado</span></div>
+              <a class="bento__cta" href="https://wa.me/5492235704488?text=Hola%20Verde%20Lim%C3%B3n!%20Quiero%20consultar%20por%20productos%20sin%20TACC%20y%20veganos" target="_blank" rel="noopener">Consultar por WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            </div>
+          </div></div>
+        </article>
+        <article class="bento__item" data-od-id="bento-card-super">
+          <div class="bento__card-wrap"><div class="bento__card tilt-card">
+            <div class="bento__bg" style="background-image:url('assets/img-superalimentos.jpg')"></div>
+            <div class="bento__shade"></div>
+            <div class="bento__glare"></div>
+            <div class="bento__body">
+              <span class="bento__label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6z"/></svg> Suplementos &amp; Superalimentos</span>
+              <h3 class="bento__title">Energía en cada cucharada</h3>
+              <p class="bento__desc">Maca, espirulina y proteínas vegetales para sumar nutrientes de forma simple a tu día a día.</p>
+              <div class="bento__tags"><span class="tag">Maca</span><span class="tag">Espirulina</span><span class="tag">Proteínas</span></div>
+              <a class="bento__cta" href="https://wa.me/5492235704488?text=Hola%20Verde%20Lim%C3%B3n!%20Quiero%20consultar%20por%20superalimentos%20y%20suplementos" target="_blank" rel="noopener">Consultar por WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            </div>
+          </div></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- POR QUÉ -->
+  <section class="sec" id="nosotros" data-od-id="por-que-elegirnos">
+    <div class="container">
+      <header class="sec__head sec__head--center">
+        <span class="kicker kicker--center">Por qué elegirnos</span>
+        <h2 class="sec__title" data-od-id="nosotros-title">Un almacén pensado para cuidarte</h2>
+        <p class="sec__sub">Más que un comercio, un espacio donde el bienestar se elige simple: con buenos productos y gente que te acompaña.</p>
+      </header>
+      <div class="why__grid">
+        <article class="why__card glass" data-od-id="why-card-calidad">
+          <div class="why__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C7 6 5 10 5 14c0 4 3 7 7 7s7-3 7-7c0-4-2-8-7-12z"/><path d="M9 14l2 2 4-4"/></svg></div>
+          <h3 class="why__title">Calidad 100% natural</h3>
+          <p class="why__desc">Seleccionamos productos de origen confiable, sin agregados innecesarios. Cada cosa que llega a tu mesa está elegida a mano, con criterio.</p>
+          <span class="why__seal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4L4.2 7.7l5.4-.8z"/></svg> Selección curada</span>
+        </article>
+        <article class="why__card glass" data-od-id="why-card-asesoramiento">
+          <div class="why__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-8 8H4l2-3a8 8 0 1 1 15-5z"/><path d="M8 11h.01M12 11h.01M16 11h.01"/></svg></div>
+          <h3 class="why__title">Asesoramiento de verdad</h3>
+          <p class="why__desc">Te orientamos en el local o por WhatsApp para encontrar lo que mejor te cae, ya sea para una dieta especial o para arrancar con hábitos nuevos.</p>
+          <span class="why__seal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4L4.2 7.7l5.4-.8z"/></svg> Consultá sin compromiso</span>
+        </article>
+        <article class="why__card glass" data-od-id="why-card-envios">
+          <div class="why__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h12v11H1zM13 9h4l4 3v5h-8z"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg></div>
+          <h3 class="why__title">Envíos a domicilio en MDP</h3>
+          <p class="why__desc">Hacé tu pedido por WhatsApp y te lo llevamos a tu casa en Mar del Plata. También podés retirarlo directamente por Córdoba 2165.</p>
+          <span class="why__seal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4L4.2 7.7l5.4-.8z"/></svg> Retiro en el local</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CÓMO PEDIR -->
+  <section class="sec" id="como-pedir" data-od-id="como-pedir">
+    <div class="container">
+      <header class="sec__head sec__head--center">
+        <span class="kicker kicker--center">Cómo pedir</span>
+        <h2 class="sec__title" data-od-id="pasos-title">Tres pasos y lo tenés en casa</h2>
+        <p class="sec__sub">Del catálogo a tu puerta sin vueltas. Armá tu pedido hablando con nosotros directo por WhatsApp.</p>
+      </header>
+      <div class="steps">
+        <div class="steps__rail"><div class="steps__fill" id="stepsFill"></div></div>
+        <div class="steps__grid">
+          <article class="step glass" data-od-id="paso-catalogo">
+            <div class="step__num">01<span class="step__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l2 5H4zM4 8h16v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z"/><path d="M9 12h6"/></svg></span></div>
+            <h3 class="step__title">Elegí del catálogo</h3>
+            <p class="step__desc">Recorré nuestras categorías y armá tu lista con lo que más te gusta.</p>
+          </article>
+          <article class="step glass" data-od-id="paso-whatsapp">
+            <div class="step__num">02<span class="step__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-8 8H4l2-3a8 8 0 1 1 15-5z"/></svg></span></div>
+            <h3 class="step__title">Escribinos por WhatsApp</h3>
+            <p class="step__desc">Nos contás tu pedido y coordinamos forma de pago y entrega al toque.</p>
+          </article>
+          <article class="step glass" data-od-id="paso-delivery">
+            <div class="step__num">03<span class="step__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h12v11H1zM13 9h4l4 3v5h-8z"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg></span></div>
+            <h3 class="step__title">Recibilo en tu casa</h3>
+            <p class="step__desc">Te lo llevamos a domicilio en Mar del Plata o lo retirás en el local.</p>
+          </article>
+        </div>
+        <div class="steps__cta">
+          <a class="btn btn--wa btn--lg" href="https://wa.me/5492235704488?text=Hola%20Verde%20Lim%C3%B3n!%20Quiero%20hacer%20un%20pedido" target="_blank" rel="noopener" data-od-id="cta-pasos-whatsapp">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Empezar mi pedido por WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="sec" id="contacto" data-od-id="contacto">
+    <div class="container">
+      <header class="sec__head">
+        <span class="kicker">Ubicación &amp; contacto</span>
+        <h2 class="sec__title" data-od-id="contacto-title">Veninos a visitar</h2>
+        <p class="sec__sub">Estamos en el corazón de Mar del Plata, a un toque de distancia. Si tenés dudas, escribinos por WhatsApp.</p>
+      </header>
+      <div class="contact__grid">
+        <div class="contact__card glass" data-od-id="contacto-card">
+          <div class="contact__row">
+            <div class="contact__row-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></div>
+            <div><p class="contact__row-label">Dirección</p><p class="contact__row-value">Córdoba 2165, Mar del Plata<br>Buenos Aires, Argentina</p></div>
+          </div>
+          <div class="contact__row">
+            <div class="contact__row-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h5l2 5-3 2a13 13 0 0 0 5 5l2-3 5 2v5a2 2 0 0 1-2 2A17 17 0 0 1 2 6a2 2 0 0 1 2-2z"/></svg></div>
+            <div><p class="contact__row-label">Teléfono</p><p class="contact__row-value"><a href="tel:+542235704488" data-od-id="contacto-tel">0223 570-4488</a></p></div>
+          </div>
+          <div class="contact__row">
+            <div class="contact__row-icon" style="background:oklch(0.90 0.08 153);border-color:oklch(0.70 0.16 153 / 0.5);color:var(--wa-strong)"><svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div>
+            <div><p class="contact__row-label">WhatsApp</p><p class="contact__row-value"><a href="https://wa.me/5492235704488?text=Hola%20Verde%20Lim%C3%B3n!%20Quiero%20hacer%20un%20pedido" target="_blank" rel="noopener" data-od-id="contacto-wa">+54 9 223 570-4488</a></p></div>
+          </div>
+          <div class="contact__actions">
+            <a class="btn btn--wa" href="https://wa.me/5492235704488?text=Hola%20Verde%20Lim%C3%B3n!%20Quiero%20hacer%20un%20pedido" target="_blank" rel="noopener" data-od-id="cta-contacto-whatsapp">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Escribinos por WhatsApp
+            </a>
+            <a class="btn btn--ghost" href="#inicio" data-od-id="cta-contacto-volver">Volver arriba</a>
+          </div>
+        </div>
+        <div class="contact__map" data-od-id="contacto-mapa">
+          <iframe src="https://maps.google.com/maps?q=C%C3%B3rdoba%202165%2C%20Mar%20del%20Plata%2C%20Buenos%20Aires&t=&z=16&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa — Verde Limón, Córdoba 2165, Mar del Plata"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="sec" data-od-id="cta-final">
+    <div class="container">
+      <div class="final">
+        <div class="final__bg"></div>
+        <div class="final__content">
+          <h2 class="final__title" data-od-id="cta-final-title">Cuidate rico, cuidate <em>natural</em></h2>
+          <p class="final__sub">Armá tu pedido ahora o pasate por el local. Te esperamos en Córdoba 2165 para ayudarte a encontrar lo que buscás.</p>
+          <div class="final__ctas">
+            <a class="btn btn--wa-final btn--lg" href="https://wa.me/5492235704488?text=Hola%20Verde%20Lim%C3%B3n!%20Quiero%20hacer%20un%20pedido" target="_blank" rel="noopener" data-od-id="cta-final-whatsapp">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Pedir por WhatsApp
+            </a>
+            <a class="btn btn--light btn--lg" href="tel:+542235704488" data-od-id="cta-final-telefono">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h5l2 5-3 2a13 13 0 0 0 5 5l2-3 5 2v5a2 2 0 0 1-2 2A17 17 0 0 1 2 6a2 2 0 0 1 2-2z"/></svg>
+              Llamar al 0223 570-4488
+            </a>
+          </div>
+          <p class="final__meta">
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg> Córdoba 2165, Mar del Plata</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Envíos a domicilio en MDP</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C7 6 5 10 5 14c0 4 3 7 7 7s7-3 7-7c0-4-2-8-7-12z"/></svg> Granel · Sin TACC · Vegano</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer" data-od-id="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="#inicio" aria-label="Verde Limón — inicio">
+          <span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 64 64" width="26" height="26"><path d="M32 12c-8 0-14 6-14 14v3c0 2 1 4 3 5l4 9c1 2 3 3 5 3v6h4v-6c2 0 4-1 5-3l4-9c2-1 3-3 3-5v-3c0-8-6-14-14-14zm0 4c6 0 10 4 10 10H22c0-6 4-10 10-10z" fill="#fff"/></svg></span>
+          <span><span class="brand__name">Verde Limón</span><span class="brand__tag" style="display:block">Almacén Natural &amp; Tienda Saludable</span></span>
+        </a>
+        <p class="footer__tag">Almacén natural y tienda saludable en Mar del Plata. Granel, frutos secos, biocosmética, sin TACC y superalimentos para vivir sano, simple y con gusto.</p>
+      </div>
+      <nav aria-label="Enlaces del sitio">
+        <p class="footer__title">Navegación</p>
+        <div class="footer__links">
+          <a class="footer__link" href="#categorias">Categorías</a>
+          <a class="footer__link" href="#nosotros">Por qué elegirnos</a>
+          <a class="footer__link" href="#como-pedir">Cómo pedir</a>
+          <a class="footer__link" href="#contacto">Contacto</a>
+        </div>
+      </nav>
+      <div>
+        <p class="footer__title">Contacto</p>
+        <div class="footer__links">
+          <a class="footer__link" href="#contacto">Córdoba 2165, Mar del Plata</a>
+          <a class="footer__link" href="tel:+542235704488">0223 570-4488</a>
+          <a class="footer__link" href="https://wa.me/5492235704488?text=Hola%20Verde%20Lim%C3%B3n!%20Quiero%20hacer%20un%20pedido" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__note">
+      <span>© <span id="year">2026</span> Verde Limón · Almacén Natural &amp; Tienda Saludable</span>
+      <span>Hecho con cariño en Mar del Plata</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/5492235704488?text=Hola%20Verde%20Lim%C3%B3n!%20Quiero%20hacer%20un%20pedido" target="_blank" rel="noopener" aria-label="Chatear por WhatsApp" data-od-id="whatsapp-flotante">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+<script>
+(function(){
+  if (typeof gsap === 'undefined') return;
+  gsap.registerPlugin(ScrollTrigger);
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var lenis = null;
+  if (!reduced && typeof Lenis !== 'undefined') {
+    lenis = new Lenis({ duration: 1.15, smoothWheel: true });
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add(function(time){ lenis.raf(time * 1000); });
+    gsap.ticker.lagSmoothing(0);
+  }
+
+  var menuToggle = document.getElementById('menuToggle');
+  var navLinks = document.getElementById('navLinks');
+  if (menuToggle) {
+    menuToggle.addEventListener('click', function(){
+      var open = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+
+  var links = document.querySelectorAll('a[href^="#"]');
+  links.forEach(function(a){
+    a.addEventListener('click', function(e){
+      var id = a.getAttribute('href');
+      if (id.length > 1) {
+        e.preventDefault();
+        var target = document.querySelector(id);
+        if (!target) return;
+        navLinks.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded','false');
+        if (lenis) lenis.scrollTo(target, { offset: -70 });
+        else {
+          var y = target.getBoundingClientRect().top + window.pageYOffset - 70;
+          window.scrollTo({ top: y, behavior: reduced ? 'auto' : 'smooth' });
+        }
+      }
+    });
+  });
+
+  if (!reduced) {
+    var tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+    tl.from('.hero__eyebrow', { y: 24, opacity: 0, duration: .6 })
+      .from('.hero__title .wi', { yPercent: 110, opacity: 0, filter: 'blur(10px)', duration: .95, stagger: .085, ease: 'power4.out' }, '-=.2')
+      .from('.hero__sub', { y: 28, opacity: 0, duration: .7 }, '-=.55')
+      .from('.hero__ctas .btn', { y: 26, opacity: 0, duration: .65, stagger: .12 }, '-=.45')
+      .from('.hero__points .point', { y: 18, opacity: 0, duration: .55, stagger: .09 }, '-=.35')
+      .from('.hero__panel', { scale: .92, opacity: 0, duration: 1, ease: 'power3.out' }, '-=.7')
+      .from('.hero__chip', { y: 22, opacity: 0, duration: .6, stagger: .14 }, '-=.55');
+
+    gsap.from('.hero__panel img', { scale: 1.12, duration: 2.4, ease: 'power2.out' });
+
+    ScrollTrigger.batch('.bento__card-wrap, .why__card, .step, .contact__card, .final', {
+      start: 'top 88%',
+      onEnter: function(batch){
+        gsap.from(batch, { y: 48, opacity: 0, duration: .85, stagger: .1, ease: 'power3.out', overwrite: true });
+      }
+    });
+
+    gsap.utils.toArray('.sec__head').forEach(function(head){
+      gsap.from(head.children, {
+        y: 34, opacity: 0, duration: .7, stagger: .1, ease: 'power3.out',
+        scrollTrigger: { trigger: head, start: 'top 86%' }
+      });
+    });
+
+    gsap.to('#stepsFill', {
+      scaleX: 1, ease: 'none',
+      scrollTrigger: { trigger: '#como-pedir', start: 'top 70%', end: 'bottom 45%', scrub: .6 }
+    });
+
+    gsap.utils.toArray('.aurora__blob').forEach(function(blob, i){
+      gsap.to(blob, {
+        yPercent: i % 2 ? 18 : -14, xPercent: i % 2 ? -10 : 12, ease: 'none',
+        scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1.2 }
+      });
+    });
+  }
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  var cards = document.querySelectorAll('.tilt-card');
+  if (!reduced && cards.length && window.matchMedia('(hover: hover)').matches) {
+    cards.forEach(function(card){
+      var glare = card.querySelector('.bento__glare');
+      card.addEventListener('pointermove', function(e){
+        var r = card.getBoundingClientRect();
+        var px = (e.clientX - r.left) / r.width;
+        var py = (e.clientY - r.top) / r.height;
+        card.style.setProperty('--gx', (px * 100) + '%');
+        card.style.setProperty('--gy', (py * 100) + '%');
+        var rx = (0.5 - py) * 6;
+        var ry = (px - 0.5) * 6;
+        card.style.transform = 'translateY(-6px) rotateX(' + rx.toFixed(2) + 'deg) rotateY(' + ry.toFixed(2) + 'deg)';
+      });
+      card.addEventListener('pointerleave', function(){
+        card.style.transform = '';
+      });
+    });
+  }
+
+  if (lenis) {
+    ScrollTrigger.refresh();
+    window.addEventListener('resize', function(){ lenis.resize(); });
+  }
+})();
+</script>
+</body>
+</html>

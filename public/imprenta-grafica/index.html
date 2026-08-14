@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GRAFTEC | Imprenta Industrial, Gráfica Digital & Packaging Corporativo</title>
+  <meta name="description" content="Imprenta offset y digital de alta precisión. Packaging comercial, stickers troquelados, papelería ejecutiva, cartelería de gran formato y cotizador online.">
+  <meta name="theme-color" content="#0f172a">
+  
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="GRAFTEC | Imprenta Industrial & Soluciones Gráficas">
+  <meta property="og:description" content="Offset, digital, packaging y gran formato con entrega rápida y control de color CMYK.">
+  <meta property="og:image" content="assets/hero_printing_press.jpg">
+
+  <!-- Google Fonts: Space Grotesk, Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* ==========================================================================
+       1. VARIABLES Y TOKENS DE DISEÑO (INDUSTRIAL NAVY, BLUEPRINT COBALT & PLATINUM)
+       ========================================================================== */
+    :root {
+      --bg-base: #f8fafc; /* Platinum Technical White */
+      --bg-surface: #ffffff;
+      --bg-subtle: #f1f5f9;
+      --bg-dark: #0f172a; /* Deep Industrial Navy */
+      --bg-dark-card: #1e293b;
+      
+      --accent-blue: #2563eb; /* Blueprint Cobalt */
+      --accent-blue-hover: #1d4ed8;
+      --accent-blue-light: #eff6ff;
+      
+      --accent-cyan: #0284c7;
+
+      --text-primary: #0f172a; /* Deep Charcoal */
+      --text-secondary: #334155;
+      --text-muted: #64748b;
+      --text-inverse: #f8fafc;
+
+      --border-subtle: #e2e8f0;
+      --border-medium: #cbd5e1;
+      --border-blue: #bfdbfe;
+
+      --font-display: 'Space Grotesk', monospace, sans-serif;
+      --font-ui: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+      --radius-xl: 30px;
+      --radius-full: 9999px;
+
+      --transition-smooth: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+      --shadow-md: 0 10px 30px -4px rgba(15, 23, 42, 0.08);
+      --shadow-lg: 0 20px 45px -4px rgba(37, 99, 235, 0.12);
+      --shadow-blue: 0 10px 25px rgba(37, 99, 235, 0.28);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+    }
+
+    body {
+      min-height: 100vh;
+      line-height: 1.6;
+      background-color: var(--bg-base);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(239, 246, 255, 0.8) 0, transparent 40%), 
+        radial-gradient(at 100% 100%, rgba(241, 245, 249, 0.8) 0, transparent 40%);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+    }
+
+    .app-container {
+      width: 100%;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 3.5vw, 2.5rem);
+    }
+
+    h1, h2, h3, h4 {
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.3rem, 4.5vw, 3.8rem);
+      line-height: 1.08;
+      font-weight: 800;
+    }
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.7rem, 2.8vw, 2.5rem);
+      line-height: 1.2;
+      font-weight: 700;
+    }
+
+    p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .badge-technical {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.45rem 1.25rem;
+      background: var(--accent-blue-light);
+      border: 1px solid var(--border-blue);
+      border-radius: var(--radius-full);
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--accent-blue);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--accent-blue);
+      box-shadow: 0 0 10px rgba(37, 99, 235, 0.8);
+      animation: pulse-dot 1.8s infinite ease-in-out;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.3; transform: scale(1.35); }
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      padding: 0.95rem 2.2rem;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-ui);
+      font-weight: 800;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: var(--transition-smooth);
+      text-transform: uppercase;
+    }
+
+    .btn-blue {
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      color: #ffffff;
+      box-shadow: var(--shadow-blue);
+    }
+
+    .btn-blue:hover {
+      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+      box-shadow: 0 12px 30px rgba(37, 99, 235, 0.45);
+      transform: translateY(-2px);
+      color: #ffffff;
+    }
+
+    .btn-secondary {
+      background: #ffffff;
+      color: var(--text-primary);
+      border: 1px solid var(--border-medium);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-subtle);
+      border-color: var(--accent-blue);
+      color: var(--accent-blue);
+      transform: translateY(-2px);
+    }
+
+    .btn-whatsapp {
+      background: #25d366;
+      color: #ffffff;
+      font-weight: 800;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    }
+
+    .btn-whatsapp:hover {
+      background: #20ba5a;
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
+      transform: translateY(-2px);
+      color: #ffffff;
+    }
+
+    /* Navbar */
+    .navbar-wrapper {
+      position: sticky;
+      top: 1.25rem;
+      z-index: 100;
+      margin-bottom: 2.5rem;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 2.2rem;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .logo-icon-box {
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-blue);
+      font-size: 1.2rem;
+    }
+
+    .brand-name {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+      letter-spacing: 0.05em;
+    }
+
+    .brand-sub {
+      font-family: var(--font-ui);
+      font-size: 0.65rem;
+      color: var(--accent-blue);
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.2rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-family: var(--font-ui);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--text-secondary);
+      transition: var(--transition-smooth);
+    }
+
+    .nav-link:hover {
+      color: var(--accent-blue);
+    }
+
+    /* HERO: INDUSTRIAL MACHINERY & TECHNICAL PRECISION */
+    .hero-section {
+      padding: 1rem 0 5rem;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+
+    .hero-title-highlight {
+      color: var(--accent-blue);
+    }
+
+    .hero-desc {
+      font-size: 1.15rem;
+      line-height: 1.75;
+      color: var(--text-secondary);
+      max-width: 580px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .hero-perks-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid var(--border-subtle);
+      margin-top: 0.5rem;
+    }
+
+    .perk-mini {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .perk-val {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--accent-blue);
+    }
+
+    .perk-lbl {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .hero-image-card {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      border: 1px solid var(--border-medium);
+      box-shadow: var(--shadow-lg);
+      background: var(--bg-dark);
+    }
+
+    .hero-image-card img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-overlay-tag {
+      position: absolute;
+      bottom: 1.25rem;
+      left: 1.25rem;
+      right: 1.25rem;
+      padding: 1.1rem 1.4rem;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(15px);
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #ffffff;
+    }
+
+    /* COTIZADOR INSTANTÁNEO DE IMPRESIÓN */
+    .calculator-section {
+      padding: 4rem 0;
+      margin-bottom: 5rem;
+    }
+
+    .calc-card-wrapper {
+      background: #ffffff;
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-xl);
+      padding: 3.5rem;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .calc-grid-form {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin: 2.2rem 0;
+    }
+
+    .calc-field-box {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .calc-lbl {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .calc-select, .calc-input {
+      padding: 0.85rem;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-ui);
+      font-size: 0.92rem;
+      font-weight: 600;
+      outline: none;
+      transition: var(--transition-smooth);
+    }
+
+    .calc-select:focus, .calc-input:focus {
+      border-color: var(--accent-blue);
+      background: #ffffff;
+    }
+
+    .calc-result-dock {
+      background: var(--bg-dark);
+      color: #ffffff;
+      padding: 1.8rem 2.2rem;
+      border-radius: var(--radius-lg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    /* SERVICIOS INDUSTRIALES */
+    .services-section {
+      padding: 2rem 0 5rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.2rem;
+      margin-top: 2.5rem;
+    }
+
+    .service-card {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition-smooth);
+    }
+
+    .service-card:hover {
+      border-color: var(--accent-blue);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .service-img-wrapper {
+      height: 230px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .service-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+
+    .service-card:hover .service-img-wrapper img {
+      transform: scale(1.08);
+    }
+
+    .service-tag {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-full);
+      background: rgba(15, 23, 42, 0.9);
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .service-body {
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+      gap: 1.2rem;
+    }
+
+    .service-specs-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      padding: 0.75rem 0;
+      border-top: 1px solid var(--border-subtle);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* PRE-FLIGHT CHECKLIST */
+    .preflight-section {
+      background: var(--bg-dark);
+      color: #ffffff;
+      border-radius: var(--radius-xl);
+      padding: 3.5rem;
+      margin-bottom: 5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 4rem 0 2.5rem;
+      background: #ffffff;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 992px) {
+      .hero-section, .calc-grid-form, .services-grid, .preflight-section {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <!-- Navbar -->
+    <header class="navbar-wrapper">
+      <nav class="navbar">
+        <a href="#" class="brand-logo">
+          <div class="logo-icon-box">
+            <i class="fa-solid fa-print"></i>
+          </div>
+          <div class="brand-name">
+            <span id="brand-title">GRAFTEC</span>
+            <span class="brand-sub" id="brand-location">Imprenta & Gráfica Industrial</span>
+          </div>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#cotizador" class="nav-link">Cotizador Online</a></li>
+          <li><a href="#servicios" class="nav-link">Servicios & Packaging</a></li>
+          <li><a href="#preflight" class="nav-link">Guía de Archivos</a></li>
+          <li><a href="#contacto" class="nav-link">Taller & Maquinaria</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <div class="badge-technical" style="padding: 0.4rem 1.1rem; font-size: 0.78rem;">
+            <span class="live-dot"></span>
+            Taller Offset & Digital Operativo
+          </div>
+          <a href="#cotizador" class="btn btn-blue" style="padding: 0.55rem 1.3rem; font-size: 0.82rem; margin-left: 0.5rem;">
+            Cotizar Trabajo
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- HERO LOOKBOOK INDUSTRIAL -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <div class="badge-technical">
+          <i class="fa-solid fa-microchip"></i>
+          <span>OFFSET HEIDELBERG · DIGITAL RICOH PRO · GRAN FORMATO</span>
+        </div>
+        <h1>
+          IMPRESIÓN INDUSTRIAL DE ALTA FIDELIDAD, <span class="hero-title-highlight">PACKAGING & ROTULACIÓN</span>.
+        </h1>
+        <p class="hero-desc">
+          Tecnología alemana en pliego y rollo. Cajas microcorrugadas, etiquetas autoadhesivas troqueladas, papelería institucional y cartelería comercial con control de color certificado.
+        </p>
+        <div class="hero-actions">
+          <a href="#cotizador" class="btn btn-blue">
+            <i class="fa-solid fa-calculator"></i>
+            Cotizar Tirada Online
+          </a>
+          <a href="#preflight" class="btn btn-secondary">
+            <i class="fa-solid fa-file-arrow-up"></i>
+            Enviar Archivos para Pre-Flight
+          </a>
+        </div>
+
+        <div class="hero-perks-row">
+          <div class="perk-mini">
+            <span class="perk-val">300 DPI</span>
+            <span class="perk-lbl">Calibración Pantone</span>
+          </div>
+          <div class="perk-mini">
+            <span class="perk-val">48-72 HS</span>
+            <span class="perk-lbl">Tiempos de Producción</span>
+          </div>
+          <div class="perk-mini">
+            <span class="perk-val">ESCALA</span>
+            <span class="perk-lbl">Descuentos por Volumen</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-image-card">
+          <img src="assets/hero_printing_press.jpg" alt="Maquinaria de imprenta industrial">
+          <div class="hero-overlay-tag">
+            <div>
+              <strong style="font-family: var(--font-display); font-size: 1.1rem; display: block;">PARQUE DE MAQUINARIA '26</strong>
+              <span style="font-size: 0.78rem; color: #93c5fd;">Pliego máximo 74x104cm · Laca UV Sectorizada</span>
+            </div>
+            <a href="#cotizador" class="btn btn-blue" style="padding: 0.45rem 1rem; font-size: 0.75rem;">Calcular</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COTIZADOR INSTANTÁNEO DE IMPRESIÓN -->
+    <section id="cotizador" class="calculator-section">
+      <div class="calc-card-wrapper">
+        <div style="text-align: center; max-width: 680px; margin: 0 auto;">
+          <div class="badge-technical"><i class="fa-solid fa-sliders"></i> Cálculo en Tiempo Real</div>
+          <h2 style="margin: 0.8rem 0 0.4rem;">COTIZADOR INSTANTÁNEO DE IMPRESIÓN</h2>
+          <p>Seleccioná el producto gráfico, volumen y terminación para estimar tu presupuesto de producción.</p>
+        </div>
+
+        <div class="calc-grid-form">
+          
+          <div class="calc-field-box">
+            <label class="calc-lbl">1. Tipo de Trabajo:</label>
+            <select id="calc-product" class="calc-select">
+              <option value="stickers" data-base-price="45">Stickers & Etiquetas Troqueladas (Vinilo)</option>
+              <option value="packaging" data-base-price="120" selected>Packaging / Cajas Microcorrugadas</option>
+              <option value="tarjetas" data-base-price="35">Tarjetas Corporativas 350g c/ Soft Touch</option>
+              <option value="folletos" data-base-price="28">Folletos / Flyers A5 Ilustración 150g</option>
+              <option value="lona" data-base-price="250">Lona Frontlight / Cartelería Comercial</option>
+            </select>
+          </div>
+
+          <div class="calc-field-box">
+            <label class="calc-lbl">2. Tirada / Cantidad:</label>
+            <select id="calc-qty" class="calc-select">
+              <option value="100" data-discount="1.0">100 unidades (Tirada Mínima)</option>
+              <option value="500" data-discount="0.85" selected>500 unidades (15% Bonificado)</option>
+              <option value="1000" data-discount="0.70">1.000 unidades (30% Bonificado)</option>
+              <option value="5000" data-discount="0.55">5.000 unidades (45% Escala Mayorista)</option>
+            </select>
+          </div>
+
+          <div class="calc-field-box">
+            <label class="calc-lbl">3. Acabado & Terminación:</label>
+            <select id="calc-finish" class="calc-select">
+              <option value="estandar" data-finish-extra="0">Estándar (Corte Recto)</option>
+              <option value="uv" data-finish-extra="15" selected>Laca UV Sectorizada Brillante</option>
+              <option value="softtouch" data-finish-extra="25">Laminado Soft Touch Terciopelo</option>
+              <option value="troquel" data-finish-extra="20">Troquelado Especial de Forma</option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="calc-result-dock">
+          <div>
+            <span style="font-family: var(--font-display); font-size: 0.8rem; color: #93c5fd; text-transform: uppercase; letter-spacing: 0.08em; display: block;">Estimación Presupuestaria:</span>
+            <div style="display: flex; align-items: baseline; gap: 1rem; margin-top: 0.2rem;">
+              <span id="calc-total-display" style="font-family: var(--font-display); font-size: 2.2rem; font-weight: 800; color: #ffffff;">$57.375 ARS</span>
+              <span id="calc-unit-display" style="font-size: 0.85rem; color: #94a3b8;">($114,75 / unidad + IVA)</span>
+            </div>
+          </div>
+
+          <button id="btn-dispatch-quote-wa" class="btn btn-whatsapp" style="padding: 0.9rem 1.8rem;">
+            <i class="fa-brands fa-whatsapp"></i> Enviar Archivo & Cotizar x WhatsApp
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICIOS GRÁFICOS INDUSTRIALES -->
+    <section id="servicios" class="services-section">
+      <div style="text-align: center; max-width: 680px; margin: 0 auto 3rem;">
+        <div class="badge-technical">Capacidades de Planta</div>
+        <h2 style="margin: 0.8rem 0 0.4rem;">LÍNEAS DE PRODUCCIÓN GRÁFICA</h2>
+        <p>Especificaciones técnicas rigurosas para empresas, industrias y marcas comerciales.</p>
+      </div>
+
+      <div class="services-grid">
+        
+        <!-- Servicio 1: Packaging -->
+        <div class="service-card">
+          <div class="service-img-wrapper">
+            <img src="assets/packaging_boxes.jpg" alt="Packaging y Cajas">
+            <span class="service-tag">📦 Packaging & Cajas</span>
+          </div>
+          <div class="service-body">
+            <div>
+              <h3 style="font-family: var(--font-display); font-size: 1.25rem;">Cajas Automontables & Bolsas Kraft</h3>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.3rem;">Cartulinas triplex, microcorrugado Kraft y bolsas con manija cordón impresas a 1 o 4 colores.</p>
+            </div>
+            <div class="service-specs-row">
+              <span>• Cartulina Triplex 300g a 400g</span>
+              <span>• Troquelado y pegado automático</span>
+            </div>
+            <a href="#cotizador" class="btn btn-secondary" style="width: 100%; padding: 0.65rem;">Cotizar Packaging</a>
+          </div>
+        </div>
+
+        <!-- Servicio 2: Stickers -->
+        <div class="service-card">
+          <div class="service-img-wrapper">
+            <img src="assets/stickers_roll.jpg" alt="Stickers en Rollo">
+            <span class="service-tag">🏷️ Rollos & Pliegos</span>
+          </div>
+          <div class="service-body">
+            <div>
+              <h3 style="font-family: var(--font-display); font-size: 1.25rem;">Etiquetas & Stickers Troquelados</h3>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.3rem;">Vinilos autoadhesivos mate, brillante, transparentes y metalizados con corte kiss-cut de alta precisión.</p>
+            </div>
+            <div class="service-specs-row">
+              <span>• Vinilo alemán resistente al agua y roce</span>
+              <span>• Presentación en pliego A3 o rollo continuo</span>
+            </div>
+            <a href="#cotizador" class="btn btn-secondary" style="width: 100%; padding: 0.65rem;">Cotizar Stickers</a>
+          </div>
+        </div>
+
+        <!-- Servicio 3: Papelería -->
+        <div class="service-card">
+          <div class="service-img-wrapper">
+            <img src="assets/stationery_corporate.jpg" alt="Papelería Corporativa">
+            <span class="service-tag">💼 Papelería B2B</span>
+          </div>
+          <div class="service-body">
+            <div>
+              <h3 style="font-family: var(--font-display); font-size: 1.25rem;">Identidad Corporativa & Carpetas</h3>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.3rem;">Tarjetas institucionales 350g, carpetas de presentación con solapa portatarjeta y recetarios.</p>
+            </div>
+            <div class="service-specs-row">
+              <span>• Terminación Soft Touch & Hot Stamping</span>
+              <span>• Papel Chambril 80g a Ilustración 350g</span>
+            </div>
+            <a href="#cotizador" class="btn btn-secondary" style="width: 100%; padding: 0.65rem;">Cotizar Papelería</a>
+          </div>
+        </div>
+
+        <!-- Servicio 4: Gran Formato -->
+        <div class="service-card">
+          <div class="service-img-wrapper">
+            <img src="assets/large_format_banner.jpg" alt="Cartelería Gran Formato">
+            <span class="service-tag">🏗️ Gran Formato</span>
+          </div>
+          <div class="service-body">
+            <div>
+              <h3 style="font-family: var(--font-display); font-size: 1.25rem;">Lonas Frontlight & Vinilos Vidriera</h3>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.3rem;">Impresión ecosolvente y UV de hasta 3.20 metros de ancho sin uniones. Microperforados y blackout.</p>
+            </div>
+            <div class="service-specs-row">
+              <span>• Lona 510g con dobladillo y ojalillos</span>
+              <span>• Vinilo microperforado para locales</span>
+            </div>
+            <a href="#cotizador" class="btn btn-secondary" style="width: 100%; padding: 0.65rem;">Cotizar Cartelería</a>
+          </div>
+        </div>
+
+        <!-- Servicio 5: Control de Calidad -->
+        <div class="service-card">
+          <div class="service-img-wrapper">
+            <img src="assets/quality_inspection.jpg" alt="Control de Calidad">
+            <span class="service-tag">🔍 Densitometría</span>
+          </div>
+          <div class="service-body">
+            <div>
+              <h3 style="font-family: var(--font-display); font-size: 1.25rem;">Pruebas de Galera & Calibración</h3>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.3rem;">Revisión técnica de originales y entrega de muestra física para aprobación antes de la tirada masiva.</p>
+            </div>
+            <div class="service-specs-row">
+              <span>• Medición espectrofotométrica</span>
+              <span>• Asesoría en imposición de pliegos</span>
+            </div>
+            <a href="#preflight" class="btn btn-secondary" style="width: 100%; padding: 0.65rem;">Ver Guía Técnica</a>
+          </div>
+        </div>
+
+        <!-- Servicio 6: Merchandising -->
+        <div class="service-card">
+          <div class="service-img-wrapper">
+            <img src="assets/hero_printing_press.jpg" alt="Merchandising Corporativo">
+            <span class="service-tag">🎁 Merch & Eventos</span>
+          </div>
+          <div class="service-body">
+            <div>
+              <h3 style="font-family: var(--font-display); font-size: 1.25rem;">Merchandising & Regalos Empresariales</h3>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.3rem;">Cuadernos corporativos anillados, bolígrafos serigrafiados, lanyards y credenciales PVC.</p>
+            </div>
+            <div class="service-specs-row">
+              <span>• Grabado láser y serigrafía directa</span>
+              <span>• Descuentos especiales por volumen</span>
+            </div>
+            <a href="#cotizador" class="btn btn-secondary" style="width: 100%; padding: 0.65rem;">Cotizar Merch</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- GUÍA TÉCNICA PRE-FLIGHT -->
+    <section id="preflight" class="preflight-section">
+      <div>
+        <div class="badge-technical" style="background: rgba(37, 99, 235, 0.2); color: #93c5fd; border-color: rgba(37, 99, 235, 0.4);">
+          <i class="fa-solid fa-file-circle-check"></i> Requisitos de Archivo
+        </div>
+        <h2 style="color: #ffffff; margin: 0.8rem 0 0.4rem;">CHECKLIST TÉCNICO DE PRE-IMPRESIÓN</h2>
+        <p style="color: #94a3b8;">Para garantizar fidelidad absoluta en el pliego final, verificá estos puntos antes de exportar tus artes:</p>
+        
+        <div style="margin-top: 2rem; display: flex; flex-direction: column; gap: 0.8rem;">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <i class="fa-solid fa-check" style="color: #60a5fa;"></i>
+            <span style="font-size: 0.92rem;">Espacio de color estricto en <strong>CMYK / FOGRA39</strong>.</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <i class="fa-solid fa-check" style="color: #60a5fa;"></i>
+            <span style="font-size: 0.92rem;">Resolución mínima de imágenes a <strong>300 DPI reales</strong>.</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <i class="fa-solid fa-check" style="color: #60a5fa;"></i>
+            <span style="font-size: 0.92rem;">Demasía / Sangría perimetral de <strong>3 mm por lado</strong>.</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <i class="fa-solid fa-check" style="color: #60a5fa;"></i>
+            <span style="font-size: 0.92rem;">Todas las tipografías convertidas a <strong>curvas / vectores</strong>.</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="background: rgba(30, 41, 59, 0.7); padding: 2.2rem; border-radius: var(--radius-lg); border: 1px solid rgba(255, 255, 255, 0.1);">
+        <h3 style="font-family: var(--font-display); font-size: 1.25rem; color: #ffffff; margin-bottom: 0.6rem;">Enviar Original para Revisión</h3>
+        <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 1.2rem;">¿Tenés tu archivo en PDF, Illustrator o WeTransfer? Envianos el link o consulta técnica directa a taller.</p>
+        
+        <div style="margin-bottom: 1.2rem;">
+          <input type="text" id="preflight-link-input" placeholder="Pegá aquí el link de WeTransfer / Drive o detalle..." style="width: 100%; padding: 0.85rem; background: var(--bg-dark); border: 1px solid var(--border-medium); color: #ffffff; border-radius: var(--radius-sm); outline: none;">
+        </div>
+
+        <button id="btn-send-preflight-wa" class="btn btn-blue" style="width: 100%; padding: 0.95rem;">
+          <i class="fa-brands fa-whatsapp"></i> Validar Archivo con el Jefe de Taller
+        </button>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer" id="contacto">
+    <div class="app-container">
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem;">
+        <div class="logo-icon-box" style="width: 48px; height: 48px;">
+          <i class="fa-solid fa-print" style="font-size: 1.5rem;"></i>
+        </div>
+        <h3 id="footer-brand-title" style="font-family: var(--font-display); font-size: 1.4rem; letter-spacing: 0.06em;">GRAFTEC IMPRENTA INDUSTRIAL</h3>
+        <p id="footer-address-text" style="color: var(--text-secondary);">Parque Industrial / Centro Gráfico · Mar del Plata</p>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Offset · Digital · Packaging · Terminaciones Especiales</p>
+      </div>
+      <p id="footer-copy" style="font-size: 0.8rem; color: var(--text-muted);">© 2026 GRAFTEC · Soluciones Gráficas de Precisión Industrial.</p>
+    </div>
+  </footer>
+
+  <!-- GSAP & Lenis CDN -->
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <script>
+    // =========================================================================
+    // 0. LENIS + GSAP SCROLLTRIGGER 60FPS
+    // =========================================================================
+    gsap.registerPlugin(ScrollTrigger);
+
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true
+    });
+
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+    gsap.ticker.lagSmoothing(0);
+
+    // =========================================================================
+    // 1. LECTOR DE PARÁMETROS DINÁMICOS URL (?n=Nombre&t=Telefono&d=Direccion)
+    // =========================================================================
+    const urlParams = new URLSearchParams(window.location.search);
+    const clientName = urlParams.get('n') || 'GRAFTEC Imprenta';
+    const clientPhone = urlParams.get('t') || '5492235000000';
+    const clientAddress = urlParams.get('d') || 'Parque Industrial, Nave 4';
+
+    document.getElementById('brand-title').textContent = clientName.toUpperCase();
+    document.getElementById('footer-brand-title').textContent = clientName.toUpperCase();
+    document.getElementById('footer-address-text').textContent = clientAddress;
+    document.getElementById('footer-copy').textContent = `© 2026 ${clientName} · Soluciones Gráficas de Precisión Industrial.`;
+
+    // =========================================================================
+    // 2. COTIZADOR EN TIEMPO REAL
+    // =========================================================================
+    const calcProduct = document.getElementById('calc-product');
+    const calcQty = document.getElementById('calc-qty');
+    const calcFinish = document.getElementById('calc-finish');
+    const calcTotalDisplay = document.getElementById('calc-total-display');
+    const calcUnitDisplay = document.getElementById('calc-unit-display');
+    const dispatchQuoteBtn = document.getElementById('btn-dispatch-quote-wa');
+
+    function calculateQuote() {
+      const selectedProdOption = calcProduct.options[calcProduct.selectedIndex];
+      const selectedQtyOption = calcQty.options[calcQty.selectedIndex];
+      const selectedFinishOption = calcFinish.options[calcFinish.selectedIndex];
+
+      const basePrice = parseFloat(selectedProdOption.dataset.basePrice);
+      const qty = parseInt(calcQty.value);
+      const discount = parseFloat(selectedQtyOption.dataset.discount);
+      const finishExtra = parseFloat(selectedFinishOption.dataset.finishExtra);
+
+      const unitPrice = (basePrice + finishExtra) * discount;
+      const totalPrice = Math.round(unitPrice * qty);
+
+      calcTotalDisplay.textContent = `$${totalPrice.toLocaleString('es-AR')} ARS`;
+      calcUnitDisplay.textContent = `($${unitPrice.toFixed(2).replace('.', ',')} / unidad + IVA)`;
+
+      return {
+        product: selectedProdOption.text,
+        qty: qty,
+        finish: selectedFinishOption.text,
+        unit: unitPrice.toFixed(2),
+        total: totalPrice.toLocaleString('es-AR')
+      };
+    }
+
+    calcProduct.addEventListener('change', calculateQuote);
+    calcQty.addEventListener('change', calculateQuote);
+    calcFinish.addEventListener('change', calculateQuote);
+
+    // Initial calculation
+    calculateQuote();
+
+    dispatchQuoteBtn.addEventListener('click', () => {
+      const quote = calculateQuote();
+
+      const message = `Hola ${clientName}! Quisiera solicitar cotización formal para el siguiente trabajo gráfico:\n\n` +
+                      `📋 *Trabajo:* ${quote.product}\n` +
+                      `📦 *Tirada:* ${quote.qty} unidades\n` +
+                      `✨ *Terminación:* ${quote.finish}\n` +
+                      `💵 *Estimado:* $${quote.total} ARS (Unitario: $${quote.unit})\n\n` +
+                      `¿Dónde les puedo adjuntar el archivo PDF para revisión de pre-impresión? ¡Muchas gracias!`;
+
+      window.open(`https://wa.me/${clientPhone}?text=${encodeURIComponent(message)}`, '_blank');
+    });
+
+    // =========================================================================
+    // 3. ENVIAR ARCHIVO PRE-FLIGHT
+    // =========================================================================
+    const sendPreflightBtn = document.getElementById('btn-send-preflight-wa');
+    const preflightLink = document.getElementById('preflight-link-input');
+
+    sendPreflightBtn.addEventListener('click', () => {
+      const link = preflightLink.value.trim() || 'A adjuntar por chat';
+
+      const message = `Hola ${clientName}! Quisiera enviar un archivo para validación de pre-flight y galera técnica:\n\n` +
+                      `📂 *Link de Archivos:* ${link}\n\n` +
+                      `¿Me confirman si cumple con los requerimientos de 300 DPI y CMYK para entrar a máquina? ¡Gracias!`;
+
+      window.open(`https://wa.me/${clientPhone}?text=${encodeURIComponent(message)}`, '_blank');
+    });
+  </script>
+</body>
+</html>

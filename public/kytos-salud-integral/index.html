@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KYTOS Salud Integral | Clínica Médica en Mar del Plata</title>
+  <meta name="description" content="Centro médico de salud integral en Av. Edison 2044, Mar del Plata. Especialidades médicas, atención personalizada y agendamiento directo por WhatsApp.">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="KYTOS Salud Integral - Mar del Plata">
+  <meta property="og:description" content="La evolución de la atención médica integral en Mar del Plata. Agendá tu turno online en 30 segundos.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts: Space Grotesk + Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* Hallmark · macrostructure: Split Studio · theme: Botanical Cyan · nav: N5 Floating pill · footer: Ft5 Statement */
+    
+    :root {
+      /* OKLCH Design Tokens */
+      --color-paper: oklch(0.985 0.005 165);
+      --color-botanical: oklch(0.26 0.08 165);
+      --color-botanical-dark: oklch(0.18 0.06 165);
+      --color-cyan-glow: oklch(0.72 0.16 195);
+      --color-cyan-hover: oklch(0.65 0.18 195);
+      --color-slate-dark: oklch(0.18 0.03 240);
+      --color-slate-muted: oklch(0.46 0.03 240);
+      --color-card-bg: oklch(0.965 0.008 165);
+      --color-border: oklch(0.91 0.015 165);
+      --color-surface: #ffffff;
+
+      --font-display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+      --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+
+      --shadow-subtle: 0 4px 20px rgba(14, 40, 30, 0.05);
+      --shadow-elevated: 0 12px 36px rgba(14, 40, 30, 0.10);
+      --shadow-glow: 0 0 24px rgba(45, 200, 180, 0.35);
+
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 28px;
+      --radius-pill: 999px;
+
+      --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      overflow-x: clip;
+      font-family: var(--font-body);
+      background-color: var(--color-paper);
+      color: var(--color-slate-dark);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Headings Purity Rules: No italic headers ever */
+    h1, h2, h3, h4, h5 {
+      font-family: var(--font-display);
+      font-style: normal;
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      overflow-wrap: anywhere;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Buttons & Interactive States */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0.9rem 1.8rem;
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 700;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: var(--transition-smooth);
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-botanical {
+      background-color: var(--color-botanical);
+      color: #ffffff;
+      box-shadow: var(--shadow-subtle);
+    }
+    .btn-botanical:hover, .btn-botanical:focus-visible {
+      background-color: var(--color-botanical-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-elevated);
+      outline: 2px solid var(--color-cyan-glow);
+    }
+
+    .btn-cyan {
+      background-color: var(--color-cyan-glow);
+      color: oklch(0.15 0.05 165);
+    }
+    .btn-cyan:hover, .btn-cyan:focus-visible {
+      background-color: var(--color-cyan-hover);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--color-botanical);
+      border: 1px solid var(--color-border);
+    }
+    .btn-ghost:hover {
+      border-color: var(--color-botanical);
+      background: rgba(20, 60, 45, 0.04);
+    }
+
+    .badge-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.4rem 1.1rem;
+      background: rgba(20, 60, 45, 0.06);
+      border: 1px solid rgba(20, 60, 45, 0.15);
+      border-radius: var(--radius-pill);
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-botanical);
+    }
+
+    .pulse-dot {
+      width: 9px;
+      height: 9px;
+      background-color: var(--color-cyan-glow);
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(45, 200, 180, 0.7);
+      animation: pulseAnimation 2s infinite;
+    }
+
+    @keyframes pulseAnimation {
+      0% { box-shadow: 0 0 0 0 rgba(45, 200, 180, 0.7); }
+      70% { box-shadow: 0 0 0 8px rgba(45, 200, 180, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(45, 200, 180, 0); }
+    }
+
+    /* Archetype N5: Floating Pill Navigation */
+    .nav-pill-wrapper {
+      position: fixed;
+      top: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      width: calc(100% - 3rem);
+      max-width: 980px;
+    }
+
+    .nav-pill {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 8px 32px rgba(10, 30, 20, 0.08);
+      border-radius: var(--radius-pill);
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-logo {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--color-botanical);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      letter-spacing: -0.03em;
+    }
+    .brand-logo span {
+      color: var(--color-cyan-glow);
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-menu a {
+      text-decoration: none;
+      color: var(--color-slate-dark);
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: var(--transition-smooth);
+    }
+    .nav-menu a:hover {
+      color: var(--color-cyan-glow);
+    }
+
+    /* Macrostructure 15: Split Studio Hero */
+    .split-hero {
+      padding-top: 9rem;
+      padding-bottom: 5rem;
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .split-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    @media (max-width: 960px) {
+      .split-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      .nav-menu {
+        display: none; /* Mobile optimization */
+      }
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 5vw, 4.2rem);
+      color: var(--color-botanical);
+      margin: 1.25rem 0;
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--color-slate-muted);
+      margin-bottom: 2.25rem;
+      max-width: 540px;
+    }
+
+    /* Interactive Appointment Booking Card (Workbench / Split Studio Element) */
+    .schedule-box {
+      background: var(--color-surface);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem;
+      box-shadow: var(--shadow-elevated);
+      border: 1px solid var(--color-border);
+      position: relative;
+    }
+
+    .schedule-box::before {
+      content: '';
+      position: absolute;
+      top: -2px; left: 15%; right: 15%; height: 3px;
+      background: linear-gradient(90deg, transparent, var(--color-cyan-glow), transparent);
+    }
+
+    .schedule-title {
+      font-size: 1.3rem;
+      color: var(--color-botanical);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .form-control {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .form-control label {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-slate-muted);
+    }
+
+    .form-control input, .form-control select {
+      padding: 0.8rem 1rem;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      outline: none;
+      transition: var(--transition-smooth);
+      background: var(--color-card-bg);
+    }
+
+    .form-control input:focus, .form-control select:focus {
+      border-color: var(--color-botanical);
+      background: #ffffff;
+      box-shadow: 0 0 0 3px rgba(20, 60, 45, 0.12);
+    }
+
+    /* Macrostructure 01: Bento Grid for Specialties */
+    .bento-section {
+      padding: 6rem 0;
+      background: #ffffff;
+    }
+
+    .section-header {
+      margin-bottom: 3.5rem;
+    }
+    .section-header h2 {
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      color: var(--color-botanical);
+      margin-top: 0.5rem;
+    }
+
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.5rem;
+    }
+
+    /* Bento Tiles - Irregular Layout */
+    .bento-tile {
+      background: var(--color-card-bg);
+      border-radius: var(--radius-md);
+      padding: 2.25rem;
+      border: 1px solid var(--color-border);
+      transition: var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bento-tile:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-elevated);
+      border-color: var(--color-botanical);
+    }
+
+    /* Tile Span Configurations */
+    .tile-featured {
+      grid-column: span 7;
+      background: var(--color-botanical);
+      color: #ffffff;
+      border-color: var(--color-botanical);
+    }
+    .tile-featured h3, .tile-featured p {
+      color: #ffffff;
+    }
+    .tile-featured .tile-icon {
+      background: rgba(255, 255, 255, 0.15);
+      color: var(--color-cyan-glow);
+    }
+
+    .tile-medium {
+      grid-column: span 5;
+    }
+    .tile-small {
+      grid-column: span 4;
+    }
+
+    @media (max-width: 900px) {
+      .tile-featured, .tile-medium, .tile-small {
+        grid-column: span 12;
+      }
+    }
+
+    .tile-icon {
+      width: 54px;
+      height: 54px;
+      background: rgba(20, 60, 45, 0.08);
+      color: var(--color-botanical);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+    .tile-icon svg {
+      width: 26px;
+      height: 26px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .tile-title {
+      font-size: 1.4rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .tile-desc {
+      font-size: 0.95rem;
+      color: var(--color-slate-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Narrative Workflow Section (Pilares KYTOS) */
+    .pillars-section {
+      padding: 6rem 0;
+      background: var(--color-paper);
+    }
+
+    .workflow-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .workflow-item {
+      background: #ffffff;
+      border-radius: var(--radius-md);
+      padding: 2.25rem;
+      border: 1px solid var(--color-border);
+      position: relative;
+    }
+
+    .workflow-step {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--color-cyan-glow);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    /* Location & Map Split Studio */
+    .location-section {
+      padding: 6rem 0;
+      background: #ffffff;
+    }
+
+    .map-frame {
+      width: 100%;
+      height: 420px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-elevated);
+      border: 1px solid var(--color-border);
+    }
+
+    .map-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* Archetype Ft5: Statement Footer */
+    .footer-statement {
+      background: var(--color-botanical-dark);
+      color: rgba(255, 255, 255, 0.8);
+      padding: 5rem 0 2.5rem 0;
+    }
+
+    .footer-huge-brand {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      margin-bottom: 3.5rem;
+      opacity: 0.95;
+    }
+
+    .footer-cols {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .footer-col h4 {
+      color: #ffffff;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-col p, .footer-col li {
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+      list-style: none;
+    }
+
+    /* Floating WhatsApp Button */
+    .fab-whatsapp {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 62px;
+      height: 62px;
+      background: #25D366;
+      color: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      box-shadow: 0 6px 24px rgba(37, 211, 102, 0.45);
+      z-index: 9999;
+      text-decoration: none;
+      transition: var(--transition-smooth);
+    }
+    .fab-whatsapp:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 30px rgba(37, 211, 102, 0.65);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Archetype N5: Floating Pill Navigation -->
+  <div class="nav-pill-wrapper">
+    <nav class="nav-pill">
+      <a href="#" class="brand-logo">KYTOS <span>.salud</span></a>
+      <ul class="nav-menu">
+        <li><a href="#especialidades">Especialidades</a></li>
+        <li><a href="#pilares">Modelo Kytos</a></li>
+        <li><a href="#ubicacion">Ubicación</a></li>
+      </ul>
+      <a href="https://wa.me/5492235915750?text=Hola%20KYTOS!%20Quiero%20solicitar%20un%20turno%20m%C3%A9dico." class="btn btn-botanical" target="_blank">
+        Pedir Turno WhatsApp
+      </a>
+    </nav>
+  </div>
+
+  <!-- Macrostructure 15: Split Studio Hero -->
+  <section class="split-hero">
+    <div class="container">
+      <div class="split-grid">
+        <!-- Hero Left Column -->
+        <div>
+          <div class="badge-live">
+            <span class="pulse-dot"></span>
+            Consultorios Abiertos en Av. Edison 2044
+          </div>
+          <h1 class="hero-title">La evolución de la atención médica integral</h1>
+          <p class="hero-subtitle">
+            Un nuevo estándar clínico en Mar del Plata. Equipo multidisciplinario especializado y agendamiento inmediato de turnos 24/7 sin demoras telefónicas.
+          </p>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a href="https://wa.me/5492235915750?text=Hola%20KYTOS!%20Quiero%20consultar%20por%20turnos%20disponibles." class="btn btn-cyan" target="_blank">
+              Solicitar Turno Directo
+            </a>
+            <a href="#especialidades" class="btn btn-ghost">
+              Explorar Especialidades
+            </a>
+          </div>
+        </div>
+
+        <!-- Hero Right Column: Interactive Schedule Preview Box -->
+        <div class="schedule-box">
+          <div class="schedule-title">
+            <span>Agendá tu Turno en Segundos</span>
+            <span style="font-size: 0.8rem; background: rgba(45, 200, 180, 0.15); color: var(--color-botanical); padding: 0.2rem 0.6rem; border-radius: 4px;">24/7 Online</span>
+          </div>
+          <form id="kytos-booking-form">
+            <div class="form-control">
+              <label for="booking-name">Tu Nombre Completo</label>
+              <input type="text" id="booking-name" placeholder="Ej. María González" required>
+            </div>
+            <div class="form-control">
+              <label for="booking-specialty">Especialidad Requerida</label>
+              <select id="booking-specialty" required>
+                <option value="Clínica Médica">Clínica Médica</option>
+                <option value="Traumatología">Traumatología</option>
+                <option value="Nutrición y Deporte">Nutrición & Deporte</option>
+                <option value="Kinesiología y Fisioterapia">Kinesiología & Fisioterapia</option>
+                <option value="Odontología Integral">Odontología Integral</option>
+                <option value="Medicina Estética">Medicina Estética</option>
+              </select>
+            </div>
+            <div class="form-control">
+              <label for="booking-day">Preferencia de Horario</label>
+              <select id="booking-day">
+                <option value="Lo antes posible (Próximo disponible)">Próximo disponible (Urgente)</option>
+                <option value="Turno Mañana (08:00 a 13:00 hs)">Turno Mañana (08:00 a 13:00 hs)</option>
+                <option value="Turno Tarde (13:00 a 20:00 hs)">Turno Tarde (13:00 a 20:00 hs)</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-botanical" style="width: 100%; margin-top: 0.5rem;">
+              Enviar Solicitud a WhatsApp ➔
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Macrostructure 01: Bento Grid for Specialties -->
+  <section class="bento-section" id="especialidades">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge-live">Directorio Médico Especializado</div>
+        <h2>Especialidades Integrales</h2>
+      </div>
+
+      <div class="bento-grid">
+        <!-- Tile 1: Featured 2x2 Span -->
+        <div class="bento-tile tile-featured">
+          <div>
+            <div class="tile-icon"><svg viewBox="0 0 24 24"><path d="M11 2v20M4.9 6.5c0 1.2 2.7 1.5 6.1 1.5s6.1-.3 6.1-1.5-2.7-1.5-6.1-1.5-6.1.3-6.1 1.5z"/><path d="M4.9 6.5c0 1.2 2.7 1.5 6.1 1.5s6.1-.3 6.1-1.5M4.9 6.5v9c0 1.2 2.7 1.5 6.1 1.5s6.1-.3 6.1-1.5v-9"/><path d="M4.9 11c0 1.2 2.7 1.5 6.1 1.5s6.1-.3 6.1-1.5M4.9 15.5c0 1.2 2.7 1.5 6.1 1.5s6.1-.3 6.1-1.5"/></svg></div>
+            <h3 class="tile-title" style="font-size: 1.8rem;">Clínica Médica & Chequeos Integrales</h3>
+            <p class="tile-desc">
+              Evaluación médica completa, seguimiento de patologías crónicas y programas de prevención para toda la familia. Atención continua por profesionales de trayectoria.
+            </p>
+          </div>
+          <a href="https://wa.me/5492235915750?text=Hola%20KYTOS,%20quiero%20turno%20para%20Cl%C3%ADnica%20M%C3%A9dica." class="btn btn-cyan" style="align-self: flex-start;" target="_blank">
+            Agendar Clínica Médica
+          </a>
+        </div>
+
+        <!-- Tile 2: Medium Span -->
+        <div class="bento-tile tile-medium">
+          <div>
+            <div class="tile-icon"><svg viewBox="0 0 24 24"><path d="M12 3c-2.5 0-4.5 1.6-4.5 3.9 0 3.4 4.5 7.1 4.5 7.1s4.5-3.7 4.5-7.1C16.5 4.6 14.5 3 12 3z"/><circle cx="12" cy="7" r="1.6"/><path d="M5.5 13.5l1.6 5.2a1 1 0 0 0 1 .7h7.8a1 1 0 0 0 1-.7l1.6-5.2"/></svg></div>
+            <h3 class="tile-title">Traumatología & Ortopedia</h3>
+            <p class="tile-desc">
+              Atención especializada de lesiones deportivas, columna, articulaciones y rehabilitación integral.
+            </p>
+          </div>
+          <a href="https://wa.me/5492235915750?text=Hola%20KYTOS,%20quiero%20turno%20para%20Traumatolog%C3%ADa." class="btn btn-ghost" style="align-self: flex-start;" target="_blank">
+            Pedir Turno ➔
+          </a>
+        </div>
+
+        <!-- Tile 3: Small Span -->
+        <div class="bento-tile tile-small">
+          <div>
+            <div class="tile-icon"><svg viewBox="0 0 24 24"><path d="M12 21c-4.5-3-8-6-8-10a4 4 0 0 1 7-2.6A4 4 0 0 1 18 11c0 4-3.5 7-8 10z"/><path d="M9.5 10l3 3"/></svg></div>
+            <h3 class="tile-title">Nutrición & Deporte</h3>
+            <p class="tile-desc">Planes personalizados para rendimiento físico y salud metabólica.</p>
+          </div>
+          <a href="https://wa.me/5492235915750?text=Hola%20KYTOS,%20quiero%20turno%20para%20Nutricion." class="btn btn-ghost" style="align-self: flex-start;" target="_blank">Pedir Turno ➔</a>
+        </div>
+
+        <!-- Tile 4: Small Span -->
+        <div class="bento-tile tile-small">
+          <div>
+            <div class="tile-icon"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></div>
+            <h3 class="tile-title">Kinesiología</h3>
+            <p class="tile-desc">Fisioterapia, terapia manual y recuperación motora funcional.</p>
+          </div>
+          <a href="https://wa.me/5492235915750?text=Hola%20KYTOS,%20quiero%20turno%20para%20Kinesiologia." class="btn btn-ghost" style="align-self: flex-start;" target="_blank">Pedir Turno ➔</a>
+        </div>
+
+        <!-- Tile 5: Small Span -->
+        <div class="bento-tile tile-small">
+          <div>
+            <div class="tile-icon"><svg viewBox="0 0 24 24"><path d="M7 4.5A2.5 2.5 0 0 0 4.5 7v.6c0 6.9 5.1 12 12 12h.6a2.5 2.5 0 0 0 2.5-2.5v-2.1l-3.3-1.4-1.9 1.9c-3.5-1.6-5.6-3.7-7.2-7.2l1.9-1.9L7.9 4.5H7z"/></svg></div>
+            <h3 class="tile-title">Odontología Digital</h3>
+            <p class="tile-desc">Limpieza, arreglos estéticos e higiene bucal integral de última generación.</p>
+          </div>
+          <a href="https://wa.me/5492235915750?text=Hola%20KYTOS,%20quiero%20turno%20para%20Odontologia." class="btn btn-ghost" style="align-self: flex-start;" target="_blank">Pedir Turno ➔</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Narrative Workflow Section: El Modelo KYTOS -->
+  <section class="pillars-section" id="pilares">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 680px; margin: 0 auto 3rem auto;">
+        <div class="badge-live">Sin Demoras Telefónicas</div>
+        <h2>Cómo Funciona el Sistema KYTOS</h2>
+        <p style="color: var(--color-slate-muted); margin-top: 0.5rem;">
+          Diseñamos nuestra atención para responder a tus necesidades sin hacerte perder tiempo.
+        </p>
+      </div>
+
+      <div class="workflow-list">
+        <div class="workflow-item">
+          <div class="workflow-step">01</div>
+          <h3 style="margin-bottom: 0.5rem; color: var(--color-botanical);">Agendamiento Instantáneo</h3>
+          <p style="color: var(--color-slate-muted);">Seleccionás especialidad y horario directamente por WhatsApp sin esperar que atiendan el teléfono.</p>
+        </div>
+
+        <div class="workflow-item">
+          <div class="workflow-step">02</div>
+          <h3 style="margin-bottom: 0.5rem; color: var(--color-botanical);">Confirmación sin Riesgo</h3>
+          <p style="color: var(--color-slate-muted);">Recibís la confirmación con día y hora del turno con recordatorio automático previo.</p>
+        </div>
+
+        <div class="workflow-item">
+          <div class="workflow-step">03</div>
+          <h3 style="margin-bottom: 0.5rem; color: var(--color-botanical);">Atención en Sede Edison</h3>
+          <p style="color: var(--color-slate-muted);">Asistís a nuestros consultorios en Av. Edison 2044 y recibís atención puntual con tu médico.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location Split Studio Section -->
+  <section class="location-section" id="ubicacion">
+    <div class="container">
+      <div class="split-grid">
+        <div>
+          <div class="badge-live">Sede Central Zona Sur</div>
+          <h2 style="font-size: 2.5rem; color: var(--color-botanical); margin: 0.75rem 0;">Estamos en Av. Edison 2044</h2>
+          <p style="color: var(--color-slate-muted); margin-bottom: 1.75rem;">
+            Consultorios modernos climatizados con fácil acceso vehicular y transporte público en Mar del Plata.
+          </p>
+
+          <div style="background: var(--color-card-bg); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--color-border); margin-bottom: 2rem;">
+            <p style="margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.6rem;"><svg viewBox="0 0 24 24" style="width:18px;height:18px;flex:none;stroke:var(--color-botanical);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;"><path d="M12 21c-4.5-3-8-6-8-10a4 4 0 0 1 7-2.6A4 4 0 0 1 18 11c0 4-3.5 7-8 10z"/><circle cx="12" cy="11" r="1.4"/></svg> <strong>Dirección:</strong> Av. Edison 2044, Mar del Plata</p>
+            <p style="margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.6rem;"><svg viewBox="0 0 24 24" style="width:18px;height:18px;flex:none;stroke:var(--color-botanical);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;"><path d="M7 4.5A2.5 2.5 0 0 0 4.5 7v.6c0 6.9 5.1 12 12 12h.6a2.5 2.5 0 0 0 2.5-2.5v-2.1l-3.3-1.4-1.9 1.9c-3.5-1.6-5.6-3.7-7.2-7.2l1.9-1.9L7.9 4.5H7z"/></svg> <strong>Teléfono Directo:</strong> 0223 5915750</p>
+            <p style="margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.6rem;"><svg viewBox="0 0 24 24" style="width:18px;height:18px;flex:none;stroke:var(--color-botanical);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-4-.9L3 20l1.1-4.8a8.4 8.4 0 1 1 16.9-3.7z"/><path d="M8.5 10.5l2 2 4.5-4.5"/></svg> <strong>WhatsApp Turnos:</strong> +54 9 223 5915750</p>
+            <p style="display: flex; align-items: center; gap: 0.6rem;"><svg viewBox="0 0 24 24" style="width:18px;height:18px;flex:none;stroke:var(--color-botanical);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.5 2"/></svg> <strong>Horarios:</strong> Lunes a Viernes de 08:00 a 20:00 hs</p>
+          </div>
+
+          <a href="https://wa.me/5492235915750?text=Hola!%20Quisiera%20pedir%20un%20turno%20para%20KYTOS." class="btn btn-botanical" target="_blank">
+            Agendar Consulta Ahora
+          </a>
+        </div>
+
+        <div class="map-frame">
+          <iframe src="https://maps.google.com/maps?q=Av.+Edison+2044,+Mar+del+Plata&z=15&output=embed" loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Archetype Ft5: Statement Footer -->
+  <footer class="footer-statement">
+    <div class="container">
+      <div class="footer-huge-brand">KYTOS.</div>
+
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>KYTOS Salud Integral</h4>
+          <p>La evolución de la atención médica en Mar del Plata.</p>
+          <p style="margin-top: 1rem; font-size: 0.85rem; color: rgba(255,255,255,0.5);">© <span id="footer-year">2026</span> KYTOS — Todos los derechos reservados.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Consultorios</h4>
+          <p>Av. Edison 2044</p>
+          <p>Mar del Plata, Argentina</p>
+          <p>Teléfono: 0223 5915750</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Atención Telefónica & WhatsApp</h4>
+          <p>Lunes a Viernes: 08:00 - 20:00 hs</p>
+          <p>WhatsApp 24/7 para solicitudes</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp FAB -->
+  <a href="https://wa.me/5492235915750?text=Hola%20KYTOS!%20Quiero%20solicitar%20un%20turno." class="fab-whatsapp" target="_blank" title="Agendar por WhatsApp" aria-label="Agendar por WhatsApp">
+    <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 15.05L2 22l5.13-1.5A9.9 9.9 0 1 0 12.04 2zm0 1.9a8 8 0 1 1-4.1 14.9l-.35-.2-3.04.9.9-2.98-.22-.36A8 8 0 0 1 12.04 3.9zm-3.4 4.06c-.19 0-.5.07-.76.36s-1 1-.98 2.34c.03 1.36 1 2.68 1.15 2.87.14.19 2 3.2 4.92 4.36 2.45.98 2.95.79 3.48.74.53-.05 1.72-.7 1.96-1.38.24-.68.24-1.26.17-1.38-.07-.12-.26-.19-.55-.33s-1.72-.85-1.98-.95c-.26-.09-.46-.14-.65.14s-.75.95-.92 1.14c-.17.2-.34.22-.63.07-.29-.14-1.23-.45-2.34-1.44-.87-.77-1.45-1.72-1.62-2.01-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.14-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.14-.65-1.58-.9-2.16-.23-.55-.47-.53-.65-.54l-.56-.02z"/></svg>
+  </a>
+
+  <script>
+    // Form Handler to compose formatted WhatsApp message dynamically
+    document.getElementById('kytos-booking-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('booking-name').value;
+      const specialty = document.getElementById('booking-specialty').value;
+      const day = document.getElementById('booking-day').value;
+
+      const message = `Hola KYTOS Salud Integral! Mi nombre es ${name}. Quiero solicitar un turno para la especialidad de ${specialty}. Preferencia de horario: ${day}. ¿Cuál es la primera fecha disponible?`;
+      const waUrl = `https://wa.me/5492235915750?text=${encodeURIComponent(message)}`;
+      window.open(waUrl, '_blank');
+    });
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

@@ -1,0 +1,1656 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dental Studio | Clínica Odontológica & Estética Dental de Vanguardia</title>
+  <meta name="description" content="Especialistas en ortodoncia invisible, implantes dentales, carillas de porcelana y blanqueamiento láser. Tecnología 3D sin dolor y financiación a tu medida.">
+  <meta name="theme-color" content="#ffffff">
+  
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Dental Studio | Transformá tu Sonrisa con Tecnología Digital">
+  <meta property="og:description" content="Escáner intraoral 3D, diseño digital de sonrisa y tratamientos sin dolor. Solicitá tu consulta diagnóstica hoy.">
+  <meta property="og:image" content="assets/hero.jpg">
+
+  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* ==========================================================================
+       1. VARIABLES Y TOKENS DE DISEÑO (PRISTINE ENAMEL & MINT FRESH THEME)
+       ========================================================================== */
+    :root {
+      --bg-base: #f8fafc;
+      --bg-white: #ffffff;
+      --bg-surface: #ffffff;
+      --bg-mint-soft: #f0fdfa;
+      --bg-subtle: #f1f5f9;
+      
+      --accent-mint: #0d9488; /* Teal / Mint Pro */
+      --accent-mint-hover: #0f766e;
+      --accent-mint-light: #ccfbf1;
+      --accent-teal-glow: rgba(13, 148, 136, 0.2);
+      --accent-sapphire: #0284c7; /* Azul Zafiro */
+      --accent-gold: #f59e0b; /* Estrellas y Glow */
+
+      --text-primary: #0f172a; /* Deep Slate Charcoal */
+      --text-secondary: #334155;
+      --text-muted: #64748b;
+
+      --border-subtle: #e2e8f0;
+      --border-medium: #cbd5e1;
+      --border-mint: #99f6e4;
+      --border-highlight: #bae6fd;
+
+      --font-heading: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 22px;
+      --radius-xl: 30px;
+      --radius-full: 9999px;
+
+      --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 6px 24px -2px rgba(15, 23, 42, 0.06);
+      --shadow-lg: 0 16px 40px -4px rgba(13, 148, 136, 0.09);
+      --shadow-mint: 0 10px 25px rgba(13, 148, 136, 0.25);
+    }
+
+    /* ==========================================================================
+       2. RESET & ESTILOS GLOBALES
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+    }
+
+    body {
+      min-height: 100vh;
+      line-height: 1.6;
+      background-color: var(--bg-base);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(204, 251, 241, 0.65) 0, transparent 50%), 
+        radial-gradient(at 100% 100%, rgba(224, 242, 254, 0.6) 0, transparent 50%);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+    }
+
+    /* Canvas de destellos y frescura */
+    #dental-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.6;
+    }
+
+    .app-container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 3.5vw, 2.5rem);
+    }
+
+    /* Tipografía Jerárquica */
+    h1, h2, h3, h4 {
+      font-family: var(--font-heading);
+      color: var(--text-primary);
+      letter-spacing: -0.025em;
+      font-weight: 700;
+    }
+
+    h1 {
+      font-size: clamp(2.1rem, 3.8vw, 3.2rem);
+      line-height: 1.14;
+    }
+
+    h2 {
+      font-size: clamp(1.6rem, 2.6vw, 2.3rem);
+      line-height: 1.2;
+    }
+
+    h3 {
+      font-size: clamp(1.15rem, 1.8vw, 1.35rem);
+    }
+
+    p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      font-weight: 400;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Tarjetas Dentales Blancas */
+    .dental-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      transition: var(--transition-smooth);
+    }
+
+    .dental-card:hover {
+      border-color: var(--border-mint);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-3px);
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      background: var(--accent-mint-light);
+      border: 1px solid var(--border-mint);
+      border-radius: var(--radius-full);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent-mint-hover);
+      letter-spacing: 0.01em;
+    }
+
+    .badge-pill.sapphire {
+      background: #e0f2fe;
+      border-color: var(--border-highlight);
+      color: #0369a1;
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--accent-mint);
+      box-shadow: 0 0 8px rgba(13, 148, 136, 0.7);
+      animation: pulse-dot 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.25); }
+    }
+
+    /* Botones */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      padding: 0.85rem 1.6rem;
+      border-radius: var(--radius-md);
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%);
+      color: #ffffff;
+      box-shadow: var(--shadow-mint);
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #0f766e 0%, #115e59 100%);
+      box-shadow: 0 12px 30px rgba(13, 148, 136, 0.4);
+      transform: translateY(-2px);
+      color: #ffffff;
+    }
+
+    .btn-secondary {
+      background: #ffffff;
+      color: var(--text-primary);
+      border: 1px solid var(--border-medium);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-mint-soft);
+      border-color: var(--accent-mint);
+      color: var(--accent-mint);
+      transform: translateY(-2px);
+    }
+
+    .btn-whatsapp {
+      background: #25d366;
+      color: #ffffff;
+      font-weight: 700;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    }
+
+    .btn-whatsapp:hover {
+      background: #20ba5a;
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
+      transform: translateY(-2px);
+      color: #ffffff;
+    }
+
+    /* ==========================================================================
+       3. NAVBAR FLOTANTE
+       ========================================================================== */
+    .navbar-wrapper {
+      position: sticky;
+      top: 1.25rem;
+      z-index: 100;
+      margin-bottom: 2.5rem;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.8rem 1.6rem;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo-icon-box {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #ccfbf1, #e0f2fe);
+      border: 1px solid #99f6e4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-mint);
+      font-size: 1.3rem;
+    }
+
+    .brand-name {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+
+    .brand-sub {
+      font-size: 0.7rem;
+      color: var(--accent-mint);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.8rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: var(--transition-smooth);
+    }
+
+    .nav-link:hover {
+      color: var(--accent-mint);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    /* ==========================================================================
+       4. HERO SECTION
+       ========================================================================== */
+    .hero-section {
+      padding: 2.5rem 0 5rem;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .hero-title-highlight {
+      color: var(--accent-mint);
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      max-width: 580px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid var(--border-subtle);
+      margin-top: 1rem;
+    }
+
+    .metric-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .metric-value {
+      font-family: var(--font-heading);
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: var(--accent-mint);
+      line-height: 1.1;
+    }
+
+    .metric-label {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+      font-weight: 500;
+    }
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .hero-image-card {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-lg);
+      background: #ffffff;
+    }
+
+    .hero-image-card img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.8s ease;
+    }
+
+    .hero-image-card:hover img {
+      transform: scale(1.03);
+    }
+
+    .hero-overlay-tag {
+      position: absolute;
+      bottom: 1.25rem;
+      left: 1.25rem;
+      right: 1.25rem;
+      padding: 1rem 1.25rem;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-md);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .doctor-badge-info {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .doctor-avatar-circle {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: url('assets/dentist.jpg') center/cover no-repeat;
+      border: 2px solid var(--accent-mint);
+    }
+
+    /* ==========================================================================
+       5. SLIDER INTERACTIVO ANTES / DESPUÉS (SMILE TRANSFORMER)
+       ========================================================================== */
+    .compare-section {
+      padding: 4rem 0;
+      margin-bottom: 5rem;
+    }
+
+    .compare-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+      align-items: center;
+      padding: 3.5rem;
+      border-radius: var(--radius-xl);
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .compare-viewer-box {
+      position: relative;
+      width: 100%;
+      height: 380px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      user-select: none;
+      cursor: ew-resize;
+    }
+
+    .compare-img-after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .compare-img-before-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 100%;
+      overflow: hidden;
+      border-right: 3px solid #ffffff;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.25);
+    }
+
+    .compare-img-before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: sepia(35%) brightness(92%) contrast(95%); /* Simula tono anterior */
+    }
+
+    .compare-handle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 2px solid var(--accent-mint);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-mint);
+      font-size: 1rem;
+      pointer-events: none;
+    }
+
+    .compare-label-before, .compare-label-after {
+      position: absolute;
+      bottom: 1rem;
+      padding: 0.35rem 0.8rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      pointer-events: none;
+    }
+
+    .compare-label-before {
+      left: 1rem;
+      background: rgba(15, 23, 42, 0.75);
+      color: #ffffff;
+    }
+
+    .compare-label-after {
+      right: 1rem;
+      background: var(--accent-mint);
+      color: #ffffff;
+    }
+
+    /* ==========================================================================
+       6. BENTO GRID DE TRATAMIENTOS & ESPECIALIDADES
+       ========================================================================== */
+    .section-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 3.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+    }
+
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 5rem;
+    }
+
+    .bento-col-8 { grid-column: span 8; }
+    .bento-col-4 { grid-column: span 4; }
+    .bento-col-6 { grid-column: span 6; }
+    .bento-col-12 { grid-column: span 12; }
+
+    .bento-item {
+      padding: 2.2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .bento-icon-badge {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      background: var(--accent-mint-light);
+      border: 1px solid var(--border-mint);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: var(--accent-mint);
+      margin-bottom: 1.25rem;
+    }
+
+    .bento-icon-badge.sapphire {
+      background: #e0f2fe;
+      border-color: #bae6fd;
+      color: var(--accent-sapphire);
+    }
+
+    .bento-item h3 {
+      margin-bottom: 0.6rem;
+    }
+
+    .bento-list {
+      list-style: none;
+      margin-top: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .bento-list li {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .bento-list li i {
+      color: var(--accent-mint);
+      font-size: 0.85rem;
+    }
+
+    /* ==========================================================================
+       7. CALCULADOR Y COTIZADOR DENTAL INTERACTIVO
+       ========================================================================== */
+    .pricing-section {
+      padding: 3rem 0;
+      margin-bottom: 5rem;
+    }
+
+    .pricing-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+      padding: 3.5rem;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-mint);
+      background: #ffffff;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .form-group {
+      margin-bottom: 1.35rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.45rem;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      background: #f8fafc;
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      outline: none;
+      transition: var(--transition-smooth);
+    }
+
+    .form-control:focus {
+      border-color: var(--accent-mint);
+      background: #ffffff;
+      box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.15);
+    }
+
+    .pricing-summary-card {
+      margin-top: 1.75rem;
+      padding: 1.4rem;
+      background: var(--bg-mint-soft);
+      border: 1px dashed #5eead4;
+      border-radius: var(--radius-md);
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.92rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .summary-total {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent-mint-hover);
+      border-top: 1px solid #99f6e4;
+      padding-top: 0.65rem;
+      margin-top: 0.65rem;
+    }
+
+    /* ==========================================================================
+       8. STAFF DE ODONTÓLOGOS ESPECIALISTAS
+       ========================================================================== */
+    .staff-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.75rem;
+      margin-bottom: 5rem;
+    }
+
+    .staff-card {
+      padding: 2rem 1.75rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .staff-photo {
+      width: 95px;
+      height: 95px;
+      border-radius: 50%;
+      margin-bottom: 1.2rem;
+      border: 3px solid var(--accent-mint);
+      box-shadow: 0 4px 15px rgba(13, 148, 136, 0.2);
+      object-fit: cover;
+    }
+
+    .staff-name {
+      font-size: 1.25rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .staff-role {
+      font-size: 0.88rem;
+      color: var(--accent-mint);
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+
+    .staff-mp {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 1.1rem;
+      font-weight: 500;
+    }
+
+    .staff-days {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      background: var(--bg-subtle);
+      padding: 0.45rem 0.85rem;
+      border-radius: var(--radius-sm);
+      margin-bottom: 1.25rem;
+      width: 100%;
+    }
+
+    /* ==========================================================================
+       9. CONVENIOS & OBRAS SOCIALES
+       ========================================================================== */
+    .insurances-carousel {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 5rem;
+    }
+
+    .insurance-pill {
+      padding: 0.8rem 1.5rem;
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition-smooth);
+    }
+
+    .insurance-pill:hover {
+      border-color: var(--accent-mint);
+      background: var(--accent-mint-light);
+      color: var(--accent-mint-hover);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* ==========================================================================
+       10. UBICACIÓN, MAPA & HORARIOS
+       ========================================================================== */
+    .location-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      padding: 3.5rem;
+      border-radius: var(--radius-xl);
+      margin-bottom: 5rem;
+      align-items: center;
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .location-details {
+      display: flex;
+      flex-direction: column;
+      gap: 1.35rem;
+    }
+
+    .location-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .location-icon {
+      font-size: 1.35rem;
+      color: var(--accent-mint);
+      margin-top: 0.2rem;
+    }
+
+    .map-embed-wrapper {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      height: 340px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .map-embed-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* ==========================================================================
+       11. FAQ ACCORDION
+       ========================================================================== */
+    .faq-list {
+      max-width: 820px;
+      margin: 0 auto 5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .faq-item {
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      background: #ffffff;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition-smooth);
+    }
+
+    .faq-question {
+      padding: 1.3rem 1.6rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      font-family: var(--font-heading);
+      color: var(--text-primary);
+    }
+
+    .faq-question:hover {
+      color: var(--accent-mint);
+    }
+
+    .faq-answer {
+      padding: 0 1.6rem 1.4rem;
+      display: none;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.65;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 1rem;
+    }
+
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+
+    .faq-item.active {
+      border-color: var(--accent-mint);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* ==========================================================================
+       12. FOOTER & BOTÓN FLOTANTE
+       ========================================================================== */
+    .footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 3rem 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      background: #ffffff;
+    }
+
+    .floating-whatsapp {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.85rem 1.5rem;
+      background: #25d366;
+      color: #ffffff;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.95rem;
+      border-radius: var(--radius-full);
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+      transition: var(--transition-smooth);
+    }
+
+    .floating-whatsapp:hover {
+      transform: scale(1.05) translateY(-3px);
+      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.55);
+      color: #ffffff;
+    }
+
+    /* Responsive Queries */
+    @media (max-width: 992px) {
+      .hero-section, .compare-container {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .bento-col-8, .bento-col-4, .bento-col-6 {
+        grid-column: span 12;
+      }
+      .pricing-wrapper, .location-card {
+        grid-template-columns: 1fr;
+        padding: 2rem;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-metrics {
+        grid-template-columns: 1fr;
+      }
+      .floating-whatsapp span {
+        display: none;
+      }
+      .floating-whatsapp {
+        padding: 1rem;
+        border-radius: 50%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Canvas Interactivo de Brillo Dental -->
+  <canvas id="dental-canvas"></canvas>
+
+  <div class="app-container">
+    
+    <!-- Navbar Flotante -->
+    <header class="navbar-wrapper">
+      <nav class="navbar">
+        <a href="#" class="brand-logo">
+          <div class="logo-icon-box">
+            <i class="fa-solid fa-tooth"></i>
+          </div>
+          <div class="brand-name">
+            <span id="brand-title">DENTAL STUDIO</span>
+            <span class="brand-sub" id="brand-location">Odontología & Estética Dental</span>
+          </div>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#transformacion" class="nav-link">Antes & Después</a></li>
+          <li><a href="#tratamientos" class="nav-link">Tratamientos</a></li>
+          <li><a href="#cotizador" class="nav-link">Presupuesto Online</a></li>
+          <li><a href="#staff" class="nav-link">Especialistas</a></li>
+          <li><a href="#contacto" class="nav-link">Ubicación</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <div class="badge-pill">
+            <span class="live-dot"></span>
+            Urgencias Dentales
+          </div>
+          <a href="#cotizador" class="btn btn-primary" style="padding: 0.55rem 1.2rem; font-size: 0.88rem;">
+            Pedir Turno
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <div class="badge-pill">
+          <i class="fa-solid fa-sparkles"></i>
+          <span id="hero-tagline">Tecnología Dental Digital 3D · Sin Dolor</span>
+        </div>
+        <h1>
+          La sonrisa que siempre soñaste con <span class="hero-title-highlight">precisión digital</span>.
+        </h1>
+        <p class="hero-desc">
+          Ortodoncia invisible con alineadores, implantes dentales de carga inmediata y diseño digital de sonrisa (DSD). Viví una experiencia odontológica moderna, confortable y con aranceles claros.
+        </p>
+        <div class="hero-actions">
+          <a href="#cotizador" class="btn btn-primary">
+            <i class="fa-regular fa-calendar-check"></i>
+            Consulta Diagnóstica Sin Cargo
+          </a>
+          <a href="#" id="hero-wa-btn" target="_blank" class="btn btn-whatsapp">
+            <i class="fa-brands fa-whatsapp"></i>
+            WhatsApp Directo
+          </a>
+        </div>
+
+        <div class="hero-metrics">
+          <div class="metric-item">
+            <span class="metric-value">+12.000</span>
+            <span class="metric-label">Sonrisas Diseñadas</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-value">100%</span>
+            <span class="metric-label">Escaneo 3D Sin Pastas</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-value">12 Cuotas</span>
+            <span class="metric-label">Financiación a Medida</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-image-card">
+          <img src="assets/hero.jpg" alt="Instalaciones luminosas de clínica odontológica Dental Studio">
+          <div class="hero-overlay-tag">
+            <div class="doctor-badge-info">
+              <div class="doctor-avatar-circle"></div>
+              <div>
+                <strong style="font-size: 0.9rem; display: block; color: var(--text-primary);">Dra. Sofía Chen</strong>
+                <span style="font-size: 0.78rem; color: var(--accent-mint); font-weight: 600;">Especialista en Ortodoncia Digital · MP 48.912</span>
+              </div>
+            </div>
+            <span class="badge-pill" style="font-size: 0.75rem;">
+              <i class="fa-solid fa-certificate"></i> Certificación Invisalign
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slider Interactivo Antes / Después (Smile Transformer) -->
+    <section id="transformacion" class="compare-section">
+      <div class="compare-container">
+        <div class="compare-info">
+          <div class="badge-pill">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> Resultados Reales
+          </div>
+          <h2 style="margin: 1rem 0 0.8rem;">Transformación de Sonrisa en Vivo</h2>
+          <p>Deslizá la barra interactiva para comparar los resultados de nuestro tratamiento de <strong>Blanqueamiento Láser y Micro-Carillas de Porcelana E-Max</strong>. Logramos armonía estética preservando al 100% la estructura natural de tus piezas dentales.</p>
+          
+          <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem;">
+            <div style="display: flex; align-items: center; gap: 0.75rem; font-size: 0.92rem; color: var(--text-secondary);">
+              <i class="fa-solid fa-circle-check" style="color: var(--accent-mint);"></i>
+              <span>Alineación perfecta y cierre de diastemas</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.75rem; font-size: 0.92rem; color: var(--text-secondary);">
+              <i class="fa-solid fa-circle-check" style="color: var(--accent-mint);"></i>
+              <span>Blanqueamiento de hasta 4 tonos en 1 sola sesión</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.75rem; font-size: 0.92rem; color: var(--text-secondary);">
+              <i class="fa-solid fa-circle-check" style="color: var(--accent-mint);"></i>
+              <span>Durabilidad comprobada de más de 15 años</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Visor Deslizante -->
+        <div class="compare-viewer-box" id="compare-box">
+          <img src="assets/smile.jpg" alt="Sonrisa después del tratamiento" class="compare-img-after">
+          <div class="compare-img-before-wrapper" id="before-wrapper">
+            <img src="assets/smile.jpg" alt="Sonrisa antes del tratamiento" class="compare-img-before" id="before-img">
+          </div>
+          <div class="compare-handle" id="compare-handle">
+            <i class="fa-solid fa-arrows-left-right"></i>
+          </div>
+          <span class="compare-label-before">Antes</span>
+          <span class="compare-label-after">Después</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bento Grid de Tratamientos Odontológicos -->
+    <section id="tratamientos">
+      <div class="section-header">
+        <div class="badge-pill">Especialidades Clínicas</div>
+        <h2 class="section-title">Tratamientos Dentales de Alta Gama</h2>
+        <p>Combinamos experiencia clínica con equipamiento digital de última generación para garantizar confort y resultados predecibles.</p>
+      </div>
+
+      <div class="bento-grid">
+        <!-- Ortodoncia Invisible -->
+        <div class="dental-card bento-item bento-col-8">
+          <div>
+            <div class="bento-icon-badge">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <h3>Ortodoncia Invisible (Alineadores 3D)</h3>
+            <p>Corregí la posición de tus dientes de manera imperceptible con alineadores transparentes removibles. Sin alambres metálicos ni llagas.</p>
+            <ul class="bento-list">
+              <li><i class="fa-solid fa-circle-check"></i> Escaneo 3D inicial y simulación virtual de tu sonrisa final</li>
+              <li><i class="fa-solid fa-circle-check"></i> Removibles para comer y cepillarte con total comodidad</li>
+            </ul>
+          </div>
+          <div style="margin-top: 1.5rem; display: flex; align-items: center; justify-content: space-between; padding-top: 1rem; border-top: 1px solid var(--border-subtle);">
+            <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 500;">Plan desde 12 cuotas fijas</span>
+            <a href="#cotizador" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.5rem 1rem;">Cotizar Alineadores</a>
+          </div>
+        </div>
+
+        <!-- Implantes Dentales -->
+        <div class="dental-card bento-item bento-col-4">
+          <div>
+            <div class="bento-icon-badge sapphire">
+              <i class="fa-solid fa-screwdriver"></i>
+            </div>
+            <h3>Implantes de Titanio</h3>
+            <p>Cirugía guiada por computadora para reposición fija de piezas perdidas con coronas cerámicas idénticas al diente natural.</p>
+          </div>
+          <ul class="bento-list">
+            <li><i class="fa-solid fa-circle-check"></i> Carga inmediata en 24/48 hs</li>
+            <li><i class="fa-solid fa-circle-check"></i> Garantía escrita de osteointegración</li>
+          </ul>
+        </div>
+
+        <!-- Blanqueamiento Láser -->
+        <div class="dental-card bento-item bento-col-4">
+          <div>
+            <div class="bento-icon-badge">
+              <i class="fa-solid fa-bolt"></i>
+            </div>
+            <h3>Blanqueamiento Láser</h3>
+            <p>Aclarado dental profesional en 1 sesión de 45 minutos. Gel fotosensible sin generar sensibilidad dental prolongada.</p>
+          </div>
+          <div style="margin-top: 1.2rem; font-size: 0.85rem; color: var(--accent-mint); font-weight: 600;">
+            <i class="fa-solid fa-certificate"></i> Resultados visibles inmediatos
+          </div>
+        </div>
+
+        <!-- Carillas E-Max -->
+        <div class="dental-card bento-item bento-col-4">
+          <div>
+            <div class="bento-icon-badge sapphire">
+              <i class="fa-solid fa-gem"></i>
+            </div>
+            <h3>Carillas de Porcelana</h3>
+            <p>Micro-láminas de disilicato de litio para corregir manchas profundas, desgastes, fracturas y formas irregulares.</p>
+          </div>
+          <div style="margin-top: 1.2rem; font-size: 0.85rem; color: var(--accent-sapphire); font-weight: 600;">
+            <i class="fa-solid fa-sparkles"></i> Brillo natural inalterable
+          </div>
+        </div>
+
+        <!-- Limpieza & Profilaxis -->
+        <div class="dental-card bento-item bento-col-4">
+          <div>
+            <div class="bento-icon-badge">
+              <i class="fa-solid fa-water"></i>
+            </div>
+            <h3>Profilaxis por Ultrasonido</h3>
+            <p>Eliminación de sarro supra y subgingival, pulido coronario con bicarbonato y aplicación tópica de flúor preventivo.</p>
+          </div>
+          <div style="margin-top: 1.2rem; font-size: 0.85rem; color: var(--accent-mint); font-weight: 600;">
+            <i class="fa-solid fa-clock"></i> Sesión express de 30 minutos
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cotizador & Calculador de Presupuesto Dental -->
+    <section id="cotizador" class="pricing-section">
+      <div class="pricing-wrapper">
+        <div class="pricing-info">
+          <div>
+            <div class="badge-pill">
+              <i class="fa-regular fa-calculator"></i> Calculador de Tratamiento
+            </div>
+            <h2 style="margin: 1rem 0 0.8rem;">Estimá tu Presupuesto Dental</h2>
+            <p>Seleccioná el tratamiento que deseás realizarte y tu método de cobertura o financiación. Te asignaremos un odontólogo especialista para tu consulta diagnóstica.</p>
+          </div>
+
+          <div class="pricing-summary-card">
+            <strong style="color: #0f766e; font-size: 0.95rem; display: block; margin-bottom: 0.8rem;">
+              <i class="fa-solid fa-file-invoice-dollar"></i> Desglose de Presupuesto Estimado
+            </strong>
+            <div class="summary-row">
+              <span style="color: #374151;">Tratamiento:</span>
+              <span id="sum-treatment" style="font-weight: 600; color: #111827;">Ortodoncia Invisible</span>
+            </div>
+            <div class="summary-row">
+              <span style="color: #374151;">Plan de Pago / Cobertura:</span>
+              <span id="sum-plan" style="font-weight: 600; color: #111827;">12 Cuotas Fijas</span>
+            </div>
+            <div class="summary-row">
+              <span style="color: #374151;">Consulta Diagnóstica 3D:</span>
+              <span style="font-weight: 600; color: var(--accent-mint);">Bonificada 100%</span>
+            </div>
+            <div class="summary-total summary-row">
+              <span>Inversión Estimada:</span>
+              <span id="sum-total-cost">$45.000 ARS / mes</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pricing-form">
+          <div class="form-group">
+            <label class="form-label" for="select-treatment">1. Seleccioná el Tratamiento Dental</label>
+            <select id="select-treatment" class="form-control">
+              <option value="Ortodoncia Invisible (Alineadores)">Ortodoncia Invisible (Alineadores 3D)</option>
+              <option value="Implante Dental de Titanio">Implante Dental de Titanio + Corona</option>
+              <option value="Blanqueamiento Dental Láser">Blanqueamiento Dental Láser (1 Sesión)</option>
+              <option value="Carillas de Porcelana E-Max">Carillas Estéticas de Porcelana (x pieza)</option>
+              <option value="Limpieza y Profilaxis Ultrasónica">Limpieza Profunda por Ultrasonido</option>
+              <option value="Endodoncia Mecanizada">Tratamiento de Conducto / Endodoncia</option>
+              <option value="Odontopediatría">Control & Selladores Odontopediátricos</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="select-payment-plan">2. Forma de Pago / Cobertura</label>
+            <select id="select-payment-plan" class="form-control">
+              <option value="12 Cuotas Fijas">12 Cuotas Fijas con Tarjeta Bancaria</option>
+              <option value="6 Cuotas Sin Interés">6 Cuotas Sin Interés</option>
+              <option value="Pago Contado / Transferencia (15% OFF)">Pago Contado / Transferencia (15% OFF)</option>
+              <option value="Reintegro Prepaga (OSDE / Swiss / Galeno)">Reintegro por Prepaga (Factura A/B)</option>
+            </select>
+          </div>
+
+          <div class="form-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div>
+              <label class="form-label" for="select-turn-pref">3. Horario Preferido</label>
+              <select id="select-turn-pref" class="form-control">
+                <option value="Mañana (09:00 a 13:00 hs)">Mañana (09:00 a 13:00)</option>
+                <option value="Tarde (14:00 a 19:30 hs)">Tarde (14:00 a 19:30)</option>
+                <option value="Sábado por la mañana">Sábados (09:00 a 13:00)</option>
+              </select>
+            </div>
+            <div>
+              <label class="form-label" for="patient-name-dental">Tu Nombre</label>
+              <input type="text" id="patient-name-dental" class="form-control" placeholder="Ej: Lucas Martínez">
+            </div>
+          </div>
+
+          <button id="btn-send-dental-budget" class="btn btn-whatsapp" style="width: 100%; padding: 1rem; margin-top: 1rem;">
+            <i class="fa-brands fa-whatsapp" style="font-size: 1.25rem;"></i>
+            Solicitar Evaluación por WhatsApp
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Staff de Odontólogos Especialistas -->
+    <section id="staff">
+      <div class="section-header">
+        <div class="badge-pill">Staff Clínico</div>
+        <h2 class="section-title">Especialistas en Salud y Estética</h2>
+        <p>Odontólogos matriculados dedicados a brindarte un trato cálido y tratamientos indoloros.</p>
+      </div>
+
+      <div class="staff-grid">
+        <div class="dental-card staff-card">
+          <img src="assets/dentist.jpg" alt="Dra. Sofía Chen" class="staff-photo">
+          <h3 class="staff-name">Dra. Sofía Chen</h3>
+          <span class="staff-role">Ortodoncia Digital & Alineadores</span>
+          <span class="staff-mp">MN: 118.420 | MP: 48.912</span>
+          <div class="staff-days">
+            <i class="fa-regular fa-calendar"></i> Lun, Mié y Jue · 09:00 a 18:00 hs
+          </div>
+          <button class="btn btn-secondary direct-dentist-btn" data-dentist="Dra. Sofía Chen" data-spec="Ortodoncia Invisible" style="width: 100%; font-size: 0.88rem;">
+            Consultar con Dra. Chen
+          </button>
+        </div>
+
+        <div class="dental-card staff-card">
+          <img src="assets/hero.jpg" alt="Dr. Martín Gómez" class="staff-photo">
+          <h3 class="staff-name">Dr. Martín Gómez</h3>
+          <span class="staff-role">Implantología & Cirugía Guiada</span>
+          <span class="staff-mp">MN: 94.180 | MP: 35.610</span>
+          <div class="staff-days">
+            <i class="fa-regular fa-calendar"></i> Mar y Vie · 08:30 a 16:30 hs
+          </div>
+          <button class="btn btn-secondary direct-dentist-btn" data-dentist="Dr. Martín Gómez" data-spec="Implantes Dentales" style="width: 100%; font-size: 0.88rem;">
+            Consultar con Dr. Gómez
+          </button>
+        </div>
+
+        <div class="dental-card staff-card">
+          <img src="assets/smile.jpg" alt="Dra. Valeria Rivas" class="staff-photo">
+          <h3 class="staff-name">Dra. Valeria Rivas</h3>
+          <span class="staff-role">Estética Dental & Blanqueamiento</span>
+          <span class="staff-mp">MN: 130.540 | MP: 52.330</span>
+          <div class="staff-days">
+            <i class="fa-regular fa-calendar"></i> Lun a Vie · 13:00 a 19:00 hs
+          </div>
+          <button class="btn btn-secondary direct-dentist-btn" data-dentist="Dra. Valeria Rivas" data-spec="Estética y Carillas" style="width: 100%; font-size: 0.88rem;">
+            Consultar con Dra. Rivas
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Obras Sociales & Métodos de Pago -->
+    <section style="margin-bottom: 5rem;">
+      <div class="section-header">
+        <div class="badge-pill">Facilidades & Coberturas</div>
+        <h2 class="section-title">Prepagas y Métodos de Financiación</h2>
+        <p>Trabajamos con facturación oficial para reintegro en prepagas y planes de cuotas accesibles.</p>
+      </div>
+
+      <div class="insurances-carousel">
+        <div class="insurance-pill"><i class="fa-solid fa-shield-halved" style="color: var(--accent-mint);"></i> OSDE (Planes Odontológicos)</div>
+        <div class="insurance-pill"><i class="fa-solid fa-shield-halved" style="color: var(--accent-mint);"></i> Swiss Medical Dental</div>
+        <div class="insurance-pill"><i class="fa-solid fa-shield-halved" style="color: var(--accent-mint);"></i> Galeno Odonto</div>
+        <div class="insurance-pill"><i class="fa-solid fa-shield-halved" style="color: var(--accent-mint);"></i> Medifé</div>
+        <div class="insurance-pill"><i class="fa-solid fa-credit-card" style="color: var(--accent-mint);"></i> Visa / Mastercard (Hasta 12 Cuotas)</div>
+        <div class="insurance-pill"><i class="fa-solid fa-building-columns" style="color: var(--accent-mint);"></i> Transferencia con 15% Descuento</div>
+      </div>
+    </section>
+
+    <!-- Ubicación y Mapa -->
+    <section id="contacto" class="location-card">
+      <div class="location-details">
+        <div class="badge-pill">
+          <i class="fa-solid fa-map-pin"></i> Sede Odontológica
+        </div>
+        <h2 id="contact-heading">Visitanos en Nuestra Sede</h2>
+        <p>Consultorios climatizados con música funcional, pantallas individuales y tecnología pensada para tu tranquilidad.</p>
+
+        <div class="location-row">
+          <i class="fa-solid fa-location-dot location-icon"></i>
+          <div>
+            <strong style="color: var(--text-primary); display: block;">Dirección:</strong>
+            <span id="contact-address-text">Av. Principal 2450, Centro</span>
+          </div>
+        </div>
+
+        <div class="location-row">
+          <i class="fa-solid fa-clock location-icon"></i>
+          <div>
+            <strong style="color: var(--text-primary); display: block;">Horarios de Atención:</strong>
+            <span>Lunes a Viernes: 08:30 a 19:30 hs</span><br>
+            <span>Sábados: 09:00 a 13:30 hs | <strong>Guardia Odontológica por WhatsApp</strong></span>
+          </div>
+        </div>
+
+        <div class="location-row">
+          <i class="fa-brands fa-whatsapp location-icon" style="color: #25d366;"></i>
+          <div>
+            <strong style="color: var(--text-primary); display: block;">Línea Directa de WhatsApp:</strong>
+            <span id="contact-phone-text">+54 9 223 500-0000</span>
+          </div>
+        </div>
+
+        <div style="margin-top: 1rem;">
+          <a href="https://maps.google.com" id="map-link-btn" target="_blank" class="btn btn-secondary">
+            <i class="fa-solid fa-diamond-turn-right"></i> Abrir en Google Maps
+          </a>
+        </div>
+      </div>
+
+      <div class="map-embed-wrapper">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3143.954546424564!2d-57.55847842358826!3d-37.99424754406385!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDU5JzM5LjMiUyA1N8KwMzMnMzAuNSJX!5e0!3m2!1ses!2sar!4v1700000000000!5m2!1ses!2sar" loading="lazy"></iframe>
+      </div>
+    </section>
+
+    <!-- FAQ Accordion -->
+    <section class="faq-section">
+      <div class="section-header">
+        <div class="badge-pill">Preguntas Frecuentes</div>
+        <h2 class="section-title">Todo lo que Necesitás Saber</h2>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item active">
+          <div class="faq-question">
+            <span>¿Los tratamientos odontológicos generan dolor?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            No. Utilizamos anestesia computarizada y técnicas mínimamente invasivas que eliminan cualquier molestia durante y después de la intervención.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>¿Cómo funciona el escaneo 3D intraoral?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            Es una cámara óptica de alta precisión que captura miles de imágenes por segundo de tu boca en 3D en menos de 2 minutos, eliminando por completo los antiguos moldes de pasta que generaban náuseas.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>¿Cómo se abona el tratamiento de ortodoncia invisible?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            Podés abonarlo en cuotas mensuales fijas a medida que avanzan los cambios de alineadores, o con descuentos especiales por pago contado o reintegro por tu obra social/prepaga.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p id="footer-text">© 2026 Dental Studio · Clínica Odontológica & Estética Dental.</p>
+      <p style="margin-top: 0.5rem; font-size: 0.8rem;">Demo interactiva de alta conversión lista para personalización comercial en tiempo real.</p>
+    </footer>
+
+  </div>
+
+  <!-- Botón Flotante Persistente de WhatsApp Oficial -->
+  <a href="#" id="floating-wa-btn" target="_blank" class="floating-whatsapp" aria-label="Contactar por WhatsApp">
+    <i class="fa-brands fa-whatsapp" style="font-size: 1.4rem;"></i>
+    <span>WhatsApp Directo</span>
+  </a>
+
+  <!-- Scripts: Canvas de Brillo, Slider Antes/Después & Lógica de Presupuesto -->
+  <script>
+    // =========================================================================
+    // 0. LECTOR DE PARÁMETROS DINÁMICOS URL (?n=Nombre&t=Telefono&d=Direccion)
+    // =========================================================================
+    const urlParams = new URLSearchParams(window.location.search);
+    const clientName = urlParams.get('n') || 'Dental Studio';
+    const clientPhone = urlParams.get('t') || '5492235000000';
+    const clientAddress = urlParams.get('d') || 'Av. Principal 2450, Centro';
+
+    document.getElementById('brand-title').textContent = clientName.toUpperCase();
+    document.getElementById('contact-heading').textContent = `Visitanos en ${clientName}`;
+    document.getElementById('contact-address-text').textContent = clientAddress;
+    document.getElementById('contact-phone-text').textContent = `+${clientPhone}`;
+    document.getElementById('footer-text').textContent = `© 2026 ${clientName} · Clínica Odontológica & Estética Dental.`;
+    document.getElementById('map-link-btn').href = `https://maps.google.com/?q=${encodeURIComponent(clientAddress)}`;
+
+    const genericWaUrl = `https://wa.me/${clientPhone}?text=${encodeURIComponent('Hola ' + clientName + '! Quisiera consultar por una cita odontológica y presupuesto.')}`;
+    document.getElementById('hero-wa-btn').href = genericWaUrl;
+    document.getElementById('floating-wa-btn').href = genericWaUrl;
+
+    // =========================================================================
+    // 1. MOTOR CANVAS DE DESTELLOS Y BRILLO DENTAL
+    // =========================================================================
+    const canvas = document.getElementById('dental-canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height, sparkles = [];
+
+    function initCanvas() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      sparkles = [];
+      const sparkleCount = Math.min(Math.floor(width * 0.03), 40);
+
+      for (let i = 0; i < sparkleCount; i++) {
+        sparkles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.4,
+          vy: (Math.random() - 0.5) * 0.4,
+          size: Math.random() * 2.5 + 1,
+          alpha: Math.random() * 0.6 + 0.2,
+          color: Math.random() > 0.3 ? '13, 148, 136' : '2, 132, 199'
+        });
+      }
+    }
+
+    window.addEventListener('resize', initCanvas);
+    initCanvas();
+
+    function renderCanvas() {
+      ctx.clearRect(0, 0, width, height);
+
+      sparkles.forEach(s => {
+        s.x += s.vx;
+        s.y += s.vy;
+
+        if (s.x < 0 || s.x > width) s.vx *= -1;
+        if (s.y < 0 || s.y > height) s.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${s.color}, ${s.alpha})`;
+        ctx.fill();
+      });
+
+      requestAnimationFrame(renderCanvas);
+    }
+    renderCanvas();
+
+    // =========================================================================
+    // 2. SLIDER INTERACTIVO ANTES / DESPUÉS (DRAGGABLE VIEWER)
+    // =========================================================================
+    const compareBox = document.getElementById('compare-box');
+    const beforeWrapper = document.getElementById('before-wrapper');
+    const beforeImg = document.getElementById('before-img');
+    const compareHandle = document.getElementById('compare-handle');
+    let isDragging = false;
+
+    function updateCompareWidth() {
+      beforeImg.style.width = compareBox.offsetWidth + 'px';
+    }
+    window.addEventListener('resize', updateCompareWidth);
+    updateCompareWidth();
+
+    function setSliderPosition(x) {
+      const rect = compareBox.getBoundingClientRect();
+      let pos = (x - rect.left) / rect.width;
+      if (pos < 0.05) pos = 0.05;
+      if (pos > 0.95) pos = 0.95;
+
+      const percent = pos * 100;
+      beforeWrapper.style.width = `${percent}%`;
+      compareHandle.style.left = `${percent}%`;
+    }
+
+    compareBox.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      setSliderPosition(e.clientX);
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      setSliderPosition(e.clientX);
+    });
+
+    window.addEventListener('mouseup', () => { isDragging = false; });
+
+    // Touch events for mobile
+    compareBox.addEventListener('touchstart', (e) => {
+      isDragging = true;
+      setSliderPosition(e.touches[0].clientX);
+    }, { passive: true });
+
+    window.addEventListener('touchmove', (e) => {
+      if (!isDragging) return;
+      setSliderPosition(e.touches[0].clientX);
+    }, { passive: true });
+
+    window.addEventListener('touchend', () => { isDragging = false; });
+
+    // =========================================================================
+    // 3. COTIZADOR Y CALCULADOR DE PRESUPUESTO DENTAL
+    // =========================================================================
+    const treatSelect = document.getElementById('select-treatment');
+    const planSelect = document.getElementById('select-payment-plan');
+    const turnSelect = document.getElementById('select-turn-pref');
+    const patientName = document.getElementById('patient-name-dental');
+    const sumTreat = document.getElementById('sum-treatment');
+    const sumPlan = document.getElementById('sum-plan');
+    const sumTotalCost = document.getElementById('sum-total-cost');
+    const sendBudgetBtn = document.getElementById('btn-send-dental-budget');
+
+    const treatmentRates = {
+      'Ortodoncia Invisible (Alineadores)': { cost: '$45.000 ARS / mes en 12 cuotas', total: '$540.000 ARS' },
+      'Implante Dental de Titanio': { cost: '$38.000 ARS / mes en 12 cuotas', total: '$450.000 ARS' },
+      'Blanqueamiento Dental Láser': { cost: '$65.000 ARS (Sesión única)', total: '$65.000 ARS' },
+      'Carillas de Porcelana E-Max': { cost: '$85.000 ARS por pieza', total: 'Presupuesto a medida' },
+      'Limpieza y Profilaxis Ultrasónica': { cost: '$22.000 ARS (100% reintegro prepaga)', total: '$22.000 ARS' },
+      'Endodoncia Mecanizada': { cost: '$35.000 ARS por conducto', total: '$35.000 ARS' },
+      'Odontopediatría': { cost: '$18.000 ARS (Consulta + Selladores)', total: '$18.000 ARS' }
+    };
+
+    function updateDentalBudget() {
+      const treatment = treatSelect.value;
+      const plan = planSelect.value;
+      sumTreat.textContent = treatment;
+      sumPlan.textContent = plan;
+
+      const rate = treatmentRates[treatment] || { cost: '$35.000 ARS', total: 'A convenir' };
+      sumTotalCost.textContent = rate.cost;
+    }
+
+    treatSelect.addEventListener('change', updateDentalBudget);
+    planSelect.addEventListener('change', updateDentalBudget);
+    updateDentalBudget();
+
+    sendBudgetBtn.addEventListener('click', () => {
+      const treatment = treatSelect.value;
+      const plan = planSelect.value;
+      const time = turnSelect.value;
+      const patient = patientName.value.trim() || 'Paciente';
+
+      const message = `Hola ${clientName}! Mi nombre es ${patient}. Quisiera solicitar una consulta diagnóstica para:\n\n` +
+                      `🦷 *Tratamiento:* ${treatment}\n` +
+                      `💳 *Forma de Pago / Plan:* ${plan}\n` +
+                      `🗓️ *Preferencia de Horario:* ${time}\n\n` +
+                      `Aguardo su confirmación de turno. Muchas gracias!`;
+
+      const encoded = encodeURIComponent(message);
+      window.open(`https://wa.me/${clientPhone}?text=${encoded}`, '_blank');
+    });
+
+    // Botones directos de staff
+    document.querySelectorAll('.direct-dentist-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const dentist = btn.dataset.dentist;
+        const spec = btn.dataset.spec;
+        const message = `Hola ${clientName}! Quisiera solicitar una consulta específica con ${dentist} (${spec}). Aguardo días disponibles.`;
+        window.open(`https://wa.me/${clientPhone}?text=${encodeURIComponent(message)}`, '_blank');
+      });
+    });
+
+    // =========================================================================
+    // 4. FAQ ACCORDION
+    // =========================================================================
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.querySelector('.faq-question').addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+        if (!isActive) item.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

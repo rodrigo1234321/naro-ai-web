@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FUEGO & BRASA | Asador Criollo, Cocina de Autor & Cava de Vinos</title>
+  <meta name="description" content="Carnes maduradas a las brasas de quebracho, pesca fresca de costa, pastas artesanales y cava de 180 etiquetas seleccionadas. Reserva tu mesa online.">
+  <meta name="theme-color" content="#0c0a09">
+  
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="FUEGO & BRASA | Experiencia Gastronómica a las Brasas">
+  <meta property="og:description" content="El arte del fuego y la buena mesa en un ambiente íntimo e inolvidable.">
+  <meta property="og:image" content="assets/hero.jpg">
+
+  <!-- Google Fonts: Cinzel, Cormorant Garamond & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* ==========================================================================
+       1. VARIABLES Y TOKENS DE DISEÑO (EMBER AMBER, DARK OAK & CHARCOAL)
+       ========================================================================== */
+    :root {
+      --bg-base: #0c0a09; /* Warm Charcoal */
+      --bg-surface: #1c1917; /* Dark Oak */
+      --bg-card: rgba(28, 25, 23, 0.92);
+      --bg-elevated: #292524;
+      --bg-amber-soft: rgba(245, 158, 11, 0.08);
+      
+      --accent-gold: #f59e0b; /* Amber Gold */
+      --accent-gold-hover: #d97706;
+      --accent-flame: #ea580c; /* Fiery Orange */
+      --accent-wine: #9f1239; /* Malbec Velvet */
+
+      --text-primary: #fef3c7; /* Warm Butter Cream */
+      --text-secondary: #d6d3d1;
+      --text-muted: #a8a29e;
+
+      --border-subtle: rgba(245, 158, 11, 0.18);
+      --border-medium: rgba(245, 158, 11, 0.35);
+      --border-active: #f59e0b;
+
+      --font-display: 'Cinzel', serif;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+      --radius-full: 9999px;
+
+      --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      --shadow-sm: 0 4px 10px rgba(0, 0, 0, 0.4);
+      --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.7);
+      --shadow-amber: 0 10px 30px rgba(245, 158, 11, 0.25);
+    }
+
+    /* ==========================================================================
+       2. RESET & ESTILOS GLOBALES
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+    }
+
+    body {
+      min-height: 100vh;
+      line-height: 1.6;
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+    }
+
+    /* Canvas de Chispas & Brasas */
+    #embers-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.5;
+    }
+
+    .app-container {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 3.5vw, 2.5rem);
+    }
+
+    /* Tipografía Gastronómica */
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      color: var(--text-primary);
+      letter-spacing: 0.05em;
+      font-weight: 600;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 4.2vw, 3.8rem);
+      line-height: 1.1;
+    }
+
+    h2 {
+      font-size: clamp(1.6rem, 2.6vw, 2.4rem);
+      line-height: 1.2;
+    }
+
+    h3 {
+      font-size: clamp(1.15rem, 1.8vw, 1.35rem);
+    }
+
+    p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      font-weight: 300;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .badge-amber {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1.1rem;
+      background: var(--bg-amber-soft);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--accent-gold);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* Botones */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      padding: 0.85rem 1.6rem;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.88rem;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: var(--transition-smooth);
+      text-transform: uppercase;
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      color: #0c0a09;
+      font-weight: 700;
+      box-shadow: var(--shadow-amber);
+    }
+
+    .btn-gold:hover {
+      background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+      box-shadow: 0 12px 30px rgba(245, 158, 11, 0.4);
+      transform: translateY(-2px);
+      color: #0c0a09;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--border-medium);
+    }
+
+    .btn-outline:hover {
+      background: var(--bg-surface);
+      border-color: var(--accent-gold);
+      color: var(--accent-gold);
+      transform: translateY(-2px);
+    }
+
+    .btn-whatsapp {
+      background: #25d366;
+      color: #ffffff;
+      font-weight: 700;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    }
+
+    .btn-whatsapp:hover {
+      background: #20ba5a;
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
+      transform: translateY(-2px);
+      color: #ffffff;
+    }
+
+    /* ==========================================================================
+       3. NAVBAR CINEMÁTICA
+       ========================================================================== */
+    .navbar-wrapper {
+      position: absolute;
+      top: 1.5rem;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(12, 10, 9, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .logo-flame-icon {
+      font-size: 1.4rem;
+      color: var(--accent-gold);
+    }
+
+    .brand-name {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: 0.1em;
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+
+    .brand-sub {
+      font-size: 0.65rem;
+      color: var(--accent-gold);
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.2rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: var(--transition-smooth);
+      text-transform: uppercase;
+    }
+
+    .nav-link:hover {
+      color: var(--accent-gold);
+    }
+
+    /* ==========================================================================
+       4. HERO FULL-BLEED CINEMÁTICO
+       ========================================================================== */
+    .hero-cinematic {
+      min-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 8rem 1rem 4rem;
+      position: relative;
+      background: radial-gradient(circle at center, rgba(12, 10, 9, 0.4) 0%, rgba(12, 10, 9, 0.95) 85%), url('assets/hero.jpg') center/cover no-repeat;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .hero-cinematic::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(12, 10, 9, 0.7) 0%, rgba(12, 10, 9, 0.3) 50%, rgba(12, 10, 9, 1) 100%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 10;
+      max-width: 860px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .hero-tag-quote {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.35rem;
+      color: var(--accent-gold);
+    }
+
+    .hero-desc {
+      font-size: 1.12rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      max-width: 680px;
+    }
+
+    /* BARRA DE RESERVA INTEGRADA AL HERO */
+    .reservation-bar {
+      position: relative;
+      z-index: 20;
+      margin-top: 2rem;
+      padding: 1rem 1.5rem;
+      background: rgba(28, 25, 23, 0.95);
+      border: 1px solid var(--border-medium);
+      backdrop-filter: blur(25px);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-lg);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr) 1.2fr;
+      gap: 1rem;
+      width: 100%;
+      max-width: 1080px;
+      align-items: center;
+    }
+
+    .res-field {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+
+    .res-label {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      color: var(--accent-gold);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+
+    .res-input {
+      background: transparent;
+      border: none;
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .res-input option {
+      background: #1c1917;
+      color: #fef3c7;
+    }
+
+    /* ==========================================================================
+       5. MARQUEE CULINARIO
+       ========================================================================== */
+    .marquee-wrapper {
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 1.2rem 0;
+      background: #1c1917;
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+    }
+
+    .marquee-content {
+      display: inline-flex;
+      gap: 3rem;
+      animation: marquee 30s linear infinite;
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      color: var(--accent-gold);
+      text-transform: uppercase;
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ==========================================================================
+       6. CARTA DIGITAL INTERACTIVA CON FILTROS & COMANDA EN VIVO
+       ========================================================================== */
+    .menu-section {
+      padding: 6rem 0;
+    }
+
+    .menu-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 3rem;
+    }
+
+    .menu-categories-nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .cat-btn {
+      padding: 0.65rem 1.4rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      color: var(--text-secondary);
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      text-transform: uppercase;
+    }
+
+    .cat-btn:hover {
+      border-color: var(--accent-gold);
+      color: var(--accent-gold);
+    }
+
+    .cat-btn.active {
+      background: var(--accent-gold);
+      border-color: var(--accent-gold);
+      color: #0c0a09;
+      font-weight: 700;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .dish-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.2rem;
+      transition: var(--transition-smooth);
+      position: relative;
+    }
+
+    .dish-card:hover {
+      border-color: var(--accent-gold);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .dish-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 1px dashed var(--border-subtle);
+      padding-bottom: 0.8rem;
+    }
+
+    .dish-title {
+      font-size: 1.25rem;
+      color: var(--text-primary);
+      margin-bottom: 0.2rem;
+    }
+
+    .dish-price {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+    }
+
+    .dish-desc {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .dish-tags {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .dish-tag {
+      font-size: 0.72rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-sm);
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid var(--border-subtle);
+      color: var(--accent-gold);
+    }
+
+    .dish-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 0.8rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .btn-add-dish {
+      background: transparent;
+      border: 1px solid var(--border-medium);
+      color: var(--text-primary);
+      padding: 0.45rem 1rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.78rem;
+      font-family: var(--font-display);
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-add-dish:hover {
+      background: var(--accent-gold);
+      border-color: var(--accent-gold);
+      color: #0c0a09;
+      font-weight: 700;
+    }
+
+    /* BANDEJA FLOTANTE DE COMANDA / PEDIDO */
+    .order-tray-bar {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 99;
+      background: rgba(28, 25, 23, 0.96);
+      border: 1px solid var(--accent-gold);
+      border-radius: var(--radius-full);
+      padding: 0.75rem 1.75rem;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+      display: none;
+      align-items: center;
+      gap: 1.5rem;
+      backdrop-filter: blur(15px);
+    }
+
+    .order-tray-bar.active {
+      display: flex;
+      animation: slideUp 0.3s ease;
+    }
+
+    @keyframes slideUp {
+      from { transform: translate(-50%, 100%); opacity: 0; }
+      to { transform: translate(-50%, 0); opacity: 1; }
+    }
+
+    /* ==========================================================================
+       7. SELECTOR VISUAL DE ESPACIOS & EXPERIENCIAS
+       ========================================================================== */
+    .spaces-section {
+      padding: 5rem 0;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .spaces-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3.5rem;
+    }
+
+    .space-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: var(--transition-smooth);
+    }
+
+    .space-card:hover {
+      border-color: var(--accent-gold);
+      transform: translateY(-4px);
+    }
+
+    .space-img-box {
+      height: 220px;
+      overflow: hidden;
+    }
+
+    .space-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+    }
+
+    .space-card:hover .space-img-box img {
+      transform: scale(1.06);
+    }
+
+    .space-body {
+      padding: 1.8rem;
+    }
+
+    .space-body h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    .space-capacity {
+      font-size: 0.82rem;
+      color: var(--accent-gold);
+      margin-bottom: 0.8rem;
+      display: block;
+      font-family: var(--font-display);
+      letter-spacing: 0.05em;
+    }
+
+    /* ==========================================================================
+       8. FILOSOFÍA DEL CHEF (EDITORIAL FULL-WIDTH)
+       ========================================================================== */
+    .philosophy-section {
+      padding: 6rem 0;
+      text-align: center;
+      background: radial-gradient(circle at center, rgba(28, 25, 23, 0.8) 0%, rgba(12, 10, 9, 1) 100%);
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .philosophy-quote {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+      line-height: 1.45;
+      color: var(--text-primary);
+      max-width: 900px;
+      margin: 0 auto 2rem;
+    }
+
+    .philosophy-author {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      letter-spacing: 0.15em;
+      color: var(--accent-gold);
+      text-transform: uppercase;
+    }
+
+    /* ==========================================================================
+       9. FOOTER DE HOSPITALIDAD & HORARIOS
+       ========================================================================== */
+    .footer {
+      padding: 5rem 0 3rem;
+      background: #080706;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+      gap: 3rem;
+      margin-bottom: 4rem;
+    }
+
+    .footer-col h4 {
+      font-size: 0.95rem;
+      letter-spacing: 0.12em;
+      color: var(--accent-gold);
+      margin-bottom: 1.2rem;
+      text-transform: uppercase;
+    }
+
+    .footer-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 2rem;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* Botón Flotante Persistente de WhatsApp */
+    .floating-whatsapp {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.85rem 1.5rem;
+      background: #25d366;
+      color: #ffffff;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      border-radius: var(--radius-full);
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+      transition: var(--transition-smooth);
+      text-transform: uppercase;
+    }
+
+    .floating-whatsapp:hover {
+      transform: scale(1.05) translateY(-3px);
+      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.55);
+      color: #ffffff;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .reservation-bar {
+        grid-template-columns: 1fr 1fr;
+      }
+      .menu-grid, .spaces-grid, .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .reservation-bar {
+        grid-template-columns: 1fr;
+      }
+      .floating-whatsapp span {
+        display: none;
+      }
+      .floating-whatsapp {
+        padding: 1rem;
+        border-radius: 50%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Canvas de Chispas & Brasas de Fuego -->
+  <canvas id="embers-canvas"></canvas>
+
+  <!-- Navbar Cinemática -->
+  <header class="navbar-wrapper">
+    <nav class="navbar">
+      <a href="#" class="brand-logo">
+        <i class="fa-solid fa-fire-flame-curved logo-flame-icon"></i>
+        <div class="brand-name">
+          <span id="brand-title">FUEGO & BRASA</span>
+          <span class="brand-sub" id="brand-location">Asador Criollo & Cocina de Autor</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#carta" class="nav-link">La Carta</a></li>
+        <li><a href="#espacios" class="nav-link">Ambientes</a></li>
+        <li><a href="#filosofia" class="nav-link">Filosofía</a></li>
+        <li><a href="#reservas" class="nav-link">Reservas</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="#reservas" class="btn btn-gold" style="padding: 0.6rem 1.3rem; font-size: 0.8rem;">
+          Reservar Mesa
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Full-Bleed Cinemático -->
+  <section class="hero-cinematic">
+    <div class="hero-inner">
+      <div class="badge-amber">
+        <i class="fa-solid fa-fire"></i> Brasas de Quebracho Blanco & Pesca de Costa
+      </div>
+      <p class="hero-tag-quote">"El arte de los fuegos, la paciencia y el tiempo."</p>
+      <h1>CORTES MADURADOS & COCINA DE AUTOR</h1>
+      <p class="hero-desc">
+        Carnes seleccionadas de pastura libre, pesca fresca artesanal del Atlántico y pastas caseras amasadas al huevo en un santuario cálido de luz tenue y aromas de leña.
+      </p>
+
+      <!-- BARRA DE RESERVA INTEGRADA -->
+      <div id="reservas" class="reservation-bar">
+        <div class="res-field">
+          <label class="res-label"><i class="fa-regular fa-calendar"></i> Fecha</label>
+          <input type="date" id="res-date" class="res-input" value="2026-08-15">
+        </div>
+
+        <div class="res-field">
+          <label class="res-label"><i class="fa-regular fa-clock"></i> Horario</label>
+          <select id="res-time" class="res-input">
+            <option value="20:30 hs">20:30 hs (1° Turno)</option>
+            <option value="21:15 hs" selected>21:15 hs (Turno Central)</option>
+            <option value="22:30 hs">22:30 hs (2° Turno)</option>
+            <option value="13:00 hs">13:00 hs (Almuerzo)</option>
+            <option value="14:15 hs">14:15 hs (Almuerzo)</option>
+          </select>
+        </div>
+
+        <div class="res-field">
+          <label class="res-label"><i class="fa-solid fa-user-group"></i> Comensales</label>
+          <select id="res-guests" class="res-input">
+            <option value="2 Personas" selected>2 Personas</option>
+            <option value="3 Personas">3 Personas</option>
+            <option value="4 Personas">4 Personas</option>
+            <option value="5 a 8 Personas">5 a 8 Personas</option>
+            <option value="Cava Privada (9 a 14 pax)">Cava Privada (9+)</option>
+          </select>
+        </div>
+
+        <div class="res-field">
+          <label class="res-label"><i class="fa-solid fa-wine-glass"></i> Espacio</label>
+          <select id="res-space" class="res-input">
+            <option value="Salón Principal con Vista a los Fuegos">Salón Principal</option>
+            <option value="Patio de los Olivos Climatizado">Terraza / Patio</option>
+            <option value="Cava Subterránea Privada">Cava de Vinos</option>
+          </select>
+        </div>
+
+        <button id="btn-confirm-booking-hero" class="btn btn-gold" style="width: 100%;">
+          Reservar Mesa
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marquee Infinito Culinario -->
+  <div class="marquee-wrapper">
+    <div class="marquee-content">
+      <span>• BRASAS DE QUEBRACHO BLANCO •</span>
+      <span>PESCA FRESCA DEL PUERTO •</span>
+      <span>CAVA DE 180 ETIQUETAS DE AUTOR •</span>
+      <span>PASTAS CASERAS AMASADAS A MANO •</span>
+      <span>COCCIÓN LENTA AL DISCO DE ARADO •</span>
+      <span>• BRASAS DE QUEBRACHO BLANCO •</span>
+      <span>PESCA FRESCA DEL PUERTO •</span>
+      <span>CAVA DE 180 ETIQUETAS DE AUTOR •</span>
+      <span>PASTAS CASERAS AMASADAS A MANO •</span>
+    </div>
+  </div>
+
+  <div class="app-container">
+
+    <!-- Carta Digital Interactiva -->
+    <section id="carta" class="menu-section">
+      <div class="menu-header">
+        <div class="badge-amber">Nuestra Propuesta</div>
+        <h2 style="margin: 0.8rem 0 0.5rem;">CARTA GASTRONÓMICA</h2>
+        <p>Platos pensados para compartir, elaborados con materias primas de productores locales y respeto absoluto por el producto.</p>
+      </div>
+
+      <!-- Filtros de Categoría -->
+      <div class="menu-categories-nav">
+        <button class="cat-btn active" data-cat="all">Toda la Carta</button>
+        <button class="cat-btn" data-cat="parrilla">🔥 A las Brasas</button>
+        <button class="cat-btn" data-cat="pastas">🍝 Pastas & Disco</button>
+        <button class="cat-btn" data-cat="pesca">🌊 Pesca & Mar</button>
+        <button class="cat-btn" data-cat="postres">🍮 Postres</button>
+      </div>
+
+      <!-- Grilla de Platos -->
+      <div class="menu-grid" id="dishes-container">
+        
+        <!-- Plato 1: Ojo de Bife -->
+        <div class="dish-card" data-cat="parrilla">
+          <div>
+            <div class="dish-top">
+              <div>
+                <h3 class="dish-title">Ojo de Bife Madurado (500g)</h3>
+                <span class="dish-desc">Corte de pastura con 28 días de maduración en seco, sellado a fuego vivo de quebracho con escamas de sal marina ahumada y romero.</span>
+              </div>
+              <span class="dish-price">$24.500</span>
+            </div>
+            <div class="dish-tags">
+              <span class="dish-tag">🥩 Recomendado del Asador</span>
+              <span class="dish-tag">🌾 Sin TACC</span>
+            </div>
+          </div>
+          <div class="dish-footer">
+            <span style="font-size: 0.8rem; color: var(--text-muted);"><i class="fa-solid fa-wine-bottle" style="color: var(--accent-gold);"></i> Maridaje: Malbec Reserva</span>
+            <button class="btn-add-dish" data-name="Ojo de Bife Madurado" data-price="24500">+ Agregar a mi Selección</button>
+          </div>
+        </div>
+
+        <!-- Plato 2: Mollejas Crocantes -->
+        <div class="dish-card" data-cat="parrilla">
+          <div>
+            <div class="dish-top">
+              <div>
+                <h3 class="dish-title">Mollejas de Corazón Crocantes</h3>
+                <span class="dish-desc">Mollejas doradas lentamente sobre cenizas templadas, glaseadas con reducción de cítricos y tomillo fresco.</span>
+              </div>
+              <span class="dish-price">$18.200</span>
+            </div>
+            <div class="dish-tags">
+              <span class="dish-tag">🔥 Entrada Estrella</span>
+              <span class="dish-tag">🌾 Sin TACC</span>
+            </div>
+          </div>
+          <div class="dish-footer">
+            <span style="font-size: 0.8rem; color: var(--text-muted);"><i class="fa-solid fa-wine-bottle" style="color: var(--accent-gold);"></i> Maridaje: Chardonnay Roble</span>
+            <button class="btn-add-dish" data-name="Mollejas de Corazón" data-price="18200">+ Agregar a mi Selección</button>
+          </div>
+        </div>
+
+        <!-- Plato 3: Sorrentinos de Cordero -->
+        <div class="dish-card" data-cat="pastas">
+          <div>
+            <div class="dish-top">
+              <div>
+                <h3 class="dish-title">Sorrentinos de Cordero Braseado</h3>
+                <span class="dish-desc">Masa al huevo rellena de cordero patagónico cocido 12 horas al vino tinto, con emulsión de manteca de salvia y hongos silvestres.</span>
+              </div>
+              <span class="dish-price">$19.800</span>
+            </div>
+            <div class="dish-tags">
+              <span class="dish-tag">🍝 Amasado a Mano</span>
+            </div>
+          </div>
+          <div class="dish-footer">
+            <span style="font-size: 0.8rem; color: var(--text-muted);"><i class="fa-solid fa-wine-bottle" style="color: var(--accent-gold);"></i> Maridaje: Cabernet Franc</span>
+            <button class="btn-add-dish" data-name="Sorrentinos de Cordero" data-price="19800">+ Agregar a mi Selección</button>
+          </div>
+        </div>
+
+        <!-- Plato 4: Pesca del Día a la Plancha -->
+        <div class="dish-card" data-cat="pesca">
+          <div>
+            <div class="dish-top">
+              <div>
+                <h3 class="dish-title">Pesca del Atlántico a la Plancha</h3>
+                <span class="dish-desc">Captura fresca del día (Cherne o Mero) sellada sobre chapa de hierro, acompañada de vegetales asados y emulsión de alcaparras.</span>
+              </div>
+              <span class="dish-price">$22.000</span>
+            </div>
+            <div class="dish-tags">
+              <span class="dish-tag">🌊 Puerto Local</span>
+              <span class="dish-tag">🌾 Sin TACC</span>
+            </div>
+          </div>
+          <div class="dish-footer">
+            <span style="font-size: 0.8rem; color: var(--text-muted);"><i class="fa-solid fa-wine-bottle" style="color: var(--accent-gold);"></i> Maridaje: Sauvignon Blanc</span>
+            <button class="btn-add-dish" data-name="Pesca del Atlántico" data-price="22000">+ Agregar a mi Selección</button>
+          </div>
+        </div>
+
+        <!-- Plato 5: Provoleta Estacionada -->
+        <div class="dish-card" data-cat="parrilla">
+          <div>
+            <div class="dish-top">
+              <div>
+                <h3 class="dish-title">Provoleta Hilada a las Brasas</h3>
+                <span class="dish-desc">Queso provolone artesanal de tambo, costra bien crocante, tomates confitados al quebracho, orégano fresco y oliva virgen.</span>
+              </div>
+              <span class="dish-price">$13.500</span>
+            </div>
+            <div class="dish-tags">
+              <span class="dish-tag">🌱 Apto Vegetariano</span>
+              <span class="dish-tag">🌾 Sin TACC</span>
+            </div>
+          </div>
+          <div class="dish-footer">
+            <span style="font-size: 0.8rem; color: var(--text-muted);"><i class="fa-solid fa-wine-bottle" style="color: var(--accent-gold);"></i> Maridaje: Pinot Noir</span>
+            <button class="btn-add-dish" data-name="Provoleta Hilada" data-price="13500">+ Agregar a mi Selección</button>
+          </div>
+        </div>
+
+        <!-- Plato 6: Flan Casero Mixto -->
+        <div class="dish-card" data-cat="postres">
+          <div>
+            <div class="dish-top">
+              <div>
+                <h3 class="dish-title">Flan de Yemas & Vainilla Natural</h3>
+                <span class="dish-desc">Receta tradicional con 8 yemas, caramelo oscuro, generosa porción de dulce de leche artesanal de campo y crema batida a punto.</span>
+              </div>
+              <span class="dish-price">$9.200</span>
+            </div>
+            <div class="dish-tags">
+              <span class="dish-tag">🍮 Clásico de Bodegón</span>
+              <span class="dish-tag">🌾 Sin TACC</span>
+            </div>
+          </div>
+          <div class="dish-footer">
+            <span style="font-size: 0.8rem; color: var(--text-muted);"><i class="fa-solid fa-wine-bottle" style="color: var(--accent-gold);"></i> Maridaje: Cosecha Tardía</span>
+            <button class="btn-add-dish" data-name="Flan Casero Mixto" data-price="9200">+ Agregar a mi Selección</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Bandeja Flotante de Comanda -->
+    <div class="order-tray-bar" id="order-tray">
+      <div>
+        <strong style="color: var(--accent-gold); font-size: 0.9rem;" id="tray-count">0 Platos Seleccionados</strong>
+        <span style="font-size: 0.8rem; color: var(--text-secondary); display: block;" id="tray-total">Total: $0 ARS</span>
+      </div>
+      <button id="btn-send-tray-wa" class="btn btn-gold" style="padding: 0.55rem 1.2rem; font-size: 0.78rem;">
+        <i class="fa-brands fa-whatsapp"></i> Enviar Comanda por WhatsApp
+      </button>
+    </div>
+
+    <!-- Ambientes & Espacios del Restaurante -->
+    <section id="espacios" class="spaces-section">
+      <div class="menu-header">
+        <div class="badge-amber">Hospitalidad</div>
+        <h2 style="margin: 0.8rem 0 0.5rem;">NUESTROS AMBIENTES</h2>
+        <p>Cada rincón está pensado para envolver los sentidos con buena acústica, iluminación íntima y servicio cálido.</p>
+      </div>
+
+      <div class="spaces-grid">
+        <div class="space-card">
+          <div class="space-img-box">
+            <img src="assets/hero.jpg" alt="Salón principal frente al fuego">
+          </div>
+          <div class="space-body">
+            <h3>Salón Principal & Fuegos</h3>
+            <span class="space-capacity">Capacidad: Hasta 60 comensales</span>
+            <p>Frente al asador abierto para disfrutar del espectáculo vivo de las brasas y el corte de carnes en directo.</p>
+          </div>
+        </div>
+
+        <div class="space-card">
+          <div class="space-img-box">
+            <img src="assets/dish.jpg" alt="Cava de vinos subterránea">
+          </div>
+          <div class="space-body">
+            <h3>La Cava Subterránea</h3>
+            <span class="space-capacity">Capacidad: Mesa privada de 8 a 14 comensales</span>
+            <p>Espacio exclusivo climatizado rodeado de 180 etiquetas de guarda para cenas privadas y maridajes de autor.</p>
+          </div>
+        </div>
+
+        <div class="space-card">
+          <div class="space-img-box">
+            <img src="assets/hero.jpg" alt="Patio de los Olivos Climatizado">
+          </div>
+          <div class="space-body">
+            <h3>Patio de los Olivos</h3>
+            <span class="space-capacity">Capacidad: Hasta 35 comensales</span>
+            <p>Deck exterior semicubierto con calefacción radiante, luces tenues y vegetación aromática para noches templadas.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filosofía del Chef -->
+    <section id="filosofia" class="philosophy-section">
+      <p class="philosophy-quote">
+        "No apuramos el fuego. Elegimos el corte con respeto, esperamos la brasa justa y dejamos que el tiempo haga su trabajo para que cada bocado sea inolvidable."
+      </p>
+      <span class="philosophy-author">— Chef Ejecutivo & Maestro Asador</span>
+    </section>
+
+  </div>
+
+  <!-- Footer de Hospitalidad -->
+  <footer class="footer">
+    <div class="app-container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="#" class="brand-logo" style="margin-bottom: 1rem;">
+            <i class="fa-solid fa-fire-flame-curved logo-flame-icon"></i>
+            <span class="brand-name" id="footer-brand-name">FUEGO & BRASA</span>
+          </a>
+          <p style="font-size: 0.88rem; line-height: 1.6;">
+            Asador criollo contemporáneo, cocina de producto y cava de vinos seleccionados. Experiencia gastronómica de raíz argentina.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Horarios de Servicio</h4>
+          <ul class="footer-list">
+            <li><strong>Almuerzos:</strong> Jue a Dom · 12:00 a 15:30 hs</li>
+            <li><strong>Cenas:</strong> Mar a Dom · 20:00 a 01:00 hs</li>
+            <li>Lunes cerrado por descanso de cocina</li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Ubicación & Servicios</h4>
+          <ul class="footer-list">
+            <li id="footer-address-text"><i class="fa-solid fa-location-dot" style="color: var(--accent-gold);"></i> Av. Principal 2450, Centro</li>
+            <li><i class="fa-solid fa-square-parking" style="color: var(--accent-gold);"></i> Valet Parking sin cargo</li>
+            <li><i class="fa-solid fa-shirt" style="color: var(--accent-gold);"></i> Dress Code: Smart Casual</li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contacto & Reservas</h4>
+          <ul class="footer-list">
+            <li id="footer-phone-text"><i class="fa-brands fa-whatsapp" style="color: #25d366;"></i> +54 9 223 500-0000</li>
+            <li>Se recomienda reserva previa con 24 hs de anticipación para turnos de cena.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p id="footer-copy-text">© 2026 FUEGO & BRASA · Asador Criollo & Cocina de Autor.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botón Flotante Persistente de WhatsApp Oficial -->
+  <a href="#" id="floating-wa-btn" target="_blank" class="floating-whatsapp" aria-label="Contactar por WhatsApp">
+    <i class="fa-brands fa-whatsapp" style="font-size: 1.35rem;"></i>
+    <span>WhatsApp Directo</span>
+  </a>
+
+  <!-- Scripts: Canvas de Brasas, Filtros de Carta & Lógica de Reservas -->
+  <script>
+    // =========================================================================
+    // 0. LECTOR DE PARÁMETROS DINÁMICOS URL (?n=Nombre&t=Telefono&d=Direccion)
+    // =========================================================================
+    const urlParams = new URLSearchParams(window.location.search);
+    const clientName = urlParams.get('n') || 'Fuego & Brasa Asador';
+    const clientPhone = urlParams.get('t') || '5492235000000';
+    const clientAddress = urlParams.get('d') || 'Av. Principal 2450, Centro';
+
+    document.getElementById('brand-title').textContent = clientName.toUpperCase();
+    document.getElementById('footer-brand-name').textContent = clientName.toUpperCase();
+    document.getElementById('footer-address-text').innerHTML = `<i class="fa-solid fa-location-dot" style="color: var(--accent-gold);"></i> ${clientAddress}`;
+    document.getElementById('footer-phone-text').innerHTML = `<i class="fa-brands fa-whatsapp" style="color: #25d366;"></i> +${clientPhone}`;
+    document.getElementById('footer-copy-text').textContent = `© 2026 ${clientName} · Asador Criollo & Cocina de Autor.`;
+
+    const genericWaUrl = `https://wa.me/${clientPhone}?text=${encodeURIComponent('Hola ' + clientName + '! Quisiera consultar disponibilidad para reservar una mesa.')}`;
+    document.getElementById('floating-wa-btn').href = genericWaUrl;
+
+    // =========================================================================
+    // 1. MOTOR CANVAS DE CHISPAS Y BRASAS DE FUEGO ASCENDENTES
+    // =========================================================================
+    const canvas = document.getElementById('embers-canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height, embers = [];
+
+    function initCanvas() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      embers = [];
+      const count = Math.min(Math.floor(width * 0.03), 40);
+
+      for (let i = 0; i < count; i++) {
+        embers.push({
+          x: Math.random() * width,
+          y: height + Math.random() * 100,
+          vx: (Math.random() - 0.5) * 0.6,
+          vy: -(Math.random() * 1.2 + 0.5),
+          size: Math.random() * 2 + 1,
+          alpha: Math.random() * 0.7 + 0.3,
+          color: Math.random() > 0.3 ? '245, 158, 11' : '234, 88, 12'
+        });
+      }
+    }
+
+    window.addEventListener('resize', initCanvas);
+    initCanvas();
+
+    function renderCanvas() {
+      ctx.clearRect(0, 0, width, height);
+
+      embers.forEach(e => {
+        e.x += e.vx;
+        e.y += e.vy;
+        e.alpha -= 0.002;
+
+        if (e.y < 0 || e.alpha <= 0) {
+          e.y = height + 10;
+          e.x = Math.random() * width;
+          e.alpha = Math.random() * 0.7 + 0.3;
+        }
+
+        ctx.beginPath();
+        ctx.arc(e.x, e.y, e.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${e.color}, ${e.alpha})`;
+        ctx.fill();
+      });
+
+      requestAnimationFrame(renderCanvas);
+    }
+    renderCanvas();
+
+    // =========================================================================
+    // 2. FILTRADO DE LA CARTA GASTRONÓMICA
+    // =========================================================================
+    const catButtons = document.querySelectorAll('.cat-btn');
+    const dishCards = document.querySelectorAll('.dish-card');
+
+    catButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        catButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const cat = btn.dataset.cat;
+        dishCards.forEach(card => {
+          if (cat === 'all' || card.dataset.cat === cat) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // =========================================================================
+    // 3. COMANDA / BANDEJA DE PEDIDO EN VIVO
+    // =========================================================================
+    let selectedDishes = [];
+    const tray = document.getElementById('order-tray');
+    const trayCount = document.getElementById('tray-count');
+    const trayTotal = document.getElementById('tray-total');
+    const sendTrayWaBtn = document.getElementById('btn-send-tray-wa');
+
+    document.querySelectorAll('.btn-add-dish').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const name = btn.dataset.name;
+        const price = parseInt(btn.dataset.price);
+
+        selectedDishes.push({ name, price });
+        btn.textContent = '✓ Agregado';
+        btn.style.background = 'var(--accent-gold)';
+        btn.style.color = '#0c0a09';
+        btn.style.fontWeight = '700';
+
+        setTimeout(() => {
+          btn.textContent = '+ Agregar a mi Selección';
+          btn.style.background = 'transparent';
+          btn.style.color = 'var(--text-primary)';
+          btn.style.fontWeight = '400';
+        }, 1500);
+
+        updateTray();
+      });
+    });
+
+    function updateTray() {
+      if (selectedDishes.length > 0) {
+        tray.classList.add('active');
+        const count = selectedDishes.length;
+        const total = selectedDishes.reduce((sum, item) => sum + item.price, 0);
+        trayCount.textContent = `${count} Plato${count > 1 ? 's' : ''} en tu Selección`;
+        trayTotal.textContent = `Total Estimado: $${total.toLocaleString('es-AR')} ARS`;
+      } else {
+        tray.classList.remove('active');
+      }
+    }
+
+    sendTrayWaBtn.addEventListener('click', () => {
+      const total = selectedDishes.reduce((sum, item) => sum + item.price, 0);
+      const dishesList = selectedDishes.map(d => `• ${d.name} ($${d.price.toLocaleString('es-AR')})`).join('\n');
+
+      const message = `Hola ${clientName}! Quisiera consultar por estos platos de la carta:\n\n` +
+                      `${dishesList}\n\n` +
+                      `💵 *Total Estimado:* $${total.toLocaleString('es-AR')} ARS\n` +
+                      `¿Tienen disponibilidad para reservar mesa o para retiro? Gracias!`;
+
+      window.open(`https://wa.me/${clientPhone}?text=${encodeURIComponent(message)}`, '_blank');
+    });
+
+    // =========================================================================
+    // 4. RESERVA DIRECTA DESDE LA BARRA DEL HERO
+    // =========================================================================
+    const btnHeroBooking = document.getElementById('btn-confirm-booking-hero');
+    btnHeroBooking.addEventListener('click', () => {
+      const date = document.getElementById('res-date').value;
+      const time = document.getElementById('res-time').value;
+      const guests = document.getElementById('res-guests').value;
+      const space = document.getElementById('res-space').value;
+
+      const message = `Hola ${clientName}! Quisiera solicitar una reserva de mesa:\n\n` +
+                      `📅 *Fecha:* ${date}\n` +
+                      `⏰ *Turno:* ${time}\n` +
+                      `👥 *Comensales:* ${guests}\n` +
+                      `🍷 *Espacio Preferido:* ${space}\n\n` +
+                      `Aguardo confirmación de disponibilidad. Muchas gracias!`;
+
+      window.open(`https://wa.me/${clientPhone}?text=${encodeURIComponent(message)}`, '_blank');
+    });
+  </script>
+</body>
+</html>

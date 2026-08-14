@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NUTRIFIT | Viandas Saludables, Meal Prep & Planes Nutricionales</title>
+  <meta name="description" content="Packs semanales de viandas saludables con macros calculados. Comida real envasada al vacío, fresca y lista en 3 minutos. Envíos programados a domicilio.">
+  <meta name="theme-color" content="#f0fdf4">
+  
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="NUTRIFIT | Viandas Saludables & Meal Prep Semanal">
+  <meta property="og:description" content="Resolvé tus almuerzos y cenas de la semana con comida rica, sana y con macros exactos.">
+  <meta property="og:image" content="assets/hero_mealprep.jpg">
+
+  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* ==========================================================================
+       1. VARIABLES Y TOKENS DE DISEÑO (LIME AVOCADO, CRISP HERB & VITAL ORANGE)
+       ========================================================================== */
+    :root {
+      --bg-base: #ffffff;
+      --bg-surface: #ffffff;
+      --bg-herb: #f0fdf4;
+      --bg-herb-subtle: #dcfce7;
+      
+      --accent-green: #16a34a; /* Lime Nutrition Green */
+      --accent-green-hover: #15803d;
+      --accent-green-light: #dcfce7;
+      
+      --accent-orange: #ea580c; /* Energy Orange */
+      --accent-orange-light: #ffedd5;
+      
+      --accent-blue: #0284c7; /* High Protein Blue */
+      --accent-blue-light: #e0f2fe;
+
+      --text-primary: #0f172a; /* Deep Charcoal */
+      --text-secondary: #334155;
+      --text-muted: #64748b;
+
+      --border-subtle: #e2e8f0;
+      --border-green: #bbf7d0;
+      --border-orange: #fed7aa;
+
+      --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 22px;
+      --radius-xl: 30px;
+      --radius-full: 9999px;
+
+      --transition-smooth: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      --shadow-sm: 0 2px 6px rgba(15, 23, 42, 0.04);
+      --shadow-md: 0 8px 24px -2px rgba(15, 23, 42, 0.06);
+      --shadow-lg: 0 18px 40px -4px rgba(22, 163, 74, 0.12);
+      --shadow-green: 0 10px 25px rgba(22, 163, 74, 0.25);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+    }
+
+    body {
+      min-height: 100vh;
+      line-height: 1.55;
+      background-color: var(--bg-base);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(220, 252, 231, 0.7) 0, transparent 50%), 
+        radial-gradient(at 100% 100%, rgba(255, 237, 213, 0.6) 0, transparent 50%);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+    }
+
+    .app-container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 3.5vw, 2.5rem);
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      color: var(--text-primary);
+      letter-spacing: -0.025em;
+      font-weight: 800;
+    }
+
+    h1 {
+      font-size: clamp(2.1rem, 3.8vw, 3.4rem);
+      line-height: 1.14;
+    }
+
+    h2 {
+      font-size: clamp(1.65rem, 2.7vw, 2.35rem);
+      line-height: 1.2;
+    }
+
+    p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1.1rem;
+      background: var(--bg-herb-subtle);
+      border: 1px solid var(--border-green);
+      border-radius: var(--radius-full);
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--accent-green-hover);
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--accent-green);
+      box-shadow: 0 0 8px rgba(22, 163, 74, 0.7);
+      animation: pulse-dot 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.25); }
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      padding: 0.85rem 1.65rem;
+      border-radius: var(--radius-md);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.92rem;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-green {
+      background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+      color: #ffffff;
+      box-shadow: var(--shadow-green);
+    }
+
+    .btn-green:hover {
+      background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+      box-shadow: 0 12px 28px rgba(22, 163, 74, 0.35);
+      transform: translateY(-2px);
+      color: #ffffff;
+    }
+
+    .btn-secondary {
+      background: #ffffff;
+      color: var(--text-primary);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-herb);
+      border-color: var(--accent-green);
+      color: var(--accent-green);
+      transform: translateY(-2px);
+    }
+
+    .btn-whatsapp {
+      background: #25d366;
+      color: #ffffff;
+      font-weight: 700;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    }
+
+    .btn-whatsapp:hover {
+      background: #20ba5a;
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
+      transform: translateY(-2px);
+      color: #ffffff;
+    }
+
+    /* Navbar */
+    .navbar-wrapper {
+      position: sticky;
+      top: 1.25rem;
+      z-index: 100;
+      margin-bottom: 2.5rem;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.8rem 1.6rem;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo-icon-box {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: var(--bg-herb-subtle);
+      border: 1px solid var(--border-green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-green);
+      font-size: 1.3rem;
+    }
+
+    .brand-name {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+      letter-spacing: -0.01em;
+    }
+
+    .brand-sub {
+      font-size: 0.68rem;
+      color: var(--accent-green);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.8rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      transition: var(--transition-smooth);
+    }
+
+    .nav-link:hover {
+      color: var(--accent-green);
+    }
+
+    /* Hero Section */
+    .hero-section {
+      padding: 2rem 0 5rem;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.35rem;
+    }
+
+    .hero-title-highlight {
+      color: var(--accent-green);
+      position: relative;
+    }
+
+    .hero-desc {
+      font-size: 1.12rem;
+      line-height: 1.75;
+      color: var(--text-secondary);
+      max-width: 580px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .hero-perks-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid var(--border-subtle);
+      margin-top: 0.5rem;
+    }
+
+    .perk-card-mini {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .perk-number {
+      font-family: var(--font-display);
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: var(--accent-green);
+      line-height: 1.1;
+    }
+
+    .perk-label {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+      font-weight: 600;
+    }
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .hero-image-card {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-lg);
+      background: #ffffff;
+    }
+
+    .hero-image-card img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.8s ease;
+    }
+
+    .hero-overlay-tag {
+      position: absolute;
+      bottom: 1.25rem;
+      left: 1.25rem;
+      right: 1.25rem;
+      padding: 1rem 1.25rem;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-md);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* PLANIFICADOR DE PACKS SEMANALES (MEAL PREP) */
+    .mealprep-planner-section {
+      padding: 4rem 0;
+      margin-bottom: 5rem;
+    }
+
+    .planner-wrapper {
+      background: #ffffff;
+      border: 1px solid var(--border-green);
+      border-radius: var(--radius-xl);
+      padding: 3.5rem;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .pack-size-selector {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin: 2rem 0;
+    }
+
+    .pack-btn {
+      padding: 1.4rem;
+      border-radius: var(--radius-md);
+      border: 2px solid var(--border-subtle);
+      background: var(--bg-herb);
+      cursor: pointer;
+      text-align: left;
+      transition: var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .pack-btn:hover {
+      border-color: var(--accent-green);
+      transform: translateY(-2px);
+    }
+
+    .pack-btn.active {
+      background: #ffffff;
+      border-color: var(--accent-green);
+      box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.2);
+    }
+
+    .pack-name {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+
+    .pack-discount {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #ffffff;
+      background: var(--accent-orange);
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-full);
+      display: inline-block;
+      align-self: flex-start;
+    }
+
+    .pack-price {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--accent-green);
+    }
+
+    /* GRID DE VIANDAS INTERACTIVAS */
+    .viandas-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+
+    .vianda-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-md);
+      transition: var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .vianda-card:hover {
+      border-color: var(--accent-green);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .vianda-card.selected {
+      border-color: var(--accent-green);
+      box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.25);
+    }
+
+    .vianda-img-wrapper {
+      height: 220px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .vianda-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+
+    .vianda-card:hover .vianda-img-wrapper img {
+      transform: scale(1.08);
+    }
+
+    .vianda-diet-tag {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--accent-green);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .vianda-body {
+      padding: 1.6rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+      gap: 1rem;
+    }
+
+    .vianda-title {
+      font-size: 1.2rem;
+      color: var(--text-primary);
+      margin-bottom: 0.3rem;
+    }
+
+    .macros-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.5rem;
+      background: var(--bg-herb);
+      padding: 0.75rem;
+      border-radius: var(--radius-md);
+      text-align: center;
+    }
+
+    .macro-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .macro-val {
+      font-family: var(--font-display);
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--accent-green-hover);
+    }
+
+    .macro-lbl {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .btn-toggle-meal {
+      width: 100%;
+      padding: 0.75rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-green);
+      background: #ffffff;
+      color: var(--accent-green);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .vianda-card.selected .btn-toggle-meal {
+      background: var(--accent-green);
+      color: #ffffff;
+      border-color: var(--accent-green);
+    }
+
+    /* BARRA FLOTANTE DE PACK SELECCIONADO */
+    .pack-sticky-dock {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 99;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid var(--accent-green);
+      border-radius: var(--radius-full);
+      padding: 0.8rem 2rem;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      backdrop-filter: blur(15px);
+      color: #ffffff;
+    }
+
+    /* UBICACIÓN & LOGÍSTICA DE REPARTO */
+    .delivery-info-section {
+      padding: 4rem 0;
+      margin-bottom: 5rem;
+    }
+
+    .delivery-card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+
+    .deliv-box {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+    }
+
+    .deliv-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      background: var(--bg-herb-subtle);
+      border: 1px solid var(--border-green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      color: var(--accent-green);
+      margin-bottom: 1.2rem;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 3rem 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      background: #ffffff;
+    }
+
+    .floating-whatsapp {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.85rem 1.5rem;
+      background: #25d366;
+      color: #ffffff;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.92rem;
+      border-radius: var(--radius-full);
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+      transition: var(--transition-smooth);
+    }
+
+    .floating-whatsapp:hover {
+      transform: scale(1.05) translateY(-3px);
+      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.55);
+      color: #ffffff;
+    }
+
+    @media (max-width: 992px) {
+      .hero-section, .pack-size-selector, .viandas-grid, .delivery-card-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .nav-links {
+        display: none;
+      }
+      .pack-sticky-dock {
+        width: 92%;
+        gap: 1rem;
+        padding: 0.8rem 1.2rem;
+        flex-direction: column;
+        border-radius: var(--radius-lg);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-perks-grid {
+        grid-template-columns: 1fr;
+      }
+      .floating-whatsapp span {
+        display: none;
+      }
+      .floating-whatsapp {
+        padding: 1rem;
+        border-radius: 50%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <!-- Navbar Flotante -->
+    <header class="navbar-wrapper">
+      <nav class="navbar">
+        <a href="#" class="brand-logo">
+          <div class="logo-icon-box">
+            <i class="fa-solid fa-carrot"></i>
+          </div>
+          <div class="brand-name">
+            <span id="brand-title">NUTRIFIT</span>
+            <span class="brand-sub" id="brand-location">Viandas Saludables & Meal Prep</span>
+          </div>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#packs" class="nav-link">Packs Semanales</a></li>
+          <li><a href="#viandas" class="nav-link">Menú con Macros</a></li>
+          <li><a href="#logistica" class="nav-link">Envíos & Conservación</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <div class="badge-pill">
+            <span class="live-dot"></span>
+            Envíos Refrigerados
+          </div>
+          <a href="#packs" class="btn btn-green" style="padding: 0.55rem 1.2rem; font-size: 0.85rem;">
+            Elegir mi Pack
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <div class="badge-pill">
+          <i class="fa-solid fa-leaf"></i>
+          <span id="hero-tagline">Comida Real · Envasado al Vacío · Macros Exactos</span>
+        </div>
+        <h1>
+          Tus comidas de la semana listas, <span class="hero-title-highlight">ricas y saludables</span>.
+        </h1>
+        <p class="hero-desc">
+          Olvidate de cocinar y lavar tuppers. Elaboramos viandas nutricionales frescas con ingredientes naturales, porciones medidas y macros calculados para tu objetivo de salud o entrenamiento.
+        </p>
+        <div class="hero-actions">
+          <a href="#packs" class="btn btn-green">
+            <i class="fa-solid fa-calendar-check"></i>
+            Armar mi Pack Semanal
+          </a>
+          <a href="#viandas" class="btn btn-secondary">
+            <i class="fa-solid fa-fire-flame-curved" style="color: var(--accent-orange);"></i>
+            Ver Macros de los Platos
+          </a>
+        </div>
+
+        <div class="hero-perks-grid">
+          <div class="perk-card-mini">
+            <span class="perk-number">+40.000</span>
+            <span class="perk-label">Viandas Entregadas</span>
+          </div>
+          <div class="perk-card-mini">
+            <span class="perk-number">3 Min</span>
+            <span class="perk-label">Listas al Microondas</span>
+          </div>
+          <div class="perk-card-mini">
+            <span class="perk-number">0%</span>
+            <span class="perk-label">Conservantes ni Aditivos</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-image-card">
+          <img src="assets/hero_mealprep.jpg" alt="Viandas saludables equilibradas NUTRIFIT">
+          <div class="hero-overlay-tag">
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+              <i class="fa-solid fa-shield-heart" style="font-size: 1.6rem; color: var(--accent-green);"></i>
+              <div>
+                <strong style="font-size: 0.9rem; display: block; color: var(--text-primary);">Lic. en Nutrición</strong>
+                <span style="font-size: 0.78rem; color: var(--accent-green); font-weight: 700;">Menús Diseñados por Nutricionistas</span>
+              </div>
+            </div>
+            <span class="badge-pill" style="font-size: 0.75rem;">
+              <i class="fa-solid fa-snowflake"></i> 90 Días Freezer
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Planificador de Packs Semanales -->
+    <section id="packs" class="mealprep-planner-section">
+      <div class="planner-wrapper">
+        <div style="text-align: center; max-width: 680px; margin: 0 auto;">
+          <div class="badge-pill"><i class="fa-solid fa-box-open"></i> Planes Semanales</div>
+          <h2 style="margin: 0.8rem 0 0.4rem;">Elegí el Tamaño de tu Pack</h2>
+          <p>Seleccioná cuántas comidas necesitás por semana y luego elegí los platos que más te gusten abajo.</p>
+        </div>
+
+        <!-- Selector de Packs -->
+        <div class="pack-size-selector">
+          <div class="pack-btn active" data-pack-size="5" data-pack-price="28500" data-pack-name="Pack 5 Viandas (Lunes a Viernes)">
+            <div>
+              <span class="pack-name">Pack 5 Viandas</span>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.3rem;">1 comida al día para resolver tus almuerzos de oficina o cena.</p>
+            </div>
+            <div>
+              <span class="pack-price">$28.500 ARS</span>
+              <span style="font-size: 0.75rem; color: var(--text-muted); display: block;">($5.700 por vianda)</span>
+            </div>
+          </div>
+
+          <div class="pack-btn" data-pack-size="10" data-pack-price="51300" data-pack-name="Pack 10 Viandas (Almuerzo + Cena)">
+            <div>
+              <span class="pack-discount">10% OFF</span>
+              <span class="pack-name" style="display: block; margin-top: 0.3rem;">Pack 10 Viandas</span>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.3rem;">Almuerzo y cena de lunes a viernes resueltos al 100%.</p>
+            </div>
+            <div>
+              <span class="pack-price">$51.300 ARS</span>
+              <span style="font-size: 0.75rem; color: var(--text-muted); display: block;">($5.130 por vianda)</span>
+            </div>
+          </div>
+
+          <div class="pack-btn" data-pack-size="14" data-pack-price="67830" data-pack-name="Pack 14 Viandas (Semana Completa)">
+            <div>
+              <span class="pack-discount">15% OFF</span>
+              <span class="pack-name" style="display: block; margin-top: 0.3rem;">Pack 14 Viandas</span>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.3rem;">Semana completa (Lunes a Domingo) sin pisar la cocina.</p>
+            </div>
+            <div>
+              <span class="pack-price">$67.830 ARS</span>
+              <span style="font-size: 0.75rem; color: var(--text-muted); display: block;">($4.845 por vianda)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Menú de Viandas -->
+        <div id="viandas" style="margin-top: 3.5rem;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: gap; gap: 1rem;">
+            <div>
+              <h3 style="font-size: 1.35rem;">Elegí tus platos para completar el Pack</h3>
+              <p style="font-size: 0.9rem;">Hacé click en "Agregar" en cada plato que quieras sumar a tu pedido.</p>
+            </div>
+            <div class="badge-pill" style="font-size: 0.9rem;">
+              <span id="pack-counter-display">Seleccionadas: 0 / 5 viandas</span>
+            </div>
+          </div>
+
+          <div class="viandas-grid">
+            
+            <!-- Vianda 1: Salmón con Quinoa -->
+            <div class="vianda-card" data-dish="Salmón Rosado con Quinoa & Espárragos">
+              <div class="vianda-img-wrapper">
+                <img src="assets/salmon_quinoa.jpg" alt="Salmón con quinoa">
+                <span class="vianda-diet-tag">🌾 Sin TACC</span>
+              </div>
+              <div class="vianda-body">
+                <div>
+                  <h4 class="vianda-title">Salmón Rosado con Quinoa & Espárragos</h4>
+                  <p style="font-size: 0.85rem; color: var(--text-secondary);">Salmón a la plancha con quinoa tricolor, espárragos asados y vinagreta cítrica.</p>
+                </div>
+                <div class="macros-row">
+                  <div class="macro-col"><span class="macro-val">480</span><span class="macro-lbl">Kcal</span></div>
+                  <div class="macro-col"><span class="macro-val">42g</span><span class="macro-lbl">Prot</span></div>
+                  <div class="macro-col"><span class="macro-val">35g</span><span class="macro-lbl">Carb</span></div>
+                  <div class="macro-col"><span class="macro-val">14g</span><span class="macro-lbl">Grasas</span></div>
+                </div>
+                <button class="btn-toggle-meal">+ Agregar al Pack</button>
+              </div>
+            </div>
+
+            <!-- Vianda 2: Pollo al Limón -->
+            <div class="vianda-card" data-dish="Pechuga al Limón con Puré de Batatas">
+              <div class="vianda-img-wrapper">
+                <img src="assets/chicken_sweetpotato.jpg" alt="Pollo con batatas asadas">
+                <span class="vianda-diet-tag">⚡ High Protein</span>
+              </div>
+              <div class="vianda-body">
+                <div>
+                  <h4 class="vianda-title">Pechuga al Limón & Batatas Asadas</h4>
+                  <p style="font-size: 0.85rem; color: var(--text-secondary);">Suprema marinada con hierbas, puré rústico de batatas y semillas de girasol.</p>
+                </div>
+                <div class="macros-row">
+                  <div class="macro-col"><span class="macro-val">420</span><span class="macro-lbl">Kcal</span></div>
+                  <div class="macro-col"><span class="macro-val">46g</span><span class="macro-lbl">Prot</span></div>
+                  <div class="macro-col"><span class="macro-val">38g</span><span class="macro-lbl">Carb</span></div>
+                  <div class="macro-col"><span class="macro-val">8g</span><span class="macro-lbl">Grasas</span></div>
+                </div>
+                <button class="btn-toggle-meal">+ Agregar al Pack</button>
+              </div>
+            </div>
+
+            <!-- Vianda 3: Bowl de Ternera -->
+            <div class="vianda-card" data-dish="Bowl de Ternera Magra & Palta">
+              <div class="vianda-img-wrapper">
+                <img src="assets/protein_bowl.jpg" alt="Bowl proteico">
+                <span class="vianda-diet-tag">🔥 Fit Balance</span>
+              </div>
+              <div class="vianda-body">
+                <div>
+                  <h4 class="vianda-title">Bowl de Ternera Magra & Palta</h4>
+                  <p style="font-size: 0.85rem; color: var(--text-secondary);">Lomo magro salteado, arroz yamani, palta en cubos, choclo y tomates cherry.</p>
+                </div>
+                <div class="macros-row">
+                  <div class="macro-col"><span class="macro-val">510</span><span class="macro-lbl">Kcal</span></div>
+                  <div class="macro-col"><span class="macro-val">40g</span><span class="macro-lbl">Prot</span></div>
+                  <div class="macro-col"><span class="macro-val">45g</span><span class="macro-lbl">Carb</span></div>
+                  <div class="macro-col"><span class="macro-val">15g</span><span class="macro-lbl">Grasas</span></div>
+                </div>
+                <button class="btn-toggle-meal">+ Agregar al Pack</button>
+              </div>
+            </div>
+
+            <!-- Vianda 4: Wok de Tofu & Vegetales -->
+            <div class="vianda-card" data-dish="Wok de Tofu Marinado & Vegetales">
+              <div class="vianda-img-wrapper">
+                <img src="assets/veggie_wok.jpg" alt="Wok de vegetales">
+                <span class="vianda-diet-tag">🌱 100% Vegano</span>
+              </div>
+              <div class="vianda-body">
+                <div>
+                  <h4 class="vianda-title">Wok de Tofu Marinado & Sésamo</h4>
+                  <p style="font-size: 0.85rem; color: var(--text-secondary);">Tofu dorado a la soja baja en sodio, brócoli, zanahorias, champiñones y semillas.</p>
+                </div>
+                <div class="macros-row">
+                  <div class="macro-col"><span class="macro-val">360</span><span class="macro-lbl">Kcal</span></div>
+                  <div class="macro-col"><span class="macro-val">26g</span><span class="macro-lbl">Prot</span></div>
+                  <div class="macro-col"><span class="macro-val">32g</span><span class="macro-lbl">Carb</span></div>
+                  <div class="macro-col"><span class="macro-val">12g</span><span class="macro-lbl">Grasas</span></div>
+                </div>
+                <button class="btn-toggle-meal">+ Agregar al Pack</button>
+              </div>
+            </div>
+
+            <!-- Vianda 5: Lasaña de Berenjenas -->
+            <div class="vianda-card" data-dish="Lasaña de Berenjenas & Ricota Magra">
+              <div class="vianda-img-wrapper">
+                <img src="assets/chef_prep.jpg" alt="Lasaña de berenjenas">
+                <span class="vianda-diet-tag">🥑 Low Carb</span>
+              </div>
+              <div class="vianda-body">
+                <div>
+                  <h4 class="vianda-title">Lasaña de Berenjenas Gratinada</h4>
+                  <p style="font-size: 0.85rem; color: var(--text-secondary);">Láminas de berenjenas, ricota magra con albahaca, salsa de tomates naturales y parmesano.</p>
+                </div>
+                <div class="macros-row">
+                  <div class="macro-col"><span class="macro-val">390</span><span class="macro-lbl">Kcal</span></div>
+                  <div class="macro-col"><span class="macro-val">28g</span><span class="macro-lbl">Prot</span></div>
+                  <div class="macro-col"><span class="macro-val">22g</span><span class="macro-lbl">Carb</span></div>
+                  <div class="macro-col"><span class="macro-val">14g</span><span class="macro-lbl">Grasas</span></div>
+                </div>
+                <button class="btn-toggle-meal">+ Agregar al Pack</button>
+              </div>
+            </div>
+
+            <!-- Vianda 6: Medallones de Merluza -->
+            <div class="vianda-card" data-dish="Medallones de Merluza con Vegetales al Vapor">
+              <div class="vianda-img-wrapper">
+                <img src="assets/salmon_quinoa.jpg" alt="Pescado con vegetales">
+                <span class="vianda-diet-tag">🌊 Liviano & Proteico</span>
+              </div>
+              <div class="vianda-body">
+                <div>
+                  <h4 class="vianda-title">Medallones de Merluza al Vapor</h4>
+                  <p style="font-size: 0.85rem; color: var(--text-secondary);">Filet fresco de merluza con vegetales al vapor y toque de pesto de albahaca fresca.</p>
+                </div>
+                <div class="macros-row">
+                  <div class="macro-col"><span class="macro-val">380</span><span class="macro-lbl">Kcal</span></div>
+                  <div class="macro-col"><span class="macro-val">38g</span><span class="macro-lbl">Prot</span></div>
+                  <div class="macro-col"><span class="macro-val">20g</span><span class="macro-lbl">Carb</span></div>
+                  <div class="macro-col"><span class="macro-val">10g</span><span class="macro-lbl">Grasas</span></div>
+                </div>
+                <button class="btn-toggle-meal">+ Agregar al Pack</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Barra Flotante de Pack -->
+    <div class="pack-sticky-dock" id="pack-dock">
+      <div>
+        <strong id="dock-pack-title" style="color: var(--accent-green); font-size: 0.95rem;">Pack 5 Viandas Seleccionado</strong>
+        <span id="dock-pack-summary" style="display: block; font-size: 0.8rem; color: #cbd5e1;">0 / 5 viandas elegidas · $28.500 ARS</span>
+      </div>
+      <button id="btn-order-pack-wa" class="btn btn-green" style="padding: 0.6rem 1.4rem; font-size: 0.85rem;">
+        <i class="fa-brands fa-whatsapp"></i> Confirmar Pedido de Pack
+      </button>
+    </div>
+
+    <!-- Envíos & Conservación -->
+    <section id="logistica" class="delivery-info-section">
+      <div style="text-align: center; max-width: 680px; margin: 0 auto 3rem;">
+        <div class="badge-pill"><i class="fa-solid fa-truck-ramp-box"></i> Logística Refrigerada</div>
+        <h2 style="margin: 0.8rem 0 0.4rem;">¿Cómo Funcionan las Entregas?</h2>
+        <p>Cuidamos la cadena de frío desde nuestra cocina hasta la puerta de tu casa.</p>
+      </div>
+
+      <div class="delivery-card-grid">
+        <div class="deliv-box">
+          <div class="deliv-icon"><i class="fa-solid fa-calendar-days"></i></div>
+          <h4>Días de Entrega</h4>
+          <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.4rem;">
+            Repartos programados los <strong>Domingos y Miércoles de 18:00 a 22:00 hs</strong> en vehículos refrigerados.
+          </p>
+        </div>
+
+        <div class="deliv-box">
+          <div class="deliv-icon"><i class="fa-solid fa-box"></i></div>
+          <h4>Envasado al Vacío</h4>
+          <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.4rem;">
+            Bandejas termoceladas libres de BPA aptas para microondas. Conservan textura, jugosidad y nutrientes por 90 días en freezer.
+          </p>
+        </div>
+
+        <div class="deliv-box">
+          <div class="deliv-icon"><i class="fa-solid fa-bolt"></i></div>
+          <h4>Listas en 3 Minutos</h4>
+          <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.4rem;">
+            Perforás la tapa, calentás 3 minutos al microondas a potencia media y tenés un almuerzo o cena gourmet sin ensuciar nada.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p id="footer-text">© 2026 NUTRIFIT · Viandas Saludables & Meal Prep.</p>
+      <p style="margin-top: 0.5rem; font-size: 0.8rem;">Demo interactiva de alta conversión lista para personalización comercial en tiempo real.</p>
+    </footer>
+
+  </div>
+
+  <!-- Botón Flotante Persistente de WhatsApp Oficial -->
+  <a href="#" id="floating-wa-btn" target="_blank" class="floating-whatsapp" aria-label="Contactar por WhatsApp">
+    <i class="fa-brands fa-whatsapp" style="font-size: 1.4rem;"></i>
+    <span>WhatsApp Directo</span>
+  </a>
+
+  <!-- GSAP & Lenis Smooth Scroll Scripts -->
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <script>
+    // =========================================================================
+    // 0. LENIS + GSAP SCROLLTRIGGER 60FPS SYNCHRONIZATION
+    // =========================================================================
+    gsap.registerPlugin(ScrollTrigger);
+
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true
+    });
+
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+    gsap.ticker.lagSmoothing(0);
+
+    // Animaciones de Entrada Hero & Scroll
+    gsap.from('.hero-content > *', {
+      y: 35,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.12,
+      ease: 'power3.out'
+    });
+
+    gsap.from('.hero-visual', {
+      scale: 0.95,
+      opacity: 0,
+      duration: 1,
+      delay: 0.2,
+      ease: 'power3.out'
+    });
+
+    gsap.utils.toArray('.vianda-card').forEach((card, i) => {
+      gsap.from(card, {
+        scrollTrigger: {
+          trigger: card,
+          start: 'top 85%'
+        },
+        y: 40,
+        opacity: 0,
+        duration: 0.6,
+        delay: (i % 3) * 0.1,
+        ease: 'power2.out'
+      });
+    });
+
+    // =========================================================================
+    // 1. LECTOR DE PARÁMETROS DINÁMICOS URL (?n=Nombre&t=Telefono&d=Direccion)
+    // =========================================================================
+    const urlParams = new URLSearchParams(window.location.search);
+    const clientName = urlParams.get('n') || 'NUTRIFIT Viandas';
+    const clientPhone = urlParams.get('t') || '5492235000000';
+
+    document.getElementById('brand-title').textContent = clientName.toUpperCase();
+    document.getElementById('footer-text').textContent = `© 2026 ${clientName} · Viandas Saludables & Meal Prep.`;
+
+    const genericWaUrl = `https://wa.me/${clientPhone}?text=${encodeURIComponent('Hola ' + clientName + '! Quisiera consultar por sus packs semanales de viandas.')}`;
+    document.getElementById('floating-wa-btn').href = genericWaUrl;
+
+    // =========================================================================
+    // 2. PLANIFICADOR INTERACTIVO DE PACKS DE VIANDAS
+    // =========================================================================
+    let selectedPackSize = 5;
+    let selectedPackPrice = 28500;
+    let selectedPackName = 'Pack 5 Viandas';
+    let selectedMeals = [];
+
+    const packButtons = document.querySelectorAll('.pack-btn');
+    const viandaCards = document.querySelectorAll('.vianda-card');
+    const counterDisplay = document.getElementById('pack-counter-display');
+    const dockTitle = document.getElementById('dock-pack-title');
+    const dockSummary = document.getElementById('dock-pack-summary');
+    const orderPackWaBtn = document.getElementById('btn-order-pack-wa');
+
+    packButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        packButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        selectedPackSize = parseInt(btn.dataset.packSize);
+        selectedPackPrice = parseInt(btn.dataset.packPrice);
+        selectedPackName = btn.dataset.packName;
+
+        // Limpiar selección excedente
+        if (selectedMeals.length > selectedPackSize) {
+          selectedMeals = selectedMeals.slice(0, selectedPackSize);
+          syncCardsWithSelected();
+        }
+
+        updatePackUI();
+      });
+    });
+
+    viandaCards.forEach(card => {
+      const dish = card.dataset.dish;
+      const toggleBtn = card.querySelector('.btn-toggle-meal');
+
+      toggleBtn.addEventListener('click', () => {
+        const index = selectedMeals.indexOf(dish);
+
+        if (index > -1) {
+          selectedMeals.splice(index, 1);
+          card.classList.remove('selected');
+          toggleBtn.textContent = '+ Agregar al Pack';
+        } else {
+          if (selectedMeals.length >= selectedPackSize) {
+            alert(`Ya completaste tu ${selectedPackName} (${selectedPackSize} viandas). Si querés sumar más, podés seleccionar el Pack superior.`);
+            return;
+          }
+          selectedMeals.push(dish);
+          card.classList.add('selected');
+          toggleBtn.textContent = '✓ Agregado al Pack';
+        }
+
+        updatePackUI();
+      });
+    });
+
+    function syncCardsWithSelected() {
+      viandaCards.forEach(card => {
+        const dish = card.dataset.dish;
+        const toggleBtn = card.querySelector('.btn-toggle-meal');
+        if (selectedMeals.includes(dish)) {
+          card.classList.add('selected');
+          toggleBtn.textContent = '✓ Agregado al Pack';
+        } else {
+          card.classList.remove('selected');
+          toggleBtn.textContent = '+ Agregar al Pack';
+        }
+      });
+    }
+
+    function updatePackUI() {
+      counterDisplay.textContent = `Seleccionadas: ${selectedMeals.length} / ${selectedPackSize} viandas`;
+      dockTitle.textContent = `${selectedPackName} (${selectedMeals.length}/${selectedPackSize} listas)`;
+      dockSummary.textContent = `${selectedMeals.length} seleccionadas · Total: $${selectedPackPrice.toLocaleString('es-AR')} ARS`;
+    }
+
+    orderPackWaBtn.addEventListener('click', () => {
+      if (selectedMeals.length === 0) {
+        alert('Por favor seleccioná al menos 1 vianda de la lista para armar tu pack.');
+        return;
+      }
+
+      const mealsList = selectedMeals.map((m, i) => `${i + 1}. ${m}`).join('\n');
+      const message = `Hola ${clientName}! Quisiera encargar mi pack semanal de viandas:\n\n` +
+                      `📦 *Plan:* ${selectedPackName}\n` +
+                      `💵 *Total:* $${selectedPackPrice.toLocaleString('es-AR')} ARS\n\n` +
+                      `🥗 *Platos Elegidos (${selectedMeals.length}/${selectedPackSize}):*\n${mealsList}\n\n` +
+                      `¿Me confirman día y horario de entrega para mi domicilio? Muchas gracias!`;
+
+      window.open(`https://wa.me/${clientPhone}?text=${encodeURIComponent(message)}`, '_blank');
+    });
+  </script>
+</body>
+</html>

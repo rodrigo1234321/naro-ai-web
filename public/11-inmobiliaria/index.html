@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALTAMIRA | Inmobiliaria, Propiedades de Categoría & Desarrollos</title>
+  <meta name="description" content="Venta y alquiler de departamentos frente al mar, residencias en barrios privados y desarrollos en pozo. Tasaciones oficiales y visitas guiadas.">
+  <meta name="theme-color" content="#ffffff">
+  
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ALTAMIRA | Bienes Raíces & Desarrollos de Categoría">
+  <meta property="og:description" content="Propiedades seleccionadas en las mejores ubicaciones. Consultá por WhatsApp.">
+  <meta property="og:image" content="assets/hero_architecture.jpg">
+
+  <!-- Google Fonts: Cinzel, Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* ==========================================================================
+       1. VARIABLES Y TOKENS DE DISEÑO (OBSIDIAN SLATE, CHAMPAGNE GOLD & CRISP WHITE)
+       ========================================================================== */
+    :root {
+      --bg-base: #ffffff;
+      --bg-surface: #ffffff;
+      --bg-subtle: #f8fafc;
+      --bg-card: #ffffff;
+      
+      --accent-gold: #d97706; /* Champagne Gold */
+      --accent-gold-hover: #b45309;
+      --accent-gold-light: #fef3c7;
+      
+      --accent-blue: #0284c7; /* Ocean Blue */
+      --accent-blue-light: #e0f2fe;
+
+      --text-primary: #0f172a; /* Obsidian Charcoal */
+      --text-secondary: #334155;
+      --text-muted: #64748b;
+
+      --border-subtle: #e2e8f0;
+      --border-medium: #cbd5e1;
+      --border-gold: #fde68a;
+
+      --font-display: 'Cinzel', Georgia, serif;
+      --font-ui: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+
+      --radius-sm: 6px;
+      --radius-md: 14px;
+      --radius-lg: 22px;
+      --radius-xl: 32px;
+      --radius-full: 9999px;
+
+      --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+      --shadow-md: 0 10px 30px -4px rgba(15, 23, 42, 0.08);
+      --shadow-lg: 0 20px 45px -4px rgba(217, 119, 6, 0.12);
+      --shadow-gold: 0 10px 25px rgba(217, 119, 6, 0.25);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+    }
+
+    body {
+      min-height: 100vh;
+      line-height: 1.6;
+      background-color: var(--bg-base);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(254, 243, 199, 0.5) 0, transparent 40%), 
+        radial-gradient(at 100% 100%, rgba(224, 242, 254, 0.5) 0, transparent 40%);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+    }
+
+    .app-container {
+      width: 100%;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 3.5vw, 2.5rem);
+    }
+
+    h1, h2, h3, h4 {
+      color: var(--text-primary);
+      letter-spacing: 0.01em;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.3rem, 4.6vw, 3.8rem);
+      line-height: 1.12;
+      font-weight: 800;
+    }
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.7rem, 2.8vw, 2.5rem);
+      line-height: 1.2;
+      font-weight: 700;
+    }
+
+    p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .badge-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.45rem 1.25rem;
+      background: var(--accent-gold-light);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-full);
+      font-family: var(--font-ui);
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--accent-gold-hover);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--accent-gold);
+      box-shadow: 0 0 10px rgba(217, 119, 6, 0.8);
+      animation: pulse-dot 1.8s infinite ease-in-out;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.3; transform: scale(1.35); }
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      padding: 0.95rem 2rem;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-ui);
+      font-weight: 800;
+      font-size: 0.92rem;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+      color: #ffffff;
+      box-shadow: var(--shadow-gold);
+    }
+
+    .btn-gold:hover {
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      box-shadow: 0 12px 30px rgba(217, 119, 6, 0.4);
+      transform: translateY(-2px);
+      color: #ffffff;
+    }
+
+    .btn-secondary {
+      background: #ffffff;
+      color: var(--text-primary);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-subtle);
+      border-color: var(--accent-gold);
+      color: var(--accent-gold);
+      transform: translateY(-2px);
+    }
+
+    .btn-whatsapp {
+      background: #25d366;
+      color: #ffffff;
+      font-weight: 800;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    }
+
+    .btn-whatsapp:hover {
+      background: #20ba5a;
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
+      transform: translateY(-2px);
+      color: #ffffff;
+    }
+
+    /* Navbar */
+    .navbar-wrapper {
+      position: sticky;
+      top: 1.25rem;
+      z-index: 100;
+      margin-bottom: 2rem;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 2rem;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .logo-icon-box {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: var(--accent-gold-light);
+      border: 1px solid var(--border-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-gold);
+      font-size: 1.3rem;
+    }
+
+    .brand-name {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+      letter-spacing: 0.05em;
+    }
+
+    .brand-sub {
+      font-family: var(--font-ui);
+      font-size: 0.65rem;
+      color: var(--accent-gold);
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-family: var(--font-ui);
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      transition: var(--transition-smooth);
+    }
+
+    .nav-link:hover {
+      color: var(--accent-gold);
+    }
+
+    /* HERO: ARCHITECTURAL PANORAMA & SEARCH DOCK */
+    .hero-realestate {
+      min-height: 82vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 6rem 1rem 4rem;
+      position: relative;
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.45) 0%, rgba(15, 23, 42, 0.85) 100%), url('assets/hero_architecture.jpg') center/cover no-repeat;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      margin-bottom: 4rem;
+      color: #ffffff;
+    }
+
+    .hero-realestate h1 {
+      color: #ffffff;
+      max-width: 900px;
+    }
+
+    .hero-title-highlight {
+      color: var(--accent-gold-light);
+      font-style: italic;
+    }
+
+    .hero-realestate p {
+      color: #e2e8f0;
+      max-width: 680px;
+      font-size: 1.15rem;
+      margin: 1.2rem auto 2.5rem;
+    }
+
+    /* DOCK DE BÚSQUEDA INTEGRADO */
+    .search-dock-bar {
+      width: 100%;
+      max-width: 1050px;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(20px);
+      padding: 1.2rem;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr auto;
+      gap: 1rem;
+      align-items: center;
+      text-align: left;
+    }
+
+    .dock-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      border-right: 1px solid var(--border-subtle);
+      padding-right: 1rem;
+    }
+
+    .dock-field:last-child {
+      border-right: none;
+    }
+
+    .dock-lbl {
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--accent-gold);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .dock-select {
+      width: 100%;
+      border: none;
+      background: transparent;
+      font-family: var(--font-ui);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      outline: none;
+      cursor: pointer;
+    }
+
+    /* FILTROS POR OPERACIÓN */
+    .operation-chips {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 2.5rem 0;
+    }
+
+    .op-chip-btn {
+      padding: 0.65rem 1.6rem;
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      font-family: var(--font-ui);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .op-chip-btn:hover {
+      border-color: var(--accent-gold);
+      color: var(--accent-gold);
+    }
+
+    .op-chip-btn.active {
+      background: var(--accent-gold);
+      border-color: var(--accent-gold);
+      color: #ffffff;
+      font-weight: 800;
+      box-shadow: var(--shadow-gold);
+    }
+
+    /* GRID DE PROPIEDADES */
+    .properties-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.2rem;
+      margin-bottom: 5rem;
+    }
+
+    .property-card {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition-smooth);
+    }
+
+    .property-card:hover {
+      border-color: var(--accent-gold);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .property-img-wrapper {
+      height: 240px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .property-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+
+    .property-card:hover .property-img-wrapper img {
+      transform: scale(1.08);
+    }
+
+    .property-tag-op {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-full);
+      background: rgba(15, 23, 42, 0.9);
+      font-family: var(--font-ui);
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .property-tag-zone {
+      position: absolute;
+      bottom: 1rem;
+      left: 1rem;
+      padding: 0.3rem 0.75rem;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.95);
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--accent-gold-hover);
+    }
+
+    .property-body {
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+      gap: 1.2rem;
+    }
+
+    .property-price {
+      font-family: var(--font-ui);
+      font-size: 1.45rem;
+      font-weight: 900;
+      color: var(--accent-gold);
+    }
+
+    .property-features-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+      padding: 0.85rem 0;
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      text-align: center;
+    }
+
+    .feat-col {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .feat-val {
+      font-family: var(--font-ui);
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+
+    /* AGENDADOR DE VISITAS & TASACIÓN */
+    .services-split-section {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 3.5rem;
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      padding: 3.5rem;
+      box-shadow: var(--shadow-lg);
+      margin-bottom: 5rem;
+      align-items: center;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 4rem 0 2.5rem;
+      background: #ffffff;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    .floating-whatsapp {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.85rem 1.5rem;
+      background: #25d366;
+      color: #ffffff;
+      font-family: var(--font-ui);
+      font-weight: 800;
+      font-size: 0.92rem;
+      border-radius: var(--radius-full);
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+      transition: var(--transition-smooth);
+    }
+
+    .floating-whatsapp:hover {
+      transform: scale(1.05) translateY(-3px);
+      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.55);
+      color: #ffffff;
+    }
+
+    @media (max-width: 992px) {
+      .properties-grid, .services-split-section, .search-dock-bar {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .dock-field {
+        border-right: none;
+        border-bottom: 1px solid var(--border-subtle);
+        padding-bottom: 0.8rem;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .floating-whatsapp span {
+        display: none;
+      }
+      .floating-whatsapp {
+        padding: 1rem;
+        border-radius: 50%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <!-- Navbar -->
+    <header class="navbar-wrapper">
+      <nav class="navbar">
+        <a href="#" class="brand-logo">
+          <div class="logo-icon-box">
+            <i class="fa-solid fa-building-columns"></i>
+          </div>
+          <div class="brand-name">
+            <span id="brand-title">ALTAMIRA</span>
+            <span class="brand-sub" id="brand-location">Bienes Raíces & Desarrollos</span>
+          </div>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#propiedades" class="nav-link">Propiedades</a></li>
+          <li><a href="#tasacion" class="nav-link">Tasá tu Inmueble</a></li>
+          <li><a href="#visitas" class="nav-link">Agendar Visita</a></li>
+          <li><a href="#contacto" class="nav-link">Martillero Responsable</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <div class="badge-gold">
+            <span class="live-dot"></span>
+            Reg. Martillero Nº 3420
+          </div>
+          <a href="#tasacion" class="btn btn-gold" style="padding: 0.55rem 1.3rem; font-size: 0.82rem; margin-left: 0.5rem;">
+            Tasar Inmueble
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- HERO CON DOCK DE BÚSQUEDA INTEGRADO -->
+    <section class="hero-realestate">
+      <div class="badge-gold" style="background: rgba(254, 243, 199, 0.95); margin-bottom: 1rem;">
+        <i class="fa-solid fa-gem"></i> Propiedades de Categoría Seleccionadas
+      </div>
+      <h1>
+        ENCONTRÁ TU PRÓXIMO HOGAR O <span class="hero-title-highlight">INVERSIÓN FRENTE AL MAR</span>.
+      </h1>
+      <p>
+        Semipisos de alta gama, residencias en barrios cerrados y emprendimientos en pozo con respaldo legal y tasaciones profesionales en Mar del Plata.
+      </p>
+
+      <!-- DOCK DE BÚSQUEDA RÁPIDA -->
+      <div class="search-dock-bar">
+        <div class="dock-field">
+          <span class="dock-lbl">1. Operación</span>
+          <select id="dock-operation" class="dock-select">
+            <option value="all">Todas las Operaciones</option>
+            <option value="venta" selected>En Venta</option>
+            <option value="alquiler">Alquiler 36 Meses</option>
+            <option value="pozo">Emprendimiento en Pozo</option>
+          </select>
+        </div>
+
+        <div class="dock-field">
+          <span class="dock-lbl">2. Tipo de Inmueble</span>
+          <select id="dock-type" class="dock-select">
+            <option value="all">Todos los Inmuebles</option>
+            <option value="depto">Departamento / Semipiso</option>
+            <option value="casa">Casa / Residencia</option>
+            <option value="penthouse">Penthouse c/ Terraza</option>
+          </select>
+        </div>
+
+        <div class="dock-field">
+          <span class="dock-lbl">3. Zona / Barrio</span>
+          <select id="dock-zone" class="dock-select">
+            <option value="all">Todas las Zonas</option>
+            <option value="Playa Grande">Playa Grande</option>
+            <option value="Varese">Varese</option>
+            <option value="Güemes">Güemes Residencial</option>
+            <option value="Rumencó">Barrio Privado Rumencó</option>
+          </select>
+        </div>
+
+        <div>
+          <button id="btn-dock-search" class="btn btn-gold" style="width: 100%; padding: 0.9rem 1.6rem;">
+            <i class="fa-solid fa-magnifying-glass"></i> Buscar
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- FILTROS POR OPERACIÓN -->
+    <div id="propiedades">
+      <div style="text-align: center; max-width: 700px; margin: 0 auto;">
+        <div class="badge-gold">Catálogo Exclusivo</div>
+        <h2 style="margin: 0.8rem 0 0.4rem;">PROPIEDADES DISPONIBLES</h2>
+        <p>Explorá nuestras unidades seleccionadas con fotos reales y ficha técnica detallada.</p>
+      </div>
+
+      <div class="operation-chips">
+        <button class="op-chip-btn active" data-filter="all">Todas las Propiedades</button>
+        <button class="op-chip-btn" data-filter="venta">En Venta (USD)</button>
+        <button class="op-chip-btn" data-filter="alquiler">Alquiler</button>
+        <button class="op-chip-btn" data-filter="pozo">En Pozo / Cuotas</button>
+      </div>
+    </div>
+
+    <!-- GRID DE PROPIEDADES -->
+    <div class="properties-grid" id="properties-grid-container">
+      
+      <!-- Propiedad 1: Semipiso Playa Grande -->
+      <div class="property-card" data-category="venta" data-zone="Playa Grande" data-type="depto">
+        <div class="property-img-wrapper">
+          <img src="assets/property_penthouse.jpg" alt="Semipiso Playa Grande">
+          <span class="property-tag-op">En Venta</span>
+          <span class="property-tag-zone">📍 Playa Grande</span>
+        </div>
+        <div class="property-body">
+          <div>
+            <span class="property-price">USD 380.000</span>
+            <h3 style="font-family: var(--font-ui); font-size: 1.2rem; margin-top: 0.4rem;">Semipiso Frente al Mar c/ Balcón</h3>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.3rem;">Living apaisado con vista franca a la bahía, palier privado y cocina con isla de silestone.</p>
+          </div>
+
+          <div class="property-features-row">
+            <div class="feat-col"><span class="feat-val">165 m²</span><span>Totales</span></div>
+            <div class="feat-col"><span class="feat-val">3 Suites</span><span>Dormitorios</span></div>
+            <div class="feat-col"><span class="feat-val">2 Autos</span><span>Cochera Doble</span></div>
+          </div>
+
+          <button class="btn btn-gold btn-book-visit-js" data-property="Semipiso Playa Grande (USD 380.000)" style="width: 100%; padding: 0.75rem;">
+            <i class="fa-solid fa-calendar-days"></i> Agendar Visita In Situ
+          </button>
+        </div>
+      </div>
+
+      <!-- Propiedad 2: Residencia Rumencó -->
+      <div class="property-card" data-category="venta" data-zone="Rumencó" data-type="casa">
+        <div class="property-img-wrapper">
+          <img src="assets/property_house.jpg" alt="Casa en Rumencó">
+          <span class="property-tag-op">En Venta</span>
+          <span class="property-tag-zone">📍 Bº Privado Rumencó</span>
+        </div>
+        <div class="property-body">
+          <div>
+            <span class="property-price">USD 520.000</span>
+            <h3 style="font-family: var(--font-ui); font-size: 1.2rem; margin-top: 0.4rem;">Residencia Minimalista con Piscina</h3>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.3rem;">Desarrollada en dos plantas sobre lote de 900 m², galería con parrilla y piscina climatizada.</p>
+          </div>
+
+          <div class="property-features-row">
+            <div class="feat-col"><span class="feat-val">320 m²</span><span>Cubiertos</span></div>
+            <div class="feat-col"><span class="feat-val">4 Dorms</span><span>1 Master Suite</span></div>
+            <div class="feat-col"><span class="feat-val">Piscina</span><span>Parque 900m²</span></div>
+          </div>
+
+          <button class="btn btn-gold btn-book-visit-js" data-property="Residencia Rumencó (USD 520.000)" style="width: 100%; padding: 0.75rem;">
+            <i class="fa-solid fa-calendar-days"></i> Agendar Visita In Situ
+          </button>
+        </div>
+      </div>
+
+      <!-- Propiedad 3: Penthouse Varese -->
+      <div class="property-card" data-category="venta" data-zone="Varese" data-type="penthouse">
+        <div class="property-img-wrapper">
+          <img src="assets/property_pool.jpg" alt="Penthouse en Varese">
+          <span class="property-tag-op">En Venta</span>
+          <span class="property-tag-zone">📍 Bahía Varese</span>
+        </div>
+        <div class="property-body">
+          <div>
+            <span class="property-price">USD 440.000</span>
+            <h3 style="font-family: var(--font-ui); font-size: 1.2rem; margin-top: 0.4rem;">Penthouse Panorámico c/ Jacuzzi</h3>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.3rem;">Terraza propia con hidromasaje exterior, quincho privado y vista 360° a toda la costa.</p>
+          </div>
+
+          <div class="property-features-row">
+            <div class="feat-col"><span class="feat-val">210 m²</span><span>Totales</span></div>
+            <div class="feat-col"><span class="feat-val">3 Amb</span><span>2 Baños</span></div>
+            <div class="feat-col"><span class="feat-val">Terraza</span><span>Jacuzzi Propio</span></div>
+          </div>
+
+          <button class="btn btn-gold btn-book-visit-js" data-property="Penthouse Varese (USD 440.000)" style="width: 100%; padding: 0.75rem;">
+            <i class="fa-solid fa-calendar-days"></i> Agendar Visita In Situ
+          </button>
+        </div>
+      </div>
+
+      <!-- Propiedad 4: Depto Güemes -->
+      <div class="property-card" data-category="alquiler" data-zone="Güemes" data-type="depto">
+        <div class="property-img-wrapper">
+          <img src="assets/property_apartment.jpg" alt="Depto en Güemes">
+          <span class="property-tag-op">Alquiler 36 Meses</span>
+          <span class="property-tag-zone">📍 Güemes Residencial</span>
+        </div>
+        <div class="property-body">
+          <div>
+            <span class="property-price">$450.000 ARS / mes</span>
+            <h3 style="font-family: var(--font-ui); font-size: 1.2rem; margin-top: 0.4rem;">2 Ambientes a Estrenar con Cochera</h3>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.3rem;">Edificio boutique con seguridad 24hs, calefacción por losa radiante y cochera cubierta fija.</p>
+          </div>
+
+          <div class="property-features-row">
+            <div class="feat-col"><span class="feat-val">58 m²</span><span>Cubiertos</span></div>
+            <div class="feat-col"><span class="feat-val">1 Dorm</span><span>Vestidor</span></div>
+            <div class="feat-col"><span class="feat-val">Cochera</span><span>Baulera</span></div>
+          </div>
+
+          <button class="btn btn-gold btn-book-visit-js" data-property="Depto Güemes ($450.000 ARS/mes)" style="width: 100%; padding: 0.75rem;">
+            <i class="fa-solid fa-calendar-days"></i> Agendar Visita In Situ
+          </button>
+        </div>
+      </div>
+
+      <!-- Propiedad 5: Pozo Torre Atlántico -->
+      <div class="property-card" data-category="pozo" data-zone="Playa Grande" data-type="depto">
+        <div class="property-img-wrapper">
+          <img src="assets/hero_architecture.jpg" alt="Emprendimiento en Pozo">
+          <span class="property-tag-op">En Pozo / Financiación</span>
+          <span class="property-tag-zone">📍 Playa Grande</span>
+        </div>
+        <div class="property-body">
+          <div>
+            <span class="property-price">Anticipo USD 45.000</span>
+            <h3 style="font-family: var(--font-ui); font-size: 1.2rem; margin-top: 0.4rem;">Torre Atlántico · Unidades de 2 y 3 Amb</h3>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.3rem;">30% de anticipo y saldo en 36 cuotas en pesos ajustadas por CAC. Posesión Diciembre 2027.</p>
+          </div>
+
+          <div class="property-features-row">
+            <div class="feat-col"><span class="feat-val">62 a 120 m²</span><span>Unidades</span></div>
+            <div class="feat-col"><span class="feat-val">Piscina</span><span>SUM & Gym</span></div>
+            <div class="feat-col"><span class="feat-val">36 Cuotas</span><span>En Pesos CAC</span></div>
+          </div>
+
+          <button class="btn btn-gold btn-book-visit-js" data-property="Torre Atlántico Pozo" style="width: 100%; padding: 0.75rem;">
+            <i class="fa-solid fa-file-pdf"></i> Solicitar Dossier de Inversión
+          </button>
+        </div>
+      </div>
+
+      <!-- Propiedad 6: Casa Los Troncos -->
+      <div class="property-card" data-category="venta" data-zone="Güemes" data-type="casa">
+        <div class="property-img-wrapper">
+          <img src="assets/agent_portrait.jpg" alt="Asesor Inmobiliario Altamira">
+          <span class="property-tag-op">En Venta</span>
+          <span class="property-tag-zone">📍 Los Troncos</span>
+        </div>
+        <div class="property-body">
+          <div>
+            <span class="property-price">USD 340.000</span>
+            <h3 style="font-family: var(--font-ui); font-size: 1.2rem; margin-top: 0.4rem;">Chalet Clásico con Parque & Quincho</h3>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.3rem;">Paredes de piedra Mar del Plata, carpintería de cedro macizo, jardín parquizado y garaje pasante.</p>
+          </div>
+
+          <div class="property-features-row">
+            <div class="feat-col"><span class="feat-val">280 m²</span><span>Totales</span></div>
+            <div class="feat-col"><span class="feat-val">3 Dorms</span><span>Quincho</span></div>
+            <div class="feat-col"><span class="feat-val">Parque</span><span>Parrilla</span></div>
+          </div>
+
+          <button class="btn btn-gold btn-book-visit-js" data-property="Chalet Los Troncos (USD 340.000)" style="width: 100%; padding: 0.75rem;">
+            <i class="fa-solid fa-calendar-days"></i> Agendar Visita In Situ
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- MÓDULO SPLIT: TASACIÓN ONLINE & AGENDADOR DE VISITAS -->
+    <section class="services-split-section" id="tasacion">
+      <div>
+        <div class="badge-gold"><i class="fa-solid fa-calculator"></i> Tasación Profesional</div>
+        <h2 style="margin: 0.8rem 0 0.4rem;">¿QUERÉS VENDER O ALQUILAR TU PROPIEDAD?</h2>
+        <p>Realizamos un estudio comparativo de mercado riguroso para fijar el valor óptimo de venta o renta de tu inmueble.</p>
+
+        <div style="margin-top: 2rem; display: flex; flex-direction: column; gap: 0.9rem;">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <i class="fa-solid fa-circle-check" style="color: var(--accent-gold); font-size: 1.1rem;"></i>
+            <span style="font-size: 0.95rem;">Fotografía profesional y recorridos 360° incluidos.</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <i class="fa-solid fa-circle-check" style="color: var(--accent-gold); font-size: 1.1rem;"></i>
+            <span style="font-size: 0.95rem;">Publicación destacada en los principales portales inmobiliarios.</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <i class="fa-solid fa-circle-check" style="color: var(--accent-gold); font-size: 1.1rem;"></i>
+            <span style="font-size: 0.95rem;">Asesoramiento legal, notarial y de escrituración.</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="background: var(--bg-subtle); padding: 2.2rem; border-radius: var(--radius-lg); border: 1px solid var(--border-subtle);" id="visitas">
+        <h3 style="font-family: var(--font-ui); font-size: 1.2rem; margin-bottom: 1rem;">Solicitar Tasación / Visita</h3>
+        
+        <div style="margin-bottom: 1rem;">
+          <label style="display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 0.35rem;">Tu Nombre y Apellido:</label>
+          <input type="text" id="appraisal-name" placeholder="Ej: Marcelo Fernández" style="width: 100%; padding: 0.75rem; border-radius: var(--radius-sm); border: 1px solid var(--border-medium); outline: none;">
+        </div>
+
+        <div style="margin-bottom: 1rem;">
+          <label style="display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 0.35rem;">Dirección o Propiedad de Interés:</label>
+          <input type="text" id="appraisal-address" placeholder="Ej: Alem 3400 o Semipiso Playa Grande" style="width: 100%; padding: 0.75rem; border-radius: var(--radius-sm); border: 1px solid var(--border-medium); outline: none;">
+        </div>
+
+        <div style="margin-bottom: 1.2rem;">
+          <label style="display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 0.35rem;">Tipo de Gestión:</label>
+          <select id="appraisal-type" style="width: 100%; padding: 0.75rem; border-radius: var(--radius-sm); border: 1px solid var(--border-medium); outline: none; font-weight: 600;">
+            <option value="Tasación para Venta">Quiero Tasar mi Propiedad para Vender</option>
+            <option value="Tasación para Alquiler">Quiero Tasar mi Propiedad para Alquilar</option>
+            <option value="Coordinar Visita Presencial">Quiero Coordinar una Visita Presencial</option>
+          </select>
+        </div>
+
+        <button id="btn-send-appraisal-wa" class="btn btn-gold" style="width: 100%; padding: 0.95rem;">
+          <i class="fa-brands fa-whatsapp"></i> Contactar al Martillero por WhatsApp
+        </button>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer" id="contacto">
+    <div class="app-container">
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem;">
+        <i class="fa-solid fa-building-columns" style="font-size: 2rem; color: var(--accent-gold);"></i>
+        <h3 id="footer-brand-title" style="font-family: var(--font-display); font-size: 1.4rem; letter-spacing: 0.08em;">ALTAMIRA BIENES RAÍCES</h3>
+        <p id="footer-address-text" style="color: var(--text-secondary);">Av. Colón 1250, Piso 3 · Mar del Plata</p>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Colegio de Martilleros y Corredores Públicos · Reg. 3420</p>
+      </div>
+      <p id="footer-copy" style="font-size: 0.8rem; color: var(--text-muted);">© 2026 ALTAMIRA · Inmobiliaria, Desarrollos & Tasaciones.</p>
+    </div>
+  </footer>
+
+  <!-- Botón Flotante Persistente de WhatsApp Oficial -->
+  <a href="#" id="floating-wa-btn" target="_blank" class="floating-whatsapp" aria-label="Contactar por WhatsApp">
+    <i class="fa-brands fa-whatsapp" style="font-size: 1.35rem;"></i>
+    <span>WhatsApp Inmobiliario</span>
+  </a>
+
+  <!-- GSAP & Lenis CDN -->
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <script>
+    // =========================================================================
+    // 0. LENIS + GSAP SCROLLTRIGGER 60FPS
+    // =========================================================================
+    gsap.registerPlugin(ScrollTrigger);
+
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true
+    });
+
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+    gsap.ticker.lagSmoothing(0);
+
+    // =========================================================================
+    // 1. LECTOR DE PARÁMETROS DINÁMICOS URL (?n=Nombre&t=Telefono&d=Direccion)
+    // =========================================================================
+    const urlParams = new URLSearchParams(window.location.search);
+    const clientName = urlParams.get('n') || 'ALTAMIRA Propiedades';
+    const clientPhone = urlParams.get('t') || '5492235000000';
+    const clientAddress = urlParams.get('d') || 'Av. Colón 1250, Piso 3';
+
+    document.getElementById('brand-title').textContent = clientName.toUpperCase();
+    document.getElementById('footer-brand-title').textContent = clientName.toUpperCase();
+    document.getElementById('footer-address-text').textContent = clientAddress;
+    document.getElementById('footer-copy').textContent = `© 2026 ${clientName} · Inmobiliaria, Desarrollos & Tasaciones.`;
+
+    const genericWaUrl = `https://wa.me/${clientPhone}?text=${encodeURIComponent('Hola ' + clientName + '! Quisiera consultar por las propiedades publicadas.')}`;
+    document.getElementById('floating-wa-btn').href = genericWaUrl;
+
+    // =========================================================================
+    // 2. FILTRADO DE PROPIEDADES (CHIPS & DOCK)
+    // =========================================================================
+    const opChips = document.querySelectorAll('.op-chip-btn');
+    const propCards = document.querySelectorAll('.property-card');
+    const dockSearchBtn = document.getElementById('btn-dock-search');
+    const dockOp = document.getElementById('dock-operation');
+    const dockType = document.getElementById('dock-type');
+    const dockZone = document.getElementById('dock-zone');
+
+    opChips.forEach(btn => {
+      btn.addEventListener('click', () => {
+        opChips.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+        propCards.forEach(card => {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    dockSearchBtn.addEventListener('click', () => {
+      const opVal = dockOp.value;
+      const typeVal = dockType.value;
+      const zoneVal = dockZone.value;
+
+      propCards.forEach(card => {
+        const matchOp = (opVal === 'all' || card.dataset.category === opVal);
+        const matchType = (typeVal === 'all' || card.dataset.type === typeVal);
+        const matchZone = (zoneVal === 'all' || card.dataset.zone === zoneVal);
+
+        if (matchOp && matchType && matchZone) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      document.getElementById('propiedades').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // =========================================================================
+    // 3. AGENDAR VISITA IN SITU DESDE CADA TARJETA
+    // =========================================================================
+    document.querySelectorAll('.btn-book-visit-js').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const property = btn.dataset.property;
+        const message = `Hola ${clientName}! Quisiera coordinar una visita presencial para conocer el inmueble:\n\n` +
+                        `🏡 *Propiedad:* ${property}\n\n` +
+                        `¿Qué días y horarios tienen disponibles para recorrerla? ¡Muchas gracias!`;
+
+        window.open(`https://wa.me/${clientPhone}?text=${encodeURIComponent(message)}`, '_blank');
+      });
+    });
+
+    // =========================================================================
+    // 4. ENVÍO DE FORMULARIO DE TASACIÓN POR WHATSAPP
+    // =========================================================================
+    const sendAppraisalBtn = document.getElementById('btn-send-appraisal-wa');
+    const appraisalName = document.getElementById('appraisal-name');
+    const appraisalAddress = document.getElementById('appraisal-address');
+    const appraisalType = document.getElementById('appraisal-type');
+
+    sendAppraisalBtn.addEventListener('click', () => {
+      const name = appraisalName.value.trim() || 'Cliente Interesado';
+      const address = appraisalAddress.value.trim() || 'A coordinar';
+      const type = appraisalType.value;
+
+      const message = `Hola ${clientName}! Mi nombre es ${name}. Quisiera solicitar información para una gestión inmobiliaria:\n\n` +
+                      `📋 *Gestión:* ${type}\n` +
+                      `📍 *Inmueble / Ubicación:* ${address}\n\n` +
+                      `¿Podríamos coordinar un asesoramiento con el martillero? ¡Muchas gracias!`;
+
+      window.open(`https://wa.me/${clientPhone}?text=${encodeURIComponent(message)}`, '_blank');
+    });
+  </script>
+</body>
+</html>

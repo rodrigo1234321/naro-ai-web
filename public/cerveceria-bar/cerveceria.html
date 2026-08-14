@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KRAFTWERK | Taproom, Cervecería Artesanal & Street Food</title>
+  <meta name="description" content="16 canillas de cerveza artesanal tirada, Happy Hour 2x1, smash burgers dobles y patio cervecero. Reservá tu mesa para grupos y cumpleaños por WhatsApp.">
+  <meta name="theme-color" content="#09090b">
+  
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="KRAFTWERK | Taproom & Cervecería Artesanal">
+  <meta property="og:description" content="16 canillas en vivo, Happy Hour y las mejores smash burgers de la ciudad.">
+  <meta property="og:image" content="assets/hero_taproom.jpg">
+
+  <!-- Google Fonts Exóticas Industriales: Syne & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* ==========================================================================
+       1. VARIABLES Y TOKENS DE DISEÑO (DARK INDUSTRIAL, AMBER GLOW & NEON ORANGE)
+       ========================================================================== */
+    :root {
+      --bg-base: #09090b; /* Deep Industrial Charcoal */
+      --bg-surface: #121113;
+      --bg-card: rgba(24, 24, 27, 0.92);
+      --bg-elevated: #27272a;
+      
+      --accent-amber: #f59e0b; /* Golden Beer Amber */
+      --accent-amber-hover: #fbbf24;
+      --accent-amber-glow: rgba(245, 158, 11, 0.35);
+      
+      --accent-orange: #ea580c; /* Fiery Hop Orange */
+      --accent-green: #22c55e; /* IPA Fresh Hop */
+
+      --text-primary: #fafafa; /* Crisp White */
+      --text-secondary: #a1a1aa;
+      --text-muted: #71717a;
+
+      --border-subtle: rgba(245, 158, 11, 0.22);
+      --border-medium: rgba(245, 158, 11, 0.45);
+      --border-active: #f59e0b;
+
+      --font-display: 'Syne', system-ui, sans-serif;
+      --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 22px;
+      --radius-xl: 32px;
+      --radius-full: 9999px;
+
+      --transition-smooth: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      --shadow-sm: 0 4px 10px rgba(0, 0, 0, 0.5);
+      --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.7);
+      --shadow-amber: 0 10px 30px rgba(245, 158, 11, 0.4);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+    }
+
+    body {
+      min-height: 100vh;
+      line-height: 1.55;
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+    }
+
+    /* Switcher Flotante de Versión (Cervecería / Bar) */
+    .version-switcher-bar {
+      position: fixed;
+      top: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(9, 9, 11, 0.95);
+      border: 1px solid var(--accent-amber);
+      padding: 0.35rem 0.6rem;
+      border-radius: var(--radius-full);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(15px);
+    }
+
+    .version-link-tab {
+      padding: 0.4rem 1.1rem;
+      border-radius: var(--radius-full);
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: var(--transition-smooth);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .version-link-tab.active {
+      background: var(--accent-amber);
+      color: #09090b;
+      box-shadow: 0 0 15px rgba(245, 158, 11, 0.6);
+    }
+
+    .version-link-tab:not(.active) {
+      color: var(--text-muted);
+    }
+
+    .version-link-tab:not(.active):hover {
+      color: var(--text-primary);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    /* Canvas de Burbujas de Cerveza */
+    #beer-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.55;
+    }
+
+    .app-container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 3.5vw, 2.5rem);
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+      font-weight: 900;
+    }
+
+    h1 {
+      font-size: clamp(2.3rem, 5vw, 4.3rem);
+      line-height: 1.04;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: clamp(1.7rem, 2.8vw, 2.6rem);
+      line-height: 1.15;
+      text-transform: uppercase;
+    }
+
+    p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .badge-neon {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.45rem 1.25rem;
+      background: rgba(245, 158, 11, 0.14);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-full);
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 900;
+      color: var(--accent-amber);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .live-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background-color: var(--accent-amber);
+      box-shadow: 0 0 12px rgba(245, 158, 11, 0.9);
+      animation: pulse-dot 1.8s infinite ease-in-out;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.3; transform: scale(1.35); }
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      padding: 0.95rem 2rem;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 0.95rem;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: var(--transition-smooth);
+      text-transform: uppercase;
+    }
+
+    .btn-amber {
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      color: #09090b;
+      box-shadow: var(--shadow-amber);
+    }
+
+    .btn-amber:hover {
+      background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+      box-shadow: 0 12px 30px rgba(245, 158, 11, 0.6);
+      transform: translateY(-2px);
+      color: #09090b;
+    }
+
+    .btn-outline {
+      background: rgba(24, 24, 27, 0.8);
+      color: var(--text-primary);
+      border: 1px solid var(--border-medium);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-outline:hover {
+      background: var(--bg-elevated);
+      border-color: var(--accent-amber);
+      color: var(--accent-amber);
+      transform: translateY(-2px);
+    }
+
+    /* Navbar */
+    .navbar-wrapper {
+      position: absolute;
+      top: 4.8rem;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 2rem;
+      background: rgba(9, 9, 11, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .logo-beer-icon {
+      font-size: 1.4rem;
+      color: var(--accent-amber);
+    }
+
+    .brand-name {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: var(--text-primary);
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+      letter-spacing: 0.06em;
+    }
+
+    .brand-sub {
+      font-size: 0.65rem;
+      color: var(--accent-amber);
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.2rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: var(--text-secondary);
+      transition: var(--transition-smooth);
+      text-transform: uppercase;
+    }
+
+    .nav-link:hover {
+      color: var(--accent-amber);
+    }
+
+    /* HERO ARCHETYPE: FULL-BLEED INDUSTRIAL CENTRADO */
+    .hero-industrial {
+      min-height: 96vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 12rem 1rem 5rem;
+      position: relative;
+      background: radial-gradient(circle at center, rgba(9, 9, 11, 0.35) 0%, rgba(9, 9, 11, 0.96) 85%), url('assets/hero_taproom.jpg') center/cover no-repeat;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .hero-industrial::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(9, 9, 11, 0.75) 0%, rgba(9, 9, 11, 0.3) 50%, rgba(9, 9, 11, 1) 100%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 10;
+      max-width: 920px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.6rem;
+    }
+
+    .hero-title-highlight {
+      color: var(--accent-amber);
+      text-shadow: 0 0 25px rgba(245, 158, 11, 0.6);
+    }
+
+    .hero-desc {
+      font-size: 1.18rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      max-width: 700px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin-top: 0.5rem;
+    }
+
+    /* WIDGET EN VIVO DE HAPPY HOUR */
+    .happy-hour-banner {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 0.9rem 1.8rem;
+      background: rgba(24, 24, 27, 0.95);
+      border: 1px solid var(--accent-amber);
+      border-radius: var(--radius-full);
+      box-shadow: var(--shadow-amber);
+      backdrop-filter: blur(15px);
+      margin-top: 1.5rem;
+    }
+
+    .countdown-timer-text {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: var(--accent-amber);
+      letter-spacing: 0.05em;
+    }
+
+    /* PIZARRA DE 12 CANILLAS (ON TAP LIVE) */
+    .taproom-board-section {
+      padding: 6rem 0;
+    }
+
+    .board-header {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 3rem;
+    }
+
+    .tap-filter-chips {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .tap-chip-btn {
+      padding: 0.65rem 1.4rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .tap-chip-btn:hover {
+      border-color: var(--accent-amber);
+      color: var(--accent-amber);
+    }
+
+    .tap-chip-btn.active {
+      background: var(--accent-amber);
+      border-color: var(--accent-amber);
+      color: #09090b;
+      font-weight: 900;
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.35);
+    }
+
+    .taps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .tap-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.2rem;
+      transition: var(--transition-smooth);
+      position: relative;
+    }
+
+    .tap-card:hover {
+      border-color: var(--accent-amber);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 35px rgba(245, 158, 11, 0.2);
+    }
+
+    .tap-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 1px dashed var(--border-subtle);
+      padding-bottom: 1rem;
+    }
+
+    .tap-number {
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      font-weight: 900;
+      color: var(--accent-amber);
+      background: rgba(245, 158, 11, 0.14);
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-sm);
+      display: inline-block;
+      margin-bottom: 0.3rem;
+    }
+
+    .tap-name {
+      font-size: 1.3rem;
+      color: var(--text-primary);
+    }
+
+    .tap-price {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--accent-amber);
+    }
+
+    .tap-meters-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      background: rgba(9, 9, 11, 0.6);
+      padding: 0.9rem;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .meter-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .meter-label-group {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .meter-bar {
+      width: 100%;
+      height: 6px;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+    }
+
+    .meter-fill {
+      height: 100%;
+      border-radius: var(--radius-full);
+      background: var(--accent-amber);
+    }
+
+    .meter-fill.green {
+      background: var(--accent-green);
+    }
+
+    /* RESERVA DE GRUPOS & CUMPLEAÑOS */
+    .groups-booking-section {
+      padding: 5rem 0;
+      margin-bottom: 5rem;
+    }
+
+    .groups-wrapper {
+      background: var(--bg-card);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-xl);
+      padding: 3.5rem;
+      box-shadow: var(--shadow-md);
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .bonus-unlock-card {
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px dashed var(--accent-amber);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    /* BURGER BAR & STREET FOOD */
+    .food-street-section {
+      padding: 4rem 0 6rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .street-food-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3.5rem;
+    }
+
+    .food-card {
+      background: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .food-card:hover {
+      border-color: var(--accent-amber);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .food-img-wrapper {
+      height: 230px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .food-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .food-card:hover .food-img-wrapper img {
+      transform: scale(1.08);
+    }
+
+    .food-tag {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-full);
+      background: rgba(9, 9, 11, 0.9);
+      border: 1px solid var(--border-medium);
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--accent-amber);
+    }
+
+    .food-body {
+      padding: 1.6rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+      gap: 1rem;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 4rem 0 2.5rem;
+      background: #050507;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    .floating-whatsapp {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.85rem 1.5rem;
+      background: #25d366;
+      color: #ffffff;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 0.92rem;
+      letter-spacing: 0.05em;
+      border-radius: var(--radius-full);
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+      transition: var(--transition-smooth);
+      text-transform: uppercase;
+    }
+
+    .floating-whatsapp:hover {
+      transform: scale(1.05) translateY(-3px);
+      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.55);
+      color: #ffffff;
+    }
+
+    @media (max-width: 992px) {
+      .taps-grid, .groups-wrapper, .street-food-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .happy-hour-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+      .floating-whatsapp span {
+        display: none;
+      }
+      .floating-whatsapp {
+        padding: 1rem;
+        border-radius: 50%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Switcher Superior de Versiones (Coctelería / Cervecería) -->
+  <div class="version-switcher-bar">
+    <a href="index.html" class="version-link-tab">
+      <i class="fa-solid fa-martini-glass"></i> Speakeasy & Coctelería
+    </a>
+    <a href="cerveceria.html" class="version-link-tab active">
+      <i class="fa-solid fa-beer-mug-empty"></i> Cervecería & Taproom
+    </a>
+  </div>
+
+  <!-- Canvas de Burbujas & Efervescencia Ámbar -->
+  <canvas id="beer-canvas"></canvas>
+
+  <!-- Navbar -->
+  <header class="navbar-wrapper">
+    <nav class="navbar">
+      <a href="#" class="brand-logo">
+        <i class="fa-solid fa-beer-mug-empty logo-beer-icon"></i>
+        <div class="brand-name">
+          <span id="brand-title">KRAFTWERK</span>
+          <span class="brand-sub" id="brand-location">Taproom & Cervecería</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#taps" class="nav-link">Pizarra On-Tap</a></li>
+        <li><a href="#grupos" class="nav-link">Mesas & Cumples</a></li>
+        <li><a href="#comida" class="nav-link">Burgers & Street Food</a></li>
+        <li><a href="#contacto" class="nav-link">Ubicación</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="#grupos" class="btn btn-amber" style="padding: 0.55rem 1.2rem; font-size: 0.82rem;">
+          Reservar Mesa
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO ARCHETYPE: FULL-BLEED INDUSTRIAL CENTRADO -->
+  <section class="hero-industrial">
+    <div class="hero-inner">
+      <div class="badge-neon">
+        <span class="live-dot"></span>
+        16 Canillas On-Tap · Happy Hour Activo
+      </div>
+      <h1>
+        16 CANILLAS EN VIVO, <span class="hero-title-highlight">LÚPULO FRESCO</span> & AMBIENTE NOCTURNO.
+      </h1>
+      <p class="hero-desc">
+        Cervezas artesanales de autor servidas a la temperatura perfecta, smash burgers dobles y patio al aire libre con música en vivo.
+      </p>
+      
+      <div class="hero-actions">
+        <a href="#taps" class="btn btn-amber">
+          <i class="fa-solid fa-beer-mug-empty"></i>
+          Ver Pizarra de Cervezas
+        </a>
+        <a href="#grupos" class="btn btn-outline">
+          <i class="fa-solid fa-users"></i>
+          Reservar para Cumpleaños
+        </a>
+      </div>
+
+      <!-- Banner de Happy Hour con Reloj en Vivo -->
+      <div class="happy-hour-banner">
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <i class="fa-solid fa-bolt" style="color: var(--accent-amber); font-size: 1.3rem;"></i>
+          <span style="font-family: var(--font-display); font-weight: 800; font-size: 0.95rem; text-transform: uppercase;">Happy Hour 2x1 en Pintas:</span>
+        </div>
+        <span class="countdown-timer-text" id="happy-hour-timer">Termina en: 01h 42m 15s</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="app-container">
+
+    <!-- PIZARRA DE CANILLAS ON-TAP -->
+    <section id="taps" class="taproom-board-section">
+      <div class="board-header">
+        <div class="badge-neon">Pizarra en Vivo</div>
+        <h2 style="margin: 0.8rem 0 0.4rem;">NUESTRAS 16 CANILLAS ON-TAP</h2>
+        <p>Cervezas tiradas en directo desde la cámara de frío. Consultá el estilo, IBU y graduación alcohólica.</p>
+      </div>
+
+      <!-- Filtro por Estilo -->
+      <div class="tap-filter-chips">
+        <button class="tap-chip-btn active" data-filter="all">🍺 Todas las Canillas</button>
+        <button class="tap-chip-btn" data-filter="ipa">🌿 Lupuladas (IPA / APA)</button>
+        <button class="tap-chip-btn" data-filter="rubia">🍯 Rubias & Honey</button>
+        <button class="tap-chip-btn" data-filter="negra">☕ Negras & Stout</button>
+        <button class="tap-chip-btn" data-filter="frutal">🍓 Sour & Frutales</button>
+      </div>
+
+      <div class="taps-grid" id="taps-grid-container">
+
+        <!-- Tap 1: NEIPA -->
+        <div class="tap-card" data-category="ipa">
+          <div>
+            <div class="tap-top">
+              <div>
+                <span class="tap-number">TAP #01 · Doble Dry Hop</span>
+                <h3 class="tap-name">Neipa Tropical Haze</h3>
+              </div>
+              <span class="tap-price">$4.900</span>
+            </div>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 1rem 0;">Cuerpo sedoso y turbio con explosión aromática de mango, maracuyá y durazno blanco.</p>
+          </div>
+          <div class="tap-meters-row">
+            <div class="meter-item">
+              <div class="meter-label-group">
+                <span style="color: var(--text-muted);">IBU:</span>
+                <strong style="color: var(--accent-green);">45 IBU</strong>
+              </div>
+              <div class="meter-bar"><div class="meter-fill green" style="width: 55%;"></div></div>
+            </div>
+            <div class="meter-item">
+              <div class="meter-label-group">
+                <span style="color: var(--text-muted);">ABV:</span>
+                <strong style="color: var(--accent-amber);">6.5%</strong>
+              </div>
+              <div class="meter-bar"><div class="meter-fill" style="width: 65%;"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tap 2: Honey Ale -->
+        <div class="tap-card" data-category="rubia">
+          <div>
+            <div class="tap-top">
+              <div>
+                <span class="tap-number">TAP #02 · Miel Pura</span>
+                <h3 class="tap-name">Honey Golden Dew</h3>
+              </div>
+              <span class="tap-price">$4.400</span>
+            </div>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 1rem 0;">Cerveza dorada y refrescante con infusión de miel orgánica de pradera y final dulce suave.</p>
+          </div>
+          <div class="tap-meters-row">
+            <div class="meter-item">
+              <div class="meter-label-group">
+                <span style="color: var(--text-muted);">IBU:</span>
+                <strong style="color: var(--accent-green);">16 IBU</strong>
+              </div>
+              <div class="meter-bar"><div class="meter-fill green" style="width: 20%;"></div></div>
+            </div>
+            <div class="meter-item">
+              <div class="meter-label-group">
+                <span style="color: var(--text-muted);">ABV:</span>
+                <strong style="color: var(--accent-amber);">5.2%</strong>
+              </div>
+              <div class="meter-bar"><div class="meter-fill" style="width: 52%;"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tap 3: IPA Session -->
+        <div class="tap-card" data-category="ipa">
+          <div>
+            <div class="tap-top">
+              <div>
+                <span class="tap-number">TAP #03 · Ultra Drinkable</span>
+                <h3 class="tap-name">Session IPA Citra</h3>
+              </div>
+              <span class="tap-price">$4.600</span>
+            </div>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 1rem 0;">Amargor cítrico pronunciado a pomelo rosado y lima, bajo alcohol para tomar varias pintas.</p>
+          </div>
+          <div class="tap-meters-row">
+            <div class="meter-item">
+              <div class="meter-label-group">
+                <span style="color: var(--text-muted);">IBU:</span>
+                <strong style="color: var(--accent-green);">40 IBU</strong>
+              </div>
+              <div class="meter-bar"><div class="meter-fill green" style="width: 50%;"></div></div>
+            </div>
+            <div class="meter-item">
+              <div class="meter-label-group">
+                <span style="color: var(--text-muted);">ABV:</span>
+                <strong style="color: var(--accent-amber);">4.5%</strong>
+              </div>
+              <div class="meter-bar"><div class="meter-fill" style="width: 45%;"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tap 4: Imperial Stout -->
+        <div class="tap-card" data-category="negra">
+          <div>
+            <div class="tap-top">
+              <div>
+                <span class="tap-number">TAP #04 · Roble & Café</span>
+                <h3 class="tap-name">Imperial Coffee Stout</h3>
+              </div>
+              <span class="tap-price">$5.200</span>
+            </div>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 1rem 0;">Cerveza negra densa con espuma cremosa y notas a café espresso tostado y chocolate amargo.</p>
+          </div>
+          <div class="tap-meters-row">
+            <div class="meter-item">
+              <div class="meter-label-group">
+                <span style="color: var(--text-muted);">IBU:</span>
+                <strong style="color: var(--accent-green);">50 IBU</strong>
+              </div>
+              <div class="meter-bar"><div class="meter-fill green" style="width: 60%;"></div></div>
+            </div>
+            <div class="meter-item">
+              <div class="meter-label-group">
+                <span style="color: var(--text-muted);">ABV:</span>
+                <strong style="color: var(--accent-amber);">8.2%</strong>
+              </div>
+              <div class="meter-bar"><div class="meter-fill" style="width: 82%;"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tap 5: Scottish Export -->
+        <div class="tap-card" data-category="rubia">
+          <div>
+            <div class="tap-top">
+              <div>
+                <span class="tap-number">TAP #05 · Caramelo</span>
+                <h3 class="tap-name">Scottish Ale Caramel</h3>
+              </div>
+              <span class="tap-price">$4.500</span>
+            </div>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 1rem 0;">Color rubí cobrizo brillante con maltas caramelo, notas a galletita horneada y frutos secos.</p>
+          </div>
+          <div class="tap-meters-row">
+            <div class="meter-item">
+              <div class="meter-label-group">
+                <span style="color: var(--text-muted);">IBU:</span>
+                <strong style="color: var(--accent-green);">22 IBU</strong>
+              </div>
+              <div class="meter-bar"><div class="meter-fill green" style="width: 25%;"></div></div>
+            </div>
+            <div class="meter-item">
+              <div class="meter-label-group">
+                <span style="color: var(--text-muted);">ABV:</span>
+                <strong style="color: var(--accent-amber);">5.8%</strong>
+              </div>
+              <div class="meter-bar"><div class="meter-fill" style="width: 58%;"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tap 6: Frambuesa Sour -->
+        <div class="tap-card" data-category="frutal">
+          <div>
+            <div class="tap-top">
+              <div>
+                <span class="tap-number">TAP #06 · Ácida & Frutal</span>
+                <h3 class="tap-name">Raspberry Wild Sour</h3>
+              </div>
+              <span class="tap-price">$4.800</span>
+            </div>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 1rem 0;">Fermentación láctica con pulpa de frambuesas patagónicas. Acidez refrescante y final seco.</p>
+          </div>
+          <div class="tap-meters-row">
+            <div class="meter-item">
+              <div class="meter-label-group">
+                <span style="color: var(--text-muted);">IBU:</span>
+                <strong style="color: var(--accent-green);">10 IBU</strong>
+              </div>
+              <div class="meter-bar"><div class="meter-fill green" style="width: 12%;"></div></div>
+            </div>
+            <div class="meter-item">
+              <div class="meter-label-group">
+                <span style="color: var(--text-muted);">ABV:</span>
+                <strong style="color: var(--accent-amber);">4.8%</strong>
+              </div>
+              <div class="meter-bar"><div class="meter-fill" style="width: 48%;"></div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- RESERVA DE GRUPOS & CUMPLEAÑOS -->
+    <section id="grupos" class="groups-booking-section">
+      <div class="groups-wrapper">
+        <div>
+          <div class="badge-neon"><i class="fa-solid fa-cake-candles"></i> Festejos & Grupos</div>
+          <h2 style="margin: 0.8rem 0 0.4rem;">RESERVÁ TU MESA PARA CUMPLEAÑOS O AMIGOS</h2>
+          <p>Organizamos mesas largas en el patio o salón principal con promociones exclusivas según la cantidad de invitados.</p>
+
+          <div class="bonus-unlock-card">
+            <strong style="color: var(--accent-amber); font-size: 1rem; display: block; margin-bottom: 0.4rem;">
+              🎁 Beneficio Desbloqueado:
+            </strong>
+            <span id="group-bonus-text" style="font-size: 0.92rem; font-weight: 700; color: var(--text-primary);">
+              Para 8 o más personas: ¡Ronda de Papas con Cheddar y Bacon de regalo!
+            </span>
+          </div>
+        </div>
+
+        <div>
+          <div style="margin-bottom: 1.2rem;">
+            <label style="display: block; font-size: 0.85rem; font-weight: 800; margin-bottom: 0.4rem;">Cantidad de Personas:</label>
+            <select id="group-size-select" style="width: 100%; padding: 0.85rem; background: var(--bg-surface); border: 1px solid var(--border-medium); color: #ffffff; border-radius: var(--radius-sm); font-family: var(--font-display); font-weight: 700; outline: none;">
+              <option value="4 a 6 Personas">4 a 6 Personas</option>
+              <option value="8 a 10 Personas" selected>8 a 10 Personas (Papas Gratis)</option>
+              <option value="12 a 15 Personas">12 a 15 Personas (Papas + Jarra 2L Gratis)</option>
+              <option value="16 a 25 Personas">16 a 25 Personas (Sector Exclusivo)</option>
+            </select>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.2rem;">
+            <div>
+              <label style="display: block; font-size: 0.85rem; font-weight: 800; margin-bottom: 0.4rem;">Fecha:</label>
+              <input type="date" id="group-date-input" value="2026-08-15" style="width: 100%; padding: 0.85rem; background: var(--bg-surface); border: 1px solid var(--border-medium); color: #ffffff; border-radius: var(--radius-sm); outline: none;">
+            </div>
+            <div>
+              <label style="display: block; font-size: 0.85rem; font-weight: 800; margin-bottom: 0.4rem;">Tu Nombre:</label>
+              <input type="text" id="group-name-input" placeholder="Ej: Lucas" style="width: 100%; padding: 0.85rem; background: var(--bg-surface); border: 1px solid var(--border-medium); color: #ffffff; border-radius: var(--radius-sm); outline: none;">
+            </div>
+          </div>
+
+          <button id="btn-send-group-wa" class="btn btn-amber" style="width: 100%; padding: 1rem;">
+            <i class="fa-brands fa-whatsapp"></i>
+            Reservar Mesa Grupal por WhatsApp
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- BURGER BAR & STREET FOOD -->
+    <section id="comida" class="food-street-section">
+      <div class="board-header">
+        <div class="badge-neon">Para Acompañar la Birra</div>
+        <h2 style="margin: 0.8rem 0 0.4rem;">SMASH BURGERS & FINGER FOOD</h2>
+        <p>Comida con las manos, queso cheddar fundido y panceta crocante.</p>
+      </div>
+
+      <div class="street-food-grid">
+        <div class="food-card">
+          <div class="food-img-wrapper">
+            <img src="assets/smash_burger.jpg" alt="Doble Smash Burger">
+            <span class="food-tag">🍔 La Favorita</span>
+          </div>
+          <div class="food-body">
+            <div>
+              <h3 style="font-size: 1.25rem;">Doble Smash Burger con Cheddar</h3>
+              <p style="font-size: 0.88rem; color: var(--text-secondary); margin-top: 0.3rem;">2 medallones de carne vacuna costra crujiente, cuádruple cheddar, bacon ahumado y salsa mil islas en pan de papa.</p>
+            </div>
+            <span style="font-family: var(--font-display); font-size: 1.3rem; font-weight: 900; color: var(--accent-amber);">$11.800 ARS</span>
+          </div>
+        </div>
+
+        <div class="food-card">
+          <div class="food-img-wrapper">
+            <img src="assets/loaded_fries.jpg" alt="Papas cargadas">
+            <span class="food-tag">🍟 Para Compartir</span>
+          </div>
+          <div class="food-body">
+            <div>
+              <h3 style="font-size: 1.25rem;">Papas Rústicas Pulled Pork</h3>
+              <p style="font-size: 0.88rem; color: var(--text-secondary); margin-top: 0.3rem;">Papas bastón recién fritas, bondiola de cerdo desmenuzada a la barbacoa casera y queso cheddar fundido.</p>
+            </div>
+            <span style="font-family: var(--font-display); font-size: 1.3rem; font-weight: 900; color: var(--accent-amber);">$10.500 ARS</span>
+          </div>
+        </div>
+
+        <div class="food-card">
+          <div class="food-img-wrapper">
+            <img src="assets/taproom_patio.jpg" alt="Patio cervecero nocturno">
+            <span class="food-tag">🌿 Patio Nocturno</span>
+          </div>
+          <div class="food-body">
+            <div>
+              <h3 style="font-size: 1.25rem;">Patio Cervecero al Aire Libre</h3>
+              <p style="font-size: 0.88rem; color: var(--text-secondary); margin-top: 0.3rem;">Mesas comunales de madera bajo luces de verbena, calefacción exterior y pantalla gigante con eventos deportivos.</p>
+            </div>
+            <span style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 800; color: var(--accent-amber);">Entrada Libre</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer" id="contacto">
+    <div class="app-container">
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem; margin-bottom: 2rem;">
+        <i class="fa-solid fa-beer-mug-empty" style="font-size: 2rem; color: var(--accent-amber);"></i>
+        <h3 id="footer-brand-title" style="font-family: var(--font-display); font-size: 1.4rem; letter-spacing: 0.1em;">KRAFTWERK TAPROOM</h3>
+        <p id="footer-address-text" style="color: var(--text-secondary);">Av. Principal 2450, Centro · Mar del Plata</p>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Martes a Domingos desde las 18:00 hs al cierre | Lunes cerrado</p>
+      </div>
+      <p id="footer-copy" style="font-size: 0.8rem; color: var(--text-muted);">© 2026 KRAFTWERK · Taproom & Cervecería Artesanal.</p>
+    </div>
+  </footer>
+
+  <!-- Botón Flotante Persistente de WhatsApp Oficial -->
+  <a href="#" id="floating-wa-btn" target="_blank" class="floating-whatsapp" aria-label="Contactar por WhatsApp">
+    <i class="fa-brands fa-whatsapp" style="font-size: 1.35rem;"></i>
+    <span>WhatsApp Directo</span>
+  </a>
+
+  <!-- GSAP & Lenis CDN -->
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <script>
+    // =========================================================================
+    // 0. LENIS + GSAP SCROLLTRIGGER 60FPS
+    // =========================================================================
+    gsap.registerPlugin(ScrollTrigger);
+
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true
+    });
+
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+    gsap.ticker.lagSmoothing(0);
+
+    // =========================================================================
+    // 1. MOTOR CANVAS DE BURBUJAS DE CERVEZA EFERVESCENTES
+    // =========================================================================
+    const canvas = document.getElementById('beer-canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height, bubbles = [];
+
+    function initCanvas() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      bubbles = [];
+      const count = Math.min(Math.floor(width * 0.03), 40);
+
+      for (let i = 0; i < count; i++) {
+        bubbles.push({
+          x: Math.random() * width,
+          y: height + Math.random() * 50,
+          vx: (Math.random() - 0.5) * 0.4,
+          vy: -(Math.random() * 1.5 + 0.8),
+          size: Math.random() * 2.5 + 1,
+          alpha: Math.random() * 0.6 + 0.2
+        });
+      }
+    }
+
+    window.addEventListener('resize', initCanvas);
+    initCanvas();
+
+    function renderCanvas() {
+      ctx.clearRect(0, 0, width, height);
+
+      bubbles.forEach(b => {
+        b.x += b.vx;
+        b.y += b.vy;
+
+        if (b.y < 0) {
+          b.y = height + 10;
+          b.x = Math.random() * width;
+        }
+
+        ctx.beginPath();
+        ctx.arc(b.x, b.y, b.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(245, 158, 11, ${b.alpha})`;
+        ctx.fill();
+      });
+
+      requestAnimationFrame(renderCanvas);
+    }
+    renderCanvas();
+
+    // =========================================================================
+    // 2. RELOJ REGRESIVO DE HAPPY HOUR
+    // =========================================================================
+    let remainingSeconds = 6135;
+    const timerDisplay = document.getElementById('happy-hour-timer');
+
+    setInterval(() => {
+      if (remainingSeconds > 0) remainingSeconds--;
+      const hrs = Math.floor(remainingSeconds / 3600);
+      const mins = Math.floor((remainingSeconds % 3600) / 60);
+      const secs = remainingSeconds % 60;
+      timerDisplay.textContent = `Termina en: ${String(hrs).padStart(2, '0')}h ${String(mins).padStart(2, '0')}m ${String(secs).padStart(2, '0')}s`;
+    }, 1000);
+
+    // =========================================================================
+    // 3. LECTOR DE PARÁMETROS DINÁMICOS URL (?n=Nombre&t=Telefono&d=Direccion)
+    // =========================================================================
+    const urlParams = new URLSearchParams(window.location.search);
+    const clientName = urlParams.get('n') || 'KRAFTWERK Taproom';
+    const clientPhone = urlParams.get('t') || '5492235000000';
+    const clientAddress = urlParams.get('d') || 'Av. Principal 2450, Centro';
+
+    document.getElementById('brand-title').textContent = clientName.toUpperCase();
+    document.getElementById('footer-brand-title').textContent = clientName.toUpperCase();
+    document.getElementById('footer-address-text').textContent = clientAddress;
+    document.getElementById('footer-copy').textContent = `© 2026 ${clientName} · Taproom & Cervecería Artesanal.`;
+
+    const genericWaUrl = `https://wa.me/${clientPhone}?text=${encodeURIComponent('Hola ' + clientName + '! Quisiera consultar por disponibilidad para hoy.')}`;
+    document.getElementById('floating-wa-btn').href = genericWaUrl;
+
+    // =========================================================================
+    // 4. FILTROS DE LA PIZARRA ON-TAP
+    // =========================================================================
+    const tapFilterButtons = document.querySelectorAll('.tap-chip-btn');
+    const tapCards = document.querySelectorAll('.tap-card');
+
+    tapFilterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tapFilterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+        tapCards.forEach(card => {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // =========================================================================
+    // 5. RESERVA DE MESAS GRUPALES
+    // =========================================================================
+    const groupSizeSelect = document.getElementById('group-size-select');
+    const groupBonusText = document.getElementById('group-bonus-text');
+    const groupDateInput = document.getElementById('group-date-input');
+    const groupNameInput = document.getElementById('group-name-input');
+    const sendGroupBtn = document.getElementById('btn-send-group-wa');
+
+    groupSizeSelect.addEventListener('change', () => {
+      const val = groupSizeSelect.value;
+      if (val.includes('4 a 6')) {
+        groupBonusText.textContent = 'Mesa preferencial reservada en salón o patio.';
+      } else if (val.includes('8 a 10')) {
+        groupBonusText.textContent = 'Para 8 o más personas: ¡Ronda de Papas con Cheddar y Bacon de regalo!';
+      } else if (val.includes('12 a 15')) {
+        groupBonusText.textContent = 'Para 12 a 15 personas: ¡Ronda de Papas + Jarra de 2L de IPA de bienvenida!';
+      } else {
+        groupBonusText.textContent = 'Para más de 16 personas: ¡Sector exclusivo reservado + 2 Rondas de papas + Brindis!';
+      }
+    });
+
+    sendGroupBtn.addEventListener('click', () => {
+      const size = groupSizeSelect.value;
+      const date = groupDateInput.value;
+      const name = groupNameInput.value.trim() || 'Organizador';
+
+      const message = `Hola ${clientName}! Mi nombre es ${name}. Quisiera reservar una mesa para mi grupo:\n\n` +
+                      `👥 *Comensales:* ${size}\n` +
+                      `📅 *Fecha:* ${date}\n` +
+                      `🎁 *Promo Solicitada:* ${groupBonusText.textContent}\n\n` +
+                      `¿Me confirman disponibilidad y horario para ingresar? Muchas gracias!`;
+
+      window.open(`https://wa.me/${clientPhone}?text=${encodeURIComponent(message)}`, '_blank');
+    });
+  </script>
+</body>
+</html>

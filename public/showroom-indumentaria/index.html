@@ -1,0 +1,1608 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DYNASTY | Showroom, Indumentaria Streetwear, Buzos, Remeras & Sneakers</title>
+  <meta name="description" content="DYNASTY // BUILT DIFFERENT. Buzos heavyweight 480 GSM, remeras boxy fit, sneakers urbanos y accesorios tácticos. Showroom privado y envíos a todo el país.">
+  <meta name="theme-color" content="#09090b">
+  
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="DYNASTY | Showroom & Streetwear de Alta Gama">
+  <meta property="og:description" content="Buzos, remeras, zapatillas y accesorios tácticos. Compra online o agendá tu cita en showroom.">
+  <meta property="og:image" content="assets/hero_model.jpg">
+
+  <!-- Google Fonts: Syne, Space Grotesk & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700;800&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* ==========================================================================
+       1. VARIABLES Y TOKENS DE DISEÑO (DYNASTY RETRO-TACTICAL NOIR & ACID LIME)
+       ========================================================================== */
+    :root {
+      --bg-base: #09090b; /* Deep Tactical Noir */
+      --bg-surface: #121115;
+      --bg-card: rgba(22, 21, 28, 0.94);
+      --bg-elevated: #22202a;
+      
+      --accent-lime: #bef264; /* Acid Tactical Lime */
+      --accent-lime-hover: #a3e635;
+      --accent-lime-glow: rgba(190, 242, 100, 0.35);
+      
+      --accent-amber: #f59e0b; /* Cyber Amber */
+      --accent-orange: #ea580c;
+
+      --text-primary: #fafafa; /* Pure Optical White */
+      --text-secondary: #a1a1aa;
+      --text-muted: #71717a;
+
+      --border-subtle: rgba(190, 242, 100, 0.18);
+      --border-medium: rgba(190, 242, 100, 0.4);
+      --border-active: #bef264;
+
+      --font-display: 'Syne', system-ui, sans-serif;
+      --font-mono: 'Space Grotesk', monospace, sans-serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+      --radius-xl: 30px;
+      --radius-full: 9999px;
+
+      --transition-smooth: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.6);
+      --shadow-md: 0 12px 35px rgba(0, 0, 0, 0.8);
+      --shadow-lime: 0 10px 30px rgba(190, 242, 100, 0.3);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+    }
+
+    body {
+      min-height: 100vh;
+      line-height: 1.55;
+      background-color: var(--bg-base);
+      background-image: 
+        radial-gradient(at 15% 15%, rgba(190, 242, 100, 0.08) 0, transparent 40%), 
+        radial-gradient(at 85% 85%, rgba(245, 158, 11, 0.06) 0, transparent 40%);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+    }
+
+    /* Switcher Flotante de Versión (Streetwear / Boutique) */
+    .version-switcher-bar {
+      position: fixed;
+      top: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(9, 9, 11, 0.95);
+      border: 1px solid var(--accent-lime);
+      padding: 0.35rem 0.6rem;
+      border-radius: var(--radius-full);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(15px);
+    }
+
+    .version-link-tab {
+      padding: 0.4rem 1.1rem;
+      border-radius: var(--radius-full);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: var(--transition-smooth);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .version-link-tab.active {
+      background: var(--accent-lime);
+      color: #09090b;
+      box-shadow: 0 0 15px rgba(190, 242, 100, 0.6);
+    }
+
+    .version-link-tab:not(.active) {
+      color: var(--text-muted);
+    }
+
+    .version-link-tab:not(.active):hover {
+      color: var(--text-primary);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .navbar-wrapper {
+      position: sticky;
+      top: 4.5rem;
+      z-index: 100;
+      margin-bottom: 2rem;
+    }
+
+    .app-container {
+      width: 100%;
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 3.5vw, 2.5rem);
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+      font-weight: 800;
+    }
+
+    h1 {
+      font-size: clamp(2.3rem, 4.8vw, 4.2rem);
+      line-height: 1.04;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: clamp(1.7rem, 2.8vw, 2.6rem);
+      line-height: 1.15;
+      text-transform: uppercase;
+    }
+
+    p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .badge-tactical {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.45rem 1.25rem;
+      background: rgba(190, 242, 100, 0.12);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-full);
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--accent-lime);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--accent-lime);
+      box-shadow: 0 0 10px rgba(190, 242, 100, 1);
+      animation: pulse-dot 1.8s infinite ease-in-out;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.3; transform: scale(1.35); }
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      padding: 0.95rem 2rem;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 0.92rem;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: var(--transition-smooth);
+      text-transform: uppercase;
+    }
+
+    .btn-lime {
+      background: var(--accent-lime);
+      color: #09090b;
+      box-shadow: var(--shadow-lime);
+    }
+
+    .btn-lime:hover {
+      background: var(--accent-lime-hover);
+      box-shadow: 0 12px 35px rgba(190, 242, 100, 0.55);
+      transform: translateY(-2px);
+      color: #09090b;
+    }
+
+    .btn-outline {
+      background: rgba(18, 17, 21, 0.85);
+      color: var(--text-primary);
+      border: 1px solid var(--border-medium);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-outline:hover {
+      background: var(--bg-elevated);
+      border-color: var(--accent-lime);
+      color: var(--accent-lime);
+      transform: translateY(-2px);
+    }
+
+    .btn-whatsapp {
+      background: #25d366;
+      color: #ffffff;
+      font-weight: 800;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    }
+
+    .btn-whatsapp:hover {
+      background: #20ba5a;
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
+      transform: translateY(-2px);
+      color: #ffffff;
+    }
+
+    /* Navbar */
+    .navbar-wrapper {
+      position: sticky;
+      top: 1.25rem;
+      z-index: 100;
+      margin-bottom: 2rem;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 2rem;
+      background: rgba(9, 9, 11, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .logo-monogram-box {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-medium);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-lime);
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      font-weight: 900;
+    }
+
+    .brand-name {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: var(--text-primary);
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+      letter-spacing: 0.06em;
+    }
+
+    .brand-sub {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--accent-lime);
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--text-secondary);
+      transition: var(--transition-smooth);
+      text-transform: uppercase;
+    }
+
+    .nav-link:hover {
+      color: var(--accent-lime);
+    }
+
+    /* HERO: EDITORIAL LOOKBOOK STREETWEAR */
+    .hero-section {
+      padding: 1.5rem 0 5rem;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+
+    .hero-title-highlight {
+      color: var(--accent-lime);
+      text-shadow: 0 0 25px rgba(190, 242, 100, 0.45);
+    }
+
+    .hero-desc {
+      font-size: 1.15rem;
+      line-height: 1.75;
+      color: var(--text-secondary);
+      max-width: 580px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .hero-perks-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid var(--border-subtle);
+      margin-top: 0.5rem;
+    }
+
+    .perk-mini {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .perk-val {
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--accent-lime);
+    }
+
+    .perk-lbl {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .hero-image-card {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      border: 1px solid var(--border-medium);
+      box-shadow: var(--shadow-md);
+      background: var(--bg-surface);
+    }
+
+    .hero-image-card img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-overlay-tag {
+      position: absolute;
+      bottom: 1.25rem;
+      left: 1.25rem;
+      right: 1.25rem;
+      padding: 1.1rem 1.4rem;
+      background: rgba(9, 9, 11, 0.94);
+      backdrop-filter: blur(15px);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-medium);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* FILTROS POR DIVISIÓN */
+    .division-chips-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 3rem 0;
+    }
+
+    .division-btn {
+      padding: 0.65rem 1.5rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .division-btn:hover {
+      border-color: var(--accent-lime);
+      color: var(--accent-lime);
+    }
+
+    .division-btn.active {
+      background: var(--accent-lime);
+      border-color: var(--accent-lime);
+      color: #09090b;
+      font-weight: 900;
+      box-shadow: 0 4px 15px rgba(190, 242, 100, 0.35);
+    }
+
+    /* GRID DE PRODUCTOS DYNASTY */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.2rem;
+      margin-bottom: 5rem;
+    }
+
+    .product-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition-smooth);
+    }
+
+    .product-card:hover {
+      border-color: var(--accent-lime);
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(190, 242, 100, 0.15);
+    }
+
+    .product-img-wrapper {
+      height: 300px;
+      overflow: hidden;
+      position: relative;
+      background: #18181b;
+    }
+
+    .product-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+
+    .product-card:hover .product-img-wrapper img {
+      transform: scale(1.06);
+    }
+
+    .product-tag {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-full);
+      background: rgba(9, 9, 11, 0.92);
+      border: 1px solid var(--border-medium);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--accent-lime);
+    }
+
+    .product-body {
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+      gap: 1.2rem;
+    }
+
+    .product-name {
+      font-size: 1.25rem;
+      color: var(--text-primary);
+      margin-bottom: 0.3rem;
+    }
+
+    .product-price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .product-price {
+      font-family: var(--font-mono);
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--accent-lime);
+    }
+
+    .product-transfer-price {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    /* SELECTOR DE TALLES & COLORES INTERACTIVO */
+    .variant-selector-box {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      padding: 1rem;
+      background: rgba(9, 9, 11, 0.6);
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .size-pills-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .size-btn {
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-surface);
+      color: var(--text-secondary);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .size-btn:hover {
+      border-color: var(--accent-lime);
+      color: var(--accent-lime);
+    }
+
+    .size-btn.active {
+      background: var(--accent-lime);
+      color: #09090b;
+      border-color: var(--accent-lime);
+      font-weight: 900;
+    }
+
+    .color-swatches-row {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .color-dot {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .color-dot.active {
+      border-color: var(--accent-lime);
+      transform: scale(1.2);
+    }
+
+    /* CARRITO DRAWER SLIDE-IN CON CHECKOUT */
+    .cart-drawer-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .cart-drawer-backdrop.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      max-width: 460px;
+      height: 100vh;
+      background: var(--bg-surface);
+      border-left: 1px solid var(--border-medium);
+      box-shadow: -10px 0 40px rgba(0, 0, 0, 0.9);
+      z-index: 10000;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      padding: 2.2rem;
+    }
+
+    .cart-drawer.open {
+      transform: translateX(0);
+    }
+
+    .free-shipping-meter-wrap {
+      background: rgba(9, 9, 11, 0.8);
+      padding: 0.9rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      margin: 1.2rem 0;
+    }
+
+    .shipping-bar-bg {
+      width: 100%;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      margin-top: 0.5rem;
+    }
+
+    .shipping-bar-fill {
+      height: 100%;
+      background: var(--accent-lime);
+      border-radius: var(--radius-full);
+      transition: width 0.4s ease;
+    }
+
+    .cart-items-scroll {
+      flex-grow: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding-right: 0.5rem;
+    }
+
+    .cart-item-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.9rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+    }
+
+    .btn-qty {
+      width: 26px;
+      height: 26px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-medium);
+      background: var(--bg-surface);
+      color: #ffffff;
+      cursor: pointer;
+      font-weight: 800;
+    }
+
+    /* BOTÓN FLOTANTE DEL CARRITO */
+    .floating-cart-btn {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 0.9rem 1.6rem;
+      background: var(--accent-lime);
+      color: #09090b;
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 0.92rem;
+      border-radius: var(--radius-full);
+      box-shadow: var(--shadow-lime);
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .floating-cart-btn:hover {
+      transform: scale(1.06) translateY(-3px);
+      box-shadow: 0 15px 40px rgba(190, 242, 100, 0.6);
+    }
+
+    .cart-badge-bubble {
+      background: #09090b;
+      color: var(--accent-lime);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 900;
+      padding: 0.2rem 0.55rem;
+      border-radius: var(--radius-full);
+    }
+
+    /* MODAL DE GUÍA DE TALLES */
+    .size-guide-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(10px);
+      z-index: 10005;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      padding: 1.5rem;
+    }
+
+    .size-guide-modal.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-xl);
+      padding: 2.5rem;
+      max-width: 620px;
+      width: 100%;
+      box-shadow: var(--shadow-md);
+    }
+
+    .size-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+    }
+
+    .size-table th, .size-table td {
+      padding: 0.75rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .size-table th {
+      color: var(--accent-lime);
+      font-weight: 800;
+      background: rgba(190, 242, 100, 0.08);
+    }
+
+    /* SHOWROOM APPOINTMENT SECTION */
+    .showroom-section {
+      padding: 5rem 0;
+      margin-bottom: 5rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .showroom-wrapper {
+      background: var(--bg-card);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-xl);
+      padding: 3.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 4rem 0 2.5rem;
+      background: #050507;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 992px) {
+      .hero-section, .products-grid, .showroom-wrapper {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Switcher Superior de Versiones (Streetwear / Boutique) -->
+  <div class="version-switcher-bar">
+    <a href="index.html" class="version-link-tab active">
+      <i class="fa-solid fa-bolt"></i> Dynasty Streetwear
+    </a>
+    <a href="boutique.html" class="version-link-tab">
+      <i class="fa-solid fa-wand-magic-sparkles"></i> Aurelia Boutique
+    </a>
+  </div>
+
+  <div class="app-container">
+    
+    <!-- Navbar -->
+    <header class="navbar-wrapper">
+      <nav class="navbar">
+        <a href="#" class="brand-logo">
+          <div class="logo-monogram-box">DYG</div>
+          <div class="brand-name">
+            <span id="brand-title">DYNASTY</span>
+            <span class="brand-sub" id="brand-location">Showroom & Streetwear</span>
+          </div>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#catalogo" class="nav-link">Catálogo '26</a></li>
+          <li><a href="#showroom" class="nav-link">Showroom Privado</a></li>
+          <li><a href="#talles" class="nav-link" id="btn-open-size-guide-nav">Guía de Talles</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <div class="badge-tactical" style="padding: 0.4rem 1rem; font-size: 0.78rem;">
+            <span class="live-dot"></span>
+            Showroom MDP Abierto
+          </div>
+          <button id="btn-open-cart-nav" class="btn btn-lime" style="padding: 0.55rem 1.3rem; font-size: 0.82rem; margin-left: 0.5rem;">
+            <i class="fa-solid fa-bag-shopping"></i> Bolsa (<span class="nav-cart-count">0</span>)
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- HERO LOOKBOOK EDITORIAL -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <div class="badge-tactical">
+          <i class="fa-solid fa-shield-halved"></i>
+          <span>BUILT DIFFERENT · Heavyweight 480 GSM</span>
+        </div>
+        <h1>
+          STREETWEAR TÁCTICO, <span class="hero-title-highlight">FIT BOXING</span> & EXCLUSIVIDAD.
+        </h1>
+        <p class="hero-desc">
+          Indumentaria de alta densidad con criterio retro-táctico. Buzos de algodón pesado, remeras con serigrafía tacto cero y sneakers urbanos diseñados para durar.
+        </p>
+        <div class="hero-actions">
+          <a href="#catalogo" class="btn btn-lime">
+            <i class="fa-solid fa-layer-group"></i>
+            Explorar Colección '26
+          </a>
+          <a href="#showroom" class="btn btn-outline">
+            <i class="fa-solid fa-calendar-check"></i>
+            Agendar Visita a Showroom
+          </a>
+        </div>
+
+        <div class="hero-perks-row">
+          <div class="perk-mini">
+            <span class="perk-val">480 GSM</span>
+            <span class="perk-lbl">Algodón Heavyweight</span>
+          </div>
+          <div class="perk-mini">
+            <span class="perk-val">15% OFF</span>
+            <span class="perk-lbl">Por Transferencia</span>
+          </div>
+          <div class="perk-mini">
+            <span class="perk-val">FREE SHIPPING</span>
+            <span class="perk-lbl">En compras > $120k</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-image-card">
+          <img src="assets/hero_model.jpg" alt="Modelo Streetwear DYNASTY">
+          <div class="hero-overlay-tag">
+            <div>
+              <strong style="font-family: var(--font-display); font-size: 1.1rem; display: block;">DROPS CÁPSULA '26</strong>
+              <span style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent-lime);">Corte Boxy Fit Unisex</span>
+            </div>
+            <button id="btn-open-size-modal-hero" style="background: none; border: 1px dashed var(--accent-lime); color: var(--accent-lime); padding: 0.4rem 0.8rem; border-radius: var(--radius-sm); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 800; cursor: pointer;">
+              📏 Tabla de Medidas
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FILTROS POR DIVISIÓN -->
+    <div id="catalogo">
+      <div style="text-align: center; max-width: 680px; margin: 0 auto;">
+        <div class="badge-tactical">Divisiones Tácticas</div>
+        <h2 style="margin: 0.8rem 0 0.4rem;">CATÁLOGO DYNASTY 2026</h2>
+        <p>Seleccioná tu talle y colorway favorito para sumarlo a la bolsa de compras.</p>
+      </div>
+
+      <div class="division-chips-row">
+        <button class="division-btn active" data-filter="all">⚡ TODAS LAS DIVISIONES</button>
+        <button class="division-btn" data-filter="buzos">🧥 DIVISIÓN BUZOS & HOODIES</button>
+        <button class="division-btn" data-filter="remeras">👕 DIVISIÓN REMERAS</button>
+        <button class="division-btn" data-filter="sneakers">👟 DIVISIÓN SNEAKERS</button>
+        <button class="division-btn" data-filter="accesorios">🎒 ACCESORIOS & CAPS</button>
+      </div>
+    </div>
+
+    <!-- GRID DE PRODUCTOS -->
+    <div class="products-grid">
+      
+      <!-- Producto 1: Hoodie Monogram -->
+      <div class="product-card" data-category="buzos">
+        <div class="product-img-wrapper">
+          <img src="assets/hoodie_black.jpg" alt="Hoodie Heavyweight Dynasty">
+          <span class="product-tag">🧥 Heavyweight 480 GSM</span>
+        </div>
+        <div class="product-body">
+          <div>
+            <h3 class="product-name">Hoodie Boxy "DYG Monogram"</h3>
+            <p style="font-size: 0.85rem; color: var(--text-secondary);">Algodón frizado pesado, capucha doble capa sin cordón y bolsillo canguro táctico.</p>
+          </div>
+
+          <div class="variant-selector-box">
+            <div style="display: flex; justify-content: space-between; font-size: 0.78rem; font-family: var(--font-mono);">
+              <span>Talle:</span>
+              <strong style="color: var(--accent-lime);" class="selected-size-label">L (Stock Disponible)</strong>
+            </div>
+            <div class="size-pills-row">
+              <button class="size-btn">S</button>
+              <button class="size-btn">M</button>
+              <button class="size-btn active">L</button>
+              <button class="size-btn">XL</button>
+              <button class="size-btn">XXL</button>
+            </div>
+          </div>
+
+          <div>
+            <div class="product-price-row">
+              <span class="product-price">$68.500</span>
+              <span class="product-transfer-price">$58.225 c/ transferencia</span>
+            </div>
+            <button class="btn btn-lime btn-add-cart-js" data-id="DYG_HOODIE_01" data-name="Hoodie Boxy DYG Monogram" data-price="68500" style="width: 100%; margin-top: 0.8rem; padding: 0.8rem;">
+              + Agregar a la Bolsa
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Producto 2: Crewneck Acid -->
+      <div class="product-card" data-category="buzos">
+        <div class="product-img-wrapper">
+          <img src="assets/hoodie_grey.jpg" alt="Crewneck Acid Grey">
+          <span class="product-tag">🧥 Acid Washed</span>
+        </div>
+        <div class="product-body">
+          <div>
+            <h3 class="product-name">Crewneck "Tactical Division"</h3>
+            <p style="font-size: 0.85rem; color: var(--text-secondary);">Proceso de teñido acid washed con efecto vintage y puños elastizados reforzados.</p>
+          </div>
+
+          <div class="variant-selector-box">
+            <div style="display: flex; justify-content: space-between; font-size: 0.78rem; font-family: var(--font-mono);">
+              <span>Talle:</span>
+              <strong style="color: var(--accent-lime);" class="selected-size-label">M (Últimas 2)</strong>
+            </div>
+            <div class="size-pills-row">
+              <button class="size-btn">S</button>
+              <button class="size-btn active">M</button>
+              <button class="size-btn">L</button>
+              <button class="size-btn">XL</button>
+            </div>
+          </div>
+
+          <div>
+            <div class="product-price-row">
+              <span class="product-price">$59.000</span>
+              <span class="product-transfer-price">$50.150 c/ transferencia</span>
+            </div>
+            <button class="btn btn-lime btn-add-cart-js" data-id="DYG_CREW_02" data-name="Crewneck Tactical Division" data-price="59000" style="width: 100%; margin-top: 0.8rem; padding: 0.8rem;">
+              + Agregar a la Bolsa
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Producto 3: Remera Built Different -->
+      <div class="product-card" data-category="remeras">
+        <div class="product-img-wrapper">
+          <img src="assets/tee_oversize.jpg" alt="Remera Oversize Dynasty">
+          <span class="product-tag">👕 Heavy Cotton 240 GSM</span>
+        </div>
+        <div class="product-body">
+          <div>
+            <h3 class="product-name">Tee "Built Different" Boxy</h3>
+            <p style="font-size: 0.85rem; color: var(--text-secondary);">Algodón 100% peinado de alto gramaje con cuello de 3cm cerrado y caída recta.</p>
+          </div>
+
+          <div class="variant-selector-box">
+            <div style="display: flex; justify-content: space-between; font-size: 0.78rem; font-family: var(--font-mono);">
+              <span>Talle:</span>
+              <strong style="color: var(--accent-lime);" class="selected-size-label">L (Stock Activo)</strong>
+            </div>
+            <div class="size-pills-row">
+              <button class="size-btn">S</button>
+              <button class="size-btn">M</button>
+              <button class="size-btn active">L</button>
+              <button class="size-btn">XL</button>
+              <button class="size-btn">XXL</button>
+            </div>
+          </div>
+
+          <div>
+            <div class="product-price-row">
+              <span class="product-price">$34.500</span>
+              <span class="product-transfer-price">$29.325 c/ transferencia</span>
+            </div>
+            <button class="btn btn-lime btn-add-cart-js" data-id="DYG_TEE_03" data-name="Tee Built Different Boxy" data-price="34500" style="width: 100%; margin-top: 0.8rem; padding: 0.8rem;">
+              + Agregar a la Bolsa
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Producto 4: Sneakers Urban Low -->
+      <div class="product-card" data-category="sneakers">
+        <div class="product-img-wrapper">
+          <img src="assets/sneakers_urban.jpg" alt="Sneakers Urban Low">
+          <span class="product-tag">👟 Cuero Vacuno & Cordura</span>
+        </div>
+        <div class="product-body">
+          <div>
+            <h3 class="product-name">Sneaker "Phantom Noir" Low</h3>
+            <p style="font-size: 0.85rem; color: var(--text-secondary);">Capellada de cuero legítimo con inserciones de nylon balístico y suela cosida antideslizante.</p>
+          </div>
+
+          <div class="variant-selector-box">
+            <div style="display: flex; justify-content: space-between; font-size: 0.78rem; font-family: var(--font-mono);">
+              <span>Calzado:</span>
+              <strong style="color: var(--accent-lime);" class="selected-size-label">42 (Disponible)</strong>
+            </div>
+            <div class="size-pills-row">
+              <button class="size-btn">39</button>
+              <button class="size-btn">40</button>
+              <button class="size-btn">41</button>
+              <button class="size-btn active">42</button>
+              <button class="size-btn">43</button>
+              <button class="size-btn">44</button>
+            </div>
+          </div>
+
+          <div>
+            <div class="product-price-row">
+              <span class="product-price">$118.000</span>
+              <span class="product-transfer-price">$100.300 c/ transferencia</span>
+            </div>
+            <button class="btn btn-lime btn-add-cart-js" data-id="DYG_SNK_04" data-name="Sneaker Phantom Noir Low" data-price="118000" style="width: 100%; margin-top: 0.8rem; padding: 0.8rem;">
+              + Agregar a la Bolsa
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Producto 5: Chunky Runner -->
+      <div class="product-card" data-category="sneakers">
+        <div class="product-img-wrapper">
+          <img src="assets/sneakers_chunky.jpg" alt="Chunky Runner Bone">
+          <span class="product-tag">👟 Chunky V2 Cushion</span>
+        </div>
+        <div class="product-body">
+          <div>
+            <h3 class="product-name">Runner "Bone & Lime" Chunky</h3>
+            <p style="font-size: 0.85rem; color: var(--text-secondary);">Silueta chunky noventera con entresuela de EVA ultraliviana y detalles neón reflectivos 3M.</p>
+          </div>
+
+          <div class="variant-selector-box">
+            <div style="display: flex; justify-content: space-between; font-size: 0.78rem; font-family: var(--font-mono);">
+              <span>Calzado:</span>
+              <strong style="color: var(--accent-lime);" class="selected-size-label">41 (Disponible)</strong>
+            </div>
+            <div class="size-pills-row">
+              <button class="size-btn">40</button>
+              <button class="size-btn active">41</button>
+              <button class="size-btn">42</button>
+              <button class="size-btn">43</button>
+              <button class="size-btn">44</button>
+            </div>
+          </div>
+
+          <div>
+            <div class="product-price-row">
+              <span class="product-price">$124.000</span>
+              <span class="product-transfer-price">$105.400 c/ transferencia</span>
+            </div>
+            <button class="btn btn-lime btn-add-cart-js" data-id="DYG_SNK_05" data-name="Runner Bone & Lime Chunky" data-price="124000" style="width: 100%; margin-top: 0.8rem; padding: 0.8rem;">
+              + Agregar a la Bolsa
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Producto 6: Cap Táctica -->
+      <div class="product-card" data-category="accesorios">
+        <div class="product-img-wrapper">
+          <img src="assets/cap_tactical.jpg" alt="Cap Táctica Cordura">
+          <span class="product-tag">🎒 Cordura 500D</span>
+        </div>
+        <div class="product-body">
+          <div>
+            <h3 class="product-name">Cap "DYG Low Profile" Cordura</h3>
+            <p style="font-size: 0.85rem; color: var(--text-secondary);">Gorra de 6 paneles en cordura impermeable con hebilla metálica de ajuste rápido.</p>
+          </div>
+
+          <div class="variant-selector-box">
+            <div style="display: flex; justify-content: space-between; font-size: 0.78rem; font-family: var(--font-mono);">
+              <span>Talle:</span>
+              <strong style="color: var(--accent-lime);">Talle Único Ajustable</strong>
+            </div>
+            <div class="size-pills-row">
+              <button class="size-btn active">ÚNICO</button>
+            </div>
+          </div>
+
+          <div>
+            <div class="product-price-row">
+              <span class="product-price">$24.000</span>
+              <span class="product-transfer-price">$20.400 c/ transferencia</span>
+            </div>
+            <button class="btn btn-lime btn-add-cart-js" data-id="DYG_ACC_06" data-name="Cap DYG Low Profile Cordura" data-price="24000" style="width: 100%; margin-top: 0.8rem; padding: 0.8rem;">
+              + Agregar a la Bolsa
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- AGENDAR VISITA A SHOWROOM PRIVADO -->
+    <section id="showroom" class="showroom-section">
+      <div class="showroom-wrapper">
+        <div>
+          <div class="badge-tactical"><i class="fa-solid fa-location-dot"></i> Mar del Plata</div>
+          <h2 style="margin: 0.8rem 0 0.4rem;">AGENDÁ TU CITA EN SHOWROOM</h2>
+          <p>Atención personalizada uno a uno, probador privado, café de especialidad y prueba de todos los drops exclusivos antes de su lanzamiento.</p>
+          
+          <div style="margin-top: 2rem; display: flex; flex-direction: column; gap: 0.8rem;">
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+              <i class="fa-solid fa-check" style="color: var(--accent-lime);"></i>
+              <span style="font-size: 0.9rem;">Probá todos los talles y cortes boxy fit.</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+              <i class="fa-solid fa-check" style="color: var(--accent-lime);"></i>
+              <span style="font-size: 0.9rem;">Pago en efectivo con 15% OFF directo en local.</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="background: rgba(9, 9, 11, 0.7); padding: 2rem; border-radius: var(--radius-lg); border: 1px solid var(--border-subtle);">
+          <div style="margin-bottom: 1.2rem;">
+            <label style="display: block; font-family: var(--font-mono); font-size: 0.8rem; font-weight: 800; margin-bottom: 0.4rem; text-transform: uppercase;">Tu Nombre Completo:</label>
+            <input type="text" id="showroom-name-input" placeholder="Ej: Valentín Gómez" style="width: 100%; padding: 0.85rem; background: var(--bg-surface); border: 1px solid var(--border-medium); color: #ffffff; border-radius: var(--radius-sm); outline: none;">
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.2rem;">
+            <div>
+              <label style="display: block; font-family: var(--font-mono); font-size: 0.8rem; font-weight: 800; margin-bottom: 0.4rem; text-transform: uppercase;">Fecha:</label>
+              <input type="date" id="showroom-date-input" value="2026-08-16" style="width: 100%; padding: 0.85rem; background: var(--bg-surface); border: 1px solid var(--border-medium); color: #ffffff; border-radius: var(--radius-sm); outline: none;">
+            </div>
+            <div>
+              <label style="display: block; font-family: var(--font-mono); font-size: 0.8rem; font-weight: 800; margin-bottom: 0.4rem; text-transform: uppercase;">Horario:</label>
+              <select id="showroom-time-input" style="width: 100%; padding: 0.85rem; background: var(--bg-surface); border: 1px solid var(--border-medium); color: #ffffff; border-radius: var(--radius-sm); outline: none;">
+                <option value="16:00 hs">16:00 hs</option>
+                <option value="17:30 hs" selected>17:30 hs</option>
+                <option value="19:00 hs">19:00 hs</option>
+                <option value="20:30 hs">20:30 hs</option>
+              </select>
+            </div>
+          </div>
+
+          <button id="btn-book-showroom-wa" class="btn btn-lime" style="width: 100%; padding: 1rem;">
+            <i class="fa-brands fa-whatsapp"></i> Confirmar Cita por WhatsApp
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- CARRITO LATERAL DRAWER -->
+  <div class="cart-drawer-backdrop" id="cart-backdrop"></div>
+  <div class="cart-drawer" id="cart-drawer">
+    <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 1.2rem; border-bottom: 1px solid var(--border-subtle);">
+      <h3 style="font-size: 1.3rem;"><i class="fa-solid fa-bag-shopping" style="color: var(--accent-lime);"></i> BOLSA DYNASTY</h3>
+      <button id="btn-close-cart" style="background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--text-muted);">✕</button>
+    </div>
+
+    <!-- Barra de Envío Gratis -->
+    <div class="free-shipping-meter-wrap">
+      <div style="display: flex; justify-content: space-between; font-size: 0.78rem; font-family: var(--font-mono);">
+        <span id="shipping-progress-text">Te faltan $120.000 para ENVÍO GRATIS</span>
+        <i class="fa-solid fa-truck-fast" style="color: var(--accent-lime);"></i>
+      </div>
+      <div class="shipping-bar-bg">
+        <div class="shipping-bar-fill" id="shipping-bar" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <div class="cart-items-scroll" id="cart-items-container">
+      <p style="color: var(--text-muted); text-align: center; margin-top: 4rem;">Tu bolsa está vacía.<br>Sumá prendas o sneakers del catálogo.</p>
+    </div>
+
+    <div style="border-top: 1px solid var(--border-subtle); padding-top: 1.2rem; display: flex; flex-direction: column; gap: 0.75rem;">
+      <div style="display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--text-muted);">
+        <span>Subtotal:</span>
+        <span id="cart-subtotal-price" style="color: #ffffff;">$0 ARS</span>
+      </div>
+      <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--accent-lime); font-weight: 700;">
+        <span>15% OFF Transferencia:</span>
+        <span id="cart-discount-price">-$0 ARS</span>
+      </div>
+      <div style="display: flex; justify-content: space-between; font-size: 1.3rem; font-family: var(--font-mono); font-weight: 900; color: #ffffff; margin-top: 0.4rem;">
+        <span>Total Final:</span>
+        <span id="cart-total-final" style="color: var(--accent-lime);">$0 ARS</span>
+      </div>
+
+      <button id="btn-checkout-wa" class="btn btn-whatsapp" style="width: 100%; padding: 0.95rem; margin-top: 0.5rem;">
+        <i class="fa-brands fa-whatsapp"></i> Finalizar Pedido por WhatsApp
+      </button>
+    </div>
+  </div>
+
+  <!-- BOTÓN FLOTANTE DEL CARRITO -->
+  <div class="floating-cart-btn" id="floating-cart-btn">
+    <i class="fa-solid fa-bag-shopping" style="font-size: 1.2rem;"></i>
+    <span>Ver Bolsa</span>
+    <span class="cart-badge-bubble" id="cart-bubble-count">0</span>
+  </div>
+
+  <!-- MODAL DE GUÍA DE TALLES -->
+  <div class="size-guide-modal" id="size-guide-modal">
+    <div class="modal-box">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <h3 style="font-size: 1.3rem;">📏 GUÍA DE TALLES · FIT BOXY</h3>
+        <button id="btn-close-size-modal" style="background: none; border: none; font-size: 1.3rem; color: var(--text-muted); cursor: pointer;">✕</button>
+      </div>
+      <p style="font-size: 0.88rem;">Medidas expresadas en centímetros sobre prenda plana. Nuestros cortes son Boxy Oversize.</p>
+      
+      <table class="size-table">
+        <thead>
+          <tr>
+            <th>TALLE</th>
+            <th>PECHO (CM)</th>
+            <th>LARGO (CM)</th>
+            <th>MANGA (CM)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>S</td><td>56</td><td>68</td><td>58</td></tr>
+          <tr><td>M</td><td>59</td><td>71</td><td>60</td></tr>
+          <tr><td>L</td><td>62</td><td>74</td><td>62</td></tr>
+          <tr><td>XL</td><td>65</td><td>77</td><td>64</td></tr>
+          <tr><td>XXL</td><td>68</td><td>80</td><td>66</td></tr>
+        </tbody>
+      </table>
+      <button id="btn-close-size-modal-bottom" class="btn btn-outline" style="width: 100%;">Cerrar Guía</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="app-container">
+      <p id="footer-text" style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 900; letter-spacing: 0.08em; color: #ffffff;">
+        DYNASTY // BUILT DIFFERENT.
+      </p>
+      <p style="margin-top: 0.5rem; font-size: 0.8rem; color: var(--text-muted);">
+        Showroom & Headquarters · Mar del Plata, Argentina · Envíos a todo el país.
+      </p>
+    </div>
+  </footer>
+
+  <!-- GSAP & Lenis CDN -->
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <script>
+    // =========================================================================
+    // 0. LENIS + GSAP SCROLLTRIGGER 60FPS
+    // =========================================================================
+    gsap.registerPlugin(ScrollTrigger);
+
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true
+    });
+
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+    gsap.ticker.lagSmoothing(0);
+
+    // =========================================================================
+    // 1. LECTOR DE PARÁMETROS DINÁMICOS URL (?n=Nombre&t=Telefono&d=Direccion)
+    // =========================================================================
+    const urlParams = new URLSearchParams(window.location.search);
+    const clientName = urlParams.get('n') || 'DYNASTY';
+    const clientPhone = urlParams.get('t') || '5492236751309';
+
+    document.getElementById('brand-title').textContent = clientName.toUpperCase();
+
+    // =========================================================================
+    // 2. MODAL DE GUÍA DE TALLES
+    // =========================================================================
+    const sizeModal = document.getElementById('size-guide-modal');
+    const openSizeNav = document.getElementById('btn-open-size-guide-nav');
+    const openSizeHero = document.getElementById('btn-open-size-modal-hero');
+    const closeSize = document.getElementById('btn-close-size-modal');
+    const closeSizeBottom = document.getElementById('btn-close-size-modal-bottom');
+
+    function openModal() { sizeModal.classList.add('open'); }
+    function closeModal() { sizeModal.classList.remove('open'); }
+
+    if (openSizeNav) openSizeNav.addEventListener('click', (e) => { e.preventDefault(); openModal(); });
+    if (openSizeHero) openSizeHero.addEventListener('click', openModal);
+    if (closeSize) closeSize.addEventListener('click', closeModal);
+    if (closeSizeBottom) closeSizeBottom.addEventListener('click', closeModal);
+
+    // =========================================================================
+    // 3. SELECTOR DE TALLES EN TARJETAS
+    // =========================================================================
+    document.querySelectorAll('.product-card').forEach(card => {
+      const sizeBtns = card.querySelectorAll('.size-btn');
+      const sizeLabel = card.querySelector('.selected-size-label');
+
+      sizeBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          sizeBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          if (sizeLabel) {
+            sizeLabel.textContent = `${btn.textContent} (Seleccionado)`;
+          }
+        });
+      });
+    });
+
+    // =========================================================================
+    // 4. FILTROS POR DIVISIÓN
+    // =========================================================================
+    const divisionBtns = document.querySelectorAll('.division-btn');
+    const productCards = document.querySelectorAll('.product-card');
+
+    divisionBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        divisionBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+        productCards.forEach(card => {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // =========================================================================
+    // 5. CARRITO LATERAL & CHECKOUT WHATSAPP
+    // =========================================================================
+    let cart = [];
+    const cartDrawer = document.getElementById('cart-drawer');
+    const cartBackdrop = document.getElementById('cart-backdrop');
+    const floatingCartBtn = document.getElementById('floating-cart-btn');
+    const navCartBtn = document.getElementById('btn-open-cart-nav');
+    const closeCartBtn = document.getElementById('btn-close-cart');
+    const cartItemsContainer = document.getElementById('cart-items-container');
+    const cartSubtotalPrice = document.getElementById('cart-subtotal-price');
+    const cartDiscountPrice = document.getElementById('cart-discount-price');
+    const cartTotalFinal = document.getElementById('cart-total-final');
+    const cartBubbleCount = document.getElementById('cart-bubble-count');
+    const navCartCount = document.querySelector('.nav-cart-count');
+    const shippingProgressText = document.getElementById('shipping-progress-text');
+    const shippingBar = document.getElementById('shipping-bar');
+    const checkoutWaBtn = document.getElementById('btn-checkout-wa');
+
+    const FREE_SHIPPING_LIMIT = 120000;
+
+    function openCart() {
+      cartDrawer.classList.add('open');
+      cartBackdrop.classList.add('open');
+    }
+
+    function closeCart() {
+      cartDrawer.classList.remove('open');
+      cartBackdrop.classList.remove('open');
+    }
+
+    floatingCartBtn.addEventListener('click', openCart);
+    navCartBtn.addEventListener('click', openCart);
+    closeCartBtn.addEventListener('click', closeCart);
+    cartBackdrop.addEventListener('click', closeCart);
+
+    document.querySelectorAll('.btn-add-cart-js').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const card = btn.closest('.product-card');
+        const name = btn.dataset.name;
+        const price = parseInt(btn.dataset.price);
+        const activeSizeBtn = card.querySelector('.size-btn.active');
+        const size = activeSizeBtn ? activeSizeBtn.textContent : 'U';
+
+        const itemKey = `${name} [Talle: ${size}]`;
+        const existing = cart.find(item => item.key === itemKey);
+
+        if (existing) {
+          existing.qty += 1;
+        } else {
+          cart.push({ key: itemKey, name, size, price, qty: 1 });
+        }
+
+        gsap.fromTo(floatingCartBtn, { scale: 1.25 }, { scale: 1, duration: 0.35, ease: 'back.out(2)' });
+        renderCart();
+        openCart();
+      });
+    });
+
+    function renderCart() {
+      const totalUnits = cart.reduce((sum, i) => sum + i.qty, 0);
+      cartBubbleCount.textContent = totalUnits;
+      navCartCount.textContent = totalUnits;
+
+      if (cart.length === 0) {
+        cartItemsContainer.innerHTML = '<p style="color: var(--text-muted); text-align: center; margin-top: 4rem;">Tu bolsa está vacía.<br>Sumá prendas o sneakers del catálogo.</p>';
+        cartSubtotalPrice.textContent = '$0 ARS';
+        cartDiscountPrice.textContent = '-$0 ARS';
+        cartTotalFinal.textContent = '$0 ARS';
+        shippingProgressText.textContent = `Te faltan $${FREE_SHIPPING_LIMIT.toLocaleString('es-AR')} para ENVÍO GRATIS`;
+        shippingBar.style.width = '0%';
+        return;
+      }
+
+      let html = '';
+      let subtotal = 0;
+
+      cart.forEach((item, index) => {
+        const itemSub = item.price * item.qty;
+        subtotal += itemSub;
+
+        html += `
+          <div class="cart-item-row">
+            <div>
+              <strong style="font-size: 0.92rem; display: block;">${item.name}</strong>
+              <span style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent-lime);">Talle: ${item.size} · $${item.price.toLocaleString('es-AR')}</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.4rem;">
+              <button class="btn-qty" onclick="changeQty(${index}, -1)">-</button>
+              <span style="font-family: var(--font-mono); font-weight: 800; min-width: 18px; text-align: center;">${item.qty}</span>
+              <button class="btn-qty" onclick="changeQty(${index}, 1)">+</button>
+            </div>
+          </div>
+        `;
+      });
+
+      cartItemsContainer.innerHTML = html;
+
+      const discount = Math.round(subtotal * 0.15);
+      const totalFinal = subtotal - discount;
+
+      cartSubtotalPrice.textContent = `$${subtotal.toLocaleString('es-AR')} ARS`;
+      cartDiscountPrice.textContent = `-$${discount.toLocaleString('es-AR')} ARS`;
+      cartTotalFinal.textContent = `$${totalFinal.toLocaleString('es-AR')} ARS`;
+
+      // Barra de Envío Gratis
+      if (subtotal >= FREE_SHIPPING_LIMIT) {
+        shippingProgressText.textContent = '¡CONSEGUISTE ENVÍO GRATIS A TODO EL PAÍS!';
+        shippingBar.style.width = '100%';
+      } else {
+        const missing = FREE_SHIPPING_LIMIT - subtotal;
+        const pct = Math.min((subtotal / FREE_SHIPPING_LIMIT) * 100, 100);
+        shippingProgressText.textContent = `Te faltan $${missing.toLocaleString('es-AR')} para ENVÍO GRATIS`;
+        shippingBar.style.width = `${pct}%`;
+      }
+    }
+
+    window.changeQty = function(index, delta) {
+      cart[index].qty += delta;
+      if (cart[index].qty <= 0) {
+        cart.splice(index, 1);
+      }
+      renderCart();
+    };
+
+    checkoutWaBtn.addEventListener('click', () => {
+      if (cart.length === 0) {
+        alert('Tu bolsa de compras está vacía.');
+        return;
+      }
+
+      const subtotal = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+      const discount = Math.round(subtotal * 0.15);
+      const total = subtotal - discount;
+      const itemsText = cart.map(i => `• ${i.qty}x ${i.name} (Talle: ${i.size}) - $${(i.price * i.qty).toLocaleString('es-AR')}`).join('\n');
+
+      const message = `Hola ${clientName}! Quisiera realizar el siguiente pedido oficial:\n\n` +
+                      `🛍️ *Prendas Seleccionadas:*\n${itemsText}\n\n` +
+                      `💵 *Subtotal:* $${subtotal.toLocaleString('es-AR')} ARS\n` +
+                      `⚡ *15% OFF Transferencia:* -$${discount.toLocaleString('es-AR')} ARS\n` +
+                      `🏷️ *Total a Pagar:* $${total.toLocaleString('es-AR')} ARS\n\n` +
+                      `¿Me pasan los datos bancarios y coordinamos el envío? ¡Muchas gracias!`;
+
+      window.open(`https://wa.me/${clientPhone}?text=${encodeURIComponent(message)}`, '_blank');
+    });
+
+    // =========================================================================
+    // 6. AGENDAR VISITA A SHOWROOM WHATSAPP
+    // =========================================================================
+    const bookShowroomBtn = document.getElementById('btn-book-showroom-wa');
+    const showroomName = document.getElementById('showroom-name-input');
+    const showroomDate = document.getElementById('showroom-date-input');
+    const showroomTime = document.getElementById('showroom-time-input');
+
+    bookShowroomBtn.addEventListener('click', () => {
+      const name = showroomName.value.trim() || 'Cliente Dynasty';
+      const date = showroomDate.value;
+      const time = showroomTime.value;
+
+      const message = `Hola ${clientName}! Mi nombre es ${name}. Quisiera agendar una cita privada para probarme prendas en el showroom:\n\n` +
+                      `📅 *Fecha:* ${date}\n` +
+                      `⏰ *Horario:* ${time}\n\n` +
+                      `¿Me confirman la reserva de probador? ¡Gracias!`;
+
+      window.open(`https://wa.me/${clientPhone}?text=${encodeURIComponent(message)}`, '_blank');
+    });
+  </script>
+</body>
+</html>
