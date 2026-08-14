@@ -5,9 +5,10 @@
     "categoria": "Moda & Tech",
     "icon": "fa-crown",
     "color": "#bef264",
-    "desc": "E-commerce oficial de Dynasty con catálogo de productos, buzos heavyweight, tech y checkout integrado.",
-    "url": "/dynasty/",
-    "external_url": "https://dynasty.ar"
+    "desc": "E-commerce oficial de Dynasty en producción: tecnología táctica, audio, gaming, buzos heavyweight y checkout integrado.",
+    "url": "https://rodrigo1234321.github.io/dynasty/",
+    "external_url": "https://dynasty.ar",
+    "is_external": true
   },
   {
     "slug": "naro-ai",
