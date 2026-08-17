@@ -1,5 +1,14 @@
 [
   {
+    "slug": "verde-limon",
+    "name": "Verde Limón // Almacén Natural & Tienda Saludable",
+    "categoria": "Alimentos & Salud",
+    "icon": "fa-leaf",
+    "color": "#10b981",
+    "desc": "Almacén natural y tienda saludable con catálogo a granel, frutos secos, sin TACC, superalimentos y checkout a WhatsApp.",
+    "url": "/verde-limon/"
+  },
+  {
     "slug": "dynasty",
     "name": "Dynasty // E-Commerce & Showroom",
     "categoria": "Moda & Tech",
