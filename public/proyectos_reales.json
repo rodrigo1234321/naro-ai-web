@@ -148,11 +148,13 @@
   },
   {
     "slug": "portfolio-dev",
-    "name": "Portfolio de Desarrollo Web & IA",
+    "name": "Rodrigo // Portfolio Developer & IA",
     "categoria": "Software & IA",
     "icon": "fa-code",
     "color": "#ec4899",
     "desc": "Portfolio profesional interactivo con stack moderno de tecnologías, animaciones y proyectos entregados.",
-    "url": "/portfolio-dev/"
+    "url": "https://rodrigodev.me",
+    "external_url": "https://rodrigodev.me",
+    "is_external": true
   }
 ]
